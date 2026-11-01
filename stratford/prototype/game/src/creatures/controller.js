@@ -107,6 +107,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
       }
     }
     c.turnRate = THREE.MathUtils.lerp(c.turnRate, turn / dt, 1 - Math.exp(-dt * 12));
+    if (!Number.isFinite(c.turnRate)) c.turnRate = 0;
     // speed along the heading (scaled by how well heading matches the wish)
     const align = c.wishMag > 0 ? Math.max(0, c.fwd.dot(c.wish)) : 0;
     const want = vmax * (0.3 + 0.7 * align * align);
@@ -315,7 +316,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
 
   function stepClimb(dt, controls, world, camera) {
     wishFromStick(controls, camera, 'wall');
-    const n = c.up;
+    const n = c.up.clone();
     const vmax = c.wishMag * (T.climbSpeed + c.sprint * (T.climbSprint - T.climbSpeed));
     // heading turns toward the wish quickly (squirrels turn on a trunk in a blink)
     if (c.wishMag > 0) {
@@ -337,6 +338,16 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
 
     const move = v4.copy(c.vel).multiplyScalar(dt);
     const goingUp = c.fwd.dot(UP) > 0.3 && c.speed > 0.05;
+    // reached the ground on the way down (head first): walk off, away from the wall
+    if (c.fwd.y < -0.2 && c.speed > 0.02) {
+      const g = ray(world, v1.copy(c.pos).addScaledVector(n, T.radius), v2.set(0, -1, 0), T.radius * 1.3 + move.length());
+      if (g && isWalkable(g.normal)) {
+        c.pos.copy(g.point); c.up.copy(g.normal);
+        c.fwd.set(n.x, 0, n.z); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 0, -1); c.fwd.normalize();
+        c.state = 'move'; c.grounded = true; c.speed = Math.min(c.speed, T.runSpeed * 0.5); emit('land', { position: c.pos.clone(), impact: 0 });
+        return;
+      }
+    }
     // inner corner / obstacle ahead along the surface
     if (c.speed > 0.02) {
       const o = v1.copy(c.pos).addScaledVector(n, T.radius * 0.7);
@@ -486,6 +497,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
   // consume one-frame presses so substeps don't repeat them
   c.update = (dt, controls, world, camera) => {
     c.events.length = 0;
+    if (!(dt > 0)) return;
     const n = Math.max(1, Math.ceil(dt / T.maxStep));
     const h = dt / n;
     for (let i = 0; i < n; i++) {

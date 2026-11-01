@@ -83,7 +83,7 @@ export function buildSquirrelModel({ meta, bin }, coat = 'black') {
   // eyes, eye-rings, whiskers on the head bone
   const head = byName.head, hp = rest.head;
   const eyeMat = new THREE.MeshPhysicalMaterial({ color: 0x120c0a, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.05, metalness: 0 });
-  const ringMat = new THREE.MeshStandardMaterial({ color: 0xe8dcc6, roughness: 0.9 });
+  const ringMat = new THREE.MeshStandardMaterial({ color: coat === 'grey' ? 0xe8dcc6 : 0x8a7a68, roughness: 0.9 });
   const eyes = [];
   for (const s of [1, -1]) {
     const e = new THREE.Mesh(new THREE.SphereGeometry(meta.eyes.r, 20, 14), eyeMat);
@@ -91,7 +91,7 @@ export function buildSquirrelModel({ meta, bin }, coat = 'black') {
     e.position.copy(p).sub(hp);
     const out = new THREE.Vector3(s, 0.25, 0.3).normalize();
     e.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), out);
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(meta.eyes.r * 0.98, meta.eyes.r * 0.2, 6, 24), ringMat);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(meta.eyes.r * 1.0, meta.eyes.r * 0.14, 6, 24), ringMat);
     ring.position.set(0, 0, meta.eyes.r * 0.25);
     e.add(ring);
     head.add(e); eyes.push(e);
@@ -105,7 +105,7 @@ export function buildSquirrelModel({ meta, bin }, coat = 'black') {
     wpos.push(...o.toArray(), ...tip.toArray());
   }
   const wg = new THREE.BufferGeometry(); wg.setAttribute('position', new THREE.Float32BufferAttribute(wpos, 3));
-  const whiskers = new THREE.LineSegments(wg, new THREE.LineBasicMaterial({ color: 0x2a2522, transparent: true, opacity: 0.55 }));
+  const whiskers = new THREE.LineSegments(wg, new THREE.LineBasicMaterial({ color: coat === 'grey' ? 0x2a2522 : 0xbdb3a8, transparent: true, opacity: 0.55 }));
   head.add(whiskers);
 
   const group = new THREE.Group();
@@ -118,6 +118,7 @@ export function buildSquirrelModel({ meta, bin }, coat = 'black') {
       geo.setAttribute('coat', a);
       shellGeo.setAttribute('coat', expand(a));
       whiskers.material.color.set(name === 'grey' ? 0x2a2522 : 0xbdb3a8);
+      ringMat.color.set(name === 'grey' ? 0xe8dcc6 : 0x8a7a68);
     },
   };
 }

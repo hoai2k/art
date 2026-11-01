@@ -120,21 +120,23 @@ export async function createStandInWorld({ THREE: _T, renderer, scene } = {}) {
     const s = vis.attributes.surface, c = new Float32Array(s.count * 3), col = new THREE.Color();
     for (let i = 0; i < s.count; i++) { col.setHex(COLORS[s.getX(i)] ?? 0x888888).convertSRGBToLinear(); c[i * 3] = col.r; c[i * 3 + 1] = col.g; c[i * 3 + 2] = col.b; }
     vis.setAttribute('color', new THREE.BufferAttribute(c, 3));
+    vis.setAttribute('surface', new THREE.BufferAttribute(Float32Array.from(s.array), 1));
   }
   const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0 });
   // a little painted texture: brick courses, sidewalk joints, grass mottling (world-space, in the shader)
   mat.onBeforeCompile = (sh) => {
-    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vWP;\nvarying vec3 vWN;')
-      .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWP = (modelMatrix * vec4(transformed, 1.0)).xyz; vWN = normalize(mat3(modelMatrix) * objectNormal);');
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nattribute float surface;\nvarying vec3 vWP;\nvarying vec3 vWN;\nvarying float vSurf;')
+      .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWP = (modelMatrix * vec4(transformed, 1.0)).xyz; vWN = normalize(mat3(modelMatrix) * objectNormal); vSurf = surface;');
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
-varying vec3 vWP; varying vec3 vWN;
+varying vec3 vWP; varying vec3 vWN; varying float vSurf;
 float h21(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f); return mix(mix(h21(i), h21(i+vec2(1,0)), f.x), mix(h21(i+vec2(0,1)), h21(i+vec2(1,1)), f.x), f.y); }`)
       .replace('#include <color_fragment>', `#include <color_fragment>
 {
   vec3 c = diffuseColor.rgb;
   bool wall = abs(vWN.y) < 0.5;
-  if (wall && c.r > 0.25 && c.g < 0.12) {  // brick: courses 7.5 cm, bricks 22 cm
+  int sid = int(vSurf + 0.5);
+  if (sid == 4) {  // brick: courses 7.5 cm, bricks 22 cm
     vec2 q = vec2(dot(vWP.xz, normalize(vec2(-vWN.z, vWN.x))), vWP.y) / vec2(0.22, 0.075);
     q.x += 0.5 * mod(floor(q.y), 2.0);
     vec2 f = fract(q);
@@ -145,7 +147,7 @@ float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f); return m
     float n = vn(vWP.xz * 3.0) * 0.6 + vn(vWP.xz * 13.0) * 0.4;
     c *= 0.82 + 0.3 * n;
     vec2 g = abs(fract(vWP.xz / 1.5) - 0.5);
-    if (c.r > 0.35 && c.g > 0.35) c *= 1.0 - 0.25 * step(0.485, max(g.x, g.y));   // sidewalk joints
+    if (sid == 2) c *= 1.0 - 0.25 * step(0.485, max(g.x, g.y));   // sidewalk joints
   } else {
     c *= 0.9 + 0.15 * vn(vWP.xy * 8.0 + vWP.zy * 8.0);
   }

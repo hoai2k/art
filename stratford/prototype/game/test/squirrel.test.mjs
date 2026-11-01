@@ -219,9 +219,16 @@ test('bench page loads, draws the squirrel and follows a simulated gamepad', { t
     assert.ok(drawn > 5000, `drew the scene with the squirrel (${drawn} triangles)`);
     const vis = await page.evaluate(() => window.__lab.squirrel.object.children.length > 0 && window.__lab.squirrel.model != null);
     assert.ok(vis, 'squirrel model loaded');
+    const bad = await page.evaluate(() => Object.values(window.__lab.squirrel.model.bones).filter((b) => !Number.isFinite(b.quaternion.x + b.quaternion.w + b.position.x)).map((b) => b.name));
+    assert.deepEqual(bad, [], 'no NaN bones');
     const p0 = await page.evaluate(() => window.__lab.squirrel.position.toArray());
     await page.evaluate(() => { window.__pad.axes[1] = -1; });     // left stick up
-    await page.waitForTimeout(1500);
+    // Wait for the movement rather than a fixed time: under load (software
+    // rendering, other browsers running) the page may only manage a few fps.
+    await page.waitForFunction((p0) => {
+      const p = window.__lab.squirrel.position;
+      return Math.hypot(p.x - p0[0], p.z - p0[2]) > 0.5;
+    }, p0, { timeout: 15000 }).catch(() => {});
     const st = await page.evaluate(() => ({ p: window.__lab.squirrel.position.toArray(), s: window.__lab.squirrel.state }));
     const moved = Math.hypot(st.p[0] - p0[0], st.p[2] - p0[2]);
     assert.ok(moved > 0.5, `moved ${moved.toFixed(2)} m with the stick`);

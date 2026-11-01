@@ -47,8 +47,8 @@ export function squirrelTuning(scale = 0.25) {
     // simulation
     maxStep: 1 / 120,
     // camera
-    camDistance: 3.6 * scale,        // 0.9 m behind
-    camHeight: 0.6 * scale,          // look-at point above the feet
+    camDistance: 3.0 * scale,        // 0.75 m behind
+    camHeight: 0.5 * scale,          // look-at point above the feet
     camPitch: 0.2,                   // rad, default elevation
     camNear: 0.08 * scale,
     camFov: 55, camFovSprint: 63,

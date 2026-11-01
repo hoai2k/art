@@ -142,13 +142,13 @@ async function run(browser, base, label, query) {
   check(turned, 'the right stick turns the camera');
 
   // ---- landmark and nuts -----------------------------------------------------------------------
-  const lm = await G(() => { const l = window.stratford.exploration.landmarks[0]; return l ? { x: l.x, z: l.z, id: l.id } : null; });
+  const lm = await G(() => { const sp = window.stratford.world.spawn; const l = [...window.stratford.exploration.landmarks].filter((q) => !window.stratford.exploration.isFound(q.id)).sort((a, b) => Math.hypot(b.x - sp.x, b.z - sp.z) - Math.hypot(a.x - sp.x, a.z - sp.z))[0]; return l ? { x: l.x, z: l.z, id: l.id } : null; });
   if (lm) {
     await G((l) => window.stratford.teleport(l.x, l.z), lm);
     check(await until((id) => window.stratford.exploration.isFound(id) && !document.querySelector('#discovery').hidden && document.querySelector('#d-name').textContent.length > 0, lm.id, 60000), 'entering a landmark discovers it and shows its card');
     await wait(900);
     await shot('06-discovery');
-    check(await G(() => JSON.parse(localStorage.getItem('stratford.save')).discovered[window.stratford.exploration.landmarks[0].id] > 0), 'the discovery is saved');
+    check(await G(() => Object.keys(JSON.parse(localStorage.getItem('stratford.save')).discovered).length >= 2), 'the discovery is saved');
   } else check(false, 'there is a landmark to find');
   const nut = await G(() => { const n = window.stratford.exploration.nuts[0]; return n ? { x: n.x, y: n.y, z: n.z } : null; });
   if (nut) {

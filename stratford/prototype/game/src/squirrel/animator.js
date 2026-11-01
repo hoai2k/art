@@ -166,7 +166,7 @@ export function createAnimator(model, T) {
       const t = i / (tailN - 1);
       // rest: S-curve up over the back; running: streaming low behind, a ripple; air: straight
       // back and up for balance; climbing: flat to the surface; swimming: trailing on the water
-      const idleCurve = (i === 0 ? 1.05 : i < 4 ? 0.28 : i < 8 ? -0.12 : -0.32) + 0.25 * st.flick * Math.sin(st.t * 30 - i * 0.8) * (i > 5 ? 1 : 0);
+      const idleCurve = (i === 0 ? 0.95 : i < 4 ? 0.4 : i < 8 ? -0.2 : -0.42) + 0.25 * st.flick * Math.sin(st.t * 30 - i * 0.8) * (i > 5 ? 1 : 0);
       const runCurve = (i === 0 ? 0.15 : 0.02) + 0.12 * Math.sin(TAU * ph - i * 0.55) * (0.3 + t);
       const airCurve = i === 0 ? 0.25 : 0.03;
       const climbCurve = i === 0 ? -0.15 : (i < 6 ? 0.02 : 0.05);

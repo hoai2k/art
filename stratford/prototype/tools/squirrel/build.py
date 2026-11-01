@@ -102,7 +102,7 @@ def make_fields(B, names):
     for i in range(n):
         a = B[f'tail{i}']; b = B[f'tail{i + 1}'] if i + 1 < n else a + (B[f'tail{i}'] - B[f'tail{i - 1}'])
         t0, t1 = i / n, (i + 1) / n
-        f, lo, hi = f_tube([a, b], [A.tail_core_radius(t0), A.tail_core_radius(t1)], 1.3, 0.9)
+        f, lo, hi = f_tube([a, b], [A.tail_core_radius(t0), A.tail_core_radius(t1)], 1.45, 0.8)
         F.append(dict(f=f, lo=lo, hi=hi, bone=f'tail{i}', blend=0.9 if i == 0 else 0.5))
     return F
 
@@ -293,14 +293,14 @@ def paint_procedural(P, N, W, names, B, coat):
         c = mix(c, [0.22, 0.20, 0.20], claws * 0.85)
         tip = np.clip(0.35 + 0.55 * tail + 0.2 * n3, 0, 1)                   # fur-tip lightness: silvery tail fringe
     else:
-        base = np.array([0.075, 0.066, 0.062]); warm = np.array([0.17, 0.115, 0.085])
-        c = mix(np.tile(base, (n, 1)), [0.11, 0.095, 0.085], 0.5 * n2)
-        c = mix(c, warm, 0.7 * flank_t + 0.35 * tail * n3 + 0.3 * cream_t)
+        base = np.array([0.10, 0.085, 0.078]); warm = np.array([0.24, 0.16, 0.11])
+        c = mix(np.tile(base, (n, 1)), [0.15, 0.125, 0.11], 0.5 * n2)
+        c = mix(c, warm, 0.7 * flank_t + 0.45 * tail * n3 + 0.35 * cream_t + 0.3 * cheek)
         c = mix(c, [0.36, 0.30, 0.26], ring * 0.85)
         c = mix(c, [0.24, 0.15, 0.14], 0.6 * inner_ear)
         c = mix(c, [0.10, 0.07, 0.07], nosepad)
         c = mix(c, [0.05, 0.05, 0.05], claws * 0.85)
-        tip = np.clip(0.18 + 0.3 * tail + 0.15 * n3, 0, 1)
+        tip = np.clip(0.06 + 0.14 * tail + 0.06 * n3, 0, 1)
     ao = np.clip(0.55 + 0.45 * smooth(0.5, 3.5, y) * (0.7 + 0.3 * up.clip(0, 1)), 0, 1)
     return np.clip(c, 0, 1), tip, ao
 

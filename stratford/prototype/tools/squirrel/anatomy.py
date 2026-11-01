@@ -65,8 +65,8 @@ def parts(B):
     # --- torso: haunch, lumbar/belly, chest (overlapping volumes on their spine bones)
     add('ell', 'pelvis', ((0, 6.9, -6.4), (2.9, 3.3, 3.9), (0.15, 0, 0)), 1.3)
     add('ell', 'pelvis', ((0, 7.4, -8.6), (2.2, 2.2, 1.9), (0, 0, 0)), 1.0)          # rump
-    add('ell', 'spine1', ((0, 6.7, -1.6), (2.85, 3.05, 4.4), (-0.05, 0, 0)), 1.3)    # loins / belly
-    add('ell', 'spine2', ((0, 6.25, 3.3), (2.45, 2.75, 3.6), (-0.12, 0, 0)), 1.3)    # chest
+    add('ell', 'spine1', ((0, 6.85, -1.6), (2.95, 3.3, 4.4), (-0.05, 0, 0)), 1.3)    # loins / belly
+    add('ell', 'spine2', ((0, 6.35, 3.3), (2.55, 3.0, 3.6), (-0.12, 0, 0)), 1.3)    # chest
     add('ell', 'spine2', ((0, 5.3, 5.6), (1.9, 1.9, 2.0), (0, 0, 0)), 1.0)           # breast / throat
     add('tube', 'neck', ([(0, 6.9, 6.6), (0, 7.6, 8.4), (0, 8.2, 9.8)], [2.15, 1.95, 1.8], 0.92, 1.0), 1.0)
     # --- head: cranium, cheeks, muzzle, nose, chin (jaw), ears
@@ -90,7 +90,7 @@ def parts(B):
     for s in (1, -1):
         X = 'LR'[s < 0]; b = lambda n: B[n + '_' + X]
         hip, knee, ank, ball = b('thigh'), b('shin'), b('foot'), b('toes')
-        add('ell', 'thigh_' + X, ((s * 2.35, 5.9, -4.6), (1.55, 2.9, 3.3), (-0.55, 0, 0)), 1.0)     # haunch muscle
+        add('ell', 'thigh_' + X, ((s * 2.4, 6.1, -4.9), (1.8, 3.2, 3.5), (-0.55, 0, 0)), 1.1)     # haunch muscle
         add('tube', 'thigh_' + X, ([hip, knee], [1.7, 1.15], 0.8, 1.0), 0.8)
         add('tube', 'shin_' + X, ([knee, _lerp(knee, ank, 0.45), ank], [1.05, 0.72, 0.42], 0.8, 1.0), 0.5)
         add('tube', 'foot_' + X, ([_add(ank, (0, -0.25, 0.2)), ball], [0.48, 0.5], 1.25, 0.6), 0.3)
@@ -101,7 +101,7 @@ def parts(B):
 def tail_core_radius(t):
     """the tail's dense inner fur (radius, cm) at t = 0 (base) .. 1 (tip); the shells add the rest"""
     import numpy as np
-    return float(np.interp(t, [0, 0.08, 0.3, 0.75, 0.92, 1.0], [0.9, 1.05, 1.25, 1.15, 0.85, 0.35]))
+    return float(np.interp(t, [0, 0.08, 0.3, 0.75, 0.92, 1.0], [1.2, 1.55, 1.85, 1.75, 1.3, 0.5]))
 
 
 def _lerp(a, b, t): return tuple(a[i] + (b[i] - a[i]) * t for i in range(3))

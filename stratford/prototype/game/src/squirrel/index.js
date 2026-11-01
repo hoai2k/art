@@ -50,6 +50,7 @@ export async function createSquirrel({ coat = 'black', model = true, assetUrl } 
     setCoat(name) { currentCoat = name; mdl?.setCoat(name); },
     update(dt, controls, world, camera) {
       dt = Math.min(Math.max(dt, 0), 0.1);
+      if (!(dt > 0)) return;
       ctrl.update(dt, controls, world, camera);
       for (const [ev, data] of ctrl.events) for (const fn of listeners[ev] || []) fn(data);
       if (anim) { anim.update(dt, ctrl, mdl.group); }
