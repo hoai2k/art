@@ -1,0 +1,57 @@
+[
+  {
+    "id": "IC-M15a",
+    "name": "Soup's On: the soup kitchen",
+    "key": "scene.ladlelark",
+    "file": "assets/scenes/ladlelark.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Soup's On (the Soupladle Lark): the whole background. The pot, the vegetables, the queue, the bowl and the Lark are drawn on top.",
+    "standin": "A tiled wall with a window, an iron stove and a wooden serving counter, painted in code.",
+    "prompt": "{STYLE} {SCENE}A cosy old soup kitchen, seen straight on. The back wall is plain cream tiles down to 71% of the way down, then a worn stone-flagged floor. A small four-paned window high up on the left, between 10% and 29% across and 12% and 37% down. A black iron cooking range low in the middle, from 19% to 61% across, its top at 91% down, with a little orange glow from its fire door. On the right, a wooden serving counter from 69% across to the right edge, its top 82% down, with a clear stretch of wall behind it where a queue of creatures stands. Keep the whole area from 10% to 68% across and from 30% to 95% down plain (tiles, floor, range top), because the game puts a big soup pot there, and keep the wall above the counter clear. No pot, no food, no people or animals.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M15b",
+    "name": "Soup pot and bowl",
+    "key": "sprites.larkPot",
+    "file": "assets/sprites/lark-pot.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Soup's On: the big pot the Lark dips into (the game fits its broth oval to the swirling vegetables), and the bowl on the counter that fills.",
+    "standin": "A copper pot, a golden broth oval and a wooden bowl drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 1 pair: left, a huge old copper soup pot, about 900 px wide, seen from the front and above at about 25 degrees, two loop handles on its sides, dents and crosshatched shine; its open mouth is a wide oval of clear golden broth with nothing floating in it, ringed by the rolled rim, and the rim's outer oval is exactly as wide as the pot and three-eighths as tall as it is wide, its top edge at the very top of the painted pot. Right, a plain round wooden soup bowl, about 400 px wide, seen the same way, holding a shallow oval of the same golden broth with nothing in it.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M15c",
+    "name": "What's in the soup",
+    "key": "sprites.larkBits",
+    "file": "assets/sprites/lark-bits.png",
+    "size": "2560 x 512, transparent",
+    "used": "Soup's On: the bits that swirl round the pot, sit in the order bubble and fly into the bowl.",
+    "standin": "An orange carrot coin, a green pea, a cream dumpling, a brown mushroom and a dark boot drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 5 x 1 row of five things floating in soup, each seen from above at a slant and each about 300 px across, in a square cell: 1, a round coin of carrot with its pale rings; 2, a single round green pea (smaller, about 160 px); 3, a plump pleated white dumpling; 4, a halved brown mushroom; 5, a battered old brown leather boot with a loose lace, lying on its side (about 400 px long). Wet and glistening, a few drops of broth.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M15d",
+    "name": "The hungry queue",
+    "key": "sprites.larkQueue",
+    "file": "assets/sprites/lark-queue.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Soup's On: the creatures queueing at the counter; the one at the front bounces when served and pulls a face at a bad bowl.",
+    "standin": "A hedgehog, a rabbit, a bear cub and a frog drawn in code, each with a spoon.",
+    "prompt": "{STYLE} {SHEET} A 4 x 2 grid of four small hungry creatures in Lobel's gentle manner, each standing upright, full length, in a three-quarter view facing left, about 440 px tall, holding a big spoon: row 1, hopeful and waiting: a hedgehog, a white rabbit, a brown bear cub, a green frog; row 2, the same four in the same order pulling a face: eyes screwed shut, tongue out, the spoon held away.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M15e",
+    "name": "Soupladle Lark hovering, dipping and rising",
+    "key": "sprites.larkPoses",
+    "file": "assets/sprites/lark-poses.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Soup's On: the Lark hovers over the pot (pose 1), plunges its bowl into the soup to dip (pose 2) and rises with a full bowl (pose 3), always over the ring the player aims.",
+    "standin": "The portrait (or its stand-in) with ink-and-wash wings in code: beating while it hovers, swept up and tilted forward as it dips, a golden brim drawn on the bowl as it rises.",
+    "prompt": "{STYLE} {VARIANT} The Soupladle Lark (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/ladlelark.png), exactly as painted there: one speckled grey enamel soup ladle in a single piece, its deep round bowl the body (open at the top, behind the neck), its long handle rising as a slender neck to a small head with one round pale eye and a long tan beak, and the handle's hooked end curling up and back from the top of the head as a crest; small feathery grey-blue wings and tail; thin ochre legs with dark claws. Three poses side by side, each in its own square third of the sheet, all at the same scale, facing left, the ladle's bowl at the exact centre of each square: 1, hovering in the air: wings beating either side of the bowl, legs tucked up, the neck curved with the head looking down; 2, dipping: tipped forward bowl first, the bowl's open top turned down to the lower left as if scooping, wings swept up, the neck bent down; 3, rising: level again, wings pushing down, the bowl brimming with golden soup with a carrot coin and a pea showing, drops of broth falling from its rim. {ALPHA}",
+    "status": "delivered"
+  }
+]

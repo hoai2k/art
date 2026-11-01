@@ -1,0 +1,539 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M16b",
+      "file": "game/assets/sprites/drippet-things.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              67,
+              71,
+              487,
+              433
+            ],
+            "output_bounds": [
+              51,
+              113,
+              461,
+              466
+            ],
+            "scale": 0.9752380952380952
+          },
+          {
+            "source_bounds": [
+              567,
+              256,
+              889,
+              410
+            ],
+            "output_bounds": [
+              611,
+              293,
+              925,
+              443
+            ],
+            "scale": 0.9752380952380952
+          },
+          {
+            "source_bounds": [
+              1034,
+              158,
+              1210,
+              408
+            ],
+            "output_bounds": [
+              1194,
+              198,
+              1366,
+              442
+            ],
+            "scale": 0.9752380952380952
+          },
+          {
+            "source_bounds": [
+              1346,
+              34,
+              1713,
+              411
+            ],
+            "output_bounds": [
+              1613,
+              77,
+              1971,
+              445
+            ],
+            "scale": 0.9752380952380952
+          },
+          {
+            "source_bounds": [
+              24,
+              440,
+              497,
+              832
+            ],
+            "output_bounds": [
+              51,
+              634,
+              461,
+              973
+            ],
+            "scale": 0.8659619450317125
+          },
+          {
+            "source_bounds": [
+              564,
+              665,
+              889,
+              832
+            ],
+            "output_bounds": [
+              628,
+              829,
+              909,
+              974
+            ],
+            "scale": 0.8659619450317125
+          },
+          {
+            "source_bounds": [
+              1033,
+              565,
+              1210,
+              832
+            ],
+            "output_bounds": [
+              1204,
+              742,
+              1357,
+              973
+            ],
+            "scale": 0.8659619450317125
+          },
+          {
+            "source_bounds": [
+              1347,
+              429,
+              1731,
+              837
+            ],
+            "output_bounds": [
+              1626,
+              625,
+              1959,
+              978
+            ],
+            "scale": 0.8659619450317125
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "f29466027e831b5a463e122e726e4d8c13b0800fcf288a2383544de0063545af",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of eight small objects standing on the floor, each seen from the side and a little above, each about 300 px tall, all at the same scale, standing on the bottom of their cell. Top row, thirsty and dry, from left to right: 1) a terracotta pot with a fern whose fronds droop limply over the rim; 2) an empty slate-blue enamel cat's bowl; 3) an empty plain drinking tumbler; 4) a mauve china vase of white daisies with their heads drooping down. Bottom row, the same four refreshed, in the same order and at the same size: 5) the fern standing up fresh and green; 6) the bowl full of water; 7) the tumbler full of water; 8) the daisies upright and open. No puddles, no shadows under them.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M16c",
+      "file": "game/assets/sprites/puddles.png",
+      "dimensions": [
+        1536,
+        512
+      ],
+      "source_dimensions": [
+        1536,
+        512
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              33,
+              258,
+              692,
+              457
+            ],
+            "output_bounds": [
+              52,
+              343,
+              459,
+              466
+            ],
+            "scale": 0.6168674698795181
+          },
+          {
+            "source_bounds": [
+              762,
+              264,
+              1400,
+              457
+            ],
+            "output_bounds": [
+              571,
+              347,
+              965,
+              466
+            ],
+            "scale": 0.6168674698795181
+          },
+          {
+            "source_bounds": [
+              1476,
+              248,
+              2140,
+              456
+            ],
+            "output_bounds": [
+              1075,
+              337,
+              1485,
+              465
+            ],
+            "scale": 0.6168674698795181
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "2bb9354c4cc5523b6d6ccb96711a4bf5af4fff650bc0bef81b351213104ee38a",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 1 row of three shallow water puddles seen from a low angle, so each is a wide flat oval about two and a half times as wide as it is tall, with soft irregular edges: translucent slate-blue watercolour, a darker pooled rim, and a pale highlight streak on the surface. Three different outlines (one round, one with a little bay, one with a smaller puddle splashed beside it). Each fills about 80% of its cell's width.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 1536 x 512, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M16d",
+      "file": "game/assets/sprites/drippet-poses.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              15,
+              53,
+              854,
+              704
+            ],
+            "output_bounds": [
+              118,
+              182,
+              905,
+              793
+            ],
+            "scale": 0.9383734249713631
+          },
+          {
+            "source_bounds": [
+              898,
+              109,
+              1771,
+              852
+            ],
+            "output_bounds": [
+              1126,
+              235,
+              1945,
+              932
+            ],
+            "scale": 0.9383734249713631
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "ea0884eecaa52ea5245c641ba66f3cee12e169a0953b73f239f7cc0d86b9ec34",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Drippet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/drippet.png ): a rusty sky-blue water tap whose spout is its long beak pointing left with a brass collar at its mouth and a water drop hanging from it, a blue cross handle on a brass stem as its crest, one big round yellow eye, a grey-blue wing, a fan of pink-red tail feathers and long ochre knobbly legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left, at the portrait's scale: left half, in mid-hop, legs tucked up under its round body and claws curled, a few water drops flung from its spout; right half, skidding, its whole body tipped far back, both legs shot forward and splayed, its eye wide, water sloshing out of its spout. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M16e",
+      "file": "game/assets/sprites/drippet-more.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              76,
+              37,
+              900,
+              841
+            ],
+            "output_bounds": [
+              102,
+              121,
+              921,
+              920
+            ],
+            "scale": 0.9941747572815535
+          },
+          {
+            "source_bounds": [
+              1013,
+              135,
+              1740,
+              853
+            ],
+            "output_bounds": [
+              1174,
+              218,
+              1897,
+              932
+            ],
+            "scale": 0.9941747572815535
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "ad20a123537b49503d6882b7244466a9f59d3a1f801efce71cedf36be6ad13f3",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Drippet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/drippet.png ): a rusty sky-blue water tap whose spout is its long beak pointing left with a brass collar at its mouth and a water drop hanging from it, a blue cross handle on a brass stem as its crest, one big round yellow eye, a grey-blue wing, a fan of pink-red tail feathers and long ochre knobbly legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left, at the portrait's scale with its feet on the same ground line: left half, running mid-stride, one long leg reaching forward and the other pushing off behind, body tipped slightly forward; right half, standing with its round body tipped forward so its spout points straight down at the floor just in front of its feet, a thin steady stream of water running from the spout's brass mouth, its eye looking down. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M17b",
+      "file": "game/assets/sprites/planks.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        3
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              40,
+              79,
+              1735,
+              297
+            ],
+            "output_bounds": [
+              205,
+              100,
+              1843,
+              311
+            ],
+            "scale": 0.9666076696165192
+          },
+          {
+            "source_bounds": [
+              39,
+              360,
+              1735,
+              570
+            ],
+            "output_bounds": [
+              205,
+              449,
+              1843,
+              652
+            ],
+            "scale": 0.9660377358490566
+          },
+          {
+            "source_bounds": [
+              41,
+              618,
+              1731,
+              828
+            ],
+            "output_bounds": [
+              205,
+              790,
+              1843,
+              994
+            ],
+            "scale": 0.9694674556213019
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "68062185cc0fdec280cba1b8bfd836d5b1babd912e83a20362a35a902b92b19b",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 1 x 3 grid: three long, plain, unmarked wooden planks, one per row, each lying flat and seen from above at a slight slant so its wide top face is visible and, under it, a thin strip of its near edge, the face about ten times as tall as that edge strip. Each plank fills its cell's whole width (cut square at both ends) and about 60% of its height, with long straight grain lines running along it. Top row pale pine; middle row honey-coloured oak; bottom row reddish cedar. No knots, no saw cuts, no pencil or chalk marks.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M17c",
+      "file": "game/assets/sprites/sawhorse.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "a04cb14e82d9438a15eeb527c1b111d35e85f6a2c23c3c4f0870dc7b797f0632",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A single old wooden sawhorse seen from the front and a little above: a flat beam across the top, about 1.5 times as wide as the sawhorse is tall, and four splayed legs, nicked and paint-spattered, standing on the ground. Centred, filling about 80% of the frame's width. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 1024 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M17d",
+      "file": "game/assets/sprites/sawbird-sawing.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "0412615ab9b7763b072c552bbfce0cdfd4435251d4a8d15e0a4a91414b70f068",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws. Here it is sawing, facing left: the whole bird leans forward and down so that its saw-head is perfectly level, the blade pointing left with its toothed edge straight along the very bottom of the picture, and its feathered body, tail and legs are drawn crouched up above and behind the handle (legs folded tight, claws tucked), so nothing hangs below the line of the teeth: the teeth are the lowest part of the picture. Eye narrowed in concentration, a few curls of sawdust at the teeth. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 1024 x 1024, transparent",
+      "correction_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws. Here it is sawing, facing left: the whole bird leans forward and down so that its saw-head is perfectly level, the blade pointing left with its toothed edge straight along the very bottom of the picture, and its feathered body, tail and legs are drawn crouched up above and behind the handle (legs folded tight, claws tucked), so nothing hangs below the line of the teeth: the teeth are the lowest part of the picture. Eye narrowed in concentration, a few curls of sawdust at the teeth. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 1024 x 1024, transparent\nCritical pose correction: sawing bird's legs and claws folded tightly ABOVE the horizontal line of blade teeth. No claw, feather or foot below the saw blade. Blade tooth tips the lowest solid bird pixels, perfectly level horizontal teeth in sawing pose; slightly bowed in snagged pose. The bird rests all solid weight on saw teeth, tucked legs invisible behind body ABOVE blade. Sawdust may sit just below teeth. In pair sheet correct only left snagged bird; preserve right proud upright bird. Entire silhouettes fit inside their cell with clear margins."
+    },
+    {
+      "id": "IC-M17e",
+      "file": "game/assets/sprites/sawbird-poses.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              27,
+              383,
+              1014,
+              760
+            ],
+            "output_bounds": [
+              102,
+              548,
+              921,
+              861
+            ],
+            "scale": 0.8299898682877407
+          },
+          {
+            "source_bounds": [
+              903,
+              60,
+              1757,
+              846
+            ],
+            "output_bounds": [
+              1182,
+              279,
+              1891,
+              931
+            ],
+            "scale": 0.8299898682877407
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "52240b9887ede5f3bdefe14cfcd0f9e3af037d68ae75e41fdfab093bef49cc73",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left: left half, snagged, framed exactly like its sawing pose (the whole bird crouched forward with its saw-head level and pointing left, the toothed edge along the very bottom of the picture, body and folded legs above and behind the handle) but with the blade bowed and twanging (a few small ink wobble lines beside it) and its eye wide in alarm; right half, proud, standing upright on its two thin legs at the portrait's scale, its saw-head tipped up high like a salute, chest feathers puffed out, a few curls of sawdust at its feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent",
+      "correction_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left: left half, snagged, framed exactly like its sawing pose (the whole bird crouched forward with its saw-head level and pointing left, the toothed edge along the very bottom of the picture, body and folded legs above and behind the handle) but with the blade bowed and twanging (a few small ink wobble lines beside it) and its eye wide in alarm; right half, proud, standing upright on its two thin legs at the portrait's scale, its saw-head tipped up high like a salute, chest feathers puffed out, a few curls of sawdust at its feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nExact atlas rows and columns. Complete silhouettes with generous transparent margins; no grid bleed. Proportions unchanged, original character anatomy and pose anchors. Target 2048 x 1024, transparent\nCritical pose correction: sawing bird's legs and claws folded tightly ABOVE the horizontal line of blade teeth. No claw, feather or foot below the saw blade. Blade tooth tips the lowest solid bird pixels, perfectly level horizontal teeth in sawing pose; slightly bowed in snagged pose. The bird rests all solid weight on saw teeth, tucked legs invisible behind body ABOVE blade. Sawdust may sit just below teeth. In pair sheet correct only left snagged bird; preserve right proud upright bird. Entire silhouettes fit inside their cell with clear margins."
+    }
+  ],
+  "verification": {
+    "asset_count": 8,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser": "Saw Bird browser check passed, including controller and keyboard navigation.",
+    "publish_copy": true
+  }
+}

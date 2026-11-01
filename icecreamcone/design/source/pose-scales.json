@@ -1,0 +1,184 @@
+{
+ "about": "The scale each painted pose of a recurring character was painted at, against its standing portrait (or, where the game never draws the portrait, against its default pose): 1 is the portrait's scale, 0.9 means the character is painted 10% smaller in that cell. Measured on the delivered pictures by measure_pose_scales.py (2026-10-09): SIFT and ORB keypoints matched between every pair of cells of the character, each pair fitted with a similarity transform (RANSAC), and the scales solved together by weighted least squares; the two detectors averaged. Where a rigid part was checked separately (a head, a handle, an eye, the binding of a broom), 'method' says so. The games' tests (test/sprite-rig.mjs) multiply these by the scale each game draws each cell at, and require every pose of a character to show it within 5% of the same size.",
+ "milkmidge": {
+  "reference": "subject.milkmidge#0",
+  "cells": {
+   "subject.milkmidge#0": 1,
+   "sprites.midgeThrow#0": 0.962,
+   "sprites.midgeThrow#1": 0.935,
+   "sprites.midgeMoods#0": 0.968,
+   "sprites.midgeMoods#1": 0.997
+  },
+  "method": "SIFT/ORB consensus; midgeMoods#1 is the mean of that (0.964) and a template match of the beak and eye (1.03)."
+ },
+ "waterglassgoose": {
+  "reference": "subject.waterglassgoose#0",
+  "cells": {
+   "subject.waterglassgoose#0": 1,
+   "sprites.gooseTap#0": 0.957,
+   "sprites.gooseTap#1": 0.966,
+   "sprites.gooseMoves#0": 0.966,
+   "sprites.gooseMoves#1": 0.955
+  },
+  "method": "SIFT/ORB consensus (0.92-0.93), raised by 3.7% to the mean of that and a template match of the head on gooseMoves#0 (1.00): the four poses agree with each other within 1%, and are painted a little smaller than the portrait in the body more than in the head."
+ },
+ "niffy": {
+  "reference": "sprites.niffyFly#1",
+  "cells": {
+   "subject.niffy#0": 1,
+   "sprites.niffyDive#0": 0.998,
+   "sprites.niffyDive#1": 0.984,
+   "sprites.niffyFly#0": 1.023,
+   "sprites.niffyFly#1": 1.009,
+   "sprites.niffyFly#2": 1.003
+  },
+  "method": "SIFT/ORB consensus; template match of the knife's body agrees (0.97-1.03)."
+ },
+ "broomwhisk": {
+  "reference": "subject.broomwhisk#0",
+  "cells": {
+   "subject.broomwhisk#0": 1,
+   "sprites.broomwhiskSweep#0": 1,
+   "sprites.broomwhiskSweep#1": 1,
+   "sprites.broomwhiskPoses#0": 1,
+   "sprites.broomwhiskPoses#1": 1,
+   "sprites.broomwhiskPoses#2": 1
+  },
+  "method": "IC-M06f/g redelivery: head and binding measured separately with SIFT/ORB against the portrait. Each whole pose uniformly fitted by their geometric mean; head and binding stay within 3% of portrait scale. Foot anchors and fitting measurements are in design/references/broomwhisk-redo/placement.json."
+ },
+ "buttonbeaks": {
+  "reference": "subject.buttonbeaks#0",
+  "cells": {
+   "subject.buttonbeaks#0": 1,
+   "sprites.buttonbeaksToss#0": 0.905,
+   "sprites.buttonbeaksToss#1": 0.899,
+   "sprites.buttonbeaksPoses#0": 0.857,
+   "sprites.buttonbeaksPoses#1": 0.784,
+   "sprites.buttonbeaksPoses#2": 0.82,
+   "sprites.buttonbeaksPoses#3": 0.819
+  },
+  "method": "SIFT/ORB consensus; buttonbeaksPoses#1 (pecking) by ORB alone."
+ },
+ "snippit": {
+  "reference": "sprites.snippitSnip#0",
+  "cells": {
+   "subject.snippit#0": 1,
+   "sprites.snippitSnip#0": 0.975,
+   "sprites.snippitSnip#1": 0.997,
+   "sprites.snippitPoses#0": 0.928,
+   "sprites.snippitPoses#1": 0.939,
+   "sprites.snippitPoses#2": 0.851
+  },
+  "method": "SIFT/ORB consensus (agreeing within 1%)."
+ },
+ "plugsocketswift": {
+  "reference": "sprites.swiftPoses#0",
+  "cells": {
+   "subject.plugsocketswift#0": 1,
+   "sprites.swiftPoses#0": 0.682,
+   "sprites.swiftPoses#1": 0.673,
+   "sprites.swiftPoses#2": 0.666
+  },
+  "method": "SIFT/ORB consensus; template match of the bulb head on swiftPoses#0 agrees (0.72)."
+ },
+ "saltshakershrike": {
+  "reference": "sprites.shrikePoses#0",
+  "cells": {
+   "subject.saltshakershrike#0": 1,
+   "sprites.shrikePoses#0": 0.867,
+   "sprites.shrikePoses#1": 0.866,
+   "sprites.shrikePoses#2": 0.855,
+   "sprites.shrikePoses#3": 0.841
+  },
+  "method": "ORB against the portrait; between the poses, SIFT and ORB averaged."
+ },
+ "ladlelark": {
+  "reference": "sprites.larkPoses#0",
+  "cells": {
+   "subject.ladlelark#0": 1,
+   "sprites.larkPoses#0": 0.895,
+   "sprites.larkPoses#1": 0.885,
+   "sprites.larkPoses#2": 0.897
+  },
+  "method": "SIFT/ORB consensus."
+ },
+ "drippet": {
+  "reference": "subject.drippet#0",
+  "cells": {
+   "subject.drippet#0": 1,
+   "sprites.drippetPoses#0": 0.766,
+   "sprites.drippetPoses#1": 0.784,
+   "sprites.drippetMore#0": 0.868,
+   "sprites.drippetMore#1": 0.846
+  },
+  "method": "SIFT/ORB consensus. The game used the width of the tap's cross handle (361 and 399 px against 445), which is foreshortened when the tap tips."
+ },
+ "sawbird": {
+  "reference": "sprites.sawbirdSawing#0",
+  "cells": {
+   "subject.sawbird#0": 1,
+   "sprites.sawbirdSawing#0": 0.96,
+   "sprites.sawbirdPoses#0": 0.8,
+   "sprites.sawbirdPoses#1": 0.765
+  },
+  "method": "ORB (SIFT could not link the sawing pose), checked by the area of the wooden handle (0.976, 0.775, 0.754). The game had matched the sawing and snagged poses by blade length, but the snagged blade is bowed, so its chord is short."
+ },
+ "radiobird": {
+  "reference": "subject.radiobird#0",
+  "cells": {
+   "subject.radiobird#0": 1,
+   "sprites.radiobirdPoses#0": 0.919,
+   "sprites.radiobirdPoses#1": 0.968,
+   "sprites.radiobirdPoses#2": 0.959
+  },
+  "method": "SIFT/ORB consensus."
+ },
+ "titthrush": {
+  "reference": "sprites.titthrushHop#0",
+  "cells": {
+   "subject.titthrush#0": 1,
+   "sprites.titthrushSing#0": 0.995,
+   "sprites.titthrushFluster#0": 0.958,
+   "sprites.titthrushHop#0": 0.831,
+   "sprites.titthrushHop#1": 0.789
+  },
+  "method": "SIFT/ORB consensus; titthrushHop#1 (flying) the mean of SIFT 0.758 and ORB 0.819, both weak."
+ },
+ "coot": {
+  "reference": "bird.coot#0",
+  "cells": {
+   "bird.coot#0": 1,
+   "sprites.cootPoses#0": 0.932,
+   "sprites.cootPoses#1": 0.909
+  },
+  "method": "SIFT/ORB consensus (agreeing within 1%)."
+ },
+ "gullfinch": {
+  "reference": "bird.gullfinch#0",
+  "cells": {
+   "bird.gullfinch#0": 1,
+   "sprites.gullfinchSing#0": 0.965
+  },
+  "method": "SIFT/ORB consensus."
+ },
+ "cupadee": {
+  "reference": "bird.cupadee#0",
+  "cells": {
+   "bird.cupadee#0": 1,
+   "sprites.cupadeeOpen#0": 1.034
+  },
+  "method": "SIFT/ORB consensus."
+ },
+ "crow": {
+  "reference": "sprites.chicks#0",
+  "cells": {
+   "sprites.chicks#0": 1,
+   "sprites.chicks#1": 1.032,
+   "sprites.chicks#2": 0.952,
+   "sprites.chicks#3": 0.999,
+   "sprites.chicks#4": 0.966,
+   "sprites.chicks#5": 0.851
+  },
+  "method": "The chicks of Safe Crossing (and Puddle Hop): SIFT between the standing and walking cells; the flying chick (#5) by its eye, 41 px across against 46-49 px in the other cells (SIFT could not link it)."
+ }
+}

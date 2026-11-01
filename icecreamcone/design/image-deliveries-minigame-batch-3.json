@@ -1,0 +1,440 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M05b",
+      "file": "game/assets/sprites/buttons.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "218993b093e77827ab91ba8859b3b314b9af5d8d64769d02385c58daba7845e3",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six large sewing buttons seen flat from the front, each about 360 px across, in this order, row by row: 1, a round strawberry-pink button with a raised rim and four thread holes; 2, a round slate-blue button with a raised rim and two thread holes; 3, a square lemon-yellow button with rounded corners and four thread holes; 4, a sage-green flower-shaped button with five round petals and two thread holes; 5, a square strawberry-pink button with rounded corners and two thread holes; 6, a slate-blue flower-shaped button with five round petals and four thread holes. The holes clearly visible and evenly placed, a little shine on each.\nProduction game asset, dimensions 1536 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M05c",
+      "file": "game/assets/sprites/coats.png",
+      "dimensions": [
+        2048,
+        768
+      ],
+      "source_dimensions": [
+        2048,
+        768
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2048,
+          768
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              14,
+              113,
+              521,
+              659
+            ],
+            "output_bounds": [
+              61,
+              279,
+              451,
+              699
+            ],
+            "scale": 0.7699248120300752
+          },
+          {
+            "source_bounds": [
+              524,
+              118,
+              1027,
+              619
+            ],
+            "output_bounds": [
+              574,
+              282,
+              961,
+              668
+            ],
+            "scale": 0.7699248120300752
+          },
+          {
+            "source_bounds": [
+              1074,
+              142,
+              1480,
+              626
+            ],
+            "output_bounds": [
+              1124,
+              301,
+              1437,
+              674
+            ],
+            "scale": 0.7699248120300752
+          },
+          {
+            "source_bounds": [
+              1508,
+              142,
+              2040,
+              617
+            ],
+            "output_bounds": [
+              1587,
+              301,
+              1997,
+              667
+            ],
+            "scale": 0.7699248120300752
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "357e97fa0c00cd16b3c435f9e2981e7b507f574c3cf9d70b891128623bddac4c",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 1 row of four children's garments hanging flat and straight, front view, each filling its cell's height (about 700 px tall), with their shoulders level along the top: a mustard wool coat with long sleeves, an olive knitted cardigan, a dusty-pink waistcoat with no sleeves, a pale blue-grey jacket. Each is open-necked with a small collar and closes down the exact vertical centre line with a plain flat placket that has NO buttons and NO buttonholes and nothing else on it (the game adds them down the middle); any pockets are low and well to the sides. No pegs, hangers or line.\nProduction game asset, dimensions 2048 x 768, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": "Fix only placement/size of these four garments. Keep the garment designs, colors, textures, blank buttonless central plackets, and order. Canvas2048x768. Divide into FOUR equal512px-wide columns. Each coat must be no wider than360px, completely centered at x256,768,1280,1792, shoulders on the same top line and hems on the same bottom line. Leave at least76px completely TRANSPARENT space between a garment and each side of its own column; sleeves may NOT cross column boundaries x512,1024,1536. Preserve proportions, don't stretch garments, no background, shadows or halos."
+    },
+    {
+      "id": "IC-M05d",
+      "file": "game/assets/sprites/button-bowl.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "f2040a7c7f3c73d1b944a7c44dd6e067d17017c6fb13d976a8e1bd39b9edd79f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A single small, shallow, round turned-wood bowl seen from the front and a little above, so its open inside shows as a wide dark ellipse, empty, warm honey-brown with a fine grain. Centred, filling about 80% of the width. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 512 x 512, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M05e",
+      "file": "game/assets/sprites/buttonbeaks-toss.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "16ceb1affaa2b1296e22ee51000a9591d7a2bd084ef9500011d492ab2fca5dd3",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Buttonbeaks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/buttonbeaks.png), the pair together exactly as painted: on the left the taller bird with a mustard-yellow four-hole button for a head-cap and a pointed yellow button beak pointing left; on the right, a little behind, the smaller bird with a strawberry-pink button head and pink button beak; their round bodies covered in overlapping old buttons (mustard, sage, dusty pink, cream, slate), thin pinkish-brown legs with dark claws. Two poses side by side on one sheet, each in its own half, at the same scale, facing left: left, the two standing close with their heads turned in towards each other and their beaks raised and touching at the tips above and between them, as if holding something small up together; right, both springing up on their toes with their beaks flung up towards the sky, having just tossed it. Nothing held in the beaks (the game draws the button). Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M05f",
+      "file": "game/assets/sprites/buttonbeaks-poses.png",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "source_dimensions": [
+        4096,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              34,
+              182,
+              514,
+              624
+            ],
+            "output_bounds": [
+              106,
+              184,
+              917,
+              931
+            ],
+            "scale": 1.6890721649484537
+          },
+          {
+            "source_bounds": [
+              601,
+              323,
+              1076,
+              616
+            ],
+            "output_bounds": [
+              1135,
+              422,
+              1937,
+              917
+            ],
+            "scale": 1.6890721649484537
+          },
+          {
+            "source_bounds": [
+              1151,
+              198,
+              1553,
+              625
+            ],
+            "output_bounds": [
+              2220,
+              211,
+              2899,
+              932
+            ],
+            "scale": 1.6890721649484537
+          },
+          {
+            "source_bounds": [
+              1689,
+              140,
+              2124,
+              585
+            ],
+            "output_bounds": [
+              3216,
+              113,
+              3951,
+              865
+            ],
+            "scale": 1.6890721649484537
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "d7f414238d72efe0aab5c96ada93edb11471f419b235b692f6af09f0e81b4ff6",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Buttonbeaks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/buttonbeaks.png), the pair together exactly as painted: on the left the taller bird with a mustard-yellow four-hole button for a head-cap and a pointed yellow button beak pointing left; on the right, a little behind, the smaller bird with a strawberry-pink button head and pink button beak; their round bodies covered in overlapping old buttons (mustard, sage, dusty pink, cream, slate), thin pinkish-brown legs with dark claws. Four poses in a row on one sheet, each in its own quarter, at the same scale, facing left, nothing in their beaks: 1, walking side by side mid-stride, each with one leg reaching forward; 2, both bending down low, beaks pointing down to peck at something on the ground in front of them; 3, dizzy, both reeling and leaning against each other, heads tilted, legs wobbly, eyes wide; 4, both hopping up off the ground together for joy, beaks open and pointing up, the small one's button tail raised. Feet at the bottom of each cell. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 4096 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": "Fix only fitting of this four-pose Buttonbeaks sheet: FOUR groups, each group contains TWO button birds, keep pose order walking, pecking, dizzy, jumping. Canvas exactly4:1 if possible. Centers at12.5%,37.5%,62.5%,87.5% width. Entire first pair fits x4%..21%; second pair x29%..46%; third pair x54%..71%; fourth pair x79%..96%. NOTHING crosses25%,50%,75% cell boundaries, including tails and feet. Reduce each pair uniformly enough to fit, preserving anatomy, color, buttons and round eyes with no distortion. Common ground baseline92%height, consistent scale across all four groups. Keep10%top margin. Alpha0 gutters, no extra birds, objects, text, lines or background."
+    },
+    {
+      "id": "IC-M06b",
+      "file": "game/assets/sprites/sweepings.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "67756793467df688e10a1baaf0675928fb96badd144760e313e96070085212e5",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of eight small things lying on a floor, seen from above at a slant, each about 300 px across, row by row: 1, an olive-green fig leaf; 2, a mustard-yellow leaf; 3, a brick-red leaf; 4, a sage-green leaf, all four lying flat, pointing right; 5, a fluffy grey ball of dust with a few hairs and threads sticking out; 6, a small curled grey feather; 7, a shining golden leaf, the same shape as the first, with a tiny sparkle; 8, a crumpled pink sweet wrapper.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M06c",
+      "file": "game/assets/sprites/dustpan.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "7b4313e84dfc0ac532247a7cad04076f2d81cfcfeaa3e8438dc548d145fd7129",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 pair of the same old painted tin dustpan in pale blue-grey with a short upright handle, each about 600 px across: left, seen from the side, lying flat on the floor with its wide open mouth facing right and its handle rising up and to the left; right, seen from the front, its wide low open mouth facing straight at us and its handle rising straight up behind it. Both with a little wear and dents, sitting on the floor (bottom edge flat).\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M06d",
+      "file": "game/assets/sprites/broomwhisk-sweep.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              130,
+              73,
+              821,
+              825
+            ],
+            "output_bounds": [
+              138,
+              113,
+              886,
+              927
+            ],
+            "scale": 1.0821664464993395
+          },
+          {
+            "source_bounds": [
+              1011,
+              74,
+              1627,
+              830
+            ],
+            "output_bounds": [
+              1202,
+              114,
+              1869,
+              932
+            ],
+            "scale": 1.0821664464993395
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "52d49a1a3f2c3bf2e65a263bf31e9db533ba2e9803e038e455f780c18d14d079",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Broomwhisk (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/broomwhisk.png): an old straw broom alive as a bird; the long ochre broomstick is its neck, with a small head on top, a pinkish crest, one round pale-yellow eye and a long slate-blue beak pointing left; its body is the bound straw head of the broom (a bulb of straw tied with twine bands), whose loose ochre-and-pink straw bristles hang like a skirt above two thin ochre legs with dark claws. Two poses side by side on one sheet, each in its own half, at the same scale, facing left, standing on its legs: left, mid-sweep, the broomstick neck leaning back to the right and the straw skirt dragged back to the right, its tips brushing the floor; right, flicking, the straw skirt fanned out and swept hard forward to the left along the floor with a few bits of straw flying. Feet at the bottom of each cell. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": "Fix only fitting of this TWO-pose Broomwhisk sheet. Left sweep pose must fit COMPLETELY inside x5%..45%width; right forward-flick pose including every flying straw fits x55%..95%. Nothing crosses center x50%. Reduce both whole birds uniformly to85% of current size, preserving proportions, neck, head, skirt, limbs and feet. Common feet baseline92%height. Preserve both existing action poses and left-facing heads, fine ink watercolor textures/colors. No clipping, no unrelated objects. Transparent2:1PNG."
+    },
+    {
+      "id": "IC-M06e",
+      "file": "game/assets/sprites/broomwhisk-poses.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        3072,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              67,
+              158,
+              778,
+              699
+            ],
+            "output_bounds": [
+              112,
+              306,
+              911,
+              914
+            ],
+            "scale": 1.1237311385459534
+          },
+          {
+            "source_bounds": [
+              734,
+              138,
+              1463,
+              701
+            ],
+            "output_bounds": [
+              1126,
+              283,
+              1945,
+              916
+            ],
+            "scale": 1.1237311385459534
+          },
+          {
+            "source_bounds": [
+              1602,
+              19,
+              2130,
+              715
+            ],
+            "output_bounds": [
+              2264,
+              150,
+              2857,
+              932
+            ],
+            "scale": 1.1237311385459534
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "06e05178fa0c9163dfb5ced0b161bb48dbd5b4d85c7f0f367a0eedaf2cc18685",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Broomwhisk (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/broomwhisk.png): an old straw broom alive as a bird; the long ochre broomstick is its neck, with a small head on top, a pinkish crest, one round pale-yellow eye and a long slate-blue beak pointing left; its body is the bound straw head of the broom (a bulb of straw tied with twine bands), whose loose ochre-and-pink straw bristles hang like a skirt above two thin ochre legs with dark claws. Three poses in a row on one sheet, each in its own third, at the same scale, facing left, standing on its legs: left, pushing straight ahead, knees bent and the straw skirt pressed down and splayed out wide on both sides along the floor; middle, braced against a strong wind blowing from the left, leaning into it, its crest and the loose straws of its skirt streaming back to the right; right, pleased, standing tall and straight with its straw skirt fluffed out full and its head held high. Feet at the bottom of each cell. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 3072 x 1024, transparent. Respect exact grid, row-major object order, counts and pose order. Each complete silhouette must fit in its equally sized cell with generous transparent gutters; no grid lines. Keep proportions undistorted and poses at one common scale. No background, halos or cast shadows.",
+      "correction_prompt": "Fix only fitting of this THREE-pose Broomwhisk sheet. Preserve pushing, wind-braced, pleased poses in that order and their left-facing heads. Each complete bird including ALL straw skirt, beak, crest and claws fits only x4%..29%,x37%..62%,x70%..95%, with no crossing33.333%or66.667%. Uniformly reduce all three birds enough to fit those bounds and consistent scale. The third bird's clipped pink crest must be completed and sit BELOW10%height. Keep all feet on common92%heightbaseline. Same object anatomy, colors, fine ink watercolor textures. Transparent3:1PNG, no extra objects/backdrop/lines."
+    }
+  ],
+  "verification": {
+    "asset_count": 9,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser_check": "Button Up and controller/keyboard navigation passed in installed Chrome, no page errors.",
+    "publish_output": "All nine files copied with matching checksums."
+  }
+}

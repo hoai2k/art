@@ -1,0 +1,46 @@
+[
+  {
+    "id": "IC-M04a",
+    "name": "Snip the String: the fairground fence",
+    "key": "scene.snippit",
+    "file": "assets/scenes/snippit.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Snip the String (the Cutitup Snippit): the whole background. The balloons, their strings, the knots and the Snippit are drawn on top.",
+    "standin": "A pale sky, soft hills, a striped tent and a wooden rail fence painted in code.",
+    "prompt": "{STYLE} {SCENE}The edge of a small country fair on a breezy summer afternoon, seen straight on. Across the lower part runs a long plain wooden rail fence from edge to edge: its top rail is a level horizontal bar about 79% of the way down the picture, a second rail about 87% down, and simple square posts every eighth of the width reaching to the bottom edge. In front of the fence a strip of short grass fills the bottom. Behind it, low rolling meadow hills, and a single small striped pink-and-cream fair tent far off at the right edge, below the 60% line. The sky above is pale and soft with two or three small flat clouds kept to the very top corners. Keep the whole middle of the sky, from 15% to 65% down, empty and quiet, and keep the top rail plain and uncluttered along its whole length, because the game hangs a bunch of balloons there and ties their strings to that rail.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M04b",
+    "name": "Balloons and kites",
+    "key": "sprites.balloons",
+    "file": "assets/sprites/balloons.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Snip the String: the balloons and kites tied in the tangle, and the one shown on the tag. The game draws their strings.",
+    "standin": "Round balloons and diamond kites drawn in code in six washes.",
+    "prompt": "{STYLE} {SHEET} A 6 x 2 grid of twelve objects, each about 300 px tall. Top row: six round party balloons, slightly egg-shaped, each with a small tied knot at the bottom and a soft pale highlight, in this order from left to right: strawberry pink, lemon yellow, slate blue, sage green, mauve, orange. Bottom row: six small diamond-shaped paper kites with a thin cross of sticks and a short tail of two little paper bows, in the same six colours in the same order. No strings on any of them (the game draws the strings from the balloon's knot or the kite's bottom point).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M04c",
+    "name": "Cutitup Snippit snipping",
+    "key": "sprites.snippitSnip",
+    "file": "assets/sprites/snippit-snip.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Snip the String: the Snippit walks along the fence with its blades open and shuts them on the string it snips.",
+    "standin": "The Snippit's stand-in, tipping as it snips, with ink strokes for the closing blades.",
+    "prompt": "{STYLE} {VARIANT} The Cutitup Snippit (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/snippit.png): a pair of dusty-pink scissors whose two long grey steel blades are its beak, pointing up and to the left; its round staring eye is the hinge where the blades cross; the two pink finger loops, one above the other, make its head and body, with a small pink wing on the lower loop and a sweeping pink feathered tail at the back right; two long ochre knobbly legs with dark claws. Two poses side by side on one sheet, each in its own half, both standing on their legs at the same scale and facing left: left, exactly as painted, blades held wide open; right, the blades snapped shut into one point, the bird leaning a little forward as it snips. The eye (the hinge) at the same height and the same place in both. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M04d",
+    "name": "Cutitup Snippit walking, jammed and watching",
+    "key": "sprites.snippitPoses",
+    "file": "assets/sprites/snippit-poses.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Snip the String: the Snippit striding along the fence (alternating with its open-bladed stand from IC-M04c), stuck after a wrong snip, and watching the right balloon float away.",
+    "standin": "Its stand-in, rocking as it walks, shaking when jammed and tipping back when a balloon goes.",
+    "prompt": "{STYLE} {VARIANT} The Cutitup Snippit (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/snippit.png): a pair of dusty-pink scissors whose two long grey steel blades are its beak, pointing up and to the left; its round staring eye is the hinge where the blades cross; the two pink finger loops, one above the other, make its head and body, with a small pink wing on the lower loop and a sweeping pink feathered tail at the back right; two long ochre knobbly legs with dark claws. Three poses in a row on one sheet, each in its own third, at the same scale, facing left, blades open in all three: left, mid-stride, one long leg reaching forward and the other pushing off behind; middle, jammed, the blades stuck half open and twisted askew, its eye wide, legs braced apart, tail feathers bristling; right, standing tall with its blades tipped back to point straight up at the sky, watching something float away. The eye (the hinge) at about the same height in all three. {ALPHA}",
+    "status": "delivered"
+  }
+]

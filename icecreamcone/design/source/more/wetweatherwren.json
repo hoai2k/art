@@ -1,0 +1,101 @@
+[
+  {
+    "id": "IC-M10a",
+    "name": "Wetweather Wren scene",
+    "key": "scene.wetweatherwren",
+    "file": "assets/scenes/wetweatherwren.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Behind Puddle Hop (the Wetweather Wren): the rainy street the Wren walks along while the game scrolls puddles, market awnings and little birds past it.",
+    "standin": "A row of tall narrow houses and a grey pavement painted in code, with moving paving joints.",
+    "prompt": "{STYLE} {SCENE}A quiet old town street on a soft grey rainy day, seen straight from the side like a stage. Across the street, filling the middle of the picture from about 20% to 67% of the height, a row of tall, narrow, gabled houses in faded pink, sage, ochre and mauve, with lit yellow windows and a few chimneys, their fronts flat to the viewer; above them a low pale grey sky with soft wash clouds. Below the houses, a strip of wet road (67% to 76% of the height), a kerb, and then the near pavement filling the bottom quarter: plain, even, wet grey flagstones with a faint sheen, the same all the way from left to right. The near pavement and the air above it are where the game plays (the Wren walks along the pavement at about 84% of the height and hops up to the middle of the picture, and the game draws the puddles, striped market awnings and little birds on top, scrolling them past), so keep it completely empty: no puddles, lamp posts, awnings, benches, people or birds on the near side of the street, and nothing tall in front of the houses. Do not paint falling rain streaks (the game draws its own rain); a damp, dripping, misty mood is enough. The picture stays still while the street things scroll, so keep it evenly busy from left to right with no strong feature in one place.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10b",
+    "name": "Wetweather Wren, umbrella open",
+    "key": "sprites.wrenPoses",
+    "file": "assets/sprites/wren-poses.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Puddle Hop: the Wren with its umbrella popped open, floating over a puddle and walking with it open, and blown inside out after snagging an awning. The game flips it to face the way it walks.",
+    "standin": "A black canopy drawn in code above the furled stand-in.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing lying along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, in three poses in a 3 x 1 row, one per 1024 x 1024 cell, all at the same scale, each facing left with its feet at the bottom of its cell and the top of the canopy near the top, about 85% of the cell high. Its umbrella has popped open: the shaft now stands upright through the bird, the wren's head and beak at the top as the umbrella's tip, and the dark grey-brown cloth spread out below the head as a wide round canopy with brass-tipped ribs and a scalloped edge, the crook handle hanging down below the body as a tail, the feathered wing tucked against the shaft. 1) Floating: legs dangling, toes pointed, eye calm. 2) The same, standing on the ground mid-stride, one leg forward. 3) Blown inside out: the canopy flipped upward into a cup, ribs bent and a brass tip or two sprung loose, the eye wide, legs splayed in surprise. No rain and no puddle (the game draws its own). {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10c",
+    "name": "Puddles and market awnings",
+    "key": "sprites.rainStreet",
+    "file": "assets/sprites/rain-street.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Puddle Hop: the puddles the Wren hops (the game stretches them to each puddle's width) and the striped market-stall awnings it must walk under with its umbrella shut (the game draws their poles and stretches each to its length).",
+    "standin": "Blue-grey puddle blobs and striped scalloped awnings drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 2 grid of four street things, each centred in its own 1024 x 512 cell and filling about 85% of the cell's width, seen from the side at a low angle: top left, a small round rain puddle on flagstones, a flat ellipse about five times as wide as it is tall, grey-blue water with a pale reflection of the sky and a ring of ripples; top right, a long rain puddle, a flat irregular ellipse about nine times as wide as it is tall, the same water; bottom left, a market stall's canvas awning seen from the front, a straight top edge and a scalloped hanging lower edge, striped strawberry pink and cream, about four times as wide as it is tall, wet and dripping; bottom right, the same awning striped sage green and cream. No poles, frames, stalls or ground under the awnings (the game draws its own poles), and no ground round the puddles beyond their wet edge.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10d",
+    "name": "Wetweather Wren, drenched",
+    "key": "sprites.wrenSplash",
+    "file": "assets/sprites/wren-splash.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Puddle Hop: the Wren for the moment after it lands in a puddle and splashes, before it walks on (the game flips it to face the way it walks).",
+    "standin": "The furled stand-in squashed down, with drops falling off it.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing lying along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, just after landing in a puddle: still furled, ankle-deep in a small grey-blue splash of puddle water, drenched, its cloth sagging and streaming, drops flying off its beak and crook handle, its head shaken to one side with the eye squeezed half shut, knock-kneed. Facing left, feet at the bottom, at the same scale and framing as the portrait. No falling rain (the game draws its own). {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10e",
+    "name": "Wetweather Wren walking",
+    "key": "sprites.wrenWalk",
+    "file": "assets/sprites/wren-walk.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Puddle Hop: the Wren walking along the dry pavement, furled, two strides swapped as it goes (the portrait stands in a painted puddle with painted rain, which looks wrong on dry ground and in the air).",
+    "standin": "The portrait, with its puddle clipped off while it is in the air.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing lying along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, walking, furled, exactly as in the portrait but WITHOUT the painted rain drops and WITHOUT the puddle under its feet, in two frames side by side, each in its own half and at the same scale, facing left, feet at the bottom: left, its left leg stepping forward and the right pushing off behind; right, the other way about, the body a little higher mid-stride. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10f",
+    "name": "Wetweather Wren walk cycle",
+    "key": "sprites.wrenWalkCycle",
+    "file": "assets/sprites/wren-walk-cycle.png",
+    "size": "3072 x 2048, transparent",
+    "used": "Puddle Hop: the Wren walking (furled) along the pavement between hops, which is most of the game. The street scrolls at 320 px a second at the start and 540 by the end, so the Wren goes from a brisk walk to a run. The game plays the six frames in order, 0 to 5 and round again, advancing one frame for every 34 px the street moves (one full cycle, two steps, per 200 px), so the planted foot keeps pace with the pavement and never skids: about 10 frames a second at the start and 16 at the end. One cycle serves both speeds (the faster playback reads as running); frame 0 alone is shown when the Wren stands still (after a snag). Replaces the two-frame walk (IC-M10e), whose legs hardly move.",
+    "standin": "The two-frame walk sheet (IC-M10e) swapped every 90 px.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, in a six-frame walking cycle (a brisk, bouncy, long-legged walk, bird-like: the head bobs forward and back), furled, in a 3 x 2 grid read left to right, top row then bottom row: 0) CONTACT, left leg: the left leg reaching far forward, its heel just touching the baseline, the right leg stretched far back on its toes, the body at its middle height; 1) DOWN, left: the left foot flat and taking the weight with the knee bent, the right foot lifting off behind, the body at its lowest (about 20 px lower), the head pulled back; 2) PASSING, left: the left leg straight under the body, the right leg swinging forward past it with the knee raised high and the claws curled, the body rising; 3) CONTACT, right: as frame 0 with the legs swapped (right leg reaching forward, left stretched back); 4) DOWN, right: as frame 1 with the legs swapped; 5) PASSING, right: as frame 2 with the legs swapped (right leg straight under, left swinging forward, knee high). The legs must clearly move: a long stride, about 70% of the cell wide from the front toe to the back toe in the contact frames. The crook handle and the umbrella body bob with the steps but stay furled and the same shape. REGISTRATION, so the frames can be swapped without the bird jumping: every cell is 1024 x 1024 px; the bird is at exactly the same scale as the portrait and the delivered walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ), i.e. the same size in pixels; it faces left in every frame; the brass strap button on its side is at the same point, x 512 px and y 560 px of the cell, in every frame (the body may tilt slightly about it, but the button does not move); in every frame with a foot on the ground, the sole of that foot is on a level baseline at y 963 px (94% of the cell height). No rain, no puddle, no ground drawn, no shadow. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10g",
+    "name": "Wetweather Wren take-off and landing",
+    "key": "sprites.wrenHop",
+    "file": "assets/sprites/wren-hop.png",
+    "size": "2048 x 2048, transparent",
+    "used": "Puddle Hop: the moments between walking and flying. When the player presses, the Wren hops at once; the game shows frame 0 (crouch) for the first 0.05 s of the press while the feet are still at the ground, then frame 1 (spring, umbrella bursting open) while it is rising through its first 40 px, then the small open pose (IC-M10h cell 0). When the umbrella is let go in the air it shows frame 3 (furled, dropping) until the feet touch, and on touching down frame 2 (landing, umbrella just furled) for 0.12 s before the walk cycle resumes. (Landing in a puddle shows the drenched pose, IC-M10d, instead of frame 2.)",
+    "standin": "An instant switch from the walking frames to the open pose.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, four poses in a 2 x 2 grid read left to right, top row then bottom row: 0) CROUCH: both feet flat on the baseline, knees deeply bent, the body dipped low and leaning back, the head tucked, the strap button popping open and the folds of the cloth starting to loosen and puff out; 1) SPRING: legs straight and pushing off, only the toes of one foot still touching the baseline, the umbrella bursting open: the shaft swinging upright with the head on top as the tip, the canopy half spread (ribs at about 45 degrees, the cloth still crumpled), the crook handle swinging down below; 2) LANDING: the umbrella just furled again round the body as in the walking frames, both feet planted on the baseline with the knees bent to take the shock, the body low and tipped forward, a feather or two ruffled; 3) FURLED, DROPPING: the umbrella furled, the bird in the air with both legs stretched straight down below it and the claws spread, reaching for the ground (the feet below the baseline is fine: here the button line matters). Same scale and look as the delivered poses (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-poses.png and https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ). REGISTRATION, so the frames can be swapped without the bird jumping: every cell is 1024 x 1024 px; the bird is at exactly the same scale as the portrait and the delivered walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ), i.e. the same size in pixels; it faces left in every frame; the brass strap button on its side is at the same point, x 512 px and y 560 px of the cell, in every frame (the body may tilt slightly about it, but the button does not move); in every frame with a foot on the ground, the sole of that foot is on a level baseline at y 963 px (94% of the cell height). No rain, no puddle, no ground drawn, no shadow. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10h",
+    "name": "Wetweather Wren in the air, small and wide umbrella",
+    "key": "sprites.wrenFly",
+    "file": "assets/sprites/wren-fly.png",
+    "size": "3072 x 1536, transparent",
+    "used": "Puddle Hop: the Wren in the air with its umbrella open. Cell 0 (small, ordinary open umbrella) while it is rising after a hop and while it is falling faster than the slow float (the ordinary hop). Cell 1 (WIDE, fully spread umbrella) once it has slowed to the slow float down (the player is holding the action and the Wren drifts down at about 170 px a second), and while a gust lifts it: gliding. The game uses the canopy's width for sheltering the little birds and for the rain it stops, so the wide one must look clearly bigger. Replaces the floating pose (cell 0 of IC-M10b); its other two cells (walking with the umbrella open, blown inside out) stay.",
+    "standin": "The delivered floating pose (IC-M10b, cell 0) for both.",
+    "prompt": "{STYLE} {VARIANT} The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, with its umbrella popped open, flying, in two poses side by side on a sheet of two 1536 x 1536 px cells (larger cells so the wide canopy fits; the bird itself is at exactly the same scale as the portrait and the delivered poses, https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-poses.png , NOT enlarged). In both, the shaft stands upright through the bird with the wren's head and beak on top as the umbrella's tip, facing left, the crook handle hanging below the body as a tail, the feathered wing tucked against the shaft. 0) SMALL OPEN: the canopy open like the delivered floating pose, a rounded dome about as wide as in that pose (about 900 px across in this cell), the legs drawn up a little with the knees bent, the eye bright: a lively hop; 1) WIDE OPEN: the canopy spread to its fullest, flatter and much wider, about 1400 px across, the cloth taut and catching the air, the ribs straight, a little upward billow at the edges, the legs dangling straight down and loose with the toes pointing down, the eye half closed and calm: floating down slowly. REGISTRATION: the brass strap button on the shaft is at x 768 px and y 1000 px of each 1536 px cell in both frames, the shaft vertical through x 768, so the two frames swap without moving; the bird's body, head and legs are the same size as in the walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ). No rain, no ground, no shadow. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M10i",
+    "name": "Wetweather Wren slipping, falling and shaking dry",
+    "key": "sprites.wrenRecovery",
+    "file": "assets/sprites/wren-recovery.png",
+    "size": "2048 x 2048, transparent",
+    "used": "Puddle Hop: a four-pose recovery sequence after landing or walking into water: slip, fallen into puddle, getting back up, wings spread shaking water off; then resume walking.",
+    "standin": "Existing drenched sprite tilted for the fall and bobbed for the shake.",
+    "prompt": "{STYLE} {VARIANT} Match the delivered Wetweather Wren portrait and walk cycle: a brown wren whose body IS a furled charcoal umbrella, brass strap button, long pale ochre beak, large round cream-yellow eye, brown feathered wings, wooden curved crook handle as tail, long ochre scaly legs. Four clearly distinct animation poses in a 2 x 2 grid, left to right top then bottom, all facing left: 0 slipping, front foot shoots forward, rear leg buckles, bird tips back; 1 fallen, umbrella body lies low horizontally with bent legs splayed forward, head lifted surprised; 2 getting up, crouched on both feet with wings bracing; 3 standing upright with both feathered wings extended and shaking vigorously, feathers ruffled. Eye remains round and visible in all four poses. Keep the same head and eye size in every cell. Cells 1024 square, character fully contained with margin, grounded contact line y 940, body centre x 512. No puddle, droplets, rain, ground or shadow: game supplies water effects. Transparent background. {ALPHA}",
+    "status": "delivered"
+  }
+]

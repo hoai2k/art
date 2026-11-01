@@ -1,0 +1,148 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-B08",
+      "file": "game/assets/book/piffle.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "25684cb1019e364df273eb0c1f76dc70cbbe23a5100de8b5866a9232dba35057",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A haberdashery shop interior: shelves of bolts of cloth, drawers of buttons, spools of thread in every colour, ribbons on reels, a dressmaker's dummy, a long counter with scissors and a tape measure, warm lamplight.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B09",
+      "file": "game/assets/book/dodo.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "e1097fde30670d7c48ae98d2079c6ee5d3d2ee2be519c792c09169b9ac4f6568",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A busy old market street: a general store with awnings, a little bank with columns, a greengrocer's with crates, a post box, shop signs without words, cobbles, a sunny day.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B10",
+      "file": "game/assets/book/crow.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "d7f8527fed559932e55e5317ee239adb3b51885eb4f4c38add6b2d115052ce92",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A little town crossroads after school: a zebra crossing, a lollipop crossing sign, a small schoolhouse with a bell, a corner sweet shop, trees and a low wall around a playground, afternoon light.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B11",
+      "file": "game/assets/book/milkmidge.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "36854ef9eb8e297b19436c1fc3fe1823587c5af0e23f08831d337351baeb0f9c",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A dairy farm lane at dawn: pastures with a wooden gate, a red barn, a milk stand with churns by the lane, a village with chimney smoke beyond, a pink and gold sunrise sky.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B12",
+      "file": "game/assets/book/waterglassgoose.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "d1f092a576d372a95d14d94c88ed6d13c928277081f79b4dea04f45fb460c889",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A glass conservatory at evening: tall arched glass panes, potted palms and ferns, a long table set with crystal glasses and candles, the garden in blue dusk outside.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B13",
+      "file": "game/assets/book/niffy.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "6d7364fef5be071b2e9811a2f3fd2a0040d8118dfc933968ae818482ed060a73",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A formal topiary garden: clipped hedges shaped into balls, spirals and peacocks, a gravel walk, a stone fountain, a wheelbarrow with garden shears, a sunny summer day.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-B14",
+      "file": "game/assets/book/broomwhisk.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "f22b33d0b94f9e26eb73f335487d1544368697b31e24c200be32751b6d8a725a",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A sunny old courtyard: whitewashed walls with blue shutters, a stone well, steps up to a door with pots of geraniums, a broom leaning by the door, swept flagstones, a fig tree, warm midday light.\nProduction2:1 landscape spread,2048x1024 opaque fullbleed. Wide calm light/midtone sticker areas on BOTH square halves. Edges mayhavefineinkcrosshatchingdetails, centre6%quiet foldzone. Absolutely no characters, birds, people or animals (topiary shapes may be requested decorative hedges). No words, writing, labels, border, paperfold line or UI.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 7,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser": "All seven backgrounds loaded through the game registry at 2048 x 1024 without page errors.",
+    "publish_copy": true
+  }
+}

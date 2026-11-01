@@ -1,0 +1,305 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "notes": "Backgrounds for all 18 new book-bird minigames. Generated from each requested layout, inspected, resized to 1920 x 1080 and converted to WebP quality 92. Soup kitchen stove lowered in a targeted correction.",
+  "assets": [
+    {
+      "id": "IC-M01a",
+      "file": "game/assets/scenes/milkmidge.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A quiet suburban street at dawn, seen straight from the side, as one long even strip that could carry on to the left and right. Top 35%: a pale early-morning sky, lemon and dusty pink near the horizon, with a low sun just risen on the right (about 78% across, 25% down). From about 20% to 40% down: a soft, faded line of distant rooftops and chimney pots, far away and pale. From 40% to 74% down: a plain, quiet haze of back gardens and hedges in soft sage green, with no houses, gates or paths in it, because the game draws the near houses, their front gardens and their fences over this band. From 74% to 81% down: a plain pale grey pavement, empty. At 81% a stone kerb. From 81% to the bottom: an empty grey road with faint pale centre dashes at about 89% down. No milk float, no houses close up, no people, no animals, no cars.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "f0f2e37278ae605da0d0a22a0d3ed0ca0eb31b97587c95e2a56f8c6cfbfffa26"
+    },
+    {
+      "id": "IC-M02a",
+      "file": "game/assets/scenes/waterglassgoose.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A cosy old-fashioned room in the evening, seen straight on. A plain warm cream wall with faded patterned wallpaper fills the top three quarters. On the right, a small window (about 74% to 92% across, 10% to 47% down) shows a dusky blue evening sky with a pale moon. On the left, the soft yellow glow of a lamp just out of the picture warms the wall. Across the whole width, a long polished wooden table: its far edge at about 74% down, its top surface a band from 74% to 81% down with a long white lace runner along it, and its plain front panel from 81% to the bottom. The table top is completely bare and the wall above it, between 15% and 78% across, is quiet and plain, because the game stands a row of glasses and the bird there. No glasses, cups, people or animals.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "5b494da294a076cd9a0a07439a8f45b62a466400d1959fb28a346a6c8cf5bafa"
+    },
+    {
+      "id": "IC-M03a",
+      "file": "game/assets/scenes/niffy.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A town park on a fresh spring morning, seen straight from the side. The top half is a wide, pale, open sky with a few soft clouds, kept quiet because the bird flies there. A bare-ish branch reaches in from the top-left corner (from the left edge at about 23% down, rising to about 17% down at 13% across), as a perch for a nest. From about 26% to 62% down, a row of round, gentle park trees on thin trunks along the back. From 58% to 66% a strip of a calm pond, then a band of pale gravel from 66% to 78%, and a low black iron railing along it at about 71% to 78% down. From 78% to the bottom: a wide, plain, empty paved promenade where people will walk, with faint paving lines. On the right (around 85% to 95% across) the gravel behind the railing is open and plain, where the park keeper stands. No people, birds, dogs, benches in front or signs.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "26febc5d54d11fc8c02314a0f7928fafff824506ccb9510dabedb3863a298e31"
+    },
+    {
+      "id": "IC-M04a",
+      "file": "game/assets/scenes/snippit.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). The edge of a small country fair on a breezy summer afternoon, seen straight on. Across the lower part runs a long plain wooden rail fence from edge to edge: its top rail is a level horizontal bar about 79% of the way down the picture, a second rail about 87% down, and simple square posts every eighth of the width reaching to the bottom edge. In front of the fence a strip of short grass fills the bottom. Behind it, low rolling meadow hills, and a single small striped pink-and-cream fair tent far off at the right edge, below the 60% line. The sky above is pale and soft with two or three small flat clouds kept to the very top corners. Keep the whole middle of the sky, from 15% to 65% down, empty and quiet, and keep the top rail plain and uncluttered along its whole length, because the game hangs a bunch of balloons there and ties their strings to that rail.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "0d1df81f124f7e7554d647455b0158bcbfc969bb20a9c711f8ff7316e0fd7eab"
+    },
+    {
+      "id": "IC-M05a",
+      "file": "game/assets/scenes/buttonbeaks.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A back garden on a fresh, breezy washing day, seen straight on. Two tall plain wooden clothes posts stand at the far left and far right edges, their tops about 16% of the way down, with nothing strung between them (the game draws the line). Behind, a low clipped hedge about 70% down, a soft lawn below it, and a pale sky with a few small clouds near the top corners. Across the bottom, from 12% to 88% of the width and from 90% down to the bottom edge, the long open lid-side of an old blue-grey tin sewing box, seen from the front, its top edge level. Keep the sky between the posts (from 18% to 55% down) completely clear, and the lawn above the tin quiet, because coats travel along the line there and the birds walk in front of the tin.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "c864c04b142f07e091ec97c623fa2d90e7d7d6524f1f19eed3332dfc844908c3"
+    },
+    {
+      "id": "IC-M06a",
+      "file": "game/assets/scenes/broomwhisk.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A small sunny paved courtyard behind a house, seen from slightly above. The back wall, warm cream plaster, fills the top half down to a straight horizontal line where it meets the floor, 52% of the way down. In the wall: a small four-paned window left of centre and a plain slate-blue wooden door right of centre. At the top left a fig tree in a big terracotta tub stands against the wall, its broad leafy branches overhanging the top of the picture towards the middle. The floor below is wide, plain, pale stone flagstones in gentle perspective, from the wall line to the bottom edge and from side to side, clean and empty, with no leaves, puddles, furniture or plants on it. Keep the whole floor clear and evenly lit, because the leaves, the dust and the broom move all over it.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "7ed04d839dbb7857b57ca033065c4bbd28f232b2f2c8af79229ddfbee07d5dda"
+    },
+    {
+      "id": "IC-M07a",
+      "file": "game/assets/scenes/keycrane.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). Looking straight into an old wooden penny-arcade prize-crane cabinet, as if through its glass front, filling the whole picture. A dark carved wooden frame about 3% thick runs round all four edges. Across the top, about 9% of the way down, a single plain level brass rail runs from the left side of the cabinet to the right, polished and slightly worn. The back wall behind the glass is faded cream wallpaper with a sparse pattern of small mauve sprigs. The floor is worn dusty-rose velvet, a level strip from about 90% of the way down to the bottom frame. At the bottom left, a square-ish wooden prize chute rises from the floor: a box with a dark round hole in its top, its left edge against the frame, about 18% of the picture wide, its top at about 58% of the way down, with a small faded yellow painted arrow pointing down at the hole on the wall above it. Everything else is empty: keep the whole space between the rail and the floor, from 15% to 88% down and from the chute to the right edge, plain and quiet (just the wallpaper), because the game hangs the crane from the rail there and piles the prizes on the velvet floor.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "fb48167e2255417c3dca19204718c5531b7d24ff5977355b06671c71c247ed18"
+    },
+    {
+      "id": "IC-M08a",
+      "file": "game/assets/scenes/garbagecanary.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A quiet little town street on a blustery grey-blue morning, seen straight on from across the road. A row of narrow old terraced houses in faded pink, sage, cream and mauve stands along the back, their doors and windows plain, their roofs reaching about 10% to 20% of the way down. In front of them runs a wide pale paving-stone pavement, its back edge about 69% of the way down and its front edge, a long grey kerb, about 90% down; below the kerb a strip of grey cobbled road fills the bottom. One thin dark-green iron lamp-post stands on the pavement at about 77% across. A few wind-tossed leaves at the very top corners only. Keep the pavement clear from 20% to 75% across, and keep the band from 45% to 75% down across the whole width plain and uncluttered (no shop signs, no washing lines, no trees in front), because the game stands the dustbin bird at the left of the pavement and blows things down the street through that band from right to left.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "cc2a4255eed747304ee387a1f44a826a386f4ea7bfb1078a52ea4deb16d5a18e"
+    },
+    {
+      "id": "IC-M09a",
+      "file": "game/assets/scenes/steampressersparrow.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). An old-fashioned laundry room seen from above at a steep angle, as if standing over the ironing board. The top 38% is a wall of pale sage-green square tiles. Below it, a warm wooden floor. Across the middle and lower part lies a long padded ironing board seen from above: a plain cream cover with a faint pattern of tiny slate-blue dots, pointed and rounded at its left end, square at its right end, stretching from about 7% to 92% across and from about 42% to 88% down. At the top left, against the wall, a neat stack of four folded garments; at the top right, a round wicker basket heaped with crumpled washing in pale blue, pink, cream and grey. Keep the whole top of the ironing board plain, empty and evenly lit, with nothing lying on it, because the game slides the garments onto it and irons them there.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "77a4772242cd920180a7e139e0b2cd367882b2f86e2b2033e9451904d0cd531c"
+    },
+    {
+      "id": "IC-M10a",
+      "file": "game/assets/scenes/wetweatherwren.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A quiet old town street on a soft grey rainy day, seen straight from the side like a stage. Across the street, filling the middle of the picture from about 20% to 67% of the height, a row of tall, narrow, gabled houses in faded pink, sage, ochre and mauve, with lit yellow windows and a few chimneys, their fronts flat to the viewer; above them a low pale grey sky with soft wash clouds. Below the houses, a strip of wet road (67% to 76% of the height), a kerb, and then the near pavement filling the bottom quarter: plain, even, wet grey flagstones with a faint sheen, the same all the way from left to right. The near pavement and the air above it are where the game plays (the Wren walks along the pavement at about 84% of the height and hops up to the middle of the picture, and the game draws the puddles, striped market awnings and little birds on top, scrolling them past), so keep it completely empty: no puddles, lamp posts, awnings, benches, people or birds on the near side of the street, and nothing tall in front of the houses. Do not paint falling rain streaks (the game draws its own rain); a damp, dripping, misty mood is enough. The picture stays still while the street things scroll, so keep it evenly busy from left to right with no strong feature in one place.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "c3a968d5fa20b9e075ab700b8f79d9866c3581a951c788e94db01b68c4193b16"
+    },
+    {
+      "id": "IC-M11a",
+      "file": "game/assets/scenes/glovedove.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). An old-fashioned kitchen seen from high above and in front, looking down into a deep white ceramic sink. Along the top 20% of the picture, a tiled wall with a small window showing grey rain and two old chrome taps at the middle of the sink's back edge. The sink's basin fills the middle of the picture, from about 29% to 71% of the width and 22% to 89% of the height, full of still, soapy, pale grey-blue water with its flat bottom seen through it; this is where the game lays each dish and the bird scrubs it, so the water must be a plain, quiet, even area with no dishes, cloths, bubbles or reflections in it. On the left, a plain wooden counter top with nothing on it (the game stands a bottle of washing-up liquid and a foam gauge there, at 20% to 27% of the width). On the right, from 75% to 98% of the width, a wooden draining board with an empty wire plate rack, its thin upright wires in a row across the middle of the height (the game stands the washed dishes in it). Cosy, a little steamy.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "1695f3fab0f91f16d33db1df05e1c0668cf7e3f2c1d16a04884772a7a7316ffa"
+    },
+    {
+      "id": "IC-M12a",
+      "file": "game/assets/scenes/titthrush.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A small old town square in the warm early morning, seen from the side. Along the back, a row of gabled houses, shops and chimneys in faded pink, sage, ochre and mauve, from about 25% to 72% of the height, their tops against a pale lemon and peach sky; in front, a cobbled square filling the bottom 28%, its round cobbles in warm grey. The game draws a large gold pocket watch over the left middle (from about 20% to 60% of the width and 13% to 87% of the height), a town clock in its tower or frame at the upper right (about 62% to 87% of the width, 5% to 60% of the height) with a speech bubble under it, and the bird on the cobbles at the far left, so keep those places calm, soft and low in detail. No clocks, clock towers or clock faces anywhere in the painting (the game draws them), and no people or animals.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "2a6f548e6f687e8988a45a3deb60157a3b39543ec73900e6681e2689482a99e5"
+    },
+    {
+      "id": "IC-M13a",
+      "file": "game/assets/scenes/plugsocketswift.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A garden at dusk, seen straight on. In the middle stands one tall, narrow old townhouse of warm buff plaster: its front wall runs from 25% to 75% of the way across and from 22% down to the ground line 89% down, under a steep red-tiled roof whose peak nearly touches the top edge, with one brick chimney at the right of the roof. The front wall is completely plain and blank: no windows, no door, no drainpipes, no ivy, because the game paints a grid of twelve windows (four across, three high) over the whole of it. On the left, a low old garden wall of grey stone from 4% to 25% across, its flat top 37% down, with a plain clear patch in its middle where the game hangs a fuse box. On the right, the dark gabled roofs of two neighbouring houses, lower than ours, without lit windows. Above, a deepening dusk sky in soft bands, slate blue at the top through mauve to a warm apricot glow near the horizon, a pale moon in the top right. A strip of green lawn along the bottom 11%. Keep the house front and the sky around it quiet and even, because the Swift flies all over it.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "694ee35109a273db62a1a09c314f19a845cb2501a981324ccb069f120cdd04d7"
+    },
+    {
+      "id": "IC-M14a",
+      "file": "game/assets/scenes/saltshakershrike.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). Inside a small old-fashioned caf\u00e9, seen straight on. A long counter runs across the whole width: its pale marble top is a straight horizontal band from 70% to 74% down (plates slide along it from right to left), and below it the counter's front is panelled wood painted dusty pink, down to the bottom edge. Above the counter, the back wall is papered in soft cream and sage-green stripes. Top left, a small chalk menu board with a few illegible scribbled lines (no readable words); top right, a plain round wall clock; at the far right edge, above the counter, the dark open hatch of the kitchen with a little steam, where the plates come out. Leave a clear stretch of counter and wall at the far left for a diner, and keep the wide band of wallpaper in the middle, from 10% to 68% down and from 20% to 85% across, plain and uncluttered, because salt falls through it. No people, animals, plates or food, and no rail along the top (the game draws its own).\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "a006a7a96f515c86f1f6eae0f2255e94d879b7a9f9ebdb8e3456a40f8722e1d5"
+    },
+    {
+      "id": "IC-M15a",
+      "file": "game/assets/scenes/ladlelark.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A cosy old soup kitchen, seen straight on. The back wall is plain cream tiles down to 71% of the way down, then a worn stone-flagged floor. A small four-paned window high up on the left, between 10% and 29% across and 12% and 37% down. A black iron cooking range low in the middle, from 19% to 61% across, its top at 91% down, with a little orange glow from its fire door. On the right, a wooden serving counter from 69% across to the right edge, its top 82% down, with a clear stretch of wall behind it where a queue of creatures stands. Keep the whole area from 10% to 68% across and from 30% to 95% down plain (tiles, floor, range top), because the game puts a big soup pot there, and keep the wall above the counter clear. No pot, no food, no people or animals.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": "Edit only the soup-kitchen background layout. Keep the cream tiled kitchen wall and fine brown ink faded watercolor style. The black stove MUST be a very low cropped strip at the bottom middle: its TOP at91% image height, x19%..61%, its fire door mostly below the bottom edge. Lower the whole stove from its current high position. The wall/floor line stays at71% height. Lower right serving counter TOP to82% height, x69%..100%, with empty countertop. Keep everything x10%..68%, y30%..90% clear tiled wall and floor, no stove occupying that region, because a large soup pot sprite will go there. Left window remains high x10%..29%,y12%..37%. Clear extraneous furniture and utensils from the mid-left gameplay area. No pot, people, animals, food, readable text, UI. Opaque16:9.",
+      "sha256": "38e3cc071d8544a22490a4a57e000529d025d7895076e33d42304ee641bd6f95"
+    },
+    {
+      "id": "IC-M16a",
+      "file": "game/assets/scenes/drippet.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). An old-fashioned country kitchen on a rainy afternoon, seen from a little above. The back wall fills the top 52%: pale sage-green distemper, a low wooden dresser or sink cupboard with a white enamel sink on the left half, a tall window on the right with rain running down the panes, a skirting board along the foot of the wall at about 53% of the height. The floor fills everything below that, from 55% of the height to the bottom edge and from edge to edge: large cream and sage-green checked tiles in gentle perspective, dry, clean and evenly lit, with nothing standing on them (no rugs, chairs, bowls, mats or puddles), because the Drippet runs all over it and the game draws puddles, pots and bowls there.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "e211a580c3022b673c2c81901de1a9d4693aa0810e4f0b258a3f6f39204f4c27"
+    },
+    {
+      "id": "IC-M17a",
+      "file": "game/assets/scenes/sawbird.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). The yard in front of an old wooden carpenter's workshop on a still, pale morning. Across the top of the picture, from about 12% to 40% of the height, the workshop's weathered board wall, with a few tools hanging on nails (a hammer, a carpenter's square, a coil of rope) and a small window. Below it the yard: packed earth and sand, scattered with a few curls of wood shavings and sawdust near the edges. Keep the middle of the yard plain and quiet from 42% to 92% of the height and from 20% to 80% of the width (no sawhorses, benches, planks or logs there), because the game puts two sawhorses and a long plank across the middle. A neat stack of logs may sit at the far left and a wheelbarrow at the far right, both kept small.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "732d90b0d767e61aaa57600e2d1cfc82c34db58edaa10de8bf71c2b298e84ca7"
+    },
+    {
+      "id": "IC-M18a",
+      "file": "game/assets/scenes/radiobird.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). A cosy 1960s sitting room in the evening: softly striped cream-and-mauve wallpaper, the warm glow of a standard lamp at the far right edge, a wooden floor across the bottom third with a dusty-pink oval rug on the left. On the right an empty low sage-green sofa, its back top at about 65% of the height, its seat front at about 87%, spanning from 55% to 93% of the width, with nothing on it (the game seats three little birds there). Keep the whole upper wall plain, from the top down to 55% of the height and across the full width, with no pictures, shelves or windows, because the game draws a long tuning dial across the top and a signal meter and speaker below it. Keep the left third of the room, where the Radio Bird stands on the rug, plain as well.\nProduction output dimensions: 1920 x 1080, opaque. The percentage-based play areas and straight-on camera in this prompt are essential: keep those regions clear. Reference is only style guidance; create the requested environment, without adding a bird or people.",
+      "correction_prompt": null,
+      "sha256": "8bb1d531ea0f3f77a1a696d462e9911926dd12de9d32a3f9a10fd60dff7cb228"
+    }
+  ],
+  "verification": {
+    "asset_count": 18,
+    "dimensions": "1920 x 1080",
+    "rgb_decoding": true,
+    "sha256": true,
+    "visual_review": "All selected backgrounds reviewed; soup-kitchen stove layout corrected.",
+    "unit_tests": "139 passed after new minigames merged",
+    "browser_check": "Milk Round and controller/keyboard navigation passed in installed Chrome, no page errors",
+    "publish_output": "all 18 scenes copied with matching checksums"
+  }
+}

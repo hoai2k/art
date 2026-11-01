@@ -1,0 +1,1234 @@
+{
+  "generatedBy": "bronzedrum/design/source/build_requests.py",
+  "assets": [
+    {
+      "id": "sky-dawn",
+      "request": "BD-B01",
+      "file": "art/sky-dawn.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/sky-dawn.webp"
+    },
+    {
+      "id": "sky-day",
+      "request": "BD-B02",
+      "file": "art/sky-day.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/sky-day.webp"
+    },
+    {
+      "id": "sky-night",
+      "request": "BD-B03",
+      "file": "art/sky-night.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/sky-night.webp"
+    },
+    {
+      "id": "layer-karst",
+      "request": "BD-B04",
+      "file": "art/layer-karst.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/layer-karst.webp"
+    },
+    {
+      "id": "layer-karst-far",
+      "request": "BD-B09",
+      "file": "art/layer-karst-far.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/layer-karst-far.webp"
+    },
+    {
+      "id": "layer-grove",
+      "request": "BD-B05",
+      "file": "art/layer-grove.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/layer-grove.webp"
+    },
+    {
+      "id": "layer-paddy",
+      "request": "BD-B06",
+      "file": "art/layer-paddy.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/layer-paddy.webp"
+    },
+    {
+      "id": "layer-reeds",
+      "request": "BD-B07",
+      "file": "art/layer-reeds.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/layer-reeds.webp"
+    },
+    {
+      "id": "paper-fiber",
+      "request": "BD-B08",
+      "file": "art/paper-fiber.png",
+      "status": "delivered",
+      "section": "world",
+      "runtime": true,
+      "web": "web/paper-fiber.webp"
+    },
+    {
+      "id": "sister-trac",
+      "request": "BD-C01",
+      "file": "art/sister-trac.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/sister-trac.webp"
+    },
+    {
+      "id": "sister-nhi",
+      "request": "BD-C02",
+      "file": "art/sister-nhi.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/sister-nhi.webp"
+    },
+    {
+      "id": "war-elephant",
+      "request": "BD-C03",
+      "file": "art/war-elephant.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/war-elephant.webp"
+    },
+    {
+      "id": "drum-bearers",
+      "request": "BD-C04",
+      "file": "art/drum-bearers.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/drum-bearers.webp"
+    },
+    {
+      "id": "drum-palanquin",
+      "request": "BD-C14",
+      "file": "art/drum-palanquin.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/drum-palanquin.webp"
+    },
+    {
+      "id": "drummer-chau",
+      "request": "BD-C11",
+      "file": "art/drummer-chau.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/drummer-chau.webp"
+    },
+    {
+      "id": "drummer-mo",
+      "request": "BD-C12",
+      "file": "art/drummer-mo.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/drummer-mo.webp"
+    },
+    {
+      "id": "unit-spear",
+      "request": "BD-C05",
+      "file": "art/unit-spear.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/unit-spear.webp"
+    },
+    {
+      "id": "unit-archer",
+      "request": "BD-C06",
+      "file": "art/unit-archer.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/unit-archer.webp"
+    },
+    {
+      "id": "children-sheet",
+      "request": "BD-C15",
+      "file": "art/children-sheet.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/children-sheet.webp"
+    },
+    {
+      "id": "unit-spear-cover",
+      "request": "BD-C16",
+      "file": "art/unit-spear-cover.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/unit-spear-cover.webp"
+    },
+    {
+      "id": "unit-archer-cover",
+      "request": "BD-C17",
+      "file": "art/unit-archer-cover.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/unit-archer-cover.webp"
+    },
+    {
+      "id": "han-spear",
+      "request": "BD-C07",
+      "file": "art/han-spear.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/han-spear.webp"
+    },
+    {
+      "id": "han-crossbow",
+      "request": "BD-C08",
+      "file": "art/han-crossbow.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/han-crossbow.webp"
+    },
+    {
+      "id": "fort-palisade",
+      "request": "BD-C09",
+      "file": "art/fort-palisade.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/fort-palisade.webp"
+    },
+    {
+      "id": "straw-target",
+      "request": "BD-C10",
+      "file": "art/straw-target.png",
+      "status": "delivered",
+      "section": "cast",
+      "runtime": true,
+      "web": "web/straw-target.webp"
+    },
+    {
+      "id": "rig-sister-trac",
+      "request": "BD-R01",
+      "file": "art/rig-sister-trac.png",
+      "status": "delivered",
+      "section": "rig",
+      "runtime": false
+    },
+    {
+      "id": "rig-sister-nhi",
+      "request": "BD-R02",
+      "file": "art/rig-sister-nhi.png",
+      "status": "delivered",
+      "section": "rig",
+      "runtime": false
+    },
+    {
+      "id": "rig-war-elephant",
+      "request": "BD-R03",
+      "file": "art/rig-war-elephant.png",
+      "status": "delivered",
+      "section": "rig",
+      "runtime": false
+    },
+    {
+      "id": "rig-unit-spear",
+      "request": "BD-R04",
+      "file": "art/rig-unit-spear.png",
+      "status": "delivered",
+      "section": "rig",
+      "runtime": false
+    },
+    {
+      "id": "logo",
+      "request": "BD-U01",
+      "file": "art/logo.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/logo.webp"
+    },
+    {
+      "id": "hud-drum",
+      "request": "BD-U02",
+      "file": "art/hud-drum.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-drum.webp"
+    },
+    {
+      "id": "ui-glyphs",
+      "request": "BD-U03",
+      "file": "art/ui-glyphs.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": false
+    },
+    {
+      "id": "ui-panel",
+      "request": "BD-U04",
+      "file": "art/ui-panel.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/ui-panel.webp"
+    },
+    {
+      "id": "ui-icons",
+      "request": "BD-U05",
+      "file": "art/ui-icons.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": false
+    },
+    {
+      "id": "hud-stick-trac",
+      "request": "BD-U20",
+      "file": "art/hud-stick-trac.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-trac.webp"
+    },
+    {
+      "id": "hud-stick-nhi",
+      "request": "BD-U21",
+      "file": "art/hud-stick-nhi.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-nhi.webp"
+    },
+    {
+      "id": "hud-stick-trac-pestle",
+      "request": "BD-U22",
+      "file": "art/hud-stick-trac-pestle.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-trac-pestle.webp"
+    },
+    {
+      "id": "hud-stick-trac-lacquer",
+      "request": "BD-U23",
+      "file": "art/hud-stick-trac-lacquer.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-trac-lacquer.webp"
+    },
+    {
+      "id": "hud-stick-nhi-bamboo",
+      "request": "BD-U24",
+      "file": "art/hud-stick-nhi-bamboo.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-nhi-bamboo.webp"
+    },
+    {
+      "id": "hud-stick-nhi-horn",
+      "request": "BD-U25",
+      "file": "art/hud-stick-nhi-horn.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/hud-stick-nhi-horn.webp"
+    },
+    {
+      "id": "touch-buttons",
+      "request": "BD-U16",
+      "file": "art/touch-buttons.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/touch-buttons.webp"
+    },
+    {
+      "id": "card-garden",
+      "request": "BD-U06",
+      "file": "art/card-garden.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/card-garden.webp"
+    },
+    {
+      "id": "card-outpost",
+      "request": "BD-U07",
+      "file": "art/card-outpost.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/card-outpost.webp"
+    },
+    {
+      "id": "card-luylau",
+      "request": "BD-U08",
+      "file": "art/card-luylau.png",
+      "status": "delivered",
+      "section": "ui",
+      "runtime": true,
+      "web": "web/card-luylau.webp"
+    },
+    {
+      "id": "fx-scraps",
+      "request": "BD-F01",
+      "file": "art/fx-scraps.png",
+      "status": "delivered",
+      "section": "fx",
+      "runtime": true,
+      "web": "web/fx-scraps.webp"
+    },
+    {
+      "id": "fx-projectiles",
+      "request": "BD-F02",
+      "file": "art/fx-projectiles.png",
+      "status": "delivered",
+      "section": "fx",
+      "runtime": true,
+      "web": "web/fx-projectiles.webp"
+    },
+    {
+      "id": "fx-drum-wake",
+      "request": "BD-F03",
+      "file": "art/fx-drum-wake.png",
+      "status": "delivered",
+      "section": "fx",
+      "runtime": true,
+      "web": "web/fx-drum-wake.webp"
+    },
+    {
+      "id": "sky-dusk",
+      "request": "BD-B10",
+      "file": "art/sky-dusk.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/sky-dusk.webp"
+    },
+    {
+      "id": "sky-foundry",
+      "request": "BD-B11",
+      "file": "art/sky-foundry.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/sky-foundry.webp"
+    },
+    {
+      "id": "sky-ash",
+      "request": "BD-B12",
+      "file": "art/sky-ash.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/sky-ash.webp"
+    },
+    {
+      "id": "card-oath",
+      "request": "BD-U10",
+      "file": "art/card-oath.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-oath.webp"
+    },
+    {
+      "id": "card-casting",
+      "request": "BD-U11",
+      "file": "art/card-casting.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-casting.webp"
+    },
+    {
+      "id": "card-villages",
+      "request": "BD-U12",
+      "file": "art/card-villages.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-villages.webp"
+    },
+    {
+      "id": "card-coronation",
+      "request": "BD-U13",
+      "file": "art/card-coronation.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-coronation.webp"
+    },
+    {
+      "id": "card-mavien",
+      "request": "BD-U14",
+      "file": "art/card-mavien.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-mavien.webp"
+    },
+    {
+      "id": "card-elegy",
+      "request": "BD-U15",
+      "file": "art/card-elegy.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/card-elegy.webp"
+    },
+    {
+      "id": "prop-altar",
+      "request": "BD-P01",
+      "file": "art/prop-altar.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-altar.webp"
+    },
+    {
+      "id": "prop-mourning-drummer",
+      "request": "BD-P02",
+      "file": "art/prop-mourning-drummer.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-mourning-drummer.webp"
+    },
+    {
+      "id": "prop-festival-drummers",
+      "request": "BD-P03",
+      "file": "art/prop-festival-drummers.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-festival-drummers.webp"
+    },
+    {
+      "id": "prop-village-house",
+      "request": "BD-P04",
+      "file": "art/prop-village-house.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-village-house.webp"
+    },
+    {
+      "id": "prop-lantern",
+      "request": "BD-P05",
+      "file": "art/prop-lantern.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-lantern.webp"
+    },
+    {
+      "id": "prop-bronze-drum",
+      "request": "BD-P06",
+      "file": "art/prop-bronze-drum.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-bronze-drum.webp"
+    },
+    {
+      "id": "prop-furnace",
+      "request": "BD-P07",
+      "file": "art/prop-furnace.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-furnace.webp"
+    },
+    {
+      "id": "prop-mould",
+      "request": "BD-P08",
+      "file": "art/prop-mould.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-mould.webp"
+    },
+    {
+      "id": "prop-drum-cast",
+      "request": "BD-P09",
+      "file": "art/prop-drum-cast.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/prop-drum-cast.webp"
+    },
+    {
+      "id": "han-general",
+      "request": "BD-P10",
+      "file": "art/han-general.png",
+      "status": "delivered",
+      "section": "story",
+      "runtime": true,
+      "web": "web/han-general.webp"
+    },
+    {
+      "id": "card-practice-free",
+      "request": "BD-U17",
+      "file": "art/card-practice-free.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/card-practice-free.webp"
+    },
+    {
+      "id": "card-practice-call",
+      "request": "BD-U18",
+      "file": "art/card-practice-call.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/card-practice-call.webp"
+    },
+    {
+      "id": "card-practice-training",
+      "request": "BD-U26",
+      "file": "art/card-practice-training.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/card-practice-training.webp"
+    },
+    {
+      "id": "prop-dinh",
+      "request": "BD-P11",
+      "file": "art/prop-dinh.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/prop-dinh.webp"
+    },
+    {
+      "id": "dancer-sheet",
+      "request": "BD-C13",
+      "file": "art/dancer-sheet.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/dancer-sheet.webp"
+    },
+    {
+      "id": "kit-faces",
+      "request": "BD-U19",
+      "file": "art/kit-faces.png",
+      "status": "delivered",
+      "section": "practice",
+      "runtime": true,
+      "web": "web/kit-faces.webp"
+    },
+    {
+      "id": "wp-water",
+      "request": "BD-W02",
+      "file": "art/wp-water.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "web": "web/wp-water.webp"
+    },
+    {
+      "id": "wp-sky-dawn",
+      "request": "BD-WB01",
+      "file": "art/wp-sky-dawn.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-dawn",
+      "web": "web/wp-sky-dawn.webp"
+    },
+    {
+      "id": "wp-sky-day",
+      "request": "BD-WB02",
+      "file": "art/wp-sky-day.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-day",
+      "web": "web/wp-sky-day.webp"
+    },
+    {
+      "id": "wp-sky-night",
+      "request": "BD-WB03",
+      "file": "art/wp-sky-night.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-night",
+      "web": "web/wp-sky-night.webp"
+    },
+    {
+      "id": "wp-layer-karst-far",
+      "request": "BD-WB09",
+      "file": "art/wp-layer-karst-far.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "layer-karst-far",
+      "web": "web/wp-layer-karst-far.webp"
+    },
+    {
+      "id": "wp-layer-karst",
+      "request": "BD-WB04",
+      "file": "art/wp-layer-karst.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "layer-karst",
+      "web": "web/wp-layer-karst.webp"
+    },
+    {
+      "id": "wp-layer-grove",
+      "request": "BD-WB05",
+      "file": "art/wp-layer-grove.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "layer-grove",
+      "web": "web/wp-layer-grove.webp"
+    },
+    {
+      "id": "wp-layer-paddy",
+      "request": "BD-WB06",
+      "file": "art/wp-layer-paddy.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "layer-paddy",
+      "web": "web/wp-layer-paddy.webp"
+    },
+    {
+      "id": "wp-layer-reeds",
+      "request": "BD-WB07",
+      "file": "art/wp-layer-reeds.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "layer-reeds",
+      "web": "web/wp-layer-reeds.webp"
+    },
+    {
+      "id": "wp-paper-fiber",
+      "request": "BD-WB08",
+      "file": "art/wp-paper-fiber.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "paper-fiber",
+      "web": "web/wp-paper-fiber.webp"
+    },
+    {
+      "id": "wp-sky-dusk",
+      "request": "BD-WB10",
+      "file": "art/wp-sky-dusk.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-dusk",
+      "web": "web/wp-sky-dusk.webp"
+    },
+    {
+      "id": "wp-sky-foundry",
+      "request": "BD-WB11",
+      "file": "art/wp-sky-foundry.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-foundry",
+      "web": "web/wp-sky-foundry.webp"
+    },
+    {
+      "id": "wp-sky-ash",
+      "request": "BD-WB12",
+      "file": "art/wp-sky-ash.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sky-ash",
+      "web": "web/wp-sky-ash.webp"
+    },
+    {
+      "id": "wp-sister-trac",
+      "request": "BD-WC01",
+      "file": "art/wp-sister-trac.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sister-trac",
+      "web": "web/wp-sister-trac.webp"
+    },
+    {
+      "id": "wp-sister-nhi",
+      "request": "BD-WC02",
+      "file": "art/wp-sister-nhi.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "sister-nhi",
+      "web": "web/wp-sister-nhi.webp"
+    },
+    {
+      "id": "wp-war-elephant",
+      "request": "BD-WC03",
+      "file": "art/wp-war-elephant.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "war-elephant",
+      "web": "web/wp-war-elephant.webp"
+    },
+    {
+      "id": "wp-drum-bearers",
+      "request": "BD-WC04",
+      "file": "art/wp-drum-bearers.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "drum-bearers",
+      "web": "web/wp-drum-bearers.webp"
+    },
+    {
+      "id": "wp-drum-palanquin",
+      "request": "BD-WC14",
+      "file": "art/wp-drum-palanquin.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "drum-palanquin",
+      "web": "web/wp-drum-palanquin.webp"
+    },
+    {
+      "id": "wp-drummer-chau",
+      "request": "BD-WC11",
+      "file": "art/wp-drummer-chau.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "drummer-chau",
+      "web": "web/wp-drummer-chau.webp"
+    },
+    {
+      "id": "wp-drummer-mo",
+      "request": "BD-WC12",
+      "file": "art/wp-drummer-mo.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "drummer-mo",
+      "web": "web/wp-drummer-mo.webp"
+    },
+    {
+      "id": "wp-unit-spear",
+      "request": "BD-WC05",
+      "file": "art/wp-unit-spear.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "unit-spear",
+      "web": "web/wp-unit-spear.webp"
+    },
+    {
+      "id": "wp-unit-archer",
+      "request": "BD-WC06",
+      "file": "art/wp-unit-archer.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "unit-archer",
+      "web": "web/wp-unit-archer.webp"
+    },
+    {
+      "id": "wp-children-sheet",
+      "request": "BD-WC15",
+      "file": "art/wp-children-sheet.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "children-sheet",
+      "web": "web/wp-children-sheet.webp"
+    },
+    {
+      "id": "wp-unit-spear-cover",
+      "request": "BD-WC16",
+      "file": "art/wp-unit-spear-cover.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "unit-spear-cover",
+      "web": "web/wp-unit-spear-cover.webp"
+    },
+    {
+      "id": "wp-unit-archer-cover",
+      "request": "BD-WC17",
+      "file": "art/wp-unit-archer-cover.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "unit-archer-cover",
+      "web": "web/wp-unit-archer-cover.webp"
+    },
+    {
+      "id": "wp-han-spear",
+      "request": "BD-WC07",
+      "file": "art/wp-han-spear.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "han-spear",
+      "web": "web/wp-han-spear.webp"
+    },
+    {
+      "id": "wp-han-crossbow",
+      "request": "BD-WC08",
+      "file": "art/wp-han-crossbow.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "han-crossbow",
+      "web": "web/wp-han-crossbow.webp"
+    },
+    {
+      "id": "wp-fort-palisade",
+      "request": "BD-WC09",
+      "file": "art/wp-fort-palisade.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "fort-palisade",
+      "web": "web/wp-fort-palisade.webp"
+    },
+    {
+      "id": "wp-straw-target",
+      "request": "BD-WC10",
+      "file": "art/wp-straw-target.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "straw-target",
+      "web": "web/wp-straw-target.webp"
+    },
+    {
+      "id": "wp-rig-sister-trac",
+      "request": "BD-WR01",
+      "file": "art/wp-rig-sister-trac.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": false,
+      "base": "rig-sister-trac"
+    },
+    {
+      "id": "wp-rig-sister-nhi",
+      "request": "BD-WR02",
+      "file": "art/wp-rig-sister-nhi.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": false,
+      "base": "rig-sister-nhi"
+    },
+    {
+      "id": "wp-ui-panel",
+      "request": "BD-WU04",
+      "file": "art/wp-ui-panel.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "ui-panel",
+      "web": "web/wp-ui-panel.webp"
+    },
+    {
+      "id": "wp-card-garden",
+      "request": "BD-WU06",
+      "file": "art/wp-card-garden.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-garden",
+      "web": "web/wp-card-garden.webp"
+    },
+    {
+      "id": "wp-card-outpost",
+      "request": "BD-WU07",
+      "file": "art/wp-card-outpost.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-outpost",
+      "web": "web/wp-card-outpost.webp"
+    },
+    {
+      "id": "wp-card-luylau",
+      "request": "BD-WU08",
+      "file": "art/wp-card-luylau.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-luylau",
+      "web": "web/wp-card-luylau.webp"
+    },
+    {
+      "id": "wp-card-oath",
+      "request": "BD-WU10",
+      "file": "art/wp-card-oath.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-oath",
+      "web": "web/wp-card-oath.webp"
+    },
+    {
+      "id": "wp-card-casting",
+      "request": "BD-WU11",
+      "file": "art/wp-card-casting.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-casting",
+      "web": "web/wp-card-casting.webp"
+    },
+    {
+      "id": "wp-card-villages",
+      "request": "BD-WU12",
+      "file": "art/wp-card-villages.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-villages",
+      "web": "web/wp-card-villages.webp"
+    },
+    {
+      "id": "wp-card-coronation",
+      "request": "BD-WU13",
+      "file": "art/wp-card-coronation.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-coronation",
+      "web": "web/wp-card-coronation.webp"
+    },
+    {
+      "id": "wp-card-mavien",
+      "request": "BD-WU14",
+      "file": "art/wp-card-mavien.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-mavien",
+      "web": "web/wp-card-mavien.webp"
+    },
+    {
+      "id": "wp-card-elegy",
+      "request": "BD-WU15",
+      "file": "art/wp-card-elegy.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-elegy",
+      "web": "web/wp-card-elegy.webp"
+    },
+    {
+      "id": "wp-card-practice-free",
+      "request": "BD-WU17",
+      "file": "art/wp-card-practice-free.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-practice-free",
+      "web": "web/wp-card-practice-free.webp"
+    },
+    {
+      "id": "wp-card-practice-call",
+      "request": "BD-WU18",
+      "file": "art/wp-card-practice-call.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-practice-call",
+      "web": "web/wp-card-practice-call.webp"
+    },
+    {
+      "id": "wp-card-practice-training",
+      "request": "BD-WU26",
+      "file": "art/wp-card-practice-training.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "card-practice-training",
+      "web": "web/wp-card-practice-training.webp"
+    },
+    {
+      "id": "wp-fx-scraps",
+      "request": "BD-WF01",
+      "file": "art/wp-fx-scraps.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "fx-scraps",
+      "web": "web/wp-fx-scraps.webp"
+    },
+    {
+      "id": "wp-fx-projectiles",
+      "request": "BD-WF02",
+      "file": "art/wp-fx-projectiles.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "fx-projectiles",
+      "web": "web/wp-fx-projectiles.webp"
+    },
+    {
+      "id": "wp-fx-drum-wake",
+      "request": "BD-WF03",
+      "file": "art/wp-fx-drum-wake.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "fx-drum-wake",
+      "web": "web/wp-fx-drum-wake.webp"
+    },
+    {
+      "id": "wp-prop-altar",
+      "request": "BD-WP01",
+      "file": "art/wp-prop-altar.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-altar",
+      "web": "web/wp-prop-altar.webp"
+    },
+    {
+      "id": "wp-prop-mourning-drummer",
+      "request": "BD-WP02",
+      "file": "art/wp-prop-mourning-drummer.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-mourning-drummer",
+      "web": "web/wp-prop-mourning-drummer.webp"
+    },
+    {
+      "id": "wp-prop-festival-drummers",
+      "request": "BD-WP03",
+      "file": "art/wp-prop-festival-drummers.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-festival-drummers",
+      "web": "web/wp-prop-festival-drummers.webp"
+    },
+    {
+      "id": "wp-prop-village-house",
+      "request": "BD-WP04",
+      "file": "art/wp-prop-village-house.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-village-house",
+      "web": "web/wp-prop-village-house.webp"
+    },
+    {
+      "id": "wp-prop-lantern",
+      "request": "BD-WP05",
+      "file": "art/wp-prop-lantern.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-lantern",
+      "web": "web/wp-prop-lantern.webp"
+    },
+    {
+      "id": "wp-prop-bronze-drum",
+      "request": "BD-WP06",
+      "file": "art/wp-prop-bronze-drum.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-bronze-drum",
+      "web": "web/wp-prop-bronze-drum.webp"
+    },
+    {
+      "id": "wp-prop-furnace",
+      "request": "BD-WP07",
+      "file": "art/wp-prop-furnace.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-furnace",
+      "web": "web/wp-prop-furnace.webp"
+    },
+    {
+      "id": "wp-prop-mould",
+      "request": "BD-WP08",
+      "file": "art/wp-prop-mould.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-mould",
+      "web": "web/wp-prop-mould.webp"
+    },
+    {
+      "id": "wp-prop-drum-cast",
+      "request": "BD-WP09",
+      "file": "art/wp-prop-drum-cast.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-drum-cast",
+      "web": "web/wp-prop-drum-cast.webp"
+    },
+    {
+      "id": "wp-han-general",
+      "request": "BD-WP10",
+      "file": "art/wp-han-general.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "han-general",
+      "web": "web/wp-han-general.webp"
+    },
+    {
+      "id": "wp-prop-dinh",
+      "request": "BD-WP11",
+      "file": "art/wp-prop-dinh.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "prop-dinh",
+      "web": "web/wp-prop-dinh.webp"
+    },
+    {
+      "id": "wp-dancer-sheet",
+      "request": "BD-WC13",
+      "file": "art/wp-dancer-sheet.png",
+      "status": "delivered",
+      "section": "water",
+      "runtime": true,
+      "base": "dancer-sheet",
+      "web": "web/wp-dancer-sheet.webp"
+    }
+  ]
+}

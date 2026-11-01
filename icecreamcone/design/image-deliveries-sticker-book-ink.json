@@ -1,0 +1,315 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-SB01b",
+      "file": "game/assets/book/coot.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "3e37ce8de4541924cb99e6d3c4a3b68061d9508bc51687e2cd49e368925546e4",
+      "sha256": "39472b25a6838cefde811ba5171f37b05047b799662befff1766f42992655f18",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB02b",
+      "file": "game/assets/book/cupadee.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "3fc3111fa6a93abe04b2a1bfa3165429daa99b4619bfa2e12a71f1e8f9732557",
+      "sha256": "23158bcf309ea63cf826637fdf093b0b11580a1cd4604ff0c39262d9e3045e32",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB03b",
+      "file": "game/assets/book/shuttercluck.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "7fd6eceadfb629b87c255ead5cebc1f06fe52845b0196dba42f33a2f278f5adf",
+      "sha256": "3f8d70b86c8e28e0270d43ad46b553f59e9077dcc2b31aae309878f192be342b",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB04b",
+      "file": "game/assets/book/gullfinch.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "2ab3be17a276a756a61f215cab62dcdbbf03491ed4d3b3cf1629fc1247d41b85",
+      "sha256": "579882e328e2b3e38de0f80584f1bf3c9b9988ad6c449b5e10132d3ba75ae090",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB05b",
+      "file": "game/assets/book/plume.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "63b586e80196c88250bac04ce4b84ce23fe66e2260ee1f8ccc3b2d7a68c6d607",
+      "sha256": "ab5857e5d778cfeb23edd511d8b053be801b30bc3df4c5fd6f34be28c2566e4f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB06b",
+      "file": "game/assets/book/bobolinks.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "faf003cf8af3a8551125368125324e239533e62389e0c99e534cfadb1424f8ec",
+      "sha256": "25d569e042722f4997d2fb7aa075b316a7bdaf2ca3a0dddbce37e83ba86f9b7f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB07b",
+      "file": "game/assets/book/peeper.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "8099c09dc4b0ab5a23bfe7af7af2a0efdbf1fe6047b1e22913da67b12e07f3f0",
+      "sha256": "5ef6b496ec1834202c0938d2ec82698aaaf25b3b63fbbbe8dc30cb6be3e27e9f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-1.json"
+    },
+    {
+      "id": "IC-SB08b",
+      "file": "game/assets/book/piffle.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "25684cb1019e364df273eb0c1f76dc70cbbe23a5100de8b5866a9232dba35057",
+      "sha256": "d480756da260f93a9cfc2a50a4020c163f5b1b4376873ff6198dc4ebb307b7cb",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB09b",
+      "file": "game/assets/book/dodo.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "e1097fde30670d7c48ae98d2079c6ee5d3d2ee2be519c792c09169b9ac4f6568",
+      "sha256": "0bda280e04b09e4dca4ff612b9ee8d8cd47f6b869ca091e5dc394bdb4ebc78c9",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB10b",
+      "file": "game/assets/book/crow.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "d7f8527fed559932e55e5317ee239adb3b51885eb4f4c38add6b2d115052ce92",
+      "sha256": "98e51590d15623fb49132eaec4b602d284eb8cd65d786b6582429c2000d65a89",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB11b",
+      "file": "game/assets/book/milkmidge.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "36854ef9eb8e297b19436c1fc3fe1823587c5af0e23f08831d337351baeb0f9c",
+      "sha256": "2a7413f141de58a169926a3e8e15f9ef265cddff0b1cc8699b47ad1ee5972213",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB12b",
+      "file": "game/assets/book/waterglassgoose.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "d1f092a576d372a95d14d94c88ed6d13c928277081f79b4dea04f45fb460c889",
+      "sha256": "4d8b1df74000f8201a8a13ea781f6f320cf9a81ce880d5cf399f25ac80d88717",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB13b",
+      "file": "game/assets/book/niffy.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "6d7364fef5be071b2e9811a2f3fd2a0040d8118dfc933968ae818482ed060a73",
+      "sha256": "33d0b165de9dbe9bcb505958506b3bbfaf70528056701688cdf5274e2a93ff9f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB14b",
+      "file": "game/assets/book/broomwhisk.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "f22b33d0b94f9e26eb73f335487d1544368697b31e24c200be32751b6d8a725a",
+      "sha256": "6788ff363ff3e823f2d3e87c64cf970a699d81a5b7869bc05c79ae25a149947f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-2.json"
+    },
+    {
+      "id": "IC-SB15b",
+      "file": "game/assets/book/buttonbeaks.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "030e11eb0ce2fc99c5e9a27e9a5ab9f9599eaab583c573b60bc8a7c545760989",
+      "sha256": "0080dbcab2cf6af750d7296bd949dcfab105ad38cbb29156f5d8d773554b5457",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB16b",
+      "file": "game/assets/book/keycrane.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "4e0421ae41ca7e0029414d02aacf3777d23f530fa8049c0a6660d74eac799b2a",
+      "sha256": "7cf1d4918a46ee9453d27528c9d72c1f5205ba5113d20ea0adf2672c60def374",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB17b",
+      "file": "game/assets/book/snippit.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "ab10e4b86ef492d1e7b4a2da0837bbaf93347fdaf9545ae06691dec20ce2e0ef",
+      "sha256": "019b3c07e327e2c0c5b54aa07749d0fd4b3c81465df5974c3620abf3025ce72d",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB18b",
+      "file": "game/assets/book/garbagecanary.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "e407c5adb9e313f4c1360a5e4bfd28449d47a82a081c6a6c5d662436ee786125",
+      "sha256": "ebdd423354340914e74cba0bca71e25967a80233a6016098780d51fdd81a913d",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB19b",
+      "file": "game/assets/book/steampressersparrow.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "f2a8798622465eb64a4dd3e3a6d8d3172eeb5bdc35660a7f971c547ad1460ff7",
+      "sha256": "2fbd95007ca5988c7d91d1b70c3c04a2ee0d92b1ec5b3dcf6301d2e07419b143",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB20b",
+      "file": "game/assets/book/wetweatherwren.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "315cc956a6a71b904304d06abec6602bd658c256588ce47d01645422e2e48279",
+      "sha256": "e086cec81f1fa0fb52613912642eb6dcf710e4dd5d78d6c52b069cfd33008cb9",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB21b",
+      "file": "game/assets/book/glovedove.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "3759133acf6c8c0d577a7c8a9779771505fc02410a49b40725156e7f6bf97721",
+      "sha256": "5f19793e497ba5b28ac4cd29ebfe13bc2c4959097c36aed06d02784746b27062",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-3.json"
+    },
+    {
+      "id": "IC-SB22b",
+      "file": "game/assets/book/titthrush.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "1665ae537d5ba4c955212faa162e05882b55c79a691369d3f35be922c050e0a1",
+      "sha256": "75222592df0d1d57cb713ee2ce01ef18d2369975c40f0bd6e028c84949aa4645",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB23b",
+      "file": "game/assets/book/plugsocketswift.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "330db73a186d7d4ac409356b8a1f6dc2d1666f90ed0ce72652371f49e7bfd6dc",
+      "sha256": "c32ebe0db70a0fa08da1818f67272ba0994303c1a0f74f9046695c2927776a84",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB24b",
+      "file": "game/assets/book/saltshakershrike.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "1399b66dc4f827dee89bc20d856491f317c6134763a41a9088d77079d83e407a",
+      "sha256": "c1fca7edf0fb2af581e59c11679e874a26f9016192f56d30779b4dc6f647d839",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB25b",
+      "file": "game/assets/book/ladlelark.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "aedd5a0607d0caef6a61456707e8fe9ed108060b775e64c26ae30c03534a12c7",
+      "sha256": "c1eb21fb7567467e5ab4329ae077ae4e52607995e23a1cc98d77f30f94433de8",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB26b",
+      "file": "game/assets/book/drippet.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "5f1ecc82fba7c09a52bc31abc888ac0c3fb899ff7432a0d456b604fea98e409f",
+      "sha256": "cdd02c1aae9796d7f2ce857192b283d8d721dfcbef625338c6c251e8e9ee222f",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB27b",
+      "file": "game/assets/book/sawbird.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "36bab38dc0c91d275cb0f68da69a38c2a75b9254007b0d6dda2916c739d0d2fd",
+      "sha256": "c3541a64a17c8ef8a6762b65d337fbd681e5ff78c3949aaf6340c1722c896189",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    },
+    {
+      "id": "IC-SB28b",
+      "file": "game/assets/book/radiobird.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "previous_sha256": "455825bd5b76d120a463c6a87cdae016ca9a07d511e1bf38d8006fa401417512",
+      "sha256": "ebbad68d70bdd2357bb6961e6fa5b7eef5549fd4adc1ace9234e0c6badaf0d04",
+      "prompt_log": "design/image-deliveries-sticker-book-ink-batch-4.json"
+    }
+  ],
+  "verification": "All 28 assets load at 2048 x 1024 after loading completes; landscape and portrait rendering verified without page errors. The isolated sticker-book interaction test passed once with longer controller timing but subsequent runs failed to record the first mouse-drag position. This interaction check is intermittent; no product interaction code was changed."
+}

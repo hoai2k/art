@@ -1,0 +1,138 @@
+{
+  "rig": "wp-sister-nhi",
+  "scale": 0.07922753156721961,
+  "ground": 158.22,
+  "top": -161.78,
+  "pieces": {
+    "skirt": {
+      "file": "rigs/wp-sister-nhi/skirt.webp",
+      "w": 198,
+      "h": 143,
+      "pivot": [
+        104.26,
+        2.14
+      ],
+      "z": 3
+    },
+    "legL": {
+      "file": "rigs/wp-sister-nhi/legL.webp",
+      "w": 51,
+      "h": 109,
+      "pivot": [
+        41.04,
+        11.09
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        86.83,
+        57.52
+      ]
+    },
+    "legR": {
+      "file": "rigs/wp-sister-nhi/legR.webp",
+      "w": 47,
+      "h": 109,
+      "pivot": [
+        35.97,
+        7.29
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        121.69,
+        59.1
+      ]
+    },
+    "torso": {
+      "file": "rigs/wp-sister-nhi/torso.webp",
+      "w": 103,
+      "h": 81,
+      "pivot": [
+        56.09,
+        72.26
+      ],
+      "z": 5,
+      "parent": "skirt",
+      "anchor": [
+        104.26,
+        2.14
+      ]
+    },
+    "head": {
+      "file": "rigs/wp-sister-nhi/head.webp",
+      "w": 99,
+      "h": 99,
+      "pivot": [
+        71.15,
+        89.53
+      ],
+      "z": 6,
+      "parent": "torso",
+      "anchor": [
+        56.25,
+        -0.48
+      ]
+    },
+    "armL": {
+      "file": "rigs/wp-sister-nhi/armL.webp",
+      "w": 95,
+      "h": 136,
+      "pivot": [
+        86.52,
+        7.92
+      ],
+      "z": 1,
+      "parent": "torso",
+      "anchor": [
+        11.88,
+        22.5
+      ]
+    },
+    "foreL": {
+      "file": "rigs/wp-sister-nhi/foreL.webp",
+      "w": 64,
+      "h": 96,
+      "pivot": [
+        22.34,
+        85.57
+      ],
+      "z": 2,
+      "parent": "armL",
+      "anchor": [
+        61.48,
+        10.46
+      ]
+    },
+    "armR": {
+      "file": "rigs/wp-sister-nhi/armR.webp",
+      "w": 96,
+      "h": 136,
+      "pivot": [
+        7.76,
+        7.92
+      ],
+      "z": 7,
+      "parent": "torso",
+      "anchor": [
+        97.13,
+        22.5
+      ]
+    },
+    "foreR": {
+      "file": "rigs/wp-sister-nhi/foreR.webp",
+      "w": 50,
+      "h": 94,
+      "pivot": [
+        19.81,
+        79.7
+      ],
+      "z": 8,
+      "parent": "armR",
+      "anchor": [
+        27.49,
+        10.85
+      ]
+    }
+  }
+}

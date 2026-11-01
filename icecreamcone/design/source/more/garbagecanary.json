@@ -1,0 +1,79 @@
+[
+  {
+    "id": "IC-M08a",
+    "name": "Bin Day: the windy street",
+    "key": "scene.garbagecanary",
+    "file": "assets/scenes/garbagecanary.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Bin Day (the Garbage Canary): the whole background. The Canary, everything blowing down the street and the litter are drawn on top.",
+    "standin": "A row of tall houses, a pavement, a kerb, the road and a lamp-post painted in code.",
+    "prompt": "{STYLE} {SCENE}A quiet little town street on a blustery grey-blue morning, seen straight on from across the road. A row of narrow old terraced houses in faded pink, sage, cream and mauve stands along the back, their doors and windows plain, their roofs reaching about 10% to 20% of the way down. In front of them runs a wide pale paving-stone pavement, its back edge about 69% of the way down and its front edge, a long grey kerb, about 90% down; below the kerb a strip of grey cobbled road fills the bottom. One thin dark-green iron lamp-post stands on the pavement at about 77% across. A few wind-tossed leaves at the very top corners only. Keep the pavement clear from 20% to 75% across, and keep the band from 45% to 75% down across the whole width plain and uncluttered (no shop signs, no washing lines, no trees in front), because the game stands the dustbin bird at the left of the pavement and blows things down the street through that band from right to left.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08b",
+    "name": "Bin Day things on the wind",
+    "key": "sprites.garbageItems",
+    "file": "assets/sprites/garbage-items.png",
+    "size": "2560 x 1024, transparent",
+    "used": "Bin Day: everything the wind blows towards the bin. The top row is rubbish to let in; the bottom row (hat, letter, cat, sparrow) must be kept out, and the old boot is rubbish again. They are drawn at about 85 px and must read at a glance; the game adds a gold glow behind the four that aren't rubbish.",
+    "standin": "A paper ball, a banana peel, a tin, an apple core, fish bones, a bowler hat, a letter, a ginger cat, a sparrow and a boot drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 5 x 2 grid of ten things, each about 300 px across, all moving to the left. Top row, rubbish, left to right: a crumpled ball of old newspaper; a brown-spotted empty banana peel; a dented empty tin can with a torn red label; a nibbled apple core; the bones of a fish with its head and tail. Bottom row, left to right: a gentleman's black bowler hat with a mauve band, tumbling; a sealed cream envelope with a pink stamp and a red wax seal, clearly a letter someone wants; a ginger tabby cat in mid-leap facing left, front paws reaching; a small brown sparrow flying to the left, wings up; and, last, a battered old brown boot with a hole in the toe and its laces trailing (rubbish).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08c",
+    "name": "Garbage Canary: bin and lid apart",
+    "key": "sprites.garbagecanaryLid",
+    "file": "assets/sprites/garbagecanary-lid.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Bin Day: the Canary lifts its lid to swallow rubbish. The game draws the two pieces one over the other and swings the lid up on its hinge at the back rim, so the canary's head rises with it.",
+    "standin": "The Canary's stand-in cut at the rim, the top half (lid and head) swung up.",
+    "prompt": "{STYLE} {VARIANT} The Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: a rusty grey galvanised dustbin with fluted sides, a dent at the front and a ring handle on its side; a yellow canary wing folded over its side and a tail of crumpled paper scraps at the back (right); its lid, with a handle on top, tipped up at the front; the yellow canary's head with its big round eye and long pale beak pointing left peering out from under the lid's front edge; thin orange legs. Facing left, cut into two pieces shown side by side on one sheet, each piece drawn exactly where it sits on the whole bird. Each half is framed exactly like the portrait (same scale, feet 97% of the way down, the bin at the same place), so that laying the halves over each other rebuilds the portrait. Left half: the dustbin with its wing, paper tail and legs, WITHOUT its lid and without the canary's head, its round open top showing a dark inside. Right half: ONLY the lid, tipped up at the front exactly as in the portrait, with the canary's head (large and clearly seen, as painted) peering out from under its front edge; nothing else. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08d",
+    "name": "Garbage Canary squawking and singing",
+    "key": "sprites.garbagecanaryCall",
+    "file": "assets/sprites/garbagecanary-call.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Bin Day: the lid piece (the right half of IC-M08c) in place of the plain one: squawking as the Canary spits out something that wasn't rubbish, singing when a run of five earns a bonus. Hinged up with the lid like IC-M08c.",
+    "standin": "The lid piece shaking (squawk) or unchanged (song).",
+    "prompt": "{STYLE} {VARIANT} The Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: a rusty grey galvanised dustbin with fluted sides, a dent at the front and a ring handle on its side; a yellow canary wing folded over its side and a tail of crumpled paper scraps at the back (right); its lid, with a handle on top, tipped up at the front; the yellow canary's head with its big round eye and long pale beak pointing left peering out from under the lid's front edge; thin orange legs. ONLY its lid with the canary's head under it, exactly as the right half of its lid sheet (IC-M08c): the lid tipped up at the front as in the portrait and in exactly the same place, nothing else (no bin). Each half is framed exactly like the portrait (same scale, feet 97% of the way down, the bin at the same place), so that laying the halves over each other rebuilds the portrait. Two versions side by side, each in its own half. Left: squawking crossly, beak wide open, head feathers ruffled up, eye squeezed, a few spat crumbs flying from the beak. Right: singing happily, head tipped up, beak open in song, two or three small ink musical notes rising. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08e",
+    "name": "Garbage Canary: the canary out of its bin",
+    "key": "sprites.garbagecanaryNeck",
+    "file": "assets/sprites/garbagecanary-neck.png",
+    "size": "3072 x 2048, transparent",
+    "used": "Bin Day: the canary that lives in the bin. When the lid opens it rises out of the bin's mouth, stretches its neck to reach a passing thing, grips it in its beak, pulls it down into the bin and pops back up; it squawks when it has caught something that isn't rubbish and sings after a run. The game anchors each cell's neck base at the bin's mouth and turns the whole piece to aim the reach, and draws the caught thing between the open tips of the beak in the gripping pose.",
+    "standin": "A yellow head on a stretching neck drawn in code.",
+    "prompt": "{STYLE} {VARIANT} The canary from the Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: the same yellow canary with its big round staring eye with a dot pupil, its long pale-ochre pointed beak, its fluffy yellow head feathers, in the same line and colours. A 3 x 2 grid of six poses of ONLY the canary's head and neck (no bin, no lid, no body, no legs), each in its own 1024 x 1024 cell, facing left, at exactly the portrait's scale (the head the same size as painted there, about 140 px tall in a cell). Registration, the same in every cell: the bottom of the neck is a soft rounded stump of feathers whose middle is exactly on the cell's vertical centre line, 88% of the way down; the neck rises from there straight up (the game tilts the whole piece to aim it), and nothing is drawn below 92%. Top row, left to right: 1) ready: a short neck, the head just above the stump, looking left, beak shut; 2) reaching: the neck stretched long and thin straight up, the head at the top leaning left, beak wide open ready to snatch; 3) gripping: the same long neck, the beak clamped nearly shut with a clear empty gap between its tips (the game draws the caught thing there). Bottom row: 4) pulling in: the neck bent down in an S, the head ducked low beside the stump, beak shut and tugging, as if dragging something down; 5) squawking: a short neck, head thrown up, beak wide open, feathers ruffled, a few spat crumbs; 6) singing: a short neck, head tipped up happily, beak open in song, two or three small ink musical notes. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08f",
+    "name": "Garbage Canary: the lid alone",
+    "key": "sprites.garbagecanaryLidOnly",
+    "file": "assets/sprites/garbagecanary-lid-only.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Bin Day: the lid on its own, swung up on its hinge while the canary is out of the bin (the canary's head is drawn separately, IC-M08e).",
+    "standin": "A grey lid with a handle drawn in code.",
+    "prompt": "{STYLE} {VARIANT} The Garbage Canary's dustbin lid (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), ONLY the lid, exactly as in the right half of its lid sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/garbagecanary-lid.png): the same rusty grey galvanised lid with its handle on top, tipped up at the front exactly as there, at the same scale and in exactly the same place in the frame (framed like the portrait, so it lays over the bin's left half exactly), but with NO canary under it: under the lid's front edge only the lid's own dark rusty underside shows. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M08g",
+    "name": "Garbage Canary walking",
+    "key": "sprites.garbagecanaryWalk",
+    "file": "assets/sprites/garbagecanary-walk.png",
+    "size": "4096 x 1024, transparent",
+    "used": "Bin Day: the bin walks left and right along the street and back and forth across the pavement and road. Each frame replaces the bin piece (the left half of IC-M08c) while it walks; the lid is drawn over it as before.",
+    "standin": "The standing bin piece bobbing as it walks.",
+    "prompt": "{STYLE} {VARIANT} The Garbage Canary's bin piece, exactly as the left half of its lid sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/garbagecanary-lid.png): the rusty fluted dented dustbin with its ring handle, the canary's yellow wing and paper-scrap tail, its thin orange legs, WITHOUT its lid and without the canary's head, its round open top showing a dark inside, facing left. A 4 x 1 row of four frames of a walk cycle, each in its own 1024 x 1024 cell framed exactly like the portrait (same scale, the bin in exactly the same place in every frame, the feet's line 97% of the way down): 1) left leg forward, right leg back; 2) legs passing, the bin raised a little; 3) right leg forward, left leg back; 4) legs passing, the bin raised a little. Only the legs move (and the bin rises at most 2% in frames 2 and 4); the bin, wing and tail are otherwise identical. {ALPHA}",
+    "status": "delivered"
+  }
+]

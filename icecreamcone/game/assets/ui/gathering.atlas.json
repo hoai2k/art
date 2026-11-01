@@ -1,0 +1,835 @@
+{
+  "schema": "bird-region-atlas",
+  "version": 1,
+  "image": "gathering.webp",
+  "image_size": [
+    1920,
+    1080
+  ],
+  "image_sha256": "441e617b3062a9a1e6aeb42ae73efce1fe3e3293e8d59d4c8604dea437e9501e",
+  "coordinate_system": "Top-left origin; x right, y down. bbox = [x, y, width, height].",
+  "annotation_method": "Approximate visible silhouette bounds annotated by visual inspection; includes feathers, beaks and legs, not pixel masks. Paired birds share one species region.",
+  "layout": "scene",
+  "regions": [
+    {
+      "id": "coot",
+      "name": "The Ice-Cream Cone Coot",
+      "bbox": [
+        52,
+        32,
+        194,
+        220
+      ],
+      "center": [
+        149,
+        142
+      ],
+      "bbox_normalized": [
+        0.027083,
+        0.02963,
+        0.101042,
+        0.203704
+      ],
+      "center_normalized": [
+        0.077604,
+        0.131481
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "cupadee",
+      "name": "The Cupadee",
+      "bbox": [
+        292,
+        50,
+        202,
+        175
+      ],
+      "center": [
+        393,
+        138
+      ],
+      "bbox_normalized": [
+        0.152083,
+        0.046296,
+        0.105208,
+        0.162037
+      ],
+      "center_normalized": [
+        0.204687,
+        0.127315
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "shuttercluck",
+      "name": "The Shuttercluck",
+      "bbox": [
+        518,
+        86,
+        213,
+        178
+      ],
+      "center": [
+        624,
+        175
+      ],
+      "bbox_normalized": [
+        0.269792,
+        0.07963,
+        0.110937,
+        0.164815
+      ],
+      "center_normalized": [
+        0.32526,
+        0.162037
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "gullfinch",
+      "name": "The Gramophone Gullfinch",
+      "bbox": [
+        820,
+        73,
+        173,
+        192
+      ],
+      "center": [
+        906,
+        169
+      ],
+      "bbox_normalized": [
+        0.427083,
+        0.067593,
+        0.090104,
+        0.177778
+      ],
+      "center_normalized": [
+        0.472135,
+        0.156481
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "plume",
+      "name": "The Flowerpot Plume",
+      "bbox": [
+        1050,
+        81,
+        127,
+        206
+      ],
+      "center": [
+        1114,
+        184
+      ],
+      "bbox_normalized": [
+        0.546875,
+        0.075,
+        0.066146,
+        0.190741
+      ],
+      "center_normalized": [
+        0.579948,
+        0.17037
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "bobolinks",
+      "name": "The Highbutton Bobolinks",
+      "bbox": [
+        1435,
+        104,
+        221,
+        228
+      ],
+      "center": [
+        1546,
+        218
+      ],
+      "bbox_normalized": [
+        0.747396,
+        0.096296,
+        0.115104,
+        0.211111
+      ],
+      "center_normalized": [
+        0.804948,
+        0.201852
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds.",
+      "members": [
+        {
+          "bbox": [
+            1440,
+            137,
+            133,
+            188
+          ],
+          "center": [
+            1506,
+            231
+          ],
+          "bbox_normalized": [
+            0.75,
+            0.126852,
+            0.069271,
+            0.174074
+          ],
+          "center_normalized": [
+            0.784635,
+            0.213889
+          ]
+        },
+        {
+          "bbox": [
+            1528,
+            107,
+            128,
+            205
+          ],
+          "center": [
+            1592,
+            210
+          ],
+          "bbox_normalized": [
+            0.795833,
+            0.099074,
+            0.066667,
+            0.189815
+          ],
+          "center_normalized": [
+            0.829167,
+            0.193981
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peeper",
+      "name": "The Newspaper Peeper",
+      "bbox": [
+        1701,
+        59,
+        172,
+        236
+      ],
+      "center": [
+        1787,
+        177
+      ],
+      "bbox_normalized": [
+        0.885938,
+        0.05463,
+        0.089583,
+        0.218519
+      ],
+      "center_normalized": [
+        0.930729,
+        0.163889
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "piffle",
+      "name": "The Pincushion Piffle",
+      "bbox": [
+        52,
+        283,
+        160,
+        168
+      ],
+      "center": [
+        132,
+        367
+      ],
+      "bbox_normalized": [
+        0.027083,
+        0.262037,
+        0.083333,
+        0.155556
+      ],
+      "center_normalized": [
+        0.06875,
+        0.339815
+      ],
+      "occluded": true,
+      "notes": "Feet/lower body partly hidden in the tree hollow."
+    },
+    {
+      "id": "dodo",
+      "name": "The Dollarbill Dodo",
+      "bbox": [
+        292,
+        316,
+        195,
+        152
+      ],
+      "center": [
+        390,
+        392
+      ],
+      "bbox_normalized": [
+        0.152083,
+        0.292593,
+        0.101562,
+        0.140741
+      ],
+      "center_normalized": [
+        0.202865,
+        0.362963
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "crow",
+      "name": "The Safecrossing Crow",
+      "bbox": [
+        498,
+        251,
+        143,
+        221
+      ],
+      "center": [
+        570,
+        362
+      ],
+      "bbox_normalized": [
+        0.259375,
+        0.232407,
+        0.074479,
+        0.20463
+      ],
+      "center_normalized": [
+        0.296615,
+        0.334722
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "milkmidge",
+      "name": "The Milkbottle Midge",
+      "bbox": [
+        790,
+        311,
+        145,
+        197
+      ],
+      "center": [
+        862,
+        410
+      ],
+      "bbox_normalized": [
+        0.411458,
+        0.287963,
+        0.075521,
+        0.182407
+      ],
+      "center_normalized": [
+        0.449219,
+        0.379167
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "waterglassgoose",
+      "name": "The Waterglass Goose",
+      "bbox": [
+        1028,
+        368,
+        185,
+        194
+      ],
+      "center": [
+        1120,
+        465
+      ],
+      "bbox_normalized": [
+        0.535417,
+        0.340741,
+        0.096354,
+        0.17963
+      ],
+      "center_normalized": [
+        0.583594,
+        0.430556
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "niffy",
+      "name": "The Jackknife Niffy",
+      "bbox": [
+        1228,
+        387,
+        209,
+        182
+      ],
+      "center": [
+        1332,
+        478
+      ],
+      "bbox_normalized": [
+        0.639583,
+        0.358333,
+        0.108854,
+        0.168519
+      ],
+      "center_normalized": [
+        0.69401,
+        0.442593
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "broomwhisk",
+      "name": "The Broomwhisk",
+      "bbox": [
+        1750,
+        309,
+        153,
+        216
+      ],
+      "center": [
+        1826,
+        417
+      ],
+      "bbox_normalized": [
+        0.911458,
+        0.286111,
+        0.079687,
+        0.2
+      ],
+      "center_normalized": [
+        0.951302,
+        0.386111
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "buttonbeaks",
+      "name": "The Buttonbeaks",
+      "bbox": [
+        266,
+        488,
+        188,
+        188
+      ],
+      "center": [
+        360,
+        582
+      ],
+      "bbox_normalized": [
+        0.138542,
+        0.451852,
+        0.097917,
+        0.174074
+      ],
+      "center_normalized": [
+        0.1875,
+        0.538889
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds.",
+      "members": [
+        {
+          "bbox": [
+            266,
+            495,
+            92,
+            171
+          ],
+          "center": [
+            312,
+            580
+          ],
+          "bbox_normalized": [
+            0.138542,
+            0.458333,
+            0.047917,
+            0.158333
+          ],
+          "center_normalized": [
+            0.1625,
+            0.5375
+          ]
+        },
+        {
+          "bbox": [
+            344,
+            533,
+            110,
+            143
+          ],
+          "center": [
+            399,
+            604
+          ],
+          "bbox_normalized": [
+            0.179167,
+            0.493519,
+            0.057292,
+            0.132407
+          ],
+          "center_normalized": [
+            0.207813,
+            0.559722
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keycrane",
+      "name": "The Key Crane",
+      "bbox": [
+        637,
+        427,
+        170,
+        172
+      ],
+      "center": [
+        722,
+        513
+      ],
+      "bbox_normalized": [
+        0.331771,
+        0.39537,
+        0.088542,
+        0.159259
+      ],
+      "center_normalized": [
+        0.376042,
+        0.475
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "snippit",
+      "name": "The Cutitup Snippit",
+      "bbox": [
+        534,
+        612,
+        241,
+        186
+      ],
+      "center": [
+        654,
+        705
+      ],
+      "bbox_normalized": [
+        0.278125,
+        0.566667,
+        0.125521,
+        0.172222
+      ],
+      "center_normalized": [
+        0.340885,
+        0.652778
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "garbagecanary",
+      "name": "The Garbage Canary",
+      "bbox": [
+        1245,
+        170,
+        130,
+        157
+      ],
+      "center": [
+        1310,
+        248
+      ],
+      "bbox_normalized": [
+        0.648438,
+        0.157407,
+        0.067708,
+        0.14537
+      ],
+      "center_normalized": [
+        0.682292,
+        0.230093
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "steampressersparrow",
+      "name": "The Steampresser Sparrow",
+      "bbox": [
+        858,
+        546,
+        209,
+        207
+      ],
+      "center": [
+        962,
+        650
+      ],
+      "bbox_normalized": [
+        0.446875,
+        0.505556,
+        0.108854,
+        0.191667
+      ],
+      "center_normalized": [
+        0.501302,
+        0.601389
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "wetweatherwren",
+      "name": "The Wetweather Wren",
+      "bbox": [
+        1296,
+        599,
+        228,
+        225
+      ],
+      "center": [
+        1410,
+        712
+      ],
+      "bbox_normalized": [
+        0.675,
+        0.55463,
+        0.11875,
+        0.208333
+      ],
+      "center_normalized": [
+        0.734375,
+        0.658796
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "glovedove",
+      "name": "The Glove Dove",
+      "bbox": [
+        1525,
+        513,
+        242,
+        225
+      ],
+      "center": [
+        1646,
+        626
+      ],
+      "bbox_normalized": [
+        0.794271,
+        0.475,
+        0.126042,
+        0.208333
+      ],
+      "center_normalized": [
+        0.857292,
+        0.579167
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "titthrush",
+      "name": "The Ten O’clock Tit Trush",
+      "bbox": [
+        46,
+        708,
+        227,
+        229
+      ],
+      "center": [
+        160,
+        822
+      ],
+      "bbox_normalized": [
+        0.023958,
+        0.655556,
+        0.118229,
+        0.212037
+      ],
+      "center_normalized": [
+        0.083073,
+        0.761574
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "plugsocketswift",
+      "name": "The Plugsocket Swift",
+      "bbox": [
+        274,
+        729,
+        227,
+        248
+      ],
+      "center": [
+        388,
+        853
+      ],
+      "bbox_normalized": [
+        0.142708,
+        0.675,
+        0.118229,
+        0.22963
+      ],
+      "center_normalized": [
+        0.201823,
+        0.789815
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "saltshakershrike",
+      "name": "The Saltshaker Shrike",
+      "bbox": [
+        531,
+        811,
+        218,
+        224
+      ],
+      "center": [
+        640,
+        923
+      ],
+      "bbox_normalized": [
+        0.276562,
+        0.750926,
+        0.113542,
+        0.207407
+      ],
+      "center_normalized": [
+        0.333333,
+        0.85463
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "ladlelark",
+      "name": "The Soupladle Lark",
+      "bbox": [
+        762,
+        771,
+        240,
+        247
+      ],
+      "center": [
+        882,
+        894
+      ],
+      "bbox_normalized": [
+        0.396875,
+        0.713889,
+        0.125,
+        0.228704
+      ],
+      "center_normalized": [
+        0.459375,
+        0.828241
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "drippet",
+      "name": "The Drippet",
+      "bbox": [
+        1096,
+        755,
+        210,
+        201
+      ],
+      "center": [
+        1201,
+        856
+      ],
+      "bbox_normalized": [
+        0.570833,
+        0.699074,
+        0.109375,
+        0.186111
+      ],
+      "center_normalized": [
+        0.625521,
+        0.79213
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "sawbird",
+      "name": "The Saw Bird",
+      "bbox": [
+        1358,
+        836,
+        300,
+        187
+      ],
+      "center": [
+        1508,
+        930
+      ],
+      "bbox_normalized": [
+        0.707292,
+        0.774074,
+        0.15625,
+        0.173148
+      ],
+      "center_normalized": [
+        0.785417,
+        0.860648
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    },
+    {
+      "id": "radiobird",
+      "name": "The Radio Bird",
+      "bbox": [
+        1658,
+        764,
+        239,
+        218
+      ],
+      "center": [
+        1778,
+        873
+      ],
+      "bbox_normalized": [
+        0.863542,
+        0.707407,
+        0.124479,
+        0.201852
+      ],
+      "center_normalized": [
+        0.925781,
+        0.808333
+      ],
+      "occluded": false,
+      "notes": "Visible silhouette; nearby scenery may lie inside the rectangular bounds."
+    }
+  ]
+}

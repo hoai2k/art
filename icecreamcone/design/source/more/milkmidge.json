@@ -1,0 +1,79 @@
+[
+  {
+    "id": "IC-M01a",
+    "name": "Milk Round: the street at dawn",
+    "key": "scene.milkmidge",
+    "file": "assets/scenes/milkmidge.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Milk Round (the Milkbottle Midge): the background behind the scrolling houses, the milk float and the flying bottles.",
+    "standin": "A dawn sky, a line of distant rooftops, a green haze of back gardens, the pavement and the road, painted in code.",
+    "prompt": "{STYLE} {SCENE}A quiet suburban street at dawn, seen straight from the side, as one long even strip that could carry on to the left and right. Top 35%: a pale early-morning sky, lemon and dusty pink near the horizon, with a low sun just risen on the right (about 78% across, 25% down). From about 20% to 40% down: a soft, faded line of distant rooftops and chimney pots, far away and pale. From 40% to 74% down: a plain, quiet haze of back gardens and hedges in soft sage green, with no houses, gates or paths in it, because the game draws the near houses, their front gardens and their fences over this band. From 74% to 81% down: a plain pale grey pavement, empty. At 81% a stone kerb. From 81% to the bottom: an empty grey road with faint pale centre dashes at about 89% down. No milk float, no houses close up, no people, no animals, no cars.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01b",
+    "name": "Milk Round: house fronts",
+    "key": "sprites.milkHouses",
+    "file": "assets/sprites/milk-houses.png",
+    "size": "2048 x 1536, transparent",
+    "used": "Milk Round: the houses the float passes, set back at different depths behind their gardens; the game picks one per house and scales it smaller the further back it stands.",
+    "standin": "Plain coloured boxes with a roof, two windows and a door, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six small, different terraced and cottage house fronts seen straight on, each about 420 px wide and 520 px tall including its roof and chimney, each in a different soft colour (dusty pink, lemon, sage, mauve, ochre, cream brick), each with two windows and one front door in the middle of the bottom edge, and a plain flat stone doorstep across the very bottom in the centre, in front of the door. The house stops at the doorstep: no garden, path, fence, ground, people or bottles. Nothing written on the doors.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01c",
+    "name": "Milk Round: bottles, dogs and cards",
+    "key": "sprites.milkProps",
+    "file": "assets/sprites/milk-props.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Milk Round: the pint bottle in flight and on the doorsteps, a smashed bottle, the sleeping and barking dogs, the card that says no milk today, and the doormat that marks a house waiting for its pint.",
+    "standin": "A bottle, a milk splash, a curled-up dog, a standing dog, a white card reading NO MILK and a yellow mat, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six objects, each about 380 px at its longest. Top row, left to right: one full glass pint milk bottle standing upright, white milk inside, a silver foil cap; a small splash of spilt milk on the ground with a few broken glass shards and a crumpled silver cap, seen from the side and slightly above, flat and wide; a scruffy brown terrier curled up asleep with its eyes shut, facing left. Bottom row: the same terrier standing on all four legs, wide awake, barking with its mouth open and its ears up, facing left; a small white card hanging from a loop of string, with a simple picture on it of a milk bottle crossed out with a red line (a picture only, no letters or words); a small plain doormat, seen from the side and slightly above, flat and wide, in mustard yellow.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01d",
+    "name": "Milk Round: the milk float",
+    "key": "sprites.milkFloat",
+    "file": "assets/sprites/milk-float.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Milk Round: the electric milk float the Midge rides on, shown at the bottom left of the screen (the game turns it to drive right).",
+    "standin": "A flatbed with three crates of bottles and a little green cab, drawn in code.",
+    "prompt": "{STYLE} A small old-fashioned electric milk float seen exactly from the side, facing left: a small rounded cab with a windscreen at the left end, a long low open flatbed behind it carrying three wooden crates full of white milk bottles with silver caps, four small black wheels, painted sage green and cream. The crates at the back (right) end make a flat place to stand on. Filling about 90% of the frame width, centred, wheels near the bottom. No driver, no lettering, no number plate. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01e",
+    "name": "Milk Round: the Midge throwing",
+    "key": "sprites.midgeThrow",
+    "file": "assets/sprites/midge-throw.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Milk Round: the Midge winds up while the action is held, then flings the bottle when it is let go (the game turns it to face right).",
+    "standin": "The portrait, leaning back and squashing a little as it winds up.",
+    "prompt": "{STYLE} {VARIANT} The Milkbottle Midge (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/milkmidge.png). The Midge is a glass pint milk bottle, full of milk to just below its eye, with a red-and-white checked cloth cap tied over its neck, one round staring eye and a long yellow beak pointing left from the glass, ochre-yellow feathered wings on its sides and thin yellow legs. Two poses side by side on one 2 x 1 sheet, both facing left: left, winding up to throw, leaning back, one ochre wing raised behind its head gripping a small full pint milk bottle with a silver foil cap; right, the follow-through, leaning forward with that wing swept forward and empty, beak open a little, as if it has just lobbed the bottle up and away. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01f",
+    "name": "Milk Round: the Midge pleased and startled",
+    "key": "sprites.midgeMoods",
+    "file": "assets/sprites/midge-moods.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Milk Round: the Midge for a moment after each bottle lands: pleased when a pint reaches its step, startled when a bottle smashes, a dog wakes or a bottle comes back (the game turns it to face right).",
+    "standin": "The portrait, hopping when pleased and shivering when startled.",
+    "prompt": "{STYLE} {VARIANT} The Milkbottle Midge (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/milkmidge.png). The Midge is a glass pint milk bottle, full of milk to just below its eye, with a red-and-white checked cloth cap tied over its neck, one round staring eye and a long yellow beak pointing left from the glass, ochre-yellow feathered wings on its sides and thin yellow legs. Two poses side by side on one 2 x 1 sheet, both facing left, wings empty, feet in the same place: left, pleased, standing tall on tiptoe with both ochre wings raised and its beak lifted, the milk inside it brimming happily; right, startled, flinching back with its wings up by its checked cloth cap, eye wide, knees bent, the milk inside sloshing up the glass. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M01g",
+    "name": "Milk Round: garden path and fence",
+    "key": "sprites.milkGarden",
+    "file": "assets/sprites/milk-garden.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Milk Round: in front of each house, the path from the pavement up to its doorstep (the game cuts it off at the step, so near houses show a short path and far ones a long one), and the low garden fence along the back of the pavement, repeated along the street with a gap where each path meets it.",
+    "standin": "A pale wash of a path with a few stepping stones, and an ink line of fence posts, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 1 grid of two pieces, in the delivered street painting's soft dawn light. Left: a garden path of pale flagstones seen from the front and above, running straight away from the viewer: about 300 px wide at the bottom, narrowing to about 120 px at the top, about 900 px tall, with grass edges and a few tufts and daisies along its sides, ending at the top without a doorstep or house. Right: a straight length of low, weathered wooden picket fence seen exactly side-on, about 900 px long and 200 px tall, its posts evenly spaced and its two rails continuous, so that copies placed end to end join without a visible seam (the same post spacing at both ends), with a little grass at its foot. No gate, no people, no animals.",
+    "status": "delivered"
+  }
+]

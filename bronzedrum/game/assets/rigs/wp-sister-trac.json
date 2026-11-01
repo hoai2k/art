@@ -1,0 +1,198 @@
+{
+  "rig": "wp-sister-trac",
+  "scale": 0.08524240809802877,
+  "ground": 173.38,
+  "top": -146.62,
+  "pieces": {
+    "skirt": {
+      "file": "rigs/wp-sister-trac/skirt.webp",
+      "w": 181,
+      "h": 166,
+      "pivot": [
+        88.31,
+        2.56
+      ],
+      "z": 3
+    },
+    "legL": {
+      "file": "rigs/wp-sister-trac/legL.webp",
+      "w": 56,
+      "h": 104,
+      "pivot": [
+        8.18,
+        6.48
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        71.26,
+        78.76
+      ]
+    },
+    "legR": {
+      "file": "rigs/wp-sister-trac/legR.webp",
+      "w": 77,
+      "h": 101,
+      "pivot": [
+        7.5,
+        6.65
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        107.06,
+        81.32
+      ]
+    },
+    "torso": {
+      "file": "rigs/wp-sister-trac/torso.webp",
+      "w": 94,
+      "h": 76,
+      "pivot": [
+        43.99,
+        61.89
+      ],
+      "z": 5,
+      "parent": "skirt",
+      "anchor": [
+        88.31,
+        2.56
+      ]
+    },
+    "head": {
+      "file": "rigs/wp-sister-trac/head.webp",
+      "w": 73,
+      "h": 98,
+      "pivot": [
+        38.53,
+        93.08
+      ],
+      "z": 6,
+      "parent": "torso",
+      "anchor": [
+        43.64,
+        7.84
+      ]
+    },
+    "cape": {
+      "file": "rigs/wp-sister-trac/cape.webp",
+      "w": 104,
+      "h": 162,
+      "pivot": [
+        84.73,
+        8.35
+      ],
+      "z": 0,
+      "parent": "torso",
+      "anchor": [
+        3.92,
+        13.81
+      ]
+    },
+    "sashA": {
+      "file": "rigs/wp-sister-trac/sashA.webp",
+      "w": 99,
+      "h": 75,
+      "pivot": [
+        7.67,
+        3.92
+      ],
+      "z": 4,
+      "parent": "torso",
+      "anchor": [
+        65.3,
+        61.89
+      ]
+    },
+    "sashB": {
+      "file": "rigs/wp-sister-trac/sashB.webp",
+      "w": 106,
+      "h": 108,
+      "pivot": [
+        7.33,
+        3.75
+      ],
+      "z": 4,
+      "parent": "torso",
+      "anchor": [
+        61.89,
+        61.89
+      ]
+    },
+    "capL": {
+      "file": "rigs/wp-sister-trac/capL.webp",
+      "w": 38,
+      "h": 53,
+      "pivot": [
+        19.35,
+        6.56
+      ],
+      "z": 1,
+      "parent": "torso",
+      "anchor": [
+        3.92,
+        13.81
+      ]
+    },
+    "foreL": {
+      "file": "rigs/wp-sister-trac/foreL.webp",
+      "w": 55,
+      "h": 88,
+      "pivot": [
+        9.72,
+        5.97
+      ],
+      "z": 1,
+      "parent": "capL",
+      "anchor": [
+        19.01,
+        47.14
+      ]
+    },
+    "capR": {
+      "file": "rigs/wp-sister-trac/capR.webp",
+      "w": 38,
+      "h": 52,
+      "pivot": [
+        13.47,
+        4.43
+      ],
+      "z": 7,
+      "parent": "torso",
+      "anchor": [
+        84.39,
+        13.81
+      ]
+    },
+    "armR": {
+      "file": "rigs/wp-sister-trac/armR.webp",
+      "w": 35,
+      "h": 81,
+      "pivot": [
+        10.06,
+        4.94
+      ],
+      "z": 8,
+      "parent": "capR",
+      "anchor": [
+        16.88,
+        44.16
+      ]
+    },
+    "stick": {
+      "file": "rigs/wp-sister-trac/stick.webp",
+      "w": 69,
+      "h": 132,
+      "pivot": [
+        25.91,
+        125.14
+      ],
+      "z": 9,
+      "parent": "armR",
+      "anchor": [
+        24.21,
+        73.65
+      ]
+    }
+  }
+}

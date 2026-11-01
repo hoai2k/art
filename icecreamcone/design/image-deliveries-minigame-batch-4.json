@@ -1,0 +1,546 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M07b",
+      "file": "game/assets/sprites/keycrane-prizes.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": null,
+      "previous_sha256": "5ef60401b56f9416b77f4704d1370933049b624d23420ad915ddf6b391728e2b",
+      "sha256": "5ef60401b56f9416b77f4704d1370933049b624d23420ad915ddf6b391728e2b",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of eight old-fashioned lost-property trinkets, each standing upright on its base in side view, each about 280 px tall, all to the same scale. Top row, left to right: a small brass carriage lantern with a lit candle inside; a domed wire birdcage with a wooden base, empty; a shining golden pocket watch with a white face standing on its edge, clearly the most precious thing on the sheet; a mauve lady's handbag with a gold clasp. Bottom row: a woven wicker shopping basket; a brass hand bell; a slate-blue enamel kettle with a spout to the left; a strawberry-pink twin-bell alarm clock. Each has a plain flat top centre with NO handle, loop, ring or chain on top (the game adds a ring there).\nProduction game asset, dimensions 2048 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M07c",
+      "file": "game/assets/sprites/keycrane-hang.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": "b64621bb03ac5aa0cb3bc25727b96fd473df22aa999422b65668557f5e021f1f",
+      "sha256": "b64621bb03ac5aa0cb3bc25727b96fd473df22aa999422b65668557f5e021f1f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Key Crane (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/keycrane.png), exactly as painted there: its head is the key's round bow, a ring with the big staring eye set inside it and a long pointed brass beak pointing left, a small dark-brown top hat perched on the ring; the brass shaft with its ringed collar runs back to the right and ends in the toothed bit and a round knob; pink-and-olive wing feathers hang under the shaft; long thin knobbly olive legs with spiky dark claws. Two poses side by side on one sheet, each in its own half, hanging in the air as if from a string tied round the middle of its shaft (do not draw the string): the shaft level, the bow head on the left with the eye looking down, the legs hanging straight down below it. Each half is framed at exactly the portrait's scale (the bird's full height about 380/420 of the half's height). Placement, the same in every pose: the middle of the key's shaft (where the game ties the string) exactly on the half's vertical centre line and 35% of the way down; the claw tips 93% of the way down. Left: its spiky claws spread wide open, reaching. Right: its claws curled tightly shut, as if gripping a ring. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M07d",
+      "file": "game/assets/sprites/keycrane-startle.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": "e39b1c3e5082bd4f87922e3352e1fad33e73976bc3b95806695c606496c88e39",
+      "sha256": "e39b1c3e5082bd4f87922e3352e1fad33e73976bc3b95806695c606496c88e39",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Key Crane (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/keycrane.png), exactly as painted there: its head is the key's round bow, a ring with the big staring eye set inside it and a long pointed brass beak pointing left, a small dark-brown top hat perched on the ring; the brass shaft with its ringed collar runs back to the right and ends in the toothed bit and a round knob; pink-and-olive wing feathers hang under the shaft; long thin knobbly olive legs with spiky dark claws. One pose, hanging in the air exactly as in its hanging pose (IC-M07c), as if from a string tied round the middle of its shaft (do not draw the string), the shaft level, the bow head on the left. It is framed at exactly the portrait's scale (the bird's full height about 380/420 of the picture's height). Placement, the same as IC-M07c: the middle of the key's shaft (where the game ties the string) exactly on the picture's vertical centre line and 35% of the way down; the claw tips 93% of the way down. Startled: its eye wide and staring with a tiny pupil, its beak open, the top hat jolted up off the ring, its long legs kicked out apart in a jerky splay with the claws spread empty. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 1024 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M08b",
+      "file": "game/assets/sprites/garbage-items.png",
+      "dimensions": [
+        2560,
+        1024
+      ],
+      "source_dimensions": [
+        2560,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        5,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1983,
+          793
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              43,
+              105,
+              330,
+              350
+            ],
+            "output_bounds": [
+              112,
+              214,
+              399,
+              459
+            ],
+            "scale": 1.0014669926650368
+          },
+          {
+            "source_bounds": [
+              385,
+              97,
+              790,
+              346
+            ],
+            "output_bounds": [
+              565,
+              206,
+              971,
+              455
+            ],
+            "scale": 1.0014669926650368
+          },
+          {
+            "source_bounds": [
+              844,
+              116,
+              1158,
+              323
+            ],
+            "output_bounds": [
+              1123,
+              225,
+              1437,
+              432
+            ],
+            "scale": 1.0014669926650368
+          },
+          {
+            "source_bounds": [
+              1275,
+              68,
+              1465,
+              357
+            ],
+            "output_bounds": [
+              1697,
+              176,
+              1887,
+              465
+            ],
+            "scale": 1.0014669926650368
+          },
+          {
+            "source_bounds": [
+              1546,
+              132,
+              1955,
+              317
+            ],
+            "output_bounds": [
+              2099,
+              241,
+              2509,
+              426
+            ],
+            "scale": 1.0014669926650368
+          },
+          {
+            "source_bounds": [
+              46,
+              443,
+              337,
+              681
+            ],
+            "output_bounds": [
+              126,
+              743,
+              386,
+              955
+            ],
+            "scale": 0.8923747276688454
+          },
+          {
+            "source_bounds": [
+              399,
+              443,
+              741,
+              704
+            ],
+            "output_bounds": [
+              616,
+              743,
+              921,
+              976
+            ],
+            "scale": 0.8923747276688454
+          },
+          {
+            "source_bounds": [
+              768,
+              452,
+              1227,
+              706
+            ],
+            "output_bounds": [
+              1075,
+              751,
+              1485,
+              978
+            ],
+            "scale": 0.8923747276688454
+          },
+          {
+            "source_bounds": [
+              1265,
+              435,
+              1578,
+              698
+            ],
+            "output_bounds": [
+              1652,
+              736,
+              1931,
+              971
+            ],
+            "scale": 0.8923747276688454
+          },
+          {
+            "source_bounds": [
+              1590,
+              431,
+              1967,
+              681
+            ],
+            "output_bounds": [
+              2136,
+              733,
+              2472,
+              956
+            ],
+            "scale": 0.8923747276688454
+          }
+        ]
+      },
+      "previous_sha256": "804ea844a9f31e01ca17fc8c04d39fdf1d498180384034cdcc0b14b30917c923",
+      "sha256": "804ea844a9f31e01ca17fc8c04d39fdf1d498180384034cdcc0b14b30917c923",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 5 x 2 grid of ten things, each about 300 px across, all moving to the left. Top row, rubbish, left to right: a crumpled ball of old newspaper; a brown-spotted empty banana peel; a dented empty tin can with a torn red label; a nibbled apple core; the bones of a fish with its head and tail. Bottom row, left to right: a gentleman's black bowler hat with a mauve band, tumbling; a sealed cream envelope with a pink stamp and a red wax seal, clearly a letter someone wants; a ginger tabby cat in mid-leap facing left, front paws reaching; a small brown sparrow flying to the left, wings up; and, last, a battered old brown boot with a hole in the toe and its laces trailing (rubbish).\nProduction game asset, dimensions 2560 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M08c",
+      "file": "game/assets/sprites/garbagecanary-lid.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "generated bin and lid cutouts registered to one portrait frame; lid call poses share the same top anchor",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "core_source_bounds": [
+              204,
+              142,
+              927,
+              853
+            ],
+            "core_output_bounds": [
+              235.51999999999998,
+              268.23701244813276,
+              972.8,
+              993.28
+            ],
+            "scale": 1.0197510373443983
+          },
+          {
+            "core_source_bounds": [
+              1046,
+              212,
+              1673,
+              471
+            ],
+            "core_output_bounds": [
+              133.12,
+              67.98195662676113,
+              768.0,
+              330.23701244813276
+            ],
+            "scale": 1.012567783094099
+          }
+        ]
+      },
+      "previous_sha256": "d71b5898a353e443e69f4b422a2921873863e5ff837ff369e384aafeca49edbc",
+      "sha256": "7891ae3ef6c04486dc0a4eee985af136f2702a0ad7c2954ac282a503c935b1ea",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: a rusty grey galvanised dustbin with fluted sides, a dent at the front and a ring handle on its side; a yellow canary wing folded over its side and a tail of crumpled paper scraps at the back (right); its lid, with a handle on top, tipped up at the front; the yellow canary's head with its big round eye and long pale beak pointing left peering out from under the lid's front edge; thin orange legs. Facing left, cut into two pieces shown side by side on one sheet, each piece drawn exactly where it sits on the whole bird. Each half is framed exactly like the portrait (same scale, feet 97% of the way down, the bin at the same place), so that laying the halves over each other rebuilds the portrait. Left half: the dustbin with its wing, paper tail and legs, WITHOUT its lid and without the canary's head, its round open top showing a dark inside. Right half: ONLY the lid, tipped up at the front exactly as in the portrait, with the canary's head (large and clearly seen, as painted) peering out from under its front edge; nothing else. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M08d",
+      "file": "game/assets/sprites/garbagecanary-call.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "generated bin and lid cutouts registered to one portrait frame; lid call poses share the same top anchor",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "core_source_bounds": [
+              170,
+              328,
+              920,
+              675
+            ],
+            "core_output_bounds": [
+              133.12,
+              67.98195662676113,
+              768.0,
+              361.7197699600944
+            ],
+            "scale": 0.8465066666666666
+          },
+          {
+            "core_source_bounds": [
+              1007,
+              327,
+              1759,
+              674
+            ],
+            "core_output_bounds": [
+              133.12,
+              67.98195662676113,
+              768.0,
+              360.938552371442
+            ],
+            "scale": 0.8442553191489361
+          }
+        ]
+      },
+      "previous_sha256": "d3f8f5827254f777665c1fb0102bb0ea540b1f675c7ecbe587a95ec88422b989",
+      "sha256": "d8f0209a4b30b28b08c8f46e19f718e5f74a83f9dd77befbc8e8939376a55b85",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: a rusty grey galvanised dustbin with fluted sides, a dent at the front and a ring handle on its side; a yellow canary wing folded over its side and a tail of crumpled paper scraps at the back (right); its lid, with a handle on top, tipped up at the front; the yellow canary's head with its big round eye and long pale beak pointing left peering out from under the lid's front edge; thin orange legs. ONLY its lid with the canary's head under it, exactly as the right half of its lid sheet (IC-M08c): the lid tipped up at the front as in the portrait and in exactly the same place, nothing else (no bin). Each half is framed exactly like the portrait (same scale, feet 97% of the way down, the bin at the same place), so that laying the halves over each other rebuilds the portrait. Two versions side by side, each in its own half. Left: squawking crossly, beak wide open, head feathers ruffled up, eye squeezed, a few spat crumbs flying from the beak. Right: singing happily, head tipped up, beak open in song, two or three small ink musical notes rising. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M09b",
+      "file": "game/assets/sprites/press-garments.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        3072,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              30,
+              65,
+              805,
+              358
+            ],
+            "output_bounds": [
+              102,
+              156,
+              921,
+              466
+            ],
+            "scale": 1.0570322580645162
+          },
+          {
+            "source_bounds": [
+              875,
+              57,
+              1320,
+              348
+            ],
+            "output_bounds": [
+              1301,
+              148,
+              1771,
+              456
+            ],
+            "scale": 1.0570322580645162
+          },
+          {
+            "source_bounds": [
+              1438,
+              85,
+              2126,
+              334
+            ],
+            "output_bounds": [
+              2196,
+              177,
+              2923,
+              440
+            ],
+            "scale": 1.0570322580645162
+          },
+          {
+            "source_bounds": [
+              73,
+              476,
+              812,
+              613
+            ],
+            "output_bounds": [
+              102,
+              753,
+              921,
+              905
+            ],
+            "scale": 1.1085250338294994
+          },
+          {
+            "source_bounds": [
+              885,
+              425,
+              1390,
+              665
+            ],
+            "output_bounds": [
+              1256,
+              696,
+              1816,
+              962
+            ],
+            "scale": 1.1085250338294994
+          },
+          {
+            "source_bounds": [
+              1502,
+              404,
+              2084,
+              679
+            ],
+            "output_bounds": [
+              2238,
+              673,
+              2883,
+              978
+            ],
+            "scale": 1.1085250338294994
+          }
+        ]
+      },
+      "previous_sha256": "edee5236d61cc1b3882dd11a890c6e4d4705a5e75df98d34e999a27f1a967e51",
+      "sha256": "edee5236d61cc1b3882dd11a890c6e4d4705a5e75df98d34e999a27f1a967e51",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six pieces of washing, each laid out perfectly flat and smooth (no creases at all, and no busy pattern in the middle: the game draws dark creases and brown scorch marks there, and they must stand out) and seen from directly above, each filling most of its cell's width, with these width-to-height shapes. Top row, left to right: a pale-blue man's shirt laid face down with its sleeves spread out to the sides, its collar at the top (about 2.5 : 1); a white cotton handkerchief with a slate-blue border (about 1.7 : 1); a pair of grey flannel trousers laid sideways with the legs pointing right (about 3 : 1). Bottom row: a long plain pale-pink silk scarf, very fine and shiny, with only a narrow magenta border and short fringed ends, the whole middle plain (about 5 : 1); a cream pillowcase with a mauve hem stripe at its right end (about 2.5 : 1); a plain cream tablecloth with a narrow red-and-white gingham border round its edge, the middle plain (about 3 : 1).\nProduction game asset, dimensions 3072 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M09c",
+      "file": "game/assets/sprites/sparrow-press.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": "9e0ec07e741b75a87ccec66bf1b3682b0f54105954898765865c9a9d41ef2e83",
+      "sha256": "9e0ec07e741b75a87ccec66bf1b3682b0f54105954898765865c9a9d41ef2e83",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Steampresser Sparrow (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/steampressersparrow.png), exactly as painted there: a rusty grey cast-iron sad iron with a wooden handle arching over its back on two curled iron posts, a small knob on top, a row of round steam holes along its side just above the sole, a brown sparrow wing on its flank, and the sparrow's brown-and-cream head with its round staring eye and short yellow beak at the iron's pointed front (left). Two poses side by side on one sheet, each in its own half, facing left in side view: unlike the portrait, its legs are folded away out of sight underneath and the iron sits LEVEL, its flat sole resting flat as an iron does on cloth (not tipped up at the toe). Framed at exactly the portrait's scale. Placement, the same in every pose: the middle of the sole exactly on the vertical centre line of its half (or picture), and the sole's underside 80% of the way down. Left: dry and calm, with NO steam at all. Right: the same, steaming: soft white puffs from every hole along its side and from its back, as in the portrait, and the sparrow's beak a little open; no steam below the sole line. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M09d",
+      "file": "game/assets/sprites/sparrow-scorch.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": "106455dbaddde016278997f695bbcaf8cf9eb7c7d8301d9fcd7cee76fffdc21a",
+      "sha256": "106455dbaddde016278997f695bbcaf8cf9eb7c7d8301d9fcd7cee76fffdc21a",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Steampresser Sparrow (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/steampressersparrow.png), exactly as painted there: a rusty grey cast-iron sad iron with a wooden handle arching over its back on two curled iron posts, a small knob on top, a row of round steam holes along its side just above the sole, a brown sparrow wing on its flank, and the sparrow's brown-and-cream head with its round staring eye and short yellow beak at the iron's pointed front (left). One pose, facing left in side view, legs folded away out of sight as in its pressing pose (IC-M09c), but jerked up in alarm: the pointed toe of the iron tipped up off the cloth, the heel of the sole still on the sole line, the sparrow's eye wide and beak open in a squawk, a thin wisp of brown smoke curling up from under the sole. Framed at exactly the portrait's scale. Placement, the same in every pose: the middle of the sole exactly on the vertical centre line of its half (or picture), and the sole's underside 80% of the way down. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 1024 x 1024, transparent. Exact grid, row-major order, object counts and pose order. Respect all specified anchor percentages and part-overlay alignment; do not recenter a small part vertically if the request aligns it with a whole bird. Every complete silhouette stays within its own cell with transparent gutters. Keep proportions unchanged. No backgrounds or halos.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 9,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser_check": "Bin Day and controller/keyboard navigation passed in installed Chrome, no page errors.",
+    "publish_output": "All nine files copied with matching checksums.",
+    "bin_overlay": "Registered body and lid composite visually checked."
+  }
+}

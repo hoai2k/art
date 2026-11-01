@@ -1,0 +1,432 @@
+{
+  "generatedBy": "bronzedrum/design/source/build_audio.py",
+  "sfx": {
+    "drum-tung": {
+      "files": [
+        "sfx/drum-tung-1.mp3",
+        "sfx/drum-tung-3.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "drum-cac": {
+      "files": [
+        "sfx/drum-cac-1.mp3",
+        "sfx/drum-cac-2.mp3",
+        "sfx/drum-cac-3.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "drum-chau": {
+      "files": [
+        "sfx/drum-chau-1.mp3",
+        "sfx/drum-chau-2.mp3"
+      ],
+      "gain": 0.9,
+      "loop": false
+    },
+    "drum-mo": {
+      "files": [
+        "sfx/drum-mo-1.mp3",
+        "sfx/drum-mo-2.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "drum-wake": {
+      "files": [
+        "sfx/drum-wake.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "stumble": {
+      "files": [
+        "sfx/stumble.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "kit-com-low": {
+      "files": [
+        "sfx/kit-com-low-1.mp3",
+        "sfx/kit-com-low-2.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "kit-com-high": {
+      "files": [
+        "sfx/kit-com-high-1.mp3",
+        "sfx/kit-com-high-2.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "kit-gong-low": {
+      "files": [
+        "sfx/kit-gong-low-1.mp3",
+        "sfx/kit-gong-low-2.mp3"
+      ],
+      "gain": 0.85,
+      "loop": false
+    },
+    "kit-gong-high": {
+      "files": [
+        "sfx/kit-gong-high-1.mp3",
+        "sfx/kit-gong-high-2.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "kit-bamboo-low": {
+      "files": [
+        "sfx/kit-bamboo-low-1.mp3",
+        "sfx/kit-bamboo-low-2.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "kit-bamboo-high": {
+      "files": [
+        "sfx/kit-bamboo-high-2.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "kit-lan-drum": {
+      "files": [
+        "sfx/kit-lan-drum-1.mp3",
+        "sfx/kit-lan-drum-2.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "kit-lan-cymbal": {
+      "files": [
+        "sfx/kit-lan-cymbal-1.mp3",
+        "sfx/kit-lan-cymbal-2.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "call": {
+      "files": [
+        "sfx/call-1.mp3",
+        "sfx/call-2.mp3",
+        "sfx/call-3.mp3"
+      ],
+      "gain": 0.6,
+      "loop": false
+    },
+    "cmd-march": {
+      "files": [
+        "sfx/cmd-march.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "cmd-strike": {
+      "files": [
+        "sfx/cmd-strike.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "cmd-shield": {
+      "files": [
+        "sfx/cmd-shield.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "cmd-rally": {
+      "files": [
+        "sfx/cmd-rally.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "cmd-charge": {
+      "files": [
+        "sfx/cmd-charge.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "volley": {
+      "files": [
+        "sfx/volley.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "bolts": {
+      "files": [
+        "sfx/bolts.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "hit-paper": {
+      "files": [
+        "sfx/hit-paper-1.mp3",
+        "sfx/hit-paper-2.mp3",
+        "sfx/hit-paper-3.mp3"
+      ],
+      "gain": 0.9,
+      "loop": false
+    },
+    "hit-straw": {
+      "files": [
+        "sfx/hit-straw.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "defeat-han": {
+      "files": [
+        "sfx/defeat-han.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "fort-break": {
+      "files": [
+        "sfx/fort-break.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "trample": {
+      "files": [
+        "sfx/trample.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "wound": {
+      "files": [
+        "sfx/wound.mp3"
+      ],
+      "gain": 0.6,
+      "loop": false
+    },
+    "blocked": {
+      "files": [
+        "sfx/blocked.mp3"
+      ],
+      "gain": 0.6,
+      "loop": false
+    },
+    "ui-move": {
+      "files": [
+        "sfx/ui-move.mp3"
+      ],
+      "gain": 0.25,
+      "loop": false
+    },
+    "ui-confirm": {
+      "files": [
+        "sfx/ui-confirm.mp3"
+      ],
+      "gain": 0.35,
+      "loop": false
+    },
+    "ui-back": {
+      "files": [
+        "sfx/ui-back.mp3"
+      ],
+      "gain": 0.15,
+      "loop": false
+    },
+    "ui-start": {
+      "files": [
+        "sfx/ui-start.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "village-wakes": {
+      "files": [
+        "sfx/village-wakes.mp3"
+      ],
+      "gain": 0.75,
+      "loop": false
+    },
+    "victory": {
+      "files": [
+        "sfx/victory.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "defeat": {
+      "files": [
+        "sfx/defeat.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "pour": {
+      "files": [
+        "sfx/pour.mp3"
+      ],
+      "gain": 0.8,
+      "loop": false
+    },
+    "crack": {
+      "files": [
+        "sfx/crack.mp3"
+      ],
+      "gain": 1.0,
+      "loop": false
+    },
+    "lantern": {
+      "files": [
+        "sfx/lantern.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "crowd-cheer": {
+      "files": [
+        "sfx/crowd-cheer.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "dancer-join": {
+      "files": [
+        "sfx/dancer-join-1.mp3",
+        "sfx/dancer-join-2.mp3"
+      ],
+      "gain": 0.55,
+      "loop": false
+    },
+    "han-horn": {
+      "files": [
+        "sfx/han-horn.mp3"
+      ],
+      "gain": 0.7,
+      "loop": false
+    },
+    "amb-garden": {
+      "files": [
+        "sfx/amb-garden.mp3"
+      ],
+      "gain": 0.45,
+      "loop": true
+    },
+    "amb-river": {
+      "files": [
+        "sfx/amb-river.mp3"
+      ],
+      "gain": 0.45,
+      "loop": true
+    },
+    "amb-foundry": {
+      "files": [
+        "sfx/amb-foundry.mp3"
+      ],
+      "gain": 0.45,
+      "loop": true
+    },
+    "amb-village": {
+      "files": [
+        "sfx/amb-village.mp3"
+      ],
+      "gain": 0.55,
+      "loop": true
+    },
+    "amb-elegy": {
+      "files": [
+        "sfx/amb-elegy.mp3"
+      ],
+      "gain": 0.55,
+      "loop": true
+    },
+    "amb-practice": {
+      "files": [
+        "sfx/amb-practice.mp3"
+      ],
+      "gain": 0.55,
+      "loop": true
+    },
+    "amb-fire": {
+      "files": [
+        "sfx/amb-fire.mp3"
+      ],
+      "gain": 0.5,
+      "loop": true
+    },
+    "amb-coronation": {
+      "files": [
+        "sfx/amb-coronation.mp3"
+      ],
+      "gain": 0.5,
+      "loop": true
+    },
+    "breeze": {
+      "files": [
+        "sfx/breeze.mp3"
+      ],
+      "gain": 0.6,
+      "loop": true
+    },
+    "amb-night": {
+      "files": [
+        "sfx/amb-night.mp3"
+      ],
+      "gain": 0.45,
+      "loop": true
+    }
+  },
+  "music": {
+    "mu-title": {
+      "file": "music/mu-title.mp3",
+      "loop": true,
+      "kind": "theme",
+      "duration": 88.4,
+      "loopEnd": 85.0,
+      "loopStart": 0.0
+    },
+    "mu-select": {
+      "file": "music/mu-select.mp3",
+      "loop": true,
+      "kind": "theme",
+      "duration": 153.0,
+      "loopEnd": 151.5,
+      "loopStart": 0.0
+    },
+    "mu-bed-battle": {
+      "file": "music/mu-bed-battle.mp3",
+      "loop": true,
+      "kind": "bed",
+      "duration": 118.16,
+      "loopEnd": 114.5,
+      "loopStart": 2.0
+    },
+    "mu-bed-story": {
+      "file": "music/mu-bed-story.mp3",
+      "loop": true,
+      "kind": "bed",
+      "duration": 122.0,
+      "loopEnd": 119.5,
+      "loopStart": 2.5
+    },
+    "mu-ending": {
+      "file": "music/mu-ending.mp3",
+      "loop": false,
+      "kind": "piece",
+      "duration": 179.96
+    },
+    "mu-anthem": {
+      "file": "music/mu-anthem.mp3",
+      "loop": false,
+      "kind": "song",
+      "duration": 178.79
+    }
+  }
+}

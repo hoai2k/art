@@ -1,0 +1,342 @@
+:root {
+  --paper: #F2E8D5;
+  --paper-shade: #D9C9A8;
+  --ink: #16151A;
+  --indigo: #1E2A44;
+  --bronze: #B07A3A;
+  --bronze-light: #D9A55B;
+  --lacquer: #A8322D;
+  --verdigris: #4F8A7B;
+  --focus: #F6D9A0;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Be Vietnam Pro", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--ink); color: var(--paper); font-family: var(--sans); overflow: hidden; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* A quick second tap on a button is a second tap, not a zoom. */
+button, input, label { touch-action: manipulation; }
+#app { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage { width: 100vw; height: 100vh; max-width: calc(100vh * 16 / 9); max-height: calc(100vw * 9 / 16); display: block; touch-action: none; }
+@supports (height: 100dvh) {
+  /* Phones: size to the visible area, not the area behind the browser bars. */
+  #stage { height: 100dvh; max-width: calc(100dvh * 16 / 9); }
+}
+/* While playing, every touch is a drum stroke or a button: no zooming, scrolling or text selection. */
+body.playing #app { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+[hidden] { display: none !important; }
+
+.screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; }
+.modal { background: rgba(14, 12, 18, 0.62); backdrop-filter: blur(3px); }
+/* A phone held upright mid-game: a screen of its own, not the pause menu. */
+#rotate { background: var(--ink); text-align: center; z-index: 30; }
+#rotate .rotate-card { max-width: 340px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+#rotate h2 { margin: 0; font: 700 30px var(--serif); color: var(--paper); }
+#rotate p { margin: 0; color: var(--paper-shade); line-height: 1.45; }
+#rotate .menu-btn { margin-top: 10px; min-width: 160px; }
+.rotate-phone { width: 120px; height: 120px; }
+.rotate-phone .phone { fill: none; stroke: var(--bronze-light); stroke-width: 4; transform-origin: 60px 54px; animation: rotate-phone 2.4s ease-in-out infinite; }
+.rotate-phone .phone circle { fill: var(--bronze-light); stroke: none; }
+.rotate-phone .arrow, .rotate-phone .arrow-head { fill: none; stroke: var(--lacquer); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes rotate-phone { 0%, 25% { transform: rotate(0deg); } 55%, 100% { transform: rotate(-90deg); } }
+body.reduce-motion .rotate-phone .phone { animation: none; transform: rotate(-90deg); }
+.dialog { z-index: 5; }
+
+/* Title: a backlit paper panel. */
+#title { background: radial-gradient(ellipse at 50% 38%, #3A4C6E 0%, var(--indigo) 45%, #0D111E 100%); }
+.title-art {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 36%, rgba(246, 217, 160, 0.35) 0, rgba(246, 217, 160, 0) 32%),
+    repeating-radial-gradient(circle at 50% 36%, rgba(217, 165, 91, 0.0) 0 38px, rgba(217, 165, 91, 0.16) 38px 40px);
+}
+/* The title fades in once, when its words, fonts and logo are ready (revealTitle in src/main.js). */
+html.booting .title-block, html.booting #title .corner-buttons { opacity: 0; }
+.title-block, #title .corner-buttons { transition: opacity 0.4s ease-out; }
+.title-block { position: relative; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+#logo-img { max-width: min(760px, 86vw); max-height: 42vh; }
+.logo-text { margin: 0; font-family: var(--serif); font-weight: 700; line-height: 0.95; display: flex; flex-direction: column; text-shadow: 6px 8px 14px rgba(0, 0, 0, 0.55); }
+.logo-text .vn { font-size: clamp(22px, 3.4vw, 40px); letter-spacing: 0.32em; color: var(--bronze-light); }
+.logo-text .en { font-size: clamp(54px, 10vw, 128px); color: var(--paper); }
+.press-start {
+  margin-top: 18px; font: 700 clamp(20px, 2.6vw, 30px) var(--serif); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); background: var(--paper); border: 0; padding: 12px 38px; cursor: pointer;
+  clip-path: polygon(4% 0, 96% 4%, 100% 50%, 95% 100%, 3% 94%, 0 48%);
+  animation: breathe 2.4s ease-in-out infinite;
+}
+.press-start:hover { background: var(--bronze-light); }
+.press-start:active { transform: translateY(2px) scale(0.98); background: var(--bronze); }
+@keyframes breathe { 50% { filter: brightness(1.12); } }
+.hint { margin: 0; font-size: 14px; color: var(--paper-shade); opacity: 0.8; }
+.corner-buttons { position: absolute; right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); display: flex; gap: 10px; }
+.icon-btn { position: relative; width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--paper-shade); background: rgba(22, 21, 26, 0.55); color: var(--paper); cursor: pointer; display: grid; place-items: center; }
+.icon-btn svg { width: 26px; height: 26px; }
+.icon-btn:hover { background: var(--bronze); }
+.icon-btn.is-off:not(:hover):not(:focus-visible):not(.nav-focus) { opacity: 0.5; }
+.icon-btn:active { transform: scale(0.94); }
+.btn-label { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 13px; background: var(--ink); padding: 4px 8px; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+.icon-btn:hover .btn-label, .icon-btn:focus-visible .btn-label, .icon-btn.nav-focus .btn-label { opacity: 1; }
+
+:focus-visible, .nav-focus { outline: 3px solid var(--focus) !important; outline-offset: 4px; }
+body.reduce-motion .press-start { animation: none; }
+.practice-start {
+  margin-top: 4px; font: 600 clamp(16px, 1.9vw, 21px) var(--serif); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--paper); background: rgba(22, 21, 26, 0.55); border: 2px solid var(--paper-shade); padding: 7px 26px; cursor: pointer;
+  clip-path: polygon(3% 0, 97% 5%, 100% 50%, 96% 100%, 2% 95%, 0 50%);
+}
+.practice-start:hover { background: var(--bronze); color: var(--ink); }
+.practice-start:active { transform: translateY(2px) scale(0.98); }
+/* The title buttons are cut to a paper shape (clip-path), which also cuts off
+   any outline, so the selected one shows inside its shape: a bronze fill and a
+   marker, with the other dimmed. */
+.press-start, .practice-start { transition: background 0.15s, color 0.15s, opacity 0.15s; }
+#title .press-start:focus, #title .practice-start:focus,
+#title .press-start.nav-focus, #title .practice-start.nav-focus { outline: none; background: var(--bronze-light); color: var(--ink); }
+#title .press-start:focus::before, #title .practice-start:focus::before { content: "▸ "; }
+#title .press-start:focus::after, #title .practice-start:focus::after { content: " ◂"; }
+.title-block:has(.practice-start:focus) .press-start { opacity: 0.6; animation: none; }
+.title-block:has(.press-start:focus) .practice-start { opacity: 0.75; }
+
+/* Chapter select: a 3 × 3 grid of compact cards, the focused chapter described below. */
+#select, #practice { background: radial-gradient(ellipse at 50% 30%, #2B3556, #0D111E); gap: 14px; overflow-y: auto; justify-content: flex-start; padding-top: 28px; }
+#select h2, #practice h2 { margin: 0; font: 700 clamp(26px, 3.4vw, 40px) var(--serif); }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(680px, 100%); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: min(980px, 100%); }
+.card {
+  padding: 0 14px 12px; text-align: left; cursor: pointer; color: var(--ink); overflow: hidden;
+  background: var(--paper); border: 0; font-family: var(--sans); display: flex; flex-direction: column; gap: 3px;
+  clip-path: polygon(0 2%, 98% 0, 100% 97%, 2% 100%);
+  box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.35);
+}
+.card .card-art { display: block; height: 84px; margin: 0 -14px 4px; background-size: cover; background-position: center 55%; }
+.card .card-art.plain { background: repeating-linear-gradient(135deg, var(--paper-shade) 0 6px, var(--paper) 6px 12px); opacity: 0.6; }
+.card .num { font: 700 12px var(--sans); color: var(--lacquer); letter-spacing: 0.2em; text-transform: uppercase; }
+.card .name { font: 700 19px var(--serif); line-height: 1.1; }
+.card .sub { font-size: 13px; color: #5a4a35; }
+/* The selected chapter: lifted, outlined in bronze and glowing, with a marker;
+   the others dim, so the choice reads at a glance from the sofa. */
+.card { transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s, filter 0.12s; }
+.cards:has(.card:focus) .card:not(:focus) { opacity: 0.72; filter: saturate(0.8); }
+.card:focus, .card.nav-focus {
+  transform: translateY(-4px) scale(1.04);
+  outline: 4px solid var(--bronze-light) !important; outline-offset: 0 !important;
+  box-shadow: 0 0 0 8px rgba(217, 165, 91, 0.35), 0 0 34px rgba(246, 217, 160, 0.55), 8px 12px 0 rgba(0, 0, 0, 0.35);
+  clip-path: none; background-color: #fff4dc; z-index: 1; position: relative;
+}
+.card:focus .num::before, .card.nav-focus .num::before { content: "▶ "; color: var(--lacquer); }
+@media (hover: hover) { .card:hover:not(:focus) { background-color: #fff8e8; } }
+.card[disabled] { opacity: 0.45; cursor: not-allowed; }
+.stage-intro { margin: 0; max-width: 760px; min-height: 3em; text-align: center; color: var(--paper-shade); font-size: 15px; line-height: 1.5; }
+.text-btn { background: none; border: 0; color: var(--paper); font: 600 16px var(--sans); cursor: pointer; padding: 8px 14px; min-height: 44px; }
+@media (max-width: 720px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Panels. */
+.panel {
+  background: var(--paper); color: var(--ink); padding: 26px 28px; width: min(440px, 100%); display: flex; flex-direction: column; gap: 10px;
+  box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.4); clip-path: polygon(0 1%, 99% 0, 100% 99%, 1% 100%);
+  /* Never taller than the screen: a panel that does not fit scrolls. */
+  max-height: 100%; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+}
+/* The delivered paper sheet: its cut border of herons and rings is nine-sliced
+   so it keeps its shape at any panel size. */
+body.paper-panels .panel {
+  background: #F1E6CF padding-box; box-shadow: none; clip-path: none;
+  border: 34px solid transparent; border-image: var(--panel-art) 92 / 34px / 0 round;
+  padding: 8px 14px 12px; filter: drop-shadow(8px 10px 0 rgba(0, 0, 0, 0.35));
+}
+.panel h2 { text-align: center; }
+/* Water puppets (Settings, Style): panels of black lacquer edged in vermilion
+   and gold leaf, until the lacquer panel (BD-WU04) is delivered. */
+body[data-style="water"] .panel {
+  background: #1C1412; color: var(--paper); clip-path: none; border-radius: 4px;
+  box-shadow: inset 0 0 0 3px var(--lacquer), inset 0 0 0 6px #1C1412, inset 0 0 0 7px var(--bronze-light), 10px 12px 0 rgba(0, 0, 0, 0.4);
+}
+body[data-style="water"].paper-panels .panel { background: #1C1412 padding-box; box-shadow: none; border-radius: 0; }
+.panel h2::after { content: ""; display: block; width: 64px; height: 3px; margin: 8px auto 0; background: var(--bronze); clip-path: polygon(0 40%, 100% 0, 96% 100%, 4% 70%); }
+.panel.wide { width: min(860px, 100%); }
+.panel h2 { margin: 0 0 6px; font: 700 34px var(--serif); }
+.panel h3 { font: 700 22px var(--serif); margin: 14px 0 6px; }
+.muted { color: #5a4a35; margin: 0; }
+/* Menu buttons: strips of cut paper, ink on the sheet, lacquer for the first. */
+.menu-btn {
+  font: 700 19px var(--serif); letter-spacing: 0.04em; padding: 10px 18px; border: 0; cursor: pointer; text-align: center;
+  background: var(--ink); color: var(--paper); box-shadow: 3px 4px 0 rgba(22, 21, 26, 0.25);
+  clip-path: polygon(1% 6%, 99% 0, 100% 90%, 98% 100%, 0 96%);
+}
+/* The selected button (keyboard or controller focus) is bronze; nothing else
+   is. Hover only lightens a button, and only with a real mouse, since on touch
+   screens a tapped button keeps :hover and would look selected too. */
+.menu-btn:focus-visible, .menu-btn.nav-focus { background: var(--bronze); color: var(--ink); }
+@media (hover: hover) { .menu-btn:hover:not(:focus-visible):not(.nav-focus) { background: #34313d; } }
+.menu-btn:active { transform: translateY(1px) scale(0.99); }
+.panel .menu-btn:focus-visible, .panel .menu-btn.nav-focus { outline-offset: 2px; }
+.scroll { overflow-y: auto; max-height: 64vh; padding-right: 8px; line-height: 1.5; }
+.scroll p { margin: 0 0 10px; }
+.credits { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 8px 18px; margin: 14px 0 6px; }
+.credits dt { font-weight: 700; color: var(--bronze-light); text-align: right; }
+.credits dd { margin: 0; }
+.nowrap { white-space: nowrap; }
+body.paper-panels .credits dt { color: var(--lacquer); }
+@media (max-width: 520px) {
+  .credits { grid-template-columns: 1fr; gap: 2px; }
+  .credits dt { text-align: left; margin-top: 8px; }
+}
+.cmd-table, .map-table { border-collapse: collapse; width: 100%; margin: 6px 0 12px; font-size: 15px; }
+.cmd-table td, .map-table td, .map-table th { border-bottom: 1px solid var(--paper-shade); padding: 6px 8px; text-align: left; vertical-align: middle; }
+.g-l, .g-r { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: -2px; margin: 0 1px; }
+.g-l { background: var(--bronze-light); border: 1px solid var(--bronze); }
+.g-r { border: 3px solid var(--lacquer); }
+.g-l.sub, .g-r.sub { width: 10px; height: 10px; margin: 0; }
+.g-r.sub { border-width: 2px; }
+/* A rest: a short dash in the place of the silent stroke. */
+.g-rest { display: inline-block; width: 12px; height: 3px; margin: 0 2px; vertical-align: 3px; background: currentColor; opacity: 0.55; border-radius: 2px; }
+.g-rest.sub { width: 8px; margin: 0 1px; }
+.row > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+/* A setting's explanation: a subtle (i), its tip shown on hover, focus or a tap. */
+.info {
+  display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid currentColor; color: color-mix(in srgb, currentColor 45%, transparent); font: italic 700 11px/1 var(--serif); cursor: help; flex: none;
+}
+.info:hover, .info:focus-visible, .info.open { color: inherit; outline: none; }
+.row:has(.info:hover, .info:focus-visible, .info.open) { z-index: 30; }
+.info::after {
+  content: attr(data-tip); position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30;
+  padding: 8px 10px; border-radius: 4px; background: var(--ink); color: var(--paper); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  font: 500 13px/1.4 var(--sans); font-style: normal; text-align: left; white-space: normal;
+  opacity: 0; visibility: hidden; transition: opacity 0.15s; pointer-events: none;
+}
+.info:hover::after, .info:focus-visible::after, .info.open::after { opacity: 1; visibility: visible; }
+body[data-style="water"] .info::after { background: var(--paper); color: var(--ink); }
+/* Near the bottom of the panel the tip opens upward. */
+.info.up::after { top: auto; bottom: calc(100% + 6px); }
+.group { display: inline-flex; gap: 2px; padding-bottom: 3px; border-bottom: 1.5px solid var(--ink); vertical-align: -3px; position: relative; }
+.group.g3::after { content: "3"; position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); font-size: 10px; }
+.cmd-table td.pat { white-space: nowrap; }
+.pad-diagram { color: var(--ink); background: var(--paper-shade); padding: 8px; }
+.pad-diagram svg { width: 100%; height: auto; display: block; font-family: var(--sans); }
+.row { position: relative; display: grid; grid-template-columns: 1fr 160px minmax(48px, max-content); align-items: center; gap: 10px; font-weight: 600; }
+.row.check { grid-template-columns: 1fr auto; }
+.row.choice { grid-template-columns: 1fr auto; }
+.row select {
+  font: 600 15px var(--sans); color: var(--ink); background: var(--paper); border: 2px solid var(--bronze);
+  border-radius: 4px; padding: 5px 30px 5px 10px; cursor: pointer; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--lacquer) 50%), linear-gradient(135deg, var(--lacquer) 50%, transparent 50%);
+  background-position: calc(100% - 15px) 55%, calc(100% - 10px) 55%; background-size: 5px 5px; background-repeat: no-repeat;
+}
+.row select:focus-visible, .row select.nav-focus { outline: 3px solid var(--focus); outline-offset: 2px; }
+.row input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--lacquer); }
+.row input[type="range"] { accent-color: var(--lacquer); }
+.row output { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.toast { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 16px; border: 1px solid var(--bronze); opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 10; }
+.toast.show { opacity: 1; }
+
+/* Short screens (a phone held sideways): tighter panels, the pause and result
+   buttons in two columns, everything scrollable. */
+@media (max-height: 480px) {
+  .title-block { gap: 8px; }
+  .title-block .press-start { margin-top: 8px; }
+  .screen { padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+  .panel { gap: 6px; padding: 14px 18px; }
+  body.paper-panels .panel { border-width: 24px; border-image-width: 24px; padding: 4px 10px 8px; }
+  .panel h2 { font-size: 26px; margin: 0; }
+  .panel h2::after { margin-top: 4px; }
+  .menu-btn { font-size: 17px; padding: 8px 12px; min-height: 44px; }
+  /* The hint under the title buttons wraps clear of the corner buttons. */
+  .hint { max-width: calc(100vw - 2 * (200px + env(safe-area-inset-right))); text-wrap: balance; }
+  #settings .panel { width: min(520px, 100%); }
+  #pause .panel, #result .panel { width: min(600px, 100%); display: grid; grid-template-columns: 1fr 1fr; align-content: start; }
+  #pause .panel > :not(.menu-btn), #result .panel > :not(.menu-btn), #pause .menu-btn:first-of-type, #result .menu-btn:first-of-type { grid-column: 1 / -1; }
+  .scroll { max-height: none; overflow: visible; }
+  /* The panel scrolls as one; its Close or Done button stays in reach. */
+  .dialog .menu-btn[data-action="close"] { position: sticky; bottom: 0; }
+}
+@media (max-width: 600px), (max-height: 480px) {
+  .map-table { font-size: 13px; }
+  .map-table td, .map-table th { padding: 4px 5px; }
+}
+@media (max-width: 600px) {
+  .row { grid-template-columns: 1fr 120px minmax(44px, max-content); }
+  .corner-buttons { right: 12px; bottom: 12px; }
+}
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* iPhone Safari: the page is a little taller than the screen so a swipe up
+   tucks Safari's bars away (src/chrome.js). During play the drum owns every
+   gesture, so nothing scrolls. */
+html.ios-scroll, html.ios-scroll body { height: auto; overflow-x: hidden; overflow-y: auto; }
+html.ios-scroll body { position: relative; touch-action: pan-y; }
+/* The game itself is fixed and takes no height, so a spacer makes the page
+   taller than the screen (100lvh: as tall as the screen with bars hidden). */
+html.ios-scroll body::after { content: ""; display: block; height: calc(100lvh + 160px); }
+html.ios-scroll.ios-scroll-play, html.ios-scroll.ios-scroll-play body { overflow: hidden; touch-action: none; }
+#bars-hint {
+  position: fixed; left: 50%; top: max(8px, env(safe-area-inset-top)); transform: translateX(-50%); z-index: 15;
+  background: rgba(22, 21, 26, 0.93); border: 1px solid var(--bronze-light); color: var(--paper); padding: 7px 14px;
+  font-size: 13px; letter-spacing: 0.03em; white-space: nowrap; pointer-events: none;
+}
+#bars-hint .arrow { display: inline-block; animation: nudge 1.4s ease-in-out infinite; color: var(--bronze-light); font-weight: 700; }
+@keyframes nudge { 50% { transform: translateY(-4px); } }
+body.reduce-motion #bars-hint .arrow { animation: none; }
+#bars-hint.flash { animation: hintflash 0.9s ease-in-out 2; }
+@keyframes hintflash { 50% { background: var(--lacquer); } }
+
+/* Xbox face buttons, in their standard colours, for the instructions. */
+.xb { display: inline-grid; place-items: center; width: 1.45em; height: 1.45em; border-radius: 50%; font: 700 0.8em var(--sans); color: #fff; vertical-align: 0.05em; line-height: 1; }
+/* As the game's own drum marks, the letter on top: X the gold tùng disc, B the
+   black-and-red cắc target, A the cream hide of the barrel drum. */
+.xb-x { background: var(--bronze-light); color: var(--ink); }
+.xb-b { background: var(--ink); color: var(--paper); box-shadow: inset 0 0 0 0.17em var(--ink), inset 0 0 0 0.3em var(--lacquer); }
+.xb-a { background: #EADBC0; color: var(--ink); box-shadow: inset 0 0 0 0.1em var(--bronze); }
+.xb-y { background: var(--paper-shade); color: var(--ink); }
+
+/* A chapter's opening: its story on a card over the still scene. */
+#opening {
+  position: absolute; inset: 0; z-index: 4; display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(14, 12, 18, 0.78), rgba(14, 12, 18, 0.4));
+  opacity: 0; transition: opacity 0.5s ease-out;
+}
+#opening.show { opacity: 1; }
+#opening .opening-card {
+  max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  transform: translateY(14px); transition: transform 0.6s ease-out;
+}
+#opening.show .opening-card { transform: none; }
+#opening .opening-num { margin: 0; font: 700 14px var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze-light); }
+#opening h2 {
+  margin: 0; font: 700 clamp(30px, 5vw, 58px) var(--serif); color: var(--paper); line-height: 1.05;
+  text-shadow: 0 0 24px rgba(246, 217, 160, 0.55), 3px 5px 0 rgba(0, 0, 0, 0.55);
+}
+#opening .opening-story { margin: 4px 0 0; font: italic 600 clamp(18px, 2.4vw, 25px)/1.4 var(--serif); color: var(--paper); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
+#opening .opening-goal { margin: 0; max-width: 620px; font: 500 clamp(14px, 1.6vw, 17px)/1.45 var(--sans); color: var(--paper-shade); text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9); }
+#opening .press-start { margin-top: 8px; display: inline-flex; align-items: center; gap: 12px; }
+#opening .press-start .xb { font-size: 0.75em; }
+body.reduce-motion #opening, body.reduce-motion #opening .opening-card { transition: none; }
+
+/* The success moment: over the celebrating scene, low on the screen, with a
+   single button. Restart and the chapter list are in the pause menu. */
+#success {
+  position: absolute; left: 0; right: 0; bottom: max(7%, env(safe-area-inset-bottom)); z-index: 4;
+  display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 16px; text-align: center;
+  pointer-events: none; opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+#success.show { opacity: 1; transform: none; }
+#success::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 70% 45% at 50% 82%, rgba(14, 12, 18, 0.72), rgba(14, 12, 18, 0) 100%);
+}
+#success > * { pointer-events: auto; }
+#success h2 {
+  margin: 0; font: 700 clamp(34px, 6vw, 72px) var(--serif); color: var(--paper); letter-spacing: 0.02em;
+  text-shadow: 0 0 24px rgba(246, 217, 160, 0.75), 4px 6px 0 rgba(0, 0, 0, 0.55);
+}
+#success p { margin: 0; max-width: 720px; font: 500 clamp(15px, 1.9vw, 20px) var(--sans); color: var(--paper-shade); text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9); }
+#success .press-start { margin-top: 6px; display: inline-flex; align-items: center; gap: 12px; }
+#success .press-start .xb { font-size: 0.75em; }
+body.reduce-motion #success { transition: none; }
+
+/* The chapter being played, under 'Paused'. */
+.pause-chapter { margin: -2px 0 6px; text-align: center; font: 600 15px var(--sans); color: #5a4a35; }
+.pause-chapter .num { display: block; font: 700 11px var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--lacquer); }
+.pause-chapter .name { font: 700 20px var(--serif); color: var(--ink); }
+#pause .pause-chapter { grid-column: 1 / -1; }

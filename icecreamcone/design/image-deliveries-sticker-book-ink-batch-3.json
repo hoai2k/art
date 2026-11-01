@@ -1,0 +1,148 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-SB15b",
+      "file": "game/assets/book/buttonbeaks.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "030e11eb0ce2fc99c5e9a27e9a5ab9f9599eaab583c573b60bc8a7c545760989",
+      "sha256": "0080dbcab2cf6af750d7296bd949dcfab105ad38cbb29156f5d8d773554b5457",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/buttonbeaks.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/buttonbeaks.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A tailor's shop window and street: a bow window full of coats, waistcoats and a dummy, a big button-shaped shop sign without words, a bench outside, a washing line in a back garden over the wall, breezy day.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB16b",
+      "file": "game/assets/book/keycrane.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "4e0421ae41ca7e0029414d02aacf3777d23f530fa8049c0a6660d74eac799b2a",
+      "sha256": "7cf1d4918a46ee9453d27528c9d72c1f5205ba5113d20ea0adf2672c60def374",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/keycrane.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/keycrane.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. An old seaside amusement arcade at evening: rows of wooden prize-crane cabinets with glowing glass fronts, a carousel through the open doors, strings of lights, a patterned carpet, the sea and sunset beyond.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB17b",
+      "file": "game/assets/book/snippit.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "ab10e4b86ef492d1e7b4a2da0837bbaf93347fdaf9545ae06691dec20ce2e0ef",
+      "sha256": "019b3c07e327e2c0c5b54aa07749d0fd4b3c81465df5974c3620abf3025ce72d",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/snippit.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/snippit.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A country fair: striped tents, bunting, a coconut shy, a big wheel on the hill, a hoopla stall with prizes on strings, a fence of wooden posts, a bright breezy afternoon.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB18b",
+      "file": "game/assets/book/garbagecanary.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "e407c5adb9e313f4c1360a5e4bfd28449d47a82a081c6a6c5d662436ee786125",
+      "sha256": "ebdd423354340914e74cba0bca71e25967a80233a6016098780d51fdd81a913d",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/garbagecanary.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/garbagecanary.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A town back lane on bin day: a row of back gates and yards, chimney pots, a rag-and-bone cart, dustbins with lids, washing lines, leaves blowing, a fresh grey-blue morning.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB19b",
+      "file": "game/assets/book/steampressersparrow.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "f2a8798622465eb64a4dd3e3a6d8d3172eeb5bdc35660a7f971c547ad1460ff7",
+      "sha256": "2fbd95007ca5988c7d91d1b70c3c04a2ee0d92b1ec5b3dcf6301d2e07419b143",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/steampressersparrow.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/steampressersparrow.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. An old laundry yard: sheets and shirts drying on long lines, a wash house with a steaming copper, a mangle, wicker baskets, sunlight through the linen.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB20b",
+      "file": "game/assets/book/wetweatherwren.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "315cc956a6a71b904304d06abec6602bd658c256588ce47d01645422e2e48279",
+      "sha256": "e086cec81f1fa0fb52613912642eb6dcf710e4dd5d78d6c52b069cfd33008cb9",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/wetweatherwren.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/wetweatherwren.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A rainy market street: shop awnings dripping, puddles reflecting lit shop windows, an umbrella stand by a door, cobbles shining, soft grey rain over tall narrow houses.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-SB21b",
+      "file": "game/assets/book/glovedove.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "3759133acf6c8c0d577a7c8a9779771505fc02410a49b40725156e7f6bf97721",
+      "sha256": "5f19793e497ba5b28ac4cd29ebfe13bc2c4959097c36aed06d02784746b27062",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The delivered picture (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/book/glovedove.webp) has the right place and composition but the wrong look: it is a soft, realistic, glossy watercolour with no ink line, saturated colour, glowing light and photographic depth, so it does not match the rest of this game. Draw the same place again in the game's own look, matching its scene for the same bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/glovedove.webp): every shape outlined in fine brown-black pen line, shade done with crosshatching and stippling, flat transparent washes in the faded palette with plenty of cream paper showing through, simple flattened perspective and fewer, larger shapes: an illustration printed in a 1971 picture book, not a painting. A full-colour picture for the two facing pages of an open children's sticker album, wide 2:1, full bleed. The left half and the right half must each work as a complete picture on its own, because on a phone held upright the two halves are shown one above the other; a vertical strip about 6% wide down the exact middle is the book's fold and holds nothing important. It is a lovely, calm, lived-in place for arranging bird stickers on, so it is empty of birds, people and animals, with plenty of open, softly painted space spread across both halves (sky, grass, floor, water, wall) where stickers can sit and still stand out: keep the detail light and mid-toned there and let it gather richer around the edges and corners. A whole place rather than a game background: a wide view with depth, a clear time of day and small charming details to find. A big old farmhouse scullery: a deep sink by a window, a wooden plate rack full of dishes, copper pans hanging, a dresser with jugs, a tiled floor, morning sun.\nSTYLE-TRANSFER EDIT. Image1 is drawing style reference; image2 edit target, retain place/layout ONLY. CLEAR dominant brown-black ink outlines on ALL objects and branches/leaves/edges/cloth/clouds; crosshatched or stippled shade, sparse flat faded pastel washes on cream paper. Flatten perspective, reduce texture to drawn lines, simplify objects into larger whimsical shapes. No smooth photorealistic shading, cinematic glow or glossy painting. Both halves open for stickers, quiet centre6%. 2048x1024 fullbleed opaque. No live birds/people/animals, no text, border, UI or foldline; requested toys remain objects.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 7,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "Compared to originals: strong pen outlines and line shading with flat muted washes, while preserving the settings.",
+    "browser": "All seven redraws loaded through the game registry at 2048 x 1024 without page errors.",
+    "publish_copy": true
+  }
+}

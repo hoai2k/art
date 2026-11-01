@@ -1,0 +1,46 @@
+[
+  {
+    "id": "IC-M02a",
+    "name": "Glass Harp: the table by the window",
+    "key": "scene.waterglassgoose",
+    "file": "assets/scenes/waterglassgoose.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Glass Harp (the Waterglass Goose): the background, a table where the glasses stand.",
+    "standin": "A warm wall, a window with a moon, a lamp's glow and a wooden table, painted in code.",
+    "prompt": "{STYLE} {SCENE}A cosy old-fashioned room in the evening, seen straight on. A plain warm cream wall with faded patterned wallpaper fills the top three quarters. On the right, a small window (about 74% to 92% across, 10% to 47% down) shows a dusky blue evening sky with a pale moon. On the left, the soft yellow glow of a lamp just out of the picture warms the wall. Across the whole width, a long polished wooden table: its far edge at about 74% down, its top surface a band from 74% to 81% down with a long white lace runner along it, and its plain front panel from 81% to the bottom. The table top is completely bare and the wall above it, between 15% and 78% across, is quiet and plain, because the game stands a row of glasses and the bird there. No glasses, cups, people or animals.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M02b",
+    "name": "Glass Harp: a tumbler, whole and cracked",
+    "key": "sprites.harpGlass",
+    "file": "assets/sprites/harp-glass.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Glass Harp: each glass on the table; the game paints the coloured water inside it, at a different level for each note, and swaps to the cracked one after a wrong tap.",
+    "standin": "A clear glass outline with a rim ellipse and a glint, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 1 grid of two tall, plain, straight-sided drinking tumblers seen from the side at eye level, very slightly wider at the rim than at the base, each about 260 px wide and 500 px tall: left, the empty glass whole; right, the same empty glass with a jagged crack running down from the rim. Drawn as clear glass: only the outline, the rim ellipse, the thick base and a few white highlights and soft grey reflections; the inside of the glass must be fully transparent (no tint, no fill, no water) so the game can paint water inside it. Same size and position in both cells.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M02c",
+    "name": "Glass Harp: the Goose tapping and honking",
+    "key": "sprites.gooseTap",
+    "file": "assets/sprites/goose-tap.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Glass Harp: the Goose taps a glass with its beak as it plays the tune (and as you tap), and honks with pride when a tune is played back right.",
+    "standin": "The portrait, leaning towards the glass.",
+    "prompt": "{STYLE} {VARIANT} The Waterglass Goose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/waterglassgoose.png). The Goose is a white heron-like bird whose body is a clear, empty drinking tumbler lying on its side and tilted: its long cream neck comes out of the glass's open mouth at the front left, its thick glass base is at the back right with a tuft of dark grey-green rooster tail feathers, a long pale-yellow beak, one small eye, a little crest, and long pale legs with webbed feet. Two poses side by side on one 2 x 1 sheet, both facing left, glass body and legs exactly as in the portrait: left, its long neck curved forward and down so its beak points down and to the left, the beak tip a little below the height of its own glass body's top edge and well out in front of it, as if tapping the rim of a glass standing just in front of it; right, its neck stretched straight up and its beak open to the sky, honking happily. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M02d",
+    "name": "Glass Harp: the Goose walking and recoiling",
+    "key": "sprites.gooseMoves",
+    "file": "assets/sprites/goose-moves.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Glass Harp: the Goose stepping along the table from glass to glass, and jerking back when a glass cracks or it is too slow.",
+    "standin": "The portrait, bobbing as it slides along, and shaking and leaning back on a crack.",
+    "prompt": "{STYLE} {VARIANT} The Waterglass Goose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/waterglassgoose.png). The Goose is a white heron-like bird whose body is a clear, empty drinking tumbler lying on its side and tilted: its long cream neck comes out of the glass's open mouth at the front left, its thick glass base is at the back right with a tuft of dark grey-green rooster tail feathers, a long pale-yellow beak, one small eye, a little crest, and long pale legs with webbed feet. Two poses side by side on one 2 x 1 sheet, both facing left: left, walking mid-stride, one long webbed foot lifted and reaching forward, neck level; right, recoiling in dismay, neck pulled back into an S, beak open, crest up, tail feathers flared, the tumbler body tipped back a little. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  }
+]

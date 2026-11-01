@@ -1,0 +1,4 @@
+{
+  "_comment": "Read by bronzedrum/publish.sh at deploy. includeWorkbenches: true publishes the sound workbench at /bronzedrum/workbench/; false leaves it out of the deployed site (it still works locally). A missing or unreadable file counts as true.",
+  "includeWorkbenches": true
+}

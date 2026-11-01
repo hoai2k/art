@@ -1,0 +1,49 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M12g",
+      "file": "icecreamcone/game/assets/sprites/titthrush-hop.png",
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "exportSize": [
+        2048,
+        1024
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ), exactly as painted there: a round gold pocket watch as its body with its cream face showing ten o'clock, the hinged gold lid, a small gold head with a big round eye and a long thin gold beak, the winding crown and ring bow on top of the head, a pink plume crest, a pink feathered wing, a gold chain curling out behind as its tail, and pink scaly legs with dark claws; for its open beak see the singing pose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/titthrush-sing.png ). A 2 x 1 row of two poses, each in its own 1024 x 1024 cell, both at exactly the same scale as each other, the bird about 70% of the cell's height in cell 1. 1) Perched, ready to spring: crouched low on bent legs, both feet together with the claws curled shut round an invisible thin rod, the closed claws exactly on the cell's vertical centre line 92% of the way down (nothing drawn below 95%), wings half open for balance, the lid open, the face showing ten o'clock, facing left. 2) Flying: seen from the side, stretched out level and facing left, its beak pointing straight left, the pink wing spread wide, the legs tucked back, the chain tail streaming out straight behind to the right, and the gold lid snapped SHUT over the face so no numbers show (the game mirrors this pose); the middle of the round gold case exactly at the cell's centre. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.",
+      "references": [
+        "game/assets/subjects/titthrush.png",
+        "game/assets/sprites/titthrush-sing.png"
+      ],
+      "exportOperation": "uniform pose scaling and registration: perch claws(512,942), flight case centre(512,512)",
+      "sha256": "6a0381432b9d97743acee0dd943a8e5746ac87f4899f480994397fd01988d74b",
+      "flightRevision": {
+        "prompt": "Ice-Cream Cone Coot game's Ten O'clock Tit Trush, FLYING POSE ONLY, from attached portrait design exactly. Ink crosshatching and soft watercolour, golden pocketwatch body, pink feathers and legs, gold head round black dot eye,longthinbeak pointing LEFT, golden winding crown and ring, openpinkwing flying, legs tucked back, watchlid SHUT with NO numerals. One full bird only on transparent square1024x1024. CRITICAL REGISTRATION: the CENTER OF THE ROUND GOLD WATCH CASE is exactly x512 y512, NOT the centre of the full bird silhouette. Watchcase diameter approximately300px. Head/beak fit on left and above, full wings above and right. Chain streams RIGHT but is only300px long so its full tip fits inside rightcanvas edge x970. Empty alpha margin around all sides. Match reference design and proportions, ONLY pose and lidstate change. No labels, no scenery, no ground.",
+        "source": "/workspace/generated_images/exec-7438c0b8-ccfe-4ed0-bec0-d9790fa43500.png"
+      }
+    },
+    {
+      "id": "IC-M12h",
+      "file": "icecreamcone/game/assets/sprites/clock-hands.png",
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "exportSize": [
+        2048,
+        1024
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 row of two old-fashioned clock hands in blued steel, deep blue-black with a little sheen, matching the hands on the Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ) and fit for the delivered clocks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/town-clocks.png ). Each in its own 1024 x 1024 cell, pointing straight up, with registration the same in both cells: the round pivot boss (a small gold cap with a dot) exactly at the centre of the cell. 1) The long minute hand: slim and tapering, with a small open ring just below its tip and the tip itself a sturdy rounded knob the bird can hold, the tip 4% of the way down from the top of the cell; below the pivot a short counterweight tail with a little round end, reaching 62% of the way down; the hand about 7% of the cell wide at its widest. 2) The short hour hand: a spade-shaped hand, its tip 24% of the way down from the top of the cell, its tail reaching 58% down, about 9% of the cell wide at the spade. Nothing else in the cells. Ignore the instruction to centre each object in its cell: here the pivot is the fixed point.",
+      "references": [
+        "game/assets/subjects/titthrush.png",
+        "game/assets/sprites/town-clocks.png"
+      ],
+      "exportOperation": "resample 2x1 sheet; fixed clock pivots registered at each cell centre",
+      "sha256": "f42a27c539de4bcdefdb4839d4dff6509e26248e56eae5b121e586118e5792f6"
+    }
+  ],
+  "note": "Artwork delivered ahead of Clock Hop implementation; current game still uses Set the Clocks."
+}

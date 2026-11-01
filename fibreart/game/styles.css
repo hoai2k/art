@@ -1,0 +1,431 @@
+:root {
+  --night: #160d2e;
+  --cloth: #f6eedc;
+  --ink: #2a1a14;
+  --thread: #c8243a;
+  --saffron: #f2b51b;
+  --teal: #1aa7a0;
+  --muted: #6d5b4c;
+  --focus: #f2b51b;
+  font-family: 'Questrial', system-ui, sans-serif;
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--night);
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app { position: fixed; inset: 0; }
+#gl, #overlay { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#overlay { touch-action: none; }
+
+[hidden] { display: none !important; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.screen { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+#loading { color: var(--cloth); font-family: 'Caveat', cursive; font-size: 2rem; background: var(--night); }
+/* Loading: a row of pale tacking stitches, sewn over in red as the picture arrives. */
+.stitch-bar {
+  position: relative;
+  width: min(18rem, 70vw);
+  height: 0.5rem;
+  background: repeating-linear-gradient(90deg, rgba(255, 246, 228, 0.28) 0 0.7rem, transparent 0.7rem 1.1rem) center / 100% 3px no-repeat;
+}
+.stitch-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: repeating-linear-gradient(90deg, var(--thread) 0 0.7rem, transparent 0.7rem 1.1rem) left center / 18rem 4px no-repeat;
+  transition: width 0.25s ease-out;
+}
+
+/* Title: the live picture behind, the stitched title over it. */
+#title { background: radial-gradient(ellipse at 50% 45%, rgba(22, 13, 46, 0.15), rgba(22, 13, 46, 0.65)); }
+.title-block { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 2rem; }
+#logo-img {
+  width: min(78vw, 860px);
+  height: auto;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+  background: radial-gradient(ellipse at center, rgba(246, 238, 220, 0.9) 35%, rgba(246, 238, 220, 0) 70%);
+}
+.press-start {
+  margin-top: 1rem;
+  font: 700 clamp(1.8rem, 3.4vw, 2.6rem) 'Caveat', cursive;
+  color: var(--ink);
+  background: var(--cloth);
+  border: 3px dashed var(--thread);
+  outline: 6px solid var(--cloth);
+  border-radius: 999px;
+  padding: 0.3em 1.4em;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s, background 0.15s;
+  animation: breathe 3.2s ease-in-out infinite;
+}
+.press-start:hover { background: #fff8e8; transform: scale(1.04); }
+.press-start:active { transform: scale(0.97); background: #eadfc4; }
+.press-start:focus-visible, .press-start.focused { outline-color: var(--focus); }
+@keyframes breathe { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .press-start { animation: none; } }
+/* Under Press Start until a controller is connected. */
+.pad-note { margin: 0.5rem 0 0; padding: 0.2rem 0.8rem; border-radius: 999px; background: rgba(22, 13, 46, 0.5); color: rgba(246, 238, 220, 0.88); font-size: 0.95rem; letter-spacing: 0.02em; text-shadow: 0 1px 3px #000; }
+.hint { margin: 0.4rem 0 0; color: var(--cloth); opacity: 0.85; font-size: 0.95rem; text-shadow: 0 1px 4px #000; }
+
+.corner-buttons {
+  position: absolute;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: flex;
+  gap: 0.6rem;
+}
+.icon-btn {
+  position: relative;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  border: 2px dashed var(--thread);
+  background: var(--cloth);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.icon-btn svg { width: 1.5rem; height: 1.5rem; }
+.icon-btn img.badge { width: 100%; height: 100%; object-fit: contain; }
+.icon-btn:hover, .icon-btn:focus-visible, .icon-btn.focused { background: #fff8e8; outline: 4px solid var(--focus); outline-offset: 2px; }
+.icon-btn .btn-label {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--ink);
+  color: var(--cloth);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.icon-btn:hover .btn-label, .icon-btn:focus-visible .btn-label, .icon-btn.focused .btn-label { opacity: 1; }
+/* The title's corner buttons are badges like the pause menu's, a little
+   smaller, with their names shown above them. */
+.corner-buttons { gap: 0.8rem; }
+.corner-buttons .pic-btn { width: 4.2rem; height: 4.2rem; }
+.corner-buttons .pic-btn .btn-label { top: auto; bottom: calc(100% + 0.4rem); }
+/* A drawn stand-in (fullscreen, until HK-U07) matches the badges' cloth circle. */
+.corner-buttons .pic-btn:not(:has(img.badge)) { width: 3.4rem; height: 3.4rem; margin: 0.4rem; }
+
+/* In play */
+#hud { position: absolute; inset: 0; pointer-events: none; }
+.caption {
+  position: absolute;
+  left: max(1.2rem, env(safe-area-inset-left));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  color: var(--cloth);
+  font: 700 clamp(1.4rem, 2.6vw, 2.1rem) 'Caveat', cursive;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+.caption small { display: block; font: 0.85rem 'Questrial', sans-serif; opacity: 0.85; }
+.caption.show { opacity: 1; }
+.players {
+  position: absolute;
+  top: max(0.8rem, env(safe-area-inset-top));
+  left: max(1rem, env(safe-area-inset-left));
+  display: flex;
+  gap: 0.5rem;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem 0.25rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(246, 238, 220, 0.88);
+  font-size: 0.85rem;
+  border: 2px dashed var(--c);
+}
+.chip i { width: 0.9rem; height: 0.9rem; border-radius: 50%; background: var(--c); }
+.chip b { font-weight: 700; }
+.hud-pause {
+  position: absolute;
+  top: max(0.8rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  pointer-events: auto;
+  width: 2.8rem;
+  height: 2.8rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+/* Nothing shows over the picture while playing. The pause button appears
+   only for a moment when the mouse moves or the screen is tapped, for players
+   with no Menu or Esc to reach the pause menu. */
+#hud.reveal .hud-pause { opacity: 0.85; pointer-events: auto; }
+/* Hints while playing (captions, player chips, the controls line) only when
+   the player has turned them on in Settings. */
+#hud:not(.hints) .caption, #hud:not(.hints) .players, #hud:not(.hints) .play-hint { display: none; }
+/* The on-screen controls' switch: only on touch screens. */
+.play-hint {
+  position: absolute;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(0.8rem, env(safe-area-inset-bottom));
+  margin: 0;
+  color: var(--cloth);
+  font-size: 0.85rem;
+  opacity: 0.75;
+  text-shadow: 0 1px 4px #000;
+}
+
+/* Panels and dialogs: cream cloth with a running stitch. */
+.modal { background: rgba(10, 6, 24, 0.55); }
+/* The card can be opened from the pause menu: keep it above it. */
+#card { z-index: 1; }
+.panel {
+  background: var(--cloth);
+  border-radius: 14px;
+  padding: 1.3rem 1.6rem 1.2rem;
+  width: min(92vw, 420px);
+  max-height: 90vh;
+  max-height: calc(100dvh - max(1rem, env(safe-area-inset-top)) - max(1rem, env(safe-area-inset-bottom)));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  box-shadow: 0 0 0 6px var(--cloth), 0 0 0 8px rgba(0, 0, 0, 0.05), 0 18px 50px rgba(0, 0, 0, 0.55);
+  outline: 2px dashed var(--thread);
+  outline-offset: -8px;
+}
+.panel.wide { width: min(94vw, 820px); }
+.panel h2 { margin: 0 0 0.3rem; font: 700 2.1rem 'Caveat', cursive; color: var(--thread); }
+.panel h3 { margin: 1rem 0 0.3rem; font: 700 1.5rem 'Caveat', cursive; }
+.scroll { overflow-y: auto; padding-right: 0.4rem; }
+.scroll:focus-visible { outline: 3px solid var(--focus); }
+.muted { color: var(--muted); }
+.menu-btn {
+  flex-shrink: 0;
+  min-height: 44px;
+  font: 1.05rem 'Questrial', sans-serif;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #d9c9a8;
+  background: #fffaf0;
+  color: var(--ink);
+  cursor: pointer;
+}
+.menu-btn:hover { background: #fff; border-color: var(--thread); }
+.menu-btn:focus-visible, .menu-btn.focused { outline: 4px solid var(--focus); outline-offset: 1px; border-color: var(--thread); }
+.menu-btn:active { background: #f0e4c8; }
+
+.pad-diagram { color: var(--ink); max-width: 640px; }
+.pad-diagram svg { width: 100%; height: auto; }
+.map-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.map-table th, .map-table td { text-align: left; padding: 0.35rem 0.4rem; border-bottom: 1px dashed #cdbb98; vertical-align: top; }
+.xb { display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.85em; }
+.xb-a { background: #4caf50; } .xb-b { background: #d9443d; } .xb-x { background: #3d7bd9; } .xb-y { background: #e8b830; color: #1b1430; }
+
+.settings-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.row { display: grid; grid-template-columns: 1fr 9rem 2.5rem; align-items: center; gap: 0.6rem; }
+.row.check { grid-template-columns: 1fr auto; }
+.row input:focus-visible, .row input.focused { outline: 4px solid var(--focus); outline-offset: 2px; }
+.row input[type='range'] { accent-color: var(--thread); }
+.row input[type='checkbox'] { width: 1.3rem; height: 1.3rem; accent-color: var(--thread); }
+.row { min-height: 44px; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr 7rem 2rem; } }
+
+/* The card of controls found. */
+.card-player { margin-bottom: 0.8rem; }
+.card-player h3 { display: flex; align-items: center; gap: 0.5rem; color: var(--c); margin-top: 0.2rem; }
+.card-player ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.3rem 1rem; }
+.card-player li { display: flex; gap: 0.5rem; align-items: baseline; }
+.card-player li kbd { font: 700 0.85rem 'Questrial', sans-serif; min-width: 2.2rem; color: var(--c); }
+.card-player li.unfound { color: #a8977f; font-style: italic; }
+.card-player li.large { font-weight: 700; }
+
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  transform: translateX(-50%);
+  background: var(--cloth);
+  border: 2px dashed var(--thread);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; }
+
+
+/* Short screens (a phone on its side): tighter panels, the pause menu in two columns. */
+@media (max-height: 500px) {
+  .panel { padding: 0.8rem 1.2rem; gap: 0.4rem; }
+  .panel h2 { font-size: 1.7rem; margin: 0; }
+  .settings-list { gap: 0; }
+  .title-block { padding: 0.5rem; gap: 0.3rem; }
+  #logo-img { width: min(78vw, 100vh); }
+  .press-start { margin-top: 0.3rem; }
+  .pad-note { margin-top: 0.2rem; font-size: 0.85rem; }
+  /* Lifted clear of the corner buttons. */
+  .title-block { padding-bottom: 4.6rem; }
+}
+/* A narrow screen: the hint wraps above the corner buttons instead of under them. */
+@media (max-width: 600px) {
+  #logo-img { width: 92vw; }
+  .toast { top: calc(max(0.8rem, env(safe-area-inset-top)) + 3.6rem); width: max-content; max-width: calc(100vw - 2rem); text-align: center; }
+  .play-hint { left: max(1rem, env(safe-area-inset-left)); text-align: right; }
+  .caption { bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 2.4rem); }
+}
+
+/* Close: an X in the top right of a panel, instead of a button with words. */
+.panel { position: relative; }
+.close-x {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 2px dashed var(--thread);
+  background: #fffaf0;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.close-x svg { width: 1.2rem; height: 1.2rem; }
+.close-x:hover { background: #fff; }
+.close-x:focus-visible, .close-x.focused { outline: 4px solid var(--focus); outline-offset: 2px; }
+.panel h2 { padding-right: 2.8rem; }
+
+/* The pause menu: pictures to choose between, no words. Each one's name is
+   its accessible name, shown small on hover or focus. */
+.pause-panel { width: auto; padding: 1.6rem 1.8rem; }
+.pause-grid { display: grid; grid-template-columns: repeat(3, auto); gap: 1.1rem 1.3rem; justify-content: center; }
+.pic-btn {
+  position: relative;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  border: 2.5px dashed var(--thread);
+  outline: 5px solid var(--cloth);
+  background: #fffaf0;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.12s, background 0.12s;
+}
+.pic-btn svg { width: 2.6rem; height: 2.6rem; }
+.pic-btn img { width: 3.6rem; height: 3.6rem; object-fit: contain; }
+.pic-btn:hover { background: #fff; transform: scale(1.05); }
+.pic-btn.sound-btn.is-off:not(:hover):not(:focus-visible):not(.focused) { opacity: 0.55; }
+.pic-btn:active { transform: scale(0.96); }
+.pic-btn:focus-visible, .pic-btn.focused { outline: 5px solid var(--focus); background: #fff; }
+.pic-btn .btn-label {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--cloth);
+  font-size: 0.78rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 1;
+}
+.pic-btn:hover, .pic-btn:focus-visible, .pic-btn.focused { z-index: 2; }
+.pic-btn:hover .btn-label, .pic-btn:focus-visible .btn-label, .pic-btn.focused .btn-label { opacity: 1; }
+/* On a touch screen there is no hover: the pause menu shows every name, under
+   its badge, with room for it between the rows. */
+@media (hover: none) {
+  #pause .pause-grid { row-gap: 2.1rem; padding-bottom: 1.4rem; }
+  #pause .pic-btn .btn-label { opacity: 1; background: none; color: var(--ink); padding: 0; font-size: 0.8rem; }
+}
+#pause-reason:empty { display: none; }
+#pause-reason { max-width: 20rem; margin: 0 auto 0.8rem; text-align: center; }
+
+/* Delivered appliqué badges fill their round buttons. */
+.pic-btn img.badge { width: 100%; height: 100%; object-fit: contain; }
+.pic-btn:has(img.badge) { border: none; background: transparent; box-shadow: none; outline-color: transparent; }
+.pic-btn:has(img.badge):focus-visible, .pic-btn.focused:has(img.badge) { outline: 5px solid var(--focus); }
+
+/* The hint: the control, the piece, what wakes it, and one short line. */
+.hint-row { display: flex; align-items: center; gap: 0.9rem; padding: 0.6rem 0; border-bottom: 1px dashed #cdbb98; flex-wrap: wrap; }
+.hint-row:last-child { border-bottom: none; }
+.hint-dot { width: 0.9rem; height: 0.9rem; border-radius: 50%; background: var(--c); flex: none; }
+.hint-pic { margin: 0; display: flex; flex-direction: column; align-items: center; width: 4rem; }
+.hint-pic img { width: 3.4rem; height: 3.4rem; object-fit: contain; }
+.hint-pic figcaption { font-weight: 700; color: var(--c); font-size: 0.85rem; }
+.hint-piece { width: 4.6rem; height: 4.6rem; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25)); }
+.hint-setup { width: 4rem; color: var(--thread); display: grid; place-items: center; }
+.hint-setup svg { width: 100%; height: auto; }
+.hint-text { flex: 1 1 14rem; margin: 0; font-size: 1.05rem; }
+
+/* The fullscreen button only where fullscreen works (not Safari on iPhone,
+   not opened from the home screen, where it is full screen already). */
+.no-fullscreen [data-action="fullscreen"] { display: none; }
+/* Safari on iPhone: the page is taller than the screen so a swipe up tucks
+   Safari's bars away (src/chrome.js). During play the hand owns every
+   gesture, so nothing scrolls. */
+html.ios-scroll, html.ios-scroll body { height: auto; overflow-x: hidden; overflow-y: auto; touch-action: pan-y; }
+html.ios-scroll body { position: relative; }
+/* The game is fixed and takes no height: a spacer makes the page taller than
+   the screen (100lvh: as tall as the screen with the bars hidden). */
+html.ios-scroll body::after { content: ""; display: block; height: calc(100lvh + 160px); }
+html.ios-scroll.ios-scroll-play, html.ios-scroll.ios-scroll-play body { overflow: hidden; touch-action: none; }
+#bars-hint {
+  position: fixed;
+  left: 50%;
+  top: max(0.5rem, env(safe-area-inset-top));
+  transform: translateX(-50%);
+  z-index: 40;
+  background: var(--cloth);
+  color: var(--ink);
+  border: 2px dashed var(--thread);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font: 700 1.3rem 'Caveat', cursive;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+#bars-hint .arrow { display: inline-block; color: var(--thread); animation: swipe-nudge 1.4s ease-in-out infinite; }
+@keyframes swipe-nudge { 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { #bars-hint .arrow { animation: none; } }
+
+/* Credits: who made it, what inspired it, what it was made with. */
+.credits-panel { width: min(92vw, 440px); }
+.credits { margin: 0; display: grid; gap: 0.15rem; }
+.credits dt { font: 700 1.25rem 'Caveat', cursive; color: var(--thread); margin-top: 0.5rem; }
+.credits dt:first-child { margin-top: 0; }
+.credits dd { margin: 0; }
+.credits-note { margin: 0.9rem 0 0; }
+.credits a, .credits-note a { color: var(--ink); text-decoration-color: var(--thread); text-underline-offset: 3px; }
+.credits-note a:focus-visible, .credits-note a.focused { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }

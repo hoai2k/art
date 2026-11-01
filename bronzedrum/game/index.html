@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" class="booting">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#16151A">
+  <!-- Add to Home Screen: a full-screen, landscape app (see src/chrome.js). -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bronze Drum">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <title>Bronze Drum</title>
+  <meta name="description" content="Two sisters, one bronze drum. Command an army of women by drumming on the beat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23B07A3A'/%3E%3Cpath d='M16 5l2.6 7.4L26 10l-5 6 5 6-7.4-2.4L16 27l-2.6-7.4L6 22l5-6-5-6 7.4 2.4z' fill='%23F2E8D5'/%3E%3C/svg%3E">
+  <!-- Dark from the first frame, and the logo fetched at once (see revealTitle in src/main.js). -->
+  <style>html { background: #16151A; }</style>
+  <link rel="preload" as="image" href="assets/web/logo.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="stage" data-text-label="game.canvasLabel"></canvas>
+
+    <section id="title" class="screen" aria-labelledby="logo-text">
+      <div class="title-art" aria-hidden="true"></div>
+      <div class="title-block">
+        <img id="logo-img" src="assets/web/logo.webp" alt="" hidden>
+        <h1 id="logo-text" class="logo-text"><span class="vn" data-text="title.logoVietnamese"></span><span class="en" data-text="title.logoEnglish"></span></h1>
+        <button id="press-start" class="press-start" data-nav data-text="title.pressStart"></button>
+        <button id="practice-start" class="practice-start" data-nav data-action="practice" data-text="title.drumPractice"></button>
+        <p class="hint" id="title-hint"></p>
+      </div>
+      <div class="corner-buttons">
+        <button class="icon-btn" data-nav data-open="instructions" data-text-label="title.cornerButtons.instructions">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h9a5 5 0 0 1 5 5v11H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="btn-label" data-text="title.cornerButtons.instructions"></span>
+        </button>
+        <button class="icon-btn" data-nav data-open="settings" data-text-label="title.cornerButtons.settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.16 2.83 L9.77 1.02 L14.23 1.02 L14.84 2.83 L16.48 3.51 L18.19 2.66 L21.34 5.81 L20.49 7.52 L21.17 9.16 L22.98 9.77 L22.98 14.23 L21.17 14.84 L20.49 16.48 L21.34 18.19 L18.19 21.34 L16.48 20.49 L14.84 21.17 L14.23 22.98 L9.77 22.98 L9.16 21.17 L7.52 20.49 L5.81 21.34 L2.66 18.19 L3.51 16.48 L2.83 14.84 L1.02 14.23 L1.02 9.77 L2.83 9.16 L3.51 7.52 L2.66 5.81 L5.81 2.66 L7.52 3.51Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span class="btn-label" data-text="title.cornerButtons.settings"></span>
+        </button>
+        <button id="sound-btn" class="icon-btn" data-nav data-action="sound" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></g></svg>
+          <span class="btn-label"></span>
+        </button>
+        <button class="icon-btn" data-nav data-action="fullscreen" data-text-label="title.cornerButtons.fullscreen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="btn-label" data-text="title.cornerButtons.fullscreen"></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="select" class="screen" hidden aria-labelledby="select-title">
+      <h2 id="select-title" data-text="chapterSelect.title"></h2>
+      <div id="stage-cards" class="cards"></div>
+      <p id="stage-intro" class="stage-intro" aria-live="polite"></p>
+      <button class="text-btn" data-nav data-action="title" data-text="chapterSelect.back"></button>
+    </section>
+
+    <!-- Drum Practice: free drumming, or call and answer with a partner. -->
+    <section id="practice" class="screen" hidden aria-labelledby="practice-title">
+      <h2 id="practice-title" data-text="practice.screenTitle"></h2>
+      <div id="practice-cards" class="cards"></div>
+      <p id="practice-intro" class="stage-intro" aria-live="polite"></p>
+      <button class="text-btn" data-nav data-action="title" data-text="practice.back"></button>
+    </section>
+
+    <section id="pause" class="screen modal" hidden aria-labelledby="pause-title">
+      <div class="panel">
+        <h2 id="pause-title" data-text="pause.title"></h2>
+        <p id="pause-chapter" class="pause-chapter"></p>
+        <p id="pause-reason" class="muted"></p>
+        <button class="menu-btn" data-nav data-action="resume" data-text="pause.resume"></button>
+        <button class="menu-btn" data-nav data-open="instructions" data-text="pause.instructions"></button>
+        <button class="menu-btn" data-nav data-open="settings" data-text="pause.settings"></button>
+        <button class="menu-btn" data-nav data-action="restart" data-text="pause.restartChapter"></button>
+        <button class="menu-btn" data-nav data-action="select" data-text="pause.chapters"></button>
+        <button class="menu-btn" data-nav data-action="title" data-text="pause.returnToTitle"></button>
+      </div>
+    </section>
+
+    <section id="rotate" class="screen" hidden aria-labelledby="rotate-title" aria-live="polite">
+      <div class="rotate-card">
+        <svg class="rotate-phone" viewBox="0 0 120 120" aria-hidden="true">
+          <g class="phone"><rect x="40" y="18" width="40" height="72" rx="7"/><circle cx="60" cy="81" r="3"/></g>
+          <path class="arrow" d="M28 92 A42 42 0 0 1 22 52" /><path class="arrow-head" d="M16 58 L22 48 L29 57" />
+        </svg>
+        <h2 id="rotate-title" data-text="rotate.title"></h2>
+        <p data-text="rotate.text"></p>
+        <button class="menu-btn" data-nav data-action="menu" data-text="rotate.menu"></button>
+      </div>
+    </section>
+
+    <section id="result" class="screen modal" hidden aria-labelledby="result-title">
+      <div class="panel">
+        <h2 id="result-title"></h2>
+        <p id="result-text" class="muted"></p>
+        <button class="menu-btn" data-nav data-action="next" id="result-next" data-text="results.nextChapter"></button>
+        <button class="menu-btn" data-nav data-action="restart" data-text="results.playAgain"></button>
+        <button class="menu-btn" data-nav data-action="select" data-text="results.chaptersButton"></button>
+      </div>
+    </section>
+
+    <section id="instructions" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="ins-title">
+      <div class="panel wide">
+        <h2 id="ins-title" data-text="instructions.title"></h2>
+        <div class="scroll" id="ins-scroll" tabindex="0">
+          <p data-text="instructions.objective"></p>
+          <p data-text="instructions.twoDrummers"></p>
+          <p data-text="instructions.commands"></p>
+          <p data-text="instructions.strongerRhythms"></p>
+          <table class="cmd-table" id="cmd-table"></table>
+          <p data-text="instructions.armyAnswers"></p>
+          <p data-text="instructions.shield"></p>
+          <h3 data-text="instructions.controllerHeading"></h3>
+          <div class="pad-diagram" aria-hidden="true">
+            <svg viewBox="0 0 640 300">
+              <path d="M180 70 Q320 40 460 70 Q540 80 570 190 Q590 270 530 270 Q490 270 460 220 L180 220 Q150 270 110 270 Q50 270 70 190 Q100 80 180 70 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+              <!-- Shoulder buttons, drawn neutral: they do not strike the drum. -->
+              <rect x="150" y="36" width="70" height="18" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><text x="185" y="49" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">LB</text>
+              <rect x="420" y="36" width="70" height="18" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><text x="455" y="49" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">RB</text>
+              <rect x="160" y="10" width="50" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><text x="185" y="25" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">LT</text>
+              <rect x="430" y="10" width="50" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><text x="455" y="25" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">RT</text>
+              <circle cx="190" cy="125" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="190" y="129" text-anchor="middle" font-size="11" fill="currentColor">L stick</text>
+              <path d="M240 175h16v-16h16v16h16v16h-16v16h-16v-16h-16z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <!-- Face buttons as the game's drum marks: X the gold tùng disc, B the
+                   black-and-red cắc target, A the barrel drum's cream hide. Y is unused. -->
+              <circle cx="450" cy="100" r="15" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"/><text x="450" y="105" text-anchor="middle" font-size="13" fill="currentColor" opacity="0.5">Y</text>
+              <circle cx="420" cy="128" r="15" fill="#D9A55B"/><text x="420" y="133" text-anchor="middle" font-size="14" font-weight="700" fill="#16151A">X</text>
+              <circle cx="480" cy="128" r="15" fill="#16151A"/><circle cx="480" cy="128" r="11" fill="none" stroke="#A8322D" stroke-width="4"/><text x="480" y="133" text-anchor="middle" font-size="14" font-weight="700" fill="#F2E8D5">B</text>
+              <circle cx="450" cy="156" r="15" fill="#EADBC0" stroke="#B07A3A" stroke-width="2"/><text x="450" y="161" text-anchor="middle" font-size="14" font-weight="700" fill="#16151A">A</text>
+              <rect x="300" y="110" width="16" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="308" y="104" text-anchor="middle" font-size="10" fill="currentColor">View</text>
+              <rect x="330" y="110" width="16" height="10" rx="4" fill="currentColor"/><text x="338" y="104" text-anchor="middle" font-size="10" fill="currentColor">Menu</text>
+              <circle cx="380" cy="190" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+              <g font-size="13" fill="currentColor">
+                <line x1="405" y1="128" x2="372" y2="250" stroke="currentColor"/><text x="300" y="266" font-weight="700" data-text="instructions.controllerDiagram.deep"></text>
+                <line x1="495" y1="128" x2="600" y2="140" stroke="currentColor"/><text x="508" y="156" font-weight="700" data-text="instructions.controllerDiagram.rim"></text>
+                <line x1="465" y1="158" x2="600" y2="200" stroke="currentColor"/><text x="490" y="215" data-text="instructions.controllerDiagram.shield"></text>
+                <line x1="168" y1="125" x2="40" y2="110" stroke="currentColor"/><text x="10" y="104" data-text="instructions.controllerDiagram.stick"></text>
+                <line x1="248" y1="200" x2="200" y2="290" stroke="currentColor"/><text x="90" y="296" data-text="instructions.controllerDiagram.dpad"></text>
+                <line x1="338" y1="100" x2="338" y2="70" stroke="currentColor"/><text x="300" y="64" data-text="instructions.controllerDiagram.menu"></text>
+              </g>
+            </svg>
+          </div>
+          <table class="map-table" data-text="instructions.controlsTable"></table>
+          <p data-text="instructions.phones"></p>
+          <p class="muted" data-text="instructions.audioOffset"></p>
+        </div>
+        <button class="menu-btn" data-nav data-action="close" data-text="instructions.close"></button>
+      </div>
+    </section>
+
+    <section id="settings" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="set-title">
+      <div class="panel">
+        <h2 id="set-title" data-text="settings.title"></h2>
+        <label class="row choice"><span><span data-text="settings.labels.style"></span> <span class="info" tabindex="0" data-tip-text="settings.tips.style">i<span id="style-note" class="visually-hidden" data-text="settings.tips.style"></span></span></span> <select data-nav data-setting="style" aria-describedby="style-note"><option value="0" data-text="settings.styleChoices.0"></option><option value="1" data-text="settings.styleChoices.1"></option></select></label>
+        <label class="row"><span><span data-text="settings.labels.difficulty"></span> <span class="info" tabindex="0" data-tip-text="settings.tips.difficulty">i<span id="difficulty-note" class="visually-hidden" data-text="settings.tips.difficulty"></span></span></span> <input type="range" min="0" max="2" step="1" data-nav data-setting="difficulty" aria-describedby="difficulty-note"><output></output></label>
+        <label class="row"><span><span data-text="settings.labels.beats"></span> <span class="info" tabindex="0" data-tip-text="settings.tips.beats">i<span id="beats-note" class="visually-hidden" data-text="settings.tips.beats"></span></span></span> <input type="range" min="3" max="8" step="1" data-nav data-setting="beats" aria-describedby="beats-note"><output></output></label>
+        <label class="row"><span data-text="settings.labels.volume"></span> <input type="range" min="0" max="100" step="5" data-nav data-setting="volume"><output></output></label>
+        <label class="row"><span data-text="settings.labels.echo"></span> <input type="range" min="0" max="100" step="5" data-nav data-setting="echo"><output></output></label>
+        <label class="row"><span data-text="settings.labels.music"></span> <input type="range" min="0" max="100" step="5" data-nav data-setting="music"><output></output></label>
+        <label class="row"><span data-text="settings.labels.ambience"></span> <input type="range" min="0" max="100" step="5" data-nav data-setting="ambience"><output></output></label>
+        <label class="row"><span data-text="settings.labels.offset"></span> <input type="range" min="-200" max="200" step="5" data-nav data-setting="offset"><output></output></label>
+        <label class="row check"><span data-text="settings.labels.hints"></span> <input type="checkbox" data-nav data-setting="hints"></label>
+        <label class="row check"><span data-text="settings.labels.vibration"></span> <input type="checkbox" data-nav data-setting="vibration"></label>
+        <label class="row check"><span data-text="settings.labels.reduceMotion"></span> <input type="checkbox" data-nav data-setting="reduceMotion"></label>
+        <label class="row choice"><span><span data-text="settings.labels.sticks"></span> <span class="info up" tabindex="0" data-tip-text="settings.tips.sticks">i<span id="sticks-note" class="visually-hidden" data-text="settings.tips.sticks"></span></span></span> <select data-nav data-setting="sticks" aria-describedby="sticks-note"><option value="0" data-text="settings.drumsticksChoices.0"></option><option value="1" data-text="settings.drumsticksChoices.1"></option><option value="2" data-text="settings.drumsticksChoices.2"></option></select></label>
+        <button class="menu-btn" data-nav data-open="credits" data-text="settings.credits"></button>
+        <button class="menu-btn" data-nav data-action="close" data-text="settings.done"></button>
+      </div>
+    </section>
+
+    <section id="credits" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="credits-title">
+      <div class="panel wide">
+        <h2 id="credits-title" data-text="credits.title"></h2>
+        <div class="scroll" tabindex="0">
+          <dl class="credits" data-credits="credits.entries"></dl>
+        </div>
+        <button class="menu-btn" data-nav data-action="close" data-text="credits.close"></button>
+      </div>
+    </section>
+
+    <!-- A chapter won: the scene celebrates (Renderer.celebrate) under this. -->
+    <!-- A chapter's opening: its story over the still scene (main.js showOpening). -->
+    <section id="opening" hidden aria-live="polite">
+      <div class="opening-card">
+        <p id="opening-num" class="opening-num"></p>
+        <h2 id="opening-title"></h2>
+        <p id="opening-story" class="opening-story"></p>
+        <p id="opening-goal" class="opening-goal"></p>
+        <button id="opening-begin" class="press-start"><span class="label" data-text="opening.begin"></span> <span class="xb xb-a" aria-hidden="true">A</span></button>
+      </div>
+    </section>
+    <section id="success" hidden aria-live="polite">
+      <h2 id="success-title"></h2>
+      <p id="success-text"></p>
+      <button id="success-next" class="press-start"><span class="label" data-text="results.continue"></span> <span class="xb xb-a" aria-hidden="true">A</span></button>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <!-- iPhone Safari with its bars showing (see src/chrome.js) -->
+    <div id="bars-hint" hidden><span class="arrow" aria-hidden="true">↑</span> <span data-text="messages.safariBars"></span></div>
+  </div>
+  <script type="module" src="src/boot.js"></script>
+</body>
+</html>

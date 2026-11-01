@@ -1,0 +1,228 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "notes": "Milk Round and Glass Harp props/poses; connected-handle Lark redraw; backgrounds revised to current game layouts. Alpha verified by compositing onto cream for QA.",
+  "assets": [
+    {
+      "id": "IC-R15b",
+      "file": "game/assets/subjects/ladlelark.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "previous_sha256": "1c62b60f6335dc8173b6f23ed94b4014dc5a0aedd354713583ca70c7c1431a0c",
+      "sha256": "35fbfa95884304bb56abc0eb6b46335da9478a1292e1e5be04986512337d7f9f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. The delivered painting (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/ladlelark.png) has the ladle's hook drawn as a separate piece floating above the bird's back. Paint the same bird again, matching it in every other way (the speckled grey enamel bowl as the body, the long handle as the neck rising to the head with its yellow beak and staring eye, the grey-blue wings and tail, the ochre legs), but with the ladle in ONE piece: the hook at the end of the handle curls back from the top of the head as a crest, part of the same handle. Nothing floats apart from the bird. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 1024 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M01b",
+      "file": "game/assets/sprites/milk-houses.png",
+      "dimensions": [
+        2048,
+        1536
+      ],
+      "source_dimensions": [
+        1448,
+        1086
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "2045902672d68d4aed86ba8f5b5c3ca55a1a4c098b4a213dee61bb30ebb0ec60",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six small, different terraced and cottage house fronts seen straight on, each about 420 px wide and 520 px tall including its roof and chimney, each in a different soft colour (dusty pink, lemon, sage, mauve, ochre, cream brick), each with two windows and one front door in the middle of the bottom edge, and a plain flat stone doorstep across the very bottom in the centre, in front of the door. The house stops at the doorstep: no garden, path, fence, ground, people or bottles. Nothing written on the doors.\nProduction game asset, dimensions 2048 x 1536, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M01c",
+      "file": "game/assets/sprites/milk-props.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "57cb70594727e16fdb52a50fde0b4188d56736d52ef6d03f8814f86ca2dbb751",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six objects, each about 380 px at its longest. Top row, left to right: one full glass pint milk bottle standing upright, white milk inside, a silver foil cap; a small splash of spilt milk on the ground with a few broken glass shards and a crumpled silver cap, seen from the side and slightly above, flat and wide; a scruffy brown terrier curled up asleep with its eyes shut, facing left. Bottom row: the same terrier standing on all four legs, wide awake, barking with its mouth open and its ears up, facing left; a small white card hanging from a loop of string, with a simple picture on it of a milk bottle crossed out with a red line (a picture only, no letters or words); a small plain doormat, seen from the side and slightly above, flat and wide, in mustard yellow.\nProduction game asset, dimensions 1536 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": "Remove ONLY the entire tinted/blurred brown and grey background and every halo/cast shadow from this game asset. Preserve all object shapes, ink lines, colors, textures and current layout EXACTLY. Everything outside the cut-out objects, including the empty space between objects and the milk float's open cab, must have genuine alpha=0 transparency. Do NOT replace it with white, black, checkerboard or a painted gradient. Retain clean anti-aliased object edges. Return transparent PNG at the same aspect ratio. No new objects or rearrangement."
+    },
+    {
+      "id": "IC-M01d",
+      "file": "game/assets/sprites/milk-float.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "d6f45b1fc5715959b5ae85c15cfedf72d5ce07d8c89f11c75acfbc38a309363e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A small old-fashioned electric milk float seen exactly from the side, facing left: a small rounded cab with a windscreen at the left end, a long low open flatbed behind it carrying three wooden crates full of white milk bottles with silver caps, four small black wheels, painted sage green and cream. The crates at the back (right) end make a flat place to stand on. Filling about 90% of the frame width, centred, wheels near the bottom. No driver, no lettering, no number plate. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 1536 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": "Remove ONLY the entire tinted/blurred brown and grey background and every halo/cast shadow from this game asset. Preserve all object shapes, ink lines, colors, textures and current layout EXACTLY. Everything outside the cut-out objects, including the empty space between objects and the milk float's open cab, must have genuine alpha=0 transparency. Do NOT replace it with white, black, checkerboard or a painted gradient. Retain clean anti-aliased object edges. Return transparent PNG at the same aspect ratio. No new objects or rearrangement."
+    },
+    {
+      "id": "IC-M01e",
+      "file": "game/assets/sprites/midge-throw.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "0e6ee9cd26fee7f587465ffb5a08991cee0ed9ce194c5778ea2cc79304043d37",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Milkbottle Midge (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/milkmidge.png). The Midge is a glass pint milk bottle, full of milk to just below its eye, with a red-and-white checked cloth cap tied over its neck, one round staring eye and a long yellow beak pointing left from the glass, ochre-yellow feathered wings on its sides and thin yellow legs. Two poses side by side on one 2 x 1 sheet, both facing left: left, winding up to throw, leaning back, one ochre wing raised behind its head gripping a small full pint milk bottle with a silver foil cap; right, the follow-through, leaning forward with that wing swept forward and empty, beak open a little, as if it has just lobbed the bottle up and away. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M01f",
+      "file": "game/assets/sprites/midge-moods.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "b3b324f990b2e1fd9fdfcf627dd663da4a3b3903b71f7227a45afff55e77a021",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Milkbottle Midge (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/milkmidge.png). The Midge is a glass pint milk bottle, full of milk to just below its eye, with a red-and-white checked cloth cap tied over its neck, one round staring eye and a long yellow beak pointing left from the glass, ochre-yellow feathered wings on its sides and thin yellow legs. Two poses side by side on one 2 x 1 sheet, both facing left, wings empty, feet in the same place: left, pleased, standing tall on tiptoe with both ochre wings raised and its beak lifted, the milk inside it brimming happily; right, startled, flinching back with its wings up by its checked cloth cap, eye wide, knees bent, the milk inside sloshing up the glass. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M02b",
+      "file": "game/assets/sprites/harp-glass.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "d9679ba1bd0b8d8c2b6db082017377ada9fb369188279901be294cc05450c05e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 grid of two tall, plain, straight-sided drinking tumblers seen from the side at eye level, very slightly wider at the rim than at the base, each about 260 px wide and 500 px tall: left, the empty glass whole; right, the same empty glass with a jagged crack running down from the rim. Drawn as clear glass: only the outline, the rim ellipse, the thick base and a few white highlights and soft grey reflections; the inside of the glass must be fully transparent (no tint, no fill, no water) so the game can paint water inside it. Same size and position in both cells.\nProduction game asset, dimensions 1024 x 1024, transparent. Respect exact grid, row-major order and object counts. Every silhouette fully within its equally sized cell, centered with generous transparent gutters; no grid lines. For poses preserve the reference bird's object anatomy and consistent scale. For single assets keep entire silhouette inside the frame.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M02c",
+      "file": "game/assets/sprites/goose-tap.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "33f8536332ca399ac7142b875a2833ee1f830cd1d41e901cccf0201a9a5873d2",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Waterglass Goose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/waterglassgoose.png). The Goose is a white heron-like bird whose body is a clear, empty drinking tumbler lying on its side and tilted: its long cream neck comes out of the glass's open mouth at the front left, its thick glass base is at the back right with a tuft of dark grey-green rooster tail feathers, a long pale-yellow beak, one small eye, a little crest, and long pale legs with webbed feet. Two poses side by side on one 2 x 1 sheet, both facing left, glass body and legs exactly as in the portrait: left, its long neck curved forward and down so its beak points down and to the left, the beak tip a little below the height of its own glass body's top edge and well out in front of it, as if tapping the rim of a glass standing just in front of it; right, its neck stretched straight up and its beak open to the sky, honking happily. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOutput 2048 x 1024, transparent. Keep each complete pose inside its own equal-width cell with generous transparent gutters. Same character design as reference, face left, no clipping or backdrop.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M02d",
+      "file": "game/assets/sprites/goose-moves.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "previous_sha256": null,
+      "sha256": "b6dfe823cc7293938711aacab935e53ab3e03e45197a153947f533952057bcb5",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Waterglass Goose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/waterglassgoose.png). The Goose is a white heron-like bird whose body is a clear, empty drinking tumbler lying on its side and tilted: its long cream neck comes out of the glass's open mouth at the front left, its thick glass base is at the back right with a tuft of dark grey-green rooster tail feathers, a long pale-yellow beak, one small eye, a little crest, and long pale legs with webbed feet. Two poses side by side on one 2 x 1 sheet, both facing left: left, walking mid-stride, one long webbed foot lifted and reaching forward, neck level; right, recoiling in dismay, neck pulled back into an S, beak open, crest up, tail feathers flared, the tumbler body tipped back a little. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOutput 2048 x 1024, transparent. Keep each complete pose inside its own equal-width cell with generous transparent gutters. Same character design as reference, face left, no clipping or backdrop.",
+      "correction_prompt": "Edit this two-pose Waterglass Goose sprite sheet only to fit each complete bird inside its own equal-width half. Left half: walking pose. Right half: recoiling pose. Reduce BOTH birds to about80% of each half's width and height, centered horizontally in their cells, keep feet on one common level baseline. Leave at least8% clear transparent margin at the center split and every outside edge. The left bird's dark tail must stop well BEFORE the center line. Preserve all object anatomy, glass-tumbler bodies, heads, eye, neck, beak, feathers, legs and original ink watercolor textures; no new objects, no background or shadow. Transparent PNG, exactly2:1 landscape."
+    },
+    {
+      "id": "IC-M07a",
+      "file": "game/assets/scenes/keycrane.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "previous_sha256": "fb48167e2255417c3dca19204718c5531b7d24ff5977355b06671c71c247ed18",
+      "sha256": "6ae3789c38aa94c3c4d900e464af42db68deb0cc7feb6d320c501dd2abc50100",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). Looking straight into an old wooden penny-arcade prize-crane cabinet, as if through its glass front, filling the whole picture. A dark carved wooden frame about 3% thick runs round all four edges. Across the top, about 13% of the way down (leave the strip above it plain wood and wallpaper), a single plain level brass rail runs from the left side of the cabinet to the right, polished and slightly worn. The back wall behind the glass is faded cream wallpaper with a sparse pattern of small mauve sprigs. The floor is worn dusty-rose velvet, a level strip from about 90% of the way down to the bottom frame. At the bottom left, a square-ish wooden prize chute rises from the floor: a box with a dark round hole in its top, its left edge against the frame, about 18% of the picture wide, its top at about 58% of the way down, with a small faded yellow painted arrow pointing down at the hole on the wall above it. Everything else is empty: keep the whole space between the rail and the floor, from 18% to 88% down and from the chute to the right edge, plain and quiet (just the wallpaper), because the game hangs the crane from the rail there and piles the prizes on the velvet floor.\nThis is a revised layout request. Produce the new composition exactly as described, retaining the ink-and-faded-watercolor style. Percentage placements are gameplay-critical. Opaque1920x1080 fullbleed16:9. Do not add any birds, people or items reserved for sprites.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M11a",
+      "file": "game/assets/scenes/glovedove.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "previous_sha256": "1695f3fab0f91f16d33db1df05e1c0668cf7e3f2c1d16a04884772a7a7316ffa",
+      "sha256": "e95a12a0ad72c7f38537798c5f4e5db11f8a46f75a1151b87b47aee8f6584af1",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). An old-fashioned kitchen seen straight from the side, like a stage. A long wooden counter top runs right across the picture at about 81% of the height, with plain cupboard doors below it to the bottom edge. On the left, from 2% to 21% of the width, a deep white ceramic sink set into the counter, heaped with soap suds (its rim at about 65% of the height), with an old curved chrome tap above it. On the right, from 77% to 97% of the width, an empty wire plate rack standing on a drip tray on the counter, its thin upright wires rising to about 66% of the height, ready for plates. Behind, a pale tiled wall with a small window showing grey rain at the top middle. The counter between the sink and the rack, and all the air above it, are where the game plays (the bird runs along the counter and flicks dishes up through the air into the rack), so keep the wall there plain and quiet, and nothing at all on the counter: no dishes, cloths, bottles or jars anywhere.\nThis is a revised layout request. Produce the new composition exactly as described, retaining the ink-and-faded-watercolor style. Percentage placements are gameplay-critical. Opaque1920x1080 fullbleed16:9. Do not add any birds, people or items reserved for sprites.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M14a",
+      "file": "game/assets/scenes/saltshakershrike.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "previous_sha256": "a006a7a96f515c86f1f6eae0f2255e94d879b7a9f9ebdb8e3456a40f8722e1d5",
+      "sha256": "8df0b4e3dc2d9448850b16707b96eb960a0305aa8cd5b93770ef089c31dcca7e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). Inside a small old-fashioned caf\u00e9, seen straight on from a little above. The back wall is papered in soft cream and sage-green stripes down to a straight skirting line 52% of the way down; below it a floor of cream and pale slate-blue checked tiles runs to the bottom edge, in gentle perspective. Top left, a small chalk menu board with a few illegible scribbled lines (no readable words); top right, a plain round wall clock; at the far right edge, between 33% and 58% down, the dark open hatch of the kitchen with a little steam. Keep the wide middle of the picture, from 10% to 97% across and from 44% to 95% down, plain wallpaper and floor with nothing on it, because the game puts a big round revolving table there; keep the band from 10% to 45% down plain too, because salt falls through it. No tables, chairs, counter, people, animals, plates or food, and no rail along the top (the game draws its own).\nThis is a revised layout request. Produce the new composition exactly as described, retaining the ink-and-faded-watercolor style. Percentage placements are gameplay-critical. Opaque1920x1080 fullbleed16:9. Do not add any birds, people or items reserved for sprites.",
+      "correction_prompt": null
+    }
+  ],
+  "accepted_existing": [
+    {
+      "id": "IC-M18a",
+      "file": "game/assets/scenes/radiobird.webp",
+      "reason": "The updated request changes the overlaid speaker sprite; the existing plain-wall scene already satisfies its visual requirements."
+    }
+  ],
+  "verification": {
+    "asset_count": 12,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": "All sprite-sheet split lines verified below alpha32 after a Goose tail-fit correction.",
+    "unit_tests": "171 passed",
+    "browser_check": "Milk Round controller/keyboard round and game to result, passed before tail-fit-only correction",
+    "visual_review": "All selected images inspected; alpha-composited previews confirm clear background on milk props and float.",
+    "publish_output": "All 12 assets copied with matching checksums."
+  }
+}

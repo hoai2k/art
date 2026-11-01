@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sound Workbench</title>
+  <meta name="description" content="Bronze Drum: audition the chapter ambiences and their alternate takes, every sound effect and the music.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23B07A3A'/%3E%3Cpath d='M9 20v-8M13 23V9M17 20v-8M21 18v-4' stroke='%23F2E8D5' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="workbench.css">
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <h1>Sound workbench</h1>
+      <p class="sub">Bronze Drum · chapter ambiences and alternate takes, effects, music</p>
+    </div>
+    <div class="controls" role="toolbar" aria-label="Playback">
+      <label class="ctl">Volume <input id="volume" type="range" min="0" max="100" value="80"></label>
+      <label class="ctl check"><input id="match" type="checkbox" checked> Match loudness</label>
+      <label class="ctl check"><input id="along" type="checkbox"> Drum along</label>
+      <label class="ctl">Tempo <input id="bpm" type="range" min="50" max="140" value="84"><output id="bpm-out">84</output></label>
+      <button id="stop" class="btn">Stop all</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Play a chapter's bed and its alternate takes. Each loops until you play another or press <b>Stop all</b>.
+        <b>Match loudness</b> plays every bed at the same level, so you hear the sound, not the volume. Turn it
+        off to hear the level each bed has in the game. <b>Drum along</b> plays a bronze-drum rhythm over the bed at
+        the tempo shown, to hear whether anything in it fights the beat. You can also drum yourself:
+        <kbd>F</kbd> is tùng and <kbd>J</kbd> is cắc.</p>
+      <p>Mark each take <b>Keep</b>, <b>Maybe</b> or <b>No</b> and add a note. Your marks stay in this browser.
+        <b>Copy my notes</b> puts them on the clipboard, ready to paste into a message.</p>
+    </section>
+
+    <nav class="tabs" aria-label="Sections">
+      <a href="#ambience">Ambience</a>
+      <a href="#effects">Effects</a>
+      <a href="#music">Music</a>
+      <a href="#notes">My notes</a>
+    </nav>
+
+    <section id="ambience">
+      <h2>Ambience by chapter</h2>
+      <p class="muted">Beside each chapter's sounds: the scene as the game shows it while that bed plays, and the chapter's card art. Click one to see it full size.</p>
+      <p class="muted">New: the takes heard as metallic, synthetic or buzzing all carried a comb of steady tones at exact multiples of 200 Hz, an artefact of the generator. <b>De-buzzed copies</b> have it notched out (the loudness hardly changes), so takes turned down for that may now work. The round 2 takes are de-buzzed already.</p>
+      <div id="chapters" class="chapters"></div>
+    </section>
+
+    <section id="effects">
+      <h2>Sound effects</h2>
+      <p class="muted">Every effect the game plays, at its in-game level. Each numbered button is one take; the game picks one at random each time.</p>
+      <div id="groups"></div>
+    </section>
+
+    <section id="music">
+      <h2>Music</h2>
+      <p class="muted">The first two rows are experiments with ElevenLabs' music model on the Song of the Two Queens, 90 seconds each: one sung (a verse and a chorus on vocables) and one instrumental (đàn bầu and bamboo flute over bronze drums). They are here to judge whether the model is worth pursuing, for the voices or just the instruments. Below them, the delivered tracks.</p>
+      <div id="tracks" class="rows"></div>
+    </section>
+
+    <section id="notes">
+      <h2>My notes</h2>
+      <p class="muted">Everything you have marked, as it will be copied.</p>
+      <pre id="summary" class="summary">Nothing marked yet.</pre>
+      <div class="actions">
+        <button id="copy" class="btn primary">Copy my notes</button>
+        <button id="clear" class="btn">Clear all marks</button>
+        <span id="copied" class="muted" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+  <button id="stop-float" class="btn primary stop-float">Stop all</button>
+  <div id="status" class="status" aria-live="polite"></div>
+  <script type="module" src="workbench.js"></script>
+</body>
+</html>

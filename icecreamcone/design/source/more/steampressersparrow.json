@@ -1,0 +1,46 @@
+[
+  {
+    "id": "IC-M09a",
+    "name": "Pressing Business: the laundry",
+    "key": "scene.steampressersparrow",
+    "file": "assets/scenes/steampressersparrow.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Pressing Business (the Steampresser Sparrow): the whole background, with the ironing board. The garments, their creases, the steam and the Sparrow are drawn on top.",
+    "standin": "A tiled wall, a wooden floor, a folded pile, a washing basket and a long padded ironing board painted in code.",
+    "prompt": "{STYLE} {SCENE}An old-fashioned laundry room seen from above at a steep angle, as if standing over the ironing board. The top 38% is a wall of pale sage-green square tiles. Below it, a warm wooden floor. Across the middle and lower part lies a long padded ironing board seen from above: a plain cream cover with a faint pattern of tiny slate-blue dots, pointed and rounded at its left end, square at its right end, stretching from about 7% to 92% across and from about 42% to 88% down. At the top left, against the wall, a neat stack of four folded garments; at the top right, a round wicker basket heaped with crumpled washing in pale blue, pink, cream and grey. Keep the whole top of the ironing board plain, empty and evenly lit, with nothing lying on it, because the game slides the garments onto it and irons them there.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M09b",
+    "name": "Pressing Business garments",
+    "key": "sprites.pressGarments",
+    "file": "assets/sprites/press-garments.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Pressing Business: the garments that slide onto the ironing board, one at a time. The game draws the creases and scorch marks on them.",
+    "standin": "A shirt, a handkerchief, trousers, a silk scarf, a pillowcase and a checked tablecloth drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six pieces of washing, each laid out perfectly flat and smooth (no creases at all, and no busy pattern in the middle: the game draws dark creases and brown scorch marks there, and they must stand out) and seen from directly above, each filling most of its cell's width, with these width-to-height shapes. Top row, left to right: a pale-blue man's shirt laid face down with its sleeves spread out to the sides, its collar at the top (about 2.5 : 1); a white cotton handkerchief with a slate-blue border (about 1.7 : 1); a pair of grey flannel trousers laid sideways with the legs pointing right (about 3 : 1). Bottom row: a long plain pale-pink silk scarf, very fine and shiny, with only a narrow magenta border and short fringed ends, the whole middle plain (about 5 : 1); a cream pillowcase with a mauve hem stripe at its right end (about 2.5 : 1); a plain cream tablecloth with a narrow red-and-white gingham border round its edge, the middle plain (about 3 : 1).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M09c",
+    "name": "Steampresser Sparrow pressing",
+    "key": "sprites.sparrowPress",
+    "file": "assets/sprites/sparrow-press.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Pressing Business: the Sparrow gliding over the cloth with its sole flat on it, dry and with a puff of steam. It replaces the portrait during the game, whose legs would stand it off the board.",
+    "standin": "The Sparrow's stand-in with its legs hidden below the sole line, and code-drawn steam puffs.",
+    "prompt": "{STYLE} {VARIANT} The Steampresser Sparrow (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/steampressersparrow.png), exactly as painted there: a rusty grey cast-iron sad iron with a wooden handle arching over its back on two curled iron posts, a small knob on top, a row of round steam holes along its side just above the sole, a brown sparrow wing on its flank, and the sparrow's brown-and-cream head with its round staring eye and short yellow beak at the iron's pointed front (left). Two poses side by side on one sheet, each in its own half, facing left in side view: unlike the portrait, its legs are folded away out of sight underneath and the iron sits LEVEL, its flat sole resting flat as an iron does on cloth (not tipped up at the toe). Framed at exactly the portrait's scale. Placement, the same in every pose: the middle of the sole exactly on the vertical centre line of its half (or picture), and the sole's underside 80% of the way down. Left: dry and calm, with NO steam at all. Right: the same, steaming: soft white puffs from every hole along its side and from its back, as in the portrait, and the sparrow's beak a little open; no steam below the sole line. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M09d",
+    "name": "Steampresser Sparrow scorched",
+    "key": "sprites.sparrowScorch",
+    "file": "assets/sprites/sparrow-scorch.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Pressing Business: for a moment after a scorch, the Sparrow jerks up off the cloth in alarm. Drawn standing on the same sole line as IC-M09c.",
+    "standin": "The pressing stand-in hopping up off the board.",
+    "prompt": "{STYLE} {VARIANT} The Steampresser Sparrow (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/steampressersparrow.png), exactly as painted there: a rusty grey cast-iron sad iron with a wooden handle arching over its back on two curled iron posts, a small knob on top, a row of round steam holes along its side just above the sole, a brown sparrow wing on its flank, and the sparrow's brown-and-cream head with its round staring eye and short yellow beak at the iron's pointed front (left). One pose, facing left in side view, legs folded away out of sight as in its pressing pose (IC-M09c), but jerked up in alarm: the pointed toe of the iron tipped up off the cloth, the heel of the sole still on the sole line, the sparrow's eye wide and beak open in a squawk, a thin wisp of brown smoke curling up from under the sole. Framed at exactly the portrait's scale. Placement, the same in every pose: the middle of the sole exactly on the vertical centre line of its half (or picture), and the sole's underside 80% of the way down. {ALPHA}",
+    "status": "delivered"
+  }
+]

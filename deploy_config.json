@@ -1,0 +1,9 @@
+{
+  "_comment": "Read by the Pages deploy (.github/scripts/deploy-config.py). A game set to false under \"games\" is not built or published, and its card is left out of the library (index.html). A game set to true, or not listed, is deployed. A missing or unreadable file deploys every game. Each game's own <game>/deploy_config.json (e.g. bronzedrum's includeWorkbenches) still applies to the games that are deployed.",
+  "games": {
+    "icecreamcone": true,
+    "bronzedrum": true,
+    "kingdomofthefairies": true,
+    "fibreart": true
+  }
+}

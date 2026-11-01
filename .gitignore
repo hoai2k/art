@@ -1,0 +1,30 @@
+# Local dependencies, caches, previews, and preserved pre-upload Git history.
+/local/
+/output
+
+# Also ignore compatibility symlinks and anything tools regenerate in place.
+**/node_modules
+**/.pnpm-store
+**/.next
+**/.vinext
+**/.wrangler
+**/dist
+**/out
+**/coverage
+**/next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+*.log
+.env*
+!.env.example
+!.env.template
+**/.vercel
+**/qa/screens
+/hopper/design/qa
+**/__pycache__
+
+# macOS metadata on external drives.
+._*
+
+# Subagent worktrees (Claude Code); their work is merged through their branches.
+.claude/worktrees/

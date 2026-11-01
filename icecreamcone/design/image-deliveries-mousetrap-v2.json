@@ -1,0 +1,24 @@
+{
+  "generated_on": "2026-10-08",
+  "tool": "built-in image_gen.imagegen",
+  "revision_of": "IC-N07",
+  "reason": "User requested trap and cheese as integral bird anatomy, rather than accessories on a conventional magpie. This is an original pocket bird, not a bird from the book.",
+  "assets": [
+    {
+      "id": "IC-N07",
+      "file": "game/assets/pocket/mousetrapmagpie.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "previous_sha256": "bbb82fdd963097b5a5e890d4f078ef9a461b2f655ae84077483315dbe6623030",
+      "sha256": "f4559fbbcd6bd6d1f0294aa54d763763c8e28104df3b48d35db07db9e55c239b",
+      "generation_prompt": "Use case: precise-object-edit / stylized concept game asset. Reimagine the original Mousetrap Magpie in the attached image, replacing its anatomy entirely so the OBJECT IS THE BIRD. The wooden spring mousetrap itself is the whole torso: a flat rectangular honey-brown wooden plank held horizontally at a slight three-quarter angle, with the real coiled spring and snapping metal bar built into the plank. Two thin knobbly bird legs grow directly out of the underside of the wood. At the front left end, the cheese bait has become the bird's HEAD AND BEAK: one chunky yellow triangular cheese wedge with natural round holes, a single large pale round staring eye set into its side with a dot pupil, and its pointed wedge tip is the long forward left-facing beak. The metal spring bar rises behind the cheese head as its crest, and two little black-and-white feather wing tufts grow from the sides of the wooden trap, with a long glossy blue-black magpie feather tail emerging from the rear right end. NO normal feathered magpie torso or normal black-feathered head hidden beneath the trap; NO trap strapped to a conventional bird; NO separate cheese sitting on top as an accessory. The plank and the cheese are visibly living anatomy, connected naturally. Quiet uncanny object-bird, no smile, no human expression. Match the attached fine brown-black pen-and-ink crosshatching/stippling, faded 1970s watercolor palette and grain within the painted subject. Square transparent PNG, full silhouette facing left, centered with 10% clear margins, 1024x1024. No background paper, labels, text, UI or watermark. A tiny soft shadow under the claws only."
+    }
+  ]
+}

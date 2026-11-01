@@ -1,0 +1,42 @@
+[
+  {
+    "sheet": "sweep",
+    "cell": 0,
+    "fx": 655,
+    "feet": 986,
+    "painted": 1,
+    "normalization_scale": 1.136
+  },
+  {
+    "sheet": "sweep",
+    "cell": 1,
+    "fx": 582,
+    "feet": 986,
+    "painted": 1,
+    "normalization_scale": 1.142
+  },
+  {
+    "sheet": "poses",
+    "cell": 0,
+    "fx": 509,
+    "feet": 986,
+    "painted": 1,
+    "normalization_scale": 1.026
+  },
+  {
+    "sheet": "poses",
+    "cell": 1,
+    "fx": 704,
+    "feet": 985,
+    "painted": 1,
+    "normalization_scale": 1.083
+  },
+  {
+    "sheet": "poses",
+    "cell": 2,
+    "fx": 624,
+    "feet": 986,
+    "painted": 1,
+    "normalization_scale": 1.146
+  }
+]

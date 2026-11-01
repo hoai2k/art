@@ -1,0 +1,524 @@
+{
+  "generated_on": "2026-10-08",
+  "tool": "built-in image_gen.imagegen",
+  "notes": "18 book subjects and 10 original pocket birds, generated from the requested prompts and book reference photos. Resized to 1024 x 1024 PNG with alpha retained; two targeted corrections for orientation and clipped crest.",
+  "assets": [
+    {
+      "id": "IC-R01",
+      "name": "The Milkbottle Midge",
+      "file": "game/assets/subjects/milkmidge.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A small glass milk bottle full of white milk with a foil cap for a crest, tiny wings, one eye and a short beak, standing on two little legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the white bottle bird near the middle of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "01cc3660a70c2374e70767eb4aea4864748fc5325c298b7ae10d4f19bd8ee54a"
+    },
+    {
+      "id": "IC-R02",
+      "name": "The Waterglass Goose",
+      "file": "game/assets/subjects/waterglassgoose.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/newspaper-peeper.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A plain white drinking glass (a tumbler) tipped on its side as the body, a long pale goose neck and small head rising from it, dark tail feathers, on long thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/newspaper-peeper.jpg (the white tumbler bird on the page facing the Newspaper Peeper), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "2a93d610691e3ade9ff1f47e8140c9d9deff5d8f8f8359e9ad94978f1907b397"
+    },
+    {
+      "id": "IC-R03",
+      "name": "The Jackknife Niffy",
+      "file": "game/assets/subjects/niffy.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A red folding pocketknife with its blades half open like wings and a sharp blade for a beak, a small round eye on the handle's end. A little menacing, as in the book. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (top left of the left-hand page, flying), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "6b9d7332347b2e78a31133287138a0569576f3e588ed2c5acadb7d33b77cba1b"
+    },
+    {
+      "id": "IC-R04",
+      "name": "The Cutitup Snippit",
+      "file": "game/assets/subjects/snippit.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A pair of pink-handled dressmaker's scissors: the long blades are the beak, the hinge screw its one eye, the finger loops its body, with fluttery pink tail feathers and thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the pink scissors bird, upper left of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "17db6ddb4bef7e6ca3eb9cfda7ceb6a6acaae545d7656ca51913b24da9d48b63"
+    },
+    {
+      "id": "IC-R05",
+      "name": "The Buttonbeaks",
+      "file": "game/assets/subjects/buttonbeaks.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. Named in the book but not found in the photos, so drawn from its name: a pair of small round birds whose beaks and eyes are big sewing buttons with thread holes, plump bodies of button-sized feathers, on thin legs, standing side by side. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and palette, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "9928619cb2c7b449f87c4a56b87f71c5cc5d8361a86af7b741d37bee3c9e764a"
+    },
+    {
+      "id": "IC-R06",
+      "name": "The Broomwhisk",
+      "file": "game/assets/subjects/broomwhisk.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A tall straw broom standing on its bundled bristles, which splay out like a skirt of tail feathers, with a slim bird's head and neck where the handle ends. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (bottom left of the left-hand page, standing on its bristles), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "82c3f516bf3d819900c9481284b5009f80d8266809e4fac123dee6e005ce679a"
+    },
+    {
+      "id": "IC-R07",
+      "name": "The Key Crane",
+      "file": "game/assets/subjects/keycrane.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A long old brass door key laid flat as the body, its ring bow as a round head with one eye, the bit's teeth as a little tail, with a dark crest like a top hat and long thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (top right of the right-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "fa57c01843e2bb7035b8ec7b337166f051ce3c0a7882dd6ba0aa0fae81e035e2"
+    },
+    {
+      "id": "IC-R08",
+      "name": "The Garbage Canary",
+      "file": "game/assets/subjects/garbagecanary.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A dented grey galvanised dustbin with its lid tipped up like a cap, a yellow canary's head peering out from under the lid, scraps of paper for tail feathers, on thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the dented dustbin bird, left of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "ef14f9a14afdaa1388fcb776b3e9baa15548f1a700180f9b029c93d9fbd5dfa4"
+    },
+    {
+      "id": "IC-R09",
+      "name": "The Steampresser Sparrow",
+      "file": "game/assets/subjects/steampressersparrow.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. Named in the book but not found in the photos, so drawn from its name: an old cast-iron steam iron as the body, puffs of steam from its sole like ruffled feathers, the handle arching over its back like folded wings, a sparrow's brown head and beak at the point. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and palette, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "14eafda148b22e11009ea3c726d95c446bcbac3969e2ee98523ce9ab8899a889"
+    },
+    {
+      "id": "IC-R10",
+      "name": "The Wetweather Wren",
+      "file": "game/assets/subjects/wetweatherwren.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. Named in the book but not found in the photos (a review says its picture shows rain), so drawn from its name: a small round furled black umbrella with a crook handle for a tail, a tiny wren's head with one bright eye at the tip, rain falling on it, thin legs in a puddle. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and palette, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "26ccd467ff07dde2077ed92bc6180410a692407375683f303887a6c12c9e1fa1"
+    },
+    {
+      "id": "IC-R11",
+      "name": "The Glove Dove",
+      "file": "game/assets/subjects/glovedove.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A long pink rubber washing-up glove, fingers splayed back as a crest of tail feathers, the cuff as a long neck ending in a head with one eye and a long beak, over a scalloped grey-blue feathered body, on two thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the long pink glove bird, middle of the right-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": "Edit this Glove Dove portrait only to face LEFT: mirror its entire silhouette horizontally. Preserve its glove-as-head shape, pink glove with buttons, slate-blue feather body, legs, feet, eye, beak, fine ink watercolor textures. Remove any stray mark in the far corner. Keep complete silhouette within square frame with clear margin. Transparent alpha background. No new objects.",
+      "sha256": "874583ecb70035ba445757e9982e3e87f047d351d24a3381322e46b25fe22c69"
+    },
+    {
+      "id": "IC-R12",
+      "name": "The Ten O'clock Tit Trush",
+      "file": "game/assets/subjects/titthrush.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A round gold pocket watch with its lid open, its face showing ten o'clock as a big round body, the winding crown as a little head and beak, a short chain for a tail, pink plumes. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the yellow pocket watch bird, middle of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "31318ba970ffe0ef7f56bb3390c72f8a00f8c35fef340a143e05084b7a825530"
+    },
+    {
+      "id": "IC-R13",
+      "name": "The Plugsocket Swift",
+      "file": "game/assets/subjects/plugsocketswift.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A high-voltage bird: its head is an old clear light bulb with a glowing filament and one eye, on a brass screw cap neck, its body an old round wall plug socket, with swept-back swift's wings and a trailing flex for a tail. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the light bulb bird, upper middle of the right-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "6ad2632110ec395c806faefd42f18ce796363c2324225f2a435565b644846283"
+    },
+    {
+      "id": "IC-R14",
+      "name": "The Saltshaker Shrike",
+      "file": "game/assets/subjects/saltshakershrike.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. Named in the book but not found in the photos, so drawn from its name: a glass salt shaker with a domed perforated silver cap as the head, a shrike's hooked beak and black eye mask, a few grains of salt falling, on thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and palette, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "d7b446fa38873380b89b87c6a993ac5bf1a16aa50e2a0b41cbe863b435e4add0"
+    },
+    {
+      "id": "IC-R15",
+      "name": "The Soupladle Lark",
+      "file": "game/assets/subjects/ladlelark.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A grey enamel soup ladle: the round bowl is the body, the long hooked handle a curving neck with a small head and beak at its end, on two thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the grey ladle bird, middle left of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "1c62b60f6335dc8173b6f23ed94b4014dc5a0aedd354713583ca70c7c1431a0c"
+    },
+    {
+      "id": "IC-R16",
+      "name": "The Drippet",
+      "file": "game/assets/subjects/drippet.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A blue-painted brass water tap: the spout is the beak with a drip at its tip, the cross handle on top a crest, one round eye on the body, leaving a little puddle wherever it runs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (most likely the blue tap bird, bottom left of the left-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "4192d281af61a190bd38540f2a749d7ff7b4504f858b7fd93238c65da8097a4c"
+    },
+    {
+      "id": "IC-R17",
+      "name": "The Saw Bird (name not found)",
+      "file": "game/assets/subjects/sawbird.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A long carpenter's handsaw: the toothed blade is a long serrated beak, the wooden handle the head and body with one eye, with a few feathers and thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the handsaw across the middle of the right-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "d18cd8ca0cdf15e2aa5716fe54281ec2ad68e67656928a1cda15a4919c72e836"
+    },
+    {
+      "id": "IC-R18",
+      "name": "The Radio Bird (name not found)",
+      "file": "game/assets/subjects/radiobird.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A small 1960s portable transistor radio with a carrying handle and a speaker grille as the body, a long curving striped neck with a crested head, and long thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. Match this bird as the book shows it in the reference photo https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg (the portable radio bird, bottom of the right-hand page), keeping its shapes and colours, but as a clean new full-colour painting of the bird alone (no book, page, hands or other birds).\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": "Edit this Radio Bird portrait only to fix the clipped crest: reduce the whole bird enough to leave at least 8% transparent margin on all sides. Complete the small pink curled feather tip cut off at the top. Preserve its radio body, striped curved neck, handle, left-facing beak, tail, legs, feet, fine ink watercolor textures and colors. Square transparent PNG, no new objects.",
+      "sha256": "ec732ec1ecee6cd83a2305f9d5fbd1b5f28352f029ca97cf9d6003c9f83ed5c7"
+    },
+    {
+      "id": "IC-N01",
+      "name": "The Hourglass Heron",
+      "file": "game/assets/pocket/hourglassheron.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A tall wooden-framed hourglass as the body, pale sand trickling from the top bulb to the bottom, a long heron's neck and dagger beak rising from the top of the frame, on very long legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "79e4430adfcb8a69e6cfaa661c62030d17ea4777fc26c9359242a241e9b0ae27"
+    },
+    {
+      "id": "IC-N02",
+      "name": "The Spectacle Snipe",
+      "file": "game/assets/pocket/spectaclesnipe.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A pair of round wire-rimmed spectacles: the two lenses are its two big round eyes, the bridge between them its long thin snipe's beak, the folded arms its tail, on wiry legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "67935d0d28e8a108f463e06de620cffed5b081379de152315b291fce0d3de31d"
+    },
+    {
+      "id": "IC-N03",
+      "name": "The Bellows Bittern",
+      "file": "game/assets/pocket/bellowsbittern.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A pair of leather-and-wood fireside bellows as the body, the brass nozzle its beak, the pleated leather puffing in and out as it breathes, two handles as stubby wings. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "11d19ac7fe91fe372ccdb6ff7d5993d7acba117f2d51d12562c2344321660c28"
+    },
+    {
+      "id": "IC-N04",
+      "name": "The Lampshade Loon",
+      "file": "game/assets/pocket/lampshadeloon.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A fringed, pleated parchment lampshade as a bell-shaped body glowing softly from inside, the fringe as tail feathers, a loon's dark sleek head and neck on top, on thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "bbf9a0785f12a02a2fec1382b6487dfcf21b4c4b52d602d335580ddf9bf6473a"
+    },
+    {
+      "id": "IC-N05",
+      "name": "The Concertina Curlew",
+      "file": "game/assets/pocket/concertinacurlew.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A small hexagonal concertina squeezebox with patterned ends and pleated bellows as the body, a curlew's long down-curved beak from one end, buttons like a row of tiny feathers. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "e85bff457dab4ddc26046db3f17f886776b060dd3c296de64aef5fa6aeeb2ee5"
+    },
+    {
+      "id": "IC-N06",
+      "name": "The Weathervane Warbler",
+      "file": "game/assets/pocket/weathervanewarbler.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A green-copper rooftop weathervane: the arrow is the body and beak, the swallow-tailed vane its tail, the N-E-S-W cross below like perched feet on a little roof ridge. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "5896adff8faac37c53f8f606d5e075e215ee6027ef5f61b8c68e7e0c46ac840c"
+    },
+    {
+      "id": "IC-N07",
+      "name": "The Mousetrap Magpie",
+      "file": "game/assets/pocket/mousetrapmagpie.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A wooden spring mousetrap as a flat body with the snapping bar as a crest, a magpie's black and white head and long tail, a bit of cheese it is very proud of. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "bbb82fdd963097b5a5e890d4f078ef9a461b2f655ae84077483315dbe6623030"
+    },
+    {
+      "id": "IC-N08",
+      "name": "The Hatbox Hoopoe",
+      "file": "game/assets/pocket/hatboxhoopoe.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A round striped hatbox with its lid lifting like a crest of hoopoe feathers, a long thin curved beak, a ribbon bow, on thin legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "d97d237beb7346d82a90e87a4b008b7152ac624124fabe97c8915e2a6dd98a0f"
+    },
+    {
+      "id": "IC-N09",
+      "name": "The Candlestick Kiwi",
+      "file": "game/assets/pocket/candlestickkiwi.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A brass candlestick with a dripping white candle whose small flame is its crest, a round kiwi body in the saucer at the bottom, a long thin kiwi beak, short sturdy legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "5e21589403f457f24a94451781402b3869852229a446a7e1050d0c7da651bef7"
+    },
+    {
+      "id": "IC-N10",
+      "name": "The Rollingpin Rail",
+      "file": "game/assets/pocket/rollingpinrail.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "reference": "reference/endpapers-all-birds.jpg",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. The bird IS the object: a real, clearly recognisable everyday object that has come alive as a bird, with a round staring eye with a dot pupil, a long pointed beak, little wings or plumes, and long, thin, knobbly bird legs ending in spiky claws, growing naturally out of it, so the object's shape still reads at a glance. Calm and a little odd, not a cartoon mascot: no human expression, no smile. A floury wooden rolling pin laid flat as the body, the handles as a stubby tail and a neck with a small rail's head and beak, on quick little legs. Full-body portrait of the bird alone, standing in a three-quarter view facing left, filling about 80% of a square frame, centred, with a clean silhouette that still reads at 96 px. Only a small soft shadow under the feet. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. For the drawing style and the way the object becomes a bird, look at the book's birds in https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/reference/endpapers-all-birds.jpg .\nProduction asset: 1024 x 1024 square transparent PNG. Whole silhouette including feet, feathers and handles must fit inside frame with 10% margin. Face LEFT toward left edge. Reference is design/style guidance only; create fresh illustration without tracing the page. No surrounding book or other species.",
+      "correction_prompt": null,
+      "sha256": "edc627f93f68b66e090e9ac449e7fb09684bc46b56ae738cf1f09b7b41ab1bde"
+    }
+  ],
+  "verification": {
+    "asset_count": 28,
+    "exact_dimensions": true,
+    "png_alpha": true,
+    "checksums": true,
+    "registered_paths": true,
+    "visual_review": "All outputs reviewed; Glove Dove orientation and Radio Bird crest corrected.",
+    "request_status": "0 requested, 67 delivered, 1 retired",
+    "generated_documents": "passed",
+    "unit_tests": "52 passed",
+    "browser_check": "passed using installed Chrome: controller and keyboard navigation plus Say Cheese to result, no page errors",
+    "publish_output": "all 28 assets copied with matching checksums"
+  }
+}

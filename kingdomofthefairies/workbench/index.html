@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a0c16">
+  <title>Kingdom of the Fairies · Workbench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Yesteryear&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #2a1424; --deep: #1a0c16; --ink: #f3c6dc; --dim: #b08aa2; --pink: #e0127a; --line: #5a2f4c; --panel: #351a2e; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.45 "Josefin Sans", system-ui, sans-serif; }
+    header { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 10px 20px; background: var(--deep); border-bottom: 2px solid var(--pink); }
+    h1 { margin: 0; font: 700 20px "Josefin Sans", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    select, button, input[type=range] { font: inherit; color: var(--ink); }
+    select { background: var(--bg); border: 1px solid var(--pink); border-radius: 4px; padding: 6px 10px; min-width: 300px; max-width: 100%; }
+    button { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 6px 14px; cursor: pointer; }
+    button:hover { border-color: var(--pink); }
+    button.on { background: var(--pink); border-color: var(--pink); color: #fff; }
+    button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+    #loading { color: var(--dim); font-size: 14px; }
+    .viewer { display: flex; justify-content: center; background: #000; padding: 10px 0; }
+    #stage { display: block; width: min(100vw, calc((100vh - 260px) * 16 / 9)); min-width: 640px; max-width: 100%; aspect-ratio: 16 / 9; height: auto; background: #12060f; }
+    .controls { max-width: 1400px; margin: 0 auto; padding: 12px 20px 0; }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-bottom: 10px; }
+    .group { display: inline-flex; gap: 4px; align-items: center; }
+    .group > span { color: var(--dim); margin-right: 4px; font-size: 14px; }
+    #readout { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 700; }
+    #readout em { font-style: normal; color: var(--pink); }
+    .slider { position: relative; padding-bottom: 16px; }
+    #scrub { width: 100%; accent-color: var(--pink); margin: 6px 0 0; }
+    #marks { position: absolute; left: 8px; right: 8px; bottom: 0; height: 14px; pointer-events: none; }
+    #marks i { position: absolute; top: 0; width: 1px; height: 8px; background: var(--pink); }
+    label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+    input[type=checkbox] { accent-color: var(--pink); width: 16px; height: 16px; }
+    .info { max-width: 1400px; margin: 0 auto; padding: 4px 20px 40px; display: grid; grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr); gap: 20px; }
+    @media (max-width: 800px) { .info { grid-template-columns: 1fr; } }
+    h2 { font: 700 14px "Josefin Sans", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin: 8px 0; }
+    #note { margin: 0; }
+    #note small { display: block; color: var(--dim); margin-top: 8px; }
+    #timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+    #timeline button { display: flex; width: 100%; justify-content: space-between; text-align: left; background: transparent; border-color: transparent; padding: 3px 10px; border-radius: 3px; }
+    #timeline button:hover { background: var(--panel); }
+    #timeline li.now button { background: var(--panel); border-color: var(--pink); }
+    #timeline .t { font-variant-numeric: tabular-nums; color: var(--dim); }
+    kbd { background: var(--panel); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; font-size: 13px; }
+    .hint { color: var(--dim); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 data-widowsbay="Widow’s Bay · Workbench">Kingdom of the Fairies · Workbench</h1>
+    <select id="scene" aria-label="Cutscene"></select>
+    <span id="loading">Loading the art…</span>
+  </header>
+
+  <div class="viewer"><canvas id="stage" width="1280" height="720" aria-label="Cutscene viewer"></canvas></div>
+
+  <section class="controls">
+    <div class="row">
+      <div class="group">
+        <button id="play" title="Space">Play</button>
+        <button id="restart" title="R">Restart</button>
+        <button id="back" title="Left arrow">&#9664;&#9664; Frame</button>
+        <button id="step" title="Right arrow">Frame &#9654;&#9654;</button>
+      </div>
+      <div class="group" id="speeds"><span>Speed</span></div>
+      <div id="readout" aria-live="off"></div>
+    </div>
+    <div class="slider">
+      <input id="scrub" type="range" min="0" max="1" value="0" step="1" aria-label="Scrub through the scene">
+      <div id="marks"></div>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="sound"> Sound</label>
+      <label><input type="checkbox" id="hud"> HUD</label>
+      <label><input type="checkbox" id="loop"> Loop</label>
+      <label title="Play the jellyfish loop and the people&#39;s old-film idle frames, as Settings → Extra Animations does in the game"><input type="checkbox" id="anims"> Extra Animations</label>
+      <label id="lanternsLabel" hidden><input type="checkbox" id="lanterns" checked> Light the lanterns</label>
+      <label>Film look
+        <select id="film" style="min-width:0"><option>full</option><option>gentle</option><option>off</option></select>
+      </label>
+      <button id="link" title="Put the current moment in the URL and copy it">Link to this moment</button>
+      <span class="hint"><kbd>Space</kbd> play/pause &middot; <kbd>R</kbd> restart &middot; <kbd>&larr;</kbd><kbd>&rarr;</kbd> frame (<kbd>Shift</kbd> = 1 s)</span>
+    </div>
+  </section>
+
+  <section class="info">
+    <div>
+      <h2>This scene</h2>
+      <p id="note"></p>
+    </div>
+    <div>
+      <h2>Timeline</h2>
+      <ol id="timeline"></ol>
+    </div>
+  </section>
+
+  <script type="module" src="workbench.js"></script>
+</body>
+</html>

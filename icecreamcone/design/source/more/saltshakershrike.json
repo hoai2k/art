@@ -1,0 +1,57 @@
+[
+  {
+    "id": "IC-M14a",
+    "name": "Just a Pinch: the café",
+    "key": "scene.saltshakershrike",
+    "file": "assets/scenes/saltshakershrike.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Just a Pinch (the Saltshaker Shrike): the whole background. The brass rail the Shrike hangs from, the round revolving table, the plates, the diner, the salt and the Shrike are drawn on top.",
+    "standin": "Striped wallpaper, a chalk menu board, a clock, the kitchen hatch and a tiled floor, painted in code.",
+    "prompt": "{STYLE} {SCENE}Inside a small old-fashioned café, seen straight on from a little above. The back wall is papered in soft cream and sage-green stripes down to a straight skirting line 52% of the way down; below it a floor of cream and pale slate-blue checked tiles runs to the bottom edge, in gentle perspective. Top left, a small chalk menu board with a few illegible scribbled lines (no readable words); top right, a plain round wall clock; at the far right edge, between 33% and 58% down, the dark open hatch of the kitchen with a little steam. Keep the wide middle of the picture, from 10% to 97% across and from 44% to 95% down, plain wallpaper and floor with nothing on it, because the game puts a big round revolving table there; keep the band from 10% to 45% down plain too, because salt falls through it. No tables, chairs, counter, people, animals, plates or food, and no rail along the top (the game draws its own).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M14b",
+    "name": "Plates of food",
+    "key": "sprites.shrikePlates",
+    "file": "assets/sprites/shrike-plates.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Just a Pinch: the plates that slide along the counter; the first six want salt, the last two are puddings that want none.",
+    "standin": "A white plate and simple foods drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 4 x 2 grid of eight dishes, each served on the same plain white china plate seen from the side and slightly above, the plate about 420 px wide with its foot on the bottom of the picture, row by row: 1, a fried egg with a bright yolk; 2, a heap of golden chips; 3, a baked potato split open with a pat of butter; 4, a buttery cob of sweetcorn; 5, a white bowl of tomato soup on the plate; 6, a big brown pretzel; 7, a slice of strawberry layer cake with a cherry on top; 8, an ice-cream sundae in a tall glass, strawberry and vanilla with chocolate sauce. The food sits in the middle of each plate, no cutlery.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M14c",
+    "name": "Diners",
+    "key": "sprites.shrikeDiners",
+    "file": "assets/sprites/shrike-diners.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Just a Pinch: the diner at the end of the counter who tastes each plate; pleased (and bouncing) when it's right, pulling a face when it isn't.",
+    "standin": "Round grey, brown and green creatures with a napkin and a fork, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 4 x 2 grid of four small animal diners in Lobel's gentle manner, each seen from the front, from the waist up as if sitting behind a counter (the bottom of each figure cut straight across), about 380 px tall, with a white napkin tucked under its chin and a fork held upright: row 1, waiting happily: a velvety dark-grey mole with tiny round spectacles, a grey mouse, a green frog, a black-and-white badger; row 2, the same four in the same order pulling a face at their food: eyes screwed shut, mouth turned down, tongue out.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M14d",
+    "name": "Saltshaker Shrike hanging upside down",
+    "key": "sprites.shrikePoses",
+    "file": "assets/sprites/shrike-poses.png",
+    "size": "4096 x 1024, transparent",
+    "used": "Just a Pinch: the Shrike hangs head down from the brass rail all game (pose 1), shakes out a pinch (pose 2), squawks pleased at a plate that's just right (pose 3) and flinches at a frown (pose 4). The game mirrors it to face the plates.",
+    "standin": "The portrait (or its stand-in) turned upside down in code; it jiggles when shaking, bounces when pleased and shivers when flinching.",
+    "prompt": "{STYLE} {VARIANT} The Saltshaker Shrike (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/saltshakershrike.png), exactly as painted there: a fluted clear-glass salt shaker full of white salt for its body; its head is the domed, perforated silver cap with a black shrike's eye mask, one round pale eye and a dark hooked beak; mauve and olive-brown wings and tail; thin olive legs with black claws. Four poses side by side, each in its own square quarter of the sheet, all at the same scale, facing left, each hanging UPSIDE DOWN by its claws from an unseen horizontal rail at the very top of the square, like a bat: its legs go straight up from the body to the claws, which grip a point at the top centre of the square; the glass body hangs below them and the domed cap points straight down, its holes about 75% of the way down the square and centred, the hooked beak turned to the left. Lit from the upper left as a real object hanging upside down would be. 1, hanging still, calm; 2, shaking: swung slightly to one side, a little puff of white salt grains spilling from the cap's holes; 3, pleased: beak wide open in a cheerful squawk, wings flared a little; 4, flinching: body pulled up tight towards the rail, wings clamped, eye squeezed half shut. No rail drawn. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M14e",
+    "name": "The revolving table",
+    "key": "sprites.shrikeTable",
+    "file": "assets/sprites/shrike-table.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Just a Pinch: the big round lazy Susan the plates ride round on, from the cook's hatch on the right, round the near side, to the diner on the left. The game draws the plates on its rim and turning knots on its top.",
+    "standin": "A wooden oval with an edge, a pedestal and a round foot, drawn in code.",
+    "prompt": "{STYLE} {SHEET} One object filling the sheet: a big round wooden revolving café table (a lazy Susan on a pedestal), seen from the front and a little above, so its round top is a wide flat oval 4.6 times as wide as it is tall; the top's outer edge touches the left and right sides of the painted area and its back edge is the very top of the painted area. Plain honey-coloured wood with a faint inner ring and a few knots, nothing on it, a thick darker edge below the top, a stout turned central pedestal and a round foot on the floor. About 1900 px wide.",
+    "status": "delivered"
+  }
+]

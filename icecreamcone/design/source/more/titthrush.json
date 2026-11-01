@@ -1,0 +1,90 @@
+[
+  {
+    "id": "IC-M12a",
+    "name": "Tit Trush scene",
+    "key": "scene.titthrush",
+    "file": "assets/scenes/titthrush.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Behind Clock Hop (the Ten O'clock Tit Trush): the town square, over which the town's clocks hang in the air and the Trush hops from one to the next.",
+    "standin": "Gabled houses and cobbles drawn in code.",
+    "prompt": "{STYLE} {SCENE}A small old town square in the warm early morning, seen from the side. Along the back, a row of gabled houses, shops and chimneys in faded pink, sage, ochre and mauve, from about 25% to 72% of the height, their tops against a pale lemon and peach sky; in front, a cobbled square filling the bottom 28%, its round cobbles in warm grey. The game draws a large gold pocket watch over the left middle (from about 20% to 60% of the width and 13% to 87% of the height), a town clock in its tower or frame at the upper right (about 62% to 87% of the width, 5% to 60% of the height) with a speech bubble under it, and the bird on the cobbles at the far left, so keep those places calm, soft and low in detail. No clocks, clock towers or clock faces anywhere in the painting (the game draws them), and no people or animals.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12b",
+    "name": "The big watch face",
+    "key": "sprites.watchFace",
+    "file": "assets/sprites/watch-face.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Clock Hop: the face of the gold ten o'clock watch, the bonus clock that shows up now and then (worth three); the game draws its hands and sets the crown (IC-M12f) on top.",
+    "standin": "A gold ring and a cream face with numbers drawn in code.",
+    "prompt": "{STYLE} The face of the Ten O'clock Tit Trush's gold pocket watch (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ) seen straight on and filling the image, in the same gold and cream: a round, slightly worn gold case with a little engraved and crosshatched edge, and inside it a cream face exactly centred in the image whose diameter is 80% of the image's width, with black old-fashioned serif numbers 1 to 12 and a ring of fine minute ticks round its edge, like the painting's face. No hands at all, and no lid, crown, bow or chain (the game draws them). {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12c",
+    "name": "Town clocks",
+    "key": "sprites.townClocks",
+    "file": "assets/sprites/town-clocks.png",
+    "size": "2048 x 2048, transparent",
+    "used": "Clock Hop: four of the clocks the Trush hops between (church, station, town hall, cuckoo), drawn at different sizes; the game draws the hands it rides.",
+    "standin": "A stone tower, a hanging clock, a gold clock and a wooden cuckoo house drawn in code round plain faces.",
+    "prompt": "{STYLE} {SHEET} A 2 x 2 grid of four clocks, each in its own 1024 x 1024 cell, seen straight on. In every cell the clock's round dial is exactly centred in the cell and is half the cell's width across, with numbers and minute ticks but NO HANDS (the game draws them); its surround fits round it inside the cell: 1) a church tower clock, a stone tower top with a little pointed roof round a cream dial with Roman numerals; 2) a round railway station clock with a thick black rim on an iron bracket from above, plain black numbers; 3) a town hall clock, a gilded rim with laurel scrolls round a cream dial with Roman numerals; 4) a cuckoo clock, a carved brown wooden house with a pitched roof, a little closed door above the dial, and carved leaves.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12d",
+    "name": "Tit Trush singing",
+    "key": "sprites.titthrushSing",
+    "file": "assets/sprites/titthrush-sing.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Clock Hop: the Trush sings for a moment each time it lands on a clock (drawn at the hand's tip, at the hop size).",
+    "standin": "The portrait, hopping.",
+    "prompt": "{STYLE} {VARIANT} The Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ): a round gold pocket watch as its body, its cream face showing ten o'clock with black numerals and blue steel hands, the hinged gold lid open at its front, a small gold head on top with a big round eye and a long thin gold beak, the winding crown and ring bow on top of the head, a pink plume crest behind the head, a pink feathered wing at the back, a gold chain curling out behind as its tail, and pink scaly legs with dark claws, singing: its head tipped back and its long beak wide open, the pink crest and wing lifted, the lid swung a little wider, standing on both feet, at the same scale and framing as the portrait, facing left. Its face still shows ten o'clock. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12e",
+    "name": "Tit Trush flustered",
+    "key": "sprites.titthrushFluster",
+    "file": "assets/sprites/titthrush-fluster.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Clock Hop: the Trush tumbling on the cobbles after a hop that missed every clock, until it flutters back.",
+    "standin": "The portrait shaking.",
+    "prompt": "{STYLE} {VARIANT} The Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ): a round gold pocket watch as its body, its cream face showing ten o'clock with black numerals and blue steel hands, the hinged gold lid open at its front, a small gold head on top with a big round eye and a long thin gold beak, the winding crown and ring bow on top of the head, a pink plume crest behind the head, a pink feathered wing at the back, a gold chain curling out behind as its tail, and pink scaly legs with dark claws, flustered: leaning back on its heels, its pink crest and wing ruffled and standing on end, its beak open in an indignant squawk, the lid flapping half shut, the chain tail swinging, little ink shake lines round its case. Its face still shows ten o'clock. Facing left, at the same scale and framing as the portrait. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12f",
+    "name": "Watch crown and bow",
+    "key": "sprites.watchCrown",
+    "file": "assets/sprites/watch-crown.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Clock Hop: the winding crown and ring bow on top of the gold ten o'clock watch (IC-M12b), which has none.",
+    "standin": "A ribbed gold box drawn in code.",
+    "prompt": "{STYLE} {SHEET} One object only, centred, seen straight on, matching the gold of the delivered watch face (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/watch-face.png ) and the crown on the Ten O'clock Tit Trush's head (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ): a pocket watch's winding crown, a short ribbed gold knob on a little collar stem, with a round gold ring bow through it on top, upright, about 40% of the image wide and 85% of its height, the bottom of the stem flat and level at the bottom of the painted area (it sits on the top of the watch case). No watch, no chain.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12g",
+    "name": "Tit Trush hopping",
+    "key": "sprites.titthrushHop",
+    "file": "assets/sprites/titthrush-hop.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Clock Hop: cell 1, the Trush perched on the tip of the clock hand it rides round, the whole time it is on a clock (drawn upright about 150 px tall, its gripping claws on the hand's tip); cell 2, the Trush flying in a straight line from one clock to the next after it lets go (turned so its beak points the way it flies, and mirrored when it flies to the right, which is why its lid is shut).",
+    "standin": "The portrait, small, standing on the hand's tip; in flight, tilted along the way it flies.",
+    "prompt": "{STYLE} {VARIANT} The Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ), exactly as painted there: a round gold pocket watch as its body with its cream face showing ten o'clock, the hinged gold lid, a small gold head with a big round eye and a long thin gold beak, the winding crown and ring bow on top of the head, a pink plume crest, a pink feathered wing, a gold chain curling out behind as its tail, and pink scaly legs with dark claws; for its open beak see the singing pose (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/titthrush-sing.png ). A 2 x 1 row of two poses, each in its own 1024 x 1024 cell, both at exactly the same scale as each other, the bird about 70% of the cell's height in cell 1. 1) Perched, ready to spring: crouched low on bent legs, both feet together with the claws curled shut round an invisible thin rod, the closed claws exactly on the cell's vertical centre line 92% of the way down (nothing drawn below 95%), wings half open for balance, the lid open, the face showing ten o'clock, facing left. 2) Flying: seen from the side, stretched out level and facing left, its beak pointing straight left, the pink wing spread wide, the legs tucked back, the chain tail streaming out straight behind to the right, and the gold lid snapped SHUT over the face so no numbers show (the game mirrors this pose); the middle of the round gold case exactly at the cell's centre. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M12h",
+    "name": "Clock hands",
+    "key": "sprites.clockHands",
+    "file": "assets/sprites/clock-hands.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Clock Hop: on every clock, cell 1 is the long hand that sweeps round and that the Trush rides (it reaches out past the dial, and the Trush perches on its tip); cell 2 is the short hour hand. The game turns each about the cell's centre, so the pivot must be exactly there.",
+    "standin": "Tapered blue-black hands with a gold pivot drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 1 row of two old-fashioned clock hands in blued steel, deep blue-black with a little sheen, matching the hands on the Ten O'clock Tit Trush (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ) and fit for the delivered clocks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/town-clocks.png ). Each in its own 1024 x 1024 cell, pointing straight up, with registration the same in both cells: the round pivot boss (a small gold cap with a dot) exactly at the centre of the cell. 1) The long minute hand: slim and tapering, with a small open ring just below its tip and the tip itself a sturdy rounded knob the bird can hold, the tip 4% of the way down from the top of the cell; below the pivot a short counterweight tail with a little round end, reaching 62% of the way down; the hand about 7% of the cell wide at its widest. 2) The short hour hand: a spade-shaped hand, its tip 24% of the way down from the top of the cell, its tail reaching 58% down, about 9% of the cell wide at the spade. Nothing else in the cells. Ignore the instruction to centre each object in its cell: here the pivot is the fixed point.",
+    "status": "delivered"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "IC-M13a",
+    "name": "Lights On: the tall house at dusk",
+    "key": "scene.plugsocketswift",
+    "file": "assets/scenes/plugsocketswift.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Lights On (the Plugsocket Swift): the whole background. The twelve windows, the fuse box and its cable, the Swift and everything that moves are drawn on top.",
+    "standin": "A dusk sky in bands, a tall plastered house with a red roof, a garden wall and a lawn, painted in code.",
+    "prompt": "{STYLE} {SCENE}A garden at dusk, seen straight on. In the middle stands one tall, narrow old townhouse of warm buff plaster: its front wall runs from 25% to 75% of the way across and from 22% down to the ground line 89% down, under a steep red-tiled roof whose peak nearly touches the top edge, with one brick chimney at the right of the roof. The front wall is completely plain and blank: no windows, no door, no drainpipes, no ivy, because the game paints a grid of twelve windows (four across, three high) over the whole of it. On the left, a low old garden wall of grey stone from 4% to 25% across, its flat top 37% down, with a plain clear patch in its middle where the game hangs a fuse box. On the right, the dark gabled roofs of two neighbouring houses, lower than ours, without lit windows. Above, a deepening dusk sky in soft bands, slate blue at the top through mauve to a warm apricot glow near the horizon, a pale moon in the top right. A strip of green lawn along the bottom 11%. Keep the house front and the sky around it quiet and even, because the Swift flies all over it.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M13b",
+    "name": "Windows and the fuse box",
+    "key": "sprites.swiftHouse",
+    "file": "assets/sprites/swift-house.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Lights On: each of the twelve windows shows one of four states (dark, asking for a light, reading by a lamp, asleep with the lamp still on); the fuse box hangs on the garden wall, closed or blown.",
+    "standin": "Window frames with curtains, little round creatures, a table lamp and a grey fuse box drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six pictures, each in its own square cell, all four windows exactly the same size and framing (about 400 px wide and 430 px tall, seen straight on), row by row: 1, a square old sash window at night, dark blue-black glass, dusty-pink curtains drawn back at the sides, a wooden sill, nobody inside; 2, the same dark window with a small brown mouse in a striped nightshirt standing inside, one paw raised waving, holding a closed book; 3, the same window glowing warm yellow from inside, a little table lamp with a pleated pink shade lit on the right, the mouse sitting reading an open book in its light; 4, the same lit window, the lamp still on, the mouse asleep in a small bed under a patchwork blanket with its book fallen open on the floor; 5, an old grey-painted metal fuse box with a little door, a round dial and a big switch lever pointing up, about 300 x 400 px; 6, the same fuse box blown: its lever snapped down, a black scorch mark and a puff of grey smoke with a few yellow sparks. The windows' wooden frames and sills fill each window picture edge to edge so they line up on the house wall.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M13c",
+    "name": "Plugsocket Swift: flying, plugging in, singed",
+    "key": "sprites.swiftPoses",
+    "file": "assets/sprites/swift-poses.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Lights On: the Swift flies from window to window (pose 1), dives at a socket as it plugs a lamp in (pose 2), and hangs singed while the fuse is blown (pose 3). The game mirrors it to fly right and draws the bulb's glow.",
+    "standin": "The portrait (or its stand-in) with ink-and-wash wings drawn in code: beating, swept back and tilted for the dive, drooping with grey smoke when singed.",
+    "prompt": "{STYLE} {VARIANT} The Plugsocket Swift (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/plugsocketswift.png), exactly as painted there: a clear glass light-bulb head with a glowing orange coiled filament, one round pale eye and a long pointed tan beak, on a ribbed brass screw-cap neck; a round blue-green body whose front is a cream wall socket with two slots, a round earth hole and two brass screws; dusty-pink wings; a grey flex for a tail ending in a two-pin plug; thin tan legs with dark claws. Three poses side by side, each in its own square third of the sheet, the socket body at the exact centre of each square and the bird filling about 80% of the square's width, all at the same scale, facing left, seen from the side: 1, in flight: its pink wings spread wide and swept back like a swift's, the flex and plug streaming out behind, legs tucked up under the body, the bulb stretched forward, its filament glowing; 2, plugging in: diving head first and down to the left, wings swept right back, legs reaching forward, the bulb blazing bright with little rays; 3, singed: hovering limply, wings drooping, a few feathers ruffled and sooty, the bulb dark and grey with a thin crack and the filament out, a small wisp of smoke rising from the brass cap. {ALPHA}",
+    "status": "delivered"
+  }
+]

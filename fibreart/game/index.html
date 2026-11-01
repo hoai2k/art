@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#160d2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Fibre Art">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="web/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="web/icons/icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Fibre Art</title>
+  <meta name="description" content="A shifting collage after the fibre art, paintings and drawings of Hanneke de Neve: reach into her pictures with a controller and move, stretch, swirl and dissolve their parts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Visit counting (GoatCounter: no cookies, no identifiers), read by games.hoai.net/stats/. -->
+  <script>window.goatcounter = { path: function () { return location.pathname; } };</script>
+  <script data-goatcounter="https://hoai.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <canvas id="overlay" aria-label="The collage"></canvas>
+
+    <section id="loading" class="screen">
+      <div class="stitch-bar" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100"><span class="stitch-fill"></span></div>
+      <p class="loading-text" hidden></p>
+    </section>
+
+    <section id="title" class="screen" hidden aria-labelledby="logo-text">
+      <div class="title-block">
+        <img id="logo-img" src="web/ui/logo.webp" alt="">
+        <h1 id="logo-text" class="visually-hidden">Fibre Art</h1>
+        <button id="press-start" class="press-start" data-nav data-action="start">Press Start</button>
+        <p id="pad-note" class="pad-note"><svg viewBox="0 0 24 24" width="1.25em" height="1.25em" aria-hidden="true" style="vertical-align:-0.25em"><path fill="currentColor" d="M7 6h10a5 5 0 0 1 4.9 6l-1 4.6a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.8 1.8a2.6 2.6 0 0 1-4.5-1.2l-1-4.6A5 5 0 0 1 7 6zm0 3v1.5H5.5v1.5H7v1.5h1.5V12H10v-1.5H8.5V9H7zm9.5.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg> Xbox controller highly recommended</p>
+      </div>
+      <div class="corner-buttons">
+        <button class="pic-btn" data-nav data-open="instructions" data-icon="howto" aria-label="How to play" title="How to play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h9a5 5 0 0 1 5 5v11H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="btn-label">How to play</span>
+        </button>
+        <button class="pic-btn" data-nav data-open="settings" data-icon="settings" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></svg>
+          <span class="btn-label">Settings</span>
+        </button>
+        <button class="pic-btn sound-btn" data-nav data-action="sound" aria-pressed="true" aria-label="Sound on" title="Sound on">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></g></svg>
+          <span class="btn-label">Sound on</span>
+        </button>
+        <button class="pic-btn" data-nav data-action="fullscreen" data-icon="fullscreen" aria-label="Fullscreen" title="Fullscreen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="btn-label">Fullscreen</span>
+        </button>
+      </div>
+    </section>
+
+    <div id="hud" hidden>
+      <div id="caption" class="caption" aria-live="polite"></div>
+      <div id="players" class="players"></div>
+      <button class="icon-btn hud-pause" data-action="pause" aria-label="Pause" title="Pause">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3"/></svg>
+      </button>
+      <p id="play-hint" class="play-hint"></p>
+    </div>
+
+    <div id="bars-hint" hidden><span class="arrow" aria-hidden="true">↑</span> Swipe up</div>
+
+    <section id="card" class="screen modal" hidden aria-labelledby="card-title">
+      <div class="panel wide">
+        <h2 id="card-title">Controls Found</h2>
+        <div id="card-body" class="scroll" tabindex="0"></div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="hint" class="screen modal" hidden aria-labelledby="hint-title">
+      <div class="panel wide">
+        <h2 id="hint-title">Hint</h2>
+        <div id="hint-body" class="scroll" tabindex="0"></div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="pause" class="screen modal" hidden aria-labelledby="pause-title">
+      <div class="panel pause-panel">
+        <h2 id="pause-title" class="visually-hidden">Paused</h2>
+        <p id="pause-reason" class="muted"></p>
+        <div class="pause-grid" data-cols="3">
+          <button class="pic-btn" data-nav data-action="card" data-icon="controls" aria-label="Controls Found" title="Controls Found">
+            <img src="web/ui/controls-6.webp" alt="">
+            <span class="btn-label">Controls Found</span>
+          </button>
+          <button class="pic-btn" data-nav data-action="hint" data-icon="hint" aria-label="Hint" title="Hint">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 24c5-8 12-12 19-12s14 4 19 12c-5 8-12 12-19 12S10 32 5 24z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="24" cy="24" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="24" cy="24" r="2.6" fill="currentColor"/></svg>
+            <span class="btn-label">Hint</span>
+          </button>
+          <button class="pic-btn" data-nav data-open="instructions" data-icon="howto" aria-label="How to play" title="How to play">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 14c-4-3-10-4-15-3v24c5-1 11 0 15 3 4-3 10-4 15-3V11c-5-1-11 0-15 3z M24 14v24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            <span class="btn-label">How to play</span>
+          </button>
+          <button class="pic-btn" data-nav data-open="settings" data-icon="settings" aria-label="Settings" title="Settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></svg>
+            <span class="btn-label">Settings</span>
+          </button>
+          <button class="pic-btn" data-nav data-action="next-scene" data-icon="next" aria-label="Next picture" title="Next picture">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="11" width="26" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 29l7-8 5 5 4-4 5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="25" cy="17" r="2.2" fill="currentColor"/><path d="M36 22h7M39 18l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="btn-label">Next picture</span>
+          </button>
+          <button class="pic-btn" data-nav data-action="quit-title" data-icon="title" aria-label="Back to the title" title="Back to the title">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 23 24 9l16 14M13 19v19h22V19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 38v-9h6v9" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+            <span class="btn-label">Back to the title</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="instructions" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="ins-title">
+      <div class="panel wide">
+        <h2 id="ins-title">How to play</h2>
+        <div class="scroll" id="ins-scroll" tabindex="0">
+          <p>Every stick, trigger and button moves something in the picture: some a little, a few a lot. Try them all.</p>
+          <p>Small moves set up big ones. Bring a piece to the middle, or sew pieces together, and a big control reaches further.</p>
+          <p>Nothing to win. Leave it be and the picture settles. Stuck? Pause and choose the eye.</p>
+          <div class="pad-diagram" aria-hidden="true">
+            <svg viewBox="0 0 640 300">
+              <path d="M180 80 Q320 50 460 80 Q540 90 570 200 Q590 280 530 280 Q490 280 460 230 L180 230 Q150 280 110 280 Q50 280 70 200 Q100 90 180 80 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+              <rect x="140" y="20" width="56" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="168" y="35" text-anchor="middle" font-size="12" fill="currentColor">LT</text>
+              <rect x="444" y="20" width="56" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="472" y="35" text-anchor="middle" font-size="12" fill="currentColor">RT</text>
+              <rect x="150" y="48" width="70" height="18" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="185" y="61" text-anchor="middle" font-size="12" fill="currentColor">LB</text>
+              <rect x="420" y="48" width="70" height="18" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="455" y="61" text-anchor="middle" font-size="12" fill="currentColor">RB</text>
+              <circle cx="190" cy="135" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="190" y="139" text-anchor="middle" font-size="11" fill="currentColor">L</text>
+              <circle cx="400" cy="195" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="400" y="199" text-anchor="middle" font-size="11" fill="currentColor">R</text>
+              <path d="M232 185h16v-16h16v16h16v16h-16v16h-16v-16h-16z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="460" cy="110" r="15" fill="#e8b830"/><text x="460" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#1b1430">Y</text>
+              <circle cx="430" cy="138" r="15" fill="#3d7bd9"/><text x="430" y="143" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">X</text>
+              <circle cx="490" cy="138" r="15" fill="#d9443d"/><text x="490" y="143" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">B</text>
+              <circle cx="460" cy="166" r="15" fill="#4caf50"/><text x="460" y="171" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">A</text>
+              <rect x="296" y="122" width="16" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="330" y="122" width="16" height="10" rx="4" fill="currentColor"/>
+              <g font-size="14" fill="currentColor">
+                <line x1="168" y1="135" x2="60" y2="130" stroke="currentColor"/><text x="4" y="124" font-weight="700">Sticks: move</text>
+                <line x1="400" y1="218" x2="420" y2="282" stroke="currentColor"/><text x="370" y="298" font-weight="700">Sticks: move</text>
+                <line x1="248" y1="210" x2="150" y2="282" stroke="currentColor"/><text x="20" y="298">D-pad: select</text>
+                <line x1="140" y1="30" x2="80" y2="18" stroke="currentColor"/><text x="4" y="14">Triggers: hold</text>
+                <line x1="150" y1="57" x2="80" y2="70" stroke="currentColor"/><text x="4" y="82">Bumpers: press</text>
+                <line x1="505" y1="138" x2="545" y2="150" stroke="currentColor"/><text x="525" y="168">Buttons:</text><text x="525" y="184">press</text>
+                <line x1="304" y1="120" x2="290" y2="98" stroke="currentColor"/><text x="232" y="92">View: found</text>
+                <line x1="338" y1="120" x2="380" y2="98" stroke="currentColor"/><text x="360" y="92">Menu: pause</text>
+              </g>
+            </svg>
+          </div>
+          <table class="map-table">
+            <tr><th></th><th>Controller</th><th>Keyboard</th></tr>
+            <tr><td>Move</td><td>Sticks</td><td>W A S D, arrows</td></tr>
+            <tr><td>Hold</td><td>LT, RT</td><td>Q, E</td></tr>
+            <tr><td>Press</td><td><span class="xb xb-a">A</span> <span class="xb xb-b">B</span> <span class="xb xb-x">X</span> <span class="xb xb-y">Y</span> LB RB</td><td>K L J I Z C</td></tr>
+            <tr><td>Select</td><td>D-pad</td><td>[ ]</td></tr>
+            <tr><td>Controls found</td><td>View</td><td>Tab</td></tr>
+            <tr><td>Pause</td><td>Menu</td><td>Esc</td></tr>
+          </table>
+          <p>Touch or mouse: drag, hold, tap and fling the pieces and the cloth; each plays the controls on it. Pinch or scroll to stretch.</p>
+        </div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="settings" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="set-title">
+      <div class="panel">
+        <h2 id="set-title">Settings</h2>
+        <div class="scroll settings-list">
+          <label class="row">Volume <input type="range" min="0" max="100" step="5" data-nav data-setting="volume"><output></output></label>
+          <label class="row">Music <input type="range" min="0" max="100" step="5" data-nav data-setting="music"><output></output></label>
+          <label class="row">Sound effects <input type="range" min="0" max="100" step="5" data-nav data-setting="sfx"><output></output></label>
+          <label class="row check">Show hints while playing <input type="checkbox" data-nav data-setting="playHints"></label>
+          <label class="row check">Vibration <input type="checkbox" data-nav data-setting="vibration"></label>
+        </div>
+        <button class="menu-btn" data-nav data-open="credits">Credits</button>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="credits" class="screen modal dialog" hidden role="dialog" aria-modal="true" aria-labelledby="credits-title">
+      <div class="panel credits-panel">
+        <h2 id="credits-title">Credits</h2>
+        <dl class="credits">
+          <dt>Principal Game Designer</dt>
+          <dd>Hoai Nguyen</dd>
+          <dt>Technology</dt>
+          <dd>Claude Code, ChatGPT Codex, ChatGPT image generation, Suno, WebGL&nbsp;2</dd>
+        </dl>
+        <p class="credits-note">Inspired by the work of <a href="https://www.elevenland.com/hanneke/" target="_blank" rel="noopener" data-nav>Hanneke de Neve</a>.</p>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

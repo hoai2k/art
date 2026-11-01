@@ -1,0 +1,138 @@
+{
+  "rig": "sister-nhi",
+  "scale": 0.0803414511674617,
+  "ground": 156.26,
+  "top": -163.74,
+  "pieces": {
+    "skirt": {
+      "file": "rigs/sister-nhi/skirt.webp",
+      "w": 204,
+      "h": 148,
+      "pivot": [
+        105.89,
+        5.38
+      ],
+      "z": 3
+    },
+    "legL": {
+      "file": "rigs/sister-nhi/legL.webp",
+      "w": 48,
+      "h": 105,
+      "pivot": [
+        38.72,
+        9.0
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        88.21,
+        61.54
+      ]
+    },
+    "legR": {
+      "file": "rigs/sister-nhi/legR.webp",
+      "w": 44,
+      "h": 108,
+      "pivot": [
+        34.55,
+        8.68
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        123.57,
+        63.15
+      ]
+    },
+    "torso": {
+      "file": "rigs/sister-nhi/torso.webp",
+      "w": 98,
+      "h": 83,
+      "pivot": [
+        50.45,
+        77.13
+      ],
+      "z": 5,
+      "parent": "skirt",
+      "anchor": [
+        105.89,
+        5.38
+      ]
+    },
+    "head": {
+      "file": "rigs/sister-nhi/head.webp",
+      "w": 100,
+      "h": 99,
+      "pivot": [
+        72.95,
+        90.46
+      ],
+      "z": 6,
+      "parent": "torso",
+      "anchor": [
+        50.62,
+        3.37
+      ]
+    },
+    "armL": {
+      "file": "rigs/sister-nhi/armL.webp",
+      "w": 94,
+      "h": 144,
+      "pivot": [
+        86.13,
+        5.62
+      ],
+      "z": 1,
+      "parent": "torso",
+      "anchor": [
+        5.62,
+        26.67
+      ]
+    },
+    "foreL": {
+      "file": "rigs/sister-nhi/foreL.webp",
+      "w": 62,
+      "h": 96,
+      "pivot": [
+        20.73,
+        86.29
+      ],
+      "z": 2,
+      "parent": "armL",
+      "anchor": [
+        60.74,
+        35.35
+      ]
+    },
+    "armR": {
+      "file": "rigs/sister-nhi/armR.webp",
+      "w": 94,
+      "h": 147,
+      "pivot": [
+        7.87,
+        5.3
+      ],
+      "z": 7,
+      "parent": "torso",
+      "anchor": [
+        92.07,
+        26.67
+      ]
+    },
+    "foreR": {
+      "file": "rigs/sister-nhi/foreR.webp",
+      "w": 47,
+      "h": 89,
+      "pivot": [
+        18.32,
+        80.02
+      ],
+      "z": 8,
+      "parent": "armR",
+      "anchor": [
+        27.88,
+        34.15
+      ]
+    }
+  }
+}

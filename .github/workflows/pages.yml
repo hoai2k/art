@@ -1,0 +1,171 @@
+name: Deploy games to GitHub Pages
+
+# Deploys from the `deploy` branch, not `main`: pushing to main runs nothing,
+# and the site is published only when `deploy` is moved forward to main
+# (`git push origin main:deploy`; see "Deploy state" in CLAUDE.md).
+#
+# A push to deploy builds and deploys only. Each game's build is its own step
+# through .github/scripts/build-game.sh: a game that fails to build is
+# published from its live copy instead (rebuilt from the live commit, or
+# crawled off the site), with a warning and a line in the job summary, so one
+# broken game never holds back the others. The shared root files must build,
+# and the run fails if no game built at all.
+#
+# The tests (node --test, the generators' --check runs, syntax
+# checks and the Kingdom of the Fairies qa scripts) run only on demand:
+# Actions -> Deploy games to GitHub Pages -> Run workflow -> tests: full.
+# They write nothing the site is made from, so the published site is the same
+# either way; a failing test stops that run's deploy. Run the checks of the
+# games a change touches before committing (CLAUDE.md, "Tests and deploys").
+
+on:
+  push:
+    branches: [deploy]
+    # Skipped when a push changes only these: Markdown, agent files, and the
+    # design, research, reference, intake, qa, tools and test folders and the
+    # shared test helpers, none of which the publish.sh scripts read. A push
+    # that also changes anything else still deploys as usual.
+    paths-ignore:
+      - '**.md'
+      - '.claude/**'
+      - '*/design/**'
+      - '*/intake/**'
+      - '*/research/**'
+      - '*/reference/**'
+      - '*/qa/**'
+      - '*/tools/**'
+      - '*/app/test/**'
+      - '*/game/test/**'
+      - 'shared/test/**'
+      - '.gitignore'
+  workflow_dispatch:
+    inputs:
+      tests:
+        description: Run the tests before deploying
+        type: choice
+        options: [none, full]
+        default: none
+
+permissions:
+  contents: read
+
+# Never cancel, deliberately. A deploy that is running always finishes, and
+# GitHub keeps one pending run behind it, which a newer push replaces for
+# free: during a burst of pushes the site publishes once per deploy length,
+# and queued pushes collapse into the newest. Cancelling the running deploy
+# on every push instead can starve the site: a steady stream
+# of pushes would cancel every deploy before it finished. Per-game groups
+# would not help either: there is one Pages site, and every run builds and
+# publishes ALL games from the latest deploy, so a newer run already contains
+# whatever a superseded one would have published. (Before October 2026 this
+# was group github-pages, also never-cancel.)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20  # a hung run otherwise bills up to 6 h
+    permissions:
+      contents: read
+      # build-game.sh asks for the last successful run to rebuild a failed
+      # game from the commit that is live.
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # A sparse checkout that leaves out the folders no publish.sh reads (the
+      # games' design and reference folders, about 2 GB), as mini's deploy
+      # does; mini measured its checkout at 69 s against 153 s for the full one
+      # with the published site byte-identical. A publish.sh that starts
+      # reading one of these folders must take it off this list. The full test
+      # run reads the design folders (their generators' --check), so it keeps
+      # the full checkout.
+      - name: Checkout (full, for the full test run)
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        uses: actions/checkout@v4
+      - name: Checkout (sparse)
+        if: "!(github.event_name == 'workflow_dispatch' && inputs.tests == 'full')"
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/kingdomofthefairies/design/
+            !/bronzedrum/design/
+            !/icecreamcone/design/
+            !/fibreart/reference/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The shared root files must build, or the whole deploy fails: every
+      # game needs them.
+      # The library page leaves out the card of every game deploy_config.json
+      # switches off (.github/scripts/deploy-config.py).
+      - name: Shared root files
+        run: mkdir -p local/pages && cp favicon.ico local/pages/ && python3 .github/scripts/deploy-config.py library index.html local/pages/index.html
+      - name: Build Kingdom of the Fairies
+        run: .github/scripts/build-game.sh kingdomofthefairies 'kingdomofthefairies/publish.sh local/pages/kingdomofthefairies'
+      - name: Kingdom of the Fairies tests
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: for e in widowsbay partial; do for t in board act2 act3 act4 act5; do KOTF_EDITION=$e node kingdomofthefairies/qa/$t.test.mjs || exit 1; done; done && for t in animation sailor-motion walking theme assets-loader; do node kingdomofthefairies/qa/$t.test.mjs || exit 1; done && KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs && python3 kingdomofthefairies/design/source/build_act_requests.py --check && python3 kingdomofthefairies/design/source/build_film_requests.py --check && python3 kingdomofthefairies/design/source/build_film_assets.py --check
+      - name: Build Bronze Drum
+        run: .github/scripts/build-game.sh bronzedrum 'bronzedrum/publish.sh local/pages/bronzedrum'
+      - name: Bronze Drum tests
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: node --test test/*.test.mjs && node scripts/check.mjs
+        working-directory: bronzedrum/game
+      - name: Bronze Drum generator checks
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: python3 bronzedrum/design/source/build_requests.py --check && python3 bronzedrum/design/source/build_audio.py --check && python3 bronzedrum/design/source/build_web_art.py --check && python3 bronzedrum/design/source/build_rigs.py --check
+      - name: Build Ice-Cream Cone Coot
+        run: .github/scripts/build-game.sh icecreamcone 'icecreamcone/publish.sh local/pages/icecreamcone'
+      - name: Ice-Cream Cone Coot tests
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: node --test test/*.test.mjs
+        working-directory: icecreamcone/game
+      - name: Ice-Cream Cone Coot generator checks
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: python3 icecreamcone/design/source/build_requests.py --check
+      - name: Build Fibre Art
+        run: .github/scripts/build-game.sh fibreart 'fibreart/publish.sh local/pages/fibreart'
+      - name: Fibre Art tests
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: node --test test/*.test.mjs
+        working-directory: fibreart/game
+      - name: Fibre Art generator checks
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: python3 fibreart/design/source/build_requests.py --check
+      - name: Fail only if no game built
+        run: .github/scripts/check-games.sh
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: local/pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10  # a hung run otherwise bills up to 6 h
+    permissions:
+      pages: write
+      id-token: write
+      # To delete the site artifact once it is live (see the last step).
+      actions: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+      # The uploaded site (over half a gigabyte) would otherwise sit in
+      # Actions storage for a day after every push. Pages keeps its own copy,
+      # so delete ours as soon as the deploy is done.
+      - name: Delete the deployed site artifact
+        if: always()
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
+          failOnError: false

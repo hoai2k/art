@@ -1,0 +1,5919 @@
+{
+  "note": "Art, music and effects the game loads. An image slot draws its procedural stand-in until its status is 'delivered' and its file exists here. Request details: design/image-requests.md (same ids). Full-resolution PNG originals: design/generated/<id>-original.png.",
+  "slots": {
+    "logo": {
+      "status": "delivered",
+      "file": "logo.webp"
+    },
+    "sky-backdrop": {
+      "status": "delivered",
+      "file": "sky-backdrop.webp"
+    },
+    "proscenium": {
+      "status": "delivered",
+      "file": "proscenium.webp"
+    },
+    "moon-face": {
+      "status": "delivered",
+      "file": "moon-face.webp"
+    },
+    "cloud": {
+      "status": "delivered",
+      "file": "cloud.webp"
+    },
+    "waves-back": {
+      "status": "delivered",
+      "file": "waves-back.webp"
+    },
+    "waves-mid": {
+      "status": "delivered",
+      "file": "waves-mid.webp"
+    },
+    "waves-front": {
+      "status": "delivered",
+      "file": "waves-front.webp"
+    },
+    "ship": {
+      "status": "delivered",
+      "file": "ship.webp"
+    },
+    "witch-moonboat": {
+      "status": "delivered",
+      "file": "witch-moonboat.webp"
+    },
+    "rock": {
+      "status": "delivered",
+      "file": "rock.webp"
+    },
+    "pearl": {
+      "status": "delivered",
+      "file": "pearl.webp"
+    },
+    "keepsake-tea": {
+      "status": "delivered",
+      "file": "keepsake-tea.webp"
+    },
+    "keepsake-pearl": {
+      "status": "delivered",
+      "file": "keepsake-pearl.webp"
+    },
+    "keepsake-rose": {
+      "status": "delivered",
+      "file": "keepsake-rose.webp"
+    },
+    "lighthouse": {
+      "status": "delivered",
+      "file": "lighthouse.webp"
+    },
+    "lighthouse-lit": {
+      "status": "delivered",
+      "file": "lighthouse-lit.webp"
+    },
+    "band-trio": {
+      "status": "delivered",
+      "file": "band-trio.webp"
+    },
+    "sea-dragon": {
+      "status": "delivered",
+      "file": "sea-dragon.webp",
+      "note": "Not used in Act I (the witch-moonboat art includes her dragon); reserved for Act II, the grotto."
+    },
+    "sailor-stand": {
+      "status": "delivered",
+      "file": "sailor-stand.webp"
+    },
+    "sailor-walk-a": {
+      "status": "delivered",
+      "file": "sailor-walk-a.webp"
+    },
+    "sailor-walk-b": {
+      "status": "delivered",
+      "file": "sailor-walk-b.webp"
+    },
+    "sailor-leap": {
+      "status": "delivered",
+      "file": "sailor-leap.webp"
+    },
+    "sailor-crouch": {
+      "status": "delivered",
+      "file": "sailor-crouch.webp"
+    },
+    "sailor-carry": {
+      "status": "delivered",
+      "file": "sailor-carry.webp"
+    },
+    "beloved-stand": {
+      "status": "delivered",
+      "file": "beloved-stand.webp"
+    },
+    "rival-silhouette": {
+      "status": "delivered",
+      "file": "rival-silhouette.webp"
+    },
+    "witch-stand": {
+      "status": "delivered",
+      "file": "witch-stand.webp"
+    },
+    "band-hat": {
+      "status": "delivered",
+      "file": "band-hat.webp"
+    },
+    "band-guitar": {
+      "status": "delivered",
+      "file": "band-guitar.webp"
+    },
+    "band-beard": {
+      "status": "delivered",
+      "file": "band-beard.webp"
+    },
+    "tea-leaf": {
+      "status": "delivered",
+      "file": "tea-leaf.webp"
+    },
+    "keepsake-stone": {
+      "status": "delivered",
+      "file": "keepsake-stone.webp"
+    },
+    "playbill": {
+      "status": "delivered",
+      "file": "playbill.webp"
+    },
+    "waterspout": {
+      "status": "delivered",
+      "file": "waterspout.webp"
+    },
+    "grotto-backcloth": {
+      "status": "delivered",
+      "file": "grotto-backcloth.webp"
+    },
+    "grotto-wing-left": {
+      "status": "delivered",
+      "file": "grotto-wing-left.webp"
+    },
+    "grotto-wing-right": {
+      "status": "delivered",
+      "file": "grotto-wing-right.webp"
+    },
+    "coral-flat-a": {
+      "status": "delivered",
+      "file": "coral-flat-a.webp"
+    },
+    "coral-flat-b": {
+      "status": "delivered",
+      "file": "coral-flat-b.webp"
+    },
+    "kelp-hanging": {
+      "status": "delivered",
+      "file": "kelp-hanging.webp"
+    },
+    "fish-school": {
+      "status": "delivered",
+      "file": "fish-school.webp"
+    },
+    "clam-open": {
+      "status": "delivered",
+      "file": "clam-open.webp"
+    },
+    "clam-closed": {
+      "status": "delivered",
+      "file": "clam-closed.webp"
+    },
+    "eel": {
+      "status": "delivered",
+      "file": "eel.webp"
+    },
+    "eel-hole": {
+      "status": "delivered",
+      "file": "eel-hole.webp"
+    },
+    "jellyfish": {
+      "status": "delivered",
+      "file": "jellyfish.webp"
+    },
+    "air-vent": {
+      "status": "delivered",
+      "file": "air-vent.webp"
+    },
+    "court-backcloth": {
+      "status": "delivered",
+      "file": "court-backcloth.webp"
+    },
+    "court-wing-left": {
+      "status": "delivered",
+      "file": "court-wing-left.webp"
+    },
+    "court-wing-right": {
+      "status": "delivered",
+      "file": "court-wing-right.webp"
+    },
+    "court-floor": {
+      "status": "delivered",
+      "file": "court-floor.webp"
+    },
+    "attendant-green": {
+      "status": "delivered",
+      "file": "attendant-green.webp"
+    },
+    "attendant-pink": {
+      "status": "delivered",
+      "file": "attendant-pink.webp"
+    },
+    "attendant-blue": {
+      "status": "delivered",
+      "file": "attendant-blue.webp"
+    },
+    "seahorse-guard": {
+      "status": "delivered",
+      "file": "seahorse-guard.webp"
+    },
+    "gaze-lantern": {
+      "status": "delivered",
+      "file": "gaze-lantern.webp"
+    },
+    "pearl-pedestal": {
+      "status": "delivered",
+      "file": "pearl-pedestal.webp"
+    },
+    "whale-side": {
+      "status": "delivered",
+      "file": "whale-side.webp"
+    },
+    "whale-mouth": {
+      "status": "delivered",
+      "file": "whale-mouth.webp"
+    },
+    "fish-large": {
+      "status": "delivered",
+      "file": "fish-large.webp"
+    },
+    "belly-backcloth": {
+      "status": "delivered",
+      "file": "belly-backcloth.webp"
+    },
+    "rib-arch": {
+      "status": "delivered",
+      "file": "rib-arch.webp"
+    },
+    "belly-water": {
+      "status": "delivered",
+      "file": "belly-water.webp"
+    },
+    "barrel": {
+      "status": "delivered",
+      "file": "barrel.webp"
+    },
+    "crate": {
+      "status": "delivered",
+      "file": "crate.webp"
+    },
+    "figurehead": {
+      "status": "delivered",
+      "file": "figurehead.webp"
+    },
+    "piano": {
+      "status": "delivered",
+      "file": "piano.webp"
+    },
+    "lantern-hanging": {
+      "status": "delivered",
+      "file": "lantern-hanging.webp"
+    },
+    "cradle": {
+      "status": "delivered",
+      "file": "cradle.webp"
+    },
+    "whale-throat": {
+      "status": "delivered",
+      "file": "whale-throat.webp"
+    },
+    "shore-rocks": {
+      "status": "delivered",
+      "file": "shore-rocks.webp"
+    },
+    "whale-tail": {
+      "status": "delivered",
+      "file": "whale-tail.webp"
+    },
+    "bay-backcloth": {
+      "status": "delivered",
+      "file": "bay-backcloth.webp"
+    },
+    "bay-backcloth-fire": {
+      "status": "delivered",
+      "file": "bay-backcloth-fire.webp"
+    },
+    "stone-house": {
+      "status": "delivered",
+      "file": "stone-house.webp"
+    },
+    "staircase": {
+      "status": "delivered",
+      "file": "staircase.webp"
+    },
+    "ladder": {
+      "status": "delivered",
+      "file": "ladder.webp"
+    },
+    "beam-fall": {
+      "status": "delivered",
+      "file": "beam-fall.webp"
+    },
+    "debris-stones": {
+      "status": "delivered",
+      "file": "debris-stones.webp"
+    },
+    "flame-flat": {
+      "status": "delivered",
+      "file": "flame-flat.webp"
+    },
+    "smoke-flat": {
+      "status": "delivered",
+      "file": "smoke-flat.webp"
+    },
+    "harbour-quay": {
+      "status": "delivered",
+      "file": "harbour-quay.webp"
+    },
+    "ending-lamp": {
+      "status": "delivered",
+      "file": "ending-lamp.webp"
+    },
+    "ending-witch": {
+      "status": "delivered",
+      "file": "ending-witch.webp"
+    },
+    "ending-dark": {
+      "status": "delivered",
+      "file": "ending-dark.webp"
+    },
+    "keepsake-guitar": {
+      "status": "delivered",
+      "file": "keepsake-guitar.webp"
+    },
+    "reveller-jester": {
+      "status": "delivered",
+      "file": "reveller-jester.webp"
+    },
+    "sailor-swim-a": {
+      "status": "delivered",
+      "file": "sailor-swim-a.webp"
+    },
+    "reveller-shaggy": {
+      "status": "delivered",
+      "file": "reveller-shaggy.webp"
+    },
+    "sentry-creature-closed": {
+      "status": "delivered",
+      "file": "sentry-creature-closed.webp"
+    },
+    "reveller-lady": {
+      "status": "delivered",
+      "file": "reveller-lady.webp"
+    },
+    "sailor-swim-b": {
+      "status": "delivered",
+      "file": "sailor-swim-b.webp"
+    },
+    "sea-spirit": {
+      "status": "delivered",
+      "file": "sea-spirit.webp"
+    },
+    "deck-set": {
+      "status": "delivered",
+      "file": "deck-set.webp"
+    },
+    "guitar-sinking": {
+      "status": "delivered",
+      "file": "guitar-sinking.webp"
+    },
+    "sentry-creature-open": {
+      "status": "delivered",
+      "file": "sentry-creature-open.webp"
+    },
+    "cliff-face": {
+      "status": "delivered",
+      "file": "cliff-face.webp"
+    },
+    "sea-king-throne": {
+      "status": "delivered",
+      "file": "sea-king-throne.webp"
+    },
+    "reveller-yellow": {
+      "status": "delivered",
+      "file": "reveller-yellow.webp"
+    },
+    "pageant-backcloth": {
+      "status": "delivered",
+      "file": "pageant-backcloth.webp"
+    },
+    "ship-wreck-stern": {
+      "status": "delivered",
+      "file": "ship-wreck-stern.webp"
+    },
+    "house-front": {
+      "status": "delivered",
+      "file": "house-front.webp"
+    },
+    "whale-beached": {
+      "status": "delivered",
+      "file": "whale-beached.webp"
+    },
+    "lantern-string": {
+      "status": "delivered",
+      "file": "lantern-string.webp"
+    },
+    "pageant-dancers": {
+      "status": "delivered",
+      "file": "pageant-dancers.webp"
+    },
+    "conch-horn": {
+      "status": "delivered",
+      "file": "conch-horn.webp"
+    },
+    "ship-wreck-bow": {
+      "status": "delivered",
+      "file": "ship-wreck-bow.webp"
+    },
+    "wreck-debris": {
+      "status": "delivered",
+      "file": "wreck-debris.webp"
+    },
+    "band-legs-giant": {
+      "status": "delivered",
+      "file": "band-legs-giant.webp"
+    },
+    "band-guitarist-empty": {
+      "status": "delivered",
+      "file": "band-guitarist-empty.webp"
+    },
+    "pearl-pedestal-empty": {
+      "status": "delivered",
+      "file": "pearl-pedestal-empty.webp"
+    },
+    "court-floor-3": {
+      "status": "delivered",
+      "file": "court-floor-3.webp"
+    },
+    "rotate-card": {
+      "status": "delivered",
+      "file": "rotate-card.webp"
+    },
+    "app-icon": {
+      "status": "delivered",
+      "file": "app-icon.webp"
+    },
+    "touch-stick-knob": {
+      "status": "delivered",
+      "file": "touch-stick-knob.webp"
+    },
+    "touch-stick-base": {
+      "status": "delivered",
+      "file": "touch-stick-base.webp"
+    },
+    "touch-button": {
+      "status": "delivered",
+      "file": "touch-button.webp"
+    },
+    "cradle-fulcrum": {
+      "status": "delivered",
+      "file": "cradle-fulcrum.webp"
+    },
+    "ladder-stub": {
+      "status": "delivered",
+      "file": "ladder-stub.webp"
+    },
+    "vane-plaque": {
+      "status": "delivered",
+      "file": "vane-plaque.webp"
+    },
+    "lantern-string-lit": {
+      "status": "delivered",
+      "file": "lantern-string-lit.webp"
+    },
+    "groove-slider": {
+      "status": "delivered",
+      "file": "groove-slider.webp"
+    },
+    "belly-floor": {
+      "status": "delivered",
+      "file": "belly-floor.webp"
+    },
+    "sailor-seated": {
+      "status": "delivered",
+      "file": "sailor-seated.webp"
+    },
+    "grotto-ledge": {
+      "status": "delivered",
+      "file": "grotto-ledge.webp"
+    },
+    "cliff-hold-gone": {
+      "status": "delivered",
+      "file": "cliff-hold-gone.webp"
+    },
+    "grotto-floor": {
+      "status": "delivered",
+      "file": "grotto-floor.webp"
+    },
+    "shore-backcloth": {
+      "status": "delivered",
+      "file": "shore-backcloth.webp"
+    },
+    "hud-voyage-flag": {
+      "status": "delivered",
+      "file": "hud-voyage-flag.webp"
+    },
+    "curtain-panel": {
+      "status": "delivered",
+      "file": "curtain-panel.webp"
+    },
+    "palace-distant": {
+      "status": "delivered",
+      "file": "palace-distant.webp"
+    },
+    "touch-pause": {
+      "status": "delivered",
+      "file": "touch-pause.webp"
+    },
+    "whale-throat-inside": {
+      "status": "delivered",
+      "file": "whale-throat-inside.webp"
+    },
+    "hud-lantern-lit": {
+      "status": "delivered",
+      "file": "hud-lantern-lit.webp"
+    },
+    "omen-token": {
+      "status": "delivered",
+      "file": "omen-token.webp"
+    },
+    "hud-air-bubble": {
+      "status": "delivered",
+      "file": "hud-air-bubble.webp"
+    },
+    "hud-air-tube": {
+      "status": "delivered",
+      "file": "hud-air-tube.webp"
+    },
+    "shutter-smashed": {
+      "status": "delivered",
+      "file": "shutter-smashed.webp"
+    },
+    "cliff-ledge": {
+      "status": "delivered",
+      "file": "cliff-ledge.webp"
+    },
+    "fish-hook": {
+      "status": "delivered",
+      "file": "fish-hook.webp"
+    },
+    "cloud-storm": {
+      "status": "delivered",
+      "file": "cloud-storm.webp"
+    },
+    "hud-voyage-ship": {
+      "status": "delivered",
+      "file": "hud-voyage-ship.webp"
+    },
+    "shutter-shut": {
+      "status": "delivered",
+      "file": "shutter-shut.webp"
+    },
+    "footlight": {
+      "status": "delivered",
+      "file": "footlight.webp"
+    },
+    "deep-panorama": {
+      "status": "delivered",
+      "file": "deep-panorama.webp"
+    },
+    "bay-backcloth-fire-empty": {
+      "status": "delivered",
+      "file": "bay-backcloth-fire-empty.webp"
+    },
+    "hud-sleeper": {
+      "status": "delivered",
+      "file": "hud-sleeper.webp"
+    },
+    "belly-bank": {
+      "status": "delivered",
+      "file": "belly-bank.webp"
+    },
+    "set-platform-edge": {
+      "status": "delivered",
+      "file": "set-platform-edge.webp"
+    },
+    "hud-lantern-out": {
+      "status": "delivered",
+      "file": "hud-lantern-out.webp"
+    },
+    "floor-slope": {
+      "status": "delivered",
+      "file": "floor-slope.webp"
+    },
+    "belly-water-body": {
+      "status": "delivered",
+      "file": "belly-water-body.webp"
+    },
+    "hud-voyage-rope": {
+      "status": "delivered",
+      "file": "hud-voyage-rope.webp"
+    },
+    "cliff-hold-crumble": {
+      "status": "delivered",
+      "file": "cliff-hold-crumble.webp"
+    },
+    "bay-backcloth-empty": {
+      "status": "delivered",
+      "file": "bay-backcloth-empty.webp"
+    },
+    "rib-arch-tall": {
+      "status": "delivered",
+      "file": "rib-arch-tall.webp"
+    },
+    "vane-arrow-warn": {
+      "status": "delivered",
+      "file": "vane-arrow-warn.webp"
+    },
+    "ending-dark-2": {
+      "status": "delivered",
+      "file": "ending-dark-2.webp"
+    },
+    "grotto-shelf": {
+      "status": "delivered",
+      "file": "grotto-shelf.webp"
+    },
+    "vane-arrow": {
+      "status": "delivered",
+      "file": "vane-arrow.webp"
+    },
+    "cliff-hold": {
+      "status": "delivered",
+      "file": "cliff-hold.webp"
+    },
+    "rubble-planks": {
+      "status": "delivered",
+      "file": "rubble-planks.webp"
+    },
+    "hud-plaque": {
+      "status": "delivered",
+      "file": "hud-plaque.webp"
+    },
+    "chain-strip": {
+      "status": "delivered",
+      "file": "chain-strip.webp"
+    },
+    "floor-hole": {
+      "status": "delivered",
+      "file": "floor-hole.webp"
+    },
+    "cliff-face-tall": {
+      "status": "delivered",
+      "file": "cliff-face-tall.webp"
+    },
+    "court-floor-edge": {
+      "status": "delivered",
+      "file": "court-floor-edge.webp"
+    },
+    "ivy-climb": {
+      "status": "delivered",
+      "file": "ivy-climb.webp"
+    },
+    "rib-ledge": {
+      "status": "delivered",
+      "file": "rib-ledge.webp"
+    },
+    "grotto-ledge-wall": {
+      "status": "delivered",
+      "file": "grotto-ledge-wall.webp"
+    },
+    "throat-lip": {
+      "status": "delivered",
+      "file": "throat-lip.webp"
+    },
+    "cliff-face-tall-2": {
+      "status": "delivered",
+      "file": "cliff-face-tall-2.webp"
+    },
+    "ending-dark-3": {
+      "status": "delivered",
+      "file": "ending-dark-3.webp"
+    },
+    "reveller-shaggy-idle-c": {
+      "status": "delivered",
+      "file": "reveller-shaggy-idle-c.webp",
+      "size": [
+        260,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-jester-idle-b": {
+      "status": "delivered",
+      "file": "reveller-jester-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "witch-stand-idle-b": {
+      "status": "delivered",
+      "file": "witch-stand-idle-b.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "band-trio-idle-b": {
+      "status": "delivered",
+      "file": "band-trio-idle-b.webp",
+      "size": [
+        900,
+        900
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-jester-idle-c": {
+      "status": "delivered",
+      "file": "reveller-jester-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-lady-idle-b": {
+      "status": "delivered",
+      "file": "reveller-lady-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-yellow-idle-c": {
+      "status": "delivered",
+      "file": "reveller-yellow-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-lady-idle-c": {
+      "status": "delivered",
+      "file": "reveller-lady-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "pageant-dancers-idle-b": {
+      "status": "delivered",
+      "file": "pageant-dancers-idle-b.webp",
+      "size": [
+        1600,
+        700
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-yellow-idle-b": {
+      "status": "delivered",
+      "file": "reveller-yellow-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "band-beard-idle-c": {
+      "status": "delivered",
+      "file": "band-beard-idle-c.webp",
+      "size": [
+        400,
+        800
+      ],
+      "anchor": "bottom centre"
+    },
+    "reveller-shaggy-idle-b": {
+      "status": "delivered",
+      "file": "reveller-shaggy-idle-b.webp",
+      "size": [
+        260,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sea-spirit-idle-b": {
+      "status": "delivered",
+      "file": "sea-spirit-idle-b.webp",
+      "size": [
+        300,
+        600
+      ],
+      "anchor": "bottom centre"
+    },
+    "sea-spirit-idle-c": {
+      "status": "delivered",
+      "file": "sea-spirit-idle-c.webp",
+      "size": [
+        300,
+        600
+      ],
+      "anchor": "bottom centre"
+    },
+    "witch-stand-idle-c": {
+      "status": "delivered",
+      "file": "witch-stand-idle-c.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre"
+    },
+    "band-beard-idle-b": {
+      "status": "delivered",
+      "file": "band-beard-idle-b.webp",
+      "size": [
+        400,
+        800
+      ],
+      "anchor": "bottom centre"
+    },
+    "band-trio-idle-c": {
+      "status": "delivered",
+      "file": "band-trio-idle-c.webp",
+      "size": [
+        900,
+        900
+      ],
+      "anchor": "bottom centre"
+    },
+    "pageant-dancers-idle-c": {
+      "status": "delivered",
+      "file": "pageant-dancers-idle-c.webp",
+      "size": [
+        1600,
+        700
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-pullup": {
+      "status": "delivered",
+      "file": "sailor-pullup.webp",
+      "size": [
+        260,
+        300
+      ],
+      "anchor": "ledge line 25% up from the bottom, centred"
+    },
+    "sailor-hang": {
+      "status": "delivered",
+      "file": "sailor-hang.webp",
+      "size": [
+        220,
+        440
+      ],
+      "anchor": "top centre (his hands)"
+    },
+    "clam-open-empty": {
+      "status": "delivered",
+      "file": "clam-open-empty.webp",
+      "size": [
+        240,
+        200
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-fall": {
+      "status": "delivered",
+      "file": "sailor-fall.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-stairs-b": {
+      "status": "delivered",
+      "file": "sailor-stairs-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-land": {
+      "status": "delivered",
+      "file": "sailor-land.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-climb-a": {
+      "status": "delivered",
+      "file": "sailor-climb-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-stairs-a": {
+      "status": "delivered",
+      "file": "sailor-stairs-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-throw": {
+      "status": "delivered",
+      "file": "sailor-throw.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-apex": {
+      "status": "delivered",
+      "file": "sailor-apex.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "sailor-climb-b": {
+      "status": "delivered",
+      "file": "sailor-climb-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre"
+    },
+    "prince-stand": {
+      "status": "delivered",
+      "file": "prince-stand.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-stand.webp"
+    },
+    "prince-walk-a": {
+      "status": "delivered",
+      "file": "prince-walk-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-walk-a.webp"
+    },
+    "prince-walk-b": {
+      "status": "delivered",
+      "file": "prince-walk-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-walk-b.webp"
+    },
+    "prince-leap": {
+      "status": "delivered",
+      "file": "prince-leap.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-leap.webp"
+    },
+    "prince-crouch": {
+      "status": "delivered",
+      "file": "prince-crouch.webp",
+      "size": [
+        240,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-crouch.webp"
+    },
+    "prince-carry": {
+      "status": "delivered",
+      "file": "prince-carry.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-carry.webp"
+    },
+    "prince-swim-a": {
+      "status": "delivered",
+      "file": "prince-swim-a.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "centre (between his shoulder blades)",
+      "edition": "film",
+      "interim": "interim/prince-swim-a.webp"
+    },
+    "prince-swim-b": {
+      "status": "delivered",
+      "file": "prince-swim-b.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "centre (between his shoulder blades)",
+      "edition": "film",
+      "interim": "interim/prince-swim-b.webp"
+    },
+    "prince-seated": {
+      "status": "delivered",
+      "file": "prince-seated.webp",
+      "size": [
+        220,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-seated.webp"
+    },
+    "prince-hang": {
+      "status": "delivered",
+      "file": "prince-hang.webp",
+      "size": [
+        220,
+        440
+      ],
+      "anchor": "top centre (his hands)",
+      "edition": "film"
+    },
+    "prince-pullup": {
+      "status": "delivered",
+      "file": "prince-pullup.webp",
+      "size": [
+        260,
+        300
+      ],
+      "anchor": "ledge line 25% up from the bottom, centred",
+      "edition": "film"
+    },
+    "prince-climb-a": {
+      "status": "delivered",
+      "file": "prince-climb-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-climb-a.webp"
+    },
+    "prince-climb-b": {
+      "status": "delivered",
+      "file": "prince-climb-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-climb-b.webp"
+    },
+    "prince-apex": {
+      "status": "delivered",
+      "file": "prince-apex.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-apex.webp"
+    },
+    "prince-fall": {
+      "status": "delivered",
+      "file": "prince-fall.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-fall.webp"
+    },
+    "prince-land": {
+      "status": "delivered",
+      "file": "prince-land.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-land.webp"
+    },
+    "prince-stairs-a": {
+      "status": "delivered",
+      "file": "prince-stairs-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-stairs-a.webp"
+    },
+    "prince-stairs-b": {
+      "status": "delivered",
+      "file": "prince-stairs-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-stairs-b.webp"
+    },
+    "prince-push": {
+      "status": "delivered",
+      "file": "prince-push.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film",
+      "interim": "interim/prince-push.webp"
+    },
+    "prince-court": {
+      "status": "delivered",
+      "file": "prince-court.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/prince-court.webp"
+    },
+    "azurine-stand": {
+      "status": "delivered",
+      "file": "azurine-stand.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/azurine-stand.webp"
+    },
+    "azurine-asleep": {
+      "status": "delivered",
+      "file": "azurine-asleep.webp",
+      "size": [
+        360,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-window": {
+      "status": "delivered",
+      "file": "azurine-window.webp",
+      "size": [
+        160,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-stand": {
+      "status": "delivered",
+      "file": "aurora-stand.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/aurora-stand.webp"
+    },
+    "aurora-point": {
+      "status": "delivered",
+      "file": "aurora-point.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/aurora-point.webp"
+    },
+    "water-fairy-stand": {
+      "status": "delivered",
+      "file": "water-fairy-stand.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/water-fairy-stand.webp"
+    },
+    "witch-hooded": {
+      "status": "delivered",
+      "file": "witch-hooded.webp",
+      "size": [
+        240,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-cloud": {
+      "status": "delivered",
+      "file": "witch-cloud.webp",
+      "size": [
+        400,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-swoop": {
+      "status": "delivered",
+      "file": "witch-swoop.webp",
+      "size": [
+        400,
+        240
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "witch-barrel": {
+      "status": "delivered",
+      "file": "witch-barrel.webp",
+      "size": [
+        200,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "king-stand": {
+      "status": "delivered",
+      "file": "king-stand.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/king-stand.webp"
+    },
+    "queen-stand": {
+      "status": "delivered",
+      "file": "queen-stand.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/queen-stand.webp"
+    },
+    "fairy-ring": {
+      "status": "delivered",
+      "file": "fairy-ring.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/fairy-ring.webp"
+    },
+    "fairy-crown": {
+      "status": "delivered",
+      "file": "fairy-crown.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/fairy-crown.webp"
+    },
+    "fairy-gold": {
+      "status": "delivered",
+      "file": "fairy-gold.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/fairy-gold.webp"
+    },
+    "demon-red": {
+      "status": "delivered",
+      "file": "demon-red.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/demon-red.webp"
+    },
+    "demon-teal": {
+      "status": "delivered",
+      "file": "demon-teal.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/demon-teal.webp"
+    },
+    "crew-squire": {
+      "status": "delivered",
+      "file": "crew-squire.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-squire.webp"
+    },
+    "crew-helmsman": {
+      "status": "delivered",
+      "file": "crew-helmsman.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-helmsman.webp"
+    },
+    "crew-manatarms": {
+      "status": "delivered",
+      "file": "crew-manatarms.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-manatarms.webp"
+    },
+    "crew-asleep": {
+      "status": "delivered",
+      "file": "crew-asleep.webp",
+      "size": [
+        260,
+        120
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-asleep.webp"
+    },
+    "crew-rider": {
+      "status": "delivered",
+      "file": "crew-rider.webp",
+      "size": [
+        320,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "octopus": {
+      "status": "delivered",
+      "file": "octopus.webp",
+      "size": [
+        600,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/octopus.webp"
+    },
+    "dolphin-carriage": {
+      "status": "delivered",
+      "file": "dolphin-carriage.webp",
+      "size": [
+        520,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/dolphin-carriage.webp"
+    },
+    "lobster-guard-closed": {
+      "status": "delivered",
+      "file": "lobster-guard-closed.webp",
+      "size": [
+        500,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/lobster-guard-closed.webp"
+    },
+    "lobster-guard-open": {
+      "status": "delivered",
+      "file": "lobster-guard-open.webp",
+      "size": [
+        500,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/lobster-guard-open.webp"
+    },
+    "scrying-eye": {
+      "status": "delivered",
+      "file": "scrying-eye.webp",
+      "size": [
+        200,
+        300
+      ],
+      "anchor": "top centre (it hangs)",
+      "edition": "film"
+    },
+    "galley": {
+      "status": "delivered",
+      "file": "galley.webp",
+      "size": [
+        380,
+        400
+      ],
+      "anchor": "bottom centre (the waterline)",
+      "edition": "film"
+    },
+    "galley-wreck-bow": {
+      "status": "delivered",
+      "file": "galley-wreck-bow.webp",
+      "size": [
+        300,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "galley-wreck-stern": {
+      "status": "delivered",
+      "file": "galley-wreck-stern.webp",
+      "size": [
+        300,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sword-sinking": {
+      "status": "delivered",
+      "file": "sword-sinking.webp",
+      "size": [
+        220,
+        520
+      ],
+      "anchor": "centre",
+      "edition": "film",
+      "interim": "interim/sword-sinking.webp"
+    },
+    "aurora-star": {
+      "status": "delivered",
+      "file": "aurora-star.webp",
+      "size": [
+        64,
+        64
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/aurora-star.webp"
+    },
+    "keepsake-star": {
+      "status": "delivered",
+      "file": "keepsake-star.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/keepsake-star.webp"
+    },
+    "keepsake-sword": {
+      "status": "delivered",
+      "file": "keepsake-sword.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/keepsake-sword.webp"
+    },
+    "keepsake-shell": {
+      "status": "delivered",
+      "file": "keepsake-shell.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-seal": {
+      "status": "delivered",
+      "file": "keepsake-seal.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/keepsake-seal.webp"
+    },
+    "keepsake-lamp": {
+      "status": "delivered",
+      "file": "keepsake-lamp.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/keepsake-lamp.webp"
+    },
+    "chariot": {
+      "status": "delivered",
+      "file": "chariot.webp",
+      "size": [
+        600,
+        320
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "gift-ring": {
+      "status": "delivered",
+      "file": "gift-ring.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/gift-ring.webp"
+    },
+    "gift-flower": {
+      "status": "delivered",
+      "file": "gift-flower.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/gift-flower.webp"
+    },
+    "gift-crown": {
+      "status": "delivered",
+      "file": "gift-crown.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/gift-crown.webp"
+    },
+    "gift-gold": {
+      "status": "delivered",
+      "file": "gift-gold.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/gift-gold.webp"
+    },
+    "whirlpool": {
+      "status": "delivered",
+      "file": "whirlpool.webp",
+      "size": [
+        800,
+        260
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "tower-window": {
+      "status": "delivered",
+      "file": "tower-window.webp",
+      "size": [
+        200,
+        260
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "cavern-ledge": {
+      "status": "delivered",
+      "file": "cavern-ledge.webp",
+      "size": [
+        320,
+        100
+      ],
+      "anchor": "top edge (the walkable top)",
+      "edition": "film"
+    },
+    "betrothal-court": {
+      "status": "delivered",
+      "file": "betrothal-court.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "rampart-strip": {
+      "status": "delivered",
+      "file": "rampart-strip.webp",
+      "size": [
+        2560,
+        720
+      ],
+      "anchor": "bottom edge",
+      "edition": "film"
+    },
+    "armoury": {
+      "status": "delivered",
+      "file": "armoury.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "tempest-sky": {
+      "status": "delivered",
+      "file": "tempest-sky.webp",
+      "size": [
+        2560,
+        820
+      ],
+      "anchor": "top edge",
+      "edition": "film"
+    },
+    "lobster-palace": {
+      "status": "delivered",
+      "file": "lobster-palace.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "sea-flora": {
+      "status": "delivered",
+      "file": "sea-flora.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "azure-grotto": {
+      "status": "delivered",
+      "file": "azure-grotto.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "shore-cave": {
+      "status": "delivered",
+      "file": "shore-cave.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "cavern": {
+      "status": "delivered",
+      "file": "cavern.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "coast-gap": {
+      "status": "delivered",
+      "file": "coast-gap.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "tower-wall-tall": {
+      "status": "delivered",
+      "file": "tower-wall-tall.webp",
+      "size": [
+        1400,
+        3600
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "tower-interior": {
+      "status": "delivered",
+      "file": "tower-interior.webp",
+      "size": [
+        1400,
+        1800
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "cliff-whirlpool": {
+      "status": "delivered",
+      "file": "cliff-whirlpool.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "wedding-street": {
+      "status": "delivered",
+      "file": "wedding-street.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "apotheosis": {
+      "status": "delivered",
+      "file": "apotheosis.webp",
+      "size": [
+        2560,
+        1440
+      ],
+      "anchor": "full frame",
+      "edition": "film"
+    },
+    "tableau-betrothal": {
+      "status": "delivered",
+      "file": "tableaux/betrothal.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-betrothal.png"
+    },
+    "tableau-curse": {
+      "status": "delivered",
+      "file": "tableaux/curse.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-curse.png"
+    },
+    "tableau-abduction": {
+      "status": "delivered",
+      "file": "tableaux/abduction.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-abduction.png"
+    },
+    "tableau-arming": {
+      "status": "delivered",
+      "file": "tableaux/arming.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-arming.png"
+    },
+    "tableau-tempest": {
+      "status": "delivered",
+      "file": "tableaux/tempest.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-tempest.png"
+    },
+    "tableau-water-fairy": {
+      "status": "delivered",
+      "file": "tableaux/water-fairy.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-water-fairy.png"
+    },
+    "tableau-procession": {
+      "status": "delivered",
+      "file": "tableaux/procession.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-procession.png"
+    },
+    "tableau-azure-grotto": {
+      "status": "delivered",
+      "file": "tableaux/azure-grotto.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-azure-grotto.png"
+    },
+    "tableau-whale-shore": {
+      "status": "delivered",
+      "file": "tableaux/whale-shore.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-whale-shore.png"
+    },
+    "tableau-cliff-gap": {
+      "status": "delivered",
+      "file": "tableaux/cliff-gap.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-cliff-gap.png"
+    },
+    "tableau-tower-fire": {
+      "status": "delivered",
+      "file": "tableaux/tower-fire.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-tower-fire.png"
+    },
+    "tableau-stair-carry": {
+      "status": "delivered",
+      "file": "tableaux/stair-carry.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-stair-carry.png"
+    },
+    "tableau-barrel": {
+      "status": "delivered",
+      "file": "tableaux/barrel.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-barrel.png"
+    },
+    "tableau-wedding": {
+      "status": "delivered",
+      "file": "tableaux/wedding.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-wedding.png"
+    },
+    "tableau-apotheosis": {
+      "status": "delivered",
+      "file": "tableaux/apotheosis.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-apotheosis.png"
+    },
+    "tableau-galley-departure": {
+      "status": "delivered",
+      "file": "tableaux/galley-departure.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-galley-departure.png"
+    },
+    "witch-storm": {
+      "status": "delivered",
+      "file": "witch-storm.webp",
+      "size": [
+        520,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "playbill-film": {
+      "status": "delivered",
+      "file": "playbill-film.webp",
+      "size": [
+        1400,
+        2000
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "tableau-tower-climb": {
+      "status": "delivered",
+      "file": "tableaux/tower-climb.webp",
+      "edition": "film",
+      "from": "design/references/film-planning/originals/concept-tower-climb.png"
+    },
+    "crew-bosun": {
+      "status": "delivered",
+      "file": "crew-bosun.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-bosun.webp"
+    },
+    "crew-asleep-b": {
+      "status": "delivered",
+      "file": "crew-asleep-b.webp",
+      "size": [
+        260,
+        120
+      ],
+      "anchor": "bottom centre",
+      "edition": "film",
+      "interim": "interim/crew-asleep-b.webp"
+    },
+    "crew-squire-idle-b": {
+      "status": "delivered",
+      "file": "crew-squire-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-idle-c": {
+      "status": "delivered",
+      "file": "crew-squire-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-idle-b": {
+      "status": "delivered",
+      "file": "crew-helmsman-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-idle-c": {
+      "status": "delivered",
+      "file": "crew-helmsman-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-b": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-c": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-idle-b": {
+      "status": "delivered",
+      "file": "crew-bosun-idle-b.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-idle-c": {
+      "status": "delivered",
+      "file": "crew-bosun-idle-c.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "water-fairy-stand-idle-b": {
+      "status": "delivered",
+      "file": "water-fairy-stand-idle-b.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "water-fairy-stand-idle-c": {
+      "status": "delivered",
+      "file": "water-fairy-stand-idle-c.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sailor-seated-plain": {
+      "status": "delivered",
+      "file": "sailor-seated-plain.webp",
+      "size": [
+        220,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-walk-a": {
+      "status": "delivered",
+      "file": "prince-court-walk-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-walk-b": {
+      "status": "delivered",
+      "file": "prince-court-walk-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-bound": {
+      "status": "delivered",
+      "file": "prince-bound.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "armour-helmet": {
+      "status": "delivered",
+      "file": "armour-helmet.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "armour-shield": {
+      "status": "delivered",
+      "file": "armour-shield.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stand-tinted": {
+      "status": "delivered",
+      "file": "prince-stand-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-walk-a-tinted": {
+      "status": "delivered",
+      "file": "prince-walk-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-walk-b-tinted": {
+      "status": "delivered",
+      "file": "prince-walk-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-leap-tinted": {
+      "status": "delivered",
+      "file": "prince-leap-tinted.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-crouch-tinted": {
+      "status": "delivered",
+      "file": "prince-crouch-tinted.webp",
+      "size": [
+        240,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-tinted.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-swim-a-tinted": {
+      "status": "delivered",
+      "file": "prince-swim-a-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "centre (between his shoulder blades)",
+      "edition": "film"
+    },
+    "prince-swim-b-tinted": {
+      "status": "delivered",
+      "file": "prince-swim-b-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "centre (between his shoulder blades)",
+      "edition": "film"
+    },
+    "prince-seated-tinted": {
+      "status": "delivered",
+      "file": "prince-seated-tinted.webp",
+      "size": [
+        220,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-hang-tinted": {
+      "status": "delivered",
+      "file": "prince-hang-tinted.webp",
+      "size": [
+        220,
+        440
+      ],
+      "anchor": "top centre (his hands)",
+      "edition": "film"
+    },
+    "prince-pullup-tinted": {
+      "status": "delivered",
+      "file": "prince-pullup-tinted.webp",
+      "size": [
+        260,
+        300
+      ],
+      "anchor": "ledge line 25% up from the bottom, centred",
+      "edition": "film"
+    },
+    "prince-climb-a-tinted": {
+      "status": "delivered",
+      "file": "prince-climb-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-climb-b-tinted": {
+      "status": "delivered",
+      "file": "prince-climb-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-apex-tinted": {
+      "status": "delivered",
+      "file": "prince-apex-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-fall-tinted": {
+      "status": "delivered",
+      "file": "prince-fall-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-land-tinted": {
+      "status": "delivered",
+      "file": "prince-land-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-stairs-a-tinted": {
+      "status": "delivered",
+      "file": "prince-stairs-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-stairs-b-tinted": {
+      "status": "delivered",
+      "file": "prince-stairs-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-push-tinted": {
+      "status": "delivered",
+      "file": "prince-push-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-court-tinted": {
+      "status": "delivered",
+      "file": "prince-court-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-walk-a-tinted": {
+      "status": "delivered",
+      "file": "prince-court-walk-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-walk-b-tinted": {
+      "status": "delivered",
+      "file": "prince-court-walk-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-bound-tinted": {
+      "status": "delivered",
+      "file": "prince-bound-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-stand-tinted": {
+      "status": "delivered",
+      "file": "azurine-stand-tinted.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-asleep-tinted": {
+      "status": "delivered",
+      "file": "azurine-asleep-tinted.webp",
+      "size": [
+        360,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-window-tinted": {
+      "status": "delivered",
+      "file": "azurine-window-tinted.webp",
+      "size": [
+        160,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-stand-tinted": {
+      "status": "delivered",
+      "file": "aurora-stand-tinted.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-point-tinted": {
+      "status": "delivered",
+      "file": "aurora-point-tinted.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "water-fairy-stand-tinted": {
+      "status": "delivered",
+      "file": "water-fairy-stand-tinted.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "water-fairy-stand-idle-b-tinted": {
+      "status": "delivered",
+      "file": "water-fairy-stand-idle-b-tinted.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "water-fairy-stand-idle-c-tinted": {
+      "status": "delivered",
+      "file": "water-fairy-stand-idle-c-tinted.webp",
+      "size": [
+        260,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "king-stand-tinted": {
+      "status": "delivered",
+      "file": "king-stand-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "queen-stand-tinted": {
+      "status": "delivered",
+      "file": "queen-stand-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-ring-tinted": {
+      "status": "delivered",
+      "file": "fairy-ring-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-crown-tinted": {
+      "status": "delivered",
+      "file": "fairy-crown-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-gold-tinted": {
+      "status": "delivered",
+      "file": "fairy-gold-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-red-tinted": {
+      "status": "delivered",
+      "file": "demon-red-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-teal-tinted": {
+      "status": "delivered",
+      "file": "demon-teal-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-idle-b-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-idle-b-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-idle-c-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-idle-c-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-idle-b-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-idle-b-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-idle-c-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-idle-c-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-b-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-b-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-c-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-c-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-idle-b-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-idle-b-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-idle-c-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-idle-c-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-asleep-tinted": {
+      "status": "delivered",
+      "file": "crew-asleep-tinted.webp",
+      "size": [
+        260,
+        120
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-asleep-b-tinted": {
+      "status": "delivered",
+      "file": "crew-asleep-b-tinted.webp",
+      "size": [
+        260,
+        120
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-rider-tinted": {
+      "status": "delivered",
+      "file": "crew-rider-tinted.webp",
+      "size": [
+        320,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-hooded-tinted": {
+      "status": "delivered",
+      "file": "witch-hooded-tinted.webp",
+      "size": [
+        240,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-cloud-tinted": {
+      "status": "delivered",
+      "file": "witch-cloud-tinted.webp",
+      "size": [
+        400,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-storm-tinted": {
+      "status": "delivered",
+      "file": "witch-storm-tinted.webp",
+      "size": [
+        520,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-swoop-tinted": {
+      "status": "delivered",
+      "file": "witch-swoop-tinted.webp",
+      "size": [
+        400,
+        240
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "witch-barrel-tinted": {
+      "status": "delivered",
+      "file": "witch-barrel-tinted.webp",
+      "size": [
+        200,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "octopus-tinted": {
+      "status": "delivered",
+      "file": "octopus-tinted.webp",
+      "size": [
+        600,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "dolphin-carriage-tinted": {
+      "status": "delivered",
+      "file": "dolphin-carriage-tinted.webp",
+      "size": [
+        520,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "lobster-guard-closed-tinted": {
+      "status": "delivered",
+      "file": "lobster-guard-closed-tinted.webp",
+      "size": [
+        500,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "lobster-guard-open-tinted": {
+      "status": "delivered",
+      "file": "lobster-guard-open-tinted.webp",
+      "size": [
+        500,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "chariot-tinted": {
+      "status": "delivered",
+      "file": "chariot-tinted.webp",
+      "size": [
+        600,
+        320
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "scrying-eye-tinted": {
+      "status": "delivered",
+      "file": "scrying-eye-tinted.webp",
+      "size": [
+        200,
+        300
+      ],
+      "anchor": "top centre (it hangs)",
+      "edition": "film"
+    },
+    "sea-king-throne-tinted": {
+      "status": "delivered",
+      "file": "sea-king-throne-tinted.webp",
+      "size": [
+        600,
+        620
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-pink-tinted": {
+      "status": "delivered",
+      "file": "attendant-pink-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-blue-tinted": {
+      "status": "delivered",
+      "file": "attendant-blue-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-green-tinted": {
+      "status": "delivered",
+      "file": "attendant-green-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "seahorse-guard-tinted": {
+      "status": "delivered",
+      "file": "seahorse-guard-tinted.webp",
+      "size": [
+        240,
+        460
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sea-dragon-tinted": {
+      "status": "delivered",
+      "file": "sea-dragon-tinted.webp",
+      "size": [
+        400,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sea-spirit-tinted": {
+      "status": "delivered",
+      "file": "sea-spirit-tinted.webp",
+      "size": [
+        300,
+        600
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sea-spirit-idle-b-tinted": {
+      "status": "delivered",
+      "file": "sea-spirit-idle-b-tinted.webp",
+      "size": [
+        300,
+        600
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sea-spirit-idle-c-tinted": {
+      "status": "delivered",
+      "file": "sea-spirit-idle-c-tinted.webp",
+      "size": [
+        300,
+        600
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "jellyfish-tinted": {
+      "status": "delivered",
+      "file": "jellyfish-tinted.webp",
+      "size": [
+        180,
+        280
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fish-large-tinted": {
+      "status": "delivered",
+      "file": "fish-large-tinted.webp",
+      "size": [
+        700,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fish-school-tinted": {
+      "status": "delivered",
+      "file": "fish-school-tinted.webp",
+      "size": [
+        420,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "whale-beached-tinted": {
+      "status": "delivered",
+      "file": "whale-beached-tinted.webp",
+      "size": [
+        1800,
+        900
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "whale-mouth-tinted": {
+      "status": "delivered",
+      "file": "whale-mouth-tinted.webp",
+      "size": [
+        1600,
+        1200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "whale-tail-tinted": {
+      "status": "delivered",
+      "file": "whale-tail-tinted.webp",
+      "size": [
+        700,
+        500
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "whale-side-tinted": {
+      "status": "delivered",
+      "file": "whale-side-tinted.webp",
+      "size": [
+        3000,
+        1100
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "gift-ring-tinted": {
+      "status": "delivered",
+      "file": "gift-ring-tinted.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "gift-flower-tinted": {
+      "status": "delivered",
+      "file": "gift-flower-tinted.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "gift-crown-tinted": {
+      "status": "delivered",
+      "file": "gift-crown-tinted.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "gift-gold-tinted": {
+      "status": "delivered",
+      "file": "gift-gold-tinted.webp",
+      "size": [
+        96,
+        96
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-star-tinted": {
+      "status": "delivered",
+      "file": "keepsake-star-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-sword-tinted": {
+      "status": "delivered",
+      "file": "keepsake-sword-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-shell-tinted": {
+      "status": "delivered",
+      "file": "keepsake-shell-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-seal-tinted": {
+      "status": "delivered",
+      "file": "keepsake-seal-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "keepsake-lamp-tinted": {
+      "status": "delivered",
+      "file": "keepsake-lamp-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sword-sinking-tinted": {
+      "status": "delivered",
+      "file": "sword-sinking-tinted.webp",
+      "size": [
+        220,
+        520
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "aurora-star-tinted": {
+      "status": "delivered",
+      "file": "aurora-star-tinted.webp",
+      "size": [
+        64,
+        64
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "armour-helmet-tinted": {
+      "status": "delivered",
+      "file": "armour-helmet-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "armour-shield-tinted": {
+      "status": "delivered",
+      "file": "armour-shield-tinted.webp",
+      "size": [
+        128,
+        128
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "tower-window-tinted": {
+      "status": "delivered",
+      "file": "tower-window-tinted.webp",
+      "size": [
+        200,
+        260
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "pearl-tinted": {
+      "status": "delivered",
+      "file": "pearl-tinted.webp",
+      "size": [
+        64,
+        64
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-a-tinted": {
+      "status": "delivered",
+      "file": "prince-stride-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-b-tinted": {
+      "status": "delivered",
+      "file": "prince-stride-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-a": {
+      "status": "delivered",
+      "file": "prince-stride-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-b": {
+      "status": "delivered",
+      "file": "prince-stride-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-a-tinted": {
+      "status": "delivered",
+      "file": "prince-court-stride-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-b-tinted": {
+      "status": "delivered",
+      "file": "prince-court-stride-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-a": {
+      "status": "delivered",
+      "file": "prince-court-stride-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-b": {
+      "status": "delivered",
+      "file": "prince-court-stride-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-walk-a-tinted": {
+      "status": "delivered",
+      "file": "azurine-walk-a-tinted.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-walk-b-tinted": {
+      "status": "delivered",
+      "file": "azurine-walk-b-tinted.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-walk-a": {
+      "status": "delivered",
+      "file": "azurine-walk-a.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-walk-b": {
+      "status": "delivered",
+      "file": "azurine-walk-b.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-pass-a-tinted": {
+      "status": "delivered",
+      "file": "prince-pass-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-pass-b-tinted": {
+      "status": "delivered",
+      "file": "prince-pass-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-pass-a": {
+      "status": "delivered",
+      "file": "prince-pass-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-pass-b": {
+      "status": "delivered",
+      "file": "prince-pass-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-pass-a-tinted": {
+      "status": "delivered",
+      "file": "prince-court-pass-a-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-pass-b-tinted": {
+      "status": "delivered",
+      "file": "prince-court-pass-b-tinted.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-pass-a": {
+      "status": "delivered",
+      "file": "prince-court-pass-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-pass-b": {
+      "status": "delivered",
+      "file": "prince-court-pass-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-pass-a-tinted": {
+      "status": "delivered",
+      "file": "azurine-pass-a-tinted.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-pass-b-tinted": {
+      "status": "delivered",
+      "file": "azurine-pass-b-tinted.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-pass-a": {
+      "status": "delivered",
+      "file": "azurine-pass-a.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-pass-b": {
+      "status": "delivered",
+      "file": "azurine-pass-b.webp",
+      "size": [
+        200,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sailor-pass-a": {
+      "status": "delivered",
+      "file": "sailor-pass-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "sailor-pass-b": {
+      "status": "delivered",
+      "file": "sailor-pass-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "prince-carry-walk-a-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-walk-a-tinted.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-pass-a-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-pass-a-tinted.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-walk-b-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-walk-b-tinted.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-pass-b-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-pass-b-tinted.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-walk-a": {
+      "status": "delivered",
+      "file": "prince-carry-walk-a.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-pass-a": {
+      "status": "delivered",
+      "file": "prince-carry-pass-a.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-walk-b": {
+      "status": "delivered",
+      "file": "prince-carry-walk-b.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-pass-b": {
+      "status": "delivered",
+      "file": "prince-carry-pass-b.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sailor-carry-walk-a": {
+      "status": "delivered",
+      "file": "sailor-carry-walk-a.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "sailor-carry-pass-a": {
+      "status": "delivered",
+      "file": "sailor-carry-pass-a.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "sailor-carry-walk-b": {
+      "status": "delivered",
+      "file": "sailor-carry-walk-b.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "sailor-carry-pass-b": {
+      "status": "delivered",
+      "file": "sailor-carry-pass-b.webp",
+      "size": [
+        360,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "prince-stride-b-redo": {
+      "status": "delivered",
+      "file": "prince-stride-b-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-b-redo": {
+      "status": "delivered",
+      "file": "prince-court-stride-b-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "sailor-stride-a": {
+      "status": "delivered",
+      "file": "sailor-stride-a.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "sailor-stride-b": {
+      "status": "delivered",
+      "file": "sailor-stride-b.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "shared"
+    },
+    "fairy-ring-empty-tinted": {
+      "status": "delivered",
+      "file": "fairy-ring-empty-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-ring-empty": {
+      "status": "delivered",
+      "file": "fairy-ring-empty.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-crown-empty-tinted": {
+      "status": "delivered",
+      "file": "fairy-crown-empty-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-crown-empty": {
+      "status": "delivered",
+      "file": "fairy-crown-empty.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-gold-empty-tinted": {
+      "status": "delivered",
+      "file": "fairy-gold-empty-tinted.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "fairy-gold-empty": {
+      "status": "delivered",
+      "file": "fairy-gold-empty.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-a-tinted-redo": {
+      "status": "delivered",
+      "file": "prince-stride-a-tinted-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-stride-b-tinted-redo": {
+      "status": "delivered",
+      "file": "prince-stride-b-tinted-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-a-tinted-redo": {
+      "status": "delivered",
+      "file": "prince-court-stride-a-tinted-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stride-b-tinted-redo": {
+      "status": "delivered",
+      "file": "prince-court-stride-b-tinted-redo.webp",
+      "size": [
+        220,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-tinted-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-tinted-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-b-tinted-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-b-tinted-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-b-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-b-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-c-tinted-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-c-tinted-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-idle-c-redo": {
+      "status": "delivered",
+      "file": "crew-manatarms-idle-c-redo.webp",
+      "size": [
+        220,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "lobster-guard-closed-tinted-redo": {
+      "status": "delivered",
+      "file": "lobster-guard-closed-tinted-redo.webp",
+      "size": [
+        500,
+        340
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-wall-up-a": {
+      "status": "delivered",
+      "file": "prince-wall-up-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-a-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-up-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-b": {
+      "status": "delivered",
+      "file": "prince-wall-up-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-b-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-up-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-c": {
+      "status": "delivered",
+      "file": "prince-wall-up-c.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-c-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-up-c-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-d": {
+      "status": "delivered",
+      "file": "prince-wall-up-d.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-up-d-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-up-d-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-a": {
+      "status": "delivered",
+      "file": "prince-wall-side-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-a-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-side-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-b": {
+      "status": "delivered",
+      "file": "prince-wall-side-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-b-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-side-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-c": {
+      "status": "delivered",
+      "file": "prince-wall-side-c.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-c-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-side-c-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-d": {
+      "status": "delivered",
+      "file": "prince-wall-side-d.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-side-d-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-side-d-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-idle": {
+      "status": "delivered",
+      "file": "prince-wall-idle.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-idle-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-idle-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-idle-b": {
+      "status": "delivered",
+      "file": "prince-wall-idle-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-idle-b-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-idle-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-leap": {
+      "status": "delivered",
+      "file": "prince-wall-leap.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-leap-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-leap-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-catch": {
+      "status": "delivered",
+      "file": "prince-wall-catch.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-catch-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-catch-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-hit": {
+      "status": "delivered",
+      "file": "prince-wall-hit.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-hit-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-hit-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-a": {
+      "status": "delivered",
+      "file": "prince-mantle-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-a-tinted": {
+      "status": "delivered",
+      "file": "prince-mantle-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-b": {
+      "status": "delivered",
+      "file": "prince-mantle-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-b-tinted": {
+      "status": "delivered",
+      "file": "prince-mantle-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-c": {
+      "status": "delivered",
+      "file": "prince-mantle-c.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-mantle-c-tinted": {
+      "status": "delivered",
+      "file": "prince-mantle-c-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-step": {
+      "status": "delivered",
+      "file": "prince-wall-step.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-wall-step-tinted": {
+      "status": "delivered",
+      "file": "prince-wall-step-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre (lowest boot)",
+      "edition": "film"
+    },
+    "prince-crawl-a": {
+      "status": "delivered",
+      "file": "prince-crawl-a.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-crawl-a-tinted": {
+      "status": "delivered",
+      "file": "prince-crawl-a-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-crawl-b": {
+      "status": "delivered",
+      "file": "prince-crawl-b.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-crawl-b-tinted": {
+      "status": "delivered",
+      "file": "prince-crawl-b-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-kneel-rise": {
+      "status": "delivered",
+      "file": "prince-kneel-rise.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-kneel-rise-tinted": {
+      "status": "delivered",
+      "file": "prince-kneel-rise-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lying-back": {
+      "status": "delivered",
+      "file": "prince-lying-back.webp",
+      "size": [
+        400,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lying-back-tinted": {
+      "status": "delivered",
+      "file": "prince-lying-back-tinted.webp",
+      "size": [
+        400,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lying-front": {
+      "status": "delivered",
+      "file": "prince-lying-front.webp",
+      "size": [
+        400,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lying-front-tinted": {
+      "status": "delivered",
+      "file": "prince-lying-front-tinted.webp",
+      "size": [
+        400,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-tumble-a": {
+      "status": "delivered",
+      "file": "prince-tumble-a.webp",
+      "size": [
+        360,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-tumble-a-tinted": {
+      "status": "delivered",
+      "file": "prince-tumble-a-tinted.webp",
+      "size": [
+        360,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-tumble-b": {
+      "status": "delivered",
+      "file": "prince-tumble-b.webp",
+      "size": [
+        360,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-tumble-b-tinted": {
+      "status": "delivered",
+      "file": "prince-tumble-b-tinted.webp",
+      "size": [
+        360,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-dive": {
+      "status": "delivered",
+      "file": "prince-dive.webp",
+      "size": [
+        440,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-dive-tinted": {
+      "status": "delivered",
+      "file": "prince-dive-tinted.webp",
+      "size": [
+        440,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-swim-under-a": {
+      "status": "delivered",
+      "file": "prince-swim-under-a.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-swim-under-a-tinted": {
+      "status": "delivered",
+      "file": "prince-swim-under-a-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-swim-under-b": {
+      "status": "delivered",
+      "file": "prince-swim-under-b.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-swim-under-b-tinted": {
+      "status": "delivered",
+      "file": "prince-swim-under-b-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-collared": {
+      "status": "delivered",
+      "file": "prince-collared.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-collared-tinted": {
+      "status": "delivered",
+      "file": "prince-collared-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-kneel": {
+      "status": "delivered",
+      "file": "prince-kneel.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-kneel-tinted": {
+      "status": "delivered",
+      "file": "prince-kneel-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lift": {
+      "status": "delivered",
+      "file": "prince-lift.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-lift-tinted": {
+      "status": "delivered",
+      "file": "prince-lift-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-climb-a": {
+      "status": "delivered",
+      "file": "prince-carry-climb-a.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-climb-a-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-climb-a-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-climb-b": {
+      "status": "delivered",
+      "file": "prince-carry-climb-b.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-carry-climb-b-tinted": {
+      "status": "delivered",
+      "file": "prince-carry-climb-b-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-leap": {
+      "status": "delivered",
+      "file": "prince-court-leap.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-leap-tinted": {
+      "status": "delivered",
+      "file": "prince-court-leap-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-fall": {
+      "status": "delivered",
+      "file": "prince-court-fall.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-fall-tinted": {
+      "status": "delivered",
+      "file": "prince-court-fall-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-reach": {
+      "status": "delivered",
+      "file": "prince-court-reach.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-reach-tinted": {
+      "status": "delivered",
+      "file": "prince-court-reach-tinted.webp",
+      "size": [
+        360,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-crawl": {
+      "status": "delivered",
+      "file": "crew-squire-crawl.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-crawl-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-crawl-tinted.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-tumble": {
+      "status": "delivered",
+      "file": "crew-squire-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-tumble-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-sit-up": {
+      "status": "delivered",
+      "file": "crew-squire-sit-up.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-sit-up-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-sit-up-tinted.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-crawl": {
+      "status": "delivered",
+      "file": "crew-helmsman-crawl.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-crawl-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-crawl-tinted.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-tumble": {
+      "status": "delivered",
+      "file": "crew-helmsman-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-tumble-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-sit-up": {
+      "status": "delivered",
+      "file": "crew-helmsman-sit-up.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-sit-up-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-sit-up-tinted.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-crawl": {
+      "status": "delivered",
+      "file": "crew-manatarms-crawl.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-crawl-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-crawl-tinted.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-tumble": {
+      "status": "delivered",
+      "file": "crew-manatarms-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-tumble-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-sit-up": {
+      "status": "delivered",
+      "file": "crew-manatarms-sit-up.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-sit-up-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-sit-up-tinted.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-crawl": {
+      "status": "delivered",
+      "file": "crew-bosun-crawl.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-crawl-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-crawl-tinted.webp",
+      "size": [
+        300,
+        200
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-tumble": {
+      "status": "delivered",
+      "file": "crew-bosun-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-tumble-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-sit-up": {
+      "status": "delivered",
+      "file": "crew-bosun-sit-up.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-sit-up-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-sit-up-tinted.webp",
+      "size": [
+        260,
+        220
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-blue-tumble": {
+      "status": "delivered",
+      "file": "attendant-blue-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-blue-tumble-tinted": {
+      "status": "delivered",
+      "file": "attendant-blue-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-green-tumble": {
+      "status": "delivered",
+      "file": "attendant-green-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-green-tumble-tinted": {
+      "status": "delivered",
+      "file": "attendant-green-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-pink-tumble": {
+      "status": "delivered",
+      "file": "attendant-pink-tumble.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "attendant-pink-tumble-tinted": {
+      "status": "delivered",
+      "file": "attendant-pink-tumble-tinted.webp",
+      "size": [
+        300,
+        300
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-asleep": {
+      "status": "delivered",
+      "file": "crew-squire-asleep.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-squire-asleep-tinted": {
+      "status": "delivered",
+      "file": "crew-squire-asleep-tinted.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-asleep": {
+      "status": "delivered",
+      "file": "crew-bosun-asleep.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-bosun-asleep-tinted": {
+      "status": "delivered",
+      "file": "crew-bosun-asleep-tinted.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-asleep": {
+      "status": "delivered",
+      "file": "crew-helmsman-asleep.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-helmsman-asleep-tinted": {
+      "status": "delivered",
+      "file": "crew-helmsman-asleep-tinted.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-asleep": {
+      "status": "delivered",
+      "file": "crew-manatarms-asleep.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "crew-manatarms-asleep-tinted": {
+      "status": "delivered",
+      "file": "crew-manatarms-asleep-tinted.webp",
+      "size": [
+        440,
+        160
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-glide-a": {
+      "status": "delivered",
+      "file": "aurora-glide-a.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-glide-a-tinted": {
+      "status": "delivered",
+      "file": "aurora-glide-a-tinted.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-glide-b": {
+      "status": "delivered",
+      "file": "aurora-glide-b.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "aurora-glide-b-tinted": {
+      "status": "delivered",
+      "file": "aurora-glide-b-tinted.webp",
+      "size": [
+        300,
+        420
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-struggle-a": {
+      "status": "delivered",
+      "file": "prince-struggle-a.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-struggle-a-tinted": {
+      "status": "delivered",
+      "file": "prince-struggle-a-tinted.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-struggle-b": {
+      "status": "delivered",
+      "file": "prince-struggle-b.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-struggle-b-tinted": {
+      "status": "delivered",
+      "file": "prince-struggle-b-tinted.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-swoon": {
+      "status": "delivered",
+      "file": "azurine-swoon.webp",
+      "size": [
+        260,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-swoon-tinted": {
+      "status": "delivered",
+      "file": "azurine-swoon-tinted.webp",
+      "size": [
+        260,
+        380
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-red-carry": {
+      "status": "delivered",
+      "file": "demon-red-carry.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-red-carry-tinted": {
+      "status": "delivered",
+      "file": "demon-red-carry-tinted.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-teal-carry": {
+      "status": "delivered",
+      "file": "demon-teal-carry.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "demon-teal-carry-tinted": {
+      "status": "delivered",
+      "file": "demon-teal-carry-tinted.webp",
+      "size": [
+        260,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "cavern-stalactite": {
+      "status": "delivered",
+      "file": "cavern-stalactite.webp",
+      "size": [
+        120,
+        280
+      ],
+      "anchor": "top centre (where it hangs from the ceiling)",
+      "edition": "film"
+    },
+    "cavern-stalactite-tinted": {
+      "status": "delivered",
+      "file": "cavern-stalactite-tinted.webp",
+      "size": [
+        120,
+        280
+      ],
+      "anchor": "top centre (where it hangs from the ceiling)",
+      "edition": "film"
+    },
+    "cavern-stalactite-broken": {
+      "status": "delivered",
+      "file": "cavern-stalactite-broken.webp",
+      "size": [
+        180,
+        60
+      ],
+      "anchor": "bottom centre (on the ground)",
+      "edition": "film"
+    },
+    "cavern-stalactite-broken-tinted": {
+      "status": "delivered",
+      "file": "cavern-stalactite-broken-tinted.webp",
+      "size": [
+        180,
+        60
+      ],
+      "anchor": "bottom centre (on the ground)",
+      "edition": "film"
+    },
+    "prince-strike": {
+      "status": "delivered",
+      "file": "prince-strike.webp",
+      "size": [
+        300,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-strike-tinted": {
+      "status": "delivered",
+      "file": "prince-strike-tinted.webp",
+      "size": [
+        300,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-cast": {
+      "status": "delivered",
+      "file": "witch-cast.webp",
+      "size": [
+        260,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-cast-tinted": {
+      "status": "delivered",
+      "file": "witch-cast-tinted.webp",
+      "size": [
+        260,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-recoil": {
+      "status": "delivered",
+      "file": "witch-recoil.webp",
+      "size": [
+        260,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-recoil-tinted": {
+      "status": "delivered",
+      "file": "witch-recoil-tinted.webp",
+      "size": [
+        260,
+        400
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "barrel-upturned": {
+      "status": "delivered",
+      "file": "barrel-upturned.webp",
+      "size": [
+        200,
+        240
+      ],
+      "anchor": "bottom centre (its open mouth)",
+      "edition": "film"
+    },
+    "barrel-upturned-tinted": {
+      "status": "delivered",
+      "file": "barrel-upturned-tinted.webp",
+      "size": [
+        200,
+        240
+      ],
+      "anchor": "bottom centre (its open mouth)",
+      "edition": "film"
+    },
+    "prince-caught-lobster": {
+      "status": "delivered",
+      "file": "prince-caught-lobster.webp",
+      "size": [
+        640,
+        480
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-caught-lobster-tinted": {
+      "status": "delivered",
+      "file": "prince-caught-lobster-tinted.webp",
+      "size": [
+        640,
+        480
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-caught-human": {
+      "status": "delivered",
+      "file": "prince-caught-human.webp",
+      "size": [
+        640,
+        480
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-caught-human-tinted": {
+      "status": "delivered",
+      "file": "prince-caught-human-tinted.webp",
+      "size": [
+        640,
+        480
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-jump": {
+      "status": "delivered",
+      "file": "azurine-jump.webp",
+      "size": [
+        300,
+        500
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-jump-tinted": {
+      "status": "delivered",
+      "file": "azurine-jump-tinted.webp",
+      "size": [
+        300,
+        500
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-barrel-anger-a": {
+      "status": "delivered",
+      "file": "witch-barrel-anger-a.webp",
+      "size": [
+        400,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-barrel-anger-b": {
+      "status": "delivered",
+      "file": "witch-barrel-anger-b.webp",
+      "size": [
+        400,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-barrel-anger-a-tinted": {
+      "status": "delivered",
+      "file": "witch-barrel-anger-a-tinted.webp",
+      "size": [
+        400,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "witch-barrel-anger-b-tinted": {
+      "status": "delivered",
+      "file": "witch-barrel-anger-b-tinted.webp",
+      "size": [
+        400,
+        360
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stairs-a": {
+      "status": "delivered",
+      "file": "prince-court-stairs-a.webp",
+      "size": [
+        320,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stairs-a-tinted": {
+      "status": "delivered",
+      "file": "prince-court-stairs-a-tinted.webp",
+      "size": [
+        320,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-stairs-a": {
+      "status": "delivered",
+      "file": "azurine-stairs-a.webp",
+      "size": [
+        300,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-stairs-a-tinted": {
+      "status": "delivered",
+      "file": "azurine-stairs-a-tinted.webp",
+      "size": [
+        300,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stairs-b": {
+      "status": "delivered",
+      "file": "prince-court-stairs-b.webp",
+      "size": [
+        320,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-court-stairs-b-tinted": {
+      "status": "delivered",
+      "file": "prince-court-stairs-b-tinted.webp",
+      "size": [
+        320,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-stairs-b": {
+      "status": "delivered",
+      "file": "azurine-stairs-b.webp",
+      "size": [
+        300,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "azurine-stairs-b-tinted": {
+      "status": "delivered",
+      "file": "azurine-stairs-b-tinted.webp",
+      "size": [
+        300,
+        440
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "tower-floor-breach": {
+      "status": "delivered",
+      "file": "tower-floor-breach.webp",
+      "size": [
+        600,
+        95
+      ],
+      "anchor": "centre",
+      "edition": "film"
+    },
+    "tower-escape-door": {
+      "status": "delivered",
+      "file": "tower-escape-door.webp",
+      "size": [
+        160,
+        250
+      ],
+      "anchor": "bottom centre",
+      "edition": "film"
+    },
+    "prince-set-down": {
+      "status": "delivered",
+      "file": "prince-set-down.webp",
+      "size": [
+        600,
+        440
+      ],
+      "anchor": "bottom centre (Azurine\u2019s feet)",
+      "edition": "film"
+    },
+    "prince-set-down-tinted": {
+      "status": "delivered",
+      "file": "prince-set-down-tinted.webp",
+      "size": [
+        600,
+        440
+      ],
+      "anchor": "bottom centre (Azurine\u2019s feet)",
+      "edition": "film"
+    },
+    "cavern-platform": {
+      "status": "delivered",
+      "file": "cavern-platform.webp",
+      "size": [
+        720,
+        480
+      ],
+      "anchor": "top centre",
+      "edition": "film"
+    },
+    "cavern-platform-tinted": {
+      "status": "delivered",
+      "file": "cavern-platform-tinted.webp",
+      "size": [
+        720,
+        480
+      ],
+      "anchor": "top centre",
+      "edition": "film"
+    }
+  },
+  "audio": {
+    "song": {
+      "status": "delivered",
+      "file": "audio/widowsbay.mp3",
+      "loopStart": 0,
+      "loopEnd": 206.4,
+      "note": "Langan, Frost & Wane - Widow's Bay (3:28, 192 kbps). Loops as the score; loopEnd skips the 2.2 s of silence at the end."
+    },
+    "period": {
+      "period-piano": {
+        "status": "delivered",
+        "file": "audio/period-piano.mp3",
+        "moods": [
+          "voyage"
+        ],
+        "beat": null,
+        "note": "\"Paris Cinema\": solo pianist, 2:09, B major, rubato (no steady beat). Normalised to about -13.6 LUFS."
+      },
+      "period-band": {
+        "status": "delivered",
+        "file": "audio/period-band.mp3",
+        "moods": [
+          "revel"
+        ],
+        "beat": null,
+        "note": "\"Festival March\": cafe-concert band, 2:32, E-flat major, rubato. About -11.8 LUFS."
+      },
+      "period-harmonium": {
+        "status": "delivered",
+        "file": "audio/period-harmonium.mp3",
+        "moods": [
+          "deep"
+        ],
+        "beat": null,
+        "note": "\"Sea and Grotto Waltz\": harmonium and piano, 2:05, C minor, rubato. About -12.1 LUFS."
+      },
+      "period-storm": {
+        "status": "delivered",
+        "file": "audio/period-storm.mp3",
+        "moods": [
+          "storm"
+        ],
+        "beat": null,
+        "note": "\"The Shipwreck\": stormy piano agitato, 2:00, C minor, rubato. About -12 LUFS."
+      },
+      "period-tender": {
+        "status": "delivered",
+        "file": "audio/period-tender.mp3",
+        "moods": [
+          "tender"
+        ],
+        "beat": null,
+        "note": "\"Tender Evening\": slow salon romance, 3:00, D minor / F major, rubato. About -12 LUFS."
+      },
+      "period-wedding": {
+        "status": "delivered",
+        "file": "audio/period-wedding.mp3",
+        "moods": [
+          "wedding"
+        ],
+        "beat": null,
+        "note": "\u201cProcession Royale\u201d, supplied by the user 31 October 2026; 118.75 s, stereo 48 kHz. Prepared at -12.23 LUFS / -1.20 dBTP (measured after MP3 encoding). Wedding, apotheosis and rolling credits."
+      }
+    }
+  },
+  "sfx": {
+    "record": {
+      "status": "delivered",
+      "file": "sfx/record.mp3",
+      "loop": true
+    },
+    "sea": {
+      "status": "delivered",
+      "file": "sfx/sea.mp3",
+      "loop": true
+    },
+    "leap": {
+      "status": "delivered",
+      "file": "sfx/leap.mp3",
+      "loop": false
+    },
+    "row": {
+      "status": "delivered",
+      "file": "sfx/row.mp3",
+      "loop": false
+    },
+    "pearl": {
+      "status": "delivered",
+      "file": "sfx/pearl.mp3",
+      "loop": false
+    },
+    "keepsake": {
+      "status": "delivered",
+      "file": "sfx/keepsake.mp3",
+      "loop": false
+    },
+    "hit": {
+      "status": "delivered",
+      "file": "sfx/hit.mp3",
+      "loop": false
+    },
+    "wreck": {
+      "status": "delivered",
+      "file": "sfx/wreck.mp3",
+      "loop": false
+    },
+    "windWarn": {
+      "status": "delivered",
+      "file": "sfx/windWarn.mp3",
+      "loop": false
+    },
+    "wind": {
+      "status": "delivered",
+      "file": "sfx/wind.mp3",
+      "loop": false
+    },
+    "boltWarn": {
+      "status": "delivered",
+      "file": "sfx/boltWarn.mp3",
+      "loop": false
+    },
+    "strike": {
+      "status": "delivered",
+      "file": "sfx/strike.mp3",
+      "loop": false
+    },
+    "rockWarn": {
+      "status": "delivered",
+      "file": "sfx/rockWarn.mp3",
+      "loop": false
+    },
+    "rockUp": {
+      "status": "delivered",
+      "file": "sfx/rockUp.mp3",
+      "loop": false
+    },
+    "arrive": {
+      "status": "delivered",
+      "file": "sfx/arrive.mp3",
+      "loop": false
+    },
+    "done": {
+      "status": "delivered",
+      "file": "sfx/done.mp3",
+      "loop": false
+    },
+    "curtain": {
+      "status": "delivered",
+      "file": "sfx/curtain.mp3",
+      "loop": false
+    },
+    "ui": {
+      "status": "delivered",
+      "file": "sfx/ui.mp3",
+      "loop": false
+    },
+    "landho": {
+      "status": "delivered",
+      "file": "sfx/landho.mp3",
+      "loop": false
+    },
+    "cheer": {
+      "status": "delivered",
+      "file": "sfx/cheer.mp3",
+      "loop": false
+    },
+    "partyHit": {
+      "status": "delivered",
+      "file": "sfx/partyHit.mp3",
+      "loop": false
+    },
+    "revelry": {
+      "status": "delivered",
+      "file": "sfx/revelry.mp3",
+      "loop": false
+    },
+    "spirits": {
+      "status": "delivered",
+      "file": "sfx/spirits.mp3",
+      "loop": false
+    },
+    "shipBreak": {
+      "status": "delivered",
+      "file": "sfx/shipBreak.mp3",
+      "loop": false
+    },
+    "splash": {
+      "status": "delivered",
+      "file": "sfx/splash.mp3",
+      "loop": false
+    },
+    "guitarSink": {
+      "status": "delivered",
+      "file": "sfx/guitarSink.mp3",
+      "loop": false
+    },
+    "dragonPass": {
+      "status": "delivered",
+      "file": "sfx/dragonPass.mp3",
+      "loop": false
+    },
+    "witchBreath": {
+      "status": "delivered",
+      "file": "sfx/witchBreath.mp3",
+      "loop": false
+    },
+    "sailorWake": {
+      "status": "delivered",
+      "file": "sfx/sailorWake.mp3",
+      "loop": false
+    },
+    "swimKick": {
+      "status": "delivered",
+      "file": "sfx/swimKick.mp3",
+      "loop": false
+    },
+    "swimStroke": {
+      "status": "delivered",
+      "file": "sfx/swimStroke.mp3",
+      "loop": false
+    },
+    "conchBlow": {
+      "status": "delivered",
+      "file": "sfx/conchBlow.mp3",
+      "loop": false
+    },
+    "sleeperWake": {
+      "status": "delivered",
+      "file": "sfx/sleeperWake.mp3",
+      "loop": false
+    },
+    "sleepersRise": {
+      "status": "delivered",
+      "file": "sfx/sleepersRise.mp3",
+      "loop": false
+    },
+    "clamSnap": {
+      "status": "delivered",
+      "file": "sfx/clamSnap.mp3",
+      "loop": false
+    },
+    "eelGlow": {
+      "status": "delivered",
+      "file": "sfx/eelGlow.mp3",
+      "loop": false
+    },
+    "eelLunge": {
+      "status": "delivered",
+      "file": "sfx/eelLunge.mp3",
+      "loop": false
+    },
+    "eelBite": {
+      "status": "delivered",
+      "file": "sfx/eelBite.mp3",
+      "loop": false
+    },
+    "jellySting": {
+      "status": "delivered",
+      "file": "sfx/jellySting.mp3",
+      "loop": false
+    },
+    "dragonBite": {
+      "status": "delivered",
+      "file": "sfx/dragonBite.mp3",
+      "loop": false
+    },
+    "airLow": {
+      "status": "delivered",
+      "file": "sfx/airLow.mp3",
+      "loop": false
+    },
+    "airVent": {
+      "status": "delivered",
+      "file": "sfx/airVent.mp3",
+      "loop": false
+    },
+    "airOut": {
+      "status": "delivered",
+      "file": "sfx/airOut.mp3",
+      "loop": false
+    },
+    "drown": {
+      "status": "delivered",
+      "file": "sfx/drown.mp3",
+      "loop": false
+    },
+    "guitarSettle": {
+      "status": "delivered",
+      "file": "sfx/guitarSettle.mp3",
+      "loop": false
+    },
+    "guitarCatch": {
+      "status": "delivered",
+      "file": "sfx/guitarCatch.mp3",
+      "loop": false
+    },
+    "witchOffer": {
+      "status": "delivered",
+      "file": "sfx/witchOffer.mp3",
+      "loop": false
+    },
+    "roseTake": {
+      "status": "delivered",
+      "file": "sfx/roseTake.mp3",
+      "loop": false
+    },
+    "witchLaugh": {
+      "status": "delivered",
+      "file": "sfx/witchLaugh.mp3",
+      "loop": false
+    },
+    "rideStart": {
+      "status": "delivered",
+      "file": "sfx/rideStart.mp3",
+      "loop": false
+    },
+    "rideRow": {
+      "status": "delivered",
+      "file": "sfx/rideRow.mp3",
+      "loop": false
+    },
+    "ridePearl": {
+      "status": "delivered",
+      "file": "sfx/ridePearl.mp3",
+      "loop": false
+    },
+    "irisOut": {
+      "status": "delivered",
+      "file": "sfx/irisOut.mp3",
+      "loop": false
+    },
+    "courtierStep": {
+      "status": "delivered",
+      "file": "sfx/courtierStep.mp3",
+      "loop": false
+    },
+    "sentrySnap": {
+      "status": "delivered",
+      "file": "sfx/sentrySnap.mp3",
+      "loop": false
+    },
+    "sentryBite": {
+      "status": "delivered",
+      "file": "sfx/sentryBite.mp3",
+      "loop": false
+    },
+    "guardBump": {
+      "status": "delivered",
+      "file": "sfx/guardBump.mp3",
+      "loop": false
+    },
+    "gazeTurn": {
+      "status": "delivered",
+      "file": "sfx/gazeTurn.mp3",
+      "loop": false
+    },
+    "gazeSweep": {
+      "status": "delivered",
+      "file": "sfx/gazeSweep.mp3",
+      "loop": false
+    },
+    "spotted": {
+      "status": "delivered",
+      "file": "sfx/spotted.mp3",
+      "loop": false
+    },
+    "hauledBack": {
+      "status": "delivered",
+      "file": "sfx/hauledBack.mp3",
+      "loop": false
+    },
+    "unseen": {
+      "status": "delivered",
+      "file": "sfx/unseen.mp3",
+      "loop": false
+    },
+    "freeze": {
+      "status": "delivered",
+      "file": "sfx/freeze.mp3",
+      "loop": false
+    },
+    "groove": {
+      "status": "delivered",
+      "file": "sfx/groove.mp3",
+      "loop": false
+    },
+    "whaleNear": {
+      "status": "delivered",
+      "file": "sfx/whaleNear.mp3",
+      "loop": false
+    },
+    "whalePass": {
+      "status": "delivered",
+      "file": "sfx/whalePass.mp3",
+      "loop": false
+    },
+    "fishPass": {
+      "status": "delivered",
+      "file": "sfx/fishPass.mp3",
+      "loop": false
+    },
+    "pearlTaken": {
+      "status": "delivered",
+      "file": "sfx/pearlTaken.mp3",
+      "loop": false
+    },
+    "whaleTurn": {
+      "status": "delivered",
+      "file": "sfx/whaleTurn.mp3",
+      "loop": false
+    },
+    "swallow": {
+      "status": "delivered",
+      "file": "sfx/swallow.mp3",
+      "loop": false
+    },
+    "caught": {
+      "status": "delivered",
+      "file": "sfx/caught.mp3",
+      "loop": false
+    },
+    "barrelKnock": {
+      "status": "delivered",
+      "file": "sfx/barrelKnock.mp3",
+      "loop": false
+    },
+    "pianoPlink": {
+      "status": "delivered",
+      "file": "sfx/pianoPlink.mp3",
+      "loop": false
+    },
+    "boneTap": {
+      "status": "delivered",
+      "file": "sfx/boneTap.mp3",
+      "loop": false
+    },
+    "acidSting": {
+      "status": "delivered",
+      "file": "sfx/acidSting.mp3",
+      "loop": false
+    },
+    "hookSnag": {
+      "status": "delivered",
+      "file": "sfx/hookSnag.mp3",
+      "loop": false
+    },
+    "stoneFound": {
+      "status": "delivered",
+      "file": "sfx/stoneFound.mp3",
+      "loop": false
+    },
+    "whaleInhale": {
+      "status": "delivered",
+      "file": "sfx/whaleInhale.mp3",
+      "loop": false
+    },
+    "whaleExhale": {
+      "status": "delivered",
+      "file": "sfx/whaleExhale.mp3",
+      "loop": false
+    },
+    "lowTide": {
+      "status": "delivered",
+      "file": "sfx/lowTide.mp3",
+      "loop": false
+    },
+    "breathCue": {
+      "status": "delivered",
+      "file": "sfx/breathCue.mp3",
+      "loop": false
+    },
+    "drip": {
+      "status": "delivered",
+      "file": "sfx/drip.mp3",
+      "loop": false
+    },
+    "timberCreak": {
+      "status": "delivered",
+      "file": "sfx/timberCreak.mp3",
+      "loop": false
+    },
+    "swallowed": {
+      "status": "delivered",
+      "file": "sfx/swallowed.mp3",
+      "loop": false
+    },
+    "daylight": {
+      "status": "delivered",
+      "file": "sfx/daylight.mp3",
+      "loop": false
+    },
+    "beachSurf": {
+      "status": "delivered",
+      "file": "sfx/beachSurf.mp3",
+      "loop": false
+    },
+    "crawlOut": {
+      "status": "delivered",
+      "file": "sfx/crawlOut.mp3",
+      "loop": false
+    },
+    "revellerOut": {
+      "status": "delivered",
+      "file": "sfx/revellerOut.mp3",
+      "loop": false
+    },
+    "whaleSlide": {
+      "status": "delivered",
+      "file": "sfx/whaleSlide.mp3",
+      "loop": false
+    },
+    "tailSplash": {
+      "status": "delivered",
+      "file": "sfx/tailSplash.mp3",
+      "loop": false
+    },
+    "rockScrape": {
+      "status": "delivered",
+      "file": "sfx/rockScrape.mp3",
+      "loop": false
+    },
+    "stoneWarn": {
+      "status": "delivered",
+      "file": "sfx/stoneWarn.mp3",
+      "loop": false
+    },
+    "stoneFall": {
+      "status": "delivered",
+      "file": "sfx/stoneFall.mp3",
+      "loop": false
+    },
+    "stoneGlance": {
+      "status": "delivered",
+      "file": "sfx/stoneGlance.mp3",
+      "loop": false
+    },
+    "holdCrumble": {
+      "status": "delivered",
+      "file": "sfx/holdCrumble.mp3",
+      "loop": false
+    },
+    "fall": {
+      "status": "delivered",
+      "file": "sfx/fall.mp3",
+      "loop": false
+    },
+    "giantStep": {
+      "status": "delivered",
+      "file": "sfx/giantStep.mp3",
+      "loop": false
+    },
+    "clifftop": {
+      "status": "delivered",
+      "file": "sfx/clifftop.mp3",
+      "loop": false
+    },
+    "fireRoar": {
+      "status": "delivered",
+      "file": "sfx/fireRoar.mp3",
+      "loop": false
+    },
+    "houseOpen": {
+      "status": "delivered",
+      "file": "sfx/houseOpen.mp3",
+      "loop": false
+    },
+    "fireCrackle": {
+      "status": "delivered",
+      "file": "sfx/fireCrackle.mp3",
+      "loop": false
+    },
+    "beamWarn": {
+      "status": "delivered",
+      "file": "sfx/beamWarn.mp3",
+      "loop": false
+    },
+    "beamCrash": {
+      "status": "delivered",
+      "file": "sfx/beamCrash.mp3",
+      "loop": false
+    },
+    "debrisCrash": {
+      "status": "delivered",
+      "file": "sfx/debrisCrash.mp3",
+      "loop": false
+    },
+    "stoneThrow": {
+      "status": "delivered",
+      "file": "sfx/stoneThrow.mp3",
+      "loop": false
+    },
+    "shutterSmash": {
+      "status": "delivered",
+      "file": "sfx/shutterSmash.mp3",
+      "loop": false
+    },
+    "shutterLocked": {
+      "status": "delivered",
+      "file": "sfx/shutterLocked.mp3",
+      "loop": false
+    },
+    "liftHer": {
+      "status": "delivered",
+      "file": "sfx/liftHer.mp3",
+      "loop": false
+    },
+    "floorBreak": {
+      "status": "delivered",
+      "file": "sfx/floorBreak.mp3",
+      "loop": false
+    },
+    "landing": {
+      "status": "delivered",
+      "file": "sfx/landing.mp3",
+      "loop": false
+    },
+    "thud": {
+      "status": "delivered",
+      "file": "sfx/thud.mp3",
+      "loop": false
+    },
+    "carryStep": {
+      "status": "delivered",
+      "file": "sfx/carryStep.mp3",
+      "loop": false
+    },
+    "houseFall": {
+      "status": "delivered",
+      "file": "sfx/houseFall.mp3",
+      "loop": false
+    },
+    "moonboatRise": {
+      "status": "delivered",
+      "file": "sfx/moonboatRise.mp3",
+      "loop": false
+    },
+    "witchCackle": {
+      "status": "delivered",
+      "file": "sfx/witchCackle.mp3",
+      "loop": false
+    },
+    "victoryStinger": {
+      "status": "delivered",
+      "file": "sfx/victoryStinger.mp3",
+      "loop": false
+    },
+    "witchClaim": {
+      "status": "delivered",
+      "file": "sfx/witchClaim.mp3",
+      "loop": false
+    },
+    "lampLit": {
+      "status": "delivered",
+      "file": "sfx/lampLit.mp3",
+      "loop": false
+    },
+    "stonePlop": {
+      "status": "delivered",
+      "file": "sfx/stonePlop.mp3",
+      "loop": false
+    },
+    "pageant": {
+      "status": "delivered",
+      "file": "sfx/pageant.mp3",
+      "loop": false
+    },
+    "pageantJoin": {
+      "status": "delivered",
+      "file": "sfx/pageantJoin.mp3",
+      "loop": false
+    },
+    "pageantApplause": {
+      "status": "delivered",
+      "file": "sfx/pageantApplause.mp3",
+      "loop": false
+    }
+  },
+  "anims": {
+    "anim-jellyfish": {
+      "status": "delivered",
+      "file": "anims/anim-jellyfish.webp",
+      "meta": "anims/anim-jellyfish.json",
+      "method": "painted-puppet deformation"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "fps": 12.0,
+  "duration": 1.5,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/jellyfish.webp",
+  "rig": "jelly",
+  "id": "anim-jellyfish",
+  "frameW": 180,
+  "frameH": 280,
+  "frames": 18,
+  "cols": 6,
+  "decodedBytes": 3628800,
+  "bytes": 480548
+}

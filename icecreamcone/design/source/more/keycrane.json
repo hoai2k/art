@@ -1,0 +1,46 @@
+[
+  {
+    "id": "IC-M07a",
+    "name": "Lucky Dip: inside the crane cabinet",
+    "key": "scene.keycrane",
+    "file": "assets/scenes/keycrane.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Lucky Dip (the Key Crane): the whole background. The trolley, the string, the Key Crane and every prize are drawn on top.",
+    "standin": "A wooden cabinet frame, faded wallpaper behind glass, a brass rail, a velvet floor and a wooden chute painted in code.",
+    "prompt": "{STYLE} {SCENE}Looking straight into an old wooden penny-arcade prize-crane cabinet, as if through its glass front, filling the whole picture. A dark carved wooden frame about 3% thick runs round all four edges. Across the top, about 13% of the way down (leave the strip above it plain wood and wallpaper), a single plain level brass rail runs from the left side of the cabinet to the right, polished and slightly worn. The back wall behind the glass is faded cream wallpaper with a sparse pattern of small mauve sprigs. The floor is worn dusty-rose velvet, a level strip from about 90% of the way down to the bottom frame. At the bottom left, a square-ish wooden prize chute rises from the floor: a box with a dark round hole in its top, its left edge against the frame, about 18% of the picture wide, its top at about 58% of the way down, with a small faded yellow painted arrow pointing down at the hole on the wall above it. Everything else is empty: keep the whole space between the rail and the floor, from 18% to 88% down and from the chute to the right edge, plain and quiet (just the wallpaper), because the game hangs the crane from the rail there and piles the prizes on the velvet floor.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M07b",
+    "name": "Lucky Dip prizes",
+    "key": "sprites.keycranePrizes",
+    "file": "assets/sprites/keycrane-prizes.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Lucky Dip: the lost-property trinkets in the jumble that the Key Crane hooks and carries to the chute. The game draws a wire ring on top of each, at its own size (the rings shrink as the game goes on).",
+    "standin": "A lantern, a birdcage, a pocket watch, a handbag, a basket, a bell, a kettle and an alarm clock drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 4 x 2 grid of eight old-fashioned lost-property trinkets, each standing upright on its base in side view, each about 280 px tall, all to the same scale. Top row, left to right: a small brass carriage lantern with a lit candle inside; a domed wire birdcage with a wooden base, empty; a shining golden pocket watch with a white face standing on its edge, clearly the most precious thing on the sheet; a mauve lady's handbag with a gold clasp. Bottom row: a woven wicker shopping basket; a brass hand bell; a slate-blue enamel kettle with a spout to the left; a strawberry-pink twin-bell alarm clock. Each has a plain flat top centre with NO handle, loop, ring or chain on top (the game adds a ring there).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M07c",
+    "name": "Key Crane hanging on its string",
+    "key": "sprites.keycraneHang",
+    "file": "assets/sprites/keycrane-hang.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Lucky Dip: the Key Crane as it hangs from the trolley on its string and swings, its claws open while it is lowered and closed once it has hooked a ring. The game draws the string down to the middle of its shaft and rotates the whole figure as it swings.",
+    "standin": "The Key Crane's stand-in hanging from its shaft, with two ink claws that open and close.",
+    "prompt": "{STYLE} {VARIANT} The Key Crane (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/keycrane.png), exactly as painted there: its head is the key's round bow, a ring with the big staring eye set inside it and a long pointed brass beak pointing left, a small dark-brown top hat perched on the ring; the brass shaft with its ringed collar runs back to the right and ends in the toothed bit and a round knob; pink-and-olive wing feathers hang under the shaft; long thin knobbly olive legs with spiky dark claws. Two poses side by side on one sheet, each in its own half, hanging in the air as if from a string tied round the middle of its shaft (do not draw the string): the shaft level, the bow head on the left with the eye looking down, the legs hanging straight down below it. Each half is framed at exactly the portrait's scale (the bird's full height about 380/420 of the half's height). Placement, the same in every pose: the middle of the key's shaft (where the game ties the string) exactly on the half's vertical centre line and 35% of the way down; the claw tips 93% of the way down. Left: its spiky claws spread wide open, reaching. Right: its claws curled tightly shut, as if gripping a ring. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M07d",
+    "name": "Key Crane startled",
+    "key": "sprites.keycraneStartle",
+    "file": "assets/sprites/keycrane-startle.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Lucky Dip: for a moment when a carried prize slips off, or the claws close on nothing, the hanging Key Crane starts in surprise. Drawn and swung on the string like IC-M07c.",
+    "standin": "The hanging Key Crane jolting on its string.",
+    "prompt": "{STYLE} {VARIANT} The Key Crane (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/keycrane.png), exactly as painted there: its head is the key's round bow, a ring with the big staring eye set inside it and a long pointed brass beak pointing left, a small dark-brown top hat perched on the ring; the brass shaft with its ringed collar runs back to the right and ends in the toothed bit and a round knob; pink-and-olive wing feathers hang under the shaft; long thin knobbly olive legs with spiky dark claws. One pose, hanging in the air exactly as in its hanging pose (IC-M07c), as if from a string tied round the middle of its shaft (do not draw the string), the shaft level, the bow head on the left. It is framed at exactly the portrait's scale (the bird's full height about 380/420 of the picture's height). Placement, the same as IC-M07c: the middle of the key's shaft (where the game ties the string) exactly on the picture's vertical centre line and 35% of the way down; the claw tips 93% of the way down. Startled: its eye wide and staring with a tiny pupil, its beak open, the top hat jolted up off the ring, its long legs kicked out apart in a jerky splay with the claws spread empty. {ALPHA}",
+    "status": "delivered"
+  }
+]

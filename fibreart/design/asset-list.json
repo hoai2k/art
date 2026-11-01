@@ -1,0 +1,490 @@
+{
+  "logo": {
+    "id": "HK-U01",
+    "file": "assets/ui/logo.png",
+    "delivered": true
+  },
+  "icon": {
+    "id": "HK-U02",
+    "file": "assets/ui/icon.png",
+    "delivered": true
+  },
+  "lineDrawings": {
+    "id": "HK-U03",
+    "file": "assets/ui/line-drawings.png",
+    "delivered": true
+  },
+  "threads": {
+    "id": "HK-U04",
+    "file": "assets/ui/threads.png",
+    "delivered": true
+  },
+  "pauseIcons": {
+    "id": "HK-U06",
+    "file": "assets/ui/pause-icons.png",
+    "delivered": true,
+    "pieces": [
+      "resume",
+      "controls",
+      "hint",
+      "howto",
+      "settings",
+      "next",
+      "title",
+      "close"
+    ]
+  },
+  "fullscreenBadge": {
+    "id": "HK-U07",
+    "file": "assets/ui/fullscreen-badge.png",
+    "delivered": true
+  },
+  "controlDrawings": {
+    "id": "HK-U05",
+    "file": "assets/ui/control-drawings.png",
+    "delivered": true
+  },
+  "viriditas.composition": {
+    "id": "HK-T01-A",
+    "file": "assets/tableaux/viriditas/composition.webp",
+    "delivered": true
+  },
+  "viriditas.ground": {
+    "id": "HK-T01-B",
+    "file": "assets/tableaux/viriditas/ground.webp",
+    "delivered": true
+  },
+  "viriditas.pieces": {
+    "id": "HK-T01-C",
+    "file": "assets/tableaux/viriditas/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the large violet sun disc",
+      "the tallest teal tree, trunk and branches, from the ground to the top",
+      "a second slender teal tree, leaning left",
+      "a third slender tree, bottle green, forked near the top",
+      "a short young tree with a few buds",
+      "a cluster of red-orange berries, large",
+      "a cluster of red-orange berries, medium",
+      "a cluster of red-orange berries, small",
+      "a single dark green bud on a curved stem",
+      "a swirl of dark purple sky, cut out like a cloud",
+      "a small bird of stitched teal silk among the branches",
+      "a patch of orange fallen leaves"
+    ]
+  },
+  "night-quilt.composition": {
+    "id": "HK-T02-A",
+    "file": "assets/tableaux/night-quilt/composition.webp",
+    "delivered": true
+  },
+  "night-quilt.ground": {
+    "id": "HK-T02-B",
+    "file": "assets/tableaux/night-quilt/ground.webp",
+    "delivered": true
+  },
+  "night-quilt.pieces": {
+    "id": "HK-T02-C",
+    "file": "assets/tableaux/night-quilt/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the crescent moon with the sleeping face",
+      "the round moon with the sleeping face in profile",
+      "the upper red heart with its white embroidery",
+      "the lower red heart with its white embroidery",
+      "the pale yellow stitched hand",
+      "a cluster of small red and yellow batik flowers",
+      "one indigo block from the middle of the quilt, as a square of cloth with its stitched edge",
+      "a strip of red and orange batik border",
+      "a small white batik star"
+    ]
+  },
+  "golden-lady.composition": {
+    "id": "HK-T03-A",
+    "file": "assets/tableaux/golden-lady/composition.webp",
+    "delivered": true
+  },
+  "golden-lady.ground": {
+    "id": "HK-T03-B",
+    "file": "assets/tableaux/golden-lady/ground.webp",
+    "delivered": true
+  },
+  "golden-lady.pieces": {
+    "id": "HK-T03-C",
+    "file": "assets/tableaux/golden-lady/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "her head and neck, without the hair",
+      "her orange-gold hair, as one piece",
+      "her body in the saffron dress, from the shoulders to the waist, with the arm on her hip",
+      "the slim tree at the left edge",
+      "the tallest smoky grey-violet cloud",
+      "a blue cloud",
+      "a pink cloud",
+      "a small pale sun low in the sky"
+    ]
+  },
+  "black-tree.composition": {
+    "id": "HK-T04-A",
+    "file": "assets/tableaux/black-tree/composition.webp",
+    "delivered": true
+  },
+  "black-tree.ground": {
+    "id": "HK-T04-B",
+    "file": "assets/tableaux/black-tree/ground.webp",
+    "delivered": true
+  },
+  "black-tree.pieces": {
+    "id": "HK-T04-C",
+    "file": "assets/tableaux/black-tree/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the black tree, trunk and branches",
+      "a large black leaf",
+      "a large ochre leaf",
+      "a cream leaf",
+      "the face with long dark hair",
+      "the pale face with closed eyes",
+      "the dark face with the gold mask-like look",
+      "the row of small gabled houses",
+      "a single red and cream harlequin diamond"
+    ]
+  },
+  "two-moons.composition": {
+    "id": "HK-T05-A",
+    "file": "assets/tableaux/two-moons/composition.webp",
+    "delivered": true
+  },
+  "two-moons.ground": {
+    "id": "HK-T05-B",
+    "file": "assets/tableaux/two-moons/ground.webp",
+    "delivered": true
+  },
+  "two-moons.pieces": {
+    "id": "HK-T05-C",
+    "file": "assets/tableaux/two-moons/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the left pale moon",
+      "the right pale moon",
+      "the golden crescent of couched thread",
+      "the lace mountain range, as one long piece",
+      "the striped band of pale yellow and sky blue",
+      "a single small lace peak, separate from the range",
+      "a small silver star"
+    ]
+  },
+  "dancers.composition": {
+    "id": "HK-T06-A",
+    "file": "assets/tableaux/dancers/composition.webp",
+    "delivered": true
+  },
+  "dancers.ground": {
+    "id": "HK-T06-B",
+    "file": "assets/tableaux/dancers/ground.webp",
+    "delivered": true
+  },
+  "dancers.pieces": {
+    "id": "HK-T06-C",
+    "file": "assets/tableaux/dancers/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the leaping blue dancer",
+      "the turning red dancer",
+      "a pair of blue dancers holding hands",
+      "a red dancer reaching up",
+      "the round red sun",
+      "the tall blue plant with curling leaves",
+      "the small quilted window, as an empty frame"
+    ]
+  },
+  "man-and-woman.composition": {
+    "id": "HK-T07-A",
+    "file": "assets/tableaux/man-and-woman/composition.webp",
+    "delivered": true
+  },
+  "man-and-woman.ground": {
+    "id": "HK-T07-B",
+    "file": "assets/tableaux/man-and-woman/ground.webp",
+    "delivered": true
+  },
+  "man-and-woman.pieces": {
+    "id": "HK-T07-C",
+    "file": "assets/tableaux/man-and-woman/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the man, seated, facing right",
+      "the woman, seated, facing left",
+      "the copper-gold sun",
+      "the little peaked house",
+      "the larger bare tree",
+      "the smaller bare tree",
+      "a single orange silk leaf",
+      "the looping scarlet ribbon from the tablecloth"
+    ]
+  },
+  "blue-lady.composition": {
+    "id": "HK-T08-A",
+    "file": "assets/tableaux/blue-lady/composition.webp",
+    "delivered": true
+  },
+  "blue-lady.ground": {
+    "id": "HK-T08-B",
+    "file": "assets/tableaux/blue-lady/ground.webp",
+    "delivered": true
+  },
+  "blue-lady.pieces": {
+    "id": "HK-T08-C",
+    "file": "assets/tableaux/blue-lady/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the reclining woman, her face, body and hair as one piece",
+      "the small pale moon",
+      "the fish of patterned blue cloth",
+      "a cluster of tall reeds",
+      "a long ripple of stitched teal thread",
+      "a scrap of turquoise satin, like a wave crest"
+    ]
+  },
+  "crowd.composition": {
+    "id": "HK-T09-A",
+    "file": "assets/tableaux/crowd/composition.webp",
+    "delivered": true
+  },
+  "crowd.ground": {
+    "id": "HK-T09-B",
+    "file": "assets/tableaux/crowd/ground.webp",
+    "delivered": true
+  },
+  "crowd.pieces": {
+    "id": "HK-T09-C",
+    "file": "assets/tableaux/crowd/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the large face with wide open eyes",
+      "the single floating eye",
+      "a rose face with closed eyes",
+      "an ochre face looking left",
+      "a dusty blue face looking up",
+      "a cream face with a long neck",
+      "a slate face in profile",
+      "a small pale face, smiling",
+      "a pair of faces cheek to cheek"
+    ]
+  },
+  "silk-bird.composition": {
+    "id": "HK-T10-A",
+    "file": "assets/tableaux/silk-bird/composition.webp",
+    "delivered": true
+  },
+  "silk-bird.ground": {
+    "id": "HK-T10-B",
+    "file": "assets/tableaux/silk-bird/ground.webp",
+    "delivered": true
+  },
+  "silk-bird.pieces": {
+    "id": "HK-T10-C",
+    "file": "assets/tableaux/silk-bird/pieces.png",
+    "delivered": true,
+    "pieces": [
+      "the silk bird with the face in its breast",
+      "a long gold ribbon loop",
+      "a rose ribbon loop",
+      "a sky-blue ribbon loop",
+      "a lilac ribbon loop",
+      "the netting fish with orange stitching",
+      "the pink silk triangle"
+    ]
+  },
+  "chain.moon": {
+    "id": "HK-M01",
+    "file": "assets/chains/moon.png",
+    "delivered": true,
+    "pieces": [
+      "a pale yellow crescent moon with a sleeping face",
+      "a round pale moon, the sleeping face turned to the front",
+      "a violet sun disc of painted silk, the face fading into its glow",
+      "a copper-gold sun of metallic cloth with short stitched rays",
+      "a red velvet heart with a white embroidered crown, its top curves the sun's rays"
+    ]
+  },
+  "chain.tree": {
+    "id": "HK-M02",
+    "file": "assets/chains/tree.png",
+    "delivered": true,
+    "pieces": [
+      "a bare black appliqu\u00e9 tree with curving branches",
+      "the same tree budding, small green buds along the branches",
+      "a tree with orange silk leaves",
+      "a slender teal tree with clusters of red-orange berries",
+      "a single budding branch, as if held in a hand"
+    ]
+  },
+  "chain.face": {
+    "id": "HK-M03",
+    "file": "assets/chains/face.png",
+    "delivered": true,
+    "pieces": [
+      "a pale oval face with closed eyes, drawn in one dark line on cream cloth",
+      "the same face waking, eyes half open",
+      "the face with dark almond eyes wide open, looking out",
+      "the face turned three-quarters, gold hair beginning to show",
+      "a mask-like gold and ochre face, eyes closed again"
+    ]
+  },
+  "chain.bird": {
+    "id": "HK-M04",
+    "file": "assets/chains/bird.png",
+    "delivered": true,
+    "pieces": [
+      "a silk bird in magenta and cobalt, wings spread",
+      "the bird folding its wings, its body lengthening",
+      "a fish of patterned blue cloth",
+      "a fish of brown netting with orange stitching",
+      "a long orange silk leaf, its veins the fish's stitches"
+    ]
+  },
+  "chain.figure": {
+    "id": "HK-M05",
+    "file": "assets/chains/figure.png",
+    "delivered": true,
+    "pieces": [
+      "a red silhouette of a standing figure, cut from one piece of cloth, no face",
+      "a blue printed dancer, arms raised",
+      "a dancer turning, leaning over",
+      "a figure crouching, curled forward",
+      "a woman lying stretched out, pieced from blues, eyes closed"
+    ]
+  },
+  "chain.flower": {
+    "id": "HK-M06",
+    "file": "assets/chains/flower.png",
+    "delivered": true,
+    "pieces": [
+      "a pink fabric rose with layered petals",
+      "a violet bloom, opening",
+      "a cluster of red-orange berries",
+      "a cluster of small red and yellow batik flowers",
+      "a small red heart, stitched"
+    ]
+  },
+  "texture.indigo-batik": {
+    "id": "HK-X01",
+    "file": "assets/textures/indigo-batik.webp",
+    "delivered": true
+  },
+  "texture.rust-paisley": {
+    "id": "HK-X02",
+    "file": "assets/textures/rust-paisley.webp",
+    "delivered": true
+  },
+  "texture.gold-damask": {
+    "id": "HK-X03",
+    "file": "assets/textures/gold-damask.webp",
+    "delivered": true
+  },
+  "texture.turquoise-satin": {
+    "id": "HK-X04",
+    "file": "assets/textures/turquoise-satin.webp",
+    "delivered": true
+  },
+  "texture.black-lace": {
+    "id": "HK-X05",
+    "file": "assets/textures/black-lace.webp",
+    "delivered": true
+  },
+  "texture.brown-netting": {
+    "id": "HK-X06",
+    "file": "assets/textures/brown-netting.webp",
+    "delivered": true
+  },
+  "texture.green-silk": {
+    "id": "HK-X07",
+    "file": "assets/textures/green-silk.webp",
+    "delivered": true
+  },
+  "texture.ultramarine-canvas": {
+    "id": "HK-X08",
+    "file": "assets/textures/ultramarine-canvas.webp",
+    "delivered": true
+  },
+  "mask.torn-paper": {
+    "id": "HK-D01",
+    "file": "assets/masks/torn-paper.png",
+    "delivered": true
+  },
+  "mask.watercolour-bloom": {
+    "id": "HK-D02",
+    "file": "assets/masks/watercolour-bloom.png",
+    "delivered": true
+  },
+  "mask.seams": {
+    "id": "HK-D03",
+    "file": "assets/masks/seams.png",
+    "delivered": true
+  },
+  "mask.unravel": {
+    "id": "HK-D04",
+    "file": "assets/masks/unravel.png",
+    "delivered": true
+  },
+  "mask.swirl": {
+    "id": "HK-D05",
+    "file": "assets/masks/swirl.png",
+    "delivered": true
+  },
+  "mask.stitch-line": {
+    "id": "HK-D06",
+    "file": "assets/masks/stitch-line.png",
+    "delivered": true
+  },
+  "anim.drift": {
+    "id": "HK-A01",
+    "file": "assets/anim/drift.png",
+    "delivered": true,
+    "pieces": [
+      "orange",
+      "red-orange",
+      "saffron",
+      "ochre",
+      "cream",
+      "black",
+      "yellow-green",
+      "teal",
+      "rose petal",
+      "red petal",
+      "berry",
+      "blossom"
+    ]
+  },
+  "anim.blink.golden-lady": {
+    "id": "HK-A02",
+    "file": "assets/anim/blink-golden-lady.png",
+    "delivered": true
+  },
+  "anim.blink.crowd": {
+    "id": "HK-A03",
+    "file": "assets/anim/blink-crowd.png",
+    "delivered": true,
+    "pieces": [
+      "01",
+      "04",
+      "05",
+      "08"
+    ]
+  },
+  "anim.blink.black-tree": {
+    "id": "HK-A04",
+    "file": "assets/anim/blink-black-tree.png",
+    "delivered": true,
+    "pieces": [
+      "05",
+      "07"
+    ]
+  },
+  "anim.bird": {
+    "id": "HK-A05",
+    "file": "assets/anim/bird-viriditas.png",
+    "delivered": true
+  }
+}

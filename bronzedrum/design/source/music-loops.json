@@ -1,0 +1,28 @@
+{
+  "mu-anthem": {
+    "duration": 178.79
+  },
+  "mu-bed-battle": {
+    "duration": 118.16,
+    "loopEnd": 114.5,
+    "loopStart": 2.0
+  },
+  "mu-bed-story": {
+    "duration": 122.0,
+    "loopEnd": 119.5,
+    "loopStart": 2.5
+  },
+  "mu-ending": {
+    "duration": 179.96
+  },
+  "mu-select": {
+    "duration": 153.0,
+    "loopEnd": 151.5,
+    "loopStart": 0.0
+  },
+  "mu-title": {
+    "duration": 88.4,
+    "loopEnd": 85.0,
+    "loopStart": 0.0
+  }
+}

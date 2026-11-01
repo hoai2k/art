@@ -1,0 +1,16 @@
+{
+  "name": "Fibre Art",
+  "short_name": "Fibre Art",
+  "description": "A shifting collage after the fibre art, paintings and drawings of Hanneke de Neve.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#160d2e",
+  "theme_color": "#160d2e",
+  "icons": [
+    { "src": "web/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "web/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "web/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

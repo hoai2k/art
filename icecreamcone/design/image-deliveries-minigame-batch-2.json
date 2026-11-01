@@ -1,0 +1,183 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M03b",
+      "file": "game/assets/sprites/niffy-walkers.png",
+      "dimensions": [
+        2048,
+        1536
+      ],
+      "source_dimensions": [
+        1448,
+        1086
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "previous_sha256": "455f21fa7fd844c6fd219bf21ac3a0fb9996b95bd4b03d367034f27730fab58e",
+      "sha256": "455f21fa7fd844c6fd219bf21ac3a0fb9996b95bd4b03d367034f27730fab58e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six townsfolk out for a stroll, in Arnold Lobel's gentle, slightly old-fashioned 1970s picture-book manner, each a full figure walking mid-stride, facing left, about 560 px tall (the child about 380 px): a tall gentleman in a long grey coat and a bowler hat; a lady in a mauve coat and a wide round hat; a stout man in a mustard overcoat and a flat cap; an old lady with a handbag and a small felt hat; a young man in a brick-red jacket and a trilby; and (bottom right) a small child in a blue coat with one hand held up, empty, as if holding a balloon string. Plain clothes with nothing pinned or hanging on them: no feathers, flowers, badges, tags or balloons (the game adds those). Kind, calm faces in profile.\nProduction game asset, dimensions 2048 x 1536, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M03c",
+      "file": "game/assets/sprites/niffy-props.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "previous_sha256": null,
+      "sha256": "f6e62fc870d790ba36d9660db2ebb09be47dd3737ef5be6ce36afc973cd57515",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six objects. Top row, left to right: a long curling magenta hat feather (about 300 px long); a small pink buttonhole flower with a short stem; a loose yellow thread dangling in a wavy line with a little loop at the end. Bottom row: a small white paper price tag on a loop of thin string, blank (no writing or numbers); a round red toy balloon with a little knot at the bottom and no string; a small round bird's nest of twigs, seen from the side, holding a few bright snippings (a feather, a flower, a thread).\nProduction game asset, dimensions 1536 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": "Correct ONLY the layout of this six-object sprite sheet. EXACT3x2 equal rectangular cells, with column boundaries at33.333% and66.667% image width, row boundary50% height. Top left feather must fit fully within LEFT THIRD, including its curled tip; reduce its width and move it inward so its rightmost edge is before28% image width. Top middle flower fully inside center third. Top right thread inside right third. Bottom left tag, bottom middle balloon, bottom right nest. Keep at least6%of cell width transparent margin on every side of EACH object; NO background, glow or shadows. Preserve objects' colors, ink watercolor textures and shapes.3:2 transparentPNG."
+    },
+    {
+      "id": "IC-M03d",
+      "file": "game/assets/sprites/park-keeper.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "previous_sha256": null,
+      "sha256": "bb5f016056298e3b874ae049fdbaa932e2d23c77b0069515d7e809ff4b8be3a4",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 1 grid of the same stout, kindly park keeper in a long bottle-green coat with brass buttons and a peaked cap, a whistle on a chain, about 900 px tall, standing in the same place in each cell: left, seen from behind with his back to us and his hands behind his back, looking away at a pond; middle, still with his back to us but his head turned over his shoulder, one eyebrow raised, suspicious; right, facing us, looking up at the sky, eyebrows raised, whistle in his mouth, one finger pointing up. A storybook grown-up, stern but not frightening.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M03e",
+      "file": "game/assets/sprites/niffy-dive.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "previous_sha256": null,
+      "sha256": "4971b72618a26aac265b119ecb3bb4a01ee91517a744158b98c833ee6461ab50",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Jackknife Niffy (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/niffy.png). The Niffy is a red pocketknife with a brass name-plate: its beak is a pair of open steel blades like a scissor's jaws pointing left, two more blades stand up from its back as wings, a round staring eye sits at the front of the red handle, a frill of pink feathers underneath and a pink feather tail at the steel back end, and thin yellow legs with dark claws. Two poses side by side on one 2 x 1 sheet, both flying level and facing left (the game tilts them nose-down into the swoop), legs tucked back under the body: left, its two beak blades open wide like scissors about to snip, the two back blades swept back; right, the beak blades snapped shut together into one point, the back blades raised. The point of the beak in the same place as in the portrait. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M03f",
+      "file": "game/assets/sprites/niffy-fly.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        2172,
+        724
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "previous_sha256": null,
+      "sha256": "0ff40af4666914f7a1d341383f63a07e8cadf0b055bb320279ed5d1034044cb2",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Jackknife Niffy (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/niffy.png). The Niffy is a red pocketknife with a brass name-plate: its beak is a pair of open steel blades like a scissor's jaws pointing left, two more blades stand up from its back as wings, a round staring eye sits at the front of the red handle, a frill of pink feathers underneath and a pink feather tail at the steel back end, and thin yellow legs with dark claws. Three poses side by side on one 3 x 1 sheet, all in the air facing left with the legs tucked up under the red handle and the beak blades half open, the point of the beak in the same place as in the portrait: left, hovering with its two back blades raised high like wings; middle, the same with the two back blades swept down (the other half of a flap); right, dazed and tumbling, tipped over sideways, the back blades askew, the beak blades folded shut, its eye a dizzy spiral. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 3072 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": "Correct ONLY fitting of this three-pose Niffy flight sheet, exactly3x1 equal-width square cells,3:1 full-canvas ratio. Keep the first hovering blades-up pose in left cell, second flapping blades-down pose in middle, dazed tilted spiral-eye pose in right. The SECOND pose's right-facing wing blades currently cross the boundary at66.667% full width. Shorten their extension by folding them more tightly, keeping their tips strictly before64% full width, without changing the red pocketknife body, beak or eye position. All poses fully inside their own third with transparent gutters. Preserve character design, pose order, art colors, fine ink watercolor textures. TransparentPNG, no extra objects or backdrop."
+    },
+    {
+      "id": "IC-M04b",
+      "file": "game/assets/sprites/balloons.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        2172,
+        724
+      ],
+      "alpha": true,
+      "grid": [
+        6,
+        2
+      ],
+      "previous_sha256": null,
+      "sha256": "f6d58908300a5ee813c6f073c2201793fd2e57f3dacae778401443579465be7e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 6 x 2 grid of twelve objects, each about 300 px tall. Top row: six round party balloons, slightly egg-shaped, each with a small tied knot at the bottom and a soft pale highlight, in this order from left to right: strawberry pink, lemon yellow, slate blue, sage green, mauve, orange. Bottom row: six small diamond-shaped paper kites with a thin cross of sticks and a short tail of two little paper bows, in the same six colours in the same order. No strings on any of them (the game draws the strings from the balloon's knot or the kite's bottom point).\nProduction game asset, dimensions 3072 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M04c",
+      "file": "game/assets/sprites/snippit-snip.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "previous_sha256": null,
+      "sha256": "8fc9bccd6a6851004bdcde69c410dd60634e982b53f6e20958ccbf9d5a0054b5",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Cutitup Snippit (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/snippit.png): a pair of dusty-pink scissors whose two long grey steel blades are its beak, pointing up and to the left; its round staring eye is the hinge where the blades cross; the two pink finger loops, one above the other, make its head and body, with a small pink wing on the lower loop and a sweeping pink feathered tail at the back right; two long ochre knobbly legs with dark claws. Two poses side by side on one sheet, each in its own half, both standing on their legs at the same scale and facing left: left, exactly as painted, blades held wide open; right, the blades snapped shut into one point, the bird leaning a little forward as it snips. The eye (the hinge) at the same height and the same place in both. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 2048 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M04d",
+      "file": "game/assets/sprites/snippit-poses.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        2172,
+        724
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "previous_sha256": null,
+      "sha256": "4344f7cba06db7409766505e146f86a380315ac1ba301e37d1c557e6b37c5164",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Cutitup Snippit (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/snippit.png): a pair of dusty-pink scissors whose two long grey steel blades are its beak, pointing up and to the left; its round staring eye is the hinge where the blades cross; the two pink finger loops, one above the other, make its head and body, with a small pink wing on the lower loop and a sweeping pink feathered tail at the back right; two long ochre knobbly legs with dark claws. Three poses in a row on one sheet, each in its own third, at the same scale, facing left, blades open in all three: left, mid-stride, one long leg reaching forward and the other pushing off behind; middle, jammed, the blades stuck half open and twisted askew, its eye wide, legs braced apart, tail feathers bristling; right, standing tall with its blades tipped back to point straight up at the sky, watching something float away. The eye (the hinge) at about the same height in all three. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction game asset, dimensions 3072 x 1024, transparent. Respect the exact grid, row-major order, character/object counts and pose order. Each complete silhouette must fit entirely inside its equally sized cell, centered with generous transparent gutters at every split; no grid lines. For poses preserve reference object anatomy and consistent scale. No backgrounds, glow or cast shadows.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 8,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser_check": "Snip Snap and controller/keyboard navigation passed in installed Chrome, no page errors.",
+    "publish_output": "All eight files copied with matching checksums."
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Kingdom of the Fairies</title>
+  <rect width="64" height="64" rx="12" fill="#2a1424"/>
+  <rect x="5" y="5" width="54" height="54" rx="8" fill="none" stroke="#f3c6dc" stroke-width="2"/>
+  <path d="m32 9 2.5 7.5L42 19l-7.5 2.5L32 29l-2.5-7.5L22 19l7.5-2.5Z" fill="#f3c6dc"/>
+  <path d="m13 29 11 10 8-9 8 9 11-10-5 20H18Z" fill="#d9b34a" stroke="#d9b34a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M19 54h26" fill="none" stroke="#f3c6dc" stroke-width="3" stroke-linecap="round"/>
+</svg>

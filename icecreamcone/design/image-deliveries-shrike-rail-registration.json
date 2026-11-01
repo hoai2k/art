@@ -1,0 +1,85 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M14d",
+      "file": "game/assets/sprites/shrike-poses.png",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "source_dimensions": [
+        4096,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        1
+      ],
+      "packing": {
+        "mode": "Uniform-scale atlas registration for top-claw rail anchor; complete generated poses retained",
+        "frames": [
+          {
+            "pose": 0,
+            "claws_at_y": 0,
+            "output_bounds": [
+              283,
+              0,
+              740,
+              837
+            ],
+            "uniform_scale_from_generation": 1.34
+          },
+          {
+            "pose": 1,
+            "claws_at_y": 0,
+            "output_bounds": [
+              1338,
+              0,
+              1734,
+              946
+            ],
+            "uniform_scale_from_generation": 1.34
+          },
+          {
+            "pose": 2,
+            "claws_at_y": 0,
+            "output_bounds": [
+              2238,
+              0,
+              2882,
+              822
+            ],
+            "uniform_scale_from_generation": 1.34
+          },
+          {
+            "pose": 3,
+            "claws_at_y": 0,
+            "output_bounds": [
+              3375,
+              0,
+              3793,
+              771
+            ],
+            "uniform_scale_from_generation": 1.34
+          }
+        ],
+        "prior_delivery": "image-deliveries-minigame-batch-6.json"
+      },
+      "previous_sha256": "e287330b26482cefe0fdc7edfd27d48efe17b673d6f18c0712bbf04c641af2cb",
+      "sha256": "035e0f4fc666d839b9a43be3224f4c54c2b7f292f3aa46912516a509d48ece00",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Saltshaker Shrike (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/saltshakershrike.png), exactly as painted there: a fluted clear-glass salt shaker full of white salt for its body; its head is the domed, perforated silver cap with a black shrike's eye mask, one round pale eye and a dark hooked beak; mauve and olive-brown wings and tail; thin olive legs with black claws. Four poses side by side, each in its own square quarter of the sheet, all at the same scale, facing left, each hanging UPSIDE DOWN by its claws from an unseen horizontal rail at the very top of the square, like a bat: its legs go straight up from the body to the claws, which grip a point at the top centre of the square; the glass body hangs below them and the domed cap points straight down, its holes about 75% of the way down the square and centred, the hooked beak turned to the left. Lit from the upper left as a real object hanging upside down would be. 1, hanging still, calm; 2, shaking: swung slightly to one side, a little puff of white salt grains spilling from the cap's holes; 3, pleased: beak wide open in a cheerful squawk, wings flared a little; 4, flinching: body pulled up tight towards the rail, wings clamped, eye squeezed half shut. No rail drawn. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 4096 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 1,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "publish_copy": true
+  }
+}

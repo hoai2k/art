@@ -1,0 +1,287 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M11g",
+      "file": "game/assets/sprites/dish-shards.png",
+      "dimensions": [
+        3072,
+        2048
+      ],
+      "source_dimensions": [
+        3072,
+        2048
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1536,
+          1024
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              51,
+              287,
+              478,
+              507
+            ],
+            "output_bounds": [
+              104,
+              509,
+              921,
+              930
+            ],
+            "scale": 1.9140186915887851
+          },
+          {
+            "source_bounds": [
+              556,
+              263,
+              984,
+              508
+            ],
+            "output_bounds": [
+              1126,
+              463,
+              1945,
+              932
+            ],
+            "scale": 1.9140186915887851
+          },
+          {
+            "source_bounds": [
+              1055,
+              294,
+              1478,
+              507
+            ],
+            "output_bounds": [
+              2155,
+              522,
+              2965,
+              930
+            ],
+            "scale": 1.9140186915887851
+          },
+          {
+            "source_bounds": [
+              57,
+              680,
+              477,
+              947
+            ],
+            "output_bounds": [
+              129,
+              1450,
+              895,
+              1937
+            ],
+            "scale": 1.824498886414254
+          },
+          {
+            "source_bounds": [
+              539,
+              749,
+              988,
+              940
+            ],
+            "output_bounds": [
+              1126,
+              1576,
+              1945,
+              1924
+            ],
+            "scale": 1.824498886414254
+          },
+          {
+            "source_bounds": [
+              1053,
+              729,
+              1477,
+              957
+            ],
+            "output_bounds": [
+              2173,
+              1540,
+              2947,
+              1956
+            ],
+            "scale": 1.824498886414254
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "3627be82adcf9b5e0400930a73ea12e7c207e00dc870592ec2f19429fedb2d09",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six small heaps of broken pieces lying on the ground, seen from the side at eye level like the delivered dishes (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/dishes.png ), each heap about 60% of its 1024 x 1024 cell wide and low, resting on the bottom third of the cell, in the same order and colours: 1) the white plate with the slate-blue band in curved shards; 2) the cream bowl with the mustard rim; 3) the tea cup with the mauve rim, its handle snapped off; 4) the steel saucepan, dented and on its side with its handle bent (metal does not shatter); 5) the black frying pan upside down with a few soap bubbles; 6) the ochre pie dish in fluted shards. A few water drops and a soap bubble round each.\nProduction sprite asset. Match references' colours and ink/watercolour. Exact count and row-major grid. Completely transparent outside objects with clear cell gutters. No extra variants, no clipping. Target 3072 x 2048, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M12f",
+      "file": "game/assets/sprites/watch-crown.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "9fd7532e6878987f1aea105bf5bb73c0a9cdb4db3b4c02ea420b6f2627a4ee22",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. One object only, centred, seen straight on, matching the gold of the delivered watch face (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/watch-face.png ) and the crown on the Ten O'clock Tit Trush's head (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/titthrush.png ): a pocket watch's winding crown, a short ribbed gold knob on a little collar stem, with a round gold ring bow through it on top, upright, about 40% of the image wide and 85% of its height, the bottom of the stem flat and level at the bottom of the painted area (it sits on the top of the watch case). No watch, no chain.\nProduction sprite asset. Match references' colours and ink/watercolour. Exact count and row-major grid. Completely transparent outside objects with clear cell gutters. No extra variants, no clipping. Target 1024 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M17f",
+      "file": "game/assets/sprites/knots.png",
+      "dimensions": [
+        1536,
+        512
+      ],
+      "source_dimensions": [
+        1536,
+        512
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              57,
+              174,
+              694,
+              546
+            ],
+            "output_bounds": [
+              52,
+              227,
+              460,
+              465
+            ],
+            "scale": 0.641001564945227
+          },
+          {
+            "source_bounds": [
+              774,
+              179,
+              1394,
+              535
+            ],
+            "output_bounds": [
+              570,
+              231,
+              967,
+              459
+            ],
+            "scale": 0.641001564945227
+          },
+          {
+            "source_bounds": [
+              1477,
+              186,
+              2116,
+              537
+            ],
+            "output_bounds": [
+              1075,
+              235,
+              1485,
+              460
+            ],
+            "scale": 0.641001564945227
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "3eb57f37bdaa69810aa01df2f2cf58aa07d485e43ecd13c3a8ff1e754c01f11c",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 1 row of three knots in a wooden plank's surface, seen from straight above, each a dark brown oval knot about 1.5 times as wide as it is tall, with a darker heart, a small crack or two, and a few rings of grain swirling round it that fade out to nothing at the edges (so it can lie on any of the pale pine, honey oak or reddish cedar planks of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/planks.png ). Each fills about 70% of its cell's width; no plank around them.\nProduction sprite asset. Match references' colours and ink/watercolour. Exact count and row-major grid. Completely transparent outside objects with clear cell gutters. No extra variants, no clipping. Target 1536 x 512, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M18f",
+      "file": "game/assets/sprites/radio-parts.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "Uniform proportional atlas export of separately generated cabinet and knob",
+        "cabinet_source": "/Users/hoai/.codex/generated_images/01a11825-148c-7d13-acbb-95b178d174b0/exec-cf5355b0-a6d6-45b5-9e52-c38887efc5d5.png",
+        "knob_source": "/Users/hoai/.codex/generated_images/01a11825-148c-7d13-acbb-95b178d174b0/exec-0a89d4ea-acd5-43e6-9126-c8fa50f56b33.png",
+        "hole_source_bounds": [
+          312,
+          194,
+          897,
+          774
+        ],
+        "frames": [
+          {
+            "output_bounds": [
+              112,
+              148,
+              912,
+              875
+            ]
+          },
+          {
+            "output_bounds": [
+              1229,
+              235,
+              1843,
+              789
+            ]
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "e13823e0b48dc320a56f347ee2acd4da8620642a98b6e74a4a723d2798fd1e0f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 row of two parts of a 1960s radio, matching the mustard-and-cream portable radio of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/radiobird.png and the brass tuning dial of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/dial-panel.png : left, the front of a small speaker cabinet seen straight on, a rounded rectangle exactly 230 wide by 210 tall in proportion, mustard-yellow with a cream trim, with one perfectly round hole cut right through it (fully transparent inside, no cloth, no grille) whose centre is 60% of the way across from the left and 53% of the way down, and whose diameter is 62% of the cabinet's width; nothing else on the front. Right, a round brass-and-brown bakelite tuning knob seen straight on, with ridged grip around its rim and a single cream dot near its edge, centred, about 60% of its cell across.\nProduction sprite asset. Match references' colours and ink/watercolour. Exact count and row-major grid. Completely transparent outside objects with clear cell gutters. No extra variants, no clipping. Target 2048 x 1024, transparent Speaker aperture is actually alpha0, no cloth or grille, circular; respect its specified centre and diameter.",
+      "correction_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 row of two parts of a 1960s radio, matching the mustard-and-cream portable radio of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/radiobird.png and the brass tuning dial of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/dial-panel.png : left, the front of a small speaker cabinet seen straight on, a rounded rectangle exactly 230 wide by 210 tall in proportion, mustard-yellow with a cream trim, with one perfectly round hole cut right through it (fully transparent inside, no cloth, no grille) whose centre is 60% of the way across from the left and 53% of the way down, and whose diameter is 62% of the cabinet's width; nothing else on the front. Right, a round brass-and-brown bakelite tuning knob seen straight on, with ridged grip around its rim and a single cream dot near its edge, centred, about 60% of its cell across.\nThe reference is the exact geometry and required aspect ratios. Paint pen/ink and delicate watercolor details onto these same shapes without changing any outlines. Maintain guide geometry exactly: near-square cabinet230wide210tall; large circular transparent hole62%width at60%/53%; circle MUST be larger than prior versions. Do not make cabinet wider. One round knob right. Transparent genuine alpha, including hole. Not a new arrangement.",
+      "cabinet_generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. \nGenerate ONLY the speaker cabinet, one object in this square canvas. Geometry exactly reference image. Almost-square cabinet 230 wide210 tall, not wide landscape. Mustard enamel with cream trim, brown-black pen inkcrosshatching soft watercolorpaper grain texturebut transparent exterior. One perfectly round alpha0 aperture, centre60%fromleft53%down, diameter62% cabinetwidth. Hole has no cloth or grille and is empty transparency. No knob or other object, no perspective. Keep exact outlines and proportions of guide."
+    }
+  ],
+  "verification": {
+    "asset_count": 4,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "unit_tests": {
+      "passed": 177,
+      "failed": 0
+    },
+    "browser": "Glove Dove, Tit Thrush, Saw Bird and Radio Bird all played to their ending without page errors. Watch crown and speaker opening inspected in game.",
+    "publish_copy": true
+  }
+}

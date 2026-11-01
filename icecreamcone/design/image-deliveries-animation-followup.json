@@ -1,0 +1,176 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M08e",
+      "file": "icecreamcone/game/assets/sprites/garbagecanary-neck.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "exportSize": [
+        3072,
+        2048
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The canary from the Garbage Canary (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/garbagecanary.png), exactly as painted there: the same yellow canary with its big round staring eye with a dot pupil, its long pale-ochre pointed beak, its fluffy yellow head feathers, in the same line and colours. A 3 x 2 grid of six poses of ONLY the canary's head and neck (no bin, no lid, no body, no legs), each in its own 1024 x 1024 cell, facing left, at exactly the portrait's scale (the head the same size as painted there, about 140 px tall in a cell). Registration, the same in every cell: the bottom of the neck is a soft rounded stump of feathers whose middle is exactly on the cell's vertical centre line, 88% of the way down; the neck rises from there straight up (the game tilts the whole piece to aim it), and nothing is drawn below 92%. Top row, left to right: 1) ready: a short neck, the head just above the stump, looking left, beak shut; 2) reaching: the neck stretched long and thin straight up, the head at the top leaning left, beak wide open ready to snatch; 3) gripping: the same long neck, the beak clamped nearly shut with a clear empty gap between its tips (the game draws the caught thing there). Bottom row: 4) pulling in: the neck bent down in an S, the head ducked low beside the stump, beak shut and tugging, as if dragging something down; 5) squawking: a short neck, head thrown up, beak wide open, feathers ruffled, a few spat crumbs; 6) singing: a short neck, head tipped up happily, beak open in song, two or three small ink musical notes. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/subjects/garbagecanary.png"
+      ],
+      "source": "/workspace/generated_images/exec-8d437d84-5c25-4634-a102-1b92d5761ecb.png",
+      "exportOperation": "scale head/neck poses to portrait scale and register neck bases at cell (512,901)",
+      "registration": {
+        "neckBase": [
+          512,
+          901
+        ]
+      },
+      "sha256": "1ee3c9d622e1b237bf6fce017450f79b9f11ceb40c082eaf3235137bf8e87a6f"
+    },
+    {
+      "id": "IC-M08f",
+      "file": "icecreamcone/game/assets/sprites/garbagecanary-lid-only.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exportSize": [
+        1024,
+        1024
+      ],
+      "prompt": "Create ONLY ONE isolated galvanised dustbin LID for Ice-Cream Cone Coot. The attached reference is a2cell sheet: take ONLY the tilted oval grey lid in the RIGHT cell, remove its yellow bird head. This output must contain ONLY a rusty grey shallow oval metal dustbin lid, one rectangular ring handle on top, and dark rusty underside below its front edge. ABSOLUTELY NO BIN CYLINDER, no bird, no yellow wing, no tail, no legs, no feet. Match lid's pen and watercolor palette. Place it on upper portion of square transparent1024x1024 canvas at exactly its same position and scale relative to the right referencecell; rest of canvas completely alpha0. No scenery. Lid only, not a dustbin.",
+      "references": [
+        "icecreamcone/game/assets/subjects/garbagecanary.png",
+        "icecreamcone/game/assets/sprites/garbagecanary-lid.png"
+      ],
+      "source": "/workspace/generated_images/exec-d1385305-d5e1-4119-889f-0de46944ecab.png",
+      "exportOperation": "uniform scale and register lid to previous lid footprint at x130 y65",
+      "registration": {},
+      "sha256": "5946a6cb4acb5eb354463e4e6b1551d20208b4ffed45cc425927e02b133ca48a"
+    },
+    {
+      "id": "IC-M08g",
+      "file": "icecreamcone/game/assets/sprites/garbagecanary-walk.png",
+      "nativeSize": [
+        2172,
+        724
+      ],
+      "exportSize": [
+        4096,
+        1024
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Garbage Canary's bin piece, exactly as the left half of its lid sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/garbagecanary-lid.png): the rusty fluted dented dustbin with its ring handle, the canary's yellow wing and paper-scrap tail, its thin orange legs, WITHOUT its lid and without the canary's head, its round open top showing a dark inside, facing left. A 4 x 1 row of four frames of a walk cycle, each in its own 1024 x 1024 cell framed exactly like the portrait (same scale, the bin in exactly the same place in every frame, the feet's line 97% of the way down): 1) left leg forward, right leg back; 2) legs passing, the bin raised a little; 3) right leg forward, left leg back; 4) legs passing, the bin raised a little. Only the legs move (and the bin rises at most 2% in frames 2 and 4); the bin, wing and tail are otherwise identical. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/sprites/garbagecanary-lid.png"
+      ],
+      "source": "/workspace/generated_images/exec-b407307d-bf82-4b2a-8400-a6758e883b9f.png",
+      "exportOperation": "isolate four walk poses, uniform scale, register to previous bin body and foot baseline996",
+      "registration": {},
+      "sha256": "0994f0d0f01edf29a46fd168f566aabd7ab258219b4f1d8cdcf3c03c7aab6ac1"
+    },
+    {
+      "id": "IC-M10f",
+      "file": "icecreamcone/game/assets/sprites/wren-walk-cycle.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "exportSize": [
+        3072,
+        2048
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, in a six-frame walking cycle (a brisk, bouncy, long-legged walk, bird-like: the head bobs forward and back), furled, in a 3 x 2 grid read left to right, top row then bottom row: 0) CONTACT, left leg: the left leg reaching far forward, its heel just touching the baseline, the right leg stretched far back on its toes, the body at its middle height; 1) DOWN, left: the left foot flat and taking the weight with the knee bent, the right foot lifting off behind, the body at its lowest (about 20 px lower), the head pulled back; 2) PASSING, left: the left leg straight under the body, the right leg swinging forward past it with the knee raised high and the claws curled, the body rising; 3) CONTACT, right: as frame 0 with the legs swapped (right leg reaching forward, left stretched back); 4) DOWN, right: as frame 1 with the legs swapped; 5) PASSING, right: as frame 2 with the legs swapped (right leg straight under, left swinging forward, knee high). The legs must clearly move: a long stride, about 70% of the cell wide from the front toe to the back toe in the contact frames. The crook handle and the umbrella body bob with the steps but stay furled and the same shape. REGISTRATION, so the frames can be swapped without the bird jumping: every cell is 1024 x 1024 px; the bird is at exactly the same scale as the portrait and the delivered walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ), i.e. the same size in pixels; it faces left in every frame; the brass strap button on its side is at the same point, x 512 px and y 560 px of the cell, in every frame (the body may tilt slightly about it, but the button does not move); in every frame with a foot on the ground, the sole of that foot is on a level baseline at y 963 px (94% of the cell height). No rain, no puddle, no ground drawn, no shadow. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/subjects/wetweatherwren.png",
+        "icecreamcone/game/assets/sprites/wren-walk.png"
+      ],
+      "source": "/workspace/generated_images/exec-1adb99af-a4eb-4aa2-93ae-6b10878760e3.png",
+      "exportOperation": "uniform scale and per-frame brass-button registration",
+      "registration": {
+        "button": [
+          512,
+          560
+        ]
+      },
+      "sha256": "fe8ecbee012ccf41f91fa0fd236a2ca4111d23db1838d6ff1b1d8f9f17966e0b"
+    },
+    {
+      "id": "IC-M10g",
+      "file": "icecreamcone/game/assets/sprites/wren-hop.png",
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "exportSize": [
+        2048,
+        2048
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, four poses in a 2 x 2 grid read left to right, top row then bottom row: 0) CROUCH: both feet flat on the baseline, knees deeply bent, the body dipped low and leaning back, the head tucked, the strap button popping open and the folds of the cloth starting to loosen and puff out; 1) SPRING: legs straight and pushing off, only the toes of one foot still touching the baseline, the umbrella bursting open: the shaft swinging upright with the head on top as the tip, the canopy half spread (ribs at about 45 degrees, the cloth still crumpled), the crook handle swinging down below; 2) LANDING: the umbrella just furled again round the body as in the walking frames, both feet planted on the baseline with the knees bent to take the shock, the body low and tipped forward, a feather or two ruffled; 3) FURLED, DROPPING: the umbrella furled, the bird in the air with both legs stretched straight down below it and the claws spread, reaching for the ground (the feet below the baseline is fine: here the button line matters). Same scale and look as the delivered poses (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-poses.png and https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ). REGISTRATION, so the frames can be swapped without the bird jumping: every cell is 1024 x 1024 px; the bird is at exactly the same scale as the portrait and the delivered walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ), i.e. the same size in pixels; it faces left in every frame; the brass strap button on its side is at the same point, x 512 px and y 560 px of the cell, in every frame (the body may tilt slightly about it, but the button does not move); in every frame with a foot on the ground, the sole of that foot is on a level baseline at y 963 px (94% of the cell height). No rain, no puddle, no ground drawn, no shadow. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/subjects/wetweatherwren.png",
+        "icecreamcone/game/assets/sprites/wren-poses.png",
+        "icecreamcone/game/assets/sprites/wren-walk.png"
+      ],
+      "source": "/workspace/generated_images/exec-3a2b6d0f-b935-480d-abd0-854de06f9291.png",
+      "exportOperation": "isolate generated poses into requested grid without aspect distortion; register brass buttons",
+      "registration": {
+        "button": [
+          512,
+          560
+        ]
+      },
+      "sha256": "d8b916424d92b24de99fb1bc5c77042a2a9f9174b34fcad2c0385fdf5e8fca14"
+    },
+    {
+      "id": "IC-M10h",
+      "file": "icecreamcone/game/assets/sprites/wren-fly.png",
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "exportSize": [
+        3072,
+        1536
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Wetweather Wren (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/wetweatherwren.png ): a furled dark grey-brown umbrella as its body, its cloth folds held by a strap with a brass button and brass rib tips poking out, a feathered brown wing along its side, a round brown wren's head with a big round yellow eye and a long pale ochre beak at the front (the umbrella's tip end), the curved brown wooden crook handle rising behind as its tail, and long ochre scaly legs with claws, with its umbrella popped open, flying, in two poses side by side on a sheet of two 1536 x 1536 px cells (larger cells so the wide canopy fits; the bird itself is at exactly the same scale as the portrait and the delivered poses, https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-poses.png , NOT enlarged). In both, the shaft stands upright through the bird with the wren's head and beak on top as the umbrella's tip, facing left, the crook handle hanging below the body as a tail, the feathered wing tucked against the shaft. 0) SMALL OPEN: the canopy open like the delivered floating pose, a rounded dome about as wide as in that pose (about 900 px across in this cell), the legs drawn up a little with the knees bent, the eye bright: a lively hop; 1) WIDE OPEN: the canopy spread to its fullest, flatter and much wider, about 1400 px across, the cloth taut and catching the air, the ribs straight, a little upward billow at the edges, the legs dangling straight down and loose with the toes pointing down, the eye half closed and calm: floating down slowly. REGISTRATION: the brass strap button on the shaft is at x 768 px and y 1000 px of each 1536 px cell in both frames, the shaft vertical through x 768, so the two frames swap without moving; the bird's body, head and legs are the same size as in the walking sheet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/wren-walk.png ). No rain, no ground, no shadow. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/subjects/wetweatherwren.png",
+        "icecreamcone/game/assets/sprites/wren-poses.png",
+        "icecreamcone/game/assets/sprites/wren-walk.png"
+      ],
+      "source": "/workspace/generated_images/exec-b508d411-5dff-4061-9289-ad7c36c9d406.png",
+      "exportOperation": "isolate generated poses into requested grid without aspect distortion; register brass buttons",
+      "registration": {
+        "button": [
+          768,
+          1000
+        ]
+      },
+      "sha256": "f24f9182f086eee829fbd79a411a9356ca97a34c1801dbce74c640c6e4dc3d49"
+    },
+    {
+      "id": "IC-M11h",
+      "file": "icecreamcone/game/assets/sprites/glovedove-bump.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "exportSize": [
+        3072,
+        2048
+      ],
+      "prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Glove Dove (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/glovedove.png ): its head and long neck are one long pink rubber washing-up glove, the glove's fingers splayed back as a crest on top of a dove's head with a round yellow eye and a long open pink beak at the front, the glove's long studded cuff stretching back behind the head to a ruffled open cuff end, on a round body of scalloped blue-grey feathers, with long ochre scaly legs and dark claws, in six full-figure frames of one movement, in a 3 x 2 grid of 1024 x 1024 px cells read left to right, top row then bottom row. THE BODY ALWAYS FACES LEFT in every frame (feathered body, legs and feet as in the portrait); in frames 2 to 5 only the head and the glove neck turn, the bird looking back over its own shoulder to the right. 0) SINKING: knees half bent, the body a little lower, the glove neck level, the head facing left and looking up; 1) DEEP CROUCH, wound up: knees deeply bent, the body low and tensed, the long glove neck held dead level like a tray from the head to the cuff, the head facing left, looking up, ready; 2) DEEP CROUCH, HEAD TURNING: the same crouch and level glove, the head twisting round in three-quarter view towards the right, one eye showing, the finger crest swinging; 3) DEEP CROUCH, HEAD TURNED RIGHT AND AIMING: the same crouch and level glove, the head now facing right and tilted up to the upper right, beak pointing up and right at about 30 degrees, eye fixed on a target, like a footballer lining up a header; 4) BUMP: springing up on tiptoe with the legs straight, the whole glove neck swung up from the shoulders to point up and to the right (the cuff end high on the right), the head facing right and up, beak open, a few soap drops flying off, the body still facing left; 5) LOOKING BACK: standing again, knees easy, the glove neck coming back down towards level, the head swinging back round in three-quarter view towards the left. REGISTRATION, so the frames swap without the bird jumping: the bird is at exactly the same scale as the portrait and the delivered pose sheets (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/glovedove-toss.png and https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/glovedove-poses.png ), i.e. the same size in pixels, with the portrait's framing; in every frame both feet stand flat on one level baseline at y 1002 px of the cell (97.9% down), and the point midway between the two feet is at x 512 px; the feet stay planted in the same place in every frame except frame 4, where the toes stay on that spot and the heels lift. In frames 1, 2 and 3 the TOP of the glove neck is a straight, level line at y 640 px of the cell, running from about x 430 px to x 900 px (a dish will be drawn resting on it). No dish, no ground, no shadow. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nOnly this requested sprite sheet, match attached portraits. Genuine transparent alpha outside painted subjects, no grid lines or labels. Carefully make all animation frames differ as specified and keep exact grid order and registration.",
+      "references": [
+        "icecreamcone/game/assets/subjects/glovedove.png",
+        "icecreamcone/game/assets/sprites/glovedove-toss.png",
+        "icecreamcone/game/assets/sprites/glovedove-poses.png"
+      ],
+      "source": "/workspace/generated_images/exec-207c9d00-bd48-4839-8ef5-71cfcb709342.png",
+      "exportOperation": "uniform scale and register planted feet near cell baseline",
+      "registration": {
+        "feetBaseline": 1002
+      },
+      "sha256": "7561d11be532bbb38091eb0fa26608e6c70caff3c11fba18a0d86b66b9e501b8"
+    }
+  ]
+}

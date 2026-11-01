@@ -1,0 +1,198 @@
+{
+  "rig": "sister-trac",
+  "scale": 0.08479067302596714,
+  "ground": 171.96,
+  "top": -148.04,
+  "pieces": {
+    "skirt": {
+      "file": "rigs/sister-trac/skirt.webp",
+      "w": 177,
+      "h": 170,
+      "pivot": [
+        88.01,
+        5.6
+      ],
+      "z": 3
+    },
+    "legL": {
+      "file": "rigs/sister-trac/legL.webp",
+      "w": 53,
+      "h": 103,
+      "pivot": [
+        7.29,
+        6.44
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        71.05,
+        81.4
+      ]
+    },
+    "legR": {
+      "file": "rigs/sister-trac/legR.webp",
+      "w": 73,
+      "h": 98,
+      "pivot": [
+        7.29,
+        6.44
+      ],
+      "z": 2,
+      "parent": "skirt",
+      "anchor": [
+        106.67,
+        83.94
+      ]
+    },
+    "torso": {
+      "file": "rigs/sister-trac/torso.webp",
+      "w": 93,
+      "h": 69,
+      "pivot": [
+        46.3,
+        59.52
+      ],
+      "z": 5,
+      "parent": "skirt",
+      "anchor": [
+        88.01,
+        5.6
+      ]
+    },
+    "head": {
+      "file": "rigs/sister-trac/head.webp",
+      "w": 66,
+      "h": 101,
+      "pivot": [
+        37.48,
+        94.8
+      ],
+      "z": 6,
+      "parent": "torso",
+      "anchor": [
+        45.96,
+        5.77
+      ]
+    },
+    "cape": {
+      "file": "rigs/sister-trac/cape.webp",
+      "w": 101,
+      "h": 160,
+      "pivot": [
+        79.87,
+        6.44
+      ],
+      "z": 0,
+      "parent": "torso",
+      "anchor": [
+        6.44,
+        11.7
+      ]
+    },
+    "sashA": {
+      "file": "rigs/sister-trac/sashA.webp",
+      "w": 92,
+      "h": 73,
+      "pivot": [
+        6.27,
+        5.94
+      ],
+      "z": 4,
+      "parent": "torso",
+      "anchor": [
+        67.49,
+        59.52
+      ]
+    },
+    "sashB": {
+      "file": "rigs/sister-trac/sashB.webp",
+      "w": 100,
+      "h": 108,
+      "pivot": [
+        5.77,
+        5.77
+      ],
+      "z": 4,
+      "parent": "torso",
+      "anchor": [
+        64.1,
+        59.52
+      ]
+    },
+    "capL": {
+      "file": "rigs/sister-trac/capL.webp",
+      "w": 33,
+      "h": 52,
+      "pivot": [
+        18.91,
+        6.02
+      ],
+      "z": 1,
+      "parent": "torso",
+      "anchor": [
+        6.44,
+        11.7
+      ]
+    },
+    "foreL": {
+      "file": "rigs/sister-trac/foreL.webp",
+      "w": 52,
+      "h": 84,
+      "pivot": [
+        7.97,
+        5.6
+      ],
+      "z": 1,
+      "parent": "capL",
+      "anchor": [
+        18.57,
+        46.38
+      ]
+    },
+    "capR": {
+      "file": "rigs/sister-trac/capR.webp",
+      "w": 35,
+      "h": 51,
+      "pivot": [
+        13.06,
+        5.6
+      ],
+      "z": 7,
+      "parent": "torso",
+      "anchor": [
+        86.49,
+        11.7
+      ]
+    },
+    "armR": {
+      "file": "rigs/sister-trac/armR.webp",
+      "w": 34,
+      "h": 80,
+      "pivot": [
+        11.36,
+        5.6
+      ],
+      "z": 8,
+      "parent": "capR",
+      "anchor": [
+        16.45,
+        45.11
+      ]
+    },
+    "stick": {
+      "file": "rigs/sister-trac/stick.webp",
+      "w": 63,
+      "h": 131,
+      "pivot": [
+        24.59,
+        124.3
+      ],
+      "z": 9,
+      "parent": "armR",
+      "anchor": [
+        25.44,
+        73.94
+      ]
+    }
+  }
+}

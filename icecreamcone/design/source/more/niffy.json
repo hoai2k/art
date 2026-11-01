@@ -1,0 +1,68 @@
+[
+  {
+    "id": "IC-M03a",
+    "name": "Snip Snap: the park promenade",
+    "key": "scene.niffy",
+    "file": "assets/scenes/niffy.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Snip Snap (the Jackknife Niffy): the background; people walk along the promenade at the bottom, the Niffy flies in the sky above, and the Park Keeper stands on the right.",
+    "standin": "Sky, a row of round trees, a pond, gravel, iron railings and the promenade, painted in code.",
+    "prompt": "{STYLE} {SCENE}A town park on a fresh spring morning, seen straight from the side. The top half is a wide, pale, open sky with a few soft clouds, kept quiet because the bird flies there. A bare-ish branch reaches in from the top-left corner (from the left edge at about 23% down, rising to about 17% down at 13% across), as a perch for a nest. From about 26% to 62% down, a row of round, gentle park trees on thin trunks along the back. From 58% to 66% a strip of a calm pond, then a band of pale gravel from 66% to 78%, and a low black iron railing along it at about 71% to 78% down. From 78% to the bottom: a wide, plain, empty paved promenade where people will walk, with faint paving lines. On the right (around 85% to 95% across) the gravel behind the railing is open and plain, where the park keeper stands. No people, birds, dogs, benches in front or signs.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M03b",
+    "name": "Snip Snap: the passers-by",
+    "key": "sprites.niffyWalkers",
+    "file": "assets/sprites/niffy-walkers.png",
+    "size": "2048 x 1536, transparent",
+    "used": "Snip Snap: the people strolling along the promenade; the game hangs the feathers, flowers, threads, tags and balloons on them and bobs them as they walk (turned round for those walking right).",
+    "standin": "Coated figures with a round head and a hat, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six townsfolk out for a stroll, in Arnold Lobel's gentle, slightly old-fashioned 1970s picture-book manner, each a full figure walking mid-stride, facing left, about 560 px tall (the child about 380 px): a tall gentleman in a long grey coat and a bowler hat; a lady in a mauve coat and a wide round hat; a stout man in a mustard overcoat and a flat cap; an old lady with a handbag and a small felt hat; a young man in a brick-red jacket and a trilby; and (bottom right) a small child in a blue coat with one hand held up, empty, as if holding a balloon string. Plain clothes with nothing pinned or hanging on them: no feathers, flowers, badges, tags or balloons (the game adds those). Kind, calm faces in profile.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M03c",
+    "name": "Snip Snap: things to snip, and the nest",
+    "key": "sprites.niffyProps",
+    "file": "assets/sprites/niffy-props.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Snip Snap: what the people carry (and the Niffy snips), a child's balloon, and the Niffy's nest where its snippings go.",
+    "standin": "A pink feather, a pink flower, a yellow thread, a white tag, a red balloon and a brown nest, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six objects. Top row, left to right: a long curling magenta hat feather (about 300 px long); a small pink buttonhole flower with a short stem; a loose yellow thread dangling in a wavy line with a little loop at the end. Bottom row: a small white paper price tag on a loop of thin string, blank (no writing or numbers); a round red toy balloon with a little knot at the bottom and no string; a small round bird's nest of twigs, seen from the side, holding a few bright snippings (a feather, a flower, a thread).",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M03d",
+    "name": "Snip Snap: the Park Keeper",
+    "key": "sprites.parkKeeper",
+    "file": "assets/sprites/park-keeper.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Snip Snap: the Park Keeper, who watches the pond with his back turned, then glances over his shoulder (the warning), then turns to look up at the sky.",
+    "standin": "A stout figure in a green coat and peaked cap, drawn in code with a big eye above him while he looks.",
+    "prompt": "{STYLE} {SHEET} A 3 x 1 grid of the same stout, kindly park keeper in a long bottle-green coat with brass buttons and a peaked cap, a whistle on a chain, about 900 px tall, standing in the same place in each cell: left, seen from behind with his back to us and his hands behind his back, looking away at a pond; middle, still with his back to us but his head turned over his shoulder, one eyebrow raised, suspicious; right, facing us, looking up at the sky, eyebrows raised, whistle in his mouth, one finger pointing up. A storybook grown-up, stern but not frightening.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M03e",
+    "name": "Snip Snap: the Niffy swooping",
+    "key": "sprites.niffyDive",
+    "file": "assets/sprites/niffy-dive.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Snip Snap: the Niffy on the way down with its blade open, and on the way back up with it snapped shut (the game tilts it nose-down into the swoop).",
+    "standin": "The portrait, tilted nose-down.",
+    "prompt": "{STYLE} {VARIANT} The Jackknife Niffy (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/niffy.png). The Niffy is a red pocketknife with a brass name-plate: its beak is a pair of open steel blades like a scissor's jaws pointing left, two more blades stand up from its back as wings, a round staring eye sits at the front of the red handle, a frill of pink feathers underneath and a pink feather tail at the steel back end, and thin yellow legs with dark claws. Two poses side by side on one 2 x 1 sheet, both flying level and facing left (the game tilts them nose-down into the swoop), legs tucked back under the body: left, its two beak blades open wide like scissors about to snip, the two back blades swept back; right, the beak blades snapped shut together into one point, the back blades raised. The point of the beak in the same place as in the portrait. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M03f",
+    "name": "Snip Snap: the Niffy hovering and dazed",
+    "key": "sprites.niffyFly",
+    "file": "assets/sprites/niffy-fly.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Snip Snap: the Niffy hovering over the promenade between swoops (two frames, flapping), and dazed after the Keeper whistles at it.",
+    "standin": "The standing portrait, bobbing in the sky, and wobbling when dazed.",
+    "prompt": "{STYLE} {VARIANT} The Jackknife Niffy (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/niffy.png). The Niffy is a red pocketknife with a brass name-plate: its beak is a pair of open steel blades like a scissor's jaws pointing left, two more blades stand up from its back as wings, a round staring eye sits at the front of the red handle, a frill of pink feathers underneath and a pink feather tail at the steel back end, and thin yellow legs with dark claws. Three poses side by side on one 3 x 1 sheet, all in the air facing left with the legs tucked up under the red handle and the beak blades half open, the point of the beak in the same place as in the portrait: left, hovering with its two back blades raised high like wings; middle, the same with the two back blades swept down (the other half of a flap); right, dazed and tumbling, tipped over sideways, the back blades askew, the beak blades folded shut, its eye a dizzy spiral. Each pose in its own square cell framed exactly like the portrait (the same scale, the feet on the same line near the bottom, the body in the same place), so the game can swap it for the portrait without a jump. {ALPHA}",
+    "status": "delivered"
+  }
+]

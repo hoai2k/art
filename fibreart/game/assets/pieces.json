@@ -1,0 +1,1314 @@
+{
+  "viriditas.pieces": [
+    {
+      "name": "the large violet sun disc",
+      "file": "assets/tableaux/viriditas/pieces/01-the-large-violet-sun-disc.png",
+      "sheetBounds": [
+        34,
+        220,
+        598,
+        750
+      ],
+      "size": [
+        564,
+        530
+      ]
+    },
+    {
+      "name": "the tallest teal tree, trunk and branches, from the ground to the top",
+      "file": "assets/tableaux/viriditas/pieces/02-the-tallest-teal-tree-trunk-and-branches-from-the-ground-to-the-top.png",
+      "sheetBounds": [
+        508,
+        13,
+        1059,
+        935
+      ],
+      "size": [
+        551,
+        922
+      ]
+    },
+    {
+      "name": "a second slender teal tree, leaning left",
+      "file": "assets/tableaux/viriditas/pieces/03-a-second-slender-teal-tree-leaning-left.png",
+      "sheetBounds": [
+        1074,
+        31,
+        1548,
+        951
+      ],
+      "size": [
+        474,
+        920
+      ]
+    },
+    {
+      "name": "a third slender tree, bottle green, forked near the top",
+      "file": "assets/tableaux/viriditas/pieces/04-a-third-slender-tree-bottle-green-forked-near-the-top.png",
+      "sheetBounds": [
+        1562,
+        31,
+        2021,
+        945
+      ],
+      "size": [
+        459,
+        914
+      ]
+    },
+    {
+      "name": "a short young tree with a few buds",
+      "file": "assets/tableaux/viriditas/pieces/05-a-short-young-tree-with-a-few-buds.png",
+      "sheetBounds": [
+        66,
+        982,
+        407,
+        1550
+      ],
+      "size": [
+        341,
+        568
+      ]
+    },
+    {
+      "name": "a cluster of red-orange berries, large",
+      "file": "assets/tableaux/viriditas/pieces/06-a-cluster-of-red-orange-berries-large.png",
+      "sheetBounds": [
+        553,
+        941,
+        1049,
+        1584
+      ],
+      "size": [
+        496,
+        643
+      ]
+    },
+    {
+      "name": "a cluster of red-orange berries, medium",
+      "file": "assets/tableaux/viriditas/pieces/07-a-cluster-of-red-orange-berries-medium.png",
+      "sheetBounds": [
+        1178,
+        1019,
+        1496,
+        1575
+      ],
+      "size": [
+        318,
+        556
+      ]
+    },
+    {
+      "name": "a cluster of red-orange berries, small",
+      "file": "assets/tableaux/viriditas/pieces/08-a-cluster-of-red-orange-berries-small.png",
+      "sheetBounds": [
+        1697,
+        1058,
+        1972,
+        1557
+      ],
+      "size": [
+        275,
+        499
+      ]
+    },
+    {
+      "name": "a single dark green bud on a curved stem",
+      "file": "assets/tableaux/viriditas/pieces/09-a-single-dark-green-bud-on-a-curved-stem.png",
+      "sheetBounds": [
+        127,
+        1563,
+        327,
+        2022
+      ],
+      "size": [
+        200,
+        459
+      ]
+    },
+    {
+      "name": "a swirl of dark purple sky, cut out like a cloud",
+      "file": "assets/tableaux/viriditas/pieces/10-a-swirl-of-dark-purple-sky-cut-out-like-a-cloud.png",
+      "sheetBounds": [
+        342,
+        1616,
+        1106,
+        2019
+      ],
+      "size": [
+        764,
+        403
+      ]
+    },
+    {
+      "name": "a small bird of stitched teal silk among the branches",
+      "file": "assets/tableaux/viriditas/pieces/11-a-small-bird-of-stitched-teal-silk-among-the-branches.png",
+      "sheetBounds": [
+        1136,
+        1659,
+        1520,
+        1971
+      ],
+      "size": [
+        384,
+        312
+      ]
+    },
+    {
+      "name": "a patch of orange fallen leaves",
+      "file": "assets/tableaux/viriditas/pieces/12-a-patch-of-orange-fallen-leaves.png",
+      "sheetBounds": [
+        1542,
+        1621,
+        2015,
+        1975
+      ],
+      "size": [
+        473,
+        354
+      ]
+    }
+  ],
+  "golden-lady.pieces": [
+    {
+      "name": "her head and neck, without the hair",
+      "file": "assets/tableaux/golden-lady/pieces/01-her-head-and-neck-without-the-hair.png",
+      "sheetBounds": [
+        185,
+        40,
+        617,
+        714
+      ],
+      "size": [
+        432,
+        674
+      ]
+    },
+    {
+      "name": "her orange-gold hair, as one piece",
+      "file": "assets/tableaux/golden-lady/pieces/02-her-orange-gold-hair-as-one-piece.png",
+      "sheetBounds": [
+        664,
+        79,
+        1301,
+        681
+      ],
+      "size": [
+        637,
+        602
+      ]
+    },
+    {
+      "name": "her body in the saffron dress, from the shoulders to the waist, with the arm on her hip",
+      "file": "assets/tableaux/golden-lady/pieces/03-her-body-in-the-saffron-dress-from-the-shoulders-to-the-waist-with-the-a.png",
+      "sheetBounds": [
+        1299,
+        85,
+        2034,
+        758
+      ],
+      "size": [
+        735,
+        673
+      ]
+    },
+    {
+      "name": "the slim tree at the left edge",
+      "file": "assets/tableaux/golden-lady/pieces/04-the-slim-tree-at-the-left-edge.png",
+      "sheetBounds": [
+        119,
+        732,
+        592,
+        1566
+      ],
+      "size": [
+        473,
+        834
+      ]
+    },
+    {
+      "name": "the tallest smoky grey-violet cloud",
+      "file": "assets/tableaux/golden-lady/pieces/05-the-tallest-smoky-grey-violet-cloud.png",
+      "sheetBounds": [
+        765,
+        721,
+        1289,
+        1581
+      ],
+      "size": [
+        524,
+        860
+      ]
+    },
+    {
+      "name": "a blue cloud",
+      "file": "assets/tableaux/golden-lady/pieces/06-a-blue-cloud.png",
+      "sheetBounds": [
+        1329,
+        818,
+        2028,
+        1515
+      ],
+      "size": [
+        699,
+        697
+      ]
+    },
+    {
+      "name": "a pink cloud",
+      "file": "assets/tableaux/golden-lady/pieces/07-a-pink-cloud.png",
+      "sheetBounds": [
+        59,
+        1544,
+        1088,
+        2027
+      ],
+      "size": [
+        1029,
+        483
+      ]
+    },
+    {
+      "name": "a small pale sun low in the sky",
+      "file": "assets/tableaux/golden-lady/pieces/08-a-small-pale-sun-low-in-the-sky.png",
+      "sheetBounds": [
+        1234,
+        1625,
+        1601,
+        1981
+      ],
+      "size": [
+        367,
+        356
+      ]
+    }
+  ],
+  "black-tree.pieces": [
+    {
+      "name": "the black tree, trunk and branches",
+      "file": "assets/tableaux/black-tree/pieces/01-the-black-tree-trunk-and-branches.png",
+      "sheetBounds": [
+        56,
+        5,
+        748,
+        700
+      ],
+      "size": [
+        692,
+        695
+      ]
+    },
+    {
+      "name": "a large black leaf",
+      "file": "assets/tableaux/black-tree/pieces/02-a-large-black-leaf.png",
+      "sheetBounds": [
+        772,
+        70,
+        1353,
+        667
+      ],
+      "size": [
+        581,
+        597
+      ]
+    },
+    {
+      "name": "a large ochre leaf",
+      "file": "assets/tableaux/black-tree/pieces/03-a-large-ochre-leaf.png",
+      "sheetBounds": [
+        1429,
+        7,
+        2002,
+        674
+      ],
+      "size": [
+        573,
+        667
+      ]
+    },
+    {
+      "name": "a cream leaf",
+      "file": "assets/tableaux/black-tree/pieces/04-a-cream-leaf.png",
+      "sheetBounds": [
+        119,
+        747,
+        608,
+        1352
+      ],
+      "size": [
+        489,
+        605
+      ]
+    },
+    {
+      "name": "the face with long dark hair",
+      "file": "assets/tableaux/black-tree/pieces/05-the-face-with-long-dark-hair.png",
+      "sheetBounds": [
+        652,
+        681,
+        1409,
+        1396
+      ],
+      "size": [
+        757,
+        715
+      ]
+    },
+    {
+      "name": "the pale face with closed eyes",
+      "file": "assets/tableaux/black-tree/pieces/06-the-pale-face-with-closed-eyes.png",
+      "sheetBounds": [
+        1417,
+        682,
+        2043,
+        1442
+      ],
+      "size": [
+        626,
+        760
+      ]
+    },
+    {
+      "name": "the dark face with the gold mask-like look",
+      "file": "assets/tableaux/black-tree/pieces/07-the-dark-face-with-the-gold-mask-like-look.png",
+      "sheetBounds": [
+        6,
+        1340,
+        643,
+        2038
+      ],
+      "size": [
+        637,
+        698
+      ]
+    },
+    {
+      "name": "the row of small gabled houses",
+      "file": "assets/tableaux/black-tree/pieces/08-the-row-of-small-gabled-houses.png",
+      "sheetBounds": [
+        608,
+        1475,
+        1498,
+        1946
+      ],
+      "size": [
+        890,
+        471
+      ]
+    },
+    {
+      "name": "a single red and cream harlequin diamond",
+      "file": "assets/tableaux/black-tree/pieces/09-a-single-red-and-cream-harlequin-diamond.png",
+      "sheetBounds": [
+        1574,
+        1413,
+        1949,
+        2030
+      ],
+      "size": [
+        375,
+        617
+      ]
+    }
+  ],
+  "two-moons.pieces": [
+    {
+      "name": "the left pale moon",
+      "file": "assets/tableaux/two-moons/pieces/01-the-left-pale-moon.png",
+      "sheetBounds": [
+        36,
+        83,
+        652,
+        713
+      ],
+      "size": [
+        616,
+        630
+      ]
+    },
+    {
+      "name": "the right pale moon",
+      "file": "assets/tableaux/two-moons/pieces/02-the-right-pale-moon.png",
+      "sheetBounds": [
+        760,
+        86,
+        1383,
+        735
+      ],
+      "size": [
+        623,
+        649
+      ]
+    },
+    {
+      "name": "the golden crescent of couched thread",
+      "file": "assets/tableaux/two-moons/pieces/03-the-golden-crescent-of-couched-thread.png",
+      "sheetBounds": [
+        1522,
+        71,
+        2027,
+        771
+      ],
+      "size": [
+        505,
+        700
+      ]
+    },
+    {
+      "name": "the lace mountain range, as one long piece",
+      "file": "assets/tableaux/two-moons/pieces/04-the-lace-mountain-range-as-one-long-piece.png",
+      "sheetBounds": [
+        19,
+        848,
+        1289,
+        1315
+      ],
+      "size": [
+        1270,
+        467
+      ]
+    },
+    {
+      "name": "the striped band of pale yellow and sky blue",
+      "file": "assets/tableaux/two-moons/pieces/05-the-striped-band-of-pale-yellow-and-sky-blue.png",
+      "sheetBounds": [
+        1178,
+        897,
+        2027,
+        1257
+      ],
+      "size": [
+        849,
+        360
+      ]
+    },
+    {
+      "name": "a single small lace peak, separate from the range",
+      "file": "assets/tableaux/two-moons/pieces/06-a-single-small-lace-peak-separate-from-the-range.png",
+      "sheetBounds": [
+        62,
+        1409,
+        635,
+        1940
+      ],
+      "size": [
+        573,
+        531
+      ]
+    },
+    {
+      "name": "a small silver star",
+      "file": "assets/tableaux/two-moons/pieces/07-a-small-silver-star.png",
+      "sheetBounds": [
+        809,
+        1403,
+        1279,
+        1953
+      ],
+      "size": [
+        470,
+        550
+      ]
+    }
+  ],
+  "man-and-woman.pieces": [
+    {
+      "name": "the man, seated, facing right",
+      "file": "assets/tableaux/man-and-woman/pieces/01-the-man-seated-facing-right.png",
+      "sheetBounds": [
+        23,
+        54,
+        818,
+        758
+      ],
+      "size": [
+        795,
+        704
+      ]
+    },
+    {
+      "name": "the woman, seated, facing left",
+      "file": "assets/tableaux/man-and-woman/pieces/02-the-woman-seated-facing-left.png",
+      "sheetBounds": [
+        818,
+        109,
+        1412,
+        768
+      ],
+      "size": [
+        594,
+        659
+      ]
+    },
+    {
+      "name": "the copper-gold sun",
+      "file": "assets/tableaux/man-and-woman/pieces/03-the-copper-gold-sun.png",
+      "sheetBounds": [
+        1357,
+        52,
+        2025,
+        743
+      ],
+      "size": [
+        668,
+        691
+      ]
+    },
+    {
+      "name": "the little peaked house",
+      "file": "assets/tableaux/man-and-woman/pieces/04-the-little-peaked-house.png",
+      "sheetBounds": [
+        55,
+        842,
+        592,
+        1473
+      ],
+      "size": [
+        537,
+        631
+      ]
+    },
+    {
+      "name": "the larger bare tree",
+      "file": "assets/tableaux/man-and-woman/pieces/05-the-larger-bare-tree.png",
+      "sheetBounds": [
+        681,
+        752,
+        1392,
+        1577
+      ],
+      "size": [
+        711,
+        825
+      ]
+    },
+    {
+      "name": "the smaller bare tree",
+      "file": "assets/tableaux/man-and-woman/pieces/06-the-smaller-bare-tree.png",
+      "sheetBounds": [
+        1523,
+        849,
+        1989,
+        1515
+      ],
+      "size": [
+        466,
+        666
+      ]
+    },
+    {
+      "name": "a single orange silk leaf",
+      "file": "assets/tableaux/man-and-woman/pieces/07-a-single-orange-silk-leaf.png",
+      "sheetBounds": [
+        128,
+        1555,
+        621,
+        1984
+      ],
+      "size": [
+        493,
+        429
+      ]
+    },
+    {
+      "name": "the looping scarlet ribbon from the tablecloth",
+      "file": "assets/tableaux/man-and-woman/pieces/08-the-looping-scarlet-ribbon-from-the-tablecloth.png",
+      "sheetBounds": [
+        725,
+        1631,
+        1995,
+        1981
+      ],
+      "size": [
+        1270,
+        350
+      ]
+    }
+  ],
+  "blue-lady.pieces": [
+    {
+      "name": "the reclining woman, her face, body and hair as one piece",
+      "file": "assets/tableaux/blue-lady/pieces/01-the-reclining-woman-her-face-body-and-hair-as-one-piece.png",
+      "sheetBounds": [
+        14,
+        429,
+        1506,
+        1104
+      ],
+      "size": [
+        1492,
+        675
+      ]
+    },
+    {
+      "name": "the small pale moon",
+      "file": "assets/tableaux/blue-lady/pieces/02-the-small-pale-moon.png",
+      "sheetBounds": [
+        855,
+        102,
+        1283,
+        488
+      ],
+      "size": [
+        428,
+        386
+      ]
+    },
+    {
+      "name": "the fish of patterned blue cloth",
+      "file": "assets/tableaux/blue-lady/pieces/03-the-fish-of-patterned-blue-cloth.png",
+      "sheetBounds": [
+        1422,
+        633,
+        2046,
+        1048
+      ],
+      "size": [
+        624,
+        415
+      ]
+    },
+    {
+      "name": "a cluster of tall reeds",
+      "file": "assets/tableaux/blue-lady/pieces/04-a-cluster-of-tall-reeds.png",
+      "sheetBounds": [
+        69,
+        1042,
+        490,
+        1984
+      ],
+      "size": [
+        421,
+        942
+      ]
+    },
+    {
+      "name": "a long ripple of stitched teal thread",
+      "file": "assets/tableaux/blue-lady/pieces/05-a-long-ripple-of-stitched-teal-thread.png",
+      "sheetBounds": [
+        432,
+        1455,
+        1294,
+        1576
+      ],
+      "size": [
+        862,
+        121
+      ]
+    },
+    {
+      "name": "a scrap of turquoise satin, like a wave crest",
+      "file": "assets/tableaux/blue-lady/pieces/06-a-scrap-of-turquoise-satin-like-a-wave-crest.png",
+      "sheetBounds": [
+        1113,
+        1469,
+        2019,
+        1716
+      ],
+      "size": [
+        906,
+        247
+      ]
+    }
+  ],
+  "crowd.pieces": [
+    {
+      "name": "the large face with wide open eyes",
+      "file": "assets/tableaux/crowd/pieces/01-the-large-face-with-wide-open-eyes.png",
+      "sheetBounds": [
+        76,
+        5,
+        642,
+        679
+      ],
+      "size": [
+        566,
+        674
+      ]
+    },
+    {
+      "name": "the single floating eye",
+      "file": "assets/tableaux/crowd/pieces/02-the-single-floating-eye.png",
+      "sheetBounds": [
+        709,
+        130,
+        1356,
+        630
+      ],
+      "size": [
+        647,
+        500
+      ]
+    },
+    {
+      "name": "a rose face with closed eyes",
+      "file": "assets/tableaux/crowd/pieces/03-a-rose-face-with-closed-eyes.png",
+      "sheetBounds": [
+        1441,
+        19,
+        1979,
+        673
+      ],
+      "size": [
+        538,
+        654
+      ]
+    },
+    {
+      "name": "an ochre face looking left",
+      "file": "assets/tableaux/crowd/pieces/04-an-ochre-face-looking-left.png",
+      "sheetBounds": [
+        114,
+        699,
+        628,
+        1335
+      ],
+      "size": [
+        514,
+        636
+      ]
+    },
+    {
+      "name": "a dusty blue face looking up",
+      "file": "assets/tableaux/crowd/pieces/05-a-dusty-blue-face-looking-up.png",
+      "sheetBounds": [
+        798,
+        691,
+        1324,
+        1350
+      ],
+      "size": [
+        526,
+        659
+      ]
+    },
+    {
+      "name": "a cream face with a long neck",
+      "file": "assets/tableaux/crowd/pieces/06-a-cream-face-with-a-long-neck.png",
+      "sheetBounds": [
+        1520,
+        688,
+        2030,
+        1365
+      ],
+      "size": [
+        510,
+        677
+      ]
+    },
+    {
+      "name": "a slate face in profile",
+      "file": "assets/tableaux/crowd/pieces/07-a-slate-face-in-profile.png",
+      "sheetBounds": [
+        91,
+        1357,
+        627,
+        2024
+      ],
+      "size": [
+        536,
+        667
+      ]
+    },
+    {
+      "name": "a small pale face, smiling",
+      "file": "assets/tableaux/crowd/pieces/08-a-small-pale-face-smiling.png",
+      "sheetBounds": [
+        789,
+        1447,
+        1260,
+        1962
+      ],
+      "size": [
+        471,
+        515
+      ]
+    },
+    {
+      "name": "a pair of faces cheek to cheek",
+      "file": "assets/tableaux/crowd/pieces/09-a-pair-of-faces-cheek-to-cheek.png",
+      "sheetBounds": [
+        1370,
+        1380,
+        2034,
+        2011
+      ],
+      "size": [
+        664,
+        631
+      ]
+    }
+  ],
+  "silk-bird.pieces": [
+    {
+      "name": "the silk bird with the face in its breast",
+      "file": "assets/tableaux/silk-bird/pieces/01-the-silk-bird-with-the-face-in-its-breast.png",
+      "sheetBounds": [
+        16,
+        98,
+        996,
+        648
+      ],
+      "size": [
+        980,
+        550
+      ]
+    },
+    {
+      "name": "a long gold ribbon loop",
+      "file": "assets/tableaux/silk-bird/pieces/02-a-long-gold-ribbon-loop.png",
+      "sheetBounds": [
+        780,
+        76,
+        1490,
+        819
+      ],
+      "size": [
+        710,
+        743
+      ]
+    },
+    {
+      "name": "a rose ribbon loop",
+      "file": "assets/tableaux/silk-bird/pieces/03-a-rose-ribbon-loop.png",
+      "sheetBounds": [
+        1486,
+        110,
+        2030,
+        864
+      ],
+      "size": [
+        544,
+        754
+      ]
+    },
+    {
+      "name": "a sky-blue ribbon loop",
+      "file": "assets/tableaux/silk-bird/pieces/04-a-sky-blue-ribbon-loop.png",
+      "sheetBounds": [
+        38,
+        870,
+        628,
+        1628
+      ],
+      "size": [
+        590,
+        758
+      ]
+    },
+    {
+      "name": "a lilac ribbon loop",
+      "file": "assets/tableaux/silk-bird/pieces/05-a-lilac-ribbon-loop.png",
+      "sheetBounds": [
+        549,
+        968,
+        1483,
+        1625
+      ],
+      "size": [
+        934,
+        657
+      ]
+    },
+    {
+      "name": "the netting fish with orange stitching",
+      "file": "assets/tableaux/silk-bird/pieces/06-the-netting-fish-with-orange-stitching.png",
+      "sheetBounds": [
+        1218,
+        973,
+        2032,
+        1489
+      ],
+      "size": [
+        814,
+        516
+      ]
+    },
+    {
+      "name": "the pink silk triangle",
+      "file": "assets/tableaux/silk-bird/pieces/07-the-pink-silk-triangle.png",
+      "sheetBounds": [
+        501,
+        1494,
+        1053,
+        2025
+      ],
+      "size": [
+        552,
+        531
+      ]
+    }
+  ],
+  "night-quilt.pieces": [
+    {
+      "name": "the crescent moon with the sleeping face",
+      "file": "assets/tableaux/night-quilt/pieces/01-the-crescent-moon-with-the-sleeping-face.png",
+      "sheetBounds": [
+        88,
+        59,
+        617,
+        719
+      ],
+      "size": [
+        529,
+        660
+      ]
+    },
+    {
+      "name": "the round moon with the sleeping face in profile",
+      "file": "assets/tableaux/night-quilt/pieces/02-the-round-moon-with-the-sleeping-face-in-profile.png",
+      "sheetBounds": [
+        738,
+        59,
+        1349,
+        675
+      ],
+      "size": [
+        611,
+        616
+      ]
+    },
+    {
+      "name": "the upper red heart with its white embroidery",
+      "file": "assets/tableaux/night-quilt/pieces/03-the-upper-red-heart-with-its-white-embroidery.png",
+      "sheetBounds": [
+        1364,
+        60,
+        2016,
+        695
+      ],
+      "size": [
+        652,
+        635
+      ]
+    },
+    {
+      "name": "the lower red heart with its white embroidery",
+      "file": "assets/tableaux/night-quilt/pieces/04-the-lower-red-heart-with-its-white-embroidery.png",
+      "sheetBounds": [
+        37,
+        707,
+        721,
+        1336
+      ],
+      "size": [
+        684,
+        629
+      ]
+    },
+    {
+      "name": "the pale yellow stitched hand",
+      "file": "assets/tableaux/night-quilt/pieces/05-the-pale-yellow-stitched-hand.png",
+      "sheetBounds": [
+        731,
+        728,
+        1325,
+        1361
+      ],
+      "size": [
+        594,
+        633
+      ]
+    },
+    {
+      "name": "a cluster of small red and yellow batik flowers",
+      "file": "assets/tableaux/night-quilt/pieces/06-a-cluster-of-small-red-and-yellow-batik-flowers.png",
+      "sheetBounds": [
+        1336,
+        721,
+        2017,
+        1323
+      ],
+      "size": [
+        681,
+        602
+      ]
+    },
+    {
+      "name": "one indigo block from the middle of the quilt, as a square of cloth with its stitched edge",
+      "file": "assets/tableaux/night-quilt/pieces/07-one-indigo-block-from-the-middle-of-the-quilt-as-a-square-of-cloth-with.png",
+      "sheetBounds": [
+        34,
+        1324,
+        674,
+        2020
+      ],
+      "size": [
+        640,
+        696
+      ]
+    },
+    {
+      "name": "a strip of red and orange batik border",
+      "file": "assets/tableaux/night-quilt/pieces/08-a-strip-of-red-and-orange-batik-border.png",
+      "sheetBounds": [
+        685,
+        1491,
+        1395,
+        1899
+      ],
+      "size": [
+        710,
+        408
+      ]
+    },
+    {
+      "name": "a small white batik star",
+      "file": "assets/tableaux/night-quilt/pieces/09-a-small-white-batik-star.png",
+      "sheetBounds": [
+        1476,
+        1423,
+        1931,
+        1892
+      ],
+      "size": [
+        455,
+        469
+      ]
+    }
+  ],
+  "dancers.pieces": [
+    {
+      "name": "the leaping blue dancer",
+      "file": "assets/tableaux/dancers/pieces/01-the-leaping-blue-dancer.png",
+      "sheetBounds": [
+        14,
+        91,
+        751,
+        708
+      ],
+      "size": [
+        737,
+        617
+      ]
+    },
+    {
+      "name": "the turning red dancer",
+      "file": "assets/tableaux/dancers/pieces/02-the-turning-red-dancer.png",
+      "sheetBounds": [
+        705,
+        129,
+        1360,
+        707
+      ],
+      "size": [
+        655,
+        578
+      ]
+    },
+    {
+      "name": "a pair of blue dancers holding hands",
+      "file": "assets/tableaux/dancers/pieces/03-a-pair-of-blue-dancers-holding-hands.png",
+      "sheetBounds": [
+        1315,
+        201,
+        2043,
+        678
+      ],
+      "size": [
+        728,
+        477
+      ]
+    },
+    {
+      "name": "a red dancer reaching up",
+      "file": "assets/tableaux/dancers/pieces/04-a-red-dancer-reaching-up.png",
+      "sheetBounds": [
+        33,
+        681,
+        733,
+        1511
+      ],
+      "size": [
+        700,
+        830
+      ]
+    },
+    {
+      "name": "the round red sun",
+      "file": "assets/tableaux/dancers/pieces/05-the-round-red-sun.png",
+      "sheetBounds": [
+        743,
+        845,
+        1305,
+        1389
+      ],
+      "size": [
+        562,
+        544
+      ]
+    },
+    {
+      "name": "the tall blue plant with curling leaves",
+      "file": "assets/tableaux/dancers/pieces/06-the-tall-blue-plant-with-curling-leaves.png",
+      "sheetBounds": [
+        1521,
+        735,
+        1966,
+        1533
+      ],
+      "size": [
+        445,
+        798
+      ]
+    },
+    {
+      "name": "the small quilted window, as an empty frame",
+      "file": "assets/tableaux/dancers/pieces/07-the-small-quilted-window-as-an-empty-frame.png",
+      "sheetBounds": [
+        33,
+        1516,
+        692,
+        2009
+      ],
+      "size": [
+        659,
+        493
+      ]
+    }
+  ],
+  "chain.tree": [
+    {
+      "name": "a bare black appliqu\u00e9 tree with curving branches",
+      "file": "assets/chains/tree/01-a-bare-black-appliqu-tree-with-curving-branches.png",
+      "sheetBounds": [
+        466,
+        76,
+        847,
+        653
+      ],
+      "size": [
+        381,
+        577
+      ]
+    },
+    {
+      "name": "the same tree budding, small green buds along the branches",
+      "file": "assets/chains/tree/02-the-same-tree-budding-small-green-buds-along-the-branches.png",
+      "sheetBounds": [
+        877,
+        55,
+        1273,
+        650
+      ],
+      "size": [
+        396,
+        595
+      ]
+    },
+    {
+      "name": "a tree with orange silk leaves",
+      "file": "assets/chains/tree/03-a-tree-with-orange-silk-leaves.png",
+      "sheetBounds": [
+        1288,
+        40,
+        1696,
+        653
+      ],
+      "size": [
+        408,
+        613
+      ]
+    },
+    {
+      "name": "a slender teal tree with clusters of red-orange berries",
+      "file": "assets/chains/tree/04-a-slender-teal-tree-with-clusters-of-red-orange-berries.png",
+      "sheetBounds": [
+        1735,
+        20,
+        2159,
+        661
+      ],
+      "size": [
+        424,
+        641
+      ]
+    },
+    {
+      "name": "a single budding branch, as if held in a hand",
+      "file": "assets/chains/tree/05-a-single-budding-branch-as-if-held-in-a-hand.png",
+      "sheetBounds": [
+        2213,
+        83,
+        2544,
+        626
+      ],
+      "size": [
+        331,
+        543
+      ]
+    }
+  ],
+  "chain.bird": [
+    {
+      "name": "a silk bird in magenta and cobalt, wings spread",
+      "file": "assets/chains/bird/01-a-silk-bird-in-magenta-and-cobalt-wings-spread.png",
+      "sheetBounds": [
+        495,
+        152,
+        975,
+        543
+      ],
+      "size": [
+        480,
+        391
+      ]
+    },
+    {
+      "name": "the bird folding its wings, its body lengthening",
+      "file": "assets/chains/bird/02-the-bird-folding-its-wings-its-body-lengthening.png",
+      "sheetBounds": [
+        930,
+        223,
+        1354,
+        517
+      ],
+      "size": [
+        424,
+        294
+      ]
+    },
+    {
+      "name": "a fish of patterned blue cloth",
+      "file": "assets/chains/bird/03-a-fish-of-patterned-blue-cloth.png",
+      "sheetBounds": [
+        1339,
+        202,
+        1753,
+        500
+      ],
+      "size": [
+        414,
+        298
+      ]
+    },
+    {
+      "name": "a fish of brown netting with orange stitching",
+      "file": "assets/chains/bird/04-a-fish-of-brown-netting-with-orange-stitching.png",
+      "sheetBounds": [
+        1760,
+        185,
+        2171,
+        511
+      ],
+      "size": [
+        411,
+        326
+      ]
+    },
+    {
+      "name": "a long orange silk leaf, its veins the fish's stitches",
+      "file": "assets/chains/bird/05-a-long-orange-silk-leaf-its-veins-the-fish-s-stitches.png",
+      "sheetBounds": [
+        2168,
+        205,
+        2509,
+        506
+      ],
+      "size": [
+        341,
+        301
+      ]
+    }
+  ]
+}

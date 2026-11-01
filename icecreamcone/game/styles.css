@@ -1,0 +1,601 @@
+:root {
+  --paper: #f4ecd8;
+  --paper-2: #efe4ca;
+  --ink: #3b2b20;
+  --muted: #7a6656;
+  --accent: #c0407a;
+  --accent-2: #d9a25a;
+  --focus: #c0407a;
+  --panel: rgba(250, 244, 228, 0.97);
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'Questrial', 'Century Gothic', 'Avenir', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font: 18px/1.45 var(--sans);
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#app { position: fixed; inset: 0; }
+#stage { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+[hidden] { display: none !important; }
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0; }
+.muted { color: var(--muted); }
+kbd {
+  font: 0.85em var(--sans);
+  border: 1px solid var(--muted);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 0 6px;
+}
+.xb {
+  display: inline-grid;
+  place-items: center;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 50%;
+  font: 700 0.8em var(--sans);
+  color: #fff;
+  vertical-align: 0.05em;
+}
+.xb-a { background: #4caf50; }
+.xb-b { background: #d9443d; }
+.xb-x { background: #3d7bd9; }
+.xb-y { background: #e8b830; color: #1b1430; }
+
+/* ---------- buttons ---------- */
+
+button { font: inherit; color: inherit; cursor: pointer; }
+.press-start, .menu-btn, .text-btn, .icon-btn, .card {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  border-radius: 14px 12px 15px 11px;
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+  outline: none;
+}
+.press-start:hover, .menu-btn:hover, .text-btn:hover, .icon-btn:hover { background: #fff8e8; }
+.press-start:active, .menu-btn:active, .text-btn:active, .icon-btn:active { transform: translateY(2px) scale(0.98); }
+:focus-visible, .focused {
+  outline: 4px solid var(--focus) !important;
+  outline-offset: 3px;
+}
+.menu-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 18px;
+  margin: 8px 0;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.menu-btn.primary, .press-start { background: var(--accent); color: #fff8ef; border-color: var(--ink); }
+.menu-btn.primary:hover, .press-start:hover { background: #d0508a; }
+.text-btn { padding: 8px 18px; font-family: var(--serif); font-weight: 600; }
+.row-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.row-buttons .menu-btn { width: auto; flex: 1 1 160px; margin: 0; }
+
+/* ---------- title ---------- */
+
+/* The logo and Press Start sit together in the sky at the top, clear of the
+   birds walking along the lane below (the Coot is drawn on the picture). */
+#title { align-items: center; justify-content: flex-start; text-align: center; }
+.title-block { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: max(16px, 3.5vh); }
+#logo-img { width: min(94vw, 98vh, 1120px); height: auto; filter: drop-shadow(0 4px 6px rgba(60, 40, 20, 0.2)); }
+/* The loading bar, while the pictures load. */
+#loading { flex-direction: column; align-items: center; justify-content: center; gap: max(18px, 4vh); }
+/* The title over the bar while the pictures load, fading in once it has. */
+.loading-logo { width: min(86vw, 90vh, 900px); height: auto; opacity: 0; transition: opacity 0.4s ease; filter: drop-shadow(0 4px 6px rgba(60, 40, 20, 0.2)); }
+.loading-logo.ready { opacity: 1; }
+.loading-bar { width: min(60vw, 420px); height: 14px; border: 2px solid var(--ink); border-radius: 9px; overflow: hidden; background: var(--paper); }
+#loading-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.15s ease; }
+.title-block h1 { margin: 0; line-height: 0; }
+/* Press Start stands on the horizon, halfway between the logo and the
+   camera bird; renderTitle() sets its top from the picture. */
+#title .press-start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  white-space: nowrap;
+}
+.press-start {
+  margin-top: 1vh;
+  padding: 14px 44px;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 800;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+@keyframes breathe { 50% { transform: scale(1.04); } }
+.hint { font-size: 0.9rem; color: var(--muted); margin: 0; }
+.corner-buttons {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  gap: 10px;
+}
+.icon-btn {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+}
+.icon-btn svg { width: 28px; height: 28px; }
+.btn-label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.85rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.icon-btn.sound-btn.is-off:not(:hover):not(:focus-visible):not(.focused) { opacity: 0.55; }
+.icon-btn:hover .btn-label, .icon-btn:focus-visible .btn-label, .icon-btn.focused .btn-label { opacity: 1; }
+
+/* ---------- guide ---------- */
+
+.screen-head { text-align: center; margin-bottom: 10px; }
+.screen-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); }
+.screen-foot { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 10px; flex-wrap: wrap; }
+/* The 28 cards: four rows of seven that scroll (two or three rows show at
+   once), the chosen card kept in view. The edges fade, like the paper
+   running on, so it's plain there are more above or below. */
+.cards {
+  --cols: 7;
+  flex: 1 1 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  align-content: start;
+  gap: 16px 14px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px 16px 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 43, 32, 0.35) transparent;
+  -webkit-mask-image: linear-gradient(transparent, #000 14px, #000 calc(100% - 26px), transparent);
+  mask-image: linear-gradient(transparent, #000 14px, #000 calc(100% - 26px), transparent);
+}
+body.reduce-motion .cards { scroll-behavior: auto; }
+@media (max-width: 1000px) { .cards { --cols: 5; } }
+@media (max-width: 760px), (max-aspect-ratio: 1/1) {
+  .cards { --cols: 3; gap: 12px 10px; padding: 14px 10px 26px; }
+}
+@media (max-height: 520px) and (min-aspect-ratio: 1/1) { .cards { --cols: 7; } }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 6px 8px;
+  background: #fbf6e8;
+  box-shadow: 2px 3px 0 rgba(59, 43, 32, 0.25);
+  aspect-ratio: 5 / 6;
+  align-self: start;
+  scroll-margin: 18px 0 30px;
+}
+.card:hover { transform: translateY(-3px) rotate(-0.4deg); }
+.card canvas { flex: 1; min-height: 0; width: 100%; }
+.card .card-name { font-family: var(--serif); font-weight: 600; font-size: clamp(0.78rem, 1.25vw, 0.98rem); line-height: 1.12; text-align: center; }
+.card .card-sub { font-size: 0.75rem; color: var(--muted); max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* A bird not yet spotted: its silhouette on a darker page. Still a card to
+   pick and play: it lifts and rings like the rest. */
+.card.unspotted { background: var(--paper-2); }
+/* The chosen card is lifted a little and ringed in a thin pink line, its
+   name inked pink; the others step back only slightly. */
+.card:focus {
+  transform: translateY(-4px) scale(1.035);
+  box-shadow: 0 0 0 2.5px rgba(192, 64, 122, 0.85), 3px 7px 0 rgba(59, 43, 32, 0.22);
+  outline: none !important;
+  z-index: 2;
+}
+.card:focus .card-name { color: var(--focus); }
+.card:focus .card-sub { color: var(--ink); }
+.cards:focus-within .card:not(:focus) { opacity: 0.9; }
+
+/* ---------- page ---------- */
+
+#page { flex-direction: row; justify-content: flex-end; align-items: center; }
+.page-text {
+  width: min(46%, 560px);
+  margin-right: 3vw;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 100%;
+  overflow: hidden;
+}
+.page-text > :not(.page-game) { flex-shrink: 0; }
+.page-number { margin: 0; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+#page-name { font-size: clamp(1.8rem, 3.4vw, 2.7rem); line-height: 1.05; }
+.page-object { margin: 0; font-style: italic; }
+.rhyme { font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.45; margin: 6px 0; }
+.rhyme p { margin: 0; }
+.rhyme p:first-letter { font-size: 1.5em; line-height: 1; }
+.page-game { min-height: 0; overflow-y: auto; overscroll-behavior: contain; border-top: 1.5px dashed var(--muted); padding-top: 8px; }
+.page-game h3 { font-size: 1.3rem; }
+.page-game p { margin: 2px 0; }
+.page-game .controls-list, .page-game .tips { margin: 4px 0; }
+.page-game .tips { font-size: 0.88rem; }
+/* Play stays in reach when the page has to scroll. */
+.page-text > .row-buttons { position: sticky; bottom: 0; background: linear-gradient(transparent, rgba(244, 236, 216, 0.95) 30%); padding-top: 6px; }
+.goal-line { font-weight: 700; }
+.foot-hint { font-size: 0.85rem; margin: 4px 0 0; }
+@media (max-width: 760px), (max-aspect-ratio: 1/1) {
+  #page { flex-direction: column; justify-content: flex-end; }
+  .page-text { width: 100%; margin: 0; background: rgba(244, 236, 216, 0.92); padding: 10px; border-radius: 12px; }
+  .rhyme { margin: 4px 0; }
+}
+
+/* ---------- play ---------- */
+
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: var(--serif);
+}
+.hud-left {
+  position: absolute;
+  left: max(14px, env(safe-area-inset-left));
+  top: max(10px, env(safe-area-inset-top));
+  display: flex;
+  flex-direction: column;
+  background: rgba(250, 244, 228, 0.85);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 4px 14px;
+}
+#hud-game { font-size: 0.9rem; color: var(--muted); }
+#hud-status { font-size: clamp(1.1rem, 2.4vw, 1.6rem); font-weight: 800; }
+.hud-timer {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 800;
+  background: rgba(250, 244, 228, 0.85);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0 22px;
+  min-width: 3.4em;
+  text-align: center;
+}
+.hud-timer.low { color: #c0403a; }
+.hud-pause {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  pointer-events: auto;
+}
+.countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(4rem, 18vw, 12rem);
+  font-weight: 800;
+  color: var(--ink);
+  text-shadow: 4px 4px 0 #ea8fb0;
+}
+
+/* ---------- modals ---------- */
+
+.modal { align-items: center; justify-content: center; background: rgba(59, 43, 32, 0.35); }
+.panel {
+  width: min(480px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  background: var(--panel);
+  border: 2.5px solid var(--ink);
+  border-radius: 18px 16px 20px 15px;
+  padding: 20px 24px;
+  box-shadow: 4px 6px 0 rgba(59, 43, 32, 0.3);
+  text-align: center;
+  position: relative;
+}
+/* The X in a dialog's corner goes back, like B or Esc. */
+.close-x {
+  position: absolute; top: 6px; right: 8px;
+  width: 44px; height: 44px; border: none; background: none;
+  font: 700 2rem/1 var(--serif); color: var(--muted); cursor: pointer;
+}
+.screen-x { top: max(10px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); z-index: 2; color: var(--ink); background: rgba(250, 244, 228, 0.8); border-radius: 50%; }
+.close-x:hover { color: var(--ink); }
+/* Restart and Exit sit small, side by side, at the foot of the pause menu. */
+.small-row { display: flex; justify-content: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.text-btn.small { font-size: 0.9rem; padding: 6px 14px; min-height: 40px; }
+.leaf-hint { font-size: 0.85rem; margin: 10px 0 0; }
+.leaf-hint:empty { display: none; }
+/* Under the dialog on top, the one it was opened from steps out of sight. */
+.modal.under { visibility: hidden; }
+.controls-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.95rem; }
+.controls-table th, .controls-table td { padding: 6px 6px; border-bottom: 1px solid rgba(59, 43, 32, 0.18); text-align: left; }
+.controls-table tr:first-child th { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+.controls-table td { white-space: nowrap; }
+.panel.wide { width: min(860px, 100%); display: flex; flex-direction: column; }
+.panel h2 { font-size: 2rem; margin-bottom: 6px; }
+.controls-list, .tips { text-align: left; padding-left: 1.2em; margin: 8px 0; }
+.controls-list li { margin: 3px 0; }
+.tips { color: var(--muted); font-size: 0.95rem; }
+.result-score { font: 800 1.6rem var(--serif); margin: 4px 0; }
+.hud-points { display: inline-block; white-space: nowrap; }
+.hud-points::before { content: '· '; }
+/* on a narrow screen the points take their own line, without the dot */
+@media (max-width: 560px) {
+  .hud-points { display: block; }
+  .hud-points::before { content: none; }
+}
+.result-points { display: block; font-size: 0.8em; color: var(--accent); white-space: nowrap; }
+.result-points .sep { display: none; }
+/* The result card stays a moment, its little bar running down, then goes. */
+#result { cursor: pointer; }
+.result-timer { height: 6px; margin: 12px auto 0; width: 60%; border: 1.5px solid var(--ink); border-radius: 4px; overflow: hidden; }
+#result-time { height: 100%; width: 100%; background: var(--accent); }
+.result-hint { font-size: 0.85rem; margin: 8px 0 0; }
+
+/* The card's flourishes: a World Record bounces in under confetti with a
+   rosette stamped on its corner; a pass gets a tick stamp and sparkles. */
+.result-wrap { position: relative; width: min(480px, 100%); max-height: 100%; display: flex; flex-direction: column; z-index: 1; }
+.result-wrap > .panel { width: 100%; min-height: 0; }
+.stamp { position: absolute; z-index: 2; pointer-events: none; filter: drop-shadow(2px 3px 0 rgba(59, 43, 32, 0.25)); }
+.stamp svg { display: block; width: 100%; height: auto; }
+.stamp-record { width: 124px; top: -56px; right: -34px; transform: rotate(12deg); animation: stamp-in 0.5s 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.stamp-record .shine { animation: shine 1.1s 0.9s ease-in-out 2; transform-box: view-box; transform-origin: 60px 58px; }
+.stamp-passed { width: 74px; top: -26px; right: -18px; transform: rotate(-10deg); animation: tick-in 0.35s 0.3s ease-out both; }
+@keyframes stamp-in {
+  0% { opacity: 0; transform: rotate(-20deg) scale(2.4); }
+  70% { opacity: 1; transform: rotate(16deg) scale(0.9); }
+  100% { opacity: 1; transform: rotate(12deg) scale(1); }
+}
+@keyframes tick-in {
+  0% { opacity: 0; transform: rotate(-10deg) scale(1.6); }
+  100% { opacity: 1; transform: rotate(-10deg) scale(1); }
+}
+@keyframes shine { 0% { transform: rotate(25deg) translateX(0); } 100% { transform: rotate(25deg) translateX(150px); } }
+#result.fx-record #result-title { color: var(--accent); text-shadow: 2px 2px 0 #efd96a; animation: bounce-in 0.6s 0.05s cubic-bezier(0.3, 1.7, 0.5, 1) both; }
+#result.fx-record #result-score { font-size: 1.9rem; animation: bounce-in 0.6s 0.2s cubic-bezier(0.3, 1.7, 0.5, 1) both; }
+#result.fx-passed #result-score { position: relative; animation: nudge 0.45s 0.25s ease-out both; }
+@keyframes bounce-in {
+  0% { opacity: 0; transform: scale(0.3); }
+  55% { opacity: 1; transform: scale(1.15); }
+  78% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes nudge { 50% { transform: scale(1.08); } }
+/* behind the card, so its words stay readable */
+.result-fx { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.confetti {
+  position: absolute; top: 0; left: var(--x);
+  width: 13px; height: 13px; border: 1.5px solid var(--ink);
+  transform: translate3d(0, -14vh, 0);
+  animation: fall var(--d) var(--delay) cubic-bezier(0.25, 0.4, 0.55, 1) forwards;
+  will-change: transform;
+}
+.confetti.strip { width: 8px; height: 19px; border-radius: 2px; }
+.confetti.dot { border-radius: 50%; }
+.confetti.streamer { width: 6px; height: 54px; border-radius: 3px; }
+@keyframes fall {
+  0% { transform: translate3d(0, -14vh, 0) rotate(0); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translate3d(var(--dx), 108vh, 0) rotate(var(--r)); opacity: 0; }
+}
+.sparkle {
+  position: absolute; left: calc(50% + var(--sx)); top: calc(50% + var(--sy));
+  width: 24px; height: 24px; margin: -12px 0 0 -12px;
+  background: #d9a25a; border: none;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  transform: scale(0); animation: twinkle 0.9s var(--delay) ease-in-out 2 both;
+}
+@keyframes twinkle { 0%, 100% { transform: scale(0) rotate(0); } 50% { transform: scale(1) rotate(45deg); } }
+/* Reduced motion: the same card, standing still. */
+body.reduce-motion #result * { animation: none !important; }
+body.reduce-motion .confetti { transform: translate3d(0, var(--y), 0) rotate(var(--r)); opacity: 0.9; }
+body.reduce-motion .sparkle { transform: scale(0.8); }
+body.reduce-motion .stamp-record .shine { display: none; }
+/* A switch the browser can't honour, greyed out */
+.row.disabled { color: var(--muted); }
+
+/* The sticker celebration is drawn on the stage; taps go through to it. */
+#celebrate { pointer-events: none; justify-content: flex-start; align-items: flex-end; }
+.celebrate-hint { background: rgba(250, 244, 228, 0.8); padding: 2px 12px; border-radius: 999px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: -1px; }
+/* A bird's card turning over after it is first spotted. */
+.card.unlocking { z-index: 3; transition: none; box-shadow: 0 0 0 4px rgba(192, 64, 122, 0.55), 0 0 22px 6px rgba(239, 217, 106, 0.7); }
+
+.scroll { overflow-y: auto; text-align: left; flex: 1; min-height: 0; padding-right: 6px; }
+.settings-list { display: flex; flex-direction: column; gap: 8px; }
+.row { display: grid; grid-template-columns: 1fr 1.2fr 3ch; align-items: center; gap: 10px; }
+.row.check { grid-template-columns: 1fr auto; }
+.row input[type='range'] { accent-color: var(--accent); width: 100%; }
+.row input[type='checkbox'] { accent-color: var(--accent); width: 24px; height: 24px; }
+.setting-note { margin: -4px 0 4px; font-size: 0.85rem; }
+.row.choice-row { grid-template-columns: auto 1fr; }
+/* Difficulty: three segments in one control; ◀ ▶ (D-pad, arrows) step it,
+   a click or tap picks one. */
+.seg { display: flex; justify-self: end; border: 2px solid var(--ink); border-radius: 12px 10px 13px 9px; overflow: hidden; background: var(--paper); outline: none; }
+.seg button { border: 0; background: transparent; padding: 6px 12px; font: 600 0.95rem var(--sans); color: var(--ink); min-height: 40px; }
+.seg button + button { border-left: 2px solid var(--ink); }
+.seg button[aria-checked='true'] { background: var(--accent); color: #fff8ef; }
+.seg button:hover:not([aria-checked='true']) { background: #fff8e8; }
+@media (max-width: 420px) { .seg button { padding: 6px 9px; font-size: 0.9rem; } }
+.result-level { margin: 0; font: 700 0.95rem var(--sans); color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.gathering-head { margin-top: 0; }
+/* The finale's words sit on a paper label over the painting, so they read
+   against it while hiding little of it; the painting under them takes the
+   pointer (the bird under it shows its name). */
+#gathering { pointer-events: none; }
+#gathering button { pointer-events: auto; }
+.gathering-head { align-self: center; background: rgba(251, 246, 232, 0.94); border: 2px solid var(--ink); border-radius: 16px; padding: 4px 18px 6px; box-shadow: 0 3px 10px rgba(59, 43, 32, 0.25); max-width: calc(100% - 24px); }
+.gathering-head h2 { font-size: clamp(1.15rem, 2.6vw, 1.9rem); }
+.gathering-head p { margin: 2px 0 0; color: #5a4636; font-size: clamp(0.8rem, 1.6vw, 1rem); }
+#gathering .screen-foot .text-btn { background: rgba(251, 246, 232, 0.94); }
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 18px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .press-start { animation: none; }
+}
+body.reduce-motion .press-start { animation: none; }
+.menu-btn:disabled, .text-btn:disabled { opacity: 0.45; cursor: default; }
+
+/* ---------- the sticker book ---------- */
+
+/* The book is drawn on the stage; drags go through this layer to it, and
+   only its buttons take clicks. */
+#stickers { pointer-events: none; align-items: center; }
+#stickers button { pointer-events: auto; }
+.sb-head { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 18px; max-width: calc(100% - 100px); }
+.sb-head h2 { font-size: clamp(1.4rem, 3vw, 2.1rem); }
+.sb-pages { display: none; }
+/* on all the birds together, how many are in the picture */
+#stickers.gather .sb-pages { display: block; margin: 0; font-family: var(--serif); }
+.sb-bg { display: flex; align-items: center; gap: 8px; background: rgba(250, 244, 228, 0.85); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 6px; font-family: var(--serif); font-weight: 600; font-size: 0.95rem; }
+.sb-bg #sb-bg-name { min-width: 9em; text-align: center; }
+.sb-arrow { width: 34px; height: 34px; border: none; background: none; font: 800 1.6rem/1 var(--serif); border-radius: 50%; }
+.sb-arrow:hover:not(:disabled) { background: #fff8e8; }
+.sb-arrow:disabled, .sb-turn:disabled { opacity: 0.25; cursor: default; }
+.sb-turn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 64px; border: 2px solid var(--ink); border-radius: 14px;
+  background: rgba(250, 244, 228, 0.9); font: 700 1.3rem/1 var(--serif); color: var(--ink);
+}
+/* upright, they sit under the book, either side of the hint */
+@media (max-aspect-ratio: 1/1) {
+  .sb-turn { top: auto; bottom: calc(max(10px, env(safe-area-inset-bottom)) + 40px); transform: none; }
+  .sb-bg { font-size: 0.85rem; }
+  .sb-hint { max-width: calc(100% - 150px); font-size: 0.78rem; border-radius: 14px; }
+}
+#sb-prev { left: max(8px, env(safe-area-inset-left)); }
+#sb-next { right: max(8px, env(safe-area-inset-right)); }
+.sb-hint { position: absolute; bottom: max(10px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 24px); text-align: center; background: rgba(250, 244, 228, 0.85); padding: 2px 12px; border-radius: 999px; }
+/* The controller's button for the sticker book, shown while a controller is in use. */
+.pad-only { display: none; }
+body.pad .pad-only { display: inline-grid; }
+
+/* ---------- phones ---------- */
+
+/* Short screens (a phone held sideways): everything tighter so pages and
+   cards fit without being cut off; anything still too tall scrolls. */
+@media (max-height: 520px) {
+  .sb-head h2, .sb-pages { display: none; }
+/* on all the birds together, how many are in the picture */
+#stickers.gather .sb-pages { display: block; margin: 0; font-family: var(--serif); }
+  .sb-bg { font-size: 0.8rem; }
+  .sb-arrow { width: 28px; height: 28px; font-size: 1.3rem; }
+  .sb-hint { font-size: 0.72rem; bottom: 2px; padding: 0 10px; }
+  .screen-head { margin-bottom: 4px; }
+  .screen-head h2 { font-size: 1.35rem; }
+  .screen-head p { margin: 0; font-size: 0.8rem; }
+  .cards { gap: 8px; }
+  .card { padding: 4px 4px 5px; }
+  .card .card-name { font-size: 0.72rem; }
+  .card .card-sub { display: none; }
+  .screen-foot { padding-top: 6px; gap: 8px; }
+  .text-btn { padding: 5px 14px; }
+  .page-text { max-height: 100%; overflow: hidden; gap: 2px; padding: 4px 6px 4px 0; }
+  .page-number { font-size: 0.7rem; }
+  #page-name { font-size: 1.5rem; }
+  .rhyme { font-size: 0.9rem; line-height: 1.35; margin: 4px 0; }
+  .page-game h3 { font-size: 1.05rem; }
+  .page-game p { font-size: 0.85rem; }
+  .row-buttons { margin-top: 6px; gap: 6px; }
+  .panel { padding: 10px 16px; }
+  .panel h2 { font-size: 1.45rem; margin-bottom: 2px; }
+  .panel p { margin: 4px 0; font-size: 0.9rem; }
+  .controls-list, .tips { margin: 4px 0; font-size: 0.82rem; }
+  .menu-btn { padding: 7px 14px; margin: 5px 0; font-size: 1rem; }
+  .result-score { font-size: 1.25rem; }
+  #result.fx-record #result-score { font-size: 1.6rem; }
+  .stamp-record { width: 84px; top: -14px; right: -12px; }
+  .stamp-passed { width: 56px; top: -10px; right: -8px; }
+  .press-start { margin-top: 0.5vh; padding: 10px 34px; }
+  .hud-left { padding: 2px 10px; }
+  #hud-status { font-size: 1.05rem; }
+  .hud-timer { font-size: 1.5rem; padding: 0 14px; }
+  .icon-btn { width: 46px; height: 46px; }
+}
+
+/* Narrow screens (a phone held upright): the HUD's three pieces share the
+   width instead of overlapping; the guide's heading and cards tighten. */
+@media (max-width: 560px) {
+  .screen-head h2 { font-size: 1.45rem; }
+  .screen-head p { margin: 4px 0 0; font-size: 0.9rem; }
+  .card { padding: 4px 3px 6px; }
+  .card .card-name { font-size: 0.78rem; }
+  .card .card-sub { font-size: 0.68rem; }
+  #guide .screen-foot .text-btn { padding: 6px 14px; font-size: 0.95rem; }
+  .hud-left { max-width: calc(100% - 190px); }
+  #hud-game { font-size: 0.75rem; }
+  #hud-status { font-size: 0.95rem; }
+  .hud-timer { left: auto; right: calc(max(14px, env(safe-area-inset-right)) + 62px); transform: none; font-size: 1.5rem; padding: 0 14px; }
+  .controls-table { font-size: 0.78rem; }
+  .controls-table th, .controls-table td { padding: 5px 3px; white-space: normal; }
+  .stamp-record { width: 92px; top: -54px; right: -10px; }
+  .stamp-passed { width: 60px; top: -22px; right: -8px; }
+  #result.fx-record #result-score { font-size: 1.6rem; }
+}
+
+html, body { overscroll-behavior: none; touch-action: manipulation; }
+
+/* The last stickerbook page holds photographs and keeps pinning accessible. */
+.photo-page { pointer-events: auto; position: relative; flex: 1; min-height: 0; width: calc(100% - 100px); margin: 18px 0 40px; overflow-y: auto; padding: 18px; border: 3px solid var(--ink); border-radius: 12px; background: var(--paper); }
+.photo-intro { text-align: center; margin-bottom: 16px; }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 20px; }
+.photo-card { background: #fffaf0; border: 1px solid #a79781; padding: 10px; display: flex; flex-direction: column; gap: 7px; box-shadow: 2px 3px 5px #0002; color: var(--ink); cursor: pointer; }
+.photo-card img { width: 100%; aspect-ratio: 204 / 150; object-fit: cover; }
+.photo-card span { font-size: 0.85rem; }
+.photo-card[aria-pressed="true"] { border: 3px solid #9a5349; padding: 8px; }
+.photo-card:focus-visible { outline: 4px solid #d49b35; outline-offset: 3px; }
+@media (max-width: 600px) { .photo-page { width: calc(100% - 60px); padding: 10px; } .photo-grid { gap: 12px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); } }
+
+#stickers.photos .sb-pages { display: block; margin: 0; }
+
+#stickers.photos .sb-head h2 { display: block; font-size: clamp(1.2rem, 2.5vw, 1.8rem); }

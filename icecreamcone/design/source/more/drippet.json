@@ -1,0 +1,57 @@
+[
+  {
+    "id": "IC-M16a",
+    "name": "Drip Drop Dash: the kitchen",
+    "key": "scene.drippet",
+    "file": "assets/scenes/drippet.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Drip Drop Dash: the background. The Drippet, its puddles and the thirsty things are drawn on the floor on top.",
+    "standin": "A wall, a window, a cupboard and a perspective tiled floor drawn in code.",
+    "prompt": "{STYLE} {SCENE}An old-fashioned country kitchen on a rainy afternoon, seen from a little above. The back wall fills the top 52%: pale sage-green distemper, a low wooden dresser or sink cupboard with a white enamel sink on the left half, a tall window on the right with rain running down the panes, a skirting board along the foot of the wall at about 53% of the height. The floor fills everything below that, from 55% of the height to the bottom edge and from edge to edge: large cream and sage-green checked tiles in gentle perspective, dry, clean and evenly lit, with nothing standing on them (no rugs, chairs, bowls, mats or puddles), because the Drippet runs all over it and the game draws puddles, pots and bowls there.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M16b",
+    "name": "Drip Drop Dash: thirsty things",
+    "key": "sprites.drippetThings",
+    "file": "assets/sprites/drippet-things.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Drip Drop Dash: the things waiting on the floor for a drink, before and after the Drippet fills them.",
+    "standin": "A fern pot, a cat bowl, a glass and a vase of daisies drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 4 x 2 grid of eight small objects standing on the floor, each seen from the side and a little above, each about 300 px tall, all at the same scale, standing on the bottom of their cell. Top row, thirsty and dry, from left to right: 1) a terracotta pot with a fern whose fronds droop limply over the rim; 2) an empty slate-blue enamel cat's bowl; 3) an empty plain drinking tumbler; 4) a mauve china vase of white daisies with their heads drooping down. Bottom row, the same four refreshed, in the same order and at the same size: 5) the fern standing up fresh and green; 6) the bowl full of water; 7) the tumbler full of water; 8) the daisies upright and open. No puddles, no shadows under them.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M16c",
+    "name": "Drip Drop Dash: puddles",
+    "key": "sprites.puddles",
+    "file": "assets/sprites/puddles.png",
+    "size": "1536 x 512, transparent",
+    "used": "Drip Drop Dash: the puddles the Drippet leaves; the game grows, shrinks and fades them, and squashes them flat to lie on the tiles.",
+    "standin": "Pale blue blobs drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 1 row of three shallow water puddles seen from a low angle, so each is a wide flat oval about two and a half times as wide as it is tall, with soft irregular edges: translucent slate-blue watercolour, a darker pooled rim, and a pale highlight streak on the surface. Three different outlines (one round, one with a little bay, one with a smaller puddle splashed beside it). Each fills about 80% of its cell's width.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M16d",
+    "name": "The Drippet hopping and skidding",
+    "key": "sprites.drippetPoses",
+    "file": "assets/sprites/drippet-poses.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Drip Drop Dash: the Drippet in the air when it hops a puddle, and skidding when it runs into one.",
+    "standin": "The portrait (or its stand-in), lifted for a hop and rocked from side to side for a skid.",
+    "prompt": "{STYLE} {VARIANT}The Drippet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/drippet.png ): a rusty sky-blue water tap whose spout is its long beak pointing left with a brass collar at its mouth and a water drop hanging from it, a blue cross handle on a brass stem as its crest, one big round yellow eye, a grey-blue wing, a fan of pink-red tail feathers and long ochre knobbly legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left, at the portrait's scale: left half, in mid-hop, legs tucked up under its round body and claws curled, a few water drops flung from its spout; right half, skidding, its whole body tipped far back, both legs shot forward and splayed, its eye wide, water sloshing out of its spout. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M16e",
+    "name": "The Drippet running and pouring",
+    "key": "sprites.drippetMore",
+    "file": "assets/sprites/drippet-more.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Drip Drop Dash: the Drippet's run (this stride and the portrait by turns) and its pose while it fills a thirsty thing.",
+    "standin": "The portrait (or its stand-in) bobbing and tilting as it runs, and tipped forward while it pours.",
+    "prompt": "{STYLE} {VARIANT}The Drippet (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/drippet.png ): a rusty sky-blue water tap whose spout is its long beak pointing left with a brass collar at its mouth and a water drop hanging from it, a blue cross handle on a brass stem as its crest, one big round yellow eye, a grey-blue wing, a fan of pink-red tail feathers and long ochre knobbly legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left, at the portrait's scale with its feet on the same ground line: left half, running mid-stride, one long leg reaching forward and the other pushing off behind, body tipped slightly forward; right half, standing with its round body tipped forward so its spout points straight down at the floor just in front of its feet, a thin steady stream of water running from the spout's brass mouth, its eye looking down. {ALPHA}",
+    "status": "delivered"
+  }
+]

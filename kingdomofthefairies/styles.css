@@ -1,0 +1,437 @@
+:root {
+  --plum: #2a1424;
+  --plum-2: #3b1d33;
+  --pink: #f3c6dc;
+  --magenta: #e0127a;
+  --gold: #d9b34a;
+  --teal: #5f8c88;
+  --cream: #f1e3c8;
+  --ink: #120a10;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--gold) var(--plum); }
+/* Match every overflow surface, including instructions, settings and editor.
+   WebKit rules also cover Safari versions without scrollbar-color support. */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track, *::-webkit-scrollbar-corner { background: var(--plum); }
+*::-webkit-scrollbar-thumb { background: var(--gold); border: 2px solid var(--plum); border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--cream); }
+/* Native controls and links use the same keyboard focus palette. Individual
+   buttons retain their intentional highlighted border/background states. */
+:where(button, input, select, textarea, a[href], [tabindex]):focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+html, body { margin: 0; height: 100%; background: var(--ink); overflow: hidden; }
+body { position: fixed; inset: 0; }
+body {
+  color: var(--pink);
+  font-family: "Josefin Sans", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#app { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage {
+  /* Fallback until src/fit.js measures the visible box and positions it. */
+  width: min(100vw, calc(100dvh * 16 / 9));
+  height: min(100dvh, calc(100vw * 9 / 16));
+  display: block;
+  background: #000;
+  image-rendering: auto;
+}
+
+.layer { position: absolute; inset: 0; display: grid; place-items: center; }
+.layer[hidden] { display: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ---------- Title ---------- */
+#title { grid-template-rows: 1fr auto auto 1fr; justify-items: center; align-content: center; gap: clamp(6px, calc(var(--app-h, 100dvh) * 0.024), 22px); padding: 16px; }
+#title.opening { animation: fadeout .6s ease forwards; }
+@keyframes fadeout { to { opacity: 0; } }
+.logo-card {
+  grid-row: 1; align-self: end;
+  /* fit the width and leave room below for Press Start and the bar on short screens */
+  width: min(calc(var(--app-w, 100vw) * 0.78), 560px, calc((var(--app-h, 100dvh) - 190px) * 4 / 3));
+  aspect-ratio: 4 / 3;
+  background: var(--plum);
+  border: 2px solid #c79ab7;
+  outline: 2px solid #c79ab7; outline-offset: -12px;
+  display: grid; place-items: center;
+  box-shadow: 0 18px 60px #0009;
+  position: relative;
+}
+.logo-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.logo-card.has-img .logo-fallback { visibility: hidden; }
+/* Until the painted title is ready the card stays plain: no text that would
+   swap fonts and then give way to the image (index.html's inline loader). */
+.logo-card:not(.has-img):not(.no-img) .logo-fallback { visibility: hidden; }
+.logo-card.has-img { background: none; border: none; outline: none; } /* the art has its own double rule */
+.logo-fallback { text-align: center; }
+.logo-card h1 {
+  font-family: "Yesteryear", cursive; font-weight: 400;
+  font-size: clamp(54px, 11vw, 112px); line-height: .9; margin: 0; color: var(--pink);
+  text-shadow: 0 0 1px #fff4;
+}
+.by { margin: 12px 0 0; font-weight: 700; font-size: clamp(12px, 1.8vw, 16px); }
+.band { margin: 4px 0 0; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: clamp(12px, 2vw, 18px); }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+.press-start {
+  grid-row: 2;
+  background: none; border: 2px solid transparent; border-radius: 4px;
+  font-family: "Yesteryear", cursive; font-size: clamp(30px, 5vw, 46px);
+  color: var(--pink); padding: 4px 22px;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+@keyframes breathe { 50% { opacity: .55; } }
+/* The button is focused on load so Enter starts at once; its focus look shows
+   only once the keyboard has been used to move about (body.keys, main.js). */
+.press-start:focus { outline: none; }
+.press-start:hover, body.keys .press-start:focus-visible, .press-start.nav-focus { animation: none; color: #fff; border-color: var(--magenta); background: #e0127a22; outline: none; }
+.press-start:active { transform: translateY(2px); background: #e0127a55; }
+.loadbar { grid-row: 3; display: grid; justify-items: center; gap: 6px; width: min(70vw, 320px); transition: opacity .5s; }
+.loadbar.done { opacity: 0; }
+.loadbar-track { width: 100%; height: 8px; border: 1px solid #c79ab7; outline: 1px solid #c79ab7; outline-offset: 2px; background: var(--plum); }
+.loadbar-fill { height: 100%; width: 0; background: var(--pink); transition: width .2s; }
+.loadbar-label { font-size: 13px; letter-spacing: .06em; opacity: .8; }
+#title { grid-template-rows: 1fr auto auto auto 1fr; }
+.hint { grid-row: 4; margin: 0; font-size: 14px; opacity: .7; letter-spacing: .05em; }
+
+#icons { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+.corner { position: absolute; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; gap: 10px; pointer-events: auto; transition: opacity .35s; }
+.corner-right { right: max(16px, env(safe-area-inset-right)); }
+.corner-left { left: max(16px, env(safe-area-inset-left)); }
+.corner-left .icon::after { right: auto; left: 0; }
+/* in play: only the right-hand options, smaller and quieter over the stage */
+#icons[data-show="play"] .corner-left, #icons[data-show="none"] .corner { display: none; }
+#icons[data-show="play"] .corner-right { opacity: .7; }
+#icons[data-show="play"] .corner-right:hover, #icons[data-show="play"] .corner-right:focus-within { opacity: 1; }
+#icons[data-show="play"] .icon { width: 42px; height: 42px; }
+#icons[data-show="play"] .icon svg { width: 20px; height: 20px; }
+/* in play on a phone they hide until a tap at the bottom right shows them */
+#icons[data-show="play"].autohide:not(.revealed) .corner-right { opacity: 0; pointer-events: none; }
+.corner-reveal { display: none; position: absolute; right: 0; bottom: 0; width: 140px; height: 70px; background: none; border: 0; padding: 0; pointer-events: auto; }
+#icons[data-show="play"].autohide:not(.revealed) .corner-reveal { display: block; }
+.dialog { z-index: 10; }
+.icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--plum); border: 2px solid #c79ab7; display: grid; place-items: center; position: relative;
+}
+.icon svg { width: 24px; height: 24px; fill: none; stroke: var(--pink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.icon svg g { stroke: var(--pink); }
+.icon:hover, .icon:focus-visible, .icon.nav-focus { background: var(--magenta); border-color: var(--pink); outline: none; }
+.icon:active { transform: scale(.94); }
+.icon.sound-btn.is-off:not(:hover):not(:focus-visible):not(.nav-focus) { opacity: .55; }
+.icon::after {
+  content: attr(data-tip); position: absolute; bottom: 62px; right: 0; white-space: nowrap;
+  background: var(--plum); border: 1px solid #c79ab7; padding: 4px 8px; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity .15s;
+}
+.icon:hover::after, .icon:focus-visible::after, .icon.nav-focus::after { opacity: 1; }
+
+/* ---------- Dialogs ---------- */
+.dialog { background: #0a0409b0; padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.card {
+  background: var(--plum); border: 2px solid #c79ab7; outline: 2px solid #c79ab7; outline-offset: -10px;
+  padding: 28px 30px 24px; width: min(420px, 100%); max-height: calc(var(--app-h, 100dvh) - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 14px;
+}
+.card.wide { width: min(760px, 100%); }
+.card { position: relative; }
+/* the close X in a dialog's top right corner */
+.card .card-x { position: absolute; top: 18px; right: 18px; width: 38px; height: 38px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; font-size: 26px; line-height: 1; text-align: center; font-weight: 400; z-index: 1; }
+@media (pointer: coarse) { .card .card-x { width: 40px; height: 40px; top: 16px; right: 16px; } }
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 520px) { .card .card-x { width: 34px; height: 34px; top: 12px; right: 12px; font-size: 22px; } }
+/* A card never spills past the screen: its body scrolls inside it. */
+.card { overflow: hidden; }
+.card > .stack, .card > .scroll, .card > .scene-list { min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+.card > .stack { flex: 0 1 auto; padding: 2px; }
+.card h2 { font-family: "Yesteryear", cursive; font-weight: 400; font-size: 44px; margin: 0; text-align: center; }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; justify-content: center; }
+.card button, .slider {
+  background: var(--plum-2); border: 2px solid #7d5470; border-radius: 3px; padding: 10px 14px; font-size: 18px; font-weight: 700; letter-spacing: .04em; text-align: left;
+}
+.card button:hover, .card button:focus-visible, .card button.nav-focus,
+.slider:focus-within, .slider.nav-focus { border-color: var(--magenta); background: #5a1b45; outline: none; }
+.card button:active { background: var(--magenta); }
+.row button { text-align: center; min-width: 160px; }
+.slider { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.slider input { width: 55%; accent-color: var(--magenta); }
+.note { margin: 0; font-size: 14px; opacity: .8; text-align: center; min-height: 1em; }
+.scroll { overflow: auto; padding-right: 8px; line-height: 1.45; font-size: 16px; }
+.scroll:focus { outline: none; }
+.scroll:focus-visible, .scroll.nav-focus { box-shadow: inset 2px 0 var(--gold); }
+.scroll ul { padding-left: 20px; }
+.scroll h3 { font-family: "Yesteryear", cursive; font-weight: 400; font-size: 30px; margin: 4px 0 6px; }
+/* Instructions: one page per act, chosen by tabs */
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.card .tabs button { padding: 6px 12px; font-size: 15px; text-align: center; }
+.card .tabs button[aria-selected="true"] { background: var(--magenta); border-color: var(--pink); color: #fff; }
+.ins-page[hidden] { display: none; }
+/* Scene select */
+.scene-list h3 { margin-top: 10px; }
+.scene-list h3:first-child { margin-top: 0; }
+.scene-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.card .scene-grid button { font-size: 15px; padding: 8px 10px; line-height: 1.2; }
+.card .scene-grid button small { display: block; font-weight: 400; opacity: .7; font-size: 12px; letter-spacing: .08em; }
+.card .scene-grid button:disabled { opacity: .4; cursor: default; }
+.scroll li { margin-bottom: 6px; }
+.map { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+.map th, .map td { border-bottom: 1px solid #7d5470; padding: 6px 4px; text-align: left; }
+.pad { width: 100%; max-width: 560px; display: block; margin: 8px auto; }
+.pad text { fill: var(--pink); font: 700 12px "Josefin Sans", sans-serif; text-anchor: middle; }
+.pad-body { fill: #4a2440; stroke: #c79ab7; stroke-width: 2; }
+.pad-part { fill: #2a1424; stroke: #c79ab7; stroke-width: 1.5; }
+.pad-a { fill: var(--magenta); stroke: var(--pink); stroke-width: 1.5; }
+.callout path { stroke: var(--gold); stroke-width: 1.5; fill: none; }
+.callout text { fill: var(--gold); font-size: 13px; }
+
+/* ---------- Touch (phones and tablets; never shown on desktop) ---------- */
+html.touch, html.touch body { touch-action: none; overscroll-behavior: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+#touch { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+#touch[hidden] { display: none; }
+#touch:not(.playing) > * { display: none; }
+#touch.menu-pause:not(.playing) > .tbtn-pause { display: block; }
+.stick-zone { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; pointer-events: auto; touch-action: none; }
+.stick-base {
+  position: absolute; left: max(110px, calc(env(safe-area-inset-left) + 90px)); top: 70%;
+  width: 132px; height: 132px; margin: -66px 0 0 -66px; border-radius: 50%;
+  background: radial-gradient(circle, #2a1424cc 55%, #2a142488 70%, transparent 71%);
+  border: 2px solid #d9b34a99; box-shadow: inset 0 0 0 6px #2a142466, 0 0 0 1px #00000055;
+  opacity: .55; transition: opacity .15s;
+}
+.stick-base.on { opacity: .95; transition: none; }
+.stick-knob {
+  position: absolute; left: 50%; top: 50%; width: 62px; height: 62px; margin: -31px 0 0 -31px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6dc8a, #d9b34a 45%, #8a6a20 100%);
+  border: 2px solid #f3c6dc; box-shadow: 0 3px 8px #000a;
+}
+.stick-base.has-art { background: center/contain no-repeat var(--art); border: 0; box-shadow: none; }
+.stick-knob.has-art { background: center/contain no-repeat var(--art); border: 0; }
+.stick-hint {
+  position: absolute; left: max(110px, calc(env(safe-area-inset-left) + 90px)); top: calc(70% + 78px); transform: translateX(-50%);
+  margin: 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .7; white-space: nowrap; transition: opacity .6s;
+}
+#touch.stick-used .stick-hint { opacity: 0; }
+.tbtn { pointer-events: auto; position: absolute; touch-action: none; border-radius: 50%; color: #f3c6dc; font: inherit; padding: 0;
+  background: radial-gradient(circle at 40% 32%, #5a1b45, #2a1424 70%); border: 2px solid #d9b34a; box-shadow: 0 3px 10px #000a, inset 0 0 0 5px #2a142488; }
+.tbtn.on { background: radial-gradient(circle at 40% 32%, #ff3d9a, #e0127a 70%); transform: scale(.94); }
+.tbtn-a { right: max(26px, calc(env(safe-area-inset-right) + 16px)); bottom: max(34px, env(safe-area-inset-bottom)); width: 104px; height: 104px;
+  display: flex; align-items: center; justify-content: center; }
+/* each button is named for what it does here ("Leap", "Take", "Action") */
+.tbtn .verb { display: block; width: 100%; padding: 0 14%; box-sizing: border-box; text-align: center; font-family: "Yesteryear", cursive; font-size: 30px; line-height: .95; text-shadow: 0 1px 3px #000c; }
+.tbtn .verb.long { font-size: 21px; }
+.tbtn-b { right: max(146px, calc(env(safe-area-inset-right) + 136px)); bottom: max(96px, calc(env(safe-area-inset-bottom) + 70px)); width: 66px; height: 66px;
+  display: flex; align-items: center; justify-content: center; }
+.tbtn-b .verb { font-size: 19px; padding: 0 8%; }
+.tbtn-b .verb.long { font-size: 14px; }
+.tbtn-a[hidden], .tbtn-b[hidden] { display: none; }
+.stick-hint:empty { display: none; }
+.tbtn-pause { right: max(16px, calc(env(safe-area-inset-right) + 8px)); top: max(14px, env(safe-area-inset-top)); width: 46px; height: 46px; font-size: 14px; }
+.tbtn.has-art { background: center/contain no-repeat var(--art); border: 0; box-shadow: none; }
+.tbtn.has-art.on { filter: brightness(1.35); }
+.tbtn-pause.has-art { font-size: 0; color: transparent; }
+
+/* Phones: let the stage fill the height and let the controls sit in the side margins */
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 520px) {
+  .tbtn-a { width: 92px; height: 92px; bottom: max(22px, env(safe-area-inset-bottom)); }
+  .tbtn-b { width: 58px; height: 58px; bottom: max(80px, calc(env(safe-area-inset-bottom) + 58px)); right: max(128px, calc(env(safe-area-inset-right) + 118px)); }
+  .stick-base { top: 66%; }
+  .corner .icon { width: 46px; height: 46px; }
+  #icons[data-show="play"] .icon { width: 40px; height: 40px; }
+  .card { padding: 18px 20px 16px; gap: 10px; }
+  /* the pause menu: its buttons in two columns, so all of them fit */
+  #pause .card { width: min(640px, 100%); padding: 14px 18px 14px; gap: 8px; }
+  #pause .card h2 { font-size: 30px; line-height: 1; }
+  #pause .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  #pause .stack button { padding: 8px 10px; font-size: 15px; text-align: center; }
+  #pause .note:empty { display: none; }
+  /* settings: two columns of compact rows, the rest scrolls inside the card */
+  #settings .card { width: min(680px, 100%); padding: 14px 18px; gap: 8px; }
+  #settings .card h2 { font-size: 30px; line-height: 1; }
+  #settings .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  #settings .slider input { width: 50%; }
+  #settings .stack > * { padding: 7px 10px; font-size: 14px; }
+  #settings .row button { padding: 6px 12px; }
+  #pause .stack button:first-child { grid-column: 1 / -1; text-align: center; }
+  .card h2 { font-size: 34px; }
+  .card button, .slider { padding: 8px 12px; font-size: 16px; }
+  .card .tabs button { padding: 4px 10px; font-size: 14px; }
+  .card.wide h2 { font-size: 28px; line-height: 1; }
+  .scroll h3 { font-size: 24px; margin: 0 0 4px; }
+}
+
+/* Portrait on a phone: a card asking to turn the device */
+#rotate { z-index: 20; background: var(--plum); display: grid; place-items: center; padding: 24px; }
+#rotate[hidden] { display: none; }
+.rotate-card { text-align: center; border: 2px solid #c79ab7; outline: 2px solid #c79ab7; outline-offset: -10px; padding: 34px 26px; max-width: 340px; }
+.rotate-card img { width: 100%; max-width: 260px; display: block; margin: 0 auto 14px; }
+.rotate-card img:not([hidden]) + .rotate-icon { display: none; }
+.rotate-icon { width: 70px; height: 110px; margin: 0 auto 22px; border: 3px solid #f3c6dc; border-radius: 12px; position: relative; animation: tip 2.4s ease-in-out infinite; }
+.rotate-icon span { position: absolute; left: 50%; bottom: 8px; width: 14px; height: 4px; margin-left: -7px; background: #f3c6dc; border-radius: 2px; }
+@keyframes tip { 0%, 30% { transform: rotate(0); } 60%, 90% { transform: rotate(-90deg); } 100% { transform: rotate(0); } }
+.rotate-title { font-family: "Yesteryear", cursive; font-size: 40px; margin: 0; line-height: 1; }
+.rotate-sub { margin: 10px 0 0; font-size: 15px; opacity: .85; }
+@media (prefers-reduced-motion: reduce) { .rotate-icon { animation: none; transform: rotate(-90deg); } }
+
+/* Tablets and other screens squarer than 16:10: pin the stage to the top so
+   the spare band collects below it, and seat the controls in that band. */
+@media (pointer: coarse) and (orientation: landscape) and (max-aspect-ratio: 16/10.5) {
+  /* src/fit.js pins the stage to the top here and reports the band below it. */
+  html.touch .stick-base, html.touch .stick-hint { top: auto; }
+  html.touch .stick-base { top: calc(100% - max(84px, calc(var(--band-below, 0px) / 2))); }
+  html.touch .stick-hint { top: calc(100% - 22px); }
+  html.touch .tbtn-a { bottom: max(14px, calc((var(--band-below, 0px) - 104px) / 2)); }
+  html.touch .tbtn-b { bottom: max(30px, calc((var(--band-below, 0px) - 66px) / 2)); right: max(150px, calc(env(safe-area-inset-right) + 140px)); }
+}
+
+/* The A side (the default: buttons on the left, the stick on the right). */
+#touch.a-left .tbtn-a { left: max(26px, calc(env(safe-area-inset-left) + 16px)); right: auto; }
+#touch.a-left .tbtn-b { left: max(146px, calc(env(safe-area-inset-left) + 136px)); right: auto; }
+#touch.a-left .stick-zone { left: auto; right: 0; }
+#touch.a-left .stick-base, #touch.a-left .stick-hint { left: calc(100% - max(110px, calc(env(safe-area-inset-right) + 90px))); }
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 520px) {
+  #touch.a-left .tbtn-b { left: max(128px, calc(env(safe-area-inset-left) + 118px)); }
+}
+.tbtn-a.dragging { opacity: .8; transition: none; box-shadow: 0 0 0 4px #f3c6dc88, 0 3px 10px #000a; }
+
+/* Swipe scheme: the whole screen is the control and no stick is drawn. */
+#touch.swipe .stick-zone { width: 100%; }
+#touch.tap-any .stick-zone { left: 0; right: 0; width: 100%; }
+#touch.swipe .stick-base { display: none; }
+#touch.swipe .stick-hint { left: 50%; top: auto; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+  background: #2a1424cc; border: 1px solid #c79ab7; padding: 5px 12px; border-radius: 3px; }
+
+/* The swipe hint sits at the top of the stage, clear of the HUD. */
+#touch.swipe .stick-hint { top: calc(var(--stage-y, 0px) + var(--stage-h, 56vw) * 0.11); bottom: auto; max-width: calc(var(--stage-w, 90vw) - 40px); white-space: normal; text-align: center; }
+
+/* Short screens (phones in landscape, especially with Safari's bars showing):
+   logo on the left, Press Start and the bar on the right. */
+@media (max-height: 460px) and (orientation: landscape) {
+  #title { grid-template-columns: auto auto; grid-template-rows: 1fr auto auto auto 1fr; column-gap: clamp(16px, 4vw, 40px); align-items: center; }
+  /* above the guide buttons at the bottom left */
+  #title { padding-bottom: 76px; }
+  .logo-card { grid-column: 1; grid-row: 1 / span 5; align-self: center;
+    width: min(calc(var(--app-w, 100vw) * 0.44), calc((var(--app-h, 100dvh) - 110px) * 4 / 3), 440px); }
+  .press-start { grid-column: 2; grid-row: 2; }
+  .loadbar { grid-column: 2; grid-row: 3; width: min(calc(var(--app-w, 100vw) * 0.32), 280px); }
+  .hint { grid-column: 2; grid-row: 4; max-width: calc(var(--app-w, 100vw) * 0.36); text-align: center; font-size: 12px; }
+}
+
+/* iPhone Safari: the page is a little taller than the screen so a swipe up
+   tucks Safari's bars away (src/chrome.js). During play the touch controls
+   own every gesture, so nothing scrolls. */
+html.ios-scroll, html.ios-scroll body { height: auto; overflow-x: hidden; overflow-y: auto; }
+html.ios-scroll body { position: relative; inset: auto; touch-action: pan-y; }
+/* The game itself is fixed and takes no height, so a spacer makes the page
+   taller than the screen (100lvh: as tall as the screen with bars hidden). */
+html.ios-scroll body::after { content: ''; display: block; height: calc(100lvh + 160px); }
+html.ios-scroll.ios-scroll-play, html.ios-scroll.ios-scroll-play body { overflow: hidden; touch-action: none; }
+#bars-hint { position: fixed; left: 50%; top: max(8px, env(safe-area-inset-top)); transform: translateX(-50%); z-index: 15;
+  background: #2a1424ee; border: 1px solid #d9b34a; color: var(--pink); padding: 7px 14px; border-radius: 3px;
+  font-size: 13px; letter-spacing: .03em; white-space: nowrap; pointer-events: none; }
+#bars-hint[hidden] { display: none; }
+#bars-hint .arrow { display: inline-block; animation: nudge 1.4s ease-in-out infinite; color: var(--gold); font-weight: 700; }
+@keyframes nudge { 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { #bars-hint .arrow { animation: none; } }
+#bars-hint.flash { animation: hintflash .9s ease-in-out 2; }
+@keyframes hintflash { 50% { background: var(--magenta); border-color: var(--pink); } }
+
+/* Xbox controller button glyphs in text (title hint, instructions) */
+.xb { display: inline-grid; place-items: center; width: 1.45em; height: 1.45em; border-radius: 50%; vertical-align: middle; box-sizing: border-box;
+  font: 700 .82em/1 "Josefin Sans", sans-serif; color: #fff; background: #36303a; border: 2px solid #140a12; margin: 0 .1em; letter-spacing: 0; }
+.xb-a { background: #3fa535; } .xb-b { background: #d6262c; } .xb-x { background: #2a6fd6; } .xb-y { background: #e8b320; }
+.xb-ls { font-size: .5em; width: 2.9em; height: 2.9em; box-shadow: inset 0 0 0 .35em #36303a, inset 0 0 0 .45em #fff; }
+.xb-menu { display: inline-flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; }
+.xb-menu i { display: block; width: .62em; height: 2px; background: #fff; }
+.xb-dpad { border-radius: 3px; width: auto; padding: 0 .35em; font-size: .7em; height: 2em; }
+
+/* Credits */
+.card.credits { width: min(620px, 100%); text-align: center; }
+.credits-list { text-align: center; line-height: 1.3; }
+.cred-show { font-family: "Yesteryear", cursive; font-size: 40px; line-height: 1.05; margin: 0 0 14px; color: var(--pink); }
+.cred-show small { font: 700 13px "Josefin Sans", sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.credits-list dl { margin: 0; display: grid; gap: 16px; }
+.cred-entry:has(> dt[hidden]) { display: none; }
+.credits-list dt { font: 700 12px "Josefin Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; opacity: .75; margin: 0; }
+.credits-list dd { margin: 4px 0 0; font-family: "Yesteryear", cursive; font-size: 30px; line-height: 1.4; }
+/* Credits fit their card instead of creating a needless scrolling surface. */
+@media (max-height: 600px), (max-width: 560px) {
+  .card.credits { padding: 18px 22px; gap: 10px; }
+  .card.credits h2 { font-size: 34px; }
+  .cred-show { font-size: 30px; margin-bottom: 12px; }
+  .cred-show small { font-size: 11px; letter-spacing: .1em; }
+  .credits-list dl { gap: 10px; }
+  .credits-list dt { font-size: 11px; letter-spacing: .1em; }
+  .credits-list dd { font-size: 24px; }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .card.credits { width: min(920px, 100%); padding: 14px 22px; gap: 8px; }
+  .card.credits h2 { font-size: 30px; line-height: 1; }
+  .cred-show { font-size: 28px; margin-bottom: 10px; }
+  .credits-list dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 16px; }
+  .credits-list dt { font-size: 10px; line-height: 1.2; }
+  .credits-list dd { font-size: 22px; line-height: 1.4; }
+}
+
+@media (max-height: 340px) and (orientation: landscape) {
+  .card.credits { padding: 12px 18px; gap: 6px; }
+  .card.credits h2 { font-size: 26px; }
+  .cred-show { font-size: 24px; margin-bottom: 6px; }
+  .cred-show small { font-size: 10px; }
+  .credits-list dl { gap: 8px 16px; }
+  .credits-list dd { font-size: 20px; }
+}
+
+@media (max-width: 380px) and (max-height: 520px) and (orientation: portrait) {
+  .card.credits { padding: 16px 18px; }
+  .card.credits h2 { font-size: 32px; }
+  .cred-show { font-size: 28px; margin-bottom: 10px; }
+  .credits-list dl { gap: 8px; }
+  .credits-list dt { font-size: 10.5px; }
+  .credits-list dd { font-size: 22px; }
+}
+
+/* ?edit=local: the unlock editor (src/editor.js) */
+.unlock-btn { width: auto; padding: 0 12px; font: 700 13px "Josefin Sans", sans-serif; }
+.unlock-editor { max-width: min(920px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; background: #2a1424; color: #f1e3c8;
+  border: 2px solid #c79ab7; border-radius: 10px; padding: 20px 24px; font: 15px "Josefin Sans", sans-serif; }
+.unlock-editor::backdrop { background: #0a0409c0; }
+.unlock-editor h2 { margin: 0 0 4px; font: 34px Yesteryear, cursive; color: #f3c6dc; }
+.unlock-note { margin: 0 0 14px; opacity: 0.85; }
+.unlock-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.unlock-edition { border: 1px solid #c79ab766; border-radius: 8px; padding: 12px 14px; }
+.unlock-edition.current { border-color: #f3c6dc; }
+.unlock-edition h3 { margin: 0; font-size: 17px; color: #f3c6dc; }
+.unlock-edition h3 small { font-weight: 400; opacity: 0.8; }
+.unlock-q { margin: 2px 0 8px; font-size: 13px; } .unlock-q a { color: #e9c46a; }
+.unlock-edition label { display: block; margin: 6px 0; }
+.unlock-what { margin: 4px 0 6px; font-size: 13px; line-height: 1.4; color: #e9d9c4; min-height: 3.6em; }
+.unlock-edition select { display: block; width: 100%; font: inherit; font-size: 14px; margin-top: 4px; }
+.unlock-edition ol { margin: 8px 0 0; padding-left: 22px; font-size: 14px; }
+.unlock-edition li { opacity: 0.45; } .unlock-edition li::after { content: ' · locked'; font-size: 12px; } .unlock-edition li.open { opacity: 1; } .unlock-edition li.open::after { content: ''; } .unlock-edition li.open::marker { color: #e9c46a; }
+.unlock-editor .unlock-row { margin-top: 14px; text-align: right; }
+.unlock-editor .unlock-row button { font: 700 15px "Josefin Sans", sans-serif; padding: 8px 22px; border-radius: 18px; border: 0; background: #e0127a; color: #fff; cursor: pointer; }
+.unlock-editor { position: fixed; }
+.unlock-editor .card-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; background: #3d1f35; color: #f3c6dc;
+  border: 2px solid #7d5470; font-size: 26px; line-height: 1; cursor: pointer; }
+
+/* Loading: until the title's art is in, a spinner on black and nothing else
+   (no drawn stand-ins; src/main.js removes body.booting). */
+#booting { display: none; }
+body.booting #booting { display: grid; place-items: center; position: absolute; inset: 0; background: #0b0710; z-index: 50; }
+body.booting #title, body.booting #icons, body.booting #touch { visibility: hidden; }
+#booting .spinner {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 3px solid rgba(243, 198, 220, 0.18); border-top-color: #f3c6dc;
+  animation: booting-spin 0.9s linear infinite;
+}
+@keyframes booting-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #booting .spinner { animation-duration: 2.4s; } }
+
+/* On a touch screen in play the options stay shown, stacked down the right
+   edge under the pause button, clear of the stick and the bottom hint. */
+html.touch #icons[data-show="play"] .corner-right {
+  bottom: auto; top: calc(max(14px, env(safe-area-inset-top)) + 58px);
+  right: max(16px, calc(env(safe-area-inset-right) + 10px));
+  flex-direction: column; gap: 8px; opacity: .85;
+}

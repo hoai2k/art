@@ -1,0 +1,72 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-U05b",
+      "file": "game/assets/ui/gathering.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": "7d6ed17fabd976a9fa06a335782303f0c050152baf3c777b9b1eeebcd5bbd2db",
+      "sha256": "441e617b3062a9a1e6aeb42ae73efce1fe3e3293e8d59d4c8604dea437e9501e",
+      "generation_prompt": "Reimagine the all-28 rare-birds gathering as ONE believable whimsical nature scene, a cottage farmyard at the edge of a wood, NOT a grid, list, catalogue, rows, terraces or repeated grass strips. Use image1 solely for all28 bird identities and colours; image2 is the current group picture to be COMPLETELY RECOMPOSED. Keep every one of its 28 species exactly once, but weave them into the habitat at irregular staggered positions and varied believable depths/scales. Preserve each object's bird anatomy, round staring eye, pointed beak, wings and thin knobbly clawed legs. The paired boots and paired buttons each remain together as one species group. NO duplicate birds, no ordinary extra birds. Nature environment: old apple tree and small woodland on the left, a little red barn/cottage farther back, rambling wooden fence, a few stump hollows, pots of flowers, vegetable patch, grass and daisies, and a small pond toward the right. Build one continuous winding grassy space that connects these areas. Birds naturally mingle and peek out here and there: behind tree trunks, over a fence, between large leaves, from a barn doorway/window, near the pond, beside a stump, partly among flowers. Some may be partially hidden as if discovered on a nature walk, but enough of every object's distinctive shape is exposed to recognise it. Several whole birds in foreground, some small birds perched or farther back; keep breathing room and asymmetry. Do not align feet, heads or bodies into rows; no straight bands dividing scene. Fine brown-black pen outlines, delicate crosshatching/stippling, flat muted faded1970s watercolor washes, cream papergrain, soft pale lemon sky. Gentle and odd, no human smiles. 1920x1080 opaque fullbleed, NO text/labels/numbers/UI/border. Identity checklist: icecreamcone, teacup, camera, gramophone, flowerpot, paired pinkboots, newspaper, pincushion, banknote, trafficlight, milkbottle, drinkingglass, pocketknife, strawbroom, pairedbuttons, brasskey, scissors, dustbin, steamiron, umbrella, rubberglove, pocketwatch, bulbsocket, saltshaker, soupladle, tap, handsaw, transistoradio. Each distinctive creature appears once integrated naturally into this SINGLE scene.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-U08",
+      "file": "game/assets/book/gathering.webp",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": false,
+      "grid": null,
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "dc468822a2f20a077a452873246908f1ee80e29da527af7903b09f20a8e3ac0a",
+      "generation_prompt": "Create the TWO-PAGE sticker-book version of the natural all-birds scene. Image1 authoritative identity guide contains all28 bird species; its labels are guide ONLY, no final text. Image2 is the nature-scene style and habitat reference. A single continuous whimsical woodland-edge farmyard, wide2:1,2048x1024fullbleedopaque, fine brown-black penline crosshatching/stippling, muted flat watercolor washes on creamgrain. Old apple trees, woodland hollows, grassy winding path, rustic fence, little redbarn, flowerpots, vegetablebeds, smallpond, stumps. Birds scattered at irregular positions and varied depths, some peeking from tree hollow, behind foliage, over fence, out of barn; several whole foregroundbirds. NO grid, rows, aligned feet, list, separate cells or horizontal strips. BOTH square halves must be independent complete nature pictures. EXACTLY14 species groups on LEFT half and EXACTLY14 on RIGHT half, clear central vertical foldzone6% of whole width (x47%-53%) with NO bird touching it. Each bird's full visible silhouette stays entirely in its own half outside foldzone; partial natural hiding is okay but distinctive object shape remains identifiable. LEFT14 ONLY: icecreamcone coot, yellowteacup cupadee, boxcamera shuttercluck, gramophone gullfinch, flowerpot plume, paired pinkboots bobolinks (one species group), newspaper peeper, pincushion piffle, banknote dodo, trafficlight crow, milkbottle midge, glass goose, pocketknife niffy, strawbroom broomwhisk. RIGHT14 ONLY: paired buttons buttonbeaks(one group), brasskey crane, scissors snippit, dustbin canary, steamiron sparrow, umbrella wren, rubberglove dove, pocketwatch titthrush, bulbsocket swift, saltshaker shrike, soupladle lark, water tap drippet, handsaw sawbird, transistoradio radiobird. Every listed group exactly once, no repeats, no omitted group or extra ordinary birds. Keep anatomy/colours exactly identityguide. Gentle odd calm creatures, no human smiles. No words, labels, numbers, UI, borders or drawn foldline.",
+      "correction_prompt": "Create the TWO-PAGE sticker-book version of the natural all-birds scene. Image1 authoritative identity guide contains all28 bird species; its labels are guide ONLY, no final text. Image2 is the nature-scene style and habitat reference. A single continuous whimsical woodland-edge farmyard, wide2:1,2048x1024fullbleedopaque, fine brown-black penline crosshatching/stippling, muted flat watercolor washes on creamgrain. Old apple trees, woodland hollows, grassy winding path, rustic fence, little redbarn, flowerpots, vegetablebeds, smallpond, stumps. Birds scattered at irregular positions and varied depths, some peeking from tree hollow, behind foliage, over fence, out of barn; several whole foregroundbirds. NO grid, rows, aligned feet, list, separate cells or horizontal strips. BOTH square halves must be independent complete nature pictures. EXACTLY14 species groups on LEFT half and EXACTLY14 on RIGHT half, clear central vertical foldzone6% of whole width (x47%-53%) with NO bird touching it. Each bird's full visible silhouette stays entirely in its own half outside foldzone; partial natural hiding is okay but distinctive object shape remains identifiable. LEFT14 ONLY: icecreamcone coot, yellowteacup cupadee, boxcamera shuttercluck, gramophone gullfinch, flowerpot plume, paired pinkboots bobolinks (one species group), newspaper peeper, pincushion piffle, banknote dodo, trafficlight crow, milkbottle midge, glass goose, pocketknife niffy, strawbroom broomwhisk. RIGHT14 ONLY: paired buttons buttonbeaks(one group), brasskey crane, scissors snippit, dustbin canary, steamiron sparrow, umbrella wren, rubberglove dove, pocketwatch titthrush, bulbsocket swift, saltshaker shrike, soupladle lark, water tap drippet, handsaw sawbird, transistoradio radiobird. Every listed group exactly once, no repeats, no omitted group or extra ordinary birds. Keep anatomy/colours exactly identityguide. Gentle odd calm creatures, no human smiles. No words, labels, numbers, UI, borders or drawn foldline.\nPRECISION CORRECTION to this edit target: keep all28 identities and this natural composition. Make the exact central6%-wide fold strip ENTIRELY free of any bird pixels: x47%-53% of width. Shift the SCISSORS and POCKETWATCH slightly farther RIGHT so their beaks never enter this strip; shift NEWSPAPER slightly farther LEFT. Keep every one of14 left/14 right, allother bird designs intact and naturally scattered. Plants/rocks/path may occupy foldstrip, but no bird parts. No grid or straight partition; no words, overlays or markers."
+    }
+  ],
+  "verification": {
+    "asset_count": 2,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All 28 species identified exactly once in both images; boots and buttons are paired species groups. Nature composition confirmed. Book atlas has 14 regions per half, no bounding box in the central 6% fold zone.",
+    "publish_copy": true,
+    "browser": "Both images load at requested dimensions after artwork loading completes; both JSON atlases serve 28 regions without page errors.",
+    "unit_tests": {
+      "passed": 186,
+      "failed": 0
+    }
+  },
+  "atlases": [
+    {
+      "file": "game/assets/ui/gathering.atlas.json",
+      "sha256": "83daad50f4fd8ad6ca82c3e28ac68ef0d23fba0ff5019be2a3d91163e14d8e03",
+      "regions": 28,
+      "accuracy": "Approximate visually annotated visible silhouettes; not pixel masks."
+    },
+    {
+      "file": "game/assets/book/gathering.atlas.json",
+      "sha256": "7232c043ae2b8cc0bbd956d2162a7d04c30ca3a28358b4b84ae1bb285f50d02f",
+      "regions": 28,
+      "accuracy": "Approximate visually annotated visible silhouettes; not pixel masks."
+    }
+  ],
+  "user_revision": "Natural backyard/farm/woodland scene with creatures peeking from scenery rather than a grid; positional atlas metadata requested."
+}

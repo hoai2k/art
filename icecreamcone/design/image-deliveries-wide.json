@@ -1,0 +1,37 @@
+{
+  "generated_on": "2026-10-07",
+  "delivered_on": "2026-10-08",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-S11",
+      "file": "game/assets/scenes/coot-wide.webp",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "alpha": false,
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Background painting for a children's minigame, wide 16:9, full bleed. The scene is empty of birds, people and animals (the game draws them on top). The same sunny seaside promenade as the existing scene (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/scenes/coot.webp), seen from twice as far away: extend that picture outwards on every side, keeping it unchanged, as if the camera had pulled straight back. The existing picture must sit, at exactly half the width and half the height of this one, in the region from 25% to 75% across and from 46.7% to 96.7% down, with the boardwalk, the railing, the sea's horizon and the ice-cream cart all continuing seamlessly out of it at the same height. Below it, a little more of the near boardwalk planks fills the bottom 3.3%. To the left and right, the promenade goes on: more railing posts, the boardwalk, the sea and the far headland with its lighthouse on the left, and a bench or a lamp post on the right. Above it, a tall, open, pale summer sky with a few soft clouds, seagulls far off and nothing else, because ice-cream scoops fall through all of it. Keep the horizon a straight level line. Wide 16:9.\nEdit target is image 1, the existing seaside background. Image 2 is only a secondary style reference. Outpaint image 1 into a new 3840 x 2160 canvas. Preserve the original 1920 x 1080 content unchanged at x=960,y=1008 (bounds x960..2880,y1008..2088). This is an asymmetric expansion: 960px each side, 1008px new sky above and 72px boardwalk below. Horizon must land near y1783 (82.5% of total height), railing and boardwalk near bottom; no foreground hills or framing trees. Original cart remains at x roughly2600..2880 and y1475..2088, complete it naturally to the right. Very large quiet pale sky occupying over 80% of entire canvas. No extra carts, title text, people, borders or UI. Do not recenter the original scene or put horizon at mid-height. Full bleed opaque 16:9 landscape.",
+      "correction_prompt": "Correct the outpaint in image 1 using image 2 as the LOCKED ORIGINAL scene. Preserve a full copy of image 2 in the region x25%..75%, y46.6667%..96.6667% of image 1. Everything INSIDE that region must look exactly like image 2 scaled to half width and half height, including the distinctive large cloud at the top-left of image 2 (it should be around x29%,y50% of the full extended canvas), the small cloud beside it, the right cloud around x68%,y58%, the original left lighthouse at x31.3%,y81%, the islands, railing posts and partial original ice cream cart at x68%..75%. Extend OUTSIDE that rectangle only, making the original cart complete to its right. Keep overall horizon at82.5%height. Do NOT retain the relocated lighthouse near16%width or upper-left cloud near5%height from the first draft. The source region is the zoom-1 gameplay view; its exact visual layout is essential. Upper 46.7% is new almost empty pale watercolor sky with only a few subtle clouds and small distant gulls. Keep extended railing, bench and lamp along bottom on sides. Full opaque 16:9 canvas3840x2160. Same fine brown ink and faded watercolor, no text UI or frames.",
+      "references": [
+        "game/assets/scenes/coot.webp",
+        "reference/cover-ice-cream-cone-coot.jpg"
+      ],
+      "sha256": "a4256cbe4340cb206592e8a749aef628f10b082c66251f64cccde71043364f18",
+      "note": "Generated expanded interpretation of the seaside, resized and converted to WebP. The original scene is retained as a separate file; the generated image does not preserve its interior pixels exactly. No deterministic compositing performed."
+    }
+  ],
+  "verification": {
+    "dimensions": "3840 x 2160 RGB WebP",
+    "checksum": "passed",
+    "generated_requests": "passed; 0 requested, 39 delivered, 1 retired",
+    "unit_tests": "49 passed",
+    "browser_check": "passed using installed Chrome, controller/keyboard navigation and Scoop Stack to result, no page errors",
+    "publish_output": "asset copied with matching checksum",
+    "original_pixels_preserved": false
+  }
+}

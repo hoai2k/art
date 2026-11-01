@@ -1,0 +1,1078 @@
+{
+  "generatedBy": "bronzedrum/design/source/build_audio.py",
+  "altLufs": -22.0,
+  "sfx": [
+    {
+      "id": "drum-tung",
+      "group": "The drum",
+      "use": "Trưng Trắc's centre stroke (tùng), played on every left-hand input.",
+      "prompt": "One strong stroke with a padded wooden beater on the centre of a large ancient Vietnamese bronze kettle drum: a deep round boom followed by a shimmering metallic bronze ring. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/drum-tung-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/drum-tung-3.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "drum-cac",
+      "group": "The drum",
+      "use": "Trưng Nhị's rim stroke (cắc), played on every right-hand input and flourish.",
+      "prompt": "One sharp stroke of a hardwood stick on the rim of a bronze kettle drum: a bright, dry, metallic click with a short ring. A single hit, close-miked, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/drum-cac-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/drum-cac-2.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/drum-cac-3.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "drum-chau",
+      "group": "The drum",
+      "use": "The shield: a stroke on the big hide barrel drum beside the bronze drum, under the shields locking (A / Space / the Shield drum).",
+      "prompt": "One heavy stroke of a padded wooden beater on the centre of a large Vietnamese barrel drum (trống chầu) with a thick buffalo-hide head: a deep, warm, dry thud with a short low boom, no metal ring. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 0.9,
+      "files": [
+        {
+          "file": "sfx/drum-chau-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/drum-chau-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "drum-mo",
+      "group": "The drum",
+      "use": "Reset the rhythm: a knock on the wooden slit drum (Y / R / the Reset drum).",
+      "prompt": "One knock of a wooden mallet on a hollow Vietnamese wooden slit drum (mõ, a temple block): a round, dry, woody 'tok' with a tiny hollow resonance. A single hit, close-miked, no music.",
+      "kind": "hit",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/drum-mo-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/drum-mo-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "drum-wake",
+      "group": "The drum",
+      "use": "The drum wakes: four commands chained.",
+      "prompt": "A huge bronze gong struck softly and swelling: a rising shimmering bronze resonance that blooms and slowly fades, ceremonial and awe-struck.",
+      "kind": "sting",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/drum-wake.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "stumble",
+      "group": "The drum",
+      "use": "A stroke during the army's answer, or off the beat.",
+      "prompt": "A dull, slightly off-key wooden knock, clumsy and muted, very short.",
+      "kind": "hit",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/stumble.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-com-low",
+      "group": "Drum practice: the kits",
+      "use": "Rice drum kit, low voice (Drum Practice).",
+      "prompt": "One stroke of the flat palm on the large head of a Vietnamese rice drum (trống cơm), a long two-headed wooden barrel drum tuned with rice paste: a warm, round, pitched low 'bùng' tone that sings briefly. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/kit-com-low-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-com-low-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-com-high",
+      "group": "Drum practice: the kits",
+      "use": "Rice drum kit, high voice (Drum Practice).",
+      "prompt": "One quick slap of the fingers on the small head of a Vietnamese rice drum (trống cơm): a bright, tight, pitched high 'tang' tone, short. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/kit-com-high-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-com-high-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-gong-low",
+      "group": "Drum practice: the kits",
+      "use": "Gong kit, low voice (Drum Practice).",
+      "prompt": "One strike of a padded mallet on a large flat bronze gong of the Vietnamese Central Highlands (cồng chiêng): a deep, warm, humming bronze tone that rings and fades. A single hit, close-miked, no music.",
+      "kind": "hit",
+      "gain": 0.85,
+      "files": [
+        {
+          "file": "sfx/kit-gong-low-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-gong-low-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-gong-high",
+      "group": "Drum practice: the kits",
+      "use": "Gong kit, high voice (Drum Practice).",
+      "prompt": "One sharp strike of a hard mallet on the boss of a small bronze gong (chiêng): an instant, bright, clear, high-pitched bronze tone with a medium ring, loudest at the very start. A single hit, close-miked, no music.",
+      "kind": "hit",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/kit-gong-high-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-gong-high-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-bamboo-low",
+      "group": "Drum practice: the kits",
+      "use": "Bamboo kit, low voice (Drum Practice).",
+      "prompt": "One strike of a soft wooden beater on a large bamboo tube of a Vietnamese bamboo xylophone (đàn t'rưng): a hollow, woody, pitched low 'tok' with a short resonant ring. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/kit-bamboo-low-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-bamboo-low-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-bamboo-high",
+      "group": "Drum practice: the kits",
+      "use": "Bamboo kit, high voice (Drum Practice).",
+      "prompt": "One sharp strike of a small hard wooden beater on the shortest, thinnest bamboo tube of a đàn t'rưng: a bright, hollow, high-pitched woody 'tik', very short, an octave above a large tube. Exactly one hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/kit-bamboo-high-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-lan-drum",
+      "group": "Drum practice: the kits",
+      "use": "Lion-dance kit, low voice (Drum Practice).",
+      "prompt": "One heavy stroke of a wooden stick on the centre of a big Vietnamese lion-dance drum (trống lân): a booming, punchy, low drum hit with a little buzz of the skin, no metal. A single hit, close-miked, dry room, no music.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/kit-lan-drum-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-lan-drum-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "kit-lan-cymbal",
+      "group": "Drum practice: the kits",
+      "use": "Lion-dance kit, high voice (Drum Practice).",
+      "prompt": "One clash of a pair of small brass hand cymbals (chũm chọe) in a lion dance: a bright, splashy, brassy crash, cut short. A single clash, close-miked, no music.",
+      "kind": "hit",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/kit-lan-cymbal-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/kit-lan-cymbal-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "call",
+      "group": "The army answers",
+      "use": "Beats 1 and 3 of every answer, under the command's own sound.",
+      "prompt": "A group of women warriors shouting one short unison battle cry, 'Hô!', outdoors, fierce and together, a single shout.",
+      "kind": "hit",
+      "gain": 0.6,
+      "files": [
+        {
+          "file": "sfx/call-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/call-2.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/call-3.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "cmd-march",
+      "group": "The army answers",
+      "use": "Tiến (march) answer.",
+      "prompt": "A company of barefoot soldiers marching in step through the shallow water of a rice paddy: rhythmic splashing and squelching footsteps.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/cmd-march.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "cmd-strike",
+      "group": "The army answers",
+      "use": "Đánh (strike) answer.",
+      "prompt": "Bronze-tipped spears thrusting and clashing against wooden shields and armour, a short fierce skirmish of a small group, no voices.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/cmd-strike.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "cmd-shield",
+      "group": "The army answers",
+      "use": "The guard: shields thrown up against a blow (A / Space).",
+      "prompt": "Many round wooden and hide shields raised together and locked with one heavy hollow thump.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/cmd-shield.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "cmd-rally",
+      "group": "The army answers",
+      "use": "The women cheer when the drum wakes (four commands chained).",
+      "prompt": "A group of women ululating and cheering together outdoors, a rallying cry rising and falling.",
+      "kind": "oneshot",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/cmd-rally.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "cmd-charge",
+      "group": "The army answers",
+      "use": "The elephant charge: a strike on a waking drum in chapter 3.",
+      "prompt": "A war elephant trumpets loudly, then charges: heavy thundering footsteps that shake the ground.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/cmd-charge.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "volley",
+      "group": "Battle",
+      "use": "The archers shoot on a strike.",
+      "prompt": "A volley of arrows released from several bows at once, whooshing away through the air.",
+      "kind": "oneshot",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/volley.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "bolts",
+      "group": "Battle",
+      "use": "Han crossbows and the fort fire.",
+      "prompt": "Several crossbow bolts fired and thudding into wooden shields, quick hollow thunks.",
+      "kind": "oneshot",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/bolts.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "hit-paper",
+      "group": "Battle",
+      "use": "Every hit: in this game wounds are paper tearing.",
+      "prompt": "A sharp quick tear of thick handmade paper, a single rip.",
+      "kind": "hit",
+      "gain": 0.9,
+      "files": [
+        {
+          "file": "sfx/hit-paper-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/hit-paper-2.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/hit-paper-3.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "hit-straw",
+      "group": "Battle",
+      "use": "Hits on the straw targets in chapter 1.",
+      "prompt": "A spear stabbing into a bundled straw training dummy: a dry rustling thud.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/hit-straw.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "defeat-han",
+      "group": "Battle",
+      "use": "A Han soldier falls.",
+      "prompt": "A soldier's lamellar armour and halberd clattering to the ground, metal plates rattling.",
+      "kind": "oneshot",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/defeat-han.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "fort-break",
+      "group": "Battle",
+      "use": "The fort falls.",
+      "prompt": "A wooden palisade of sharpened stakes splintering and collapsing, a long timber crash.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/fort-break.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "trample",
+      "group": "Battle",
+      "use": "The elephant charge lands.",
+      "prompt": "A heavy elephant stomp crushing wood, a deep ground-shaking impact.",
+      "kind": "hit",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/trample.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "wound",
+      "group": "Battle",
+      "use": "The army is hit while its shields are down.",
+      "prompt": "Arrows striking wooden shields and a few soft pained gasps from a group of women.",
+      "kind": "oneshot",
+      "gain": 0.6,
+      "files": [
+        {
+          "file": "sfx/wound.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "blocked",
+      "group": "Battle",
+      "use": "The army is hit with shields raised.",
+      "prompt": "Arrows glancing off raised bronze-studded shields, light metallic ticks.",
+      "kind": "oneshot",
+      "gain": 0.6,
+      "files": [
+        {
+          "file": "sfx/blocked.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "ui-move",
+      "group": "Interface",
+      "use": "Moving focus in menus. Halved (too prominent while browsing).",
+      "prompt": "A soft rustle of a single sheet of rice paper being turned, very short and quiet.",
+      "kind": "hit",
+      "gain": 0.25,
+      "files": [
+        {
+          "file": "sfx/ui-move.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "ui-confirm",
+      "group": "Interface",
+      "use": "Choosing a menu item. Its tail carried a hiss (heard on the workbench): denoised and cut short after the knock. Played quieter (too prominent while browsing).",
+      "prompt": "A small hardwood clapper knock, clean and single, like a temple woodblock.",
+      "kind": "hit",
+      "gain": 0.35,
+      "files": [
+        {
+          "file": "sfx/ui-confirm.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "ui-back",
+      "group": "Interface",
+      "use": "Closing a menu or dialog. Too prominent (heard on the workbench): shortened, softened and played quieter, then halved again (still too loud in play).",
+      "prompt": "A sheet of paper sliding softly across a wooden table, short.",
+      "kind": "hit",
+      "gain": 0.15,
+      "files": [
+        {
+          "file": "sfx/ui-back.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "ui-start",
+      "group": "Interface",
+      "use": "Press Start. It carries a faint static (heard on the workbench); three cleaner takes wait on the workbench as candidates.",
+      "prompt": "A single resonant strike on a small bronze gong, ringing out.",
+      "kind": "sting",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/ui-start.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": [
+        {
+          "id": "ui-start-new-1",
+          "prompt": "A single strike of a soft mallet on a small bronze gong, ringing out clear and pure and fading to silence. Clean studio recording, close-miked, silent background, no hiss, no noise, no room rumble, no music.",
+          "file": "alt-sfx/ui-start-new-1.mp3"
+        },
+        {
+          "id": "ui-start-new-2",
+          "prompt": "A single strike of a soft mallet on a small bronze gong, ringing out clear and pure and fading to silence. Clean studio recording, close-miked, silent background, no hiss, no noise, no room rumble, no music.",
+          "file": "alt-sfx/ui-start-new-2.mp3"
+        },
+        {
+          "id": "ui-start-new-3",
+          "prompt": "A single strike of a soft mallet on a small bronze gong, ringing out clear and pure and fading to silence. Clean studio recording, close-miked, silent background, no hiss, no noise, no room rumble, no music.",
+          "file": "alt-sfx/ui-start-new-3.mp3"
+        }
+      ]
+    },
+    {
+      "id": "village-wakes",
+      "group": "Interface",
+      "use": "The Villages Answer: a village answers and lights its lanterns.",
+      "prompt": "A riverside village wakes at night: a bronze gong struck once in the distance, then a small crowd of villagers calling out joyfully together, and a hand drum rolling briefly in answer, all echoing over the water.",
+      "kind": "sting",
+      "gain": 0.75,
+      "files": [
+        {
+          "file": "sfx/village-wakes.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "victory",
+      "group": "Stings",
+      "use": "A chapter is won.",
+      "prompt": "A triumphant flourish on large bronze drums and gongs, building quickly and ending on one ringing gong stroke.",
+      "kind": "sting",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/victory.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "defeat",
+      "group": "Stings",
+      "use": "A chapter is lost.",
+      "prompt": "A low bronze gong struck softly once, fading slowly with sorrow, a breath of wind after.",
+      "kind": "sting",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/defeat.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "pour",
+      "group": "Story chapters",
+      "use": "Casting the Drums: a steady phrase pours bronze.",
+      "prompt": "Molten bronze poured from a clay crucible into a mould: a thick glugging pour with hissing steam and crackling.",
+      "kind": "oneshot",
+      "gain": 0.8,
+      "files": [
+        {
+          "file": "sfx/pour.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "crack",
+      "group": "Story chapters",
+      "use": "Casting the Drums: a phrase that drifts cracks the mould.",
+      "prompt": "A clay casting mould cracking from the heat: one sharp crack, then crumbling pieces and a hiss of steam.",
+      "kind": "oneshot",
+      "gain": 1.0,
+      "files": [
+        {
+          "file": "sfx/crack.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "lantern",
+      "group": "Story chapters",
+      "use": "The Oath and The Villages Answer: an answered call lights incense or lanterns.",
+      "prompt": "A paper lantern being lit at night: a soft whoosh of flame catching, then one small clear bronze bell.",
+      "kind": "oneshot",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/lantern.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "crowd-cheer",
+      "group": "Story chapters",
+      "use": "The Coronation: the crowd answers each rhythm.",
+      "prompt": "A festival crowd in an ancient village square cheering and clapping with joy, a few small gongs ringing.",
+      "kind": "oneshot",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/crowd-cheer.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "dancer-join",
+      "group": "Story chapters",
+      "use": "Drum Practice: a dancer walks in to join the dance.",
+      "prompt": "A single joyful shout of 'hey!' from a villager joining a dance by a fire, with two or three quick hand claps and a jingle of small ankle bells, outdoors at dusk. Short, no music, no drums.",
+      "kind": "oneshot",
+      "gain": 0.55,
+      "files": [
+        {
+          "file": "sfx/dancer-join-1.mp3",
+          "rejected": null
+        },
+        {
+          "file": "sfx/dancer-join-2.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "han-horn",
+      "group": "Story chapters",
+      "use": "Mã Viện Returns: a new Han column arrives.",
+      "prompt": "Several ancient war horns made of buffalo horn blown together in the distance across a river, a low ominous call that swells and fades, an army approaching.",
+      "kind": "oneshot",
+      "gain": 0.7,
+      "files": [
+        {
+          "file": "sfx/han-horn.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-garden",
+      "group": "Ambience",
+      "use": "Chapter 1 bed, looped. Its bird calls spiked up to 36 dB over the bed (heard as distortion through the master limiter); a fast compressor holds them to about 18 dB over it and a gentle low-pass softens their edge, the bed itself unchanged.",
+      "prompt": "Peaceful dawn in a northern Vietnamese garden by a lotus pond: songbirds, gentle trickling water, a distant rooster, a light breeze through bamboo. Continuous, no music.",
+      "kind": "loop",
+      "gain": 0.45,
+      "files": [
+        {
+          "file": "sfx/amb-garden.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-river",
+      "group": "Ambience",
+      "use": "Chapter 2 bed, looped.",
+      "prompt": "Daytime on the bank of a wide slow river: flowing water, wind in tall reeds, distant herons and birds. Continuous, no music, no drums.",
+      "kind": "loop",
+      "gain": 0.45,
+      "files": [
+        {
+          "file": "sfx/amb-river.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-foundry",
+      "group": "Ambience",
+      "use": "Casting the Drums bed, looped. Chosen from six takes as the least tonal (the old take had a steady hum that read as a machine); looped with a 3 s crossfade and raised 7 dB under a soft limiter.",
+      "prompt": "Blacksmith's forge ambience recorded outdoors, traditional and hand-powered: crackling coal fire, slow leather bellows whooshing, hot metal hissing now and then, crickets far off. Natural, no machinery, no electrical hum, no music.",
+      "kind": "loop",
+      "gain": 0.45,
+      "files": [
+        {
+          "file": "sfx/amb-foundry.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-village",
+      "group": "Ambience",
+      "use": "The Villages Answer bed, looped: the workbench take villages-frogs, chosen over the old cricket bed (muffled and metallic).",
+      "prompt": "Night on the Red River delta: a loud chorus of rice-paddy frogs and toads croaking, crickets, water lapping against bamboo boats. Calm.",
+      "kind": "loop",
+      "gain": 0.55,
+      "files": [
+        {
+          "file": "sfx/amb-village.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-elegy",
+      "group": "Ambience",
+      "use": "The Drums Are Melted bed, looped: the workbench take elegy-dawn (the chapter used to borrow the river bed).",
+      "prompt": "A very quiet grey dawn by a still river: a single bird singing far away, soft wind, water barely lapping, the low distant roar of a furnace. Melancholy and sparse.",
+      "kind": "loop",
+      "gain": 0.55,
+      "files": [
+        {
+          "file": "sfx/amb-elegy.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-practice",
+      "group": "Ambience",
+      "use": "Drum Practice bed (the village green at dusk), looped: the workbench take practice-dusk-2.",
+      "prompt": "Dusk at the edge of a Vietnamese village: a soft breeze in bamboo, a water buffalo's wooden bell far off in the fields, a few birds settling for the night, a far-off frog. Peaceful. No insects. Real outdoor field recording, no music, no drums, no clear words.",
+      "kind": "loop",
+      "gain": 0.55,
+      "files": [
+        {
+          "file": "sfx/amb-practice.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-fire",
+      "group": "Ambience",
+      "use": "Drum Practice: the bonfire on the green, a second layer over the bed whose level follows the fire (louder as the drumming builds): the workbench take practice-fire-2.",
+      "prompt": "A bonfire crackling gently in the open at dusk, a soft breeze through palm leaves, distant frogs. Warm and calm. No insects. Real outdoor field recording, no music, no drums, no clear words.",
+      "kind": "loop",
+      "gain": 0.5,
+      "files": [
+        {
+          "file": "sfx/amb-fire.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-coronation",
+      "group": "Ambience",
+      "use": "The Coronation bed, looped: the workbench take coronation-crowd, a festival crowd (the chapter used to borrow the dawn garden bed).",
+      "prompt": "A festive crowd in a village square in Vietnam on a sunny day: the lively murmur of hundreds of people, children laughing, vendors calling in the distance, cloth banners flapping in the breeze.",
+      "kind": "loop",
+      "gain": 0.5,
+      "files": [
+        {
+          "file": "sfx/amb-coronation.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "breeze",
+      "group": "Ambience",
+      "use": "The Oath: the breeze stirred by holding A or Y, faded with the wind.",
+      "prompt": "A soft, warm breeze blowing in gentle gusts through an open courtyard, rustling leaves lightly. Continuous, airy and natural, no whistling, no howling, no music.",
+      "kind": "loop",
+      "gain": 0.6,
+      "files": [
+        {
+          "file": "sfx/breeze.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    },
+    {
+      "id": "amb-night",
+      "group": "Ambience",
+      "use": "Chapter 3 bed, looped.",
+      "prompt": "Night in the countryside outside a walled town: crickets, frogs croaking in flooded rice paddies, distant torches crackling, a faint wind. Continuous, no music.",
+      "kind": "loop",
+      "gain": 0.45,
+      "files": [
+        {
+          "file": "sfx/amb-night.mp3",
+          "rejected": null
+        }
+      ],
+      "candidates": []
+    }
+  ],
+  "music": [
+    {
+      "id": "mu-title",
+      "title": "Trống Đồng (title theme)",
+      "kind": "theme",
+      "file": "music/mu-title.mp3"
+    },
+    {
+      "id": "mu-select",
+      "title": "Two Sisters (chapter select)",
+      "kind": "theme",
+      "file": "music/mu-select.mp3"
+    },
+    {
+      "id": "mu-bed-battle",
+      "title": "Battle bed (all battles)",
+      "kind": "bed",
+      "file": "music/mu-bed-battle.mp3"
+    },
+    {
+      "id": "mu-bed-story",
+      "title": "Story bed (all story chapters)",
+      "kind": "bed",
+      "file": "music/mu-bed-story.mp3"
+    },
+    {
+      "id": "mu-ending",
+      "title": "The Drums Are Melted (ending)",
+      "kind": "piece",
+      "file": "music/mu-ending.mp3"
+    },
+    {
+      "id": "mu-anthem",
+      "title": "Song of the Two Queens: Trống Đồng Vang Dới Đất Trời (vocal song)",
+      "kind": "song",
+      "file": "music/mu-anthem.mp3"
+    }
+  ],
+  "alternates": [
+    {
+      "id": "garden-birds",
+      "chapter": "garden",
+      "prompt": "Dawn in a garden in northern Vietnam: red-whiskered bulbuls and magpie-robins singing close by, an Asian koel calling in the distance, a rooster far off, water trickling into a lotus pond. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/garden-birds.mp3",
+      "measured": "very uneven: 43 dB between its quiet and loud moments; may have near-silent gaps"
+    },
+    {
+      "id": "garden-pond",
+      "chapter": "garden",
+      "prompt": "Early morning beside a lotus pond in a Vietnamese village: a frog plopping into the water now and then, dragonflies buzzing past, sparrows chirping in the eaves, bamboo creaking softly in a light breeze. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/garden-pond.mp3",
+      "measured": ""
+    },
+    {
+      "id": "garden-buffalo",
+      "chapter": "garden",
+      "prompt": "A quiet dawn courtyard in the Vietnamese countryside: doves cooing softly, distant roosters, a water buffalo's wooden bell clonking far off in the fields, leaves rustling. Sparse and peaceful. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/garden-buffalo.mp3",
+      "measured": ""
+    },
+    {
+      "id": "casting-furnace",
+      "chapter": "casting",
+      "prompt": "Night at an ancient open-air bronze foundry: a big charcoal furnace roaring and crackling, embers popping, molten metal hissing on wet clay, workers' voices murmuring far away. No machinery, no hammering. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/casting-furnace.mp3",
+      "measured": "very even: a steady roar"
+    },
+    {
+      "id": "casting-charcoal",
+      "chapter": "casting",
+      "prompt": "A charcoal fire burning hot in a clay furnace outdoors at night: the deep steady roar of flames, the crackle and pop of charcoal, sparks, an occasional hiss of steam, crickets far off. No machinery, no rhythm. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/casting-charcoal.mp3",
+      "measured": ""
+    },
+    {
+      "id": "outpost-cicadas",
+      "chapter": "outpost",
+      "prompt": "A hot afternoon on a riverbank: a loud shimmering chorus of cicadas in the trees, slow water flowing, wind in the reeds, a crow cawing far off. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/outpost-cicadas.mp3",
+      "measured": ""
+    },
+    {
+      "id": "coronation-market",
+      "chapter": "coronation",
+      "prompt": "A sunny festival morning in a market square: a gentle bustle of people, footsteps, laughter, a rooster, sparrows, a light wind. Cheerful. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/coronation-market.mp3",
+      "measured": "uneven: 25 dB swings"
+    },
+    {
+      "id": "mavien-wind",
+      "chapter": "mavien",
+      "prompt": "Evening wind over a wide river at dusk: fast-flowing water, gusts in the reeds, crows calling, the faint distant murmur of a large crowd across the water. Grave and tense. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/mavien-wind.mp3",
+      "measured": "very even: steady wind and water"
+    },
+    {
+      "id": "oath-dusk-2",
+      "chapter": "oath",
+      "prompt": "A still dusk in a quiet countryside courtyard: a soft breeze through banana and bamboo leaves, a slow trickle of water from a stone basin, a distant bird calling once or twice. Calm and solemn. No insects, no hum. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/oath-dusk-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "oath-rain-2",
+      "chapter": "oath",
+      "prompt": "Light evening rain falling softly on a tiled roof and on broad leaves in a quiet courtyard, a few drips into a stone jar, gentle and steady. No thunder, no insects. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/oath-rain-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "oath-pond-2",
+      "chapter": "oath",
+      "prompt": "Dusk beside a still lotus pond: an occasional frog calling softly, water barely moving, a soft breeze in the reeds, a far-off bird. Sparse and quiet. No insects. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/oath-pond-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "luylau-frogs-2",
+      "chapter": "luylau",
+      "prompt": "Night beside the flooded rice paddies outside an old town: a chorus of frogs and toads croaking, a gentle wind, water lapping at the edge of a moat. Calm but watchful. No insects, no traffic. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/luylau-frogs-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "luylau-wind-2",
+      "chapter": "luylau",
+      "prompt": "A warm night wind blowing across open fields and through tall grass by a river, distant frogs, leaves rustling. No insects, no rumble. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/luylau-wind-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "mavien-river-2",
+      "chapter": "mavien",
+      "prompt": "Dusk on the bank of a wide, slow river: calm flowing water, a cool wind through tall reeds, a few crows calling far off. Grave and quiet. No insects. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/mavien-river-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "coronation-crowd-2",
+      "chapter": "coronation",
+      "prompt": "A large festive crowd murmuring happily at a distance in an open square on a sunny day, steady and even, no single voice standing out, flags flapping softly in the wind. No cheering bursts. Real outdoor field recording, no music, no drums, no clear words.",
+      "file": "alt/coronation-crowd-2.mp3",
+      "measured": ""
+    },
+    {
+      "id": "oath-gecko-clean",
+      "chapter": "oath",
+      "prompt": "De-buzzed copy of the turned-down take oath-gecko (heard as: almost, but synthetic and metallic): the 200 Hz comb notched out.",
+      "file": "alt/oath-gecko-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "oath-temple-clean",
+      "chapter": "oath",
+      "prompt": "De-buzzed copy of the turned-down take oath-temple (heard as: insects good, then metallic sounds): the 200 Hz comb notched out.",
+      "file": "alt/oath-temple-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "amb-night-clean",
+      "chapter": "luylau",
+      "prompt": "De-buzzed copy of Luy Lâu's bed amb-night (heard as: a bit synthetic): the 200 Hz comb notched out.",
+      "file": "alt/amb-night-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "luylau-moat-clean",
+      "chapter": "luylau",
+      "prompt": "De-buzzed copy of the turned-down take luylau-moat (heard as: a synthetic buzz): the 200 Hz comb notched out.",
+      "file": "alt/luylau-moat-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "outpost-cicadas-clean",
+      "chapter": "outpost",
+      "prompt": "De-buzzed copy of the take outpost-cicadas (heard as: almost, but a bit synthetic): the 200 Hz comb notched out.",
+      "file": "alt/outpost-cicadas-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "amb-village-clean",
+      "chapter": "villages",
+      "prompt": "De-buzzed copy of the Villages bed amb-village (frogs, kept) (heard as: kept): the 200 Hz comb notched out.",
+      "file": "alt/amb-village-clean.mp3",
+      "measured": ""
+    },
+    {
+      "id": "amb-garden-clean",
+      "chapter": "garden",
+      "prompt": "De-buzzed copy of the garden bed amb-garden (heard as: okay apart from loud birds (since tamed)): the 200 Hz comb notched out.",
+      "file": "alt/amb-garden-clean.mp3",
+      "measured": ""
+    }
+  ],
+  "musicTrials": [
+    {
+      "id": "mu-anthem-trial-1",
+      "request": "mu-anthem",
+      "prompt": "A 90-second excerpt of a folk ballad sung in Vietnamese for a video game about the Trưng sisters, two queens who led an army of women against Han rule in ancient Vietnam around 40 CE. Traditional northern Vietnamese style with a modern cinematic folk production. Open with 16-string zither (đàn tranh) alone, then one verse sung by a single woman, gentle and proud, then a chorus by two women in close quan họ-style harmony over deep bronze kettle drums, soft strings and bamboo flute (sáo trúc). 84 BPM, D minor pentatonic. Sing on Vietnamese vocables (à ơi, hò), no English. Avoid Chinese or Japanese instrument colour (no guzheng, erhu, pipa, koto, shakuhachi), rock or trap drums, EDM drops and trailer-style braams.",
+      "file": "music-trials/mu-anthem-trial-1.mp3"
+    },
+    {
+      "id": "mu-anthem-trial-2-instrumental",
+      "request": "mu-anthem",
+      "prompt": "A 90-second instrumental folk piece, no vocals at all, for a video game about the Trưng sisters, two queens who led an army of women against Han rule in ancient Vietnam around 40 CE. Traditional northern Vietnamese instruments with a modern cinematic folk production. Open with 16-string zither (đàn tranh) alone; the monochord (đàn bầu) then plays a slow, proud, singing melody; for the second half the bamboo flute (sáo trúc) answers it over deep bronze kettle drums, a low gong and soft strings, rising to a warm full ensemble, then settles. 84 BPM, D minor pentatonic. Instrumental only. Avoid Chinese or Japanese instrument colour (no guzheng, erhu, pipa, koto, shakuhachi), rock or trap drums, EDM drops and trailer-style braams.",
+      "file": "music-trials/mu-anthem-trial-2-instrumental.mp3"
+    }
+  ]
+}

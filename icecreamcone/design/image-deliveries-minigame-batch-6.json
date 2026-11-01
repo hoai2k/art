@@ -1,0 +1,816 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M14b",
+      "file": "game/assets/sprites/shrike-plates.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              20,
+              163,
+              430,
+              350
+            ],
+            "output_bounds": [
+              58,
+              285,
+              453,
+              465
+            ],
+            "scale": 0.963764705882353
+          },
+          {
+            "source_bounds": [
+              453,
+              100,
+              878,
+              350
+            ],
+            "output_bounds": [
+              563,
+              224,
+              973,
+              465
+            ],
+            "scale": 0.963764705882353
+          },
+          {
+            "source_bounds": [
+              900,
+              101,
+              1319,
+              351
+            ],
+            "output_bounds": [
+              1078,
+              225,
+              1482,
+              466
+            ],
+            "scale": 0.963764705882353
+          },
+          {
+            "source_bounds": [
+              1343,
+              146,
+              1758,
+              351
+            ],
+            "output_bounds": [
+              1592,
+              268,
+              1992,
+              466
+            ],
+            "scale": 0.963764705882353
+          },
+          {
+            "source_bounds": [
+              23,
+              541,
+              452,
+              816
+            ],
+            "output_bounds": [
+              56,
+              718,
+              457,
+              975
+            ],
+            "scale": 0.9351598173515983
+          },
+          {
+            "source_bounds": [
+              476,
+              538,
+              900,
+              819
+            ],
+            "output_bounds": [
+              570,
+              715,
+              967,
+              978
+            ],
+            "scale": 0.9351598173515983
+          },
+          {
+            "source_bounds": [
+              914,
+              451,
+              1335,
+              817
+            ],
+            "output_bounds": [
+              1083,
+              634,
+              1477,
+              976
+            ],
+            "scale": 0.9351598173515983
+          },
+          {
+            "source_bounds": [
+              1358,
+              381,
+              1742,
+              817
+            ],
+            "output_bounds": [
+              1612,
+              568,
+              1971,
+              976
+            ],
+            "scale": 0.9351598173515983
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "e7d0eb01a17f8cb4febb7b82d7f3bd6deeb2c347b1014c21dfee306f53a96196",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of eight dishes, each served on the same plain white china plate seen from the side and slightly above, the plate about 420 px wide with its foot on the bottom of the picture, row by row: 1, a fried egg with a bright yolk; 2, a heap of golden chips; 3, a baked potato split open with a pat of butter; 4, a buttery cob of sweetcorn; 5, a white bowl of tomato soup on the plate; 6, a big brown pretzel; 7, a slice of strawberry layer cake with a cherry on top; 8, an ice-cream sundae in a tall glass, strawberry and vanilla with chocolate sauce. The food sits in the middle of each plate, no cutlery.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2048 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M14c",
+      "file": "game/assets/sprites/shrike-diners.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              18,
+              77,
+              449,
+              425
+            ],
+            "output_bounds": [
+              51,
+              135,
+              461,
+              466
+            ],
+            "scale": 0.9503480278422274
+          },
+          {
+            "source_bounds": [
+              491,
+              42,
+              881,
+              425
+            ],
+            "output_bounds": [
+              582,
+              102,
+              953,
+              466
+            ],
+            "scale": 0.9503480278422274
+          },
+          {
+            "source_bounds": [
+              901,
+              104,
+              1271,
+              423
+            ],
+            "output_bounds": [
+              1104,
+              161,
+              1456,
+              464
+            ],
+            "scale": 0.9503480278422274
+          },
+          {
+            "source_bounds": [
+              1326,
+              68,
+              1745,
+              422
+            ],
+            "output_bounds": [
+              1593,
+              127,
+              1991,
+              463
+            ],
+            "scale": 0.9503480278422274
+          },
+          {
+            "source_bounds": [
+              25,
+              498,
+              452,
+              842
+            ],
+            "output_bounds": [
+              51,
+              647,
+              461,
+              977
+            ],
+            "scale": 0.9592505854800937
+          },
+          {
+            "source_bounds": [
+              500,
+              467,
+              877,
+              841
+            ],
+            "output_bounds": [
+              587,
+              617,
+              949,
+              976
+            ],
+            "scale": 0.9592505854800937
+          },
+          {
+            "source_bounds": [
+              898,
+              523,
+              1284,
+              840
+            ],
+            "output_bounds": [
+              1095,
+              671,
+              1465,
+              975
+            ],
+            "scale": 0.9592505854800937
+          },
+          {
+            "source_bounds": [
+              1333,
+              486,
+              1747,
+              843
+            ],
+            "output_bounds": [
+              1594,
+              635,
+              1991,
+              977
+            ],
+            "scale": 0.9592505854800937
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "f77e7d4ffe504dd44240ed4fefd68d4fcacf6df6865522be48671b2bf791747f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of four small animal diners in Lobel's gentle manner, each seen from the front, from the waist up as if sitting behind a counter (the bottom of each figure cut straight across), about 380 px tall, with a white napkin tucked under its chin and a fork held upright: row 1, waiting happily: a velvety dark-grey mole with tiny round spectacles, a grey mouse, a green frog, a black-and-white badger; row 2, the same four in the same order pulling a face at their food: eyes screwed shut, mouth turned down, tongue out.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2048 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M14d",
+      "file": "game/assets/sprites/shrike-poses.png",
+      "dimensions": [
+        4096,
+        1024
+      ],
+      "source_dimensions": [
+        4096,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              71,
+              4,
+              412,
+              629
+            ],
+            "output_bounds": [
+              314,
+              115,
+              710,
+              840
+            ],
+            "scale": 1.1603399433427763
+          },
+          {
+            "source_bounds": [
+              658,
+              2,
+              954,
+              708
+            ],
+            "output_bounds": [
+              1364,
+              113,
+              1707,
+              932
+            ],
+            "scale": 1.1603399433427763
+          },
+          {
+            "source_bounds": [
+              1152,
+              2,
+              1633,
+              616
+            ],
+            "output_bounds": [
+              2281,
+              113,
+              2839,
+              825
+            ],
+            "scale": 1.1603399433427763
+          },
+          {
+            "source_bounds": [
+              1762,
+              2,
+              2074,
+              578
+            ],
+            "output_bounds": [
+              3403,
+              113,
+              3765,
+              781
+            ],
+            "scale": 1.1603399433427763
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "e287330b26482cefe0fdc7edfd27d48efe17b673d6f18c0712bbf04c641af2cb",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Saltshaker Shrike (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/saltshakershrike.png), exactly as painted there: a fluted clear-glass salt shaker full of white salt for its body; its head is the domed, perforated silver cap with a black shrike's eye mask, one round pale eye and a dark hooked beak; mauve and olive-brown wings and tail; thin olive legs with black claws. Four poses side by side, each in its own square quarter of the sheet, all at the same scale, facing left, each hanging UPSIDE DOWN by its claws from an unseen horizontal rail at the very top of the square, like a bat: its legs go straight up from the body to the claws, which grip a point at the top centre of the square; the glass body hangs below them and the domed cap points straight down, its holes about 75% of the way down the square and centred, the hooked beak turned to the left. Lit from the upper left as a real object hanging upside down would be. 1, hanging still, calm; 2, shaking: swung slightly to one side, a little puff of white salt grains spilling from the cap's holes; 3, pleased: beak wide open in a cheerful squawk, wings flared a little; 4, flinching: body pulled up tight towards the rail, wings clamped, eye squeezed half shut. No rail drawn. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 4096 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M14e",
+      "file": "game/assets/sprites/shrike-table.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": null,
+      "previous_sha256": null,
+      "sha256": "ca3ff31529ec27c517cec5b565961d9879a19119f3e66a64de7719625150631f",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. One object filling the sheet: a big round wooden revolving caf\u00e9 table (a lazy Susan on a pedestal), seen from the front and a little above, so its round top is a wide flat oval 4.6 times as wide as it is tall; the top's outer edge touches the left and right sides of the painted area and its back edge is the very top of the painted area. Plain honey-coloured wood with a faint inner ring and a few knots, nothing on it, a thick darker edge below the top, a stout turned central pedestal and a round foot on the floor. About 1900 px wide.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2048 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M15b",
+      "file": "game/assets/sprites/lark-pot.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              26,
+              99,
+              1167,
+              814
+            ],
+            "output_bounds": [
+              102,
+              418,
+              921,
+              931
+            ],
+            "scale": 0.7179666958808063
+          },
+          {
+            "source_bounds": [
+              1193,
+              420,
+              1732,
+              798
+            ],
+            "output_bounds": [
+              1342,
+              649,
+              1729,
+              920
+            ],
+            "scale": 0.7179666958808063
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "723223117c704a205f0490eb9361033e477a07b91432952cb3dc49b96eeb58c8",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 pair: left, a huge old copper soup pot, about 900 px wide, seen from the front and above at about 25 degrees, two loop handles on its sides, dents and crosshatched shine; its open mouth is a wide oval of clear golden broth with nothing floating in it, ringed by the rolled rim, and the rim's outer oval is exactly as wide as the pot and three-eighths as tall as it is wide, its top edge at the very top of the painted pot. Right, a plain round wooden soup bowl, about 400 px wide, seen the same way, holding a shallow oval of the same golden broth with nothing in it.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2048 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M15c",
+      "file": "game/assets/sprites/lark-bits.png",
+      "dimensions": [
+        2560,
+        512
+      ],
+      "source_dimensions": [
+        2560,
+        512
+      ],
+      "alpha": true,
+      "grid": [
+        5,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1983,
+          793
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              38,
+              256,
+              342,
+              516
+            ],
+            "output_bounds": [
+              127,
+              205,
+              385,
+              425
+            ],
+            "scale": 0.8480331262939959
+          },
+          {
+            "source_bounds": [
+              401,
+              296,
+              768,
+              468
+            ],
+            "output_bounds": [
+              612,
+              239,
+              923,
+              385
+            ],
+            "scale": 0.8480331262939959
+          },
+          {
+            "source_bounds": [
+              720,
+              227,
+              1074,
+              530
+            ],
+            "output_bounds": [
+              1130,
+              180,
+              1430,
+              437
+            ],
+            "scale": 0.8480331262939959
+          },
+          {
+            "source_bounds": [
+              1133,
+              244,
+              1425,
+              520
+            ],
+            "output_bounds": [
+              1668,
+              195,
+              1916,
+              429
+            ],
+            "scale": 0.8480331262939959
+          },
+          {
+            "source_bounds": [
+              1481,
+              204,
+              1964,
+              564
+            ],
+            "output_bounds": [
+              2099,
+              161,
+              2509,
+              466
+            ],
+            "scale": 0.8480331262939959
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "6d8c8349d3b4e1a5286ce94b9df759e31444a0243409d4edecf34a494f978b0e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 5 x 1 row of five things floating in soup, each seen from above at a slant and each about 300 px across, in a square cell: 1, a round coin of carrot with its pale rings; 2, a single round green pea (smaller, about 160 px); 3, a plump pleated white dumpling; 4, a halved brown mushroom; 5, a battered old brown leather boot with a loose lace, lying on its side (about 400 px long). Wet and glistening, a few drops of broth.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2560 x 512, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M15d",
+      "file": "game/assets/sprites/lark-queue.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        4,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              111,
+              74,
+              403,
+              437
+            ],
+            "output_bounds": [
+              118,
+              113,
+              393,
+              455
+            ],
+            "scale": 0.9416091954022989
+          },
+          {
+            "source_bounds": [
+              525,
+              14,
+              875,
+              437
+            ],
+            "output_bounds": [
+              603,
+              56,
+              933,
+              454
+            ],
+            "scale": 0.9416091954022989
+          },
+          {
+            "source_bounds": [
+              982,
+              31,
+              1288,
+              442
+            ],
+            "output_bounds": [
+              1136,
+              72,
+              1424,
+              459
+            ],
+            "scale": 0.9416091954022989
+          },
+          {
+            "source_bounds": [
+              1435,
+              89,
+              1672,
+              449
+            ],
+            "output_bounds": [
+              1680,
+              127,
+              1903,
+              466
+            ],
+            "scale": 0.9416091954022989
+          },
+          {
+            "source_bounds": [
+              61,
+              479,
+              418,
+              857
+            ],
+            "output_bounds": [
+              84,
+              605,
+              427,
+              968
+            ],
+            "scale": 0.9615023474178405
+          },
+          {
+            "source_bounds": [
+              477,
+              482,
+              903,
+              858
+            ],
+            "output_bounds": [
+              563,
+              608,
+              973,
+              970
+            ],
+            "scale": 0.9615023474178405
+          },
+          {
+            "source_bounds": [
+              945,
+              475,
+              1308,
+              866
+            ],
+            "output_bounds": [
+              1106,
+              601,
+              1455,
+              977
+            ],
+            "scale": 0.9615023474178405
+          },
+          {
+            "source_bounds": [
+              1377,
+              520,
+              1697,
+              867
+            ],
+            "output_bounds": [
+              1638,
+              644,
+              1946,
+              978
+            ],
+            "scale": 0.9615023474178405
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "2d4a50fa3adb1eb9abe11512cb13d24255a4a284ad1dd24ae02f40b3a7055438",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 4 x 2 grid of four small hungry creatures in Lobel's gentle manner, each standing upright, full length, in a three-quarter view facing left, about 440 px tall, holding a big spoon: row 1, hopeful and waiting: a hedgehog, a white rabbit, a brown bear cub, a green frog; row 2, the same four in the same order pulling a face: eyes screwed shut, tongue out, the spoon held away.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 2048 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M15e",
+      "file": "game/assets/sprites/lark-poses.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        3072,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              65,
+              24,
+              684,
+              649
+            ],
+            "output_bounds": [
+              136,
+              122,
+              888,
+              882
+            ],
+            "scale": 1.2154302670623147
+          },
+          {
+            "source_bounds": [
+              773,
+              84,
+              1408,
+              611
+            ],
+            "output_bounds": [
+              1150,
+              195,
+              1922,
+              836
+            ],
+            "scale": 1.2154302670623147
+          },
+          {
+            "source_bounds": [
+              1484,
+              16,
+              2104,
+              690
+            ],
+            "output_bounds": [
+              2183,
+              113,
+              2937,
+              932
+            ],
+            "scale": 1.2154302670623147
+          }
+        ]
+      },
+      "previous_sha256": null,
+      "sha256": "bea6446f95e2b1cc5ef65a92edff1562ee545f60616f3e49b802de0648845a9d",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described.  The Soupladle Lark (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/ladlelark.png), exactly as painted there: a speckled grey enamel soup ladle whose deep round bowl is the body, open at the top behind the neck; the long handle rises as a slender neck to a small head with one round pale eye and a long tan beak; the handle's hook curls back from the top of the head as a crest, part of the same handle (the delivered painting shows it floating apart; that is being repainted, IC-R15b, so do not copy it); small feathery grey-blue wings and tail; thin ochre legs with dark claws. Three poses side by side, each in its own square third of the sheet, all at the same scale, facing left, the ladle's bowl at the exact centre of each square: 1, hovering in the air: wings beating either side of the bowl, legs tucked up, the neck curved with the head looking down; 2, dipping: tipped forward bowl first, the bowl's open top turned down to the lower left as if scooping, wings swept up, the neck bent down; 3, rising: level again, wings pushing down, the bowl brimming with golden soup with a carrot coin and a pea showing, drops of broth falling from its rim. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nProduction atlas. Exact counts and row-major grid. Each complete object entirely inside its own cell, generous transparent gutters. Preserve proportions and original anatomy. Target 3072 x 1024, transparent. No backgrounds or shadows.",
+      "correction_prompt": null
+    }
+  ],
+  "verification": {
+    "asset_count": 8,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "publish_copy": true
+  }
+}

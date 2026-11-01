@@ -1,0 +1,11 @@
+{
+  "name": "bronzedrum",
+  "private": true,
+  "type": "module",
+  "description": "A drum-command rhythm-strategy game about the Trưng sisters.",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "serve": "python3 -m http.server 8123"
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "IC-M17a",
+    "name": "Saw It Straight: the carpenter's yard",
+    "key": "scene.sawbird",
+    "file": "assets/scenes/sawbird.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Saw It Straight: the background. The sawhorses, the plank and the Saw Bird are drawn on top.",
+    "standin": "A plank wall hung with tools and a sandy yard drawn in code.",
+    "prompt": "{STYLE} {SCENE}The yard in front of an old wooden carpenter's workshop on a still, pale morning. Across the top of the picture, from about 12% to 40% of the height, the workshop's weathered board wall, with a few tools hanging on nails (a hammer, a carpenter's square, a coil of rope) and a small window. Below it the yard: packed earth and sand, scattered with a few curls of wood shavings and sawdust near the edges. Keep the middle of the yard plain and quiet from 42% to 92% of the height and from 20% to 80% of the width (no sawhorses, benches, planks or logs there), because the game puts two sawhorses and a long plank across the middle. A neat stack of logs may sit at the far left and a wheelbarrow at the far right, both kept small.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M17b",
+    "name": "Saw It Straight: planks",
+    "key": "sprites.planks",
+    "file": "assets/sprites/planks.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Saw It Straight: the plank on the sawhorses. The game stretches it to each plank's length, draws the chalk line and the cut over it, and splits it along the cut when it is sawn through.",
+    "standin": "A wood-coloured band with grain lines drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 1 x 3 grid: three long, plain, unmarked wooden planks, one per row, each lying flat and seen from above at a slight slant so its wide top face is visible and, under it, a thin strip of its near edge, the face about ten times as tall as that edge strip. Each plank fills its cell's whole width (cut square at both ends) and about 60% of its height, with long straight grain lines running along it. Top row pale pine; middle row honey-coloured oak; bottom row reddish cedar. No knots, no saw cuts, no pencil or chalk marks.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M17c",
+    "name": "Saw It Straight: sawhorse",
+    "key": "sprites.sawhorse",
+    "file": "assets/sprites/sawhorse.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Saw It Straight: the two sawhorses the plank lies across (the same picture twice).",
+    "standin": "A beam and four splayed legs drawn in code.",
+    "prompt": "{STYLE} A single old wooden sawhorse seen from the front and a little above: a flat beam across the top, about 1.5 times as wide as the sawhorse is tall, and four splayed legs, nicked and paint-spattered, standing on the ground. Centred, filling about 80% of the frame's width. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M17d",
+    "name": "The Saw Bird sawing",
+    "key": "sprites.sawbirdSawing",
+    "file": "assets/sprites/sawbird-sawing.png",
+    "size": "1024 x 1024, transparent",
+    "used": "Saw It Straight: the Saw Bird as it saws back and forth along the line, its teeth in the cut.",
+    "standin": "The portrait (or its stand-in), standing with its blade over the plank and its legs dangling.",
+    "prompt": "{STYLE} {VARIANT}The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws. Here it is sawing, facing left: the whole bird leans forward and down so that its saw-head is perfectly level, the blade pointing left with its toothed edge straight along the very bottom of the picture, and its feathered body, tail and legs are drawn crouched up above and behind the handle (legs folded tight, claws tucked), so nothing hangs below the line of the teeth: the teeth are the lowest part of the picture. Eye narrowed in concentration, a few curls of sawdust at the teeth. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M17e",
+    "name": "The Saw Bird snagged and proud",
+    "key": "sprites.sawbirdPoses",
+    "file": "assets/sprites/sawbird-poses.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Saw It Straight: the Saw Bird caught on a knot (or after a crooked cut), and standing proud beside the plank after a straight one.",
+    "standin": "The sawing pose shaken for a snag; the portrait hopping beside the plank for pride.",
+    "prompt": "{STYLE} {VARIANT}The Saw Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/sawbird.png ): its head is a whole carpenter's handsaw held out horizontally, the long grey steel blade with its teeth along the bottom edge pointing left as its beak and the brown wooden handle (with its hand-hole, brass screws and one big yellow eye) as its head, a pink crest above the handle, a round body of pink and slate-blue feathers under the handle, a pink tail and long thin tan legs with curved claws, in two poses side by side on one sheet, each in its own half, facing left: left half, snagged, framed exactly like its sawing pose (the whole bird crouched forward with its saw-head level and pointing left, the toothed edge along the very bottom of the picture, body and folded legs above and behind the handle) but with the blade bowed and twanging (a few small ink wobble lines beside it) and its eye wide in alarm; right half, proud, standing upright on its two thin legs at the portrait's scale, its saw-head tipped up high like a salute, chest feathers puffed out, a few curls of sawdust at its feet. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M17f",
+    "name": "Saw It Straight: knots",
+    "key": "sprites.knots",
+    "file": "assets/sprites/knots.png",
+    "size": "1536 x 512, transparent",
+    "used": "Saw It Straight: the knots that sit on the chalk line, laid over the painted plank; the saw grinds slowly through one, so the player steers round it.",
+    "standin": "Dark ink-and-wash ovals drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 1 row of three knots in a wooden plank's surface, seen from straight above, each a dark brown oval knot about 1.5 times as wide as it is tall, with a darker heart, a small crack or two, and a few rings of grain swirling round it that fade out to nothing at the edges (so it can lie on any of the pale pine, honey oak or reddish cedar planks of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/planks.png ). Each fills about 70% of its cell's width; no plank around them.",
+    "status": "delivered"
+  }
+]

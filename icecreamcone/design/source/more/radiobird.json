@@ -1,0 +1,68 @@
+[
+  {
+    "id": "IC-M18a",
+    "name": "Tune In: the sitting room",
+    "key": "scene.radiobird",
+    "file": "assets/scenes/radiobird.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Tune In: the background. The dial, the speaker under the needle, the listeners and the Radio Bird are drawn on top.",
+    "standin": "Striped wallpaper, a lamp's glow, a rug and a sage sofa drawn in code.",
+    "prompt": "{STYLE} {SCENE}A cosy 1960s sitting room in the evening: softly striped cream-and-mauve wallpaper, the warm glow of a standard lamp at the far right edge, a wooden floor across the bottom third with a dusty-pink oval rug on the left. On the right an empty low sage-green sofa, its back top at about 65% of the height, its seat front at about 87%, spanning from 55% to 93% of the width, with nothing on it (the game seats three little birds there). Keep the whole upper wall plain, from the top down to 55% of the height and across the full width, with no pictures, shelves or windows, because the game draws a long tuning dial across the top and a speaker that slides along under its needle. Keep the left third of the room, where the Radio Bird stands on the rug, plain as well.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M18b",
+    "name": "Tune In: the stations",
+    "key": "sprites.stations",
+    "file": "assets/sprites/stations.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Tune In: the picture of each station, in the listener's speech bubble, in the speaker when it is tuned in, and pencilled small on the dial once found.",
+    "standin": "A fiddle, a trumpet, a drum, bells, a cuckoo clock and a rain cloud drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six simple, bold little emblems, each about 300 px across, each readable at 48 px: 1) a fiddle with its bow; 2) a brass trumpet; 3) a red marching drum with sticks; 4) two golden church bells; 5) a carved wooden cuckoo clock with the green cuckoo popping out; 6) a grey rain cloud with three slate-blue drops.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M18c",
+    "name": "Tune In: the listeners",
+    "key": "sprites.listeners",
+    "file": "assets/sprites/listeners.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Tune In: the three little birds on the sofa who call for the stations, waiting and then delighted while their song plays.",
+    "standin": "Three round birds drawn in code, their eyes closing when the song plays.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of three small, round, plump little songbirds sitting down (legs tucked under them), each facing left and about 250 px tall, all at the same scale: lemon yellow, sage green and strawberry pink, each with one round eye with a dot pupil and a short ochre beak. Top row: the three waiting, sitting up straight, looking expectantly to the left. Bottom row: the same three in the same order, delighted, eyes closed in bliss, heads tilted, a tiny ink music note beside each.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M18d",
+    "name": "Tune In: the tuning dial",
+    "key": "sprites.dialPanel",
+    "file": "assets/sprites/dial-panel.png",
+    "size": "2048 x 512, transparent",
+    "used": "Tune In: the long tuning dial across the top of the screen; the game draws the red needle, the station marks and the knob on it.",
+    "standin": "A cream panel with tick marks in a brass frame drawn in code.",
+    "prompt": "{STYLE} A long 1960s radio tuning-dial window, seen straight on, filling the image's whole width and about 70% of its height: a narrow brass bezel around a pale cream face with a single row of evenly spaced tick marks along its bottom edge (a longer tick every fifth), and faint warm light glowing from behind. No numbers, no lettering, no needle, no knob. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M18e",
+    "name": "The Radio Bird listening, singing and startled",
+    "key": "sprites.radiobirdPoses",
+    "file": "assets/sprites/radiobird-poses.png",
+    "size": "3072 x 1024, transparent",
+    "used": "Tune In: the Radio Bird listening while the dial turns through the static, singing while the asked-for station plays (and when the listeners cheer), and startled by a wrong station.",
+    "standin": "The portrait (or its stand-in) leaning a little to listen, swaying to sing, and jittering when startled.",
+    "prompt": "{STYLE} {VARIANT}The Radio Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/radiobird.png ): a mustard-yellow 1960s portable transistor radio with a carrying handle on top, a red knob and a silver dial on its front and a green speaker grille, a long neck striped mustard and sage, a small head with a big round eye, a long pink beak and a pink crest, a teal-blue wing, a plume of pink tail feathers and long pink legs, in three poses in a row on one sheet, each in its own third, facing left, at the portrait's scale with its feet on the same ground line: 1) listening, its long striped neck curved down and round so its head is cocked close to its own green speaker grille, eye narrowed, a few faint fuzzy static marks around the grille; 2) singing, head thrown back on its long neck, beak wide open, crest flared, a few small ink music notes coming from the grille; 3) startled, neck jerked back into an S, crest standing straight up, eye wide, one foot lifted. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M18f",
+    "name": "Tune In: speaker cabinet and tuning knob",
+    "key": "sprites.radioParts",
+    "file": "assets/sprites/radio-parts.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Tune In: the little speaker that slides along under the dial's needle (the game shows static, or a station's picture fading in, through its round grille opening, with the wanted station's tag at its top-left corner), and the knob at the dial's left end that turns as the dial does.",
+    "standin": "A plain tan box and a brown ticked disc drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 2 x 1 row of two parts of a 1960s radio, matching the mustard-and-cream portable radio of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/radiobird.png and the brass tuning dial of https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/dial-panel.png : left, the front of a small speaker cabinet seen straight on, a rounded rectangle exactly 230 wide by 210 tall in proportion, mustard-yellow with a cream trim, with one perfectly round hole cut right through it (fully transparent inside, no cloth, no grille) whose centre is 60% of the way across from the left and 53% of the way down, and whose diameter is 62% of the cabinet's width; nothing else on the front. Right, a round brass-and-brown bakelite tuning knob seen straight on, with ridged grip around its rim and a single cream dot near its edge, centred, about 60% of its cell across.",
+    "status": "delivered"
+  }
+]

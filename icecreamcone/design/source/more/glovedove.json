@@ -1,0 +1,68 @@
+[
+  {
+    "id": "IC-M11a",
+    "name": "Glove Dove scene",
+    "key": "scene.glovedove",
+    "file": "assets/scenes/glovedove.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Behind Slippery Dishes (the Glove Dove): the kitchen counter the Dove runs along, the sink the wet dishes pop out of on the left, and the plate rack they are flicked into on the right.",
+    "standin": "A tiled wall, a window, a counter, a sink of suds and a wire plate rack drawn in code, from the side.",
+    "prompt": "{STYLE} {SCENE}An old-fashioned kitchen seen straight from the side, like a stage. A long wooden counter top runs right across the picture at about 81% of the height, with plain cupboard doors below it to the bottom edge. On the left, from 2% to 21% of the width, a deep white ceramic sink set into the counter, heaped with soap suds (its rim at about 65% of the height), with an old curved chrome tap above it. On the right, from 77% to 97% of the width, an empty wire plate rack standing on a drip tray on the counter, its thin upright wires rising to about 66% of the height, ready for plates. Behind, a pale tiled wall with a small window showing grey rain at the top middle. The counter between the sink and the rack, and all the air above it, are where the game plays (the bird runs along the counter and flicks dishes up through the air into the rack), so keep the wall there plain and quiet, and nothing at all on the counter: no dishes, cloths, bottles or jars anywhere.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M11b",
+    "name": "Dishes from the side",
+    "key": "sprites.dishes",
+    "file": "assets/sprites/dishes.png",
+    "size": "3072 x 2048, transparent",
+    "used": "Slippery Dishes: the wet dishes flying through the air (the game spins them) and standing in the rack.",
+    "standin": "Plates, a bowl, a cup and pans drawn in code from the side.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six clean, wet, shiny dishes, each centred in its own 1024 x 1024 cell, all seen from the side at eye level (a plate shows as a flat, slightly tilted ellipse), each about 70% of the cell wide, with a few drops of water and a soap bubble or two on them: 1) a white dinner plate with a slate-blue band round its rim; 2) a cream soup bowl with a mustard rim; 3) a tea cup with a mauve rim and its handle on the right; 4) a steel saucepan with its straight handle out to the right; 5) a black iron frying pan with its long handle out to the right; 6) a glazed ochre pie dish with a fluted rim.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M11e",
+    "name": "Glove Dove cheering and dismayed",
+    "key": "sprites.glovedovePoses",
+    "file": "assets/sprites/glovedove-poses.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Slippery Dishes: the Glove Dove cheering when a dish lands in the rack, and dismayed when one smashes.",
+    "standin": "The portrait hopping, or squashed down.",
+    "prompt": "{STYLE} {VARIANT} The Glove Dove (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/glovedove.png ): its head and long neck are one long pink rubber washing-up glove held level, the glove's fingers splayed back as a crest on top of a dove's head with a round yellow eye and a long open pink beak at the front, the glove's long studded cuff stretching straight back behind the head to a ruffled open cuff end, on a round body of scalloped blue-grey feathers, with long ochre scaly legs and dark claws, in two poses side by side, each in its own half and at the same scale, facing left, feet at the bottom: left, cheering: the long glove neck swung up at a jaunty angle with the cuff end high, the finger crest fanned wide, beak open, one foot lifted in a little jump; right, dismayed: the long glove neck drooping down at the cuff end, the finger crest curled in, the head lowered and the eye wide, as if it has just dropped a plate. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M11f",
+    "name": "Glove Dove catching and flicking",
+    "key": "sprites.glovedoveToss",
+    "file": "assets/sprites/glovedove-toss.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Slippery Dishes: the Glove Dove bracing to catch a falling dish on top of its long glove neck, and flicking it up into the air (the game draws the dish).",
+    "standin": "The portrait braced, then tipped back, with little pink marks over the glove while a catch is ready.",
+    "prompt": "{STYLE} {VARIANT} The Glove Dove (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/glovedove.png ): its head and long neck are one long pink rubber washing-up glove held level, the glove's fingers splayed back as a crest on top of a dove's head with a round yellow eye and a long open pink beak at the front, the glove's long studded cuff stretching straight back behind the head to a ruffled open cuff end, on a round body of scalloped blue-grey feathers, with long ochre scaly legs and dark claws, in two poses side by side, each in its own half and at the same scale, facing left, feet at the bottom: left, ready to catch, crouched a little with knees bent, the long glove neck held dead level and steady like a tray, the head tipped to look up with the eye on the sky; right, flicking, sprung up on tiptoe, the long glove neck snapping upward from the shoulders so the cuff end points up at an angle, a few soap drops flying off it. No dish (the game draws it). {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M11g",
+    "name": "Smashed dishes",
+    "key": "sprites.dishShards",
+    "file": "assets/sprites/dish-shards.png",
+    "size": "3072 x 2048, transparent",
+    "used": "Slippery Dishes: what is left for a moment on the counter when a dish smashes, one for each dish in the dishes sheet (IC-M11b).",
+    "standin": "Little triangles of the dish's colours flying off, drawn in code.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six small heaps of broken pieces lying on the ground, seen from the side at eye level like the delivered dishes (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/dishes.png ), each heap about 60% of its 1024 x 1024 cell wide and low, resting on the bottom third of the cell, in the same order and colours: 1) the white plate with the slate-blue band in curved shards; 2) the cream bowl with the mustard rim; 3) the tea cup with the mauve rim, its handle snapped off; 4) the steel saucepan, dented and on its side with its handle bent (metal does not shatter); 5) the black frying pan upside down with a few soap bubbles; 6) the ochre pie dish in fluted shards. A few water drops and a soap bubble round each.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M11h",
+    "name": "Glove Dove crouch, bump and look back",
+    "key": "sprites.glovedoveBump",
+    "file": "assets/sprites/glovedove-bump.png",
+    "size": "3072 x 2048, transparent",
+    "used": "Slippery Dishes, new control: hold the action to crouch, let go to spring up and bump the dish resting on the glove up and away to the right, into the plate rack. The body always faces left (towards the sink); only the head turns. The game shows: frame 0 for the first 0.1 s of holding (sinking); frame 1 while held with no dish on the glove (deep crouch, wound up, glove level as a tray); frame 2 for 0.12 s once a dish has settled on the glove, or once the crouch is fully wound up (0.45 s), as the head starts to turn; frame 3 while still held after that (head turned right, aiming); frame 4 for 0.25 s after letting go (the bump); frame 5 for 0.3 s after that as the head swings back to the left, then the ordinary standing portrait. A dish resting on the glove is drawn by the game on the glove's level top in frames 1 to 3, so that line must be level and at the stated height. This supersedes the brace and flick poses (IC-M11f), which stay as stand-ins; the cheer and dismay poses (IC-M11e) are still used.",
+    "standin": "The braced pose (IC-M11f cell 0) squashed down for the crouch, the flick pose (IC-M11f cell 1) for the bump; no head turn.",
+    "prompt": "{STYLE} {VARIANT} The Glove Dove (portrait: https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/glovedove.png ): its head and long neck are one long pink rubber washing-up glove, the glove's fingers splayed back as a crest on top of a dove's head with a round yellow eye and a long open pink beak at the front, the glove's long studded cuff stretching back behind the head to a ruffled open cuff end, on a round body of scalloped blue-grey feathers, with long ochre scaly legs and dark claws, in six full-figure frames of one movement, in a 3 x 2 grid of 1024 x 1024 px cells read left to right, top row then bottom row. THE BODY ALWAYS FACES LEFT in every frame (feathered body, legs and feet as in the portrait); in frames 2 to 5 only the head and the glove neck turn, the bird looking back over its own shoulder to the right. 0) SINKING: knees half bent, the body a little lower, the glove neck level, the head facing left and looking up; 1) DEEP CROUCH, wound up: knees deeply bent, the body low and tensed, the long glove neck held dead level like a tray from the head to the cuff, the head facing left, looking up, ready; 2) DEEP CROUCH, HEAD TURNING: the same crouch and level glove, the head twisting round in three-quarter view towards the right, one eye showing, the finger crest swinging; 3) DEEP CROUCH, HEAD TURNED RIGHT AND AIMING: the same crouch and level glove, the head now facing right and tilted up to the upper right, beak pointing up and right at about 30 degrees, eye fixed on a target, like a footballer lining up a header; 4) BUMP: springing up on tiptoe with the legs straight, the whole glove neck swung up from the shoulders to point up and to the right (the cuff end high on the right), the head facing right and up, beak open, a few soap drops flying off, the body still facing left; 5) LOOKING BACK: standing again, knees easy, the glove neck coming back down towards level, the head swinging back round in three-quarter view towards the left. REGISTRATION, so the frames swap without the bird jumping: the bird is at exactly the same scale as the portrait and the delivered pose sheets (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/glovedove-toss.png and https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/sprites/glovedove-poses.png ), i.e. the same size in pixels, with the portrait's framing; in every frame both feet stand flat on one level baseline at y 1002 px of the cell (97.9% down), and the point midway between the two feet is at x 512 px; the feet stay planted in the same place in every frame except frame 4, where the toes stay on that spot and the heels lift. In frames 1, 2 and 3 the TOP of the glove neck is a straight, level line at y 640 px of the cell, running from about x 430 px to x 900 px (a dish will be drawn resting on it). No dish, no ground, no shadow. {ALPHA}",
+    "status": "delivered"
+  }
+]

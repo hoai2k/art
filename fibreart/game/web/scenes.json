@@ -1,0 +1,1431 @@
+{
+ "scenes": [
+  {
+   "key": "viriditas",
+   "name": "Viriditas",
+   "wash": "#2a1d5c",
+   "thread": "#f2c230",
+   "ground": "tableaux/viriditas/ground.webp",
+   "composition": "tableaux/viriditas/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/viriditas/01.webp",
+     "name": "the large violet sun disc",
+     "kind": "sun",
+     "home": [
+      0.51,
+      0.34,
+      0.14
+     ],
+     "aspect": 0.9397,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/viriditas/02.webp",
+     "name": "the tallest teal tree, trunk and branches, from the ground to the top",
+     "kind": "tree",
+     "home": [
+      0.63,
+      0.48,
+      0.3
+     ],
+     "aspect": 1.6733,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/viriditas/03.webp",
+     "name": "a second slender teal tree, leaning left",
+     "kind": "tree",
+     "home": [
+      0.14,
+      0.56,
+      0.2
+     ],
+     "aspect": 1.9409,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/viriditas/04.webp",
+     "name": "a third slender tree, bottle green, forked near the top",
+     "kind": "tree",
+     "home": [
+      0.86,
+      0.5,
+      0.19
+     ],
+     "aspect": 1.9913,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/viriditas/05.webp",
+     "name": "a short young tree with a few buds",
+     "kind": "tree",
+     "home": [
+      0.52,
+      0.71,
+      0.1
+     ],
+     "aspect": 1.6657,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/viriditas/06.webp",
+     "name": "a cluster of red-orange berries, large",
+     "kind": "berries",
+     "home": [
+      0.32,
+      0.49,
+      0.12
+     ],
+     "aspect": 1.2964,
+     "chain": "flower"
+    },
+    {
+     "file": "tableaux/viriditas/07.webp",
+     "name": "a cluster of red-orange berries, medium",
+     "kind": "berries",
+     "home": [
+      0.68,
+      0.55,
+      0.08
+     ],
+     "aspect": 1.7484,
+     "chain": "flower"
+    },
+    {
+     "file": "tableaux/viriditas/08.webp",
+     "name": "a cluster of red-orange berries, small",
+     "kind": "berries",
+     "home": [
+      0.92,
+      0.5,
+      0.06
+     ],
+     "aspect": 1.8145,
+     "chain": "flower"
+    },
+    {
+     "file": "tableaux/viriditas/09.webp",
+     "name": "a single dark green bud on a curved stem",
+     "kind": "bud",
+     "home": [
+      0.55,
+      0.42,
+      0.04
+     ],
+     "aspect": 2.295,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/viriditas/10.webp",
+     "name": "a swirl of dark purple sky, cut out like a cloud",
+     "kind": "cloud",
+     "home": [
+      0.26,
+      0.12,
+      0.22
+     ],
+     "aspect": 0.5275
+    },
+    {
+     "file": "tableaux/viriditas/11.webp",
+     "name": "a small bird of stitched teal silk among the branches",
+     "kind": "bird",
+     "home": [
+      0.74,
+      0.28,
+      0.07
+     ],
+     "aspect": 0.8125,
+     "chain": "bird",
+     "poses": [
+      "anim/bird-viriditas-1.webp",
+      "anim/bird-viriditas-2.webp",
+      "anim/bird-viriditas-3.webp"
+     ]
+    },
+    {
+     "file": "tableaux/viriditas/12.webp",
+     "name": "a patch of orange fallen leaves",
+     "kind": "leaf",
+     "home": [
+      0.4,
+      0.9,
+      0.18
+     ],
+     "aspect": 0.7484,
+     "chain": "bird"
+    }
+   ]
+  },
+  {
+   "key": "night-quilt",
+   "name": "Moons and hearts",
+   "wash": "#0d1440",
+   "thread": "#5fb4ff",
+   "ground": "tableaux/night-quilt/ground.webp",
+   "composition": "tableaux/night-quilt/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/night-quilt/01.webp",
+     "name": "the crescent moon with the sleeping face",
+     "kind": "moon",
+     "home": [
+      0.24,
+      0.27,
+      0.165
+     ],
+     "aspect": 1.2476,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/night-quilt/02.webp",
+     "name": "the round moon with the sleeping face in profile",
+     "kind": "moon",
+     "home": [
+      0.77,
+      0.53,
+      0.235
+     ],
+     "aspect": 1.0082,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/night-quilt/03.webp",
+     "name": "the upper red heart with its white embroidery",
+     "kind": "heart",
+     "home": [
+      0.44,
+      0.25,
+      0.215
+     ],
+     "aspect": 0.9739,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/night-quilt/04.webp",
+     "name": "the lower red heart with its white embroidery",
+     "kind": "heart",
+     "home": [
+      0.155,
+      0.67,
+      0.21
+     ],
+     "aspect": 0.9196,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/night-quilt/05.webp",
+     "name": "the pale yellow stitched hand",
+     "kind": "hand",
+     "home": [
+      0.3,
+      0.59,
+      0.175
+     ],
+     "aspect": 1.0657
+    },
+    {
+     "file": "tableaux/night-quilt/06.webp",
+     "name": "a cluster of small red and yellow batik flowers",
+     "kind": "flower",
+     "home": [
+      0.285,
+      0.785,
+      0.17
+     ],
+     "aspect": 0.884,
+     "chain": "flower"
+    },
+    {
+     "file": "tableaux/night-quilt/07.webp",
+     "name": "one indigo block from the middle of the quilt, as a square of cloth with its stitched edge",
+     "kind": "panel",
+     "home": [
+      0.5,
+      0.63,
+      0.25
+     ],
+     "aspect": 1.0875
+    },
+    {
+     "file": "tableaux/night-quilt/08.webp",
+     "name": "a strip of red and orange batik border",
+     "kind": "band",
+     "home": [
+      0.8,
+      0.86,
+      0.22
+     ],
+     "aspect": 0.5746
+    },
+    {
+     "file": "tableaux/night-quilt/09.webp",
+     "name": "a small white batik star",
+     "kind": "star",
+     "home": [
+      0.79,
+      0.16,
+      0.1
+     ],
+     "aspect": 1.0308
+    }
+   ]
+  },
+  {
+   "key": "golden-lady",
+   "name": "The Golden Lady",
+   "wash": "#7a62b8",
+   "thread": "#ffbf1f",
+   "ground": "tableaux/golden-lady/ground.webp",
+   "composition": "tableaux/golden-lady/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/golden-lady/01.webp",
+     "name": "her head and neck, without the hair",
+     "kind": "face",
+     "home": [
+      0.362,
+      0.375,
+      0.14
+     ],
+     "aspect": 1.5602,
+     "chain": "face",
+     "blink": "anim/blink-golden-lady-1.webp"
+    },
+    {
+     "file": "tableaux/golden-lady/02.webp",
+     "name": "her orange-gold hair, as one piece",
+     "kind": "hair",
+     "home": [
+      0.356,
+      0.245,
+      0.175
+     ],
+     "aspect": 0.9451
+    },
+    {
+     "file": "tableaux/golden-lady/03.webp",
+     "name": "her body in the saffron dress, from the shoulders to the waist, with the arm on her hip",
+     "kind": "body",
+     "home": [
+      0.45,
+      0.8,
+      0.45
+     ],
+     "aspect": 0.9156
+    },
+    {
+     "file": "tableaux/golden-lady/04.webp",
+     "name": "the slim tree at the left edge",
+     "kind": "tree",
+     "home": [
+      0.1,
+      0.5,
+      0.22
+     ],
+     "aspect": 1.7632,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/golden-lady/05.webp",
+     "name": "the tallest smoky grey-violet cloud",
+     "kind": "cloud",
+     "home": [
+      0.74,
+      0.3,
+      0.14
+     ],
+     "aspect": 1.6412
+    },
+    {
+     "file": "tableaux/golden-lady/06.webp",
+     "name": "a blue cloud",
+     "kind": "cloud",
+     "home": [
+      0.94,
+      0.32,
+      0.14
+     ],
+     "aspect": 0.9971
+    },
+    {
+     "file": "tableaux/golden-lady/07.webp",
+     "name": "a pink cloud",
+     "kind": "cloud",
+     "home": [
+      0.55,
+      0.16,
+      0.24
+     ],
+     "aspect": 0.4694
+    },
+    {
+     "file": "tableaux/golden-lady/08.webp",
+     "name": "a small pale sun low in the sky",
+     "kind": "sun",
+     "home": [
+      0.67,
+      0.42,
+      0.05
+     ],
+     "aspect": 0.97,
+     "chain": "moon"
+    }
+   ]
+  },
+  {
+   "key": "black-tree",
+   "name": "The black tree",
+   "wash": "#5c1408",
+   "thread": "#f4e6c8",
+   "ground": "tableaux/black-tree/ground.webp",
+   "composition": "tableaux/black-tree/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/black-tree/01.webp",
+     "name": "the black tree, trunk and branches",
+     "kind": "tree",
+     "home": [
+      0.4,
+      0.5,
+      0.5
+     ],
+     "aspect": 1.0043,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/black-tree/02.webp",
+     "name": "a large black leaf",
+     "kind": "leaf",
+     "home": [
+      0.13,
+      0.21,
+      0.1
+     ],
+     "aspect": 1.0275,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/black-tree/03.webp",
+     "name": "a large ochre leaf",
+     "kind": "leaf",
+     "home": [
+      0.43,
+      0.13,
+      0.1
+     ],
+     "aspect": 1.164,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/black-tree/04.webp",
+     "name": "a cream leaf",
+     "kind": "leaf",
+     "home": [
+      0.21,
+      0.25,
+      0.09
+     ],
+     "aspect": 1.2372,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/black-tree/05.webp",
+     "name": "the face with long dark hair",
+     "kind": "face",
+     "home": [
+      0.17,
+      0.6,
+      0.28
+     ],
+     "aspect": 0.9445,
+     "chain": "face",
+     "blink": "anim/blink-black-tree-1.webp"
+    },
+    {
+     "file": "tableaux/black-tree/06.webp",
+     "name": "the pale face with closed eyes",
+     "kind": "face",
+     "home": [
+      0.77,
+      0.36,
+      0.24
+     ],
+     "aspect": 1.2141,
+     "chain": "face"
+    },
+    {
+     "file": "tableaux/black-tree/07.webp",
+     "name": "the dark face with the gold mask-like look",
+     "kind": "face",
+     "home": [
+      0.6,
+      0.63,
+      0.2
+     ],
+     "aspect": 1.0958,
+     "chain": "face",
+     "blink": "anim/blink-black-tree-2.webp"
+    },
+    {
+     "file": "tableaux/black-tree/08.webp",
+     "name": "the row of small gabled houses",
+     "kind": "house",
+     "home": [
+      0.83,
+      0.8,
+      0.3
+     ],
+     "aspect": 0.5292
+    },
+    {
+     "file": "tableaux/black-tree/09.webp",
+     "name": "a single red and cream harlequin diamond",
+     "kind": "diamond",
+     "home": [
+      0.93,
+      0.33,
+      0.07
+     ],
+     "aspect": 1.6453
+    }
+   ]
+  },
+  {
+   "key": "two-moons",
+   "name": "Two moons over lace mountains",
+   "wash": "#0b1f5c",
+   "thread": "#3cc8e8",
+   "ground": "tableaux/two-moons/ground.webp",
+   "composition": "tableaux/two-moons/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/two-moons/01.webp",
+     "name": "the left pale moon",
+     "kind": "moon",
+     "home": [
+      0.25,
+      0.35,
+      0.18
+     ],
+     "aspect": 1.0227,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/two-moons/02.webp",
+     "name": "the right pale moon",
+     "kind": "moon",
+     "home": [
+      0.7,
+      0.37,
+      0.18
+     ],
+     "aspect": 1.0417,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/two-moons/03.webp",
+     "name": "the golden crescent of couched thread",
+     "kind": "moon",
+     "home": [
+      0.53,
+      0.35,
+      0.14
+     ],
+     "aspect": 1.3861,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/two-moons/04.webp",
+     "name": "the lace mountain range, as one long piece",
+     "kind": "mountain",
+     "home": [
+      0.42,
+      0.74,
+      0.76
+     ],
+     "aspect": 0.3677
+    },
+    {
+     "file": "tableaux/two-moons/05.webp",
+     "name": "the striped band of pale yellow and sky blue",
+     "kind": "band",
+     "home": [
+      0.5,
+      0.17,
+      0.86
+     ],
+     "aspect": 0.424
+    },
+    {
+     "file": "tableaux/two-moons/06.webp",
+     "name": "a single small lace peak, separate from the range",
+     "kind": "mountain",
+     "home": [
+      0.89,
+      0.74,
+      0.14
+     ],
+     "aspect": 0.9267
+    },
+    {
+     "file": "tableaux/two-moons/07.webp",
+     "name": "a small silver star",
+     "kind": "star",
+     "home": [
+      0.87,
+      0.39,
+      0.07
+     ],
+     "aspect": 1.1702
+    }
+   ]
+  },
+  {
+   "key": "dancers",
+   "name": "The dancers",
+   "wash": "#8c1010",
+   "thread": "#2f5fd0",
+   "ground": "tableaux/dancers/ground.webp",
+   "composition": "tableaux/dancers/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/dancers/01.webp",
+     "name": "the leaping blue dancer",
+     "kind": "figure",
+     "home": [
+      0.25,
+      0.24,
+      0.375
+     ],
+     "aspect": 0.8372,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/dancers/02.webp",
+     "name": "the turning red dancer",
+     "kind": "figure",
+     "home": [
+      0.575,
+      0.27,
+      0.235
+     ],
+     "aspect": 0.8824,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/dancers/03.webp",
+     "name": "a pair of blue dancers holding hands",
+     "kind": "figure",
+     "home": [
+      0.275,
+      0.685,
+      0.405
+     ],
+     "aspect": 0.6552,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/dancers/04.webp",
+     "name": "a red dancer reaching up",
+     "kind": "figure",
+     "home": [
+      0.625,
+      0.7,
+      0.105
+     ],
+     "aspect": 1.1857,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/dancers/05.webp",
+     "name": "the round red sun",
+     "kind": "sun",
+     "home": [
+      0.347,
+      0.11,
+      0.099
+     ],
+     "aspect": 0.968,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/dancers/06.webp",
+     "name": "the tall blue plant with curling leaves",
+     "kind": "tree",
+     "home": [
+      0.826,
+      0.46,
+      0.228
+     ],
+     "aspect": 1.7933,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/dancers/07.webp",
+     "name": "the small quilted window, as an empty frame",
+     "kind": "panel",
+     "home": [
+      0.625,
+      0.705,
+      0.24
+     ],
+     "aspect": 0.7481
+    }
+   ]
+  },
+  {
+   "key": "man-and-woman",
+   "name": "Man and woman",
+   "wash": "#6b2a2a",
+   "thread": "#f0a040",
+   "ground": "tableaux/man-and-woman/ground.webp",
+   "composition": "tableaux/man-and-woman/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/man-and-woman/01.webp",
+     "name": "the man, seated, facing right",
+     "kind": "figure",
+     "home": [
+      0.27,
+      0.61,
+      0.38
+     ],
+     "aspect": 0.8855,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/man-and-woman/02.webp",
+     "name": "the woman, seated, facing left",
+     "kind": "figure",
+     "home": [
+      0.6,
+      0.6,
+      0.26
+     ],
+     "aspect": 1.1094,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/man-and-woman/03.webp",
+     "name": "the copper-gold sun",
+     "kind": "sun",
+     "home": [
+      0.33,
+      0.15,
+      0.32
+     ],
+     "aspect": 1.0344,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/man-and-woman/04.webp",
+     "name": "the little peaked house",
+     "kind": "house",
+     "home": [
+      0.1,
+      0.3,
+      0.16
+     ],
+     "aspect": 1.175
+    },
+    {
+     "file": "tableaux/man-and-woman/05.webp",
+     "name": "the larger bare tree",
+     "kind": "tree",
+     "home": [
+      0.8,
+      0.4,
+      0.4
+     ],
+     "aspect": 1.1603,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/man-and-woman/06.webp",
+     "name": "the smaller bare tree",
+     "kind": "tree",
+     "home": [
+      0.92,
+      0.5,
+      0.17
+     ],
+     "aspect": 1.4292,
+     "chain": "tree"
+    },
+    {
+     "file": "tableaux/man-and-woman/07.webp",
+     "name": "a single orange silk leaf",
+     "kind": "leaf",
+     "home": [
+      0.74,
+      0.16,
+      0.05
+     ],
+     "aspect": 0.8702,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/man-and-woman/08.webp",
+     "name": "the looping scarlet ribbon from the tablecloth",
+     "kind": "ribbon",
+     "home": [
+      0.7,
+      0.86,
+      0.52
+     ],
+     "aspect": 0.2756
+    }
+   ]
+  },
+  {
+   "key": "blue-lady",
+   "name": "Blue Lady",
+   "wash": "#06141f",
+   "thread": "#4fd2d2",
+   "ground": "tableaux/blue-lady/ground.webp",
+   "composition": "tableaux/blue-lady/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/blue-lady/01.webp",
+     "name": "the reclining woman, her face, body and hair as one piece",
+     "kind": "figure",
+     "home": [
+      0.45,
+      0.39,
+      0.9
+     ],
+     "aspect": 0.4524,
+     "chain": "figure"
+    },
+    {
+     "file": "tableaux/blue-lady/02.webp",
+     "name": "the small pale moon",
+     "kind": "moon",
+     "home": [
+      0.71,
+      0.09,
+      0.09
+     ],
+     "aspect": 0.9019,
+     "chain": "moon"
+    },
+    {
+     "file": "tableaux/blue-lady/03.webp",
+     "name": "the fish of patterned blue cloth",
+     "kind": "fish",
+     "home": [
+      0.38,
+      0.77,
+      0.35
+     ],
+     "aspect": 0.6651,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/blue-lady/04.webp",
+     "name": "a cluster of tall reeds",
+     "kind": "reeds",
+     "home": [
+      0.93,
+      0.56,
+      0.13
+     ],
+     "aspect": 2.2375
+    },
+    {
+     "file": "tableaux/blue-lady/05.webp",
+     "name": "a long ripple of stitched teal thread",
+     "kind": "ribbon",
+     "home": [
+      0.3,
+      0.9,
+      0.4
+     ],
+     "aspect": 0.1404
+    },
+    {
+     "file": "tableaux/blue-lady/06.webp",
+     "name": "a scrap of turquoise satin, like a wave crest",
+     "kind": "ribbon",
+     "home": [
+      0.7,
+      0.86,
+      0.4
+     ],
+     "aspect": 0.2726
+    }
+   ]
+  },
+  {
+   "key": "crowd",
+   "name": "The crowd of faces",
+   "wash": "#3a1f14",
+   "thread": "#f2b45a",
+   "ground": "tableaux/crowd/ground.webp",
+   "composition": "tableaux/crowd/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/crowd/01.webp",
+     "name": "the large face with wide open eyes",
+     "kind": "face",
+     "home": [
+      0.52,
+      0.33,
+      0.2
+     ],
+     "aspect": 1.1908,
+     "chain": "face",
+     "blink": "anim/blink-crowd-1.webp"
+    },
+    {
+     "file": "tableaux/crowd/02.webp",
+     "name": "the single floating eye",
+     "kind": "eye",
+     "home": [
+      0.2,
+      0.38,
+      0.18
+     ],
+     "aspect": 0.7728
+    },
+    {
+     "file": "tableaux/crowd/03.webp",
+     "name": "a rose face with closed eyes",
+     "kind": "face",
+     "home": [
+      0.28,
+      0.8,
+      0.15
+     ],
+     "aspect": 1.2156,
+     "chain": "face"
+    },
+    {
+     "file": "tableaux/crowd/04.webp",
+     "name": "an ochre face looking left",
+     "kind": "face",
+     "home": [
+      0.38,
+      0.6,
+      0.13
+     ],
+     "aspect": 1.2374,
+     "chain": "face",
+     "blink": "anim/blink-crowd-2.webp"
+    },
+    {
+     "file": "tableaux/crowd/05.webp",
+     "name": "a dusty blue face looking up",
+     "kind": "face",
+     "home": [
+      0.68,
+      0.58,
+      0.15
+     ],
+     "aspect": 1.2529,
+     "chain": "face",
+     "blink": "anim/blink-crowd-3.webp"
+    },
+    {
+     "file": "tableaux/crowd/06.webp",
+     "name": "a cream face with a long neck",
+     "kind": "face",
+     "home": [
+      0.67,
+      0.15,
+      0.12
+     ],
+     "aspect": 1.3275,
+     "chain": "face"
+    },
+    {
+     "file": "tableaux/crowd/07.webp",
+     "name": "a slate face in profile",
+     "kind": "face",
+     "home": [
+      0.88,
+      0.48,
+      0.14
+     ],
+     "aspect": 1.2444,
+     "chain": "face"
+    },
+    {
+     "file": "tableaux/crowd/08.webp",
+     "name": "a small pale face, smiling",
+     "kind": "face",
+     "home": [
+      0.57,
+      0.82,
+      0.1
+     ],
+     "aspect": 1.0934,
+     "chain": "face",
+     "blink": "anim/blink-crowd-4.webp"
+    },
+    {
+     "file": "tableaux/crowd/09.webp",
+     "name": "a pair of faces cheek to cheek",
+     "kind": "face",
+     "home": [
+      0.8,
+      0.85,
+      0.22
+     ],
+     "aspect": 0.9503,
+     "chain": "face"
+    }
+   ]
+  },
+  {
+   "key": "silk-bird",
+   "name": "The silk bird",
+   "wash": "#d8c8a8",
+   "thread": "#c0185a",
+   "ground": "tableaux/silk-bird/ground.webp",
+   "composition": "tableaux/silk-bird/composition.webp",
+   "standin": [],
+   "pieces": [
+    {
+     "file": "tableaux/silk-bird/01.webp",
+     "name": "the silk bird with the face in its breast",
+     "kind": "bird",
+     "home": [
+      0.35,
+      0.38,
+      0.6
+     ],
+     "aspect": 0.5612,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/silk-bird/02.webp",
+     "name": "a long gold ribbon loop",
+     "kind": "ribbon",
+     "home": [
+      0.45,
+      0.15,
+      0.5
+     ],
+     "aspect": 1.0465
+    },
+    {
+     "file": "tableaux/silk-bird/03.webp",
+     "name": "a rose ribbon loop",
+     "kind": "ribbon",
+     "home": [
+      0.78,
+      0.3,
+      0.3
+     ],
+     "aspect": 1.386
+    },
+    {
+     "file": "tableaux/silk-bird/04.webp",
+     "name": "a sky-blue ribbon loop",
+     "kind": "ribbon",
+     "home": [
+      0.55,
+      0.7,
+      0.4
+     ],
+     "aspect": 1.2847
+    },
+    {
+     "file": "tableaux/silk-bird/05.webp",
+     "name": "a lilac ribbon loop",
+     "kind": "ribbon",
+     "home": [
+      0.2,
+      0.72,
+      0.38
+     ],
+     "aspect": 0.7034
+    },
+    {
+     "file": "tableaux/silk-bird/06.webp",
+     "name": "the netting fish with orange stitching",
+     "kind": "fish",
+     "home": [
+      0.78,
+      0.76,
+      0.42
+     ],
+     "aspect": 0.6339,
+     "chain": "bird"
+    },
+    {
+     "file": "tableaux/silk-bird/07.webp",
+     "name": "the pink silk triangle",
+     "kind": "triangle",
+     "home": [
+      0.89,
+      0.17,
+      0.2
+     ],
+     "aspect": 0.962
+    }
+   ]
+  }
+ ],
+ "chains": {
+  "moon": [
+   {
+    "file": "chains/moon-1.webp",
+    "aspect": 0.7857
+   },
+   {
+    "file": "chains/moon-2.webp",
+    "aspect": 0.6567
+   },
+   {
+    "file": "chains/moon-3.webp",
+    "aspect": 0.7367
+   },
+   {
+    "file": "chains/moon-4.webp",
+    "aspect": 0.7767
+   },
+   {
+    "file": "chains/moon-5.webp",
+    "aspect": 0.7655
+   }
+  ],
+  "face": [
+   {
+    "file": "chains/face-1.webp",
+    "aspect": 1.1652
+   },
+   {
+    "file": "chains/face-2.webp",
+    "aspect": 1.1712
+   },
+   {
+    "file": "chains/face-3.webp",
+    "aspect": 1.1738
+   },
+   {
+    "file": "chains/face-4.webp",
+    "aspect": 1.1334
+   },
+   {
+    "file": "chains/face-5.webp",
+    "aspect": 1.1355
+   }
+  ],
+  "figure": [
+   {
+    "file": "chains/figure-1.webp",
+    "aspect": 1.1451
+   },
+   {
+    "file": "chains/figure-2.webp",
+    "aspect": 1.005
+   },
+   {
+    "file": "chains/figure-3.webp",
+    "aspect": 0.9367
+   },
+   {
+    "file": "chains/figure-4.webp",
+    "aspect": 0.6383
+   },
+   {
+    "file": "chains/figure-5.webp",
+    "aspect": 0.439
+   }
+  ],
+  "flower": [
+   {
+    "file": "chains/flower-1.webp",
+    "aspect": 0.9002
+   },
+   {
+    "file": "chains/flower-2.webp",
+    "aspect": 0.9367
+   },
+   {
+    "file": "chains/flower-3.webp",
+    "aspect": 0.8217
+   },
+   {
+    "file": "chains/flower-4.webp",
+    "aspect": 0.8983
+   },
+   {
+    "file": "chains/flower-5.webp",
+    "aspect": 0.6701
+   }
+  ],
+  "tree": [
+   {
+    "file": "chains/tree-1.webp",
+    "aspect": 1.5144
+   },
+   {
+    "file": "chains/tree-2.webp",
+    "aspect": 1.5025
+   },
+   {
+    "file": "chains/tree-3.webp",
+    "aspect": 1.5025
+   },
+   {
+    "file": "chains/tree-4.webp",
+    "aspect": 1.5118
+   },
+   {
+    "file": "chains/tree-5.webp",
+    "aspect": 1.6405
+   }
+  ],
+  "bird": [
+   {
+    "file": "chains/bird-1.webp",
+    "aspect": 0.8146
+   },
+   {
+    "file": "chains/bird-2.webp",
+    "aspect": 0.6934
+   },
+   {
+    "file": "chains/bird-3.webp",
+    "aspect": 0.7198
+   },
+   {
+    "file": "chains/bird-4.webp",
+    "aspect": 0.7932
+   },
+   {
+    "file": "chains/bird-5.webp",
+    "aspect": 0.8827
+   }
+  ]
+ },
+ "chainKinds": {
+  "moon": [
+   "moon",
+   "sun",
+   "heart"
+  ],
+  "face": [
+   "face"
+  ],
+  "figure": [
+   "figure"
+  ],
+  "flower": [
+   "flower",
+   "berries"
+  ],
+  "tree": [
+   "tree",
+   "bud"
+  ],
+  "bird": [
+   "bird",
+   "fish",
+   "leaf"
+  ]
+ },
+ "textures": [
+  "textures/indigo-batik.webp",
+  "textures/rust-paisley.webp",
+  "textures/gold-damask.webp",
+  "textures/turquoise-satin.webp",
+  "textures/black-lace.webp",
+  "textures/brown-netting.webp",
+  "textures/green-silk.webp",
+  "textures/ultramarine-canvas.webp"
+ ],
+ "masks": [
+  "masks/torn-paper.webp",
+  "masks/watercolour-bloom.webp",
+  "masks/seams.webp",
+  "masks/unravel.webp",
+  "masks/swirl.webp",
+  "masks/stitch-line.webp"
+ ],
+ "ui": {
+  "logo": "ui/logo.webp",
+  "lines": [
+   {
+    "name": "face-closed",
+    "file": "ui/lines/face-closed.webp",
+    "aspect": 1.5227
+   },
+   {
+    "name": "face-open",
+    "file": "ui/lines/face-open.webp",
+    "aspect": 1.5711
+   },
+   {
+    "name": "embrace",
+    "file": "ui/lines/embrace.webp",
+    "aspect": 1.3474
+   },
+   {
+    "name": "window",
+    "file": "ui/lines/window.webp",
+    "aspect": 1.259
+   },
+   {
+    "name": "hand",
+    "file": "ui/lines/hand.webp",
+    "aspect": 0.9782
+   },
+   {
+    "name": "needle",
+    "file": "ui/lines/needle.webp",
+    "aspect": 1.5378
+   },
+   {
+    "name": "moon",
+    "file": "ui/lines/moon.webp",
+    "aspect": 1.2487
+   },
+   {
+    "name": "heart",
+    "file": "ui/lines/heart.webp",
+    "aspect": 1.0
+   },
+   {
+    "name": "tree",
+    "file": "ui/lines/tree.webp",
+    "aspect": 1.2766
+   },
+   {
+    "name": "bird",
+    "file": "ui/lines/bird.webp",
+    "aspect": 1.2648
+   },
+   {
+    "name": "boots",
+    "file": "ui/lines/boots.webp",
+    "aspect": 0.8818
+   },
+   {
+    "name": "spool",
+    "file": "ui/lines/spool.webp",
+    "aspect": 1.0263
+   },
+   {
+    "name": "stick",
+    "file": "ui/controls-1.webp",
+    "aspect": 0.6631
+   },
+   {
+    "name": "trigger",
+    "file": "ui/controls-2.webp",
+    "aspect": 0.7792
+   },
+   {
+    "name": "button",
+    "file": "ui/controls-3.webp",
+    "aspect": 0.904
+   },
+   {
+    "name": "shoulder",
+    "file": "ui/controls-4.webp",
+    "aspect": 0.7215
+   },
+   {
+    "name": "dpad",
+    "file": "ui/controls-5.webp",
+    "aspect": 0.6845
+   },
+   {
+    "name": "controller",
+    "file": "ui/controls-6.webp",
+    "aspect": 0.6776
+   },
+   {
+    "name": "controllers",
+    "file": "ui/controls-7.webp",
+    "aspect": 1.2018
+   },
+   {
+    "name": "moon-controller",
+    "file": "ui/controls-8.webp",
+    "aspect": 1.1393
+   }
+  ],
+  "pause": {
+   "controls": "ui/pause-2.webp",
+   "hint": "ui/pause-3.webp",
+   "howto": "ui/pause-4.webp",
+   "settings": "ui/pause-5.webp",
+   "next": "ui/pause-6.webp",
+   "title": "ui/pause-7.webp",
+   "fullscreen": "ui/fullscreen-1.webp"
+  }
+ },
+ "drift": [
+  {
+   "file": "anim/drift-1.webp",
+   "aspect": 1.3356
+  },
+  {
+   "file": "anim/drift-2.webp",
+   "aspect": 1.3018
+  },
+  {
+   "file": "anim/drift-3.webp",
+   "aspect": 1.3491
+  },
+  {
+   "file": "anim/drift-4.webp",
+   "aspect": 1.3966
+  },
+  {
+   "file": "anim/drift-5.webp",
+   "aspect": 1.3978
+  },
+  {
+   "file": "anim/drift-6.webp",
+   "aspect": 1.4021
+  },
+  {
+   "file": "anim/drift-7.webp",
+   "aspect": 1.2461
+  },
+  {
+   "file": "anim/drift-8.webp",
+   "aspect": 1.2895
+  },
+  {
+   "file": "anim/drift-9.webp",
+   "aspect": 1.0132
+  },
+  {
+   "file": "anim/drift-10.webp",
+   "aspect": 0.9869
+  },
+  {
+   "file": "anim/drift-11.webp",
+   "aspect": 1.276
+  },
+  {
+   "file": "anim/drift-12.webp",
+   "aspect": 1.107
+  }
+ ],
+ "music": {
+  "file": "audio/aksak-folk-dance.mp3",
+  "title": "Aksak Folk Dance",
+  "artist": "hoai2k",
+  "key": "C minor",
+  "root": 60
+ }
+}

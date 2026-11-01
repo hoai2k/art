@@ -1,0 +1,68 @@
+[
+  {
+    "id": "IC-M05a",
+    "name": "Button Up: the washing line",
+    "key": "scene.buttonbeaks",
+    "file": "assets/scenes/buttonbeaks.webp",
+    "size": "1920 x 1080, opaque",
+    "used": "Button Up (the Buttonbeaks): the whole background. The washing line, the coats, the button tin and the birds are drawn on top.",
+    "standin": "Sky, a hedge, two wooden posts and a grey-blue tin painted in code.",
+    "prompt": "{STYLE} {SCENE}A back garden on a fresh, breezy washing day, seen straight on. Two tall plain wooden clothes posts stand at the far left and far right edges, their tops about 16% of the way down, with nothing strung between them (the game draws the line). Behind, a low clipped hedge about 70% down, a soft lawn below it, and a pale sky with a few small clouds near the top corners. Across the bottom, from 12% to 88% of the width and from 90% down to the bottom edge, the long open lid-side of an old blue-grey tin sewing box, seen from the front, its top edge level. Keep the sky between the posts (from 18% to 55% down) completely clear, and the lawn above the tin quiet, because coats travel along the line there and the birds walk in front of the tin.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M05b",
+    "name": "Buttons",
+    "key": "sprites.buttons",
+    "file": "assets/sprites/buttons.png",
+    "size": "1536 x 1024, transparent",
+    "used": "Button Up: the buttons in the bowls, the one the Buttonbeaks carry and toss, and the ones sewn on. Each hole's missing button is drawn in code as a ghost of it.",
+    "standin": "Buttons drawn in code: round, square and flower-shaped, with two or four thread holes.",
+    "prompt": "{STYLE} {SHEET} A 3 x 2 grid of six large sewing buttons seen flat from the front, each about 360 px across, in this order, row by row: 1, a round strawberry-pink button with a raised rim and four thread holes; 2, a round slate-blue button with a raised rim and two thread holes; 3, a square lemon-yellow button with rounded corners and four thread holes; 4, a sage-green flower-shaped button with five round petals and two thread holes; 5, a square strawberry-pink button with rounded corners and two thread holes; 6, a slate-blue flower-shaped button with five round petals and four thread holes. The holes clearly visible and evenly placed, a little shine on each.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M05c",
+    "name": "Coats on the line",
+    "key": "sprites.coats",
+    "file": "assets/sprites/coats.png",
+    "size": "2048 x 768, transparent",
+    "used": "Button Up: the clothes that travel along the washing line. The game adds the clothes pegs, and the buttonholes and buttons down the middle.",
+    "standin": "Coats drawn in code in mustard, olive, pink, ochre and blue-grey washes.",
+    "prompt": "{STYLE} {SHEET} A 4 x 1 row of four children's garments hanging flat and straight, front view, each filling its cell's height (about 700 px tall), with their shoulders level along the top: a mustard wool coat with long sleeves, an olive knitted cardigan, a dusty-pink waistcoat with no sleeves, a pale blue-grey jacket. Each is open-necked with a small collar and closes down the exact vertical centre line with a plain flat placket that has NO buttons and NO buttonholes and nothing else on it (the game adds them down the middle); any pockets are low and well to the sides. No pegs, hangers or line.",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M05d",
+    "name": "Button bowl",
+    "key": "sprites.buttonBowl",
+    "file": "assets/sprites/button-bowl.png",
+    "size": "512 x 512, transparent",
+    "used": "Button Up: each bowl in the open tin that holds one kind of button (the game piles the buttons in it).",
+    "standin": "A wooden bowl drawn in code.",
+    "prompt": "{STYLE} A single small, shallow, round turned-wood bowl seen from the front and a little above, so its open inside shows as a wide dark ellipse, empty, warm honey-brown with a fine grain. Centred, filling about 80% of the width. {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M05e",
+    "name": "Buttonbeaks holding and tossing a button",
+    "key": "sprites.buttonbeaksToss",
+    "file": "assets/sprites/buttonbeaks-toss.png",
+    "size": "2048 x 1024, transparent",
+    "used": "Button Up: the Buttonbeaks carry a button between them and toss it up into a coat (the game draws the button).",
+    "standin": "Their stand-in, hopping, with the button drawn above them on a loop of thread.",
+    "prompt": "{STYLE} {VARIANT} The Buttonbeaks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/buttonbeaks.png), the pair together exactly as painted: on the left the taller bird with a mustard-yellow four-hole button for a head-cap and a pointed yellow button beak pointing left; on the right, a little behind, the smaller bird with a strawberry-pink button head and pink button beak; their round bodies covered in overlapping old buttons (mustard, sage, dusty pink, cream, slate), thin pinkish-brown legs with dark claws. Two poses side by side on one sheet, each in its own half, at the same scale, facing left: left, the two standing close with their heads turned in towards each other and their beaks raised and touching at the tips above and between them, as if holding something small up together; right, both springing up on their toes with their beaks flung up towards the sky, having just tossed it. Nothing held in the beaks (the game draws the button). {ALPHA}",
+    "status": "delivered"
+  },
+  {
+    "id": "IC-M05f",
+    "name": "Buttonbeaks walking, pecking, dazed and cheering",
+    "key": "sprites.buttonbeaksPoses",
+    "file": "assets/sprites/buttonbeaks-poses.png",
+    "size": "4096 x 1024, transparent",
+    "used": "Button Up: the pair walking empty-beaked (alternating with the portrait), pecking a button out of a bowl, dizzy after a wrong button, and hopping for joy when one is sewn on.",
+    "standin": "Their stand-in, bobbing as they walk, shaking when dazed and jumping when a button is sewn on.",
+    "prompt": "{STYLE} {VARIANT} The Buttonbeaks (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/buttonbeaks.png), the pair together exactly as painted: on the left the taller bird with a mustard-yellow four-hole button for a head-cap and a pointed yellow button beak pointing left; on the right, a little behind, the smaller bird with a strawberry-pink button head and pink button beak; their round bodies covered in overlapping old buttons (mustard, sage, dusty pink, cream, slate), thin pinkish-brown legs with dark claws. Four poses in a row on one sheet, each in its own quarter, at the same scale, facing left, nothing in their beaks: 1, walking side by side mid-stride, each with one leg reaching forward; 2, both bending down low, beaks pointing down to peck at something on the ground in front of them; 3, dizzy, both reeling and leaning against each other, heads tilted, legs wobbly, eyes wide; 4, both hopping up off the ground together for joy, beaks open and pointing up, the small one's button tail raised. Feet at the bottom of each cell. {ALPHA}",
+    "status": "delivered"
+  }
+]

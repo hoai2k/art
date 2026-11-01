@@ -1,0 +1,532 @@
+{
+  "generated_on": "2026-10-09",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "id": "IC-M01g",
+      "file": "game/assets/sprites/milk-garden.png",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_dimensions": [
+        2048,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1774,
+          887
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              7,
+              73,
+              578,
+              844
+            ],
+            "output_bounds": [
+              317,
+              406,
+              707,
+              932
+            ],
+            "scale": 0.6826666666666668
+          },
+          {
+            "source_bounds": [
+              567,
+              361,
+              1767,
+              577
+            ],
+            "output_bounds": [
+              1126,
+              602,
+              1945,
+              749
+            ],
+            "scale": 0.6826666666666668
+          }
+        ]
+      },
+      "previous_sha256": "fd700414a2638578ea60086e0b97e786af692ea4fedc3ba2da15fde3edc71ad0",
+      "sha256": "fd700414a2638578ea60086e0b97e786af692ea4fedc3ba2da15fde3edc71ad0",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 1 grid of two pieces, in the delivered street painting's soft dawn light. Left: a garden path of pale flagstones seen from the front and above, running straight away from the viewer: about 300 px wide at the bottom, narrowing to about 120 px at the top, about 900 px tall, with grass edges and a few tufts and daisies along its sides, ending at the top without a doorstep or house. Right: a straight length of low, weathered wooden picket fence seen exactly side-on, about 900 px long and 200 px tall, its posts evenly spaced and its two rails continuous, so that copies placed end to end join without a visible seam (the same post spacing at both ends), with a little grass at its foot. No gate, no people, no animals.\nComplete production sprite atlas, exact ordered grid, transparent gutters, original anatomy, no clipped elements. Target 2048 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M18b",
+      "file": "game/assets/sprites/stations.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1536,
+          1024
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              94,
+              48,
+              460,
+              493
+            ],
+            "output_bounds": [
+              114,
+              119,
+              399,
+              466
+            ],
+            "scale": 0.7787072243346008
+          },
+          {
+            "source_bounds": [
+              516,
+              105,
+              1042,
+              417
+            ],
+            "output_bounds": [
+              563,
+              164,
+              973,
+              407
+            ],
+            "scale": 0.7787072243346008
+          },
+          {
+            "source_bounds": [
+              1098,
+              68,
+              1484,
+              466
+            ],
+            "output_bounds": [
+              1130,
+              135,
+              1431,
+              445
+            ],
+            "scale": 0.7787072243346008
+          },
+          {
+            "source_bounds": [
+              38,
+              535,
+              524,
+              942
+            ],
+            "output_bounds": [
+              68,
+              621,
+              445,
+              937
+            ],
+            "scale": 0.7757575757575758
+          },
+          {
+            "source_bounds": [
+              575,
+              467,
+              979,
+              995
+            ],
+            "output_bounds": [
+              612,
+              568,
+              925,
+              978
+            ],
+            "scale": 0.7757575757575758
+          },
+          {
+            "source_bounds": [
+              1079,
+              532,
+              1503,
+              961
+            ],
+            "output_bounds": [
+              1116,
+              619,
+              1445,
+              952
+            ],
+            "scale": 0.7757575757575758
+          }
+        ]
+      },
+      "previous_sha256": "5bd18ba153bd85c19374a80df6f58b839c0e464414148bd7ace0eacac56f0914",
+      "sha256": "5bd18ba153bd85c19374a80df6f58b839c0e464414148bd7ace0eacac56f0914",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of six simple, bold little emblems, each about 300 px across, each readable at 48 px: 1) a fiddle with its bow; 2) a brass trumpet; 3) a red marching drum with sticks; 4) two golden church bells; 5) a carved wooden cuckoo clock with the green cuckoo popping out; 6) a grey rain cloud with three slate-blue drops.\nComplete production sprite atlas, exact ordered grid, transparent gutters, original anatomy, no clipped elements. Target 1536 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M18c",
+      "file": "game/assets/sprites/listeners.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        2
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          1536,
+          1024
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              89,
+              96,
+              526,
+              467
+            ],
+            "output_bounds": [
+              51,
+              113,
+              461,
+              461
+            ],
+            "scale": 0.9372997711670481
+          },
+          {
+            "source_bounds": [
+              578,
+              103,
+              1010,
+              468
+            ],
+            "output_bounds": [
+              566,
+              119,
+              971,
+              461
+            ],
+            "scale": 0.9372997711670481
+          },
+          {
+            "source_bounds": [
+              1081,
+              104,
+              1512,
+              473
+            ],
+            "output_bounds": [
+              1078,
+              120,
+              1482,
+              466
+            ],
+            "scale": 0.9372997711670481
+          },
+          {
+            "source_bounds": [
+              66,
+              560,
+              523,
+              920
+            ],
+            "output_bounds": [
+              51,
+              651,
+              461,
+              974
+            ],
+            "scale": 0.8962800875273523
+          },
+          {
+            "source_bounds": [
+              575,
+              559,
+              1023,
+              917
+            ],
+            "output_bounds": [
+              567,
+              650,
+              969,
+              971
+            ],
+            "scale": 0.8962800875273523
+          },
+          {
+            "source_bounds": [
+              1094,
+              561,
+              1504,
+              925
+            ],
+            "output_bounds": [
+              1096,
+              652,
+              1463,
+              978
+            ],
+            "scale": 0.8962800875273523
+          }
+        ]
+      },
+      "previous_sha256": "4d6293a8220e501b92eee5699d4c2a658514084d300efdc96211ba34dbc66fcd",
+      "sha256": "4d6293a8220e501b92eee5699d4c2a658514084d300efdc96211ba34dbc66fcd",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 3 x 2 grid of three small, round, plump little songbirds sitting down (legs tucked under them), each facing left and about 250 px tall, all at the same scale: lemon yellow, sage green and strawberry pink, each with one round eye with a dot pupil and a short ochre beak. Top row: the three waiting, sitting up straight, looking expectantly to the left. Bottom row: the same three in the same order, delighted, eyes closed in bliss, heads tilted, a tiny ink music note beside each.\nComplete production sprite atlas, exact ordered grid, transparent gutters, original anatomy, no clipped elements. Target 1536 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M18d",
+      "file": "game/assets/sprites/dial-panel.png",
+      "dimensions": [
+        2048,
+        512
+      ],
+      "source_dimensions": [
+        2048,
+        512
+      ],
+      "alpha": true,
+      "grid": [
+        1,
+        1
+      ],
+      "packing": {
+        "mode": "Single continuous generated bezel fitted proportionally to requested landscape frame",
+        "original_source": "/Users/hoai/.codex/generated_images/01a11825-148c-7d13-acbb-95b178d174b0/exec-9a8a7f94-4ddb-4bce-8666-1924084f0b4e.png",
+        "source_bounds": [
+          17,
+          254,
+          2013,
+          503
+        ]
+      },
+      "previous_sha256": "fed12b1170681561385b28773d711cc42b92ab6012ff075d36690112674bf02e",
+      "sha256": "fed12b1170681561385b28773d711cc42b92ab6012ff075d36690112674bf02e",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A long 1960s radio tuning-dial window, seen straight on, filling the image's whole width and about 70% of its height: a narrow brass bezel around a pale cream face with a single row of evenly spaced tick marks along its bottom edge (a longer tick every fifth), and faint warm light glowing from behind. No numbers, no lettering, no needle, no knob. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nComplete production sprite atlas, exact ordered grid, transparent gutters, original anatomy, no clipped elements. Target 2048 x 512, transparent",
+      "correction_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A long 1960s radio tuning-dial window, seen straight on, filling the image's whole width and about 70% of its height: a narrow brass bezel around a pale cream face with a single row of evenly spaced tick marks along its bottom edge (a longer tick every fifth), and faint warm light glowing from behind. No numbers, no lettering, no needle, no knob. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nONE SINGLE CONTINUOUS LONG RADIO DIAL. Do not make a sprite sheet or variants. Single brass rectangle bezel, ONE uninterrupted cream window, one continuous line of ticks, width to height ratio6:1. Exactly one left end and one right end, no dividers. Draw it centred in a wide landscape canvas, transparent above/below. No lettering or needle. Target2048x512."
+    },
+    {
+      "id": "IC-M18e",
+      "file": "game/assets/sprites/radiobird-poses.png",
+      "dimensions": [
+        3072,
+        1024
+      ],
+      "source_dimensions": [
+        3072,
+        1024
+      ],
+      "alpha": true,
+      "grid": [
+        3,
+        1
+      ],
+      "packing": {
+        "mode": "complete generated cutouts packed into equal game cells, proportions and common baseline retained",
+        "generation_dimensions": [
+          2172,
+          724
+        ],
+        "frames": [
+          {
+            "source_bounds": [
+              128,
+              208,
+              691,
+              711
+            ],
+            "output_bounds": [
+              182,
+              341,
+              841,
+              930
+            ],
+            "scale": 1.1702857142857144
+          },
+          {
+            "source_bounds": [
+              756,
+              24,
+              1392,
+              713
+            ],
+            "output_bounds": [
+              1164,
+              126,
+              1908,
+              932
+            ],
+            "scale": 1.1702857142857144
+          },
+          {
+            "source_bounds": [
+              1616,
+              13,
+              2110,
+              710
+            ],
+            "output_bounds": [
+              2271,
+              113,
+              2849,
+              929
+            ],
+            "scale": 1.1702857142857144
+          }
+        ]
+      },
+      "previous_sha256": "607b1871812921db295aca9035a6ff9768f43e723bf6bac608a659b63df0a2a4",
+      "sha256": "607b1871812921db295aca9035a6ff9768f43e723bf6bac608a659b63df0a2a4",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. Exactly the same bird as in its delivered portrait (same design, proportions, colours, line and texture; use that portrait image as the reference), at the same scale, facing left, with only the change described. The Radio Bird (https://raw.githubusercontent.com/hoai2k/mini/main/icecreamcone/game/assets/subjects/radiobird.png ): a mustard-yellow 1960s portable transistor radio with a carrying handle on top, a red knob and a silver dial on its front and a green speaker grille, a long neck striped mustard and sage, a small head with a big round eye, a long pink beak and a pink crest, a teal-blue wing, a plume of pink tail feathers and long pink legs, in three poses in a row on one sheet, each in its own third, facing left, at the portrait's scale with its feet on the same ground line: 1) listening, its long striped neck curved down and round so its head is cocked close to its own green speaker grille, eye narrowed, a few faint fuzzy static marks around the grille; 2) singing, head thrown back on its long neck, beak wide open, crest flared, a few small ink music notes coming from the grille; 3) startled, neck jerked back into an S, crest standing straight up, eye wide, one foot lifted. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration.\nComplete production sprite atlas, exact ordered grid, transparent gutters, original anatomy, no clipped elements. Target 3072 x 1024, transparent",
+      "correction_prompt": null
+    },
+    {
+      "id": "IC-M12c",
+      "file": "game/assets/sprites/town-clocks.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "alpha": true,
+      "grid": [
+        2,
+        2
+      ],
+      "packing": {
+        "mode": "Uniform scale and translation to align each generated handless dial with game hands",
+        "frames": [
+          {
+            "source_dial_bounds": [
+              167,
+              220,
+              311,
+              312
+            ],
+            "output_dial_center": [
+              512,
+              512
+            ],
+            "output_dial_diameter": 512,
+            "scale": 1.6436597110754414,
+            "source_pivot_center": [
+              322.4189189189189,
+              375.2432432432432
+            ]
+          },
+          {
+            "source_dial_bounds": [
+              749,
+              212,
+              324,
+              328
+            ],
+            "output_dial_center": [
+              1536,
+              512
+            ],
+            "output_dial_diameter": 512,
+            "scale": 1.5705521472392638,
+            "source_pivot_center": [
+              911.1533742331288,
+              375.0920245398773
+            ]
+          },
+          {
+            "source_dial_bounds": [
+              173,
+              752,
+              319,
+              323
+            ],
+            "output_dial_center": [
+              512,
+              1536
+            ],
+            "output_dial_diameter": 512,
+            "scale": 1.5950155763239875,
+            "source_pivot_center": [
+              330.6734693877551,
+              913.0408163265306
+            ]
+          },
+          {
+            "source_dial_bounds": [
+              776,
+              784,
+              289,
+              296
+            ],
+            "output_dial_center": [
+              1536,
+              1536
+            ],
+            "output_dial_diameter": 512,
+            "scale": 1.7504273504273504,
+            "source_pivot_center": [
+              918.9622641509434,
+              927.5283018867924
+            ]
+          }
+        ],
+        "original_source": "/Users/hoai/.codex/generated_images/01a11825-148c-7d13-acbb-95b178d174b0/exec-8d21bb2d-de3f-4dc8-b752-a97c1f169cad.png"
+      },
+      "previous_sha256": "9f1cde0522167d61b409821f891bd537a3fc48620e4fae6bebadd36fdab9edba",
+      "sha256": "581900b40c0efc0a70f9ba4d03c34caf490d1086fd4c591995023f77a8a3ebb7",
+      "generation_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 2 grid of four clocks, each in its own 1024 x 1024 cell, seen straight on. In every cell the clock's round dial is exactly centred in the cell and is half the cell's width across, with numbers and minute ticks but NO HANDS (the game draws them); its surround fits round it inside the cell: 1) a church tower clock, a stone tower top with a little pointed roof round a cream dial with Roman numerals; 2) a round railway station clock with a thick black rim on an iron bracket from above, plain black numbers; 3) a town hall clock, a gilded rim with laurel scrolls round a cream dial with Roman numerals; 4) a cuckoo clock, a carved brown wooden house with a pitched roof, a little closed door above the dial, and carved leaves.\nProduction game asset, dimensions 2048 x 2048, transparent. Exact grid, object counts and pose order. Follow the specified anchors and part placement. Each complete silhouette stays inside its own cell with alpha0 gutters. Keep clock numerals correctly ordered if requested and omit any hands the game draws. Preserve reference character design, no extra text/background/halos.",
+      "correction_prompt": "Children's picture-book illustration in the style of Arnold Lobel's 1971 book The Ice-Cream Cone Coot and Other Rare Birds: fine brown-black pen-and-ink line with delicate crosshatching and stippling, soft transparent watercolour washes in a slightly faded early-1970s print palette (lemon and mustard yellow, olive and sage green, dusty pink and mauve, strawberry pink, ochre, slate blue, warm grey), on cream paper with visible grain. Whimsical, gentle and slightly eerie, dreamlike mood. No text, no lettering, no watermark, no border, no UI. A sprite sheet of separate objects on one transparent background, evenly spaced in the grid the prompt gives, each object centred in its cell with clear empty space all round it (no object touching another or the edge), all lit the same way from the upper left, no cast shadows. Transparent background (PNG with alpha). If transparency is not possible, use a flat pure magenta #FF00FF background with nothing else on it and no cast shadow; it is keyed out on integration. A 2 x 2 grid of four clocks, each in its own 1024 x 1024 cell, seen straight on. In every cell the clock's round dial is exactly centred in the cell and is half the cell's width across, with numbers and minute ticks but NO HANDS (the game draws them); its surround fits round it inside the cell: 1) a church tower clock, a stone tower top with a little pointed roof round a cream dial with Roman numerals; 2) a round railway station clock with a thick black rim on an iron bracket from above, plain black numbers; 3) a town hall clock, a gilded rim with laurel scrolls round a cream dial with Roman numerals; 4) a cuckoo clock, a carved brown wooden house with a pitched roof, a little closed door above the dial, and carved leaves.\nProduction game asset, dimensions 2048 x 2048, transparent. Exact grid, object counts and pose order. Follow the specified anchors and part placement. Each complete silhouette stays inside its own cell with alpha0 gutters. Keep clock numerals correctly ordered if requested and omit any hands the game draws. Preserve reference character design, no extra text/background/halos.\nEdit the existing illustrated clock sheet. Preserve linework, palette and ordered numerals, NO HANDS. Enlarge the cuckoo clock's DIAL to be same diameter as the other three dials, reduce its roof and weights to tiny decorations. Remove the church cross finial and shorten its roof to a small compact triangle. ALL four dial centres aligned with exact centres of four quarter-cells. All dials halfcell width. Every clock surround fully inside its cell with generous transparent margin, no clips. Each clock's outer extent fits within90%cell. Use second geometric guide for centring."
+    }
+  ],
+  "verification": {
+    "asset_count": 6,
+    "dimensions": true,
+    "alpha": true,
+    "grid_gutters": true,
+    "visual_review": "All selected images inspected.",
+    "browser": "Tit Thrush, Radio Bird, Drippet, Milk Midge and Soupladle Lark played to result without page errors; clock hands visually aligned.",
+    "publish_copy": true,
+    "current_request_audit": {
+      "IC-M15e": {
+        "canonical_prompt_sha256": "60cb8be3036a7f0ccecaf3a40c161c63ab32ee2097a073e31bc99b2de02214a3",
+        "result": "Latest wording describes the corrected one-piece handle and hook. The generated three-pose sheet already uses the corrected portrait and connected hook, satisfying the revised request."
+      },
+      "IC-M18a": {
+        "canonical_prompt_sha256": "fd2ae25753a4c80a910ce801255094ed25d7274e402b9526d989fc0770c3ec46",
+        "result": "Updated overlay-speaker wording does not change the scene art; accepted existing background as recorded in batch 1."
+      },
+      "open_requests": 0,
+      "missing_delivered_assets": 0
+    }
+  }
+}
