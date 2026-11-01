@@ -58,11 +58,11 @@ acts. The first four keep their stage machinery and rules, recast:
 6. The Burning Tower: the burning floors, carrying Azurine down to the right-hand exit as that side’s fires fade, the witch's
    last stand on the clifftop (leap her fire; after each sword blow she
    drives him back, sliding on his feet, and he approaches again), after which she hides in her barrel and he pushes it over, walking Azurine
-   along the wedding street, jumping for joy with Azurine as the guests cheer in a ripple. Climb the painted stairs (the couple grow slightly smaller as they climb away) and walk through the doorway at their top into the apotheosis; holding left at its exit for one second leads back out to the guests. Jump into the light beneath Aurora to begin the credits. The witch’s disappearance holds for the opening of the victory flourish, then fades with its last chord into a gradual wedding entrance.
+   along the wedding street, jumping for joy with Azurine as the guests cheer in a ripple. Climb the painted stairs (the couple grow slightly smaller as they climb away) and walk through the doorway at their top into the apotheosis; walking left all the way offstage behind its curtain leads back out to the guests. Jump into the light beneath Aurora (any jump that passes over its centre) to begin the credits. The witch’s disappearance holds for the opening of the victory flourish, then fades with its last chord into a gradual wedding entrance.
    Every scene is played: nothing is timed to the beat or shown as a still.
 
 The final ascent slowly lifts the couple in the pose they jumped in and holds
-them there: five seconds of sparkling celebration precede the 30-second credit
+them there under a “The Kingdom of the Fairies · The end” card: five seconds of sparkling celebration precede the 30-second credit
 roll. Once the roll begins, any direction gently releases them to the ground
 over three seconds. Keep walking, dancing and
 travelling between the wedding street and the final tableau during and after

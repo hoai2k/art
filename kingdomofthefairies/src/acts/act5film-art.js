@@ -1,6 +1,6 @@
 import { walkFrame } from '../walking.js';
 import { weddingForeground } from '../wedding-foreground.js';
-import { CREDITS, finaleFrame } from '../finale.js';
+import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // Drawing for the film edition's Act V and Act VI (act5film.js). The climbs,
 // the burning interior's floors, connectors and hazards, and the carry reuse
 // Act V's drawing (act5-art.js); the sea gap, the tower wall, the tower's
@@ -728,7 +728,10 @@ function apotheosis(k, st, t) {
   c.restore();
   if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
-  if (rise > 0 && st.phase !== 'finale') card(k, 'The Kingdom of the Fairies', 'The end', clamp(st.riseT - 1, 0, 1));
+  // "The end" fades in as they rise and stays through the celebration,
+  // giving way as the credits begin to roll
+  const endCard = st.creditsT == null ? (st.riseT == null ? 0 : clamp(st.riseT - 1, 0, 1)) : clamp((FINALE.celebrate - st.creditsT) / 0.6, 0, 1);
+  if (endCard > 0) card(k, 'The Kingdom of the Fairies', 'The end', endCard);
 }
 
 function celebrationSparkles(k, time) {
@@ -749,9 +752,13 @@ function rollingCredits(k, time) {
   const f = finaleFrame(time);
   if (f.roll <= 0 || f.roll >= 1) return;
   const c = k.c;
-  c.save(); c.beginPath(); c.rect(140, 100, 1000, 530); c.clip();
+  // the scrim darkens the whole screen, frame and curtains too; the lines
+  // fade in and out within the stage opening
+  c.save(); c.setTransform(1, 0, 0, 1, 0, 0);
   c.fillStyle = `rgba(22,9,19,${0.6 * Math.min(1, f.roll * 15, (1 - f.roll) * 15)})`;
-  c.fillRect(140, 100, 1000, 530);
+  c.fillRect(0, 0, c.canvas.width, c.canvas.height);
+  c.restore();
+  c.save(); c.beginPath(); c.rect(140, 100, 1000, 530); c.clip();
   c.textAlign = 'center'; c.textBaseline = 'middle';
   c.shadowColor = '#150b12'; c.shadowBlur = 8;
   for (const line of CREDITS) {

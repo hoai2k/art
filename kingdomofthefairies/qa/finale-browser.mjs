@@ -68,9 +68,11 @@ try {
   await page.waitForFunction(() => !window.__kingdomOfTheFairies.S.state.flight);
   const beforeReturn = await page.evaluate(() => window.__kingdomOfTheFairies.S.state.creditsT);
   await page.keyboard.down('ArrowLeft');
-  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x <= 120.5);
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x <= 0);
+  await page.keyboard.up('ArrowLeft');
   await page.waitForTimeout(600);
-  assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.phase), 'finale', 'backward travel waits for a sustained hold at the exit');
+  assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.phase), 'finale', 'only walking all the way offstage leads back outside');
+  await page.keyboard.down('ArrowLeft');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.phase === 'wedding');
   await page.keyboard.up('ArrowLeft');
   await page.keyboard.down('ArrowRight');

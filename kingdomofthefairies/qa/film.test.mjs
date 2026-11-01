@@ -697,21 +697,33 @@ test('Wedding: climb the painted stairs, cross the whole doorway together, and r
  const landing=st.w.y;run(actBurning,st,2,()=>({moveX:-1}));assert.ok(st.w.y>landing,'the return path comes down the stairs');
 });
 
-test('The backward exit needs a continuous one-second hold; releasing or walking away resets it',()=>{
+test('A jump that passes over the centre of the light starts the ascent',()=>{
+ const st=actBurning.create({from:{scene:4}});st.phaseT=5;st.weddingIntro=false;
+ run(actBurning,st,20,()=>({moveX:1}),s=>s.phase!=='wedding');
+ st.w.x=APOTH.mark-150;st.w.vx=240;st.az.x=st.w.x-70;
+ actBurning.step(st,DT,{moveX:1,a:true,aHeld:true});assert.equal(st.flight,null,'taking off well short of the light is a jump');
+ run(actBurning,st,1,()=>({moveX:1,aHeld:true}),s=>!!s.flight);
+ assert.equal(st.flight,'rise','carried up as the jump crosses the light');assert.ok(st.lift>0,'from the height reached');
+ run(actBurning,st,FILM_T.rise+.1);assert.equal(st.lift,140);
+});
+
+test('The way back out is to walk left all the way offstage behind the curtain',()=>{
  const st=actBurning.create({from:{scene:4}});st.phaseT=5;st.weddingIntro=false;
  run(actBurning,st,20,()=>({moveX:1}),s=>s.phase!=='wedding');
  st.w.x=APOTH.x0;st.w.vx=0;
- run(actBurning,st,.7,()=>({moveX:-1}));assert.equal(st.phase,'apotheosis');assert.ok(st.backT>.6);
- actBurning.step(st,DT,{});assert.equal(st.backT,0);
- run(actBurning,st,.7,()=>({moveX:-1}));assert.equal(st.phase,'apotheosis');
- actBurning.step(st,DT,{moveX:1});assert.equal(st.backT,0);
- run(actBurning,st,1.2,()=>({moveX:-1}),s=>s.phase==='wedding');assert.equal(st.phase,'wedding');
- assert.equal(st.weddingIntro,false);
+ run(actBurning,st,2.5,()=>({moveX:-1}),s=>s.phase==='wedding');assert.equal(st.phase,'wedding','walking on past the curtain leads outside');
+ // Stopping short of the stage edge never leaves.
+ const again=actBurning.create({from:{scene:4}});again.phaseT=5;again.weddingIntro=false;
+ run(actBurning,again,20,()=>({moveX:1}),s=>s.phase!=='wedding');
+ run(actBurning,again,4,()=>({moveX:-1}),s=>s.w.x<=0);run(actBurning,again,3);
+ assert.equal(again.phase,'apotheosis','pausing behind the curtain is not an exit');
+ run(actBurning,again,3,()=>({moveX:-1}),s=>s.phase==='wedding');assert.equal(again.phase,'wedding');
+ assert.equal(again.weddingIntro,false);
  // Even holding forward immediately must first finish the short descent.
- run(actBurning,st,.8,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(st.phase,'wedding');
- assert.equal(st.weddingExit,false);assert.ok(st.w.x < WEDDING.door-40);
- run(actBurning,st,.2,()=>({moveX:1}));assert.equal(st.phase,'wedding');
- run(actBurning,st,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(st.phase,'apotheosis');
+ run(actBurning,again,.8,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
+ assert.equal(again.weddingExit,false);assert.ok(again.w.x < WEDDING.door-40);
+ run(actBurning,again,.2,()=>({moveX:1}));assert.equal(again.phase,'wedding');
+ run(actBurning,again,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(again.phase,'apotheosis');
 });
 
 test('Credits free play: held aloft until the roll begins, then released slowly by any direction, visit both sets and jump again without restarting credits',()=>{
