@@ -37,6 +37,10 @@ on:
       - '*/app/test/**'
       - '*/game/test/**'
       - 'shared/test/**'
+      - 'stratford/prototype/reference/**'
+      - 'stratford/prototype/tools/**'
+      - 'stratford/prototype/game/test/**'
+      - 'stratford/prototype/game/scripts/**'
       - '.gitignore'
   workflow_dispatch:
     inputs:
@@ -96,6 +100,7 @@ jobs:
             !/bronzedrum/design/
             !/icecreamcone/design/
             !/fibreart/reference/
+            !/stratford/prototype/reference/
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -137,6 +142,11 @@ jobs:
       - name: Fibre Art generator checks
         if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
         run: python3 fibreart/design/source/build_requests.py --check
+      - name: Build Stratford Squirrel
+        run: .github/scripts/build-game.sh stratford 'stratford/publish.sh local/pages/stratford'
+      - name: Stratford Squirrel tests
+        if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
+        run: node --test stratford/prototype/game/test/ && node stratford/prototype/game/scripts/browser-check.mjs
       - name: Fail only if no game built
         run: .github/scripts/check-games.sh
       - uses: actions/upload-pages-artifact@v3
