@@ -30,7 +30,7 @@ export function ringCentroid(ring) {
   return [x / ring.length, z / ring.length];
 }
 
-export function placeNuts({ trees = [], buildings = [], probe, seed = 1812, max = 90 } = {}) {
+export function placeNuts({ trees = [], buildings = [], probe, seed = 1812, max = 90, assumeRoofs = false } = {}) {
   const rng = mulberry32(seed);
   const nuts = [];
   const taken = [];
@@ -77,10 +77,12 @@ export function placeNuts({ trees = [], buildings = [], probe, seed = 1812, max 
   const sorted = [...buildings].filter((b) => b.outer && b.outer.length >= 3).sort((a, b) => (a.id < b.id ? -1 : 1));
   for (const b of sorted) {
     const roll = rng();
-    if (roofs >= 12 || roll > 0.012 || b.roof !== 'flat') continue;
+    if (roofs >= 12 || roll > 0.03 || b.roof !== 'flat') continue;
     const [cx, cz] = ringCentroid(b.outer);
     const top = (b.base || 0) + (b.height || 6) + 2;
-    const hit = probe(cx, cz, top);
+    let hit = probe(cx, cz, top);
+    // The world streams, so a roof may not be loaded yet: trust the data (flat roof at eaves height).
+    if ((!hit || hit.surface !== SURFACE_IDS.roof) && assumeRoofs) hit = { y: (b.base || 0) + (b.height || 6), surface: SURFACE_IDS.roof };
     if (hit && hit.surface === SURFACE_IDS.roof && hit.y > (b.base || 0) + 2) {
       if (add('walnut', cx, hit.y + 0.12, cz, 'roof')) roofs++;
     }

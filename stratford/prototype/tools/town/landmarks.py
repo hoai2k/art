@@ -18,8 +18,6 @@ LANDMARKS = [
       blurb="Dedicated on June 30, 1957, it replaced the canvas tent where the Festival played its first four seasons from 1953. Its thrust stage seats over 1,800 on the bank of the Avon."),
  dict(id='tom-patterson-theatre', name='Tom Patterson Theatre', find=('node-building', '10013742810'), radius=30, use='theatre', material='glass',
       blurb="Named for the Stratford journalist Tom Patterson, who founded the Festival. The present building, designed by Siamak Hariri, opened in May 2022 beside the Avon River on the site of the earlier theatre."),
- dict(id='studio-theatre', name='Studio Theatre', find=('node-building', '1753265386'), radius=22, use='theatre',
-      blurb="One of the Stratford Festival's four permanent theatres, a smaller house on George Street used for more intimate productions."),
  dict(id='avon-river', name='Avon River', find=('river', 'festival-theatre'), radius=45,
       blurb="Stratford was founded on its banks in 1832 and named the river for England's Avon; it was first called the Little Thames River. The 37 km river flows on to the North Thames."),
  dict(id='lake-victoria', name='Lake Victoria', find=('lake', '479846117'), radius=90,

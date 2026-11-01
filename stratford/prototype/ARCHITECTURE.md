@@ -109,6 +109,27 @@ The import map in every page maps `three` to `./lib/three.module.min.js`,
 `terrain.bin` is the bare-earth height field. `groundAt(x, z)` is a bilinear
 read of it.
 
+Details fixed by the data pipeline (`tools/town/`, added fields only, nothing renamed):
+
+- `terrain.bin`: little-endian uint16, row-major. Sample `(i, j)` is the height at
+  `x = x0 + i*cell`, `z = z0 + j*cell` (grid nodes, not cell centres); the grid covers
+  the whole extent. World `y = minElev + v/100 - origin.elev`. Under water the bed is
+  carved below the water surface (so the water plane is visible); `groundAt` there is the bed.
+- `water.polygons[].level` (world y, extra field): each water polygon piece has its own
+  surface height. The Avon is cut where its level steps (Lake Victoria is about -8.5, the
+  river below the Thomas Orr dam about -12.5). `water.level` is the Lake Victoria level.
+  `water.rivers[].levels` (extra, per point) gives the water surface along each centre-line.
+  Open water is in `water.polygons` only, not repeated in `areas`.
+- `spawn.yaw`: radians, three.js `rotation.y` convention: forward = `(-sin yaw, 0, -cos yaw)`
+  (yaw 0 faces north, -Z). `spawn.lookAt` (extra) is the `[x, z]` of City Hall.
+- `roads[].bridge` / `.tunnel` (extra, only when true). Pedestrian streets are kind `footway`.
+- Building `front` is `[i, j]`, the vertex indices of the edge facing `street`
+  (`j = (i+1) % outer.length`). `outer` is CCW seen from above (x east, z south).
+- Landmark ids (stable): city-hall, courthouse, market-square, avon-theatre, festival-theatre,
+  tom-patterson-theatre, avon-river, lake-victoria, tom-patterson-island, shakespearean-gardens,
+  normal-school, knox-church, st-james-church, railway-station, gallery-stratford, archives,
+  public-library.
+
 ## The World contract (runtime, `src/town/index.js` and `src/stand-in-world.js`)
 
 ```js

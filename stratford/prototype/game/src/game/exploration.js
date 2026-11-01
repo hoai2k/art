@@ -31,12 +31,13 @@ export function createExploration({ landmarks = [], nuts = [], storage = globalT
     buried() { return save.buried; },
 
     // Every simulation step with the squirrel's position.
-    update(pos) {
+    update(pos, withNuts = true) {
       for (const lm of newDiscoveries(landmarks, pos, save.discovered)) {
         save.discovered[lm.id] = now();
         persist();
         emit('discover', { landmark: lm, found: api.landmarksFound, total: landmarks.length });
       }
+      if (!withNuts) return;
       const got = new Set(save.collected);
       const lying = nuts.filter((n) => !got.has(n.id));
       const n = nutWithin(lying, pos);

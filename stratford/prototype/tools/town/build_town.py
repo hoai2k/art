@@ -368,6 +368,9 @@ def guess_material(use, key, tags):
     return pick(key + 'm', [('brick_red', 40), ('brick_buff', 25), ('clapboard', 28), ('stucco', 7)])
 
 
+LM_WAYS = set()
+
+
 def build_buildings(osm, geoms, lidar, G):
     # POIs and landuse used to infer use
     pois = [(Point(xz), t) for xz, t in osm.nodes.values()
@@ -399,7 +402,7 @@ def build_buildings(osm, geoms, lidar, G):
             use = 'theatre'
         if t.get('amenity') in ('townhall', 'courthouse', 'school', 'library', 'fire_station', 'police', 'community_centre'):
             use = 'civic'
-        d0 = math.hypot(p.centroid.x, p.centroid.z) if False else math.hypot(p.centroid.x, p.centroid.y)
+        d0 = math.hypot(p.centroid.x, p.centroid.y)   # y holds world z
         core = d0 < 500 or (comm_prep is not None and comm_prep.contains(p.centroid))
         near = [pois[i][1] for i in poi_tree.query(p, predicate='contains')]
         if use is None or b == 'yes':
@@ -437,7 +440,7 @@ def build_buildings(osm, geoms, lidar, G):
             else:
                 use = 'shed'
         bid = ('w' + key[1:]) if key[0] == 'w' else key
-        out.append(dict(key=key, id=bid, tags=t, poly=p, use=use, area=area, core=core))
+        out.append(dict(lm_hint=(bid in LM_WAYS), key=key, id=bid, tags=t, poly=p, use=use, area=area, core=core))
     return out
 
 
@@ -482,7 +485,7 @@ def apply_lidar(b, G, origin_elev):
         return False
     if b['use'] in ('garage', 'shed') and ridge < 2.2:
         ridge = 2.2
-    if spread < 1.7 or (n < 8 and spread < 2.5):
+    if spread < 1.7 or (n < 8 and spread < 2.5) or (short > 20 and not b.get('lm_hint')):
         b['lidar'] = ('flat', max(p50, 2.2), 0.0)
     else:
         rh_max = (0.7 if b['use'] == 'church' else 0.45) * short
@@ -501,6 +504,7 @@ def main():
     ap.add_argument('--offline', action='store_true')
     ap.add_argument('--out', default=OUT_DIR)
     args = ap.parse_args()
+    LM_WAYS.update('w' + lm['find'][1] for lm in LANDMARKS if lm['find'][0] == 'way')
     t_start = time.time()
     osm = OSM(args.offline)
     if not args.no_lidar and not lidarmod.available() and not args.offline:
