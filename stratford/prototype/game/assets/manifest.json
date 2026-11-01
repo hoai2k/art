@@ -18,6 +18,12 @@
     "facades/house_ontario_cottage_red.png",
     "facades/house_queen_anne_red.png",
     "facades/side_wall_red.png",
+    "kit/awnings.png",
+    "kit/cornices.png",
+    "kit/doors.png",
+    "kit/shopfronts.png",
+    "kit/trim.png",
+    "kit/windows_victorian.png",
     "sprites/fallen_leaves.png",
     "sprites/flower_planter.png",
     "sprites/grass_blades.png",
@@ -108,6 +114,12 @@
     "ui/logo.png": "web/ui/logo.webp",
     "ui/map_parchment.png": "web/ui/map_parchment.webp",
     "ui/sky_autumn.png": "web/ui/sky_autumn.webp",
-    "ui/title_backdrop.png": "web/ui/title_backdrop.webp"
+    "ui/title_backdrop.png": "web/ui/title_backdrop.webp",
+    "kit/awnings.png": "web/kit/awnings.webp",
+    "kit/cornices.png": "web/kit/cornices.webp",
+    "kit/doors.png": "web/kit/doors.webp",
+    "kit/shopfronts.png": "web/kit/shopfronts.webp",
+    "kit/trim.png": "web/kit/trim.webp",
+    "kit/windows_victorian.png": "web/kit/windows_victorian.webp"
   }
 }
