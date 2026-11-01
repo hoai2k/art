@@ -29,12 +29,14 @@ try {
     await frames();
     assert.deepEqual(await sel(), [], 'no selection before a press');
     await press(3); // Y: any button
-    assert.deepEqual(await sel(), ['icecreamcone/']);
+    const order = await page.evaluate(() => [...document.querySelectorAll('.shelf .game')].map(e => e.getAttribute('href')));
+    assert.deepEqual(order, ['kingdomofthefairies/', 'bronzedrum/', 'fibreart/', 'icecreamcone/'], 'card order');
+    assert.deepEqual(await sel(), [order[0]]);
     const cols = await page.evaluate(() => getComputedStyle(document.querySelector('.shelf')).gridTemplateColumns.split(' ').length);
     await press(15); // right
-    assert.deepEqual(await sel(), [cols > 1 ? 'bronzedrum/' : 'icecreamcone/']);
+    assert.deepEqual(await sel(), [cols > 1 ? order[1] : order[0]]);
     await press(13); // down
-    const expectDown = cols === 1 ? 'bronzedrum/' : cols === 2 ? 'fibreart/' : 'fibreart/';
+    const expectDown = cols === 1 ? order[1] : order[Math.min(cols + 1, order.length - 1)];
     assert.deepEqual(await sel(), [expectDown], `down with ${cols} columns`);
     // Stick moves too.
     await page.evaluate(() => { window.__pad.axes[1] = -1; }); await frames();

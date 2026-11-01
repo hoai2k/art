@@ -67,9 +67,9 @@ domain, so this repository's site lives at `/art/`).
   `.github/workflows/pages.yml` (through `.github/scripts/build-game.sh`, with
   its tests as `tests: full` steps), its unread `design/` or `reference/`
   folders to that workflow's sparse-checkout list, a link in the root
-  `README.md`, a card on the game library page (`index.html`, newest game
-  first by when it was made; Fibre Art sits after Kingdom of the Fairies at the
-  owner's request) and a row in the table above.
+  `README.md`, a card on the game library page (`index.html`, in the owner's
+  order: Kingdom of the Fairies, Bronze Drum, Fibre Art, The Ice-Cream Cone
+  Coot; a new game goes at the top unless the owner says otherwise) and a row in the table above.
 - **The root holds only what is shared.** `README.md` is a list of links to
   the games and nothing more; each game's details belong in its own README.
   `index.html` is the game library published at https://games.hoai.net/art/,
