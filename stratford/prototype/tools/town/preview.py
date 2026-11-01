@@ -50,9 +50,11 @@ def main(out, crop=None):
     hs = [x['height'] + x['roofHeight'] * 0.6 for x in town['buildings']]
     for x in town['buildings']:
         h = x['height'] + x['roofHeight'] * 0.6
-        t = min(1, h / 20)
-        col = (int(250 - 190 * t), int(215 - 160 * t), int(120 + 60 * t) if t < .5 else int(150 - 100 * (t - .5)))
-        col = (int(255 * min(1, 0.4 + t * 1.2)), int(220 * (1 - t) + 20), int(90 + 120 * t * (1 - t) * 2))
+        stops = [(0, (255, 245, 170)), (4, (250, 215, 110)), (8, (240, 140, 60)), (14, (200, 50, 50)), (22, (110, 30, 120))]
+        col = stops[-1][1]
+        for (h0, c0), (h1, c1) in zip(stops, stops[1:]):
+            if h <= h1:
+                f = max(0, (h - h0) / (h1 - h0)); col = tuple(int(c0[k] + (c1[k] - c0[k]) * f) for k in range(3)); break
         d.polygon([P(*p) for p in x['outer']], fill=col + (255,), outline=(60, 40, 30, 255))
     for t in town['trees']:
         x, y = P(t['x'], t['z']); r = max(1.2, t['crown'] * scale / 2)

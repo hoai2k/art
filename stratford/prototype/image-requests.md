@@ -52,7 +52,7 @@ picture book of a real small town, brought into 3D:
 
 ## Round 1: reference sheets (please generate these first)
 
-These shape the models. The squirrel sheet matters most.
+These shape the models. **R1.2, the black squirrel, matters most**: the game's own squirrel will be a black one, modelled from that sheet (the prototype may run on the Wobblers' squirrel until then). R1.1 (grey) is the alternative coat.
 
 ### R1.1 Eastern grey squirrel turnaround — `open`
 - **File:** `squirrel_grey_turnaround.png` → `reference/sheets/squirrel_grey_turnaround.png`
