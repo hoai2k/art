@@ -201,7 +201,9 @@ export const weddingDoorAlpha = x => 1-clamp((x-WEDDING.door)/(WEDDING.gate-WEDD
 // Figures shrink slightly as the stairs carry them up and away from the audience.
 export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(x))/(WEDDING.y-WEDDING_PATH.at(-1)[1]),0,1);
 
-export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, backHold: 1 };
+// `off`: walking left past the curtain to here (fully offstage, Azurine
+// too) leads back out to the wedding guests.
+export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: -60 };
 export const WEDDING_GUESTS = [
   ['crew-squire', 250], ['crew-helmsman', 340], ['crew-manatarms', 430], ['crew-bosun', 520],
   ['fairy-ring', 610], ['fairy-crown', 690], ['fairy-gold', 770], ['king-stand', 990], ['queen-stand', 1080],
@@ -787,7 +789,7 @@ function returnToWedding(st){
 function startApotheosis(st){
   setPhase(st,st.creditsT!=null?'finale':'apotheosis');st.events.push({type:'apotheosis'});
   st.w=walker(APOTH.x0+65,APOTH.y);st.az=walker(APOTH.x0+20,APOTH.y);
-  st.riseT=null;st.flight=null;st.lift=0;st.backT=0;
+  st.riseT=null;st.flight=null;st.lift=0;
 }
 const movingDirection=input=>Math.abs(input.moveX||0)>.15||Math.abs(input.moveY||0)>.15||input.up||input.down||input.left||input.right;
 function stepApotheosis(st,dt,input){
@@ -796,7 +798,7 @@ function stepApotheosis(st,dt,input){
     if(st.flight==='rise'){
       st.riseT=Math.min(FILM_T.rise,st.riseT+dt);
       // a slow, even rise in their standing poses (eased in and out)
-      const f=st.riseT/FILM_T.rise;st.lift=140*f*f*(3-2*f);
+      const f=st.riseT/FILM_T.rise,from=st.riseFrom||0;st.lift=from+(140-from)*f*f*(3-2*f);
       if(st.riseT>=FILM_T.rise){
         st.flight='hold';
         if(st.creditsT==null){st.creditsT=0;st.result={ending:'wedding',score:st.score,pearls:st.pearls};st.events.push({type:'finale'});}
@@ -815,15 +817,17 @@ function stepApotheosis(st,dt,input){
     }
     return;
   }
-  const jumped=walk(w,dt,input,{y:APOTH.y,x0:APOTH.x0,x1:APOTH.x1,leap:true,jumpSpeed:CELEBRATION.jump});
+  const before=w.x;
+  const jumped=walk(w,dt,input,{y:APOTH.y,x0:APOTH.off,x1:APOTH.x1,leap:true,jumpSpeed:CELEBRATION.jump});
   follow(st,dt,70,jumped,input.aHeld,APOTH.y);
-  const atBack = w.on && w.x <= APOTH.x0 + .5 && (input.moveX || 0) < -.15;
-  st.backT = atBack ? (st.backT || 0) + dt : 0;
-  if(jumped&&Math.abs(w.x-APOTH.mark)<APOTH.near+35){
-    st.flight='rise';st.riseT=0;st.lift=0;
+  // Any jump that is in the air over the light (or passes across its centre)
+  // carries them up, from the height they have reached.
+  const over=Math.abs(w.x-APOTH.mark)<APOTH.near||(before-APOTH.mark)*(w.x-APOTH.mark)<=0;
+  if(!w.on&&over){
+    st.flight='rise';st.riseT=0;st.riseFrom=st.lift=clamp(APOTH.y-w.y,0,140);
     for(const actor of [w,st.az]){actor.y=APOTH.y;actor.vy=0;actor.vx=0;actor.on=false;}
     st.events.push({type:'ascend'});
-  }else if(st.backT>=APOTH.backHold)returnToWedding(st);
+  }else if(w.x<=APOTH.off+.5&&st.az.x<=APOTH.offAz)returnToWedding(st);
 }
 
 export { GRACE, HOLDS, lerp };
