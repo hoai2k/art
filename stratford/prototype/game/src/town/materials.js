@@ -220,6 +220,8 @@ vec3 streetColor(vec3 wp) {
   float along = dot(p, dir), across = dot(p, vec2(-dir.y, dir.x));
   if (kind == 0.0 || kind == 5.0) {
     vec3 c = asphaltCol(p, px, kind == 5.0 ? 1.0 : 0.0);
+    // grit, for eyes a few centimetres above the road
+    c *= 0.9 + 0.2 * th(floor(p * 160.0)) * aafade(160.0, px);
     vec4 fl = fallenLeaves(p + 3.0, 0.05, px);
     return mix(c, fl.rgb, fl.a);
   }
@@ -244,7 +246,7 @@ vec3 streetColor(vec3 wp) {
     if (d < 0.2) c = concreteCol(p, px) * 1.08;        // the curb's top
     return c;
   }
-  if (kind == 2.0) return concreteCol(p, px) * mix(0.75, 0.98, smoothstep(0.0, 0.15, fract(wp.y)));
+  if (kind == 2.0) return concreteCol(vec2(along, wp.y * 3.0), px) * 0.92;
   if (kind == 3.0) {
     vec3 c = concreteCol(vec2(along, across), px) * 0.97;
     float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
@@ -508,7 +510,7 @@ vec3 buildingColor(out float glow) {
     return mix(c, vec3(0.1), max(ticks, hand));
   }
   if (part == 8.0) {                       // copper / slate spires
-    vec3 c = fract(seed * 7.7) < 0.5 ? vec3(0.36, 0.56, 0.49) : vec3(0.27, 0.29, 0.33);
+    vec3 c = fract(seed * 7.7) < 0.5 ? vec3(0.36, 0.56, 0.49) : vec3(0.19, 0.20, 0.23);
     float rowh = 0.25, fy = fract(uv.y / rowh);
     return c * (0.85 + 0.2 * fy * aafade(4.0, px)) * (0.9 + 0.15 * tnoise(uv * vec2(3.0, 0.3)));
   }
