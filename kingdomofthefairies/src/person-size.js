@@ -2,7 +2,7 @@
 // standing height as painted in it (art px), measured by the head against
 // the character's reference sprite. Draw with drawPerson (src/pose.js) so
 // every sprite of a character comes out at one person size.
-// Inputs fingerprint 773a7534f2ac2cf0 (person_sizes.py --check).
+// Inputs fingerprint 5a52f4c140a666ed (person_sizes.py --check).
 export const PERSON = {
   'prince-court': { who: 'prince-court', px: 353 },
   'prince-court-stairs-a': { who: 'prince-court', px: 440 },
@@ -55,19 +55,19 @@ export const PERSON = {
   'witch-swoop': { who: 'witch', px: 290 },
   'witch-storm': { who: 'witch', px: 327 },
   'witch-barrel': { who: 'witch', px: 327 },
-  'witch-barrel-anger-a': { who: 'witch', px: 348 },
-  'witch-barrel-anger-b': { who: 'witch', px: 355 },
-  'witch-cast': { who: 'witch', px: 266 },
-  'witch-recoil': { who: 'witch', px: 400 },
+  'witch-barrel-anger-a': { who: 'witch', px: 580 },
+  'witch-barrel-anger-b': { who: 'witch', px: 580 },
+  'witch-cast': { who: 'witch', px: 300 },
+  'witch-recoil': { who: 'witch', px: 380 },
   'witch-hooded-tinted': { who: 'witch', px: 364 },
   'witch-cloud-tinted': { who: 'witch', px: 364 },
   'witch-swoop-tinted': { who: 'witch', px: 291 },
   'witch-storm-tinted': { who: 'witch', px: 328 },
   'witch-barrel-tinted': { who: 'witch', px: 328 },
-  'witch-barrel-anger-a-tinted': { who: 'witch', px: 323 },
-  'witch-barrel-anger-b-tinted': { who: 'witch', px: 324 },
-  'witch-cast-tinted': { who: 'witch', px: 305 },
-  'witch-recoil-tinted': { who: 'witch', px: 400 },
+  'witch-barrel-anger-a-tinted': { who: 'witch', px: 540 },
+  'witch-barrel-anger-b-tinted': { who: 'witch', px: 540 },
+  'witch-cast-tinted': { who: 'witch', px: 320 },
+  'witch-recoil-tinted': { who: 'witch', px: 375 },
   'witch-stand': { who: 'witch-fair', px: 420 },
   'witch-stand-idle-b': { who: 'witch-fair', px: 403 },
   'witch-stand-idle-c': { who: 'witch-fair', px: 420 },

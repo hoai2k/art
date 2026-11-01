@@ -35,7 +35,7 @@ try {
   });
   await page.waitForFunction(() => window.__kingdomOfTheFairies.audio.nowPlaying()?.id === 'period-wedding');
   await page.keyboard.down('ArrowRight');
-  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x > 950);
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x > 840);
   await page.keyboard.up('ArrowRight');
   await page.locator('#stage').screenshot({ path: `${output}/stairs-live.png` });
   await page.keyboard.down('ArrowRight');
@@ -55,6 +55,11 @@ try {
   await page.waitForTimeout(350);
   assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.lift), held, 'no input preserves the elevated pose');
   await page.locator('#stage').screenshot({ path: `${output}/credits-held.png` });
+  // Held aloft until the credits begin to roll; then a direction releases them.
+  await page.keyboard.press('ArrowUp');
+  await page.waitForTimeout(120);
+  if (await page.evaluate(() => window.__kingdomOfTheFairies.S.state.creditsT < 5)) assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.flight), 'hold', 'no release before the roll begins');
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.creditsT >= 5);
   await page.keyboard.press('ArrowUp');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.flight === 'descend');
   await page.waitForTimeout(550);
@@ -70,7 +75,7 @@ try {
   await page.keyboard.up('ArrowLeft');
   await page.keyboard.down('ArrowRight');
   await page.waitForFunction(() => !window.__kingdomOfTheFairies.S.state.weddingExit);
-  assert.ok(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.w.x) < 1125, 'return finishes a short descent even when forward is held immediately');
+  assert.ok(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.w.x) < 872, 'return finishes a short descent even when forward is held immediately');
   await page.keyboard.up('ArrowRight');
   await page.keyboard.down('ArrowLeft');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x < 690);
@@ -113,7 +118,7 @@ try {
     canvas.style.cssText = 'position:fixed;inset:0;z-index:99999;width:1280px;height:720px'; document.body.append(canvas);
     window.endingReview = { canvas, createRenderer, actBurning, weddingFloor };
   });
-  for (const look of ['original', 'tinted']) for (const x of [800, 920, 1000, 1150, 1210]) {
+  for (const look of ['original', 'tinted']) for (const x of [790, 820, 850, 880, 900]) {
     await page.evaluate(({ look, x }) => {
       const r = window.endingReview, st = r.actBurning.create({ from: { scene: 4 } });
       Object.assign(st, { phaseT: 8, weddingIntro: false });

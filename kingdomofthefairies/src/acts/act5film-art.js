@@ -7,7 +7,7 @@ import { CREDITS, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -16,7 +16,7 @@ import {
 import { tableau, card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
-import { drawPose, drawPerson } from '../pose.js';
+import { drawPose, drawPerson, personPx } from '../pose.js';
 
 // ================================================================= Act V
 export function drawTower(k, st, t) {
@@ -238,6 +238,8 @@ export function onEventBurning(k, e, st) {
   if (e.type === 'witchStruck') { k.flash(0.3); k.shake(0.25); k.burst(e.x - 20, BARREL.y - 110, '#fff2b0', 22, 'sparkle'); if (e.hp > 0) k.text(e.hp === 1 ? 'Once more!' : 'A hit!', e.x, BARREL.y - 220); return; }
   if (e.type === 'witchWinds') { k.burst(e.x, BARREL.y - 150, '#b06ad0', 8, 'sparkle'); return; }
   if (e.type === 'witchBolt') { k.burst(e.x - 40, BARREL.y - 20, '#e9a46a', 10, 'streak'); return; }
+  // her push after his blow is a gust, not a hit: no shake or flash
+  if (e.type === 'witchBlast' && e.repel) { k.burst(e.x + 30, BARREL.y - 70, '#b06ad0', 10, 'streak'); return; }
   if (e.type === 'witchBlast') { k.shake(0.4); k.flash(0.25); k.burst(e.x + 20, BARREL.y - 80, '#b06ad0', 18, 'streak'); return; }
   if (e.type === 'witchBeaten') { k.flash(0.4); k.text('Beaten!', e.x, BARREL.y - 230, true); return; }
   if (e.type === 'auroraCasts') { k.burst(268, BARREL.y - 190, '#fff2b0', 24, 'sparkle'); return; }
@@ -382,7 +384,7 @@ function princeOnFoot(k, w, h = 170, celebrating = false) {
     if ((id.includes('-stairs-') ? drawPerson : drawPose)(k, id, w.x, w.y, h, { face: w.face })) return;
   }
   const c = k.c, moving = Math.abs(w.vx) > 20, step = walkFrame('prince', w.walk, 36);
-  const id = w.knockT > 0 ? 'prince-fall' : !w.on ? (w.vy < -95 ? 'prince-leap' : w.vy > 95 ? 'prince-fall' : 'prince-apex')
+  const id = w.slide ? 'prince-stand' : w.knockT > 0 ? 'prince-fall' : !w.on ? (w.vy < -95 ? 'prince-leap' : w.vy > 95 ? 'prince-fall' : 'prince-apex')
     : w.landT > 0 ? 'prince-land' : moving ? step : 'prince-stand';
   const big = ['prince-fall', 'prince-apex', 'prince-land'].includes(id);
   c.save(); c.translate(w.x, w.y); c.scale(w.face, 1);
@@ -525,10 +527,56 @@ function emptyBarrel(k) {
 }
 
 // The barrel is anchored on its own base, not the centre of her outstretched
-// arms. Both poses keep the same woodwork and person size while she rants.
+// arms. The sprites paint her head about twice its size in her duel poses,
+// so she and the barrel are drawn at separate scales: the woodwork (below
+// the rim, `rim` art rows from the top) at the barrel's size (`px`, the
+// prop the prince pushes and Aurora drops), and she above it at her one
+// person size (person-size.js), her waist sunk just inside the rim.
+export const BARREL_WITCH = {
+  'witch-barrel-anger-a': { px: 348, rim: 142 }, 'witch-barrel-anger-b': { px: 355, rim: 142 },
+  'witch-barrel-anger-a-tinted': { px: 323, rim: 167 }, 'witch-barrel-anger-b-tinted': { px: 324, rim: 167 },
+  cols: [108, 296], sink: 6, below: 40, lead: 6, search: 40,
+};
+// The barrel's part of a sprite (from a little above the rim), with her robe
+// cleared out of it: in each column everything above the copper rim, and any
+// teal of her sleeves within its top rows. Made once per image.
+const barrelParts = new WeakMap();
+function barrelPart(im, rim) {
+  let part = barrelParts.get(im);
+  if (part) return part;
+  const [x0, x1] = BARREL_WITCH.cols, top = rim - BARREL_WITCH.lead, ih = im.naturalHeight || im.height;
+  part = document.createElement('canvas'); part.width = x1 - x0; part.height = ih - top;
+  const x = part.getContext('2d', { willReadFrequently: true });
+  x.drawImage(im, x0, top, part.width, part.height, 0, 0, part.width, part.height);
+  try {
+    const d = x.getImageData(0, 0, part.width, part.height), a = d.data, W = part.width, rows = Math.min(BARREL_WITCH.search, part.height);
+    for (let cx = 0; cx < W; cx++) {
+      let first = rows;
+      for (let y = 0; y < rows; y++) { const i = (y * W + cx) * 4; if (a[i] - a[i + 2] > 18 && a[i] > a[i + 1] + 6 && a[i + 3] > 200) { first = y; break; } }
+      for (let y = 0; y < rows; y++) { const i = (y * W + cx) * 4; if (y < first || a[i + 1] - a[i] > 20) a[i + 3] = 0; }
+    }
+    x.putImageData(d, 0, 0);
+  } catch { /* unreadable pixels: the unmasked crop */ }
+  barrelParts.set(im, part);
+  return part;
+}
 function barrelWitch(k, t, princeOnLeft = true) {
   const id = 'witch-barrel-anger-' + (Math.floor(t / 0.6) % 2 ? 'b' : 'a');
-  if (drawPerson(k, id, 0, 0, DUEL.witchHeight, { face: princeOnLeft ? 1 : -1 })) return;
+  const im = k.img(id);
+  if (im) {
+    const fit = BARREL_WITCH[id + (/-tinted(?:-redo)?\./.test(im.src || '') ? '-tinted' : '')] || BARREL_WITCH[id];
+    const iw = im.naturalWidth || im.width, ih = im.naturalHeight || im.height;
+    const sb = DUEL.witchHeight / fit.px, sw = DUEL.witchHeight / personPx(k, id);
+    const x0 = BARREL_WITCH.cols[0], rimY = -(ih - fit.rim) * sb, cut = fit.rim + BARREL_WITCH.below;
+    const part = barrelPart(im, fit.rim), top = fit.rim - BARREL_WITCH.lead;
+    const c = k.c;
+    c.save(); if (!princeOnLeft) c.scale(-1, 1);
+    // she, from her hood to just below the rim, then the barrel over her waist
+    k.assetCrop(id, 0, 0, iw, cut, -iw / 2 * sw, rimY + BARREL_WITCH.sink - fit.rim * sw, iw * sw, cut * sw);
+    k.imageCrop(part, 0, 0, part.width, part.height, (x0 - iw / 2) * sb, -(ih - top) * sb, part.width * sb, part.height * sb);
+    c.restore();
+    return;
+  }
   const c = k.c;
   c.save(); c.scale(princeOnLeft ? -1 : 1, 1);
   if (!k.asset('witch-barrel', 0, 0, 108, 130)) { c.fillStyle = k.col('#7a5a3a'); c.fillRect(-40, -110, 80, 110); }
@@ -644,14 +692,15 @@ function wedding(k,st,t){
     for(const [actor,princess] of [[st.az,true],[w,false]]){
       if((actor.x>=WEDDING.stairs)!==stairs)continue;
       c.save();c.globalAlpha=weddingDoorAlpha(actor.x);
-      if(princess)azurineOnFoot(k,actor,WEDDING.y,160);else princeOnFoot(k,actor,160,true);
+      const h=160*weddingScale(actor.x);
+      if(princess)azurineOnFoot(k,actor,WEDDING.y,h);else princeOnFoot(k,actor,h,true);
       c.restore();
     }
   };
   couple(true);
   weddingForeground(k);
   weddingGuests(st).forEach(([id,x],i)=>{
-    const hop=guestHop(st,id);c.save();c.translate(x,GUESTS_Y-hop);if(x>WEDDING.gate-300)c.scale(-1,1);
+    const hop=guestHop(st,id);c.save();c.translate(x,GUESTS_Y-hop);if(x>935)c.scale(-1,1);
     k.idle(id,t+i,0,0,82,150);c.restore();
   });
   couple(false);
@@ -672,12 +721,12 @@ function apotheosis(k, st, t) {
   }
   c.save(); c.translate(APOTH.mark, 330 - 30 * rise); k.idle('aurora-stand', t, 0, 0, 110, 180); c.restore();
   if (!w) return;
+  // Aloft they hold the jump pose they leapt in while they slowly rise.
   c.save(); c.translate(0, -rise * 140);
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (st.flight === 'hold') hint(k,'Move to float down and keep celebrating');
-  else if (!st.flight) hint(k,Math.abs(w.x-APOTH.mark)<APOTH.near+35?'[A] Jump into the light':st.backT > 0 ? 'Keep holding left to return to the guests' : 'Dance here · hold left at the exit to return to the guests');
+  if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
   if (rise > 0 && st.phase !== 'finale') card(k, 'The Kingdom of the Fairies', 'The end', clamp(st.riseT - 1, 0, 1));
 }

@@ -1194,6 +1194,8 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     asset(id, cx, by, w, h, extra = '') { const im = img(id); if (!im) return false; drawAsset(kit.c, P, im, cx, by, w, h, extra); return true; },
     // Part of a delivered image: source rect in art pixels -> stage box.
     assetCrop(id, sx, sy, sw, sh, dx, dy, dw, dh) { const im = img(id); if (!im) return false; kit.c.drawImage(passImage(P, im), sx, sy, sw, sh, dx, dy, dw, dh); return true; },
+    // a canvas derived from a delivered image (masked, say), through the same print pass
+    imageCrop(src, sx, sy, sw, sh, dx, dy, dw, dh) { kit.c.drawImage(passImage(P, src), sx, sy, sw, sh, dx, dy, dw, dh); return true; },
     col: (hex) => P.c(hex),
     wire: (x, y0, y1) => wire(kit.c, x, y0, y1),
     circle: (x, y, r) => circle(kit.c, x, y, r),
