@@ -188,6 +188,56 @@ cam.update(dt, controls)
 - Map: a painted parchment map drawn from `town.json` (roads, buildings, water,
   parks), the squirrel's position, discovered landmarks.
 
+## Many creatures, many scales (the long-term goal)
+
+The squirrel is the first of several small creatures; insects (an ant, a
+beetle, a bee) are likely next. A creature may be 45 cm or 5 mm long, so the
+world must stream in pieces and change its level of detail with the
+creature's scale. Build everything now so this is an extension, not a rewrite.
+
+- **Units stay metres everywhere.** A creature declares `scale` (body length in
+  metres; squirrel 0.25, ant 0.005). Speeds, camera distance, near plane, fog,
+  stream radius and detail all derive from it, never from squirrel constants
+  hard-coded in shared code.
+- **Creatures are plug-ins.** `src/creatures/index.js` is a registry:
+  `CREATURES = { squirrel: () => import('../squirrel/index.js'), ... }`; each
+  creature module exports `createCreature(opts)` (the squirrel also keeps
+  `createSquirrel`) returning the squirrel contract above plus
+  `{ kind, scale, eyeHeight, climbs: Set<surface ids>, canFly }`, and
+  `createCamera(...)`. The shell never names the squirrel directly except as
+  the default.
+- **The world streams by chunk.** The town is cut into chunks (about 200 m;
+  a chunk key is `"cx,cz"`). Chunks load, build and unload around the focus
+  (`world.update(dt, camera, focus)` with `world.setScale(scale)`), in time
+  slices so a frame never stalls (budget ~4 ms of building per frame), with
+  geometry, materials and BVHs disposed on unload. Far chunks are coarse LOD;
+  near chunks full.
+- **Collision is queried, not one mesh.** Because chunks come and go, the
+  creatures ask the world rather than holding `world.collider`:
+  `world.collidersNear(box3)` returns the BVH meshes overlapping a box (each a
+  `THREE.Mesh` with `geometry.boundsTree` and the `surface` attribute, in world
+  space via its `matrixWorld`), and `world.raycast(origin, dir, far)` →
+  `{ point, normal, distance, surface } | null` across them. `world.collider`
+  stays as a convenience (the stand-in world's single mesh) but new code uses
+  the queries.
+- **Detail layers by scale.** Fine detail appears only when the creature is
+  small enough to see it: `world.addDetailLayer({ id, minScale, maxScale,
+  radius, build(chunkKey, cell) })` builds deterministic, seeded-by-position
+  detail (grass blades, pebbles, fallen leaves as real geometry, bark relief,
+  cracks in the sidewalk) in small cells around the focus, with its own
+  colliders for creatures that walk on it. The squirrel needs few; an ant
+  needs grass blades as climbable stalks. Seeding by position means the same
+  pebble is always in the same place.
+- **Precision.** Each chunk's geometry is stored relative to its chunk origin
+  (the chunk object is positioned there), so vertices near the camera keep
+  float precision at insect scale. The camera's near plane follows the scale
+  (about `0.02 × scale`), with a far plane / fog to match; switch on
+  `logarithmicDepthBuffer` only if z-fighting appears.
+- **Transitions.** Changing creature (or teleporting) is: fade out, set the
+  new scale and focus, wait for the near chunks and detail layers to report
+  ready (`world.ready(focus)` → Promise), fade in. Loading shows progress and
+  never blocks input handling or audio.
+
 ## Performance budget
 
 60 fps on a mid-range laptop with integrated graphics at 1080p:
