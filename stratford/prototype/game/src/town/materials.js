@@ -542,13 +542,15 @@ vec3 buildingColor(out float glow) {
   if (part == 6.0) return wallMat(mat, seed, uv, px) * 0.95;
   if (part == 7.0) {                       // clock face: uv in [-1, 1]
     float r = length(uv);
-    vec3 c = mix(vec3(0.93, 0.91, 0.84), vec3(0.15), smoothstep(0.88, 0.9, r));
+    bool blue = bitf(flags, 1.0) > 0.5;          // City Hall's blue face with gilded hands
+    vec3 face = blue ? vec3(0.10, 0.17, 0.45) : vec3(0.93, 0.91, 0.84), ink = blue ? vec3(0.86, 0.68, 0.28) : vec3(0.1);
+    vec3 c = mix(face, blue ? vec3(0.92, 0.9, 0.84) : vec3(0.15), smoothstep(0.86, 0.9, r));
     float a = atan(uv.x, uv.y);
     float ticks = step(0.75, r) * step(r, 0.86) * step(0.93, cos(a * 12.0));
     vec2 hh = vec2(sin(1.1), cos(1.1)), mm = vec2(sin(4.2), cos(4.2));
     float hand = max(step(abs(dot(uv, vec2(hh.y, -hh.x))), 0.035) * step(0.0, dot(uv, hh)) * step(dot(uv, hh), 0.45),
                      step(abs(dot(uv, vec2(mm.y, -mm.x))), 0.025) * step(0.0, dot(uv, mm)) * step(dot(uv, mm), 0.7));
-    return mix(c, vec3(0.1), max(ticks, hand));
+    return mix(c, ink, max(ticks, hand));
   }
   if (part == 8.0) {                       // copper / slate spires
     vec3 c = fract(seed * 7.7) < 0.5 ? vec3(0.36, 0.56, 0.49) : vec3(0.19, 0.20, 0.23);

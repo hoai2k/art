@@ -47,7 +47,8 @@ export function buildingParams(ctx, b) {
   } else if (house) fac = mat === MAT.brick_buff ? (storeys <= 1 ? FAC.buffCottage : FAC.italianate) : mat === MAT.clapboard ? FAC.clapboard : mat === MAT.stucco ? -1 : storeys <= 1 ? FAC.cottage : FAC.queenAnne;
   else if (church) fac = FAC.church;
   else if (shed) fac = FAC.garage;
-  if (b.use === 'theatre' || ctx.landmarkByBuilding.has(b.id)) fac = -1;
+  if (b.use === 'theatre' || (ctx.landmarkByBuilding.has(b.id) && !church)) fac = -1;
+  if (mat === MAT.glass) flags |= FLAG.noWindows;
   return { seed, mat, storeys, gfh, flags, base, eaves: b.height, commercial, house, church, civic, shed, fac };
 }
 
@@ -113,6 +114,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   const P = buildingParams(ctx, b);
   const lm = ctx.landmarkByBuilding.get(b.id) || null;
   const special = lm ? landmarkParts[lm.id] || null : null;
+  if (special && special.params) Object.assign(P, special.params(P, b));
   const fronts = frontEdges(ctx, b, P);
   const base = P.base;
   const y0 = base - 0.8;                                  // sink into sloping ground
@@ -455,8 +457,8 @@ export const KIT = {
     KIT.setPart(vb, P, PART.wall, opt.mat ?? P.mat, FLAG.front | FLAG.arched, w, h - 0.4, Math.max(2, Math.round(h / 4.8)));
     KIT.box(vb, cb, x, base + h / 2 - 0.4, z, hw, h / 2 + 0.4, hw, yaw, WALL_SURF[opt.mat ?? P.mat]);
     let y = top;
-    // a stone band
-    KIT.setPart(vb, P, PART.stone);
+    // a stone (or painted) band
+    KIT.setPart(vb, P, opt.band ?? PART.stone);
     KIT.box(vb, cb, x, y + 0.15, z, hw + 0.12, 0.15, hw + 0.12, yaw, SURFACE.wall_stone);
     y += 0.3;
     if (opt.belfry) {
@@ -469,10 +471,19 @@ export const KIT = {
       KIT.box(vb, cb, x, y + 0.2, z, hw + 0.2, 0.2, hw + 0.2, yaw, SURFACE.roof);
       y += 0.4;
     }
+    if (opt.pinnacles) {
+      KIT.setPart(vb, P, opt.pinnaclePart ?? PART.stone);
+      for (let k = 0; k < 4; k++) {
+        const a = yaw + Math.PI / 4 + (k * Math.PI) / 2, r = hw * 1.25;
+        const px = x + Math.cos(a) * r, pz = z - Math.sin(a) * r;
+        KIT.box(vb, cb, px, y + 0.6, pz, 0.32, 0.6, 0.32, yaw, SURFACE.wall_stone);
+        KIT.frustum(vb, cb, px, y + 1.2, pz, 0.36, y + 1.2 + opt.pinnacles, 0.03, 4, yaw + Math.PI / 4, SURFACE.roof);
+      }
+    }
     if (opt.clock) {
       const cy = top - Math.min(2.2, h * 0.12);
       const r = Math.min(hw * 0.75, 1.4);
-      KIT.setPart(vb, P, PART.clock);
+      KIT.setPart(vb, P, PART.clock, P.mat, opt.clockBlue ? 1 : 0);
       for (let k = 0; k < 4; k++) {
         const a = yaw + (k * Math.PI) / 2;
         const nx = Math.cos(a), nz = -Math.sin(a), tx = -nz, tz = nx; // tangent
@@ -492,7 +503,9 @@ export const KIT = {
       y += opt.spire;
     } else if (opt.pyramid) {
       KIT.setPart(vb, P, opt.roofPart ?? PART.roof);
-      KIT.frustum(vb, cb, x, y, z, hw * 1.42 + 0.2, y + opt.pyramid, 0.12, 4, yaw + Math.PI / 4, SURFACE.roof);
+      // a bell-cast skirt, then the steep pyramid
+      KIT.frustum(vb, cb, x, y, z, hw * 1.42 + 0.35, y + 0.8, hw * 1.42 - 0.1, 4, yaw + Math.PI / 4, SURFACE.roof);
+      KIT.frustum(vb, cb, x, y + 0.8, z, hw * 1.42 - 0.1, y + opt.pyramid, 0.12, 4, yaw + Math.PI / 4, SURFACE.roof);
       y += opt.pyramid;
       KIT.setPart(vb, P, PART.dark);
       KIT.frustum(vb, null, x, y - 0.1, z, 0.08, y + 1.8, 0.02, 4, yaw, SURFACE.roof);

@@ -6,6 +6,41 @@ import { PART, MAT, FLAG } from './materials.js';
 import { centroid, obb, polyArea } from './util.js';
 import { insetRing } from './buildings.js';
 
+// A gable over the eaves (white-trimmed when the palette says so): a
+// triangle of wall facing out along (nx, nz), with a little roof behind it.
+function gable(vb, cb, P, x, y, z, dx, dz, nx, nz, w, h, kit) {
+  const hw = w / 2, V = (s, up, out) => [x + dx * s + nx * out, y + up, z + dz * s + nz * out];
+  kit.setPart(vb, P, PART.wall, P.mat, 0, w, 0.1, 1);
+  const tri = (a, b, c, n) => { const ids = [a, b, c].map((p) => vb.v(p[0], p[1], p[2], n[0], n[1], n[2], (p[0] - x) * dx + (p[2] - z) * dz + hw, p[1] - y + 50)); vb.tri(ids[0], ids[1], ids[2]); vb.tri(ids[0], ids[2], ids[1]); cb.tri(a, b, c, SURFACE.wall_brick); };
+  tri(V(-hw, 0, 0.3), V(hw, 0, 0.3), V(0, h, 0.3), [nx, 0, nz]);
+  kit.setPart(vb, P, PART.roof);
+  const ridgeBack = V(0, h, -3.5), ridgeFront = V(0, h, 0.4);
+  for (const sg of [-1, 1]) {
+    const e0 = V(sg * (hw + 0.3), -0.2, 0.4), e1 = V(sg * (hw + 0.3), -0.2, -3.5);
+    const n = [0, 1, 0];
+    const ids = [e0, e1, ridgeBack, ridgeFront].map((p) => vb.v(p[0], p[1], p[2], n[0], n[1], n[2], p[0], p[2]));
+    vb.quad(ids[0], ids[1], ids[2], ids[3]); vb.quad(ids[1], ids[0], ids[3], ids[2]);
+    cb.quad(e0, e1, ridgeBack, ridgeFront, SURFACE.roof);
+  }
+  // white bargeboards along the rakes
+  kit.setPart(vb, P, PART.trim);
+  for (const sg of [-1, 1]) {
+    const a = V(sg * (hw + 0.3), -0.2, 0.45), c = V(0, h + 0.15, 0.45);
+    const len = Math.hypot(c[0] - a[0], c[1] - a[1], c[2] - a[2]);
+    const mx = (a[0] + c[0]) / 2, my = (a[1] + c[1]) / 2, mz = (a[2] + c[2]) / 2;
+    const ang = Math.atan2(c[1] - a[1], Math.hypot(c[0] - a[0], c[2] - a[2]));
+    // a thin slab along the rake, built as a box rotated in its own frame
+    const ux = (c[0] - a[0]) / len, uy = (c[1] - a[1]) / len, uz = (c[2] - a[2]) / len;
+    const sx = nx * 0.12, sz = nz * 0.12, tx = -uy * ux * 0.15, ty = Math.cos(ang) * 0.15, tz = -uy * uz * 0.15;
+    const P0 = (sa, sb, sc) => [mx + ux * len / 2 * sa + sx * sb + tx * sc, my + uy * len / 2 * sa + ty * sc, mz + uz * len / 2 * sa + sz * sb + tz * sc];
+    const C = [P0(-1, -1, -1), P0(1, -1, -1), P0(1, -1, 1), P0(-1, -1, 1), P0(-1, 1, -1), P0(1, 1, -1), P0(1, 1, 1), P0(-1, 1, 1)];
+    for (const [i, j, k, l] of [[0, 1, 2, 3], [4, 7, 6, 5], [0, 4, 5, 1], [3, 2, 6, 7], [1, 5, 6, 2]]) {
+      const ids = [C[i], C[j], C[k], C[l]].map((p) => vb.v(p[0], p[1], p[2], nx, 0.3, nz, p[0], p[1]));
+      vb.quad(ids[0], ids[1], ids[2], ids[3]); vb.quad(ids[1], ids[0], ids[3], ids[2]);
+    }
+  }
+}
+
 // interior angle at each vertex (radians), for picking a site's apex
 function sharpest(ring) {
   let best = 0, bestA = 10;
@@ -19,52 +54,101 @@ function sharpest(ring) {
 }
 function edgeMid(b, k) { const n = b.outer.length, a = b.outer[k], c = b.outer[(k + 1) % n]; return { x: (a[0] + c[0]) / 2, z: (a[1] + c[1]) / 2, dx: (c[0] - a[0]), dz: (c[1] - a[1]) }; }
 
+// the tower position: the middle of the front edge (stepped out a little), or a front corner
+function frontTower(b, w, where = 'centre', edge = null) {
+  const n = b.outer.length, k = edge ?? (b.front >= 0 ? b.front : 0);
+  const a = b.outer[k], c = b.outer[(k + 1) % n];
+  const L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+  const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L, nx = dz, nz = -dx;    // along the front, outward
+  const s = where === 'centre' ? L / 2 : where === 'left' ? w * 0.55 : L - w * 0.55;
+  const out = where === 'centre' ? w * 0.35 : w * 0.15;
+  return { x: a[0] + dx * s + nx * out, z: a[1] + dz * s + nz * out, yaw: Math.atan2(-dz, dx), dx, dz, nx, nz, L };
+}
+
 export const landmarkParts = {
-  // Stratford City Hall (1899): red brick on its triangular site, with the
-  // tall clock tower at the apex facing the square.
+  // Stratford City Hall (1898-1900, George W. King), checked against the
+  // reference photos: deep red brick, white trim, grey slate roofs, and the
+  // clock tower in the middle of the symmetric front, its steep dark slate
+  // spire, blue clock faces and white corner spirelets.
   'city-hall': {
-    build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
-      const i = sharpest(b.outer), q = b.outer[i];
-      const c = centroid(b.outer);
-      let dx = c[0] - q[0], dz = c[1] - q[1]; const l = Math.hypot(dx, dz) || 1; dx /= l; dz /= l;
-      const w = 6.2;
-      const tx = q[0] + dx * w * 0.75, tz = q[1] + dz * w * 0.75;
-      const yaw = Math.atan2(-dz, dx) + Math.PI / 4;
-      const top = eaves + rh + 6.5;
-      const y = kit.tower(vb, cb, P, tx - ox, base, tz - oz, w, top, yaw, { belfry: 4.2, clock: true, pyramid: 7.5, roofPart: PART.copper, mat: MAT.brick_red });
-      // corner pinnacles on the belfry
-      kit.setPart(vb, P, PART.copper);
-      for (let k = 0; k < 4; k++) {
-        const a = yaw + Math.PI / 4 + (k * Math.PI) / 2, r = w * 0.62;
-        kit.frustum(vb, cb, tx - ox + Math.cos(a) * r, top + 4.6, tz - oz - Math.sin(a) * r, 0.45, top + 7.2, 0.04, 6, 0, SURFACE.roof);
+    params: () => ({ seed: 0.241, mat: MAT.brick_red }),            // slate roofs, white trim
+    roof: (b, rh) => ({ roof: 'hipped', rh: Math.max(rh, 7) }),
+    build({ ctx, b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
+      // the front faces Market Square
+      const sq = ctx.data.landmarks.find((l) => l.id === 'market-square');
+      let edge = null;
+      if (sq) {
+        let best = -Infinity; const n = b.outer.length, c0 = centroid(b.outer);
+        let tx = sq.x - c0[0], tz = sq.z - c0[1]; const tl = Math.hypot(tx, tz) || 1; tx /= tl; tz /= tl;
+        for (let i = 0; i < n; i++) {
+          const a = b.outer[i], c = b.outer[(i + 1) % n], L = Math.hypot(c[0] - a[0], c[1] - a[1]);
+          const score = ((c[1] - a[1]) / L * tx - (c[0] - a[0]) / L * tz) * Math.sqrt(L);
+          if (score > best) { best = score; edge = i; }
+        }
       }
-      // two gabled bays on the long fronts: small towers capped by pyramids
+      const w = 6.4, t = frontTower(b, w, 'centre', edge);
+      const top = eaves + 3.2;
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, top, t.yaw, { belfry: 4.6, clock: true, clockBlue: true, pyramid: 12.5, roofPart: PART.roof, band: PART.trim, pinnacles: 2.6, pinnaclePart: PART.trim, mat: MAT.brick_red });
+      // lantern and flagpole on the spire
+      const yTop = top + 0.3 + 4.6 + 0.4 + 12.5;
+      kit.setPart(vb, P, PART.trim);
+      kit.frustum(vb, cb, t.x - ox, yTop - 3.2, t.z - oz, 0.75, yTop - 1.6, 0.75, 6, 0, SURFACE.roof, true);
+      kit.setPart(vb, P, PART.dark);
+      kit.frustum(vb, null, t.x - ox, yTop - 1.6, t.z - oz, 0.06, yTop + 4.5, 0.03, 4, 0, SURFACE.prop);
+      // the entrance: a stone arch bay under the tower, with steps
+      kit.setPart(vb, P, PART.stone);
+      kit.box(vb, cb, t.x + t.nx * (w * 0.5 + 0.6) - ox, base + 0.35, t.z + t.nz * (w * 0.5 + 0.6) - oz, w * 0.45, 0.35, 1.3, t.yaw, SURFACE.wall_stone);
+      // white spirelets at the corners of the roof and the two front gables
       const o = obb(b.outer);
       if (o) {
-        kit.setPart(vb, P, PART.wall, MAT.brick_red, FLAG.front | FLAG.arched, 5, eaves - base + 3, 3);
-        for (const s of [-1, 1]) {
-          const bx = o.cx + o.ux * o.hu * 0.45 * s, bz = o.cz + o.uz * o.hu * 0.45 * s;
-          kit.setPart(vb, P, PART.roof);
-          kit.frustum(vb, cb, bx - ox, eaves + rh * 0.4, bz - oz, 2.4, eaves + rh + 2.5, 0.1, 4, Math.atan2(-o.uz, o.ux) + Math.PI / 4, SURFACE.roof);
+        kit.setPart(vb, P, PART.trim);
+        for (const [su, sv] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
+          const px = o.cx + o.ux * o.hu * su * 0.97 - o.uz * o.hv * sv * 0.97, pz = o.cz + o.uz * o.hu * su * 0.97 + o.ux * o.hv * sv * 0.97;
+          kit.box(vb, cb, px - ox, eaves + 0.9, pz - oz, 0.55, 0.9, 0.55, 0, SURFACE.wall_stone);
+          kit.frustum(vb, cb, px - ox, eaves + 1.8, pz - oz, 0.6, eaves + 4.6, 0.04, 8, 0, SURFACE.roof);
+        }
+        // front gables either side of the tower: white-edged triangles over the eaves
+        for (const sgn of [-1, 1]) {
+          const gx = t.x + t.dx * sgn * (t.L * 0.27) - t.nx * w * 0.35, gz = t.z + t.dz * sgn * (t.L * 0.27) - t.nz * w * 0.35;
+          gable(vb, cb, P, gx - ox, eaves, gz - oz, t.dx, t.dz, t.nx, t.nz, 6.5, 4.2, kit);
         }
       }
     },
   },
-  // Perth County Courthouse (1887, George F. Durand): High Victorian, a
-  // central tower over the entrance with a steep pavilion roof.
+  // Perth County Courthouse (1887, George F. Durand), checked against the
+  // photos: buff brick with red-brown arches and bands, and a slender tower
+  // at the front corner with a tall, steep spire.
   courthouse: {
+    params: () => ({ mat: MAT.brick_buff, seed: 0.108 }),
     build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
-      const k = b.front >= 0 ? b.front : 0;
-      const m = edgeMid(b, k), L = Math.hypot(m.dx, m.dz) || 1;
-      const nx = m.dz / L, nz = -m.dx / L;              // outward
-      const w = 5.6;
-      const tx = m.x + nx * 0.8, tz = m.z + nz * 0.8;
-      const yaw = Math.atan2(nz, -nx) + Math.PI / 2;
-      kit.tower(vb, cb, P, tx - ox, base, tz - oz, w, eaves + rh + 4.5, Math.atan2(-m.dz, m.dx), { belfry: 3.2, clock: true, pyramid: 8.5, roofPart: PART.roof, mat: P.mat });
-      // entrance porch in stone
+      const w = 4.8, t = frontTower(b, w, 'left');
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, eaves + rh + 3.5, t.yaw, { belfry: 3.6, clock: true, pyramid: 10.5, roofPart: PART.roof, pinnacles: 1.6, mat: MAT.brick_buff });
+      // a projecting entrance bay with its gable in the middle of the front
+      const m = frontTower(b, 7, 'centre');
+      kit.setPart(vb, P, PART.wall, MAT.brick_buff, FLAG.front | FLAG.arched, 7, eaves - base, 3);
+      kit.box(vb, cb, m.x - ox, (base + eaves) / 2, m.z - oz, 3.5, (eaves - base) / 2, 1.2, m.yaw, SURFACE.wall_brick);
+      gable(vb, cb, P, m.x - ox, eaves, m.z - oz, m.dx, m.dz, m.nx, m.nz, 7.4, 4.5, kit);
+    },
+  },
+  // Knox Presbyterian Church: dark red brick, a big gabled front with a
+  // great window, green copper trim, a square tower with a low cap (photo).
+  'knox-church': {
+    noSteeple: true,
+    params: () => ({ mat: MAT.brick_red, seed: 0.5195 }),
+    build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
+      const w = 6, t = frontTower(b, w, 'right');
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, eaves + rh + 2, t.yaw, { belfry: 3.4, pyramid: 2.2, roofPart: PART.copper, mat: MAT.brick_red });
+    },
+  },
+  // St. James' Anglican Church: grey stone Gothic, a square tower crowned
+  // with four tall pinnacles and no spire (photos).
+  'st-james-church': {
+    noSteeple: true,
+    params: () => ({ mat: MAT.stone }),
+    build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
+      const w = 5.6, t = frontTower(b, w, 'right');
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, eaves + rh + 4, t.yaw, { belfry: 4.2, pinnacles: 3.8, mat: MAT.stone });
       kit.setPart(vb, P, PART.stone);
-      kit.box(vb, cb, tx + nx * 3.2 - ox, base + 2.3, tz + nz * 3.2 - oz, 2.6, 2.3, 0.9, Math.atan2(-m.dz, m.dx), SURFACE.wall_stone);
-      void yaw;
     },
   },
   // Festival Theatre (1957): the round drum under the crown-like folded roof
@@ -124,12 +208,13 @@ export const landmarkParts = {
     replacesRoof: true,
     roof: () => ({ roof: 'flat', rh: 0 }),
     build({ b, P, vb, cb, ox, oz, eaves, kit }) {
+      // checked against the photos: a deep bronze fascia over glass walls
       const ring = insetRing(b.outer, -2.6);
-      const y0 = eaves + 0.2, y1 = eaves + 0.9;
-      kit.setPart(vb, P, PART.copper);
+      const y0 = eaves + 0.2, y1 = eaves + 1.4;
+      kit.setPart(vb, { ...P, seed: 0.108 }, PART.trim);       // bronze-brown
       slab(vb, cb, ring, y0, y1, ox, oz);
-      // a brick "veil" band under the slab
-      kit.setPart(vb, P, PART.wall, MAT.brick_red, FLAG.noWindows, 10, 200, 1);
+      // a clerestory of glass between the walls and the slab
+      kit.setPart(vb, P, PART.glass, MAT.glass, 0, 10, 200, 1);
       const band = insetRing(b.outer, 0.0);
       for (let i = 0; i < band.length; i++) {
         const a = band[i], c = band[(i + 1) % band.length];
