@@ -346,6 +346,7 @@ export async function createTown(opts = {}) {
   }
   function step(budgetMs) {
     const tEnd = performance.now() + budgetMs;
+    facadeUniforms.focus.value.copy(focus);
     plan();
     // tear down first (cheap), then build nearest first
     for (const c of chunks.values()) {
