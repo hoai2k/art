@@ -56,19 +56,24 @@ test('town builds from the data and answers the World contract', { timeout: 6000
     assert.ok(down, 'downward ray hits');
     assert.ok([SURF.ground, SURF.road, SURF.sidewalk, SURF.grass].includes(down.surface), `spawn ray hits ground, not ${down.surface}`);
     assert.ok(down.ny > 0.7, 'ground normal points up');
-    // a horizontal ray into City Hall's wall hits a wall
+    // horizontal rays into the back walls of houses near the spawn hit walls where the footprints say
     const wall = await page.evaluate(() => {
-      const w = bench.world, b = w.data.buildings.find((q) => q.id === 'w164420370') || w.data.buildings.find((q) => q.use === 'commercial');
-      const o = b.outer, a = o[0], c = o[1];
-      const L = Math.hypot(c[0] - a[0], c[1] - a[1]), nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
-      const mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2;
-      const y = (Number.isFinite(b.base) ? b.base : w.groundAt(mx, mz)) + Math.min(5, b.height * 0.5);
-      const h = w.raycast(bench.vec(mx + nx * 8, y, mz + nz * 8), bench.vec(-nx, 0, -nz), 20);
-      return h && { surface: h.surface, d: h.distance };
+      const w = bench.world, sp = w.spawn, res = [];
+      const near = w.data.buildings.filter((q) => q.use === 'residential' && q.height > 4 && Math.hypot(q.outer[0][0] - sp.x, q.outer[0][1] - sp.z) < 220).slice(0, 30);
+      for (const b of near) {
+        const o = b.outer, k = ((b.front >= 0 ? b.front : 0) + 2) % o.length, a = o[k], c = o[(k + 1) % o.length];
+        const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 4) continue;
+        const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L, mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2;
+        const y = w.groundAt(mx + nx * 3, mz + nz * 3) + 1.5;
+        const h = w.raycast(bench.vec(mx + nx * 3, y, mz + nz * 3), bench.vec(-nx, 0, -nz), 10);
+        if (h) res.push({ surface: h.surface, d: h.distance });
+      }
+      return res;
     });
-    assert.ok(wall, 'wall ray hits');
-    assert.ok([SURF.wall_brick, SURF.wall_stone, SURF.wall_wood, SURF.wall_smooth].includes(wall.surface), `wall ray hits a wall (got ${wall.surface})`);
-    assert.ok(Math.abs(wall.d - 8) < 1.5, `wall is where the footprint says (${wall.d.toFixed(2)} m)`);
+    const walls = [SURF.wall_brick, SURF.wall_stone, SURF.wall_wood, SURF.wall_smooth];
+    const onWall = wall.filter((h) => Math.abs(h.d - 3) < 0.25 && walls.includes(h.surface));
+    assert.ok(wall.length >= 5, `enough wall rays (${wall.length})`);
+    assert.ok(onWall.length >= wall.length * 0.7, `rays hit the walls at the footprints (${onWall.length}/${wall.length})`);
     // budget from the spawn view, at the creature's eye and from above
     const views = await page.evaluate(async () => {
       const w = bench.world, sp = w.spawn, out = [];

@@ -6,6 +6,25 @@ import { PART, MAT, FLAG } from './materials.js';
 import { centroid, obb, polyArea } from './util.js';
 import { insetRing } from './buildings.js';
 
+// A rusticated stone plinth: the footprint stepped out a little, from below
+// the ground to h above the base.
+function plinth(vb, cb, P, b, base, h, ox, oz, kit) {
+  const ring = insetRing(b.outer, -0.12), n = ring.length;
+  kit.setPart(vb, P, PART.stone);
+  for (let i = 0; i < n; i++) {
+    const a = ring[i], c = ring[(i + 1) % n];
+    const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 0.05) continue;
+    const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
+    const ids = [[a, base - 0.8, 0], [c, base - 0.8, L], [c, base + h, L], [a, base + h, 0]].map(([p, y, u]) => vb.v(p[0] - ox, y, p[1] - oz, nx, 0, nz, u, y - base));
+    vb.quad(ids[1], ids[0], ids[3], ids[2]);
+    cb.quad([a[0] - ox, base - 0.8, a[1] - oz], [c[0] - ox, base - 0.8, c[1] - oz], [c[0] - ox, base + h, c[1] - oz], [a[0] - ox, base + h, a[1] - oz], SURFACE.wall_stone);
+    // a sloped stone cap
+    const A2 = b.outer[i], C2 = b.outer[(i + 1) % n];
+    const ids2 = [[a, base + h], [c, base + h], [C2, base + h + 0.12], [A2, base + h + 0.12]].map(([p, y]) => vb.v(p[0] - ox, y, p[1] - oz, nx * 0.5, 0.86, nz * 0.5, p[0], p[1]));
+    vb.quad(ids2[0], ids2[1], ids2[2], ids2[3]); vb.quad(ids2[1], ids2[0], ids2[3], ids2[2]);
+  }
+}
+
 // A gable over the eaves (white-trimmed when the palette says so): a
 // triangle of wall facing out along (nx, nz), with a little roof behind it.
 function gable(vb, cb, P, x, y, z, dx, dz, nx, nz, w, h, kit) {
@@ -71,8 +90,9 @@ export const landmarkParts = {
   // clock tower in the middle of the symmetric front, its steep dark slate
   // spire, blue clock faces and white corner spirelets.
   'city-hall': {
+    // notes: eaves about 14 m, ridge about 19 m above the plinth; the data's 17.6 m is the ridge
+    override: { height: 14, roofHeight: 5, roof: 'hipped' },
     params: () => ({ seed: 0.241, mat: MAT.brick_red }),            // slate roofs, white trim
-    roof: (b, rh) => ({ roof: 'hipped', rh: Math.max(rh, 7) }),
     build({ ctx, b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
       // the front faces Market Square
       const sq = ctx.data.landmarks.find((l) => l.id === 'market-square');
@@ -86,8 +106,9 @@ export const landmarkParts = {
           if (score > best) { best = score; edge = i; }
         }
       }
-      const w = 6.4, t = frontTower(b, w, 'centre', edge);
-      const top = eaves + 3.2;
+      plinth(vb, cb, P, b, base, 2.2, ox, oz, kit);                   // rusticated pale grey stone basement
+      const w = 5.0, t = frontTower(b, w, 'centre', edge);
+      const top = eaves + 3.2;                                        // spire tip about 35 m
       kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, top, t.yaw, { belfry: 4.6, clock: true, clockBlue: true, pyramid: 12.5, roofPart: PART.roof, band: PART.trim, pinnacles: 2.6, pinnaclePart: PART.trim, mat: MAT.brick_red });
       // lantern and flagpole on the spire
       const yTop = top + 0.3 + 4.6 + 0.4 + 12.5;
@@ -101,11 +122,17 @@ export const landmarkParts = {
       // white spirelets at the corners of the roof and the two front gables
       const o = obb(b.outer);
       if (o) {
-        kit.setPart(vb, P, PART.trim);
-        for (const [su, sv] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
-          const px = o.cx + o.ux * o.hu * su * 0.97 - o.uz * o.hv * sv * 0.97, pz = o.cz + o.uz * o.hu * su * 0.97 + o.ux * o.hv * sv * 0.97;
-          kit.box(vb, cb, px - ox, eaves + 0.9, pz - oz, 0.55, 0.9, 0.55, 0, SURFACE.wall_stone);
-          kit.frustum(vb, cb, px - ox, eaves + 1.8, pz - oz, 0.6, eaves + 4.6, 0.04, 8, 0, SURFACE.roof);
+        // the two ends: polygonal turrets under witch-hat slate roofs with ball finials (notes, photos)
+        for (const su of [-1, 1]) {
+          const px = o.cx + o.ux * o.hu * su * 0.86, pz = o.cz + o.uz * o.hu * su * 0.86, r = Math.min(4.2, o.hv * 0.55);
+          kit.setPart(vb, P, PART.wall, MAT.brick_red, FLAG.front | FLAG.arched, 2 * Math.PI * r / 12 * 1.0, eaves - base + 2, 3);
+          kit.frustum(vb, cb, px - ox, base - 0.5, pz - oz, r, eaves + 2.2, r, 12, 0, SURFACE.wall_brick);
+          kit.setPart(vb, P, PART.trim);
+          kit.frustum(vb, cb, px - ox, eaves + 2.2, pz - oz, r + 0.25, eaves + 2.6, r + 0.25, 12, 0, SURFACE.roof);
+          kit.setPart(vb, P, PART.roof);
+          kit.frustum(vb, cb, px - ox, eaves + 2.6, pz - oz, r + 0.3, eaves + 2.6 + r * 1.7, 0.05, 12, 0, SURFACE.roof);
+          kit.setPart(vb, P, PART.trim);
+          kit.frustum(vb, null, px - ox, eaves + 2.5 + r * 1.7, pz - oz, 0.22, eaves + 2.9 + r * 1.7, 0.22, 6, 0, SURFACE.roof, true);
         }
         // front gables either side of the tower: white-edged triangles over the eaves
         for (const sgn of [-1, 1]) {
@@ -119,10 +146,12 @@ export const landmarkParts = {
   // photos: buff brick with red-brown arches and bands, and a slender tower
   // at the front corner with a tall, steep spire.
   courthouse: {
+    // notes: cream-yellow (buff) brick with red sandstone trim, not brick_red; tower about 35 m (115 ft)
     params: () => ({ mat: MAT.brick_buff, seed: 0.108 }),
     build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
+      plinth(vb, cb, P, b, base, 2.0, ox, oz, kit);
       const w = 4.8, t = frontTower(b, w, 'left');
-      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, eaves + rh + 3.5, t.yaw, { belfry: 3.6, clock: true, pyramid: 10.5, roofPart: PART.roof, pinnacles: 1.6, mat: MAT.brick_buff });
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, base + 20.5, t.yaw, { belfry: 3.6, clock: true, pyramid: 10.5, roofPart: PART.roof, pinnacles: 1.6, mat: MAT.brick_buff });
       // a projecting entrance bay with its gable in the middle of the front
       const m = frontTower(b, 7, 'centre');
       kit.setPart(vb, P, PART.wall, MAT.brick_buff, FLAG.front | FLAG.arched, 7, eaves - base, 3);
@@ -133,6 +162,7 @@ export const landmarkParts = {
   // Knox Presbyterian Church: dark red brick, a big gabled front with a
   // great window, green copper trim, a square tower with a low cap (photo).
   'knox-church': {
+    // notes + photo: dark red-brown brick (not stone), green copper caps, no spire since 1913
     noSteeple: true,
     params: () => ({ mat: MAT.brick_red, seed: 0.5195 }),
     build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
@@ -143,13 +173,20 @@ export const landmarkParts = {
   // St. James' Anglican Church: grey stone Gothic, a square tower crowned
   // with four tall pinnacles and no spire (photos).
   'st-james-church': {
+    // notes: buff brick, a 14 x 14 ft (4.3 m) bell tower with four broach spires, about 25 m to their tips
     noSteeple: true,
-    params: () => ({ mat: MAT.stone }),
-    build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
-      const w = 5.6, t = frontTower(b, w, 'right');
-      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, eaves + rh + 4, t.yaw, { belfry: 4.2, pinnacles: 3.8, mat: MAT.stone });
-      kit.setPart(vb, P, PART.stone);
+    params: () => ({ mat: MAT.brick_buff }),
+    build({ b, P, vb, cb, ox, oz, base, kit }) {
+      const w = 4.3, t = frontTower(b, w, 'right');
+      kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, base + 16.5, t.yaw, { belfry: 4.4, pinnacles: 3.6, mat: MAT.brick_buff });
     },
+  },
+  // Railway station (1913, Grand Trunk): notes: a two-storey main block (about
+  // 9-10 m to the eaves) under broad, low hipped roofs, on a purple-grey granite base.
+  'railway-station': {
+    override: { height: 9.2, roofHeight: 2.6, roof: 'hipped' },
+    params: () => ({ mat: MAT.brick_red }),
+    build({ b, P, vb, cb, ox, oz, base, kit }) { plinth(vb, cb, P, b, base, 1.1, ox, oz, kit); },
   },
   // Festival Theatre (1957): the round drum under the crown-like folded roof
   // that recalls the Festival's first tent.
@@ -159,7 +196,8 @@ export const landmarkParts = {
     build({ b, P, vb, cb, ox, oz, base, eaves, kit }) {
       const c = centroid(b.outer);
       const area = polyArea(b.outer);
-      const r = Math.max(14, Math.sqrt(area / Math.PI) * 0.78);
+      // notes: the drum is about 61 m (200 ft) across, of 34 bays; the footprint includes later additions
+      const r = Math.min(30.5, Math.max(14, Math.sqrt(area / Math.PI) * 0.78));
       const cx = c[0] - ox, cz = c[1] - oz;
       const n = 32;
       // drum: plain buff wall with a band of clerestory glass
@@ -169,8 +207,8 @@ export const landmarkParts = {
       kit.setPart(vb, P, PART.glass);
       kit.frustum(vb, null, cx, y1, cz, r * 0.995, y1 + 1.2, r * 0.995, n, 0, SURFACE.wall_smooth);
       // the crown: a pleated cone whose rim rises into points
-      const yc = y1 + 1.2, apex = yc + 9.5, pts = 16;
-      kit.setPart(vb, { ...P, seed: 0.1 }, PART.copper);            // dark slate grey
+      const yc = y1 + 1.2, apex = yc + 9.5, pts = 34;
+      kit.setPart(vb, P, PART.plain, MAT.stucco);                     // light grey folded-plate concrete
       const P3 = (a, rr, y) => [cx + Math.cos(a) * rr, y, cz - Math.sin(a) * rr];
       const tri = (p, q, s) => {
         const ux = q[0] - p[0], uy = q[1] - p[1], uz = q[2] - p[2], vx = s[0] - p[0], vy = s[1] - p[1], vz = s[2] - p[2];
@@ -198,7 +236,9 @@ export const landmarkParts = {
       kit.frustum(vb, cb, cx, apex - 0.5, cz, 1.4, apex + 1.8, 1.4, 8, 0, SURFACE.roof, true);
       kit.setPart(vb, P, PART.copper);
       kit.frustum(vb, cb, cx, apex + 1.8, cz, 1.7, apex + 3.4, 0.1, 8, 0, SURFACE.roof);
+      // the coronet: a ring of upright prongs round the mast, and the flagpole
       kit.setPart(vb, P, PART.dark);
+      for (let k = 0; k < 10; k++) { const a = (k / 10) * Math.PI * 2; kit.box(vb, null, cx + Math.cos(a) * 0.9, apex + 3.9, cz - Math.sin(a) * 0.9, 0.06, 0.6, 0.06, a, SURFACE.prop); }
       kit.frustum(vb, null, cx, apex + 3.3, cz, 0.07, apex + 9, 0.04, 4, 0, SURFACE.prop);
     },
   },
@@ -208,7 +248,12 @@ export const landmarkParts = {
     replacesRoof: true,
     roof: () => ({ roof: 'flat', rh: 0 }),
     build({ b, P, vb, cb, ox, oz, eaves, kit }) {
-      // checked against the photos: a deep bronze fascia over glass walls
+      // notes + photos: a pale brick drum (the theatre) behind a ribbon of glass and bronze
+      const c0 = centroid(b.outer), rd = Math.min(18, Math.sqrt(polyArea(b.outer) / Math.PI) * 0.5);
+      kit.setPart(vb, P, PART.wall, MAT.brick_buff, FLAG.noWindows, 2 * Math.PI * rd, 200, 1);
+      kit.frustum(vb, cb, c0[0] - ox, eaves - 2, c0[1] - oz, rd, eaves + 5.5, rd, 24, 0, SURFACE.wall_brick);
+      kit.setPart(vb, P, PART.flat);
+      kit.frustum(vb, null, c0[0] - ox, eaves + 5.5, c0[1] - oz, rd, eaves + 5.55, rd * 0.98, 24, 0, SURFACE.roof, true);
       const ring = insetRing(b.outer, -2.6);
       const y0 = eaves + 0.2, y1 = eaves + 1.4;
       kit.setPart(vb, { ...P, seed: 0.108 }, PART.trim);       // bronze-brown

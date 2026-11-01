@@ -4,11 +4,17 @@ Things the town code (`src/town/`) would use from `game/data/town.json`, for
 the data pipeline (`tools/town/`) to consider. The town works without all of
 them: each has a fallback, noted below.
 
-- **Landmark materials.** The reference photos show the Perth County
-  Courthouse in buff brick with red-brown trim (the data says `brick_red`),
-  St. James' Anglican in grey stone (`brick_buff`) and Knox Presbyterian in
-  dark red brick (`stone`). `landmarks.js` overrides them for now; a
-  `material` from `building:material` / photos in the data would be better.
+- **Landmark materials and heights** (from `reference/town-notes.md` and the
+  photos): the Perth County Courthouse is buff brick with red sandstone trim
+  (data: `brick_red`) with a ~35 m tower; Knox Presbyterian is dark red-brown
+  brick (data: `stone`); City Hall's eaves are ~14 m with the ridge ~19 m and a
+  ~35 m clock tower (data: one 17.6 m block, no tower); the railway station's
+  main block is two storeys (~9 m eaves) with a one-storey express wing (data:
+  one 7.9 m volume). `landmarks.js` overrides these in its table; fixing them in
+  the data (or adding the towers as `building:part`s) would be better.
+- **Footprints.** City Hall's quad is coarse (the real plan has polygonal
+  ends, which the town adds as turrets); the Festival Theatre footprint
+  (90 x 97 m) includes later additions around the 61 m drum.
 - **City Hall's `front`.** Its `front` edge is not the Market Square side, where
   the clock tower stands. The town picks the edge facing the `market-square`
   landmark instead. A `towerAt: [x, z]` (or the tower as a `building:part`)

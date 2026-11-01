@@ -111,9 +111,11 @@ export function insetRing(ring, d) {
 }
 
 export function addBuilding(ctx, b, vb, cb, ox, oz) {
-  const P = buildingParams(ctx, b);
   const lm = ctx.landmarkByBuilding.get(b.id) || null;
   const special = lm ? landmarkParts[lm.id] || null : null;
+  // landmark corrections from the reference notes and photos (heights, roofs)
+  if (special && special.override) b = { ...b, ...special.override };
+  const P = buildingParams(ctx, b);
   if (special && special.params) Object.assign(P, special.params(P, b));
   const fronts = frontEdges(ctx, b, P);
   const base = P.base;
