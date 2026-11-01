@@ -203,3 +203,41 @@ On a flat `#FF00FF` background (keyed out on delivery).
 ## Delivery — 2026-11-01
 
 All 44 requested PNGs generated with built-in image_gen and saved at the paths above. Cutouts have native alpha transparency rather than a magenta key. Delivery dimensions, PNG decoding, and alpha channels verified; full set visually reviewed in a contact sheet. Prompts are recorded in `generation-prompts.json`. Texture edge continuity and facade projection still need an in-game material check; some facade artwork includes small foreground details. No playable prototype exists in this checkout to perform that check.
+
+---
+
+## Round 6: close-up ground detail for small creatures
+
+The world changes its detail with the creature's size (see "Many creatures,
+many scales" in `ARCHITECTURE.md`): a squirrel sees curbs and leaves, an ant
+sees grains of soil and blades of grass. These are for the close-up detail
+layers. Same painted storybook realism, same October light. Tiling textures
+1024 × 1024 seamless; cutouts on transparent or flat `#FF00FF`.
+
+| # | File | Real size | Prompt |
+|---|---|---|---|
+| D6.1 | `textures/soil_closeup.png` | 20 cm × 20 cm | Seamless tiling texture of garden soil seen from directly above at very close range: dark brown crumbly earth with tiny grains, small pebbles, a few rootlets and bits of decayed leaf; painted, no shadows from a direction. Status: `open` |
+| D6.2 | `textures/grass_roots_closeup.png` | 20 cm × 20 cm | Seamless tiling texture of the ground at the base of a lawn seen from above at very close range: soil, moss, the bases of grass stems, a clover leaf, a fallen maple seed; painted. Status: `open` |
+| D6.3 | `textures/moss.png` | 30 cm × 30 cm | Seamless tiling texture of a cushion of green moss seen from above at close range, tiny star-shaped shoots, a few tiny fallen leaf fragments; painted. Status: `open` |
+| D6.4 | `textures/concrete_closeup.png` | 30 cm × 30 cm | Seamless tiling texture of weathered sidewalk concrete seen from above at very close range: exposed aggregate, fine cracks, a little grit and a speck of lichen; painted. Status: `open` |
+| D6.5 | `textures/asphalt_closeup.png` | 30 cm × 30 cm | Seamless tiling texture of road asphalt seen from above at very close range: black binder and grey-brown stones of different sizes, grit in the gaps; painted. Status: `open` |
+| D6.6 | `textures/bark_closeup.png` | 30 cm × 60 cm | Seamless tiling texture of maple bark at very close range, deep furrows and ridges with a patch of pale green lichen; painted, front-on. Status: `open` |
+| D6.7 | `sprites/grass_blades.png` | 1024 × 1024 | Twenty separate single blades and stems of lawn grass and weeds, upright, not touching, in greens with a few straw-coloured dry ones, including a dandelion leaf, a plantain leaf and a clover stem with three leaves; painted, transparent background. Status: `open` |
+| D6.8 | `sprites/pebbles.png` | 1024 × 1024 | Sixteen separate small pebbles and stones seen from above, not touching: grey limestone, tan sandstone, a pink granite chip, a dark basalt one, rounded and angular; painted, transparent background. Status: `open` |
+| D6.9 | `sprites/litter_bits.png` | 1024 × 1024 | Sixteen separate tiny things found on the ground, not touching: maple keys (samaras), a broken acorn cap, a twig, a pine needle cluster, a seed husk, a bit of bark, a feather, a beech nut, a crumpled dry leaf, a tiny snail shell; painted, transparent background. Status: `open` |
+
+## Round 7: more of the town
+
+| # | File | Size | Prompt |
+|---|---|---|---|
+| F7.1 | `facades/church_stone_gothic.png` | 1024 × 1024 | Flat front elevation of a Victorian Gothic Revival church in grey-buff stone with a central pointed-arch doorway, a large pointed window with tracery above it and buttresses at the corners, the roofline at the top edge (the tower is built separately); edge to edge, no sky, no ground, no trees. Status: `open` |
+| F7.2 | `facades/commercial_buff_3storey.png` | 1024 × 1024 | Flat front elevation of a three-storey 1870s commercial block in buff-yellow brick, two shopfronts with dark green wooden frames, segmental-arched upper windows with keystones, a heavy wooden bracketed cornice; edge to edge, no sky, no ground, no trees, no readable signs. Status: `open` |
+| F7.3 | `facades/commercial_modern_1960s.png` | 1024 × 1024 | Flat front elevation of a plain two-storey 1960s commercial infill building in tan brick with a wide aluminium-framed shop window and a band of horizontal upper windows, blank sign band; edge to edge, no sky, no ground, no readable signs. Status: `open` |
+| F7.4 | `facades/house_buff_cottage.png` | 1024 × 1024 | Flat front elevation of a one-and-a-half-storey buff-brick Ontario cottage with a centre door, a window either side and a small centre gable, edge to edge with the roofline at the top, the ground line at the bottom edge, no garden, no trees, no sky. Status: `open` |
+| F7.5 | `facades/garage_side.png` | 1024 × 1024 | Flat elevation of a plain wooden garage or shed wall in weathered grey-green boards with one small window and a door, edge to edge, no sky, no ground. Status: `open` |
+| K7.6 | `ui/sky_autumn.png` | 4096 × 2048 | Equirectangular 360° sky for a game: a clear mid-October afternoon over flat southwestern Ontario, soft warm blue overhead fading to pale gold near the horizon, a few soft cumulus clouds, the sun low in the west-southwest (left of centre) with a gentle glow; no ground, no buildings, no birds; the bottom half fades to a warm haze; painted storybook style; must wrap seamlessly at the left and right edges. Status: `open` |
+
+Facade notes from round 3, kept for next time: the delivered fronts are lovely,
+but several include sky above the roofline, bushes and trees at the base or
+white margins; the game crops them. New facade requests above say "edge to
+edge, no sky, no ground, no trees" more firmly.
