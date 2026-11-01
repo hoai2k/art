@@ -447,7 +447,7 @@ export const KIT = {
   // square tower: shaft, belfry with arched openings painted, optional clocks, roof
   tower(vb, cb, P, x, base, z, w, top, yaw, opt = {}) {
     const h = top - base, hw = w / 2;
-    KIT.setPart(vb, P, PART.wall, opt.mat ?? P.mat, FLAG.noWindows, w, h + 50, 1);
+    KIT.setPart(vb, P, PART.wall, opt.mat ?? P.mat, FLAG.front | FLAG.arched, w, h - 0.4, Math.max(2, Math.round(h / 4.8)));
     KIT.box(vb, cb, x, base + h / 2 - 0.4, z, hw, h / 2 + 0.4, hw, yaw, WALL_SURF[opt.mat ?? P.mat]);
     let y = top;
     // a stone band

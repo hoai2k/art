@@ -1,0 +1,22 @@
+<!doctype html><html><body style="margin:0">
+<script type="importmap">{ "imports": { "three": "../lib/three.module.min.js", "three/addons/": "../lib/addons/", "three-mesh-bvh": "../lib/three-mesh-bvh.module.js" } }</script>
+<script type="module">
+import * as THREE from 'three';
+import { sharedUniforms, buildingMaterial, PART, FLAG } from '../src/town/materials.js';
+import { Builder } from '../src/town/util.js';
+import { loadAssets } from '../src/town/assets.js';
+const assets = await loadAssets();
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); r.setSize(800, 500); document.body.append(r.domElement);
+const s = new THREE.Scene(); s.background = new THREE.Color(0x99aabb);
+s.add(new THREE.HemisphereLight(0xffffff, 0x666655, 1.5));
+const sh = sharedUniforms();
+const m = buildingMaterial(sh, assets);
+const b = new Builder({ aF0: 4, aF1: 4, aFac: 1 });
+const flags = +new URLSearchParams(location.search).get('flags') || FLAG.arched;
+b.set('aF0', [PART.wall, 12, 12, 3]).set('aF1', [0, flags, 0.3, 4]).set('aFac', [+(new URLSearchParams(location.search).get('fac') ?? -1)]);
+const a = b.v(-6, 0, 0, 0, 0, 1, 0, 0), c = b.v(6, 0, 0, 0, 0, 1, 12, 0), d = b.v(6, 12, 0, 0, 0, 1, 12, 12), e = b.v(-6, 12, 0, 0, 0, 1, 0, 12);
+b.quad(a, c, d, e);
+s.add(new THREE.Mesh(b.geometry(), m));
+const cam = new THREE.PerspectiveCamera(50, 1.6, 0.1, 100); cam.position.set(0, 6, 14);
+r.render(s, cam); window.done = true;
+</script></body></html>

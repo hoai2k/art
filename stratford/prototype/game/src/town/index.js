@@ -416,7 +416,7 @@ export async function createTown(opts = {}) {
         const t = performance.now();
         const tick = () => {
           if (disposed) return resolve(false);
-          step(24);
+          step(40);
           details.update(focus, scale);
           if (nearDone(focus, Math.min(nearR, CHUNK * 0.75)) && details.done(focus)) { stats.readyMs = Math.round(performance.now() - t); resolve(true); } else setTimeout(tick, 0);
         };

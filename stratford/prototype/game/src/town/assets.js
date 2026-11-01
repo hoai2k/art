@@ -80,7 +80,7 @@ export async function loadAssets(manifestUrl, opts = {}) {
       cx.clearRect(0, 0, S, S); cx.drawImage(im, u0 * W, t0 * Hh, (u1 - u0) * W, (b1 - t0) * Hh, 0, 0, S, S);
       // flip rows so v=0 is the ground
       const d = cx.getImageData(0, 0, S, S).data;
-      for (let y = 0; y < S; y++) data.set(d.subarray((S - 1 - y) * S * 4, (S - y) * S * 4), (layer * S * S) + y * S * 4);
+      for (let y = 0; y < S; y++) data.set(d.subarray((S - 1 - y) * S * 4, (S - y) * S * 4), layer * S * S * 4 + y * S * 4);
       facadeLayer[i] = layer;
     });
     facadeArray = new THREE.DataArrayTexture(data, S, S, present.length);

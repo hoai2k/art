@@ -10,12 +10,12 @@ import { rng, hash2, Builder } from './util.js';
 // Reference trees (metres) per kind. Instances scale them uniformly by
 // height and stretch the crown horizontally to the data's crown radius.
 const REF = {
-  maple: { h: 12, crown: 5, fork: 4.2, limbs: 4, spread: 0.55, cards: 46, shape: 'round', r0: 0.26 },
-  oak: { h: 13, crown: 6.5, fork: 3.6, limbs: 5, spread: 0.75, cards: 50, shape: 'broad', r0: 0.32 },
-  linden: { h: 13, crown: 4.5, fork: 4.5, limbs: 4, spread: 0.45, cards: 44, shape: 'oval', r0: 0.25 },
-  other: { h: 11, crown: 4.8, fork: 3.8, limbs: 4, spread: 0.6, cards: 42, shape: 'round', r0: 0.24 },
-  spruce: { h: 14, crown: 3.2, fork: 13.5, limbs: 0, spread: 0, cards: 46, shape: 'cone', r0: 0.22 },
-  willow: { h: 12, crown: 6, fork: 2.4, limbs: 5, spread: 0.85, cards: 60, shape: 'weep', r0: 0.38 },
+  maple: { h: 12, crown: 5, fork: 4.2, limbs: 4, spread: 0.55, cards: 84, shape: 'round', r0: 0.26 },
+  oak: { h: 13, crown: 6.5, fork: 3.6, limbs: 5, spread: 0.75, cards: 96, shape: 'broad', r0: 0.32 },
+  linden: { h: 13, crown: 4.5, fork: 4.5, limbs: 4, spread: 0.45, cards: 80, shape: 'oval', r0: 0.25 },
+  other: { h: 11, crown: 4.8, fork: 3.8, limbs: 4, spread: 0.6, cards: 80, shape: 'round', r0: 0.24 },
+  spruce: { h: 14, crown: 3.2, fork: 13.5, limbs: 0, spread: 0, cards: 70, shape: 'cone', r0: 0.22 },
+  willow: { h: 12, crown: 6, fork: 2.4, limbs: 5, spread: 0.85, cards: 90, shape: 'weep', r0: 0.38 },
 };
 export const TREE_KINDS = Object.keys(REF);
 
@@ -79,8 +79,8 @@ function leafTexture(kind) {
 function canopyGeometry(kind, lod) {
   const ref = REF[kind], r = rng(0.71 + kind.length * 0.01 + lod * 0.3);
   const b = new Builder({ color: 3, aCard: 1 });
-  const nCards = lod ? Math.round(ref.cards * 0.33) : ref.cards;
-  const size = (lod ? 2.3 : 1.55) * (kind === 'spruce' ? 1.1 : 1);
+  const nCards = lod ? Math.round(ref.cards * 0.26) : ref.cards;
+  const size = (lod ? 4.0 : 2.5) * (kind === 'spruce' ? 0.9 : 1) * (ref.crown / 5) ** 0.5;
   const C = ref.crown;
   const cy = kind === 'spruce' ? ref.h * 0.5 : kind === 'weep' ? 0 : ref.h - C * (ref.shape === 'oval' ? 0.95 : 0.78);
   for (let i = 0; i < nCards; i++) {
@@ -90,21 +90,36 @@ function canopyGeometry(kind, lod) {
       const a = r() * Math.PI * 2; px = Math.cos(a) * rad; pz = Math.sin(a) * rad; py = y;
     } else {
       // points in an ellipsoid, biased to the surface
-      const u = r() * 2 - 1, a = r() * Math.PI * 2, s = Math.sqrt(1 - u * u), rr = 0.55 + 0.45 * Math.cbrt(r());
+      const u = r() * 2 - 1, a = r() * Math.PI * 2, s = Math.sqrt(1 - u * u), rr = 0.45 + 0.5 * Math.cbrt(r());
       const vy = ref.shape === 'oval' ? 1.0 : ref.shape === 'broad' ? 0.62 : ref.shape === 'weep' ? 0.6 : 0.78;
       px = Math.cos(a) * s * rr * C; pz = Math.sin(a) * s * rr * C; py = cy + u * rr * C * vy;
-      if (ref.shape === 'weep') py = ref.h - 3 + u * 2.2 * rr;
+      if (ref.shape === 'weep') {
+        // a low dome on top, strands hanging from its rim nearly to the ground
+        const rad = Math.sqrt(r()) * C, ang = r() * Math.PI * 2;
+        px = Math.cos(ang) * rad; pz = Math.sin(ang) * rad;
+        py = ref.h - 0.6 - (rad / C) ** 2 * 3.0;
+      }
     }
     // card orientation: random, mostly facing outward
     const ox = px, oy = py - (ref.shape === 'cone' ? py : cy), oz = pz;
     const ol = Math.hypot(ox, oy, oz) || 1;
     const nrm = [ox / ol, oy / ol + 0.25, oz / ol];
     const nl = Math.hypot(...nrm); nrm[0] /= nl; nrm[1] /= nl; nrm[2] /= nl;
-    const yaw = r() * Math.PI * 2, pitch = (r() - 0.5) * 1.2;
-    const ax = [Math.cos(yaw), 0, Math.sin(yaw)];
-    const ay = [-Math.sin(yaw) * Math.sin(pitch), Math.cos(pitch), Math.cos(yaw) * Math.sin(pitch)];
+    // the card faces out from the crown (with some wobble), rolled at random
+    let fx = nrm[0] + (r() - 0.5) * 0.7, fy = nrm[1] * 0.6 + (r() - 0.5) * 0.5, fz = nrm[2] + (r() - 0.5) * 0.7;
+    if (ref.shape === 'weep' || ref.shape === 'cone') fy *= 0.3;
+    const fl = Math.hypot(fx, fy, fz) || 1; fx /= fl; fy /= fl; fz /= fl;
+    let tx = -fz, ty = 0, tz = fx; const tl = Math.hypot(tx, tz) || 1; tx /= tl; tz /= tl;
+    const bx = fy * tz - fz * ty, by = fz * tx - fx * tz, bz = fx * ty - fy * tx;
+    const roll = ref.shape === 'weep' ? 0 : r() * Math.PI * 2, cr = Math.cos(roll), sr = Math.sin(roll);
+    const ax = [tx * cr + bx * sr, ty * cr + by * sr, tz * cr + bz * sr];
+    const ay = [-tx * sr + bx * cr, -ty * sr + by * cr, -tz * sr + bz * cr];
     let w = size * (0.8 + 0.4 * r()), h = w;
-    if (ref.shape === 'weep') { h = size * 3.2 * (0.7 + 0.6 * r()); w = size * 0.9; py -= h * 0.35; }
+    if (ref.shape === 'weep') {
+      const strand = i % 5 !== 0;
+      if (strand) { h = (lod ? 6 : 4.2) * (0.7 + 0.6 * r()); w = lod ? 2.6 : 1.5; py -= h * 0.45; }
+      else { w = h = lod ? 3.4 : 2.4; }
+    }
     const shade = 0.75 + 0.35 * r();
     b.set('color', [shade, shade * (0.92 + 0.12 * r()), shade * (0.9 + 0.1 * r())]).set('aCard', [r()]);
     const corners = [[-1, -1, 0, 0], [1, -1, 1, 0], [1, 1, 1, 1], [-1, 1, 0, 1]];

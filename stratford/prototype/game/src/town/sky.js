@@ -46,7 +46,7 @@ export function createSky(scene, shared, renderer, quality) {
   const dome = new THREE.Mesh(geo, mat); dome.frustumCulled = false; dome.renderOrder = -1000; dome.scale.setScalar(1000);
   group.add(dome);
 
-  const hemi = new THREE.HemisphereLight(0xb9c9e6, 0x6b5a40, 1.15);
+  const hemi = new THREE.HemisphereLight(0xb9c9e6, 0x6b5a40, 2.9);
   const sun = new THREE.DirectionalLight(0xffd6a0, 2.7);
   sun.castShadow = quality !== 'low';
   const sm = quality === 'high' ? 2048 : 1024;
@@ -86,8 +86,8 @@ export function createSky(scene, shared, renderer, quality) {
     shared.uSkyTop.value.copy(tmp.top); shared.uSkyHorizon.value.copy(tmp.hor);
     shared.uSunColor.value.copy(tmp.sun); shared.uSunDir.value.copy(e > -2 ? sunDir : new THREE.Vector3(0.3, 0.8, -0.4).normalize());
     shared.uNight.value = night;
-    sun.color.copy(tmp.sun); sun.intensity = THREE.MathUtils.lerp(2.8, 0.35, night) * (e > -2 ? 1 : 0.6);
-    hemi.color.copy(tmp.hs); hemi.groundColor.copy(tmp.hg); hemi.intensity = THREE.MathUtils.lerp(1.15, 0.5, night);
+    sun.color.copy(tmp.sun); sun.intensity = THREE.MathUtils.lerp(3.4, 0.4, night) * (e > -2 ? 1 : 0.6);
+    hemi.color.copy(tmp.hs); hemi.groundColor.copy(tmp.hg); hemi.intensity = THREE.MathUtils.lerp(2.9, 1.0, night);
     scene.fog.color.copy(tmp.hor).lerp(tmp.top, 0.12);
   }
   setTimeOfDay(hours);

@@ -112,7 +112,9 @@ export function groundMaterial(shared, ground, assets, waterLevel) {
 const GLSL_GROUND = /* glsl */`
 vec3 grassCol(vec2 p, float lush, float px) {
 #ifdef TEX_GRASS
-  vec3 c = texAT(t_grass, p * s_grass);
+  vec3 c = texAT(t_grass, p * s_grass) * vec3(0.95, 1.05, 0.9);
+  // far away the mip of a leafy lawn averages to olive: keep lawns green
+  c = mix(c, mix(vec3(0.27, 0.38, 0.12), vec3(0.36, 0.44, 0.16), tfbm(p * 0.03)), clamp(px * 5.0 - 0.1, 0.0, 0.55));
   return mix(c, c * vec3(0.92, 1.04, 0.88), lush * 0.4) * (0.92 + 0.12 * tfbm(p * 0.05));
 #else
   float n1 = tfbm(p * 0.07), n2 = tnoise(p * 0.8), n3 = tnoise(p * 3.1);
@@ -251,9 +253,11 @@ vec3 streetColor(vec3 wp) {
   }
   if (kind == 4.0) { vec3 c = gravelCol(p, px); vec4 fl = fallenLeaves(p + 2.0, 0.12, px); return mix(c, fl.rgb, fl.a); }
   if (kind == 6.0 || kind == 7.0) {
-    vec3 c = kind == 6.0 ? vec3(0.88, 0.87, 0.82) : vec3(0.90, 0.72, 0.20);
-    float wear = smoothstep(0.35, 0.75, tnoise(p * 2.3)) * 0.5 + th(floor(p * 30.0)) * 0.15 * aafade(30.0, px);
-    return mix(c, vec3(0.30), wear * 0.55);
+    // paint on the asphalt: the surface shows through where it is worn
+    vec3 paint = kind == 6.0 ? vec3(0.86, 0.85, 0.80) : vec3(0.90, 0.70, 0.18);
+    vec3 road = asphaltCol(p, px, 0.0);
+    float wear = smoothstep(0.35, 0.8, tnoise(p * 2.3)) * 0.55 + th(floor(p * 30.0)) * 0.2 * aafade(30.0, px);
+    return mix(road, paint * (0.8 + 0.3 * dot(road, vec3(0.33))), 0.82 * (1.0 - wear * 0.7));
   }
   if (kind == 8.0) {               // dressed stone (bridges, walls)
     float row = floor(wp.y / 0.4); float x = along / 0.8 + 0.5 * mod(row, 2.0);
@@ -303,9 +307,9 @@ export function buildingMaterial(shared, assets) {
   }
   const m = painted({ color: 0xffffff }, {
     shared, key: 'town-building', defines, uniforms,
-    vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; varying vec4 vF0; varying vec4 vF1; varying vec2 vUv2; varying float vFac;',
+    vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac;',
     vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac;',
-    fragHead: `varying vec4 vF0; varying vec4 vF1; varying vec2 vUv2; varying float vFac;\n${texDecl(slots)}
+    fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac;\n${texDecl(slots)}
 #ifdef FACADES
 uniform highp sampler2DArray tFac; uniform float uFacLayer[N_FAC]; uniform float uFacAspect[N_FAC];
 #endif

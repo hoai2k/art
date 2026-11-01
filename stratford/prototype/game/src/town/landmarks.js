@@ -85,8 +85,8 @@ export const landmarkParts = {
       kit.setPart(vb, P, PART.glass);
       kit.frustum(vb, null, cx, y1, cz, r * 0.995, y1 + 1.2, r * 0.995, n, 0, SURFACE.wall_smooth);
       // the crown: a pleated cone whose rim rises into points
-      const yc = y1 + 1.2, apex = yc + 9.5, pts = 20;
-      kit.setPart(vb, P, PART.copper);
+      const yc = y1 + 1.2, apex = yc + 9.5, pts = 16;
+      kit.setPart(vb, { ...P, seed: 0.1 }, PART.copper);            // dark slate grey
       const P3 = (a, rr, y) => [cx + Math.cos(a) * rr, y, cz - Math.sin(a) * rr];
       const tri = (p, q, s) => {
         const ux = q[0] - p[0], uy = q[1] - p[1], uz = q[2] - p[2], vx = s[0] - p[0], vy = s[1] - p[1], vz = s[2] - p[2];
@@ -100,14 +100,14 @@ export const landmarkParts = {
       };
       for (let i = 0; i < pts; i++) {
         const a0 = (i / pts) * Math.PI * 2, am = ((i + 0.5) / pts) * Math.PI * 2, a1 = ((i + 1) / pts) * Math.PI * 2;
-        const v0 = P3(a0, r * 1.06, yc), pk = P3(am, r * 1.14, yc + 3.4), v1 = P3(a1, r * 1.06, yc);
+        const v0 = P3(a0, r * 1.06, yc), pk = P3(am, r * 1.16, yc + 4.6), v1 = P3(a1, r * 1.06, yc);
         const ap = [cx, apex, cz];
         const mid = P3(am, r * 0.55, yc + 6.0);
         tri(v0, pk, mid); tri(pk, v1, mid); tri(v0, mid, ap); tri(mid, v1, ap);
         // the fascia under each point
-        tri(P3(a0, r, yc), P3(am, r * 1.14, yc + 3.4), P3(a0, r * 1.06, yc));
-        tri(P3(am, r * 1.14, yc + 3.4), P3(a1, r, yc), P3(a1, r * 1.06, yc));
-        tri(P3(a0, r, yc), P3(a1, r, yc), P3(am, r * 1.14, yc + 3.4));
+        tri(P3(a0, r, yc), P3(am, r * 1.16, yc + 4.6), P3(a0, r * 1.06, yc));
+        tri(P3(am, r * 1.16, yc + 4.6), P3(a1, r, yc), P3(a1, r * 1.06, yc));
+        tri(P3(a0, r, yc), P3(a1, r, yc), P3(am, r * 1.16, yc + 4.6));
       }
       // lantern and flagpole
       kit.setPart(vb, P, PART.trim);
