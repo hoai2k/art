@@ -391,6 +391,8 @@ export function createAudio() {
       else if (now?.kind === 'song') now.node.loop = !anyPeriodReady();
     },
     nowPlaying: () => (now ? { kind: now.kind, id: now.id } : null),
+    // Seconds left in the period piece playing now (null for the song or silence).
+    pieceLeft: () => (ac && now?.kind === 'period' && now.node?.buffer ? Math.max(0, now.node.buffer.duration - (ac.currentTime - now.startedAt)) : null),
     // QA: end the current piece now, as if it had played out (tests only).
     skip() { try { now?.node?.stop(); } catch { /* ignore */ } },
     periodStates: () => periods.map((p) => `${p.id}:${p.state}`),
