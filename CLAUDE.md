@@ -43,7 +43,8 @@ Repository-wide instructions for Claude Code sessions in this repository.
 four were mini's largest published games; mini's own copies stay there until
 the move is finished and every link points here). **Each top-level folder is a
 separate game**, apart from `shared/` (code more than one game uses: today the
-browser-check helper `shared/test/lib.mjs`) and `local/` (ignored by Git:
+browser-check helper `shared/test/lib.mjs`, and the library page's
+controller check `node shared/test/library-gamepad.test.mjs`) and `local/` (ignored by Git:
 dependencies, caches and build output).
 
 | Folder | What it is | Published at |
