@@ -99,6 +99,9 @@ async function run(browser, base, label, query) {
   await press(0, () => window.stratford.ui.modals.includes('instructions'));
   check((await S()).screen === 'title' && (await S()).modals.includes('instructions'), 'A opens Instructions without starting the game');
   await shot('03-instructions');
+  await G(() => document.querySelector('.pad-diagram').scrollIntoView({ block: 'center' }));
+  await wait(300);
+  await shot('03b-instructions-pad');
   check(await G(() => !!document.querySelector('#ins-scroll svg') && document.querySelectorAll('.map-table tbody tr').length >= 8), 'instructions show the controller diagram and the mapping table');
   await press(1, () => !window.stratford.ui.modals.length);
   check((await S()).screen === 'title', 'B closes Instructions, still on the title');
