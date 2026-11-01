@@ -64,6 +64,14 @@ function texDecl(slots) {
 
 // ---------------------------------------------------------------- shared GLSL palettes
 const GLSL_COMMON = /* glsl */`
+// sample a tiling texture twice (rotated, rescaled) and blend by low-frequency
+// noise, so its repeats do not show across a lawn or a street
+vec3 texAT(sampler2D t, vec2 p) {
+  vec3 a = texture2D(t, p).rgb;
+  vec2 q = mat2(0.8, -0.6, 0.6, 0.8) * p * 0.71 + vec2(0.37, 0.61);
+  vec3 b = texture2D(t, q).rgb;
+  return mix(a, b, smoothstep(0.35, 0.65, tnoise(p * 0.37)));
+}
 float bitf(float f, float b) { return mod(floor(f / b + 0.001), 2.0); }
 float sbox(vec2 p, vec2 lo, vec2 hi, float aa) {
   vec2 a = smoothstep(lo - aa, lo + aa, p) * (1.0 - smoothstep(hi - aa, hi + aa, p)); return a.x * a.y;
@@ -104,8 +112,8 @@ export function groundMaterial(shared, ground, assets, waterLevel) {
 const GLSL_GROUND = /* glsl */`
 vec3 grassCol(vec2 p, float lush, float px) {
 #ifdef TEX_GRASS
-  vec3 c = texture2D(t_grass, p * s_grass).rgb;
-  return mix(c, c * vec3(0.9, 1.05, 0.85), lush * 0.4);
+  vec3 c = texAT(t_grass, p * s_grass);
+  return mix(c, c * vec3(0.92, 1.04, 0.88), lush * 0.4) * (0.92 + 0.12 * tfbm(p * 0.05));
 #else
   float n1 = tfbm(p * 0.07), n2 = tnoise(p * 0.8), n3 = tnoise(p * 3.1);
   vec3 g1 = vec3(0.27, 0.37, 0.12), g2 = vec3(0.44, 0.50, 0.19), dry = vec3(0.60, 0.55, 0.28);
@@ -122,15 +130,15 @@ vec3 grassCol(vec2 p, float lush, float px) {
 }
 vec3 asphaltCol(vec2 p, float px, float light) {
 #ifdef TEX_ASPHALT
-  return texture2D(t_asphalt, p * s_asphalt).rgb * (1.0 + light * 0.25);
+  return texAT(t_asphalt, p * s_asphalt) * (1.0 + light * 0.25);
 #else
   float n = tfbm(p * 0.25), a = th(floor(p * 30.0)) * aafade(30.0, px);
   vec3 c = mix(vec3(0.24, 0.24, 0.25), vec3(0.31, 0.30, 0.30), n) * (1.0 + light * 0.28);
   c *= 0.93 + 0.14 * a;
   float crack = smoothstep(0.012, 0.0, abs(tnoise(p * 0.6) - 0.5)) * aafade(5.0, px) * step(0.55, tnoise(p * 0.11 + 9.0));
   c = mix(c, vec3(0.16), crack * 0.6);
-  float patch = smoothstep(0.62, 0.66, tnoise(p * 0.09 + 4.0));
-  return mix(c, c * 0.82, patch * 0.6);
+  float patchy = smoothstep(0.62, 0.66, tnoise(p * 0.09 + 4.0));
+  return mix(c, c * 0.82, patchy * 0.6);
 #endif
 }
 vec3 concreteCol(vec2 p, float px) {
@@ -144,7 +152,7 @@ vec3 concreteCol(vec2 p, float px) {
 }
 vec3 gravelCol(vec2 p, float px) {
 #ifdef TEX_GRAVEL
-  return texture2D(t_gravel, p * s_gravel).rgb;
+  return texAT(t_gravel, p * s_gravel);
 #else
   float s = th(floor(p * 25.0)) * aafade(25.0, px);
   return mix(vec3(0.66, 0.59, 0.46), vec3(0.76, 0.69, 0.55), tfbm(p * 0.5)) * (0.88 + 0.22 * s);
@@ -152,7 +160,7 @@ vec3 gravelCol(vec2 p, float px) {
 }
 vec3 litterCol(vec2 p, float px) {
 #ifdef TEX_LEAVES
-  return texture2D(t_leaves, p * s_leaves).rgb;
+  return texAT(t_leaves, p * s_leaves);
 #else
   vec4 l1 = fallenLeaves(p, 1.0, px), l2 = fallenLeaves(p * 1.37 + 5.0, 1.0, px);
   vec3 base = mix(vec3(0.42, 0.25, 0.12), vec3(0.62, 0.38, 0.13), tnoise(p * 0.6));
@@ -215,11 +223,13 @@ vec3 streetColor(vec3 wp) {
   }
   if (kind == 1.0) {               // sidewalk plate: curb stone, boulevard grass, slabs
     float d = vSt.y, blv = vSt.z;
-    vec3 conc = concreteCol(p, px);
+    vec3 conc = concreteCol(vec2(along, across), px);
     // control joints every 1.5 m along, and a line where the slab meets the boulevard
     float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
     float joint = (1.0 - smoothstep(0.004, 0.004 + px, j)) * aafade(4.0, px);
+#ifndef TEX_SIDEWALK
     conc *= 1.0 - 0.28 * joint;
+#endif
     vec3 c = conc;
     if (blv > 0.05 && d > 0.2 && d < blv) {
       c = grassCol(p, 0.3, px);
@@ -234,7 +244,7 @@ vec3 streetColor(vec3 wp) {
   }
   if (kind == 2.0) return concreteCol(p, px) * mix(0.75, 0.98, smoothstep(0.0, 0.15, fract(wp.y)));
   if (kind == 3.0) {
-    vec3 c = concreteCol(p, px) * 0.97;
+    vec3 c = concreteCol(vec2(along, across), px) * 0.97;
     float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
     c *= 1.0 - 0.25 * (1.0 - smoothstep(0.004, 0.004 + px, j)) * aafade(4.0, px);
     vec4 fl = fallenLeaves(p + 1.0, 0.1, px); return mix(c, fl.rgb, fl.a);
@@ -288,6 +298,7 @@ export function buildingMaterial(shared, assets) {
     defines.FACADES = '';
     uniforms.tFac = { value: assets.facadeArray };
     uniforms.uFacLayer = { value: assets.facadeLayer.map((v) => v) };
+    uniforms.uFacAspect = { value: assets.facadeAspect.slice() };
     defines.N_FAC = String(assets.facadeLayer.length);
   }
   const m = painted({ color: 0xffffff }, {
@@ -296,7 +307,7 @@ export function buildingMaterial(shared, assets) {
     vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac;',
     fragHead: `varying vec4 vF0; varying vec4 vF1; varying vec2 vUv2; varying float vFac;\n${texDecl(slots)}
 #ifdef FACADES
-uniform highp sampler2DArray tFac; uniform float uFacLayer[N_FAC];
+uniform highp sampler2DArray tFac; uniform float uFacLayer[N_FAC]; uniform float uFacAspect[N_FAC];
 #endif
 ${GLSL_COMMON}\n${GLSL_BUILDING}`,
     color: 'float glow = 0.0; diffuseColor.rgb = buildingColor(glow);',
@@ -445,8 +456,8 @@ vec3 buildingColor(out float glow) {
       c = rc * (0.92 + 0.12 * tnoise(uv * 0.5)) * (1.0 - 0.25 * seam * aafade(3.0, px));
 #endif
     } else {
-#ifdef TEX_SHINGLES
-      c = texture2D(t_shingles, uv * s_shingles).rgb * (h > 0.7 && h < 0.88 ? vec3(0.9, 0.95, 1.1) : vec3(1.0));
+#if defined(TEX_SHINGLES) && defined(TEX_SLATE)
+      c = (h > 0.7 && h < 0.88) ? texture2D(t_slate, uv * s_slate).rgb : texture2D(t_shingles, uv * s_shingles).rgb * (h < 0.3 ? vec3(0.9) : h < 0.55 ? vec3(1.05, 0.98, 0.92) : vec3(1.15, 0.85, 0.75));
 #else
       float rowh = 0.18, row = floor(uv.y / rowh), x = uv.x / 0.32 + 0.5 * mod(row, 2.0);
       float fy = fract(uv.y / rowh);
@@ -520,12 +531,15 @@ vec3 buildingColor(out float glow) {
   wall *= 0.93 + 0.12 * tfbm(uv * 0.25 + seed * 7.0);
 
 #ifdef FACADES
-  if (front && vFac >= 0.0 && y < eaves) {
-    float L = uFacLayer[int(vFac)];
+  if (vFac >= -0.5 && y < eaves) {
+    int fi = int(vFac + 0.5);
+    float L = uFacLayer[fi];
     if (L >= 0.0) {
-      float n = max(1.0, floor(len / eaves + 0.5));
-      vec3 fc = texture(tFac, vec3(fract(uv.x / (len / n)), y / eaves, L)).rgb;
-      return fc * ao;
+      // tile the elevation along the wall at its own aspect, stretched to whole tiles
+      float n = max(1.0, floor(len / (eaves * uFacAspect[fi]) + 0.5));
+      vec2 fc = vec2(uv.x / (len / n), clamp(y / eaves, 0.0, 1.0));
+      vec3 c = textureGrad(tFac, vec3(fract(fc.x), fc.y, L), dFdx(fc), dFdy(fc)).rgb;
+      return c * (0.86 + 0.14 * smoothstep(0.0, 0.8, y));
     }
   }
 #endif
@@ -639,7 +653,7 @@ export function waterMaterial(shared, assets) {
     defines: td.defines,
     fog: true, transparent: false,
     vertexShader: /* glsl */`
-      varying vec3 vWP; varying float vFogDepth;
+      varying vec3 vWP;
       #include <fog_pars_vertex>
       void main() {
         vec4 wp = modelMatrix * vec4(position, 1.0); vWP = wp.xyz;
@@ -667,10 +681,10 @@ export function waterMaterial(shared, assets) {
         vec3 v = normalize(cameraPosition - vWP);
         float fres = pow(1.0 - max(dot(n, v), 0.0), 3.0);
         vec3 deep = vec3(0.12, 0.25, 0.24), shallow = vec3(0.26, 0.38, 0.30);
-#ifdef TEX_WATER
-        deep = texture2D(t_water, p * s_water + vec2(t * 0.004)).rgb * 0.8;
-#endif
         vec3 c = mix(deep, shallow, 0.4 * tfbm(p * 0.05));
+#ifdef TEX_WATER
+        c = mix(texture2D(t_water, p * s_water + vec2(t * 0.006, t * 0.002) + n.xz * 0.6).rgb, texture2D(t_water, mat2(0.8, -0.6, 0.6, 0.8) * p * s_water * 0.7 - vec2(t * 0.004)).rgb, 0.5) * 0.95;
+#endif
         vec3 r = reflect(-v, n);
         vec3 sky = mix(uSkyHorizon, uSkyTop, clamp(r.y * 1.6, 0.0, 1.0));
         c = mix(c, sky * 0.85, 0.15 + 0.55 * fres);

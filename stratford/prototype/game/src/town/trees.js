@@ -210,8 +210,10 @@ export function createTrees(ctx, shared, assets) {
   farTrunk.count = 0; farTrunk.castShadow = false; farTrunk.frustumCulled = false; group.add(farTrunk);
   const collParts = {};
   for (const k of TREE_KINDS) {
-    const tex = (assets && assets.sprites[k === 'other' || k === 'linden' ? 'maple' : k]) || leafTexture(k);
+    const sprite = assets && assets.sprites[k === 'other' || k === 'linden' ? 'maple' : k];
+    const tex = sprite || leafTexture(k);
     const leaf = leafMaterial(shared, tex);
+    if (sprite) leaf.alphaTest = 0.38;
     const n = trees.filter((t) => t.kind === k).length;
     if (!n) continue;
     collParts[k] = []; trunkGeometry(k, 0, collParts[k]);
@@ -223,7 +225,8 @@ export function createTrees(ctx, shared, assets) {
     far.castShadow = false;
     near.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(n * 3), 3);
     far.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(n * 3), 3);
-    kinds[k] = { near, far, trunk, leaf };
+    // painted sprites carry their own colour: tint them only lightly (linden and others borrow the maple sprite)
+    kinds[k] = { near, far, trunk, leaf, tint: sprite ? (k === 'linden' || k === 'other' ? 0.45 : 0.75) : 0 };
   }
   // per-tree transform and colour
   const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _s = new THREE.Vector3(), _p = new THREE.Vector3(), _c = new THREE.Color();
@@ -234,6 +237,8 @@ export function createTrees(ctx, shared, assets) {
     t._s = s; t._sx = sx; t._yaw = hash2(t.x, t.z) * Math.PI * 2;
     const pal = PALETTE[t.kind] || PALETTE.other;
     t._col = pal[Math.floor(hash2(t.z, t.x) * pal.length)];
+    const K = kinds[t.kind];
+    if (K && K.tint) t._col = new THREE.Color(t._col).lerp(new THREE.Color(1, 1, 1), K.tint).getHex();
   }
   let lastFocus = null, lastR = 0;
   const update = (focus, nearR, farR) => {

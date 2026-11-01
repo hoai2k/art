@@ -14,27 +14,43 @@ export const TEXTURE_SLOTS = {
   leaves: ['textures/leaf_litter.png', 3], bark: ['textures/bark_maple.png', 1], bark_willow: ['textures/bark_willow.png', 1],
   gravel: ['textures/gravel_path.png', 3], water: ['textures/water_avon.png', 8],
 };
-// facade elevations, in the order of the shader's array layers
+// Facade elevations, in the order of the shader's candidates (aFac). The
+// delivered pictures are not edge to edge (sky, bushes, margins), so each has
+// a crop [left, top, right, bottom] in image fractions: the band of wall from
+// the ground to the eaves (houses: under the roof, which is real geometry).
 export const FACADES = [
-  'facades/commercial_red_3storey.png', 'facades/commercial_buff_2storey.png', 'facades/commercial_red_2storey_narrow.png',
-  'facades/commercial_stone_bank.png', 'facades/commercial_corner_red_3storey.png', 'facades/commercial_painted_2storey.png',
-  'facades/house_italianate_buff.png', 'facades/house_ontario_cottage_red.png', 'facades/house_clapboard_gable.png',
-  'facades/house_queen_anne_red.png',
+  ['facades/commercial_red_3storey.png', [0.0, 0.02, 1.0, 0.975]],
+  ['facades/commercial_buff_2storey.png', [0.03, 0.03, 0.97, 0.985]],
+  ['facades/commercial_red_2storey_narrow.png', [0.19, 0.02, 0.81, 0.975]],
+  ['facades/commercial_stone_bank.png', [0.02, 0.06, 0.98, 0.9]],
+  ['facades/commercial_corner_red_3storey.png', [0.03, 0.06, 0.97, 0.985]],
+  ['facades/commercial_painted_2storey.png', [0.03, 0.02, 0.97, 0.985]],
+  ['facades/house_italianate_buff.png', [0.05, 0.17, 0.95, 0.9]],
+  ['facades/house_ontario_cottage_red.png', [0.03, 0.42, 0.97, 0.9]],
+  ['facades/house_clapboard_gable.png', [0.04, 0.4, 0.96, 0.9]],
+  ['facades/house_queen_anne_red.png', [0.05, 0.36, 0.95, 0.9]],
+  ['facades/side_wall_red.png', [0.01, 0.04, 0.99, 0.985]],
+  ['facades/back_lane.png', [0.0, 0.09, 1.0, 0.87]],
 ];
+export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 5, italianate: 6, cottage: 7, clapboard: 8, queenAnne: 9, side: 10, back: 11 };
 export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png' };
 
-export async function loadAssets(manifestUrl) {
-  let files = [];
+const GAME = new URL('../../', import.meta.url);
+
+// opts.facadeSize: texels per facade layer (512 keeps memory small on integrated GPUs)
+export async function loadAssets(manifestUrl, opts = {}) {
+  let files = [], web = {};
   try {
     const r = await fetch(manifestUrl || new URL('manifest.json', ASSETS));
-    if (r.ok) { const j = await r.json(); files = Array.isArray(j) ? j : (j.files || []); }
+    if (r.ok) { const j = await r.json(); files = Array.isArray(j) ? j : (j.files || []); web = (j && j.web) || {}; }
   } catch { /* no manifest: all stand-ins */ }
   const listed = new Set(files);
-  const tex = {}, facades = [], sprites = {};
+  const tex = {}, sprites = {};
+  // the small web copy when there is one (relative to game/), else the original
   const load = async (path) => {
-    const img = new Image(); img.decoding = 'async'; img.src = new URL(path, ASSETS).href;
-    await img.decode();
-    return img;
+    const tryLoad = async (url) => { const img = new Image(); img.decoding = 'async'; img.src = url; await img.decode(); return img; };
+    if (web[path]) { try { return await tryLoad(new URL(web[path], GAME).href); } catch { /* fall back */ } }
+    return tryLoad(new URL(path, ASSETS).href);
   };
   const jobs = [];
   for (const [slot, [file, size]] of Object.entries(TEXTURE_SLOTS)) {
@@ -48,25 +64,30 @@ export async function loadAssets(manifestUrl) {
     if (!listed.has(file)) continue;
     jobs.push(load(file).then((img) => { sprites[slot] = keyMagenta(img); }).catch((e) => console.warn('[town] sprite failed', file, e)));
   }
-  const facadeImgs = await Promise.all(FACADES.map((f) => (listed.has(f) ? load(f).catch(() => null) : null)));
+  const facadeImgs = await Promise.all(FACADES.map(([f]) => (listed.has(f) ? load(f).catch(() => null) : null)));
   await Promise.all(jobs);
   let facadeArray = null; const facadeLayer = FACADES.map(() => -1);
+  // crop (u0, v0, u1, v1 with v up from the ground) and tile aspect (width / height)
+  const facadeCrop = FACADES.map(([, c]) => [c[0], 1 - c[3], c[2], 1 - c[1]]);
+  const facadeAspect = FACADES.map(([, c]) => (c[2] - c[0]) / (c[3] - c[1]));
   const present = facadeImgs.map((im, i) => [im, i]).filter(([im]) => im);
   if (present.length) {
-    const S = 512, data = new Uint8Array(S * S * 4 * present.length);
+    const S = opts.facadeSize || 512, data = new Uint8Array(S * S * 4 * present.length);
     const cv = document.createElement('canvas'); cv.width = cv.height = S; const cx = cv.getContext('2d', { willReadFrequently: true });
     present.forEach(([im, i], layer) => {
-      cx.clearRect(0, 0, S, S); cx.drawImage(im, 0, 0, S, S);
+      // only the cropped band, stretched to the layer (more texels where it matters)
+      const [u0, t0, u1, b1] = FACADES[i][1], W = im.naturalWidth, Hh = im.naturalHeight;
+      cx.clearRect(0, 0, S, S); cx.drawImage(im, u0 * W, t0 * Hh, (u1 - u0) * W, (b1 - t0) * Hh, 0, 0, S, S);
       // flip rows so v=0 is the ground
       const d = cx.getImageData(0, 0, S, S).data;
       for (let y = 0; y < S; y++) data.set(d.subarray((S - 1 - y) * S * 4, (S - y) * S * 4), (layer * S * S) + y * S * 4);
       facadeLayer[i] = layer;
     });
     facadeArray = new THREE.DataArrayTexture(data, S, S, present.length);
-    facadeArray.colorSpace = THREE.SRGBColorSpace; facadeArray.generateMipmaps = true;
+    facadeArray.colorSpace = THREE.SRGBColorSpace; facadeArray.generateMipmaps = true; facadeArray.anisotropy = 4;
     facadeArray.minFilter = THREE.LinearMipmapLinearFilter; facadeArray.magFilter = THREE.LinearFilter; facadeArray.needsUpdate = true;
   }
-  return { files: listed, tex, sprites, facadeArray, facadeLayer };
+  return { files: listed, tex, sprites, facadeArray, facadeLayer, facadeAspect, facadeCrop, fallen: sprites.fallen || null };
 }
 
 // Cut-outs arrive on #FF00FF: key it to alpha.

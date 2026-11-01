@@ -6,6 +6,7 @@ import { SURFACE } from '../surface.js';
 import { PART, MAT, FLAG } from './materials.js';
 import { hashStr, hash1, signedArea, obb, centroid, polyArea } from './util.js';
 import { landmarkParts } from './landmarks.js';
+import { FAC } from './assets.js';
 import * as THREE from 'three';
 
 export const BUILDING_ATTRS = { aF0: 4, aF1: 4, aFac: 1 };
@@ -38,9 +39,11 @@ export function buildingParams(ctx, b) {
   if (shed || b.use === 'industrial' && seed < 0.5) flags |= FLAG.noWindows;
   let base = b.base;
   if (!Number.isFinite(base)) { base = Infinity; for (const p of b.outer) base = Math.min(base, ctx.hf.at(p[0], p[1])); }
+  // facade elevation for the street front (when delivered), by type
   let fac = -1;
-  if (commercial) fac = mat === MAT.stone ? 3 : mat === MAT.brick_buff ? 1 : mat === MAT.stucco ? 5 : storeys >= 3 ? 0 : 2;
-  else if (house) fac = mat === MAT.brick_buff ? 6 : mat === MAT.clapboard ? 8 : storeys <= 1 ? 7 : 9;
+  if (commercial && storeys >= 2) fac = mat === MAT.stone ? FAC.bank : mat === MAT.brick_buff ? FAC.buff2 : mat === MAT.stucco ? FAC.painted : storeys >= 3 ? (seed < 0.35 ? FAC.corner : FAC.red3) : FAC.narrow;
+  else if (house) fac = mat === MAT.brick_buff ? FAC.italianate : mat === MAT.clapboard ? FAC.clapboard : mat === MAT.stucco ? -1 : storeys <= 1 ? FAC.cottage : FAC.queenAnne;
+  if (b.use === 'theatre' || b.use === 'church' || ctx.landmarkByBuilding.has(b.id)) fac = -1;
   return { seed, mat, storeys, gfh, flags, base, eaves: b.height, commercial, house, church, civic, shed, fac };
 }
 
@@ -62,6 +65,25 @@ function frontEdges(ctx, b, P) {
     if (Math.abs((rx * dx + rz * dz) / rl) > 0.75) out.add(i);
   }
   return out;
+}
+
+// Which elevation picture a wall shows (-1: the procedural facade): street
+// fronts by building type; brick side walls of shops get the plain side wall,
+// rear walls onto lanes and car parks the back-lane picture.
+function wallFacade(ctx, P, isFront, a, c, L, nx, nz, b) {
+  const has = (f) => f >= 0 && ctx.assets && ctx.assets.facadeLayer[f] >= 0;
+  if (isFront) return has(P.fac) && L > 3 && P.eaves > 2.6 ? P.fac : -1;
+  if (!P.commercial || P.storeys < 2 || L < 4 || ctx.landmarkByBuilding.has(b.id)) return -1;
+  const brick = P.mat === MAT.brick_red || P.mat === MAT.brick_buff;
+  if (!brick) return -1;
+  const mx = (a[0] + c[0]) / 2 + nx * 4, mz = (a[1] + c[1]) / 2 + nz * 4;
+  if (ctx.buildingAt && ctx.buildingAt(mx, mz)) return -1;      // a party wall
+  const g = ctx.groundClass ? ctx.groundClass(mx, mz) : 0;
+  const q = ctx.streets.grid.nearest(mx, mz, 20);
+  const onStreet = q && q.d - q.seg.data.hw < 3;
+  if (g === 2 && !onStreet && has(FAC.back)) return FAC.back;
+  if (P.mat === MAT.brick_red && has(FAC.side)) return FAC.side;
+  return -1;
 }
 
 // Miter inset of a ring (positive area = CCW in x,z), clamped.
@@ -110,7 +132,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 0.05) continue;
       const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
       const isFront = ri === 0 && fronts.has(i);
-      vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [P.fac]);
+      const fac = wallFacade(ctx, P, isFront, a, c, L, nx, nz, b);
+      vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
       const i0 = vb.v(a[0] - ox, y0, a[1] - oz, nx, 0, nz, 0, y0 - base);
       const i1 = vb.v(c[0] - ox, y0, c[1] - oz, nx, 0, nz, L, y0 - base);
       const i2 = vb.v(c[0] - ox, top, c[1] - oz, nx, 0, nz, L, top - base);
@@ -118,7 +141,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       vb.quad(i1, i0, i3, i2);
       cb.quad(rel(a, y0), rel(c, y0), rel(c, top), rel(a, top), WALL_SURF[P.mat]);
       // storefront awnings and cornices on street fronts
-      if (isFront && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, i);
+      if (isFront && fac < 0 && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, i);
       if (isFront && parapet > 0.5 && L > 2) cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz);
     }
   });

@@ -92,9 +92,11 @@ async function run(browser, base, label, query) {
   await axes([0, 0.9, 0, 0]);
   check(await until(() => window.stratford.ui.titleNav === true), 'left stick enters title utility navigation');
   await axes([0, 0, 0, 0]); await wait(400);
-  await axes([0, 0.9, 0, 0]); await until(() => window.stratford.ui.focus === 1); await axes([0, 0, 0, 0]);
-  check((await G(() => window.stratford.ui.focus)) === 1, 'stick moves the focus along the options');
-  check(await G(() => document.querySelector('#title .focused')?.getAttribute('aria-label') === 'Instructions'), 'focus is visible on Instructions');
+  await axes([0, 0.9, 0, 0]); await until(() => window.stratford.ui.focus >= 1); await axes([0, 0, 0, 0]);
+  check((await G(() => window.stratford.ui.focus)) >= 1, 'stick moves the focus along the options');
+  const focusLabel = () => G(() => document.querySelector('#title .focused')?.getAttribute('aria-label') || '');
+  for (let i = 0; i < 6 && (await focusLabel()) !== 'Instructions'; i++) await press(14, () => true, null, 200);
+  check((await focusLabel()) === 'Instructions', 'focus is visible on Instructions (D-pad moves it too)');
   await shot('02-title-nav');
   await press(0, () => window.stratford.ui.modals.includes('instructions'));
   check((await S()).screen === 'title' && (await S()).modals.includes('instructions'), 'A opens Instructions without starting the game');

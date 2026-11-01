@@ -32,7 +32,7 @@ body { font-family: var(--sans); }
 button { font-family: inherit; }
 
 /* ---------- Loading ---------- */
-#loading { background: radial-gradient(ellipse at 50% 40%, #4a3523, #2a1d14 70%); color: var(--cream); z-index: 30; }
+#loading { background: radial-gradient(ellipse at 50% 40%, rgba(74, 53, 35, 0.35), rgba(42, 29, 20, 0.85) 75%), #2a1d14 url("web/ui/title_backdrop.webp") center / cover no-repeat; color: var(--cream); z-index: 30; }
 .loading-card { text-align: center; width: min(86vw, 26rem); }
 .loading-title { font: 900 clamp(1.8rem, 5vw, 2.8rem)/1.1 var(--display); color: var(--cream); margin: 0 0 1.4rem; text-shadow: 0 2px 0 #4b1410; letter-spacing: 0.02em; }
 .leaf-bar { height: 0.7rem; border-radius: 999px; background: rgba(244, 232, 207, 0.16); overflow: hidden; box-shadow: inset 0 0 0 1.5px rgba(244, 232, 207, 0.4); }

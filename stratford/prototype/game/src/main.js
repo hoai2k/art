@@ -496,14 +496,17 @@ async function loadTownData() {
   return null;
 }
 
-async function manifestHas(path) {
-  try {
-    const res = await fetch('assets/manifest.json');
-    if (!res.ok) return false;
-    const m = await res.json();
-    const list = Array.isArray(m) ? m : m.assets || m.files || Object.keys(m);
-    return list.some((p) => String(p).endsWith(path));
-  } catch { return false; }
+// The URL of a delivered image, or null while its stand-in is still in use.
+// assets/manifest.json lists the delivered originals (`files`) and the small
+// web copy the game loads for each (`web`, written by tools/build_web.py).
+let manifestPromise = null;
+async function deliveredUrl(path) {
+  manifestPromise ??= fetch('assets/manifest.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const m = await manifestPromise;
+  if (!m) return null;
+  const files = Array.isArray(m) ? m : m.files || [];
+  if (!files.includes(path)) return null;
+  return m.web?.[path] || `assets/${path}`;
 }
 
 async function boot() {
@@ -566,15 +569,16 @@ async function boot() {
   exploration.on('nut', () => { audio.play('nut'); input.rumble(0.35, 110); nutDirty(); });
   exploration.on('reset', () => nutDirty());
   nutView = createNutView({ THREE, scene: world.scene || scene });
-  const parchment = (await manifestHas('ui/map_parchment.png')) ? 'assets/ui/map_parchment.png' : null;
+  const parchment = await deliveredUrl('ui/map_parchment.png');
   map = createMap({
     input, exploration, parchmentUrl: parchment,
     getPlayer: () => ({ x: creature.position.x, z: creature.position.z, heading: state.heading }),
   });
   map.setTown(townData);
   $('#credits-attr').textContent = townData?.attribution || '';
-  if (await manifestHas('ui/logo.png')) {
-    const img = $('#logo-img'); img.src = 'assets/ui/logo.png'; img.alt = 'Stratford Squirrel';
+  const logoUrl = await deliveredUrl('ui/logo.png');
+  if (logoUrl) {
+    const img = $('#logo-img'); img.src = logoUrl; img.alt = 'Stratford Squirrel';
     img.onload = () => { img.hidden = false; $('#logo-art').hidden = true; };
   }
   applySettings();

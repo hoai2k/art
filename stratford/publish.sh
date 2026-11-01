@@ -17,7 +17,12 @@ mkdir -p "$out/prototype"
 for f in index.html styles.css manifest.webmanifest; do
   [ -f "$game/$f" ] && cp "$game/$f" "$out/prototype/"
 done
-for d in src lib data assets lab; do
+for d in src lib data web lab; do
   [ -d "$game/$d" ] && cp -R "$game/$d" "$out/prototype/"
 done
+# From assets/ only the manifest and the built models: the full-size delivered
+# PNGs are published as their small copies in web/ (tools/build_web.py).
+mkdir -p "$out/prototype/assets"
+cp "$game/assets/manifest.json" "$out/prototype/assets/"
+[ -d "$game/assets/squirrel" ] && cp -R "$game/assets/squirrel" "$out/prototype/assets/"
 echo "published Stratford Squirrel to $out/ ($(du -sh "$out" | cut -f1))"

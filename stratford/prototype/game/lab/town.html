@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Town Bench</title>
+<style>
+  :root { --ink: #2b241c; --paper: #f4ead6; --accent: #b3471d; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #c9b896; font: 14px/1.35 Georgia, 'Times New Roman', serif; color: var(--ink); }
+  canvas { display: block; }
+  #panel { position: fixed; top: 10px; left: 10px; width: 270px; max-height: calc(100% - 20px); overflow: auto; background: rgba(244, 234, 214, 0.92); border: 1px solid #8a7457; border-radius: 8px; padding: 10px 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  #panel h1 { font-size: 16px; margin: 0 0 6px; }
+  #panel h2 { font-size: 13px; margin: 10px 0 4px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a5434; }
+  #stats { font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; white-space: pre; }
+  button, select, input { font: inherit; }
+  button { background: #fffaf0; border: 1px solid #8a7457; border-radius: 5px; padding: 3px 8px; cursor: pointer; margin: 2px 2px 2px 0; }
+  button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: #6e2a10; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #1f5fa8; outline-offset: 1px; }
+  select { width: 100%; }
+  label { display: block; margin: 4px 0; }
+  input[type=range] { width: 100%; }
+  #help { font-size: 12px; color: #5a4a36; }
+  #loading { position: fixed; inset: 0; display: grid; place-items: center; background: #e8dcc2; font-size: 20px; }
+  #loading .bar { width: 320px; height: 10px; border: 1px solid #8a7457; border-radius: 6px; margin-top: 10px; overflow: hidden; }
+  #loading .bar div { height: 100%; width: 0; background: var(--accent); }
+  @media (max-width: 600px) { #panel { width: calc(100% - 44px); max-height: 45%; } }
+</style>
+<script type="importmap">
+{ "imports": { "three": "../lib/three.module.min.js", "three/addons/": "../lib/addons/", "three-mesh-bvh": "../lib/three-mesh-bvh.module.js" } }
+</script>
+</head>
+<body>
+<div id="loading" role="status"><div><div id="loadmsg">Loading the town…</div><div class="bar"><div id="loadbar"></div></div></div></div>
+<div id="panel" aria-label="Town bench controls">
+  <h1>Stratford town bench</h1>
+  <div id="stats" aria-live="off">…</div>
+  <h2>Camera</h2>
+  <button id="mode-fly" aria-pressed="true">Free fly</button><button id="mode-walk" aria-pressed="false">Walk (creature's eye)</button>
+  <label>Creature scale (body length): <span id="scaleval">0.25 m</span>
+    <input id="scale" type="range" min="0" max="1" step="0.001" value="0.79" aria-label="Creature scale"></label>
+  <h2>Jump to</h2>
+  <select id="jump" aria-label="Jump to a landmark"></select>
+  <h2>Detail layers</h2>
+  <div id="layers"></div>
+  <h2>Time of day</h2>
+  <input id="tod" type="range" min="5" max="22" step="0.1" value="16.3" aria-label="Time of day">
+  <p id="help">Fly: WASD + mouse drag (or right stick), Q/E or triggers down/up, Shift faster. Walk: WASD / left stick at the creature's eye height, mouse / right stick looks. Tab toggles the panel.</p>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { createTown } from '../src/town/index.js';
+
+const params = new URLSearchParams(location.search);
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: params.has('shot') });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.05, 4000);
+addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+
+const errors = [];
+addEventListener('error', (e) => errors.push(String(e.message)));
+const quality = params.get('quality') || 'medium';
+const world = await createTown({ THREE, renderer, scene, quality, onProgress: (p, m) => { document.getElementById('loadbar').style.width = `${Math.round(p * 100)}%`; document.getElementById('loadmsg').textContent = m; } });
+document.getElementById('loading').remove();
+
+// ---- camera state
+let mode = 'fly', scale = 0.25;
+const pos = new THREE.Vector3(world.spawn.x, world.spawn.y + 30, world.spawn.z + 40);
+let yaw = world.spawn.yaw, pitch = -0.4;
+function look(at) { const d = new THREE.Vector3().subVectors(at, pos); yaw = Math.atan2(-d.x, -d.z); pitch = Math.atan2(d.y, Math.hypot(d.x, d.z)); }
+const eye = () => scale * 0.4;
+function setMode(m) {
+  mode = m;
+  document.getElementById('mode-fly').setAttribute('aria-pressed', m === 'fly');
+  document.getElementById('mode-walk').setAttribute('aria-pressed', m === 'walk');
+  if (m === 'walk') { const s = world.surfaceAt(pos.x, pos.z, 1.5); pos.y = (s ? s.y : world.groundAt(pos.x, pos.z)) + eye(); pitch = 0.05; }
+}
+document.getElementById('mode-fly').onclick = () => setMode('fly');
+document.getElementById('mode-walk').onclick = () => setMode('walk');
+const scaleInput = document.getElementById('scale');
+const sliderToScale = (v) => 0.003 * Math.pow(0.6 / 0.003, v);   // log 3 mm .. 60 cm
+function setScale(s) {
+  scale = s; world.setScale(s);
+  document.getElementById('scaleval').textContent = s < 0.01 ? `${(s * 1000).toFixed(1)} mm` : s < 1 ? `${(s * 100).toFixed(1)} cm` : `${s.toFixed(2)} m`;
+  camera.near = Math.max(0.0005, 0.02 * s); camera.far = Math.max(400, s * 16000); camera.updateProjectionMatrix();
+  if (mode === 'walk') { const g = world.surfaceAt(pos.x, pos.z, 1.5); pos.y = (g ? g.y : pos.y) + eye(); }
+  renderLayers();
+}
+scaleInput.oninput = () => setScale(sliderToScale(+scaleInput.value));
+scaleInput.value = String(Math.log(0.25 / 0.003) / Math.log(0.6 / 0.003));
+document.getElementById('tod').oninput = (e) => world.setTimeOfDay(+e.target.value);
+
+// ---- landmarks
+const jumps = [{ id: 'spawn', name: 'Market Square (spawn)', x: world.spawn.x, z: world.spawn.z, look: world.data.spawn?.lookAt }].concat(world.landmarks);
+const sel = document.getElementById('jump');
+for (const l of jumps) { const o = document.createElement('option'); o.value = l.id; o.textContent = l.name; sel.append(o); }
+async function jumpTo(id, how = mode) {
+  const l = jumps.find((j) => j.id === id) || jumps[0];
+  if (how === 'walk') {
+    const a = Math.atan2(l.z - world.spawn.z, l.x - world.spawn.x) + Math.PI;
+    pos.set(l.x + Math.cos(a) * (l.radius || 25) * 0.9, 0, l.z + Math.sin(a) * (l.radius || 25) * 0.9);
+  } else pos.set(l.x + 40, world.groundAt(l.x, l.z) + 35, l.z + 55);
+  await world.ready(pos);
+  setMode(how);
+  look(new THREE.Vector3(l.look ? l.look[0] : l.x, world.groundAt(l.x, l.z) + (how === 'walk' ? 6 : 0), l.look ? l.look[1] : l.z));
+}
+sel.onchange = () => jumpTo(sel.value);
+
+// ---- detail layers
+function renderLayers() {
+  const box = document.getElementById('layers'); box.textContent = '';
+  for (const L of world.detailLayers) {
+    const b = document.createElement('button');
+    b.setAttribute('aria-pressed', L.enabled);
+    b.textContent = `${L.id} (${L.minScale}–${L.maxScale} m)${L.active ? '' : ' · off at this scale'}`;
+    b.onclick = () => { world.setDetailLayerEnabled(L.id, !L.enabled); renderLayers(); };
+    box.append(b);
+  }
+}
+renderLayers();
+
+// ---- input
+const keys = new Set();
+addEventListener('keydown', (e) => { if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return; keys.add(e.code); if (e.code === 'Tab') { e.preventDefault(); const p = document.getElementById('panel'); p.hidden = !p.hidden; } });
+addEventListener('keyup', (e) => keys.delete(e.code));
+let drag = null;
+renderer.domElement.addEventListener('pointerdown', (e) => { drag = [e.clientX, e.clientY]; renderer.domElement.setPointerCapture(e.pointerId); });
+renderer.domElement.addEventListener('pointermove', (e) => { if (!drag) return; yaw -= (e.clientX - drag[0]) * 0.004; pitch = THREE.MathUtils.clamp(pitch - (e.clientY - drag[1]) * 0.004, -1.5, 1.5); drag = [e.clientX, e.clientY]; });
+renderer.domElement.addEventListener('pointerup', () => { drag = null; });
+const dz = (v) => (Math.abs(v) < 0.15 ? 0 : (v - Math.sign(v) * 0.15) / 0.85);
+
+// ---- stats
+const statsEl = document.getElementById('stats');
+let frames = 0, fpsT = performance.now(), fps = 0, worst = 0, lastT = performance.now();
+function loop() {
+  const now = performance.now(), dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
+  worst = Math.max(worst, dt);
+  const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find((g) => g && g.connected);
+  let mx = 0, my = 0, lx = 0, ly = 0, up = 0, fast = keys.has('ShiftLeft') || keys.has('ShiftRight') ? 1 : 0;
+  if (keys.has('KeyW')) my += 1; if (keys.has('KeyS')) my -= 1; if (keys.has('KeyA')) mx -= 1; if (keys.has('KeyD')) mx += 1;
+  if (keys.has('KeyE')) up += 1; if (keys.has('KeyQ')) up -= 1;
+  if (keys.has('ArrowLeft')) lx -= 1; if (keys.has('ArrowRight')) lx += 1; if (keys.has('ArrowUp')) ly += 1; if (keys.has('ArrowDown')) ly -= 1;
+  if (gp) {
+    mx += dz(gp.axes[0]); my -= dz(gp.axes[1]); lx += dz(gp.axes[2]); ly -= dz(gp.axes[3]);
+    up += (gp.buttons[7]?.value || 0) - (gp.buttons[6]?.value || 0);
+    if (gp.buttons[0]?.pressed) fast = 1;
+  }
+  yaw -= lx * dt * 1.8; pitch = THREE.MathUtils.clamp(pitch + ly * dt * 1.4, -1.5, 1.5);
+  const fwd = new THREE.Vector3(-Math.sin(yaw), 0, -Math.cos(yaw)), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
+  if (mode === 'fly') {
+    const sp = (fast ? 120 : 30) * dt;
+    const f3 = new THREE.Vector3(-Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch));
+    pos.addScaledVector(f3, my * sp).addScaledVector(right, mx * sp); pos.y += up * sp;
+    pos.y = Math.max(pos.y, world.groundAt(pos.x, pos.z) + 0.3);
+  } else {
+    const sp = scale * (fast ? 24 : 7) * dt;
+    const nx = pos.x + (fwd.x * my + right.x * mx) * sp, nz = pos.z + (fwd.z * my + right.z * mx) * sp;
+    const s = world.surfaceAt(nx, nz, Math.max(0.3, scale * 2));
+    if (s && s.normal.y > 0.5) { pos.x = nx; pos.z = nz; pos.y += (s.y + eye() - pos.y) * Math.min(1, dt * 12); }
+  }
+  camera.position.copy(pos);
+  camera.rotation.set(pitch, yaw, 0, 'YXZ');
+  const focus = mode === 'walk' ? new THREE.Vector3(pos.x, pos.y - eye(), pos.z) : new THREE.Vector3(pos.x, world.groundAt(pos.x, pos.z), pos.z);
+  world.update(dt, camera, focus);
+  renderer.render(scene, camera);
+  frames++;
+  if (now - fpsT > 500) {
+    fps = (frames * 1000) / (now - fpsT); frames = 0; fpsT = now;
+    const r = renderer.info.render, i = world.info();
+    statsEl.textContent = `fps ${fps.toFixed(0)}  worst ${(worst * 1000).toFixed(0)} ms\ndraw calls ${r.calls}\ntriangles ${(r.triangles / 1e6).toFixed(2)} M\nchunks ${i.chunks}: ${i.near} near, ${i.far} far\ncolliders ${i.colliders} (${(i.colliderTris / 1e3).toFixed(0)} k tris)\ndetail cells ${i.detailCells}\nbuild ${world.stats.buildMs} ms (prep ${world.stats.prepMs})\nmemory geo ${renderer.info.memory.geometries} tex ${renderer.info.memory.textures}\npos ${pos.x.toFixed(1)}, ${pos.y.toFixed(2)}, ${pos.z.toFixed(1)}`;
+    worst = 0;
+  }
+  requestAnimationFrame(loop);
+}
+// initial view: the spawn, looking at City Hall from above
+const la = world.data.spawn?.lookAt;
+look(new THREE.Vector3(la ? la[0] : world.spawn.x, world.spawn.y, la ? la[1] : world.spawn.z - 10));
+setScale(0.25);
+if (params.get('view')) await jumpTo(params.get('view'), params.get('mode') || 'fly');
+window.bench = { world, camera, renderer, scene, pos, setMode, setScale, jumpTo, look: (x, y, z) => look(new THREE.Vector3(x, y, z)), set: (x, y, z, yw, p) => { pos.set(x, y, z); yaw = yw; pitch = p; }, errors };
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
