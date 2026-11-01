@@ -41,13 +41,13 @@ try {
   await page.keyboard.down('ArrowRight');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.phase === 'apotheosis');
   await page.keyboard.up('ArrowRight');
-  const walkToLight = async () => {
+  const walkToLight = async (want = 'hold') => {
     await page.keyboard.down('ArrowRight');
     await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x > 635);
     await page.keyboard.up('ArrowRight');
     await page.waitForTimeout(180);
     await page.keyboard.press('Space');
-    await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.flight === 'hold');
+    await page.waitForFunction(want => window.__kingdomOfTheFairies.S.state.flight === want, want);
   };
   await walkToLight();
   assert.equal(await page.evaluate(async () => (await import('/src/save.js')).loadSave().endings?.wedding), true);
@@ -68,10 +68,10 @@ try {
   await page.waitForFunction(() => !window.__kingdomOfTheFairies.S.state.flight);
   const beforeReturn = await page.evaluate(() => window.__kingdomOfTheFairies.S.state.creditsT);
   await page.keyboard.down('ArrowLeft');
-  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x <= 0);
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x <= 60);
   await page.keyboard.up('ArrowLeft');
   await page.waitForTimeout(600);
-  assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.phase), 'finale', 'only walking all the way offstage leads back outside');
+  assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.phase), 'finale', 'Azurine still in view: not yet outside');
   await page.keyboard.down('ArrowLeft');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.phase === 'wedding');
   await page.keyboard.up('ArrowLeft');
@@ -91,7 +91,7 @@ try {
   await page.keyboard.down('ArrowRight');
   await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.phase === 'finale');
   await page.keyboard.up('ArrowRight');
-  await walkToLight();
+  await walkToLight('descend');
   assert.ok(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.creditsT) > beforeReturn + 5, 'a repeated light jump does not restart the credits');
   const samples = [];
   for (const time of [12, 22, 36, 50]) {
@@ -112,6 +112,13 @@ try {
   await page.evaluate(() => { const q = window.__kingdomOfTheFairies; q.S.state.creditsT = 39; q.S.paused = true; });
   await page.waitForTimeout(250);
   assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.creditsT), 39);
+  // The credits over: the prompt, then X fades out to the title screen.
+  await page.evaluate(() => { const q = window.__kingdomOfTheFairies; q.S.paused = false; q.S.state.creditsT = 35.5; });
+  await page.waitForTimeout(300);
+  await page.locator('#stage').screenshot({ path: `${output}/after-credits-prompt.png` });
+  await page.keyboard.press('KeyX');
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state?.leaveT > 1);
+  await page.waitForFunction(() => window.__kingdomOfTheFairies.S.mode === 'title', null, { timeout: 8000 });
   await page.evaluate(async () => {
     const { createRenderer } = await import('/src/art.js');
     const { actBurning, weddingFloor } = await import('/src/acts/act5film.js');
@@ -132,5 +139,5 @@ try {
   }
   assert.deepEqual(errors, []);
   await writeFile(`${output}/audio-and-timing.json`, JSON.stringify(samples, null, 2) + '\n');
-  console.log('Two-way stairs, held/repeated light jumps, gradual release, continuous audio and credits free play pass');
+  console.log('Two-way stairs, held/repeated light jumps, gradual release, continuous audio and credits free play and X to the title pass');
 } finally { await browser.close(); server.close(); }

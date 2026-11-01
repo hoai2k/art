@@ -17,7 +17,7 @@ import act5, {
 } from './act5.js';
 import { createWall, stepWall, jolt } from './climb.js';
 import { clamp, lerp } from './shared.js';
-import { FINALE } from '../finale.js';
+import { FINALE, FINALE_END } from '../finale.js';
 import * as art from './act5film-art.js';
 
 // ---------------------------------------------------------------- the swim
@@ -201,9 +201,13 @@ export const weddingDoorAlpha = x => 1-clamp((x-WEDDING.door)/(WEDDING.gate-WEDD
 // Figures shrink slightly as the stairs carry them up and away from the audience.
 export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(x))/(WEDDING.y-WEDDING_PATH.at(-1)[1]),0,1);
 
-// `off`: walking left past the curtain to here (fully offstage, Azurine
-// too) leads back out to the wedding guests.
-export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: -60 };
+// Walking left leads back out to the wedding guests as soon as Azurine,
+// following him, is hidden behind the left curtain (her centre at `offAz`);
+// he can walk on to `off`, offstage.
+export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: 80 };
+// After the credits: [X] fades out to the title screen over `fade` seconds;
+// so does the end of the wedding piece if the player has been idle `idle` s.
+export const ENDING = { fade: 2.5, idle: 5 };
 export const WEDDING_GUESTS = [
   ['crew-squire', 250], ['crew-helmsman', 340], ['crew-manatarms', 430], ['crew-bosun', 520],
   ['fairy-ring', 610], ['fairy-crown', 690], ['fairy-gold', 770], ['king-stand', 990], ['queen-stand', 1080],
@@ -439,9 +443,9 @@ export const actBurning = {
   mood: (st) => (['wedding', 'apotheosis', 'finale', 'iris'].includes(st.phase) ? 'wedding' : 'storm'),
   touchLive: (st) => !st.battleIntro && (['house', 'quay', 'apotheosis', 'finale'].includes(st.phase) || (st.phase === 'wedding' && (st.weddingIntro === false || st.phaseT >= FILM_T.weddingLead)) || (st.phase === 'barrel' && st.barrel?.fallT == null)),
   // the second button swings the sword in the witch's last stand
-  touchVerbB: (st) => (st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
+  touchVerbB: (st) => (creditsDone(st) && st.leaveT == null ? 'Title' : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
   touchVerb: (st) => (st.phase === 'barrel' && st.duel ? 'Leap' : st.phase === 'barrel' ? '' : st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? 'Action' : 'Leap'),
-  fade: st => st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
+  fade: st => st?.leaveT != null ? clamp(st.leaveT / ENDING.fade, 0, 1) : st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
   touchHint: 'drag to walk and climb, A to leap',
   touchScheme: (st) => (st.phase === 'barrel' && st.duel ? { mode: 'stick', hint: 'Drag ↔ to walk' } : ['wedding', 'apotheosis', 'finale'].includes(st.phase) ? { mode: 'swipe', hint: 'Drag ↔ to walk · tap to celebrate' } : (st.phase === 'barrel' && !st.duel) ? { mode: 'swipe', hint: 'Drag ↔ to walk' } : { mode: 'stick', hint: 'Drag to walk · up and down on stairs and ladders' }),
 
@@ -467,6 +471,16 @@ export const actBurning = {
     if (!base(st, dt, input)) return;
     if (st.smoke) st.smoke = st.smoke.filter(puff => (puff.t += dt) < AURORA.smokeLife);
     if (st.creditsT != null) st.creditsT += dt;
+    if (st.creditsT != null) {
+      const active = movingDirection(input) || input.a || input.x;
+      st.idleT = active ? 0 : (st.idleT || 0) + dt;
+      if (st.leaveT == null && creditsDone(st) && (input.x
+        || (input.songLeft != null && input.songLeft <= ENDING.fade && st.idleT >= ENDING.idle))) {
+        st.leaveT = 0; st.events.push({ type: 'leaveToTitle' });
+      }
+    }
+    // fading out to the title screen: the stage holds still
+    if (st.leaveT != null) { st.leaveT += dt; if (st.leaveT >= ENDING.fade) st.toTitle = true; return; }
     const cpBefore = st.checkpoint;
     if (st.phase === 'house') {
       const carrying = st.p.carry;
@@ -519,6 +533,7 @@ export const actBurning = {
     if (e.type === 'apotheosis') return 'Jump into the light beneath Aurora when you are ready.';
     if (e.type === 'ascend') return 'The Kingdom of the Fairies.';
     if (e.type === 'floatDown') return 'You float gently down.';
+    if (e.type === 'leaveToTitle') return 'Returning to the title screen.';
     if (e.type === 'finale') return 'The end. Credits: principal game designer Hoai Nguyen; after Le Royaume des fées by Georges Méliès. Thank you for playing.';
     return null;
   },
@@ -791,6 +806,7 @@ function startApotheosis(st){
   st.w=walker(APOTH.x0+65,APOTH.y);st.az=walker(APOTH.x0+20,APOTH.y);
   st.riseT=null;st.flight=null;st.lift=0;
 }
+export const creditsDone = st => st?.creditsT != null && st.creditsT >= FINALE_END && ['wedding', 'apotheosis', 'finale'].includes(st.phase);
 const movingDirection=input=>Math.abs(input.moveX||0)>.15||Math.abs(input.moveY||0)>.15||input.up||input.down||input.left||input.right;
 function stepApotheosis(st,dt,input){
   const w=st.w;
@@ -799,7 +815,11 @@ function stepApotheosis(st,dt,input){
       st.riseT=Math.min(FILM_T.rise,st.riseT+dt);
       // a slow, even rise in their standing poses (eased in and out)
       const f=st.riseT/FILM_T.rise,from=st.riseFrom||0;st.lift=from+(140-from)*f*f*(3-2*f);
-      if(st.riseT>=FILM_T.rise){
+      if(st.riseT>=FILM_T.rise&&st.riseAgain){
+        // Once the credits have begun, a jump into the light is a slow float
+        // up and straight back down, steerable at once, with no hold.
+        st.flight='descend';st.releaseT=0;st.events.push({type:'floatDown'});
+      }else if(st.riseT>=FILM_T.rise){
         st.flight='hold';
         if(st.creditsT==null){st.creditsT=0;st.result={ending:'wedding',score:st.score,pearls:st.pearls};st.events.push({type:'finale'});}
         st.phase='finale';
@@ -824,10 +844,10 @@ function stepApotheosis(st,dt,input){
   // carries them up, from the height they have reached.
   const over=Math.abs(w.x-APOTH.mark)<APOTH.near||(before-APOTH.mark)*(w.x-APOTH.mark)<=0;
   if(!w.on&&over){
-    st.flight='rise';st.riseT=0;st.riseFrom=st.lift=clamp(APOTH.y-w.y,0,140);
+    st.flight='rise';st.riseT=0;st.riseFrom=st.lift=clamp(APOTH.y-w.y,0,140);st.riseAgain=st.creditsT!=null;
     for(const actor of [w,st.az]){actor.y=APOTH.y;actor.vy=0;actor.vx=0;actor.on=false;}
     st.events.push({type:'ascend'});
-  }else if(w.x<=APOTH.off+.5&&st.az.x<=APOTH.offAz)returnToWedding(st);
+  }else if(st.az.x<=APOTH.offAz&&w.x<st.az.x)returnToWedding(st);
 }
 
 export { GRACE, HOLDS, lerp };

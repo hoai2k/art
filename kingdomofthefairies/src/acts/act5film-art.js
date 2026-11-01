@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -228,6 +228,8 @@ export function drawBurning(k, st, t) {
 
 export function drawOverBurning(k, st) {
   if (st.creditsT != null) rollingCredits(k, st.creditsT);
+  // the credits over and the stage lit again: the way back to the title
+  if (creditsDone(st) && st.leaveT == null) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
   if (st.defeatT != null) k.wash('#2a1424', 0.55 * clamp(st.defeatT / FILM_T.defeat, 0, 1));
   if (st.phase === 'iris') k.iris(640, 300, 760 * (1 - easeInOut(st.phaseT / FILM_T.iris)));
   if (st.status === 'won') k.iris(640, 300, 0);

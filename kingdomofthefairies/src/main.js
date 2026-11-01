@@ -714,7 +714,8 @@ function update(dt, i) {
     // Hold the player still until the curtains are mostly open.
     const ready = S.curtain > 0.9;
     const actInput = ready
-      ? { moveX: i.moveX, moveY: i.moveY, up: i.up, down: i.down, left: i.left, right: i.right, a: i.leap, aHeld: i.aHeld, b: i.padB || i.bPress || i.touchB, x: i.padX || i.bPress || i.touchB || i.touchX, xHeld: i.xHeld, tapAt: i.playTap, beat: audio.beat() }
+      ? { moveX: i.moveX, moveY: i.moveY, up: i.up, down: i.down, left: i.left, right: i.right, a: i.leap, aHeld: i.aHeld, b: i.padB || i.bPress || i.touchB, x: i.padX || i.bPress || i.touchB || i.touchX, xHeld: i.xHeld, tapAt: i.playTap, beat: audio.beat(),
+        songLeft: audio.nowPlaying()?.id === 'period-wedding' ? audio.pieceLeft() : null }
       : { moveX: 0, moveY: 0, beat: audio.beat() };
     S.act.step(S.state, dt, actInput);
     trackCheckpoint();
@@ -730,6 +731,8 @@ function update(dt, i) {
       announce(`The act is lost. Press A to ${again}.`);
     }
     if (S.state.status === 'won' && S.state.statusT > 0.15) actWon();
+    // the act asked to leave for the title screen (after the film's credits)
+    else if (S.state.toTitle) toTitle();
     return;
   }
 
