@@ -4,17 +4,24 @@
 import * as THREE from 'three';
 import { GLSL_NOISE } from './util.js';
 
-export function createSky(scene, shared, renderer, quality) {
+// the delivered sky: painted sun position and horizon in image fractions
+const SKY_SUN_U = 0.293, SKY_HORIZON_V = 0.645;
+
+export function createSky(scene, shared, renderer, quality, assets = null) {
+  const skyTex = assets && assets.sky ? assets.sky.texture : null;
   const group = new THREE.Group(); group.name = 'sky';
   const geo = new THREE.SphereGeometry(1, 32, 16);
   const mat = new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, depthTest: false, fog: false,
-    uniforms: { uSkyTop: shared.uSkyTop, uSkyHorizon: shared.uSkyHorizon, uSunDir: shared.uSunDir, uSunColor: shared.uSunColor, uTime: shared.uTime, uNight: shared.uNight },
+    uniforms: { uSkyTop: shared.uSkyTop, uSkyHorizon: shared.uSkyHorizon, uSunDir: shared.uSunDir, uSunColor: shared.uSunColor, uTime: shared.uTime, uNight: shared.uNight,
+      tSky: { value: skyTex }, uSkyRot: { value: 0 }, uSkyMix: { value: skyTex ? 1 : 0 } },
+    defines: skyTex ? { SKY_TEX: '' } : {},
     vertexShader: /* glsl */`
       varying vec3 vDir;
       void main() { vDir = position; vec4 p = projectionMatrix * modelViewMatrix * vec4(position, 1.0); gl_Position = p.xyww; }`,
     fragmentShader: /* glsl */`
       uniform vec3 uSkyTop, uSkyHorizon, uSunDir, uSunColor; uniform float uTime, uNight;
+      uniform sampler2D tSky; uniform float uSkyRot, uSkyMix;
       varying vec3 vDir;
       ${GLSL_NOISE}
       void main() {
@@ -38,6 +45,16 @@ export function createSky(scene, shared, renderer, quality) {
         // stars at night
         float st = step(0.997, th(floor(d.xz / (abs(d.y) + 0.3) * 260.0))) * uNight * smoothstep(0.1, 0.4, h);
         c += vec3(st);
+        #ifdef SKY_TEX
+        {
+          // equirectangular painting; its horizon sits at ${SKY_HORIZON_V} of the image height
+          float az = atan(d.x, -d.z) / 6.2831853 + 0.5 + uSkyRot;
+          float e = asin(clamp(d.y, -1.0, 1.0));
+          float vImg = e >= 0.0 ? ${SKY_HORIZON_V} * (1.0 - e / 1.5707963) : ${SKY_HORIZON_V} + (1.0 - ${SKY_HORIZON_V}) * min(1.0, -e / 0.6);
+          vec3 sk = texture2D(tSky, vec2(fract(az), 1.0 - vImg)).rgb;
+          c = mix(c, sk, uSkyMix);
+        }
+        #endif
         gl_FragColor = vec4(c, 1.0);
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
@@ -58,7 +75,8 @@ export function createSky(scene, shared, renderer, quality) {
   scene.fog = new THREE.Fog(0xe9d6b6, 150, 1800);
   scene.add(group);
 
-  let hours = 16.3, extent = 18, fogFar = 1800;
+  let hours = 17.2, extent = 18, fogFar = 1800;
+  const skyHorizon = assets && assets.sky ? assets.sky.horizon : null;
   const sunDir = new THREE.Vector3();
   const K = {
     day: { top: new THREE.Color(0x5e8fcf), hor: new THREE.Color(0xf2dcb8), sun: new THREE.Color(0xffd29a), hs: new THREE.Color(0xbccbe8), hg: new THREE.Color(0x6e5c40) },
@@ -89,6 +107,18 @@ export function createSky(scene, shared, renderer, quality) {
     sun.color.copy(tmp.sun); sun.intensity = THREE.MathUtils.lerp(3.4, 0.4, night) * (e > -2 ? 1 : 0.6);
     hemi.color.copy(tmp.hs); hemi.groundColor.copy(tmp.hg); hemi.intensity = THREE.MathUtils.lerp(2.9, 1.0, night);
     scene.fog.color.copy(tmp.hor).lerp(tmp.top, 0.12);
+    if (skyTex) {
+      // turn the painting so its sun is where the light comes from; fade it out at dusk
+      const azL = Math.atan2(sunDir.x, -sunDir.z) / (Math.PI * 2);
+      mat.uniforms.uSkyRot.value = SKY_SUN_U - 0.5 - azL;
+      const w = THREE.MathUtils.smoothstep(e, -5, 3);
+      mat.uniforms.uSkyMix.value = w;
+      if (skyHorizon) {
+        scene.fog.color.lerp(skyHorizon, w * 0.8);
+        shared.uSkyHorizon.value.lerp(skyHorizon, w * 0.7);
+        shared.uSkyTop.value.lerp(new THREE.Color(0.30, 0.50, 0.85), w * 0.6);
+      }
+    }
   }
   setTimeOfDay(hours);
 

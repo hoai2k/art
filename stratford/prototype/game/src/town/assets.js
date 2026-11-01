@@ -13,6 +13,9 @@ export const TEXTURE_SLOTS = {
   asphalt: ['textures/asphalt.png', 4], sidewalk: ['textures/sidewalk.png', 3], grass: ['textures/grass_autumn.png', 4],
   leaves: ['textures/leaf_litter.png', 3], bark: ['textures/bark_maple.png', 1], bark_willow: ['textures/bark_willow.png', 1],
   gravel: ['textures/gravel_path.png', 3], water: ['textures/water_avon.png', 8],
+  // close-ups, blended in near the camera when the creature is small
+  soil_cu: ['textures/soil_closeup.png', 0.2], grass_cu: ['textures/grass_roots_closeup.png', 0.2], moss: ['textures/moss.png', 0.3],
+  concrete_cu: ['textures/concrete_closeup.png', 0.3], asphalt_cu: ['textures/asphalt_closeup.png', 0.3], bark_cu: ['textures/bark_closeup.png', 0.3],
 };
 // Facade elevations, in the order of the shader's candidates (aFac). The
 // delivered pictures are not edge to edge (sky, bushes, margins), so each has
@@ -31,9 +34,16 @@ export const FACADES = [
   ['facades/house_queen_anne_red.png', [0.05, 0.36, 0.95, 0.9]],
   ['facades/side_wall_red.png', [0.01, 0.04, 0.99, 0.985]],
   ['facades/back_lane.png', [0.0, 0.09, 1.0, 0.87]],
+  ['facades/church_stone_gothic.png', [0, 0, 1, 1]],
+  ['facades/commercial_buff_3storey.png', [0, 0, 1, 1]],
+  ['facades/commercial_modern_1960s.png', [0, 0, 1, 1]],
+  ['facades/house_buff_cottage.png', [0, 0.46, 1, 1]],
+  ['facades/garage_side.png', [0, 0.12, 1, 1]],
 ];
-export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 5, italianate: 6, cottage: 7, clapboard: 8, queenAnne: 9, side: 10, back: 11 };
-export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png' };
+export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 5, italianate: 6, cottage: 7, clapboard: 8, queenAnne: 9, side: 10, back: 11, church: 12, buff3: 13, modern: 14, buffCottage: 15, garage: 16 };
+export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png',
+  blades: 'sprites/grass_blades.png', pebbles: 'sprites/pebbles.png', litter: 'sprites/litter_bits.png' };
+export const SKY = 'ui/sky_autumn.png';
 
 const GAME = new URL('../../', import.meta.url);
 
@@ -64,6 +74,22 @@ export async function loadAssets(manifestUrl, opts = {}) {
     if (!listed.has(file)) continue;
     jobs.push(load(file).then((img) => { sprites[slot] = keyMagenta(img); }).catch((e) => console.warn('[town] sprite failed', file, e)));
   }
+  // the painted sky dome (scaled down: it is seen blurred through haze anyway)
+  let sky = null;
+  if (listed.has(SKY)) {
+    try {
+      const img = await load(SKY);
+      const W = Math.min(img.naturalWidth, opts.skyWidth || 2048), Hh = Math.round(W / 2);
+      const cv = document.createElement('canvas'); cv.width = W; cv.height = Hh;
+      const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, 0, 0, W, Hh);
+      // the haze colour along the painted horizon (about 64% down the image)
+      const row = cx.getImageData(0, Math.round(Hh * 0.655), W, 1).data;
+      let r = 0, g = 0, b = 0; for (let i = 0; i < row.length; i += 4) { r += row[i]; g += row[i + 1]; b += row[i + 2]; }
+      const n = row.length / 4;
+      const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.generateMipmaps = false; t.minFilter = THREE.LinearFilter;
+      sky = { texture: t, horizon: new THREE.Color().setRGB(r / n / 255, g / n / 255, b / n / 255, THREE.SRGBColorSpace) };
+    } catch (e) { console.warn('[town] sky failed', e); }
+  }
   const facadeImgs = await Promise.all(FACADES.map(([f]) => (listed.has(f) ? load(f).catch(() => null) : null)));
   await Promise.all(jobs);
   let facadeArray = null; const facadeLayer = FACADES.map(() => -1);
@@ -87,7 +113,7 @@ export async function loadAssets(manifestUrl, opts = {}) {
     facadeArray.colorSpace = THREE.SRGBColorSpace; facadeArray.generateMipmaps = true; facadeArray.anisotropy = 4;
     facadeArray.minFilter = THREE.LinearMipmapLinearFilter; facadeArray.magFilter = THREE.LinearFilter; facadeArray.needsUpdate = true;
   }
-  return { files: listed, tex, sprites, facadeArray, facadeLayer, facadeAspect, facadeCrop, fallen: sprites.fallen || null };
+  return { files: listed, tex, sprites, sky, facadeArray, facadeLayer, facadeAspect, facadeCrop, fallen: sprites.fallen || null };
 }
 
 // Cut-outs arrive on #FF00FF: key it to alpha.

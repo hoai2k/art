@@ -37,7 +37,7 @@ export async function createTown(opts = {}) {
   const breathe = () => new Promise((r) => setTimeout(r, 0));
 
   progress(0.02, 'Reading the map');
-  const [assets, data] = await Promise.all([loadAssets(manifestUrl, { facadeSize: quality === 'high' ? 1024 : 512 }), loadTown(dataUrl)]);
+  const [assets, data] = await Promise.all([loadAssets(manifestUrl, { facadeSize: quality === 'high' ? 1024 : 512, skyWidth: quality === 'high' ? 4096 : 2048 }), loadTown(dataUrl)]);
   const hf = data.height;
   const ctx = { data, hf, quality, curb: 0.15, assets };
   progress(0.15, 'Planting trees');
@@ -102,7 +102,7 @@ export async function createTown(opts = {}) {
     water: waterMaterial(shared, assets),
   };
   const root = new THREE.Group(); root.name = 'town'; scene.add(root);
-  const sky = createSky(scene, shared, Q.shadows ? renderer : null, Q.shadows ? quality : 'low');
+  const sky = createSky(scene, shared, Q.shadows ? renderer : null, Q.shadows ? quality : 'low', assets);
   const water = buildWater(data, mats.water); if (water) root.add(water);
   const trees = createTrees(ctx, shared, assets); root.add(trees.group);
   const props = createProps(ctx, shared, propItems); root.add(props.group);
@@ -131,6 +131,7 @@ export async function createTown(opts = {}) {
   let scale = 0.25, nearR = 260, farR = 2000;
   const setScaleRadii = (s) => {
     scale = s;
+    if (typeof shared !== 'undefined' && shared) shared.uScale.value = s;
     nearR = THREE.MathUtils.clamp(s * 1000, 110, 330) * Q.nearMul;
     farR = THREE.MathUtils.clamp(s * 8000, 500, 2400);
     sky.setScale(s);
@@ -378,7 +379,7 @@ export async function createTown(opts = {}) {
     scene: root, chunkReady: (x, z) => { const c = chunks.get(keyOf(x, z)); return !c || (c.level === 2 && !c.task); },
     chunkKeyOf: keyOf,
     env: {
-      surfaceAt, groundClass, fallen: assets.fallen,
+      surfaceAt, groundClass, fallen: assets.fallen, sprites: assets.sprites,
       treesNear: (x, z, r) => { const out = []; const g = treeGrid, cs = g.cell; for (let i = Math.floor((x - r) / cs); i <= Math.floor((x + r) / cs); i++) for (let j = Math.floor((z - r) / cs); j <= Math.floor((z + r) / cs); j++) { const a = g.map.get(i * 100003 + j); if (a) for (const p of a) out.push(p.data); } return out; },
       heightNear: (s, x, z) => s.y - (s.normal.x * (x - s.x) + s.normal.z * (z - s.z)) / Math.max(0.2, s.normal.y),
     },
@@ -450,6 +451,7 @@ export async function createTown(opts = {}) {
       for (const k in mats) mats[k].dispose();
       ground.texA.dispose(); ground.texB.dispose();
       for (const t of Object.values(assets.tex)) t.texture.dispose();
+      assets.sky?.texture.dispose(); for (const t of Object.values(assets.sprites)) t.dispose?.();
       assets.facadeArray?.dispose();
       scene.remove(root);
     },

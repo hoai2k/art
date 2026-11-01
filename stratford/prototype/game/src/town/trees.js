@@ -175,15 +175,39 @@ function trunkGeometry(kind, lod, colliderParts) {
 
 export function barkMaterial(shared, assets) {
   const has = assets && assets.tex.bark;
+  const defines = {}, uniforms = {};
+  for (const k of ['bark', 'bark_cu', 'moss']) if (assets && assets.tex[k]) { defines['TEX_' + k.toUpperCase()] = ''; uniforms['t_' + k] = { value: assets.tex[k].texture }; uniforms['s_' + k] = { value: 1 / assets.tex[k].size }; }
+  void has;
   return painted({ color: 0xffffff, vertexColors: true }, {
-    shared, key: 'town-bark', defines: has ? { TEX_BARK: '' } : {},
-    uniforms: has ? { t_bark: { value: assets.tex.bark.texture }, s_bark: { value: 1 / assets.tex.bark.size } } : {},
+    shared, key: 'town-bark', defines, uniforms,
     vertHead: 'varying vec2 vBarkUv;', vertMain: 'vBarkUv = uv;',
     vertBegin: SWAY_TRUNK,
-    fragHead: '#ifdef TEX_BARK\nuniform sampler2D t_bark; uniform float s_bark;\n#endif\nvarying vec2 vBarkUv;',
+    fragHead: `#ifdef TEX_BARK
+uniform sampler2D t_bark; uniform float s_bark;
+#endif
+#ifdef TEX_BARK_CU
+uniform sampler2D t_bark_cu; uniform float s_bark_cu;
+#endif
+#ifdef TEX_MOSS
+uniform sampler2D t_moss; uniform float s_moss;
+#endif
+uniform float uScale;
+varying vec2 vBarkUv;`,
     color: `
       #ifdef TEX_BARK
-        diffuseColor.rgb *= texture2D(t_bark, vBarkUv * vec2(1.0, 0.5) * s_bark).rgb;
+      { vec3 c = texture2D(t_bark, vBarkUv * vec2(1.0, 0.5) * s_bark).rgb;
+        float px = max(length(fwidth(vBarkUv)), 1e-4);
+        #ifdef TEX_BARK_CU
+        // close-up bark when the creature is small enough to read it
+        float w = (1.0 - smoothstep(0.8, 2.5, px * 1024.0 / 0.3)) * clamp((0.07 - uScale) / 0.05, 0.15, 1.0);
+        if (w > 0.002) c = mix(c, texture2D(t_bark_cu, vBarkUv * vec2(1.0, 0.5) * s_bark_cu).rgb, w * 0.9);
+        #endif
+        #ifdef TEX_MOSS
+        // moss low on the shady (north, -z) side of the trunk
+        float m = smoothstep(1.2, 0.2, vBarkUv.y) * smoothstep(0.1, 0.7, -vWN.z) * smoothstep(0.35, 0.6, tnoise(vBarkUv * vec2(3.0, 2.0)));
+        if (m > 0.0) c = mix(c, texture2D(t_moss, vBarkUv * s_moss).rgb, m * 0.85);
+        #endif
+        diffuseColor.rgb *= c; }
       #else
       { vec2 q = vBarkUv * vec2(2.2, 0.55);
         float f = tnoise(vec2(q.x * 2.0, q.y * 0.6)) * 0.6 + tnoise(q * vec2(5.0, 1.2)) * 0.4;

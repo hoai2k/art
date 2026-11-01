@@ -41,9 +41,13 @@ export function buildingParams(ctx, b) {
   if (!Number.isFinite(base)) { base = Infinity; for (const p of b.outer) base = Math.min(base, ctx.hf.at(p[0], p[1])); }
   // facade elevation for the street front (when delivered), by type
   let fac = -1;
-  if (commercial && storeys >= 2) fac = mat === MAT.stone ? FAC.bank : mat === MAT.brick_buff ? FAC.buff2 : mat === MAT.stucco ? FAC.painted : storeys >= 3 ? (seed < 0.35 ? FAC.corner : FAC.red3) : FAC.narrow;
-  else if (house) fac = mat === MAT.brick_buff ? FAC.italianate : mat === MAT.clapboard ? FAC.clapboard : mat === MAT.stucco ? -1 : storeys <= 1 ? FAC.cottage : FAC.queenAnne;
-  if (b.use === 'theatre' || b.use === 'church' || ctx.landmarkByBuilding.has(b.id)) fac = -1;
+  if (commercial) {
+    if (mat === MAT.glass || mat === MAT.metal || storeys === 1) fac = FAC.modern;
+    else fac = mat === MAT.stone ? FAC.bank : mat === MAT.brick_buff ? (storeys >= 3 ? FAC.buff3 : FAC.buff2) : mat === MAT.stucco ? FAC.painted : storeys >= 3 ? (seed < 0.35 ? FAC.corner : FAC.red3) : FAC.narrow;
+  } else if (house) fac = mat === MAT.brick_buff ? (storeys <= 1 ? FAC.buffCottage : FAC.italianate) : mat === MAT.clapboard ? FAC.clapboard : mat === MAT.stucco ? -1 : storeys <= 1 ? FAC.cottage : FAC.queenAnne;
+  else if (church) fac = FAC.church;
+  else if (shed) fac = FAC.garage;
+  if (b.use === 'theatre' || ctx.landmarkByBuilding.has(b.id)) fac = -1;
   return { seed, mat, storeys, gfh, flags, base, eaves: b.height, commercial, house, church, civic, shed, fac };
 }
 
@@ -72,6 +76,7 @@ function frontEdges(ctx, b, P) {
 // rear walls onto lanes and car parks the back-lane picture.
 function wallFacade(ctx, P, isFront, a, c, L, nx, nz, b) {
   const has = (f) => f >= 0 && ctx.assets && ctx.assets.facadeLayer[f] >= 0;
+  if (P.shed) return has(FAC.garage) && L > 1.5 ? FAC.garage : -1;          // sheds and garages all round
   if (isFront) return has(P.fac) && L > 3 && P.eaves > 2.6 ? P.fac : -1;
   if (!P.commercial || P.storeys < 2 || L < 4 || ctx.landmarkByBuilding.has(b.id)) return -1;
   const brick = P.mat === MAT.brick_red || P.mat === MAT.brick_buff;

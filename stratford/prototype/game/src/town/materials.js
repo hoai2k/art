@@ -20,7 +20,7 @@ const WORLD_POS = /* glsl */`
 // Shared, animated uniforms (one object referenced by every material).
 export function sharedUniforms() {
   return {
-    uTime: { value: 0 }, uNight: { value: 0 }, uWind: { value: 1 },
+    uTime: { value: 0 }, uNight: { value: 0 }, uWind: { value: 1 }, uScale: { value: 0.25 },
     uSkyTop: { value: new THREE.Color(0x6d9bd1) }, uSkyHorizon: { value: new THREE.Color(0xf0d9b5) },
     uSunDir: { value: new THREE.Vector3(-0.6, 0.35, 0.3).normalize() }, uSunColor: { value: new THREE.Color(0xffd9a8) },
   };
@@ -64,6 +64,13 @@ function texDecl(slots) {
 
 // ---------------------------------------------------------------- shared GLSL palettes
 const GLSL_COMMON = /* glsl */`
+uniform float uScale;
+// Weight of a close-up texture of real size S (m): it shows where its texels
+// resolve on screen, fully for small creatures and only a touch at squirrel scale.
+float closeW(float S, float px) {
+  float k = px * 1024.0 / S;
+  return (1.0 - smoothstep(0.8, 2.5, k)) * clamp((0.07 - uScale) / 0.05, 0.15, 1.0);
+}
 // sample a tiling texture twice (rotated, rescaled) and blend by low-frequency
 // noise, so its repeats do not show across a lawn or a street
 vec3 texAT(sampler2D t, vec2 p) {
@@ -100,7 +107,7 @@ vec4 fallenLeaves(vec2 p, float density, float px) {
 
 // ---------------------------------------------------------------- ground (terrain)
 export function groundMaterial(shared, ground, assets, waterLevel) {
-  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'leaves'];
+  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'leaves', 'soil_cu', 'grass_cu', 'concrete_cu', 'asphalt_cu'];
   const td = texDefines(assets, slots);
   return painted({ color: 0xffffff }, {
     shared, key: 'town-ground', defines: td.defines,
@@ -190,6 +197,15 @@ vec3 groundColor(vec3 wp) {
   // scattered fallen leaves on lawns and paving
   vec4 fl = fallenLeaves(p + 11.0, mix(0.12, 0.05, asph), px);
   c = mix(c, fl.rgb, fl.a * (1.0 - lit));
+#if defined(TEX_GRASS_CU) && defined(TEX_SOIL_CU) && defined(TEX_CONCRETE_CU) && defined(TEX_ASPHALT_CU)
+  { float w = closeW(0.25, px);
+    if (w > 0.002) {
+      vec3 cu = mix(texture2D(t_grass_cu, p * s_grass_cu).rgb, texture2D(t_soil_cu, p * s_soil_cu).rgb, clamp(max(dirt, grav) + lit * 0.5, 0.0, 1.0));
+      cu = mix(cu, texture2D(t_concrete_cu, p * s_concrete_cu).rgb, conc);
+      cu = mix(cu, texture2D(t_asphalt_cu, p * s_asphalt_cu).rgb, asph);
+      c = mix(c, cu, w * 0.9);
+    } }
+#endif
   // river bed and wet banks
   float under = smoothstep(uWL + 0.4, uWL - 0.5, wp.y);
   c = mix(c, mix(vec3(0.30, 0.27, 0.18), vec3(0.20, 0.22, 0.16), smoothstep(uWL - 0.5, uWL - 2.0, wp.y)), under);
@@ -201,18 +217,40 @@ vec3 groundColor(vec3 wp) {
 // aSt: x kind, y distance from curb (m), z boulevard width, w seed; aDir: street direction
 export const STREET = { road: 0, plate: 1, curb: 2, footway: 3, path: 4, service: 5, white: 6, yellow: 7, stone: 8, railing: 9, deck: 10, pavers: 11 };
 export function streetMaterial(shared, assets) {
-  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'stone'];
+  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'stone', 'soil_cu', 'grass_cu', 'concrete_cu', 'asphalt_cu'];
   const td = texDefines(assets, slots);
   return painted({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 }, {
     shared, key: 'town-street', defines: td.defines, uniforms: td.uniforms,
-    vertHead: 'attribute vec4 aSt; attribute vec2 aDir; varying vec4 vSt; varying vec2 vDir;',
-    vertMain: 'vSt = aSt; vDir = aDir;',
-    fragHead: `varying vec4 vSt; varying vec2 vDir;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GROUND.replace(/vec3 groundColor[\s\S]*$/, '')}\n${GLSL_STREET}`,
+    vertHead: 'attribute vec4 aSt; attribute vec2 aDir; varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;',
+    vertMain: 'vSt = aSt; vDir = aDir; vBlv = aSt.z;',
+    fragHead: `varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GROUND.replace(/vec3 groundColor[\s\S]*$/, '')}\n${GLSL_STREET}`,
     color: 'diffuseColor.rgb = streetColor(vWP);',
   });
 }
 const GLSL_STREET = /* glsl */`
+vec3 streetBase(vec3 wp);
 vec3 streetColor(vec3 wp) {
+  vec3 c = streetBase(wp);
+#if defined(TEX_GRASS_CU) && defined(TEX_SOIL_CU) && defined(TEX_CONCRETE_CU) && defined(TEX_ASPHALT_CU)
+  vec2 p = wp.xz;
+  float px = max(length(fwidth(p)), 1e-4);
+  float w = closeW(0.3, px);
+  if (w > 0.002) {
+    float kind = floor(vSt.x + 0.5);
+    vec2 q = abs(vWN.y) > 0.5 ? p : vec2(dot(p, normalize(vDir + 1e-5)), wp.y);
+    vec3 cu;
+    if (kind == 0.0 || kind == 5.0) cu = texture2D(t_asphalt_cu, q * s_asphalt_cu).rgb;
+    else if (kind == 4.0) cu = texture2D(t_soil_cu, q * s_soil_cu).rgb;
+    else if (kind == 1.0 && vBlv > 0.05 && vSt.y > 0.2 && vSt.y < vBlv) cu = texture2D(t_grass_cu, q * s_grass_cu).rgb;
+    else if (kind <= 3.0 || kind == 8.0) cu = texture2D(t_concrete_cu, q * s_concrete_cu).rgb;
+    else return c;
+    // keep markings readable: tint the close-up by the far colour's brightness
+    c = mix(c, cu * (dot(c, vec3(0.333)) / max(0.05, dot(cu, vec3(0.333)))) * 0.5 + cu * 0.5, w * 0.85);
+  }
+#endif
+  return c;
+}
+vec3 streetBase(vec3 wp) {
   vec2 p = wp.xz;
   float px = max(length(fwidth(p)), 1e-4);
   float kind = floor(vSt.x + 0.5);
@@ -226,7 +264,7 @@ vec3 streetColor(vec3 wp) {
     return mix(c, fl.rgb, fl.a);
   }
   if (kind == 1.0) {               // sidewalk plate: curb stone, boulevard grass, slabs
-    float d = vSt.y, blv = vSt.z;
+    float d = vSt.y, blv = vBlv;
     vec3 conc = concreteCol(vec2(along, across), px);
     // control joints every 1.5 m along, and a line where the slab meets the boulevard
     float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
@@ -712,7 +750,7 @@ export function waterMaterial(shared, assets) {
         #include <fog_fragment>
       }`,
   });
-  Object.assign(m.uniforms, { uTime: shared.uTime, uSkyTop: shared.uSkyTop, uSkyHorizon: shared.uSkyHorizon, uSunDir: shared.uSunDir, uSunColor: shared.uSunColor, uNight: shared.uNight }, td.uniforms);
+  Object.assign(m.uniforms, { uScale: shared.uScale, uTime: shared.uTime, uSkyTop: shared.uSkyTop, uSkyHorizon: shared.uSkyHorizon, uSunDir: shared.uSunDir, uSunColor: shared.uSunColor, uNight: shared.uNight }, td.uniforms);
   return m;
 }
 
