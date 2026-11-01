@@ -201,7 +201,7 @@ vec3 groundColor(vec3 wp) {
 // aSt: x kind, y distance from curb (m), z boulevard width, w seed; aDir: street direction
 export const STREET = { road: 0, plate: 1, curb: 2, footway: 3, path: 4, service: 5, white: 6, yellow: 7, stone: 8, railing: 9, deck: 10, pavers: 11 };
 export function streetMaterial(shared, assets) {
-  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel'];
+  const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'stone'];
   const td = texDefines(assets, slots);
   return painted({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 }, {
     shared, key: 'town-street', defines: td.defines, uniforms: td.uniforms,
@@ -262,6 +262,9 @@ vec3 streetColor(vec3 wp) {
     return mix(road, paint * (0.8 + 0.3 * dot(road, vec3(0.33))), 0.82 * (1.0 - wear * 0.7));
   }
   if (kind == 8.0) {               // dressed stone (bridges, walls)
+#ifdef TEX_STONE
+    return texture2D(t_stone, vec2(along, wp.y) * s_stone).rgb;
+#endif
     float row = floor(wp.y / 0.4); float x = along / 0.8 + 0.5 * mod(row, 2.0);
     float jx = min(fract(x), 1.0 - fract(x)) * 0.8, jy = min(fract(wp.y / 0.4), 1.0 - fract(wp.y / 0.4)) * 0.4;
     float joint = (1.0 - smoothstep(0.01, 0.01 + px, min(jx, jy))) * aafade(3.0, px);

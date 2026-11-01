@@ -289,6 +289,9 @@ export function* buildChunkStreets(ctx, chunk, vb, cb) {
       for (const ring of rings) for (const p of ring) {
         const isCurb = sample(road, p[0], p[1]) > 0.22;
         const i = info(p[0], p[1]);
+        // no grass boulevards on bridge decks
+        const bq = streets.bgrid.nearest(p[0], p[1], 14);
+        if (bq && bq.d <= bq.seg.data.b.half + 0.5) i.blv = 0;
         const y = H(p[0], p[1]) + (isCurb ? curb : 0.04);
         meta.set(p, { isCurb, y, d: isCurb ? 0 : Math.max(i.d, 0.3), i });
       }

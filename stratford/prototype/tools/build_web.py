@@ -18,7 +18,8 @@ GAME = os.path.normpath(os.path.join(HERE, '..', 'game'))
 ASSETS, WEB = os.path.join(GAME, 'assets'), os.path.join(GAME, 'web')
 # folder -> (longest side, quality)
 RULES = {'textures': (1024, 82), 'facades': (1024, 82), 'sprites': (1024, 85), 'ui': (1920, 82)}
-SPECIAL = {'ui/logo.png': (1600, 88), 'ui/map_parchment.png': (1536, 80), 'ui/icon.png': (512, 85)}
+SPECIAL = {'ui/logo.png': (1600, 88), 'ui/map_parchment.png': (1536, 80), 'ui/icon.png': (512, 85),
+           'ui/sky_autumn.png': (4096, 80)}  # a 360° sky needs its width
 ICONS = [512, 192, 180]
 
 

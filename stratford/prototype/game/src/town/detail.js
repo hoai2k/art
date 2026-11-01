@@ -111,7 +111,7 @@ export function grassLayer(env) {
       const coll = [];
       const s0 = env.surfaceAt(x0 + size / 2, z0 + size / 2);
       if (!s0) return null;
-      for (let k = 0; k < 260; k++) {
+      for (let k = 0; k < 520; k++) {
         const x = x0 + rng() * size, z = z0 + rng() * size;
         const s = (k % 8 === 0) ? env.surfaceAt(x, z) : s0;
         if (!s || (s.surface !== SURFACE.grass && s.surface !== SURFACE.ground)) continue;
