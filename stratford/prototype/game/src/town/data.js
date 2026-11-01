@@ -51,7 +51,9 @@ export function normalise(raw) {
   d.buildings = (raw.buildings || []).map((b, i) => {
     const outer = ring(b.outer);
     if (outer.length < 3) return null;
-    if (signedArea(outer) < 0) outer.reverse(); // CCW in (x, z) math sense; we only rely on consistency
+    // our convention: positive signed area in (x, z); the front edge k joins vertex k and k+1
+    let front = Array.isArray(b.front) && Number.isInteger(b.front[0]) ? ((b.front[0] % outer.length) + outer.length) % outer.length : -1;
+    if (signedArea(outer) < 0) { outer.reverse(); if (front >= 0) front = (outer.length * 2 - 2 - front) % outer.length; }
     const levels = Math.max(1, Math.round(num(b.levels, 0)) || Math.max(1, Math.round(num(b.height, 7) / 3.3)));
     const height = Math.max(2.2, num(b.height, levels * 3.3 + 0.6));
     return {
@@ -59,7 +61,7 @@ export function normalise(raw) {
       base: num(b.base, NaN), height, roofHeight: Math.max(0, num(b.roofHeight, 0)),
       roof: b.roof || (num(b.roofHeight, 0) > 0 ? 'gabled' : 'flat'), levels,
       use: b.use || 'other', material: b.material || null, name: b.name || '', street: b.street || '',
-      front: Array.isArray(b.front) ? b.front : (Number.isInteger(b.front) ? [b.front] : null),
+      front,
       colour: b.colour || b.color || null,
     };
   }).filter(Boolean);
@@ -76,7 +78,7 @@ export function normalise(raw) {
   const w = raw.water || {};
   d.water = {
     level: num(w.level, NaN),
-    polygons: (w.polygons || []).map((p) => ({ outer: ring(p.outer), holes: (p.holes || []).map(ring).filter((h) => h.length > 2) })).filter((p) => p.outer.length > 2),
+    polygons: (w.polygons || []).map((p) => ({ outer: ring(p.outer), holes: (p.holes || []).map(ring).filter((h) => h.length > 2), level: num(p.level, NaN) })).filter((p) => p.outer.length > 2),
     rivers: (w.rivers || []).map((r) => ({ points: pts(r.points), width: num(r.width, 20) })).filter((r) => r.points.length > 1),
   };
   // water areas given as areas also count
@@ -106,12 +108,13 @@ function defaultWidth(kind) {
 }
 
 // ---------------------------------------------------------------- heightfield
-// Bilinear terrain with the river bed carved under the water polygons, so
-// the banks slope down to the water.
+// Bilinear terrain. The data pipeline carves the river bed under the water
+// already; with no terrain file (fixtures) the bed is carved here.
 export function makeHeightfield(data, buf) {
   const t = data.terrain, b = data.bounds;
   let nx, nz, cell, x0, z0, h;
-  if (t && buf && t.nx && t.nz && buf.byteLength >= t.nx * t.nz * 2) {
+  const fromFile = !!(t && buf && t.nx && t.nz && buf.byteLength >= t.nx * t.nz * 2);
+  if (fromFile) {
     nx = t.nx; nz = t.nz; cell = t.cell || 4; x0 = t.x0; z0 = t.z0;
     const u = new Uint16Array(buf, 0, nx * nz);
     const base = num(t.minElev, 0) - num(data.origin.elev, 0);
@@ -119,61 +122,48 @@ export function makeHeightfield(data, buf) {
     h = new Float32Array(nx * nz);
     for (let i = 0; i < u.length; i++) h[i] = base + u[i] * scale;
   } else {
-    cell = 8; x0 = b.minX - 50; z0 = b.minZ - 50;
-    nx = Math.ceil((b.maxX - b.minX + 100) / cell) + 1; nz = Math.ceil((b.maxZ - b.minZ + 100) / cell) + 1;
+    cell = 4; x0 = Math.floor((b.minX - 40) / 4) * 4; z0 = Math.floor((b.minZ - 40) / 4) * 4;
+    nx = Math.ceil((b.maxX + 40 - x0) / cell) + 1; nz = Math.ceil((b.maxZ + 40 - z0) / cell) + 1;
     h = new Float32Array(nx * nz);
   }
-  const hf = { nx, nz, cell, x0, z0, h, flat: !buf };
-  // water level fallback: a little under the lowest terrain near the water
+  const hf = { nx, nz, cell, x0, z0, h, flat: !fromFile };
   const water = data.water;
-  const polys = water.polygons.slice();
-  for (const r of water.rivers) polys.push({ outer: riverPolygon(r.points, r.width), holes: [] });
-  water.all = polys;
+  // open water: polygons (each with its own level); rivers only when no polygons
+  const polys = water.polygons.map((p) => ({ ...p, level: Number.isFinite(p.level) ? p.level : water.level }));
+  if (!polys.length) for (const r of water.rivers) polys.push({ outer: riverPolygon(r.points, r.width), holes: [], level: water.level });
   const mask = new Uint8Array(nx * nz);
   for (const p of polys) rasterPoly(p.outer, p.holes, hf, mask);
   if (!Number.isFinite(water.level)) {
     const vals = []; for (let i = 0; i < mask.length; i++) if (mask[i]) vals.push(h[i]);
-    vals.sort((a, b) => a - b);
+    vals.sort((p, q) => p - q);
     water.level = vals.length ? vals[Math.floor(vals.length * 0.3)] : -5;
   }
+  for (const p of polys) { if (!Number.isFinite(p.level)) p.level = water.level; p.bb = bbox(p.outer); }
+  water.all = polys;
   hf.waterMask = mask;
-  // distance (in cells) from the shore, inside the water
-  const dist = new Float32Array(nx * nz).fill(1e9);
-  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
-    const k = j * nx + i; if (!mask[k]) { dist[k] = 0; continue; }
-  }
-  chamfer(dist, nx, nz);
-  hf.depth = dist;
-  const L = water.level;
-  for (let k = 0; k < h.length; k++) {
-    if (mask[k]) {
-      const d = dist[k] * cell;
-      const bed = L - Math.min(1.8, 0.35 + d * 0.22);
-      if (h[k] > bed) h[k] = bed;
+  if (!fromFile) {
+    const dist = new Float32Array(nx * nz);
+    for (let k = 0; k < dist.length; k++) dist[k] = mask[k] ? 1e9 : 0;
+    chamfer(dist, nx, nz);
+    for (const p of polys) {
+      const m2 = new Uint8Array(nx * nz); rasterPoly(p.outer, p.holes, hf, m2);
+      for (let k = 0; k < h.length; k++) if (m2[k]) h[k] = Math.min(h[k], p.level - Math.min(1.8, 0.35 + dist[k] * cell * 0.22));
     }
   }
-  // banks: terrain right at the shore must not stand far above the water
-  // (LiDAR often reads vegetation-free flat water edges correctly; this only
-  // softens the steps the polygon raster leaves).
-  const out = new Float32Array(h);
-  for (let j = 1; j < nz - 1; j++) for (let i = 1; i < nx - 1; i++) {
-    const k = j * nx + i; if (mask[k]) continue;
-    let near = false;
-    for (let dj = -1; dj <= 1 && !near; dj++) for (let di = -1; di <= 1; di++) if (mask[k + dj * nx + di]) { near = true; break; }
-    if (near && h[k] < L + 0.25) out[k] = L + 0.25;
-  }
-  hf.h = h = out;
   hf.at = (x, z) => {
     let fx = (x - x0) / cell, fz = (z - z0) / cell;
     fx = Math.max(0, Math.min(nx - 1.0001, fx)); fz = Math.max(0, Math.min(nz - 1.0001, fz));
     const i = Math.floor(fx), j = Math.floor(fz), u = fx - i, v = fz - j, k = j * nx + i;
     return (h[k] * (1 - u) + h[k + 1] * u) * (1 - v) + (h[k + nx] * (1 - u) + h[k + nx + 1] * u) * v;
   };
-  hf.isWater = (x, z) => {
-    const i = Math.round((x - x0) / cell), j = Math.round((z - z0) / cell);
-    if (i < 0 || j < 0 || i >= nx || j >= nz) return false;
-    if (!mask[j * nx + i]) return false;
-    return true;
+  hf.node = (i, j) => h[Math.max(0, Math.min(nz - 1, j)) * nx + Math.max(0, Math.min(nx - 1, i))];
+  // water surface height at (x, z), or null
+  hf.waterAt = (x, z) => {
+    for (const p of polys) {
+      if (x < p.bb.minX || x > p.bb.maxX || z < p.bb.minZ || z > p.bb.maxZ) continue;
+      if (pointInPoly(x, z, p.outer) && !p.holes.some((q) => pointInPoly(x, z, q))) return p.level;
+    }
+    return null;
   };
   hf.polys = polys;
   return hf;

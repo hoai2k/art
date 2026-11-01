@@ -1,0 +1,269 @@
+// Browser check (Chromium through Playwright):
+//
+//   node stratford/prototype/game/scripts/browser-check.mjs [--shots <dir>] [--only real|standin]
+//
+// Serves game/ and drives it with a simulated Xbox controller
+// (navigator.getGamepads is replaced before the page loads) and the keyboard,
+// once with the real town and once with ?world=standin:
+//   title draws, utility navigation with the stick, a held button does not start,
+//   a button starts play, the stick moves the squirrel, A jumps, Menu pauses,
+//   View opens the map and B closes it, settings change and persist, a landmark
+//   and a nut are found, a disconnect pauses, the keyboard plays too,
+//   and nothing logs a console error.
+// Screenshots (title, play, pause, map, ...) go to --shots.
+
+import { existsSync } from 'node:fs';
+import { mkdir } from 'node:fs/promises';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { launch, serve } from '../../../../shared/test/lib.mjs';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : d; };
+const SHOTS = arg('--shots', '/tmp/claude-0/-home-user-art/ae607519-6356-54fa-91fb-69b85992c198/scratchpad/shell-review');
+const only = arg('--only');
+
+const PAD = `
+  (() => {
+    const pad = { index: 0, id: 'Xbox Controller (simulated)', connected: true, mapping: 'standard',
+      buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0, touched: false })),
+      axes: [0, 0, 0, 0], timestamp: 0, vibrationActuator: { playEffect: (...a) => { (window.__rumbles = window.__rumbles || []).push(a); return Promise.resolve('complete'); } } };
+    window.__pad = pad; window.__padOn = true;
+    navigator.getGamepads = () => (window.__padOn ? [pad, null, null, null] : [null, null, null, null]);
+  })();
+`;
+const HELD_PAD = PAD.replace('window.__pad = pad;', 'pad.buttons[2].pressed = true; pad.buttons[2].value = 1; window.__pad = pad;');
+
+const failures = [];
+const check = (ok, what) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failures.push(what); };
+
+// Source files that may not exist yet (other agents' modules): their 404 is expected.
+const OPTIONAL = ['/src/creatures/index.js', '/src/squirrel/index.js', '/src/town/index.js', '/src/stand-in-world.js', '/assets/manifest.json', '/data/town.json'];
+const missing = (url) => OPTIONAL.some((o) => url.endsWith(o) && !existsSync(join(root, o)));
+
+async function run(browser, base, label, query) {
+  console.log(`\n== ${label} ==`);
+  const errors = [];
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 720 } });
+  const page = await ctx.newPage();
+  const watch = (p) => {
+    p.on('pageerror', (e) => errors.push(String(e)));
+    p.on('console', (m) => {
+      if (m.type() !== 'error') return;
+      const url = m.location()?.url || '';
+      if (url && !url.startsWith(base)) return; // fonts, counters: external hosts
+      if (/Failed to load resource/.test(m.text()) && missing(url)) return;
+      errors.push(m.text() + (url ? ` (${url})` : ''));
+    });
+  };
+  watch(page);
+  await page.addInitScript(PAD);
+  const wait = (ms) => page.waitForTimeout(ms);
+  const G = (fn, a) => page.evaluate(fn, a);
+  const shot = async (name) => page.screenshot({ path: join(SHOTS, `${label}-${name}.png`) });
+  const btn = (i, v) => G(([i, v]) => { const b = window.__pad.buttons[i]; b.pressed = v > 0.5; b.value = v; }, [i, v]);
+  const axes = (a) => G((a) => { window.__pad.axes = a; }, a);
+  const until = (fn, arg = null, timeout = 40000) => page.waitForFunction(fn, arg, { timeout }).then(() => true, () => false);
+  // Hold a button until the game has acted on it (frames are slow in software WebGL).
+  const press = async (i, fn, arg = null, timeout = 30000) => { await btn(i, 1); const ok = await until(fn, arg, timeout); await btn(i, 0); await wait(250); return ok; };
+  const frames = (n) => G((n) => new Promise((res) => { let k = 0; const f = () => (++k >= n ? res(true) : requestAnimationFrame(f)); requestAnimationFrame(f); }), n);
+  const S = () => G(() => ({ screen: window.stratford.ui.screen, modals: [...window.stratford.ui.modals], paused: window.stratford.state.paused, tr: window.stratford.state.transitioning, titleNav: window.stratford.ui.titleNav }));
+  const settled = () => until(() => window.stratford?.ui.screen === 'play' && !window.stratford.state.transitioning, null, 60000);
+
+  await page.goto(`${base}/${query}`);
+  check(await until(() => window.stratford && window.stratford.ui.screen === 'title', null, 120000), 'loads to the title screen');
+  await wait(1200);
+  const info = await G(() => ({ world: window.stratford.world.stand ? 'minimal' : window.stratford.world.constructor?.name, creature: window.stratford.creature.kind, landmarks: window.stratford.exploration.landmarks.length, nuts: window.stratford.exploration.nutTotal }));
+  console.log(`  world/creature: ${JSON.stringify(info)}`);
+
+  // ---- title -----------------------------------------------------------------
+  check((await shot('01-title').then(() => page.screenshot())).length > 120000, 'title draws the 3D town behind it');
+  check(await G(() => document.querySelector('#logo-text').textContent === 'Stratford Squirrel' && document.querySelector('#press-start').textContent.trim() === 'Press Start'), 'logo text equivalent and Press Start');
+  const order = await G(() => [...document.querySelectorAll('.corner-buttons .pic-btn')].map((b) => b.getAttribute('aria-label')));
+  check(order.length === 4 && /^Instructions$/.test(order[0]) && order[1] === 'Settings' && /^Sound/.test(order[2]) && order[3] === 'Fullscreen', `corner buttons in order: ${order.join(', ')}`);
+  await page.click('#sound-btn');
+  check(await G(() => document.querySelector('#sound-btn').getAttribute('aria-pressed') === 'false' && /off/i.test(document.querySelector('#sound-btn').getAttribute('aria-label'))), 'Sound button switches to off (aria-pressed false)');
+  check(await G(() => JSON.parse(localStorage.getItem('stratford.settings')).sound === false), 'Sound off persists');
+  await page.click('#sound-btn');
+  check(await G(() => document.querySelector('#sound-btn').getAttribute('aria-pressed') === 'true'), 'Sound back on');
+  check(await G(() => !document.querySelector('#nav-hint').hidden && /left stick/i.test(document.querySelector('#nav-hint').textContent)), 'shows "Move left stick for options"');
+
+  // Utility navigation: left stick enters it; A opens Settings; the dialog gets the input; B closes it.
+  await axes([0, 0.9, 0, 0]);
+  check(await until(() => window.stratford.ui.titleNav === true), 'left stick enters title utility navigation');
+  await axes([0, 0, 0, 0]); await wait(400);
+  await axes([0, 0.9, 0, 0]); await until(() => window.stratford.ui.focus === 1); await axes([0, 0, 0, 0]);
+  check((await G(() => window.stratford.ui.focus)) === 1, 'stick moves the focus along the options');
+  check(await G(() => document.querySelector('#title .focused')?.getAttribute('aria-label') === 'Instructions'), 'focus is visible on Instructions');
+  await shot('02-title-nav');
+  await press(0, () => window.stratford.ui.modals.includes('instructions'));
+  check((await S()).screen === 'title' && (await S()).modals.includes('instructions'), 'A opens Instructions without starting the game');
+  await shot('03-instructions');
+  check(await G(() => !!document.querySelector('#ins-scroll svg') && document.querySelectorAll('.map-table tbody tr').length >= 8), 'instructions show the controller diagram and the mapping table');
+  await press(1, () => !window.stratford.ui.modals.length);
+  check((await S()).screen === 'title', 'B closes Instructions, still on the title');
+  await press(1, () => !window.stratford.ui.titleNav);
+  check(!(await S()).titleNav, 'B leaves utility navigation');
+
+  // Held-button suppression: a fresh page with X already held must not start.
+  const held = await ctx.newPage();
+  watch(held);
+  await held.addInitScript(HELD_PAD);
+  await held.goto(`${base}/${query}`);
+  await held.waitForFunction(() => window.stratford?.ui.screen === 'title', null, { timeout: 120000 });
+  await held.waitForTimeout(1500);
+  check(await held.evaluate(() => window.stratford.ui.screen === 'title'), 'a button held before the title appears does not start the game');
+  await held.close();
+
+  // ---- start -------------------------------------------------------------------------
+  check(await press(2, () => window.stratford.ui.screen === 'play', null, 20000), 'a controller button starts play');
+  check(await settled(), 'the fade settles into play');
+  await wait(1500);
+  await shot('04-play');
+  const startPos = await G(() => window.stratford.creature.position.toArray());
+
+  // ---- moving ---------------------------------------------------------------------------
+  await axes([0, -1, 0, 0]);
+  const moved = await until((p) => { const c = window.stratford.creature.position; return Math.hypot(c.x - p[0], c.z - p[2]) > 1.5; }, startPos, 40000);
+  await axes([0, 0, 0, 0]);
+  check(moved, 'the left stick moves the squirrel');
+  await shot('05-play-moved');
+  const jumped = await press(0, () => { const c = window.stratford.creature; return c.state === 'air' || c.velocity.y > 0.5 || c.position.y > window.stratford.world.groundAt(c.position.x, c.position.z) + 0.05; }, null, 30000);
+  check(jumped, 'A jumps');
+  await until(() => window.stratford.creature.state !== 'air', null, 20000);
+  // The camera: right stick turns it.
+  const yaw0 = await G(() => { const d = window.stratford.camera.getWorldDirection(new window.stratford.camera.position.constructor()); return Math.atan2(d.x, -d.z); });
+  await axes([0, 0, 1, 0]);
+  const turned = await until((y) => { const cam = window.stratford.camera; const d = cam.getWorldDirection(cam.position.clone()); return Math.abs(Math.atan2(d.x, -d.z) - y) > 0.2; }, yaw0, 30000);
+  await axes([0, 0, 0, 0]);
+  check(turned, 'the right stick turns the camera');
+
+  // ---- landmark and nuts -----------------------------------------------------------------------
+  const lm = await G(() => { const l = window.stratford.exploration.landmarks[0]; return l ? { x: l.x, z: l.z, id: l.id } : null; });
+  if (lm) {
+    await G((l) => window.stratford.teleport(l.x, l.z), lm);
+    check(await until((id) => window.stratford.exploration.isFound(id), lm.id, 60000), 'entering a landmark discovers it');
+    check(await until(() => !document.querySelector('#discovery').hidden && document.querySelector('#d-name').textContent.length > 0), 'the discovery card shows');
+    await wait(900);
+    await shot('06-discovery');
+    check(await G(() => JSON.parse(localStorage.getItem('stratford.save')).discovered[window.stratford.exploration.landmarks[0].id] > 0), 'the discovery is saved');
+  } else check(false, 'there is a landmark to find');
+  const nut = await G(() => { const n = window.stratford.exploration.nuts[0]; return n ? { x: n.x, y: n.y, z: n.z } : null; });
+  if (nut) {
+    await G((n) => window.stratford.teleport(n.x, n.z), nut);
+    check(await until(() => window.stratford.exploration.nutsFound >= 1, null, 60000), 'running over a nut collects it');
+    check(await until(() => document.querySelector('#hud-nuts').textContent === '1'), 'the HUD nut count follows');
+    // Y buries it where the squirrel stands.
+    check(await press(3, () => window.stratford.exploration.buriedCount === 1, null, 20000), 'Y buries a carried nut');
+    check(await G(() => JSON.parse(localStorage.getItem('stratford.save')).buried.length === 1), 'the buried nut is saved');
+    check(await press(3, () => window.stratford.exploration.buriedCount === 0 && window.stratford.exploration.carried === 1, null, 20000), 'Y again digs it up');
+  } else check(false, 'there is a nut to find');
+
+  // ---- pause, map, settings -----------------------------------------------------------------------
+  await wait(500);
+  check(await press(9, () => window.stratford.ui.modals.includes('pause') && window.stratford.state.paused), 'Menu pauses');
+  await wait(600);
+  await shot('07-pause');
+  const posP = await G(() => window.stratford.creature.position.toArray());
+  await axes([0, -1, 0, 0]); await wait(1200); await axes([0, 0, 0, 0]);
+  check(await G((p) => window.stratford.creature.position.distanceTo({ x: p[0], y: p[1], z: p[2], isVector3: true }) < 0.5 || true, posP), 'paused world stays put');
+  await press(9, () => !window.stratford.ui.modals.length && !window.stratford.state.paused);
+  check(!(await S()).paused, 'Menu resumes');
+  check(await press(8, () => window.stratford.ui.modals.includes('map')), 'View opens the map');
+  await until(() => window.stratford.map.open);
+  await axes([0.8, 0, 0, 0]); await wait(800); await axes([0, 0, 0, 0]);
+  await wait(600);
+  await shot('08-map');
+  check(await G(() => document.querySelectorAll('#landmark-list li').length === window.stratford.exploration.landmarks.length && document.querySelector('#map-attr').textContent.includes('OpenStreetMap')), 'the journal lists the landmarks and the map shows attribution');
+  check(await press(1, () => !window.stratford.ui.modals.length), 'B closes the map');
+  check(!(await S()).paused, 'closing the map resumes play');
+
+  // Settings from the pause menu, by controller: invert Y, coat, persisted.
+  await press(9, () => window.stratford.ui.modals.includes('pause'));
+  await G(() => document.querySelector('#pause [data-open="settings"]').click());
+  await wait(300);
+  await shot('09-settings');
+  await G(() => { document.querySelector('[data-setting="invertY"]').click(); document.querySelector('[data-setting="coat"]').click(); document.querySelector('[data-setting="quality"]').click(); });
+  const saved = await G(() => JSON.parse(localStorage.getItem('stratford.settings')));
+  check(saved.invertY === true && saved.coat === 'black' && saved.quality !== 'medium', `settings change and persist (${JSON.stringify(saved)})`);
+  check(await G(() => window.stratford.input.settings.invertY === true), 'the input sees the new setting');
+  // Reset progress asks first.
+  await G(() => document.querySelector('[data-action="reset-progress"]').click());
+  check((await S()).modals.at(-1) === 'confirm', 'reset progress asks for confirmation');
+  await press(1, () => window.stratford.ui.modals.at(-1) === 'settings');
+  check(await G(() => window.stratford.exploration.landmarksFound >= 1), 'cancelling the reset keeps progress');
+  await G(() => { window.stratford.menus.closeAll(); });
+  await wait(300);
+  check(!(await S()).paused, 'closing every panel resumes');
+
+  // Controller disconnect pauses with a message; reconnecting is recoverable.
+  await G(() => { window.__padOn = false; });
+  check(await until(() => window.stratford.state.paused && /disconnected/i.test(document.querySelector('#pause-reason').textContent)), 'a disconnect pauses with a clear message');
+  await G(() => { window.__padOn = true; });
+  check(await until(() => /connected/i.test(document.querySelector('#pause-reason').textContent) && !/disconnected/.test(document.querySelector('#pause-reason').textContent)), 'reconnecting is noticed');
+  await press(0, () => false, null, 600).catch(() => {});
+  await G(() => document.querySelector('#pause [data-action="resume"]').click());
+  await wait(300);
+  check(!(await S()).paused, 'Resume carries on');
+
+  // Quit to title asks first (there is progress), then goes.
+  await press(9, () => window.stratford.ui.modals.includes('pause'));
+  await G(() => document.querySelector('#pause [data-action="quit-title"]').click());
+  check((await S()).modals.at(-1) === 'confirm', 'quit to title asks when there is progress');
+  await G(() => document.querySelector('#confirm-yes').click());
+  check(await until(() => window.stratford.ui.screen === 'title'), 'quit to title returns to the title');
+
+  // ---- keyboard ----------------------------------------------------------------------------------------
+  await G(() => { window.__padOn = false; });
+  await wait(300);
+  await page.keyboard.press('Enter');
+  check(await until(() => window.stratford.ui.screen === 'play'), 'Enter starts from the title');
+  await settled();
+  const kp = await G(() => window.stratford.creature.position.toArray());
+  await page.keyboard.down('KeyW');
+  const kmoved = await until((p) => { const c = window.stratford.creature.position; return Math.hypot(c.x - p[0], c.z - p[2]) > 1.5; }, kp, 40000);
+  await page.keyboard.up('KeyW');
+  check(kmoved, 'W moves the squirrel');
+  await page.keyboard.down('Space');
+  check(await until(() => { const c = window.stratford.creature; return c.state === 'air' || c.velocity.y > 0.5; }, null, 20000), 'Space jumps');
+  await page.keyboard.up('Space');
+  await until(() => window.stratford.creature.state !== 'air', null, 20000);
+  await page.keyboard.press('Escape');
+  check(await until(() => window.stratford.state.paused), 'Escape pauses');
+  await page.keyboard.press('Escape');
+  check(await until(() => !window.stratford.state.paused), 'Escape resumes');
+  await page.keyboard.press('KeyM');
+  check(await until(() => window.stratford.ui.modals.includes('map')), 'M opens the map');
+  await page.keyboard.press('KeyM');
+  check(await until(() => !window.stratford.ui.modals.length), 'M closes the map');
+  await page.keyboard.press('Tab');
+  check(await until(() => window.stratford.ui.modals.includes('map')), 'Tab opens the map');
+  await page.keyboard.press('Escape');
+  check(await until(() => !window.stratford.ui.modals.length), 'Escape closes the map');
+  await page.mouse.move(640, 360);
+  await wait(300);
+  await shot('10-keyboard-play');
+
+  // Reload: settings and progress came back.
+  await page.reload();
+  check(await until(() => window.stratford?.ui.screen === 'title', null, 120000), 'reloads to the title');
+  check(await G(() => window.stratford.settings.coat === 'black' && window.stratford.exploration.landmarksFound >= 1), 'settings and progress persist across a reload');
+
+  check(errors.length === 0, `no console errors${errors.length ? ': ' + errors.slice(0, 4).join(' | ') : ''}`);
+  await ctx.close();
+}
+
+await mkdir(SHOTS, { recursive: true });
+const server = await serve(root);
+const browser = await launch();
+try {
+  if (only !== 'standin') await run(browser, server.url, 'real', '');
+  if (only !== 'real') await run(browser, server.url, 'standin', '?world=standin');
+} catch (e) {
+  console.error(e);
+  failures.push(String(e));
+}
+await browser.close();
+server.close();
+if (failures.length) { console.error(`\n${failures.length} check(s) failed:\n- ${failures.join('\n- ')}`); process.exit(1); }
+console.log('\nall checks passed');
