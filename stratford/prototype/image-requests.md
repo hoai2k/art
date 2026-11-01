@@ -54,7 +54,7 @@ picture book of a real small town, brought into 3D:
 
 These shape the models. **R1.2, the black squirrel, matters most**: the game's own squirrel will be a black one, modelled from that sheet (the prototype may run on the Wobblers' squirrel until then). R1.1 (grey) is the alternative coat.
 
-### R1.1 Eastern grey squirrel turnaround — `open`
+### R1.1 Eastern grey squirrel turnaround — `delivered`
 - **File:** `squirrel_grey_turnaround.png` → `reference/sheets/squirrel_grey_turnaround.png`
 - **Size:** 1920 × 1080
 - **Prompt:** Character turnaround sheet of one adult eastern grey squirrel
@@ -72,7 +72,7 @@ These shape the models. **R1.2, the black squirrel, matters most**: the game's o
   broad strokes, no fine hair detail; not cute, not chibi, no smile. Soft even
   studio light, no text.
 
-### R1.2 Black squirrel turnaround (Stratford's black morph) — `open`
+### R1.2 Black squirrel turnaround (Stratford's black morph) — `delivered`
 - **File:** `squirrel_black_turnaround.png` → `reference/sheets/squirrel_black_turnaround.png`
 - **Size:** 1920 × 1080
 - **Prompt:** The same layout and pose as R1.1 (side view facing right, top
@@ -83,7 +83,7 @@ These shape the models. **R1.2, the black squirrel, matters most**: the game's o
   very slightly lighter. Same painted storybook realism, same anatomy and
   proportions as a real grey squirrel. No text.
 
-### R1.3 Squirrel pose sheet — `open`
+### R1.3 Squirrel pose sheet — `delivered`
 - **File:** `squirrel_poses.png` → `reference/sheets/squirrel_poses.png`
 - **Size:** 1920 × 1080
 - **Prompt:** A model sheet of one eastern grey squirrel in eight poses, all
@@ -101,7 +101,7 @@ These shape the models. **R1.2, the black squirrel, matters most**: the game's o
   digging, nose down, front paws scrabbling at the ground, tail up. Accurate
   anatomy, painted storybook realism, no text.
 
-### R1.4 Squirrel head close-up — `open`
+### R1.4 Squirrel head close-up — `delivered`
 - **File:** `squirrel_head.png` → `reference/sheets/squirrel_head.png`
 - **Size:** 1920 × 1080
 - **Prompt:** Close-up model sheet of an eastern grey squirrel's head, three
@@ -111,7 +111,7 @@ These shape the models. **R1.2, the black squirrel, matters most**: the game's o
   the whiskers, the split upper lip, the cream throat and the rusty cheeks.
   Painted storybook realism, accurate anatomy, no text.
 
-### R1.5 Mute swan turnaround (the swans on the Avon) — `open`
+### R1.5 Mute swan turnaround (the swans on the Avon) — `delivered`
 - **File:** `swan_turnaround.png` → `reference/sheets/swan_turnaround.png`
 - **Size:** 1920 × 1080
 - **Prompt:** Turnaround sheet of one adult mute swan swimming, three views side
@@ -121,7 +121,7 @@ These shape the models. **R1.2, the black squirrel, matters most**: the game's o
   knob. Show the waterline as a faint flat line only. Painted storybook
   realism, no text.
 
-### R1.6 Canada goose turnaround — `open`
+### R1.6 Canada goose turnaround — `delivered`
 - **File:** `goose_turnaround.png` → `reference/sheets/goose_turnaround.png`
 - **Size:** 1920 × 1080
 - **Prompt:** Turnaround sheet of one Canada goose standing on grass, three
@@ -138,21 +138,21 @@ Tiling, 1024 × 1024, painted storybook realism (see Formats).
 
 | # | File | Real size | Prompt |
 |---|---|---|---|
-| T2.1 | `textures/brick_red.png` | 2 m × 2 m | Seamless tiling texture of old red-orange Ontario clay brick in running bond, slightly irregular bricks with soft colour variation, pale grey lime mortar, a little weathering; painted storybook realism, flat front-on, no shadows. Status: `open` |
-| T2.2 | `textures/brick_buff.png` | 2 m × 2 m | Seamless tiling texture of the pale buff-yellow "white brick" typical of 19th-century southwestern Ontario, running bond, warm cream to honey bricks, pale mortar, light weathering; painted, flat front-on. Status: `open` |
-| T2.3 | `textures/stone_ashlar.png` | 2 m × 2 m | Seamless tiling texture of dressed grey-beige limestone ashlar blocks with thin joints, as on a Victorian courthouse or church; painted, flat front-on. Status: `open` |
-| T2.4 | `textures/clapboard.png` | 2 m × 2 m | Seamless tiling texture of painted horizontal wooden clapboard siding, soft off-white paint, gentle wear; painted, flat front-on. Status: `open` |
-| T2.5 | `textures/roof_shingles.png` | 3 m × 3 m | Seamless tiling texture of dark grey-brown asphalt roof shingles in staggered rows, seen square-on; painted. Status: `open` |
-| T2.6 | `textures/roof_metal.png` | 3 m × 3 m | Seamless tiling texture of a weathered standing-seam metal roof, dull grey-green with vertical seams; painted. Status: `open` |
-| T2.7 | `textures/roof_slate.png` | 3 m × 3 m | Seamless tiling texture of a Victorian slate roof, blue-grey slates with a band of fish-scale slates; painted. Status: `open` |
-| T2.8 | `textures/asphalt.png` | 4 m × 4 m | Seamless tiling texture of worn street asphalt seen from directly above, dark grey with fine aggregate, a few patched cracks, a scattering of fallen maple leaves; painted. Status: `open` |
-| T2.9 | `textures/sidewalk.png` | 3 m × 3 m | Seamless tiling texture of a concrete sidewalk seen from above, square slabs 1.5 m with control joints, pale warm grey, a few leaves; painted. Status: `open` |
-| T2.10 | `textures/grass_autumn.png` | 4 m × 4 m | Seamless tiling texture of a mown green lawn in October seen from above, with scattered fallen red, orange and yellow maple leaves; painted. Status: `open` |
-| T2.11 | `textures/leaf_litter.png` | 3 m × 3 m | Seamless tiling texture of thick autumn leaf litter under trees seen from above: maple, oak and linden leaves in red, orange, gold and brown; painted. Status: `open` |
-| T2.12 | `textures/bark_maple.png` | 1 m × 2 m | Seamless tiling texture of mature sugar maple bark, grey with long vertical plates and furrows, seen front-on; painted. Must tile horizontally and vertically. Status: `open` |
-| T2.13 | `textures/bark_willow.png` | 1 m × 2 m | Seamless tiling texture of old weeping willow bark, deep criss-cross furrows, grey-brown; painted. Status: `open` |
-| T2.14 | `textures/gravel_path.png` | 3 m × 3 m | Seamless tiling texture of a fine crushed-limestone park path seen from above, pale tan; painted. Status: `open` |
-| T2.15 | `textures/water_avon.png` | 8 m × 8 m | Seamless tiling texture of calm river water seen from above, deep green-blue with soft ripples and a few floating leaves; painted. Status: `open` |
+| T2.1 | `textures/brick_red.png` | 2 m × 2 m | Seamless tiling texture of old red-orange Ontario clay brick in running bond, slightly irregular bricks with soft colour variation, pale grey lime mortar, a little weathering; painted storybook realism, flat front-on, no shadows. Status: `delivered` |
+| T2.2 | `textures/brick_buff.png` | 2 m × 2 m | Seamless tiling texture of the pale buff-yellow "white brick" typical of 19th-century southwestern Ontario, running bond, warm cream to honey bricks, pale mortar, light weathering; painted, flat front-on. Status: `delivered` |
+| T2.3 | `textures/stone_ashlar.png` | 2 m × 2 m | Seamless tiling texture of dressed grey-beige limestone ashlar blocks with thin joints, as on a Victorian courthouse or church; painted, flat front-on. Status: `delivered` |
+| T2.4 | `textures/clapboard.png` | 2 m × 2 m | Seamless tiling texture of painted horizontal wooden clapboard siding, soft off-white paint, gentle wear; painted, flat front-on. Status: `delivered` |
+| T2.5 | `textures/roof_shingles.png` | 3 m × 3 m | Seamless tiling texture of dark grey-brown asphalt roof shingles in staggered rows, seen square-on; painted. Status: `delivered` |
+| T2.6 | `textures/roof_metal.png` | 3 m × 3 m | Seamless tiling texture of a weathered standing-seam metal roof, dull grey-green with vertical seams; painted. Status: `delivered` |
+| T2.7 | `textures/roof_slate.png` | 3 m × 3 m | Seamless tiling texture of a Victorian slate roof, blue-grey slates with a band of fish-scale slates; painted. Status: `delivered` |
+| T2.8 | `textures/asphalt.png` | 4 m × 4 m | Seamless tiling texture of worn street asphalt seen from directly above, dark grey with fine aggregate, a few patched cracks, a scattering of fallen maple leaves; painted. Status: `delivered` |
+| T2.9 | `textures/sidewalk.png` | 3 m × 3 m | Seamless tiling texture of a concrete sidewalk seen from above, square slabs 1.5 m with control joints, pale warm grey, a few leaves; painted. Status: `delivered` |
+| T2.10 | `textures/grass_autumn.png` | 4 m × 4 m | Seamless tiling texture of a mown green lawn in October seen from above, with scattered fallen red, orange and yellow maple leaves; painted. Status: `delivered` |
+| T2.11 | `textures/leaf_litter.png` | 3 m × 3 m | Seamless tiling texture of thick autumn leaf litter under trees seen from above: maple, oak and linden leaves in red, orange, gold and brown; painted. Status: `delivered` |
+| T2.12 | `textures/bark_maple.png` | 1 m × 2 m | Seamless tiling texture of mature sugar maple bark, grey with long vertical plates and furrows, seen front-on; painted. Must tile horizontally and vertically. Status: `delivered` |
+| T2.13 | `textures/bark_willow.png` | 1 m × 2 m | Seamless tiling texture of old weeping willow bark, deep criss-cross furrows, grey-brown; painted. Status: `delivered` |
+| T2.14 | `textures/gravel_path.png` | 3 m × 3 m | Seamless tiling texture of a fine crushed-limestone park path seen from above, pale tan; painted. Status: `delivered` |
+| T2.15 | `textures/water_avon.png` | 8 m × 8 m | Seamless tiling texture of calm river water seen from above, deep green-blue with soft ripples and a few floating leaves; painted. Status: `delivered` |
 
 ## Round 3: facade elevations (downtown blocks)
 
@@ -164,18 +164,18 @@ symbol (a teacup, a book, scissors, a loaf).
 
 | # | File | Prompt |
 |---|---|---|
-| F3.1 | `facades/commercial_red_3storey.png` | Front elevation of a three-storey 1880s Italianate commercial block in red brick, two shopfronts at street level with large display windows, recessed doors and a blank sign band, tall round-arched upper windows with stone hoods, a bracketed cornice at the top. Status: `open` |
-| F3.2 | `facades/commercial_buff_2storey.png` | Front elevation of a two-storey Victorian commercial building in buff-yellow brick, one wide shopfront with a green-and-cream striped awning, segmental-arched upper windows, a simple corbelled brick cornice. Status: `open` |
-| F3.3 | `facades/commercial_red_2storey_narrow.png` | Front elevation of a narrow two-storey red brick shop, a single shopfront with a painted wooden frame in deep blue, a blank sign board, two tall upper windows, a pressed-metal cornice. Status: `open` |
-| F3.4 | `facades/commercial_stone_bank.png` | Front elevation of a small Edwardian bank building in grey limestone, a central arched doorway, two tall windows, pilasters and a plain pediment, no lettering. Status: `open` |
-| F3.5 | `facades/commercial_corner_red_3storey.png` | Front elevation of a three-storey Victorian corner block in red brick with a canted corner entrance, shop windows, a row of paired upper windows and a heavy bracketed cornice. Status: `open` |
-| F3.6 | `facades/commercial_painted_2storey.png` | Front elevation of a two-storey 1900s storefront whose brick is painted cream, a bay window on the upper floor, a burgundy awning over the shop window, a blank sign band. Status: `open` |
-| F3.7 | `facades/house_italianate_buff.png` | Front elevation of a two-storey Italianate house in buff-yellow brick, tall windows with arched hoods, a front porch with turned posts, a low hipped roof with paired brackets. Status: `open` |
-| F3.8 | `facades/house_ontario_cottage_red.png` | Front elevation of a one-and-a-half-storey Ontario Gothic cottage in red brick with a steep central gable with a pointed window, gingerbread bargeboard, a front door with sidelights and a window either side. Status: `open` |
-| F3.9 | `facades/house_clapboard_gable.png` | Front elevation of a two-storey front-gabled wooden house with white clapboard, a full-width front porch, double-hung windows with dark green shutters. Status: `open` |
-| F3.10 | `facades/house_queen_anne_red.png` | Front elevation of a Queen Anne style red brick house with a corner turret, a wrap-around porch, fish-scale shingles in the gable, and a stained-glass transom. Status: `open` |
-| F3.11 | `facades/side_wall_red.png` | Elevation of the plain side wall of a three-storey red brick commercial building: a few small windows, a faded painted-over ghost sign with no readable words, a metal fire escape. Status: `open` |
-| F3.12 | `facades/back_lane.png` | Elevation of the back of a row of brick commercial buildings: mismatched doors, small windows, utility meters, a wooden stair, downspouts. Status: `open` |
+| F3.1 | `facades/commercial_red_3storey.png` | Front elevation of a three-storey 1880s Italianate commercial block in red brick, two shopfronts at street level with large display windows, recessed doors and a blank sign band, tall round-arched upper windows with stone hoods, a bracketed cornice at the top. Status: `delivered` |
+| F3.2 | `facades/commercial_buff_2storey.png` | Front elevation of a two-storey Victorian commercial building in buff-yellow brick, one wide shopfront with a green-and-cream striped awning, segmental-arched upper windows, a simple corbelled brick cornice. Status: `delivered` |
+| F3.3 | `facades/commercial_red_2storey_narrow.png` | Front elevation of a narrow two-storey red brick shop, a single shopfront with a painted wooden frame in deep blue, a blank sign board, two tall upper windows, a pressed-metal cornice. Status: `delivered` |
+| F3.4 | `facades/commercial_stone_bank.png` | Front elevation of a small Edwardian bank building in grey limestone, a central arched doorway, two tall windows, pilasters and a plain pediment, no lettering. Status: `delivered` |
+| F3.5 | `facades/commercial_corner_red_3storey.png` | Front elevation of a three-storey Victorian corner block in red brick with a canted corner entrance, shop windows, a row of paired upper windows and a heavy bracketed cornice. Status: `delivered` |
+| F3.6 | `facades/commercial_painted_2storey.png` | Front elevation of a two-storey 1900s storefront whose brick is painted cream, a bay window on the upper floor, a burgundy awning over the shop window, a blank sign band. Status: `delivered` |
+| F3.7 | `facades/house_italianate_buff.png` | Front elevation of a two-storey Italianate house in buff-yellow brick, tall windows with arched hoods, a front porch with turned posts, a low hipped roof with paired brackets. Status: `delivered` |
+| F3.8 | `facades/house_ontario_cottage_red.png` | Front elevation of a one-and-a-half-storey Ontario Gothic cottage in red brick with a steep central gable with a pointed window, gingerbread bargeboard, a front door with sidelights and a window either side. Status: `delivered` |
+| F3.9 | `facades/house_clapboard_gable.png` | Front elevation of a two-storey front-gabled wooden house with white clapboard, a full-width front porch, double-hung windows with dark green shutters. Status: `delivered` |
+| F3.10 | `facades/house_queen_anne_red.png` | Front elevation of a Queen Anne style red brick house with a corner turret, a wrap-around porch, fish-scale shingles in the gable, and a stained-glass transom. Status: `delivered` |
+| F3.11 | `facades/side_wall_red.png` | Elevation of the plain side wall of a three-storey red brick commercial building: a few small windows, a faded painted-over ghost sign with no readable words, a metal fire escape. Status: `delivered` |
+| F3.12 | `facades/back_lane.png` | Elevation of the back of a row of brick commercial buildings: mismatched doors, small windows, utility meters, a wooden stair, downspouts. Status: `delivered` |
 
 ## Round 4: cutouts and props
 
@@ -183,19 +183,23 @@ On a flat `#FF00FF` background (keyed out on delivery).
 
 | # | File | Size | Prompt |
 |---|---|---|---|
-| S4.1 | `sprites/maple_leaf_cluster.png` | 1024 × 1024 | A cluster of sugar maple leaves on thin twigs in autumn red, orange and gold, seen from the side, dense enough to read as foliage, for tree canopies; painted storybook realism. Status: `open` |
-| S4.2 | `sprites/oak_leaf_cluster.png` | 1024 × 1024 | A cluster of red oak leaves in russet and brown on twigs, for tree canopies; painted. Status: `open` |
-| S4.3 | `sprites/willow_strands.png` | 1024 × 1024 | Long hanging strands of weeping willow leaves in yellow-green turning gold, for the willows along the Avon; painted. Status: `open` |
-| S4.4 | `sprites/spruce_bough.png` | 1024 × 1024 | A dark green spruce bough seen from the side, for conifer canopies; painted. Status: `open` |
-| S4.5 | `sprites/fallen_leaves.png` | 1024 × 1024 | Twelve separate single fallen leaves laid out in a grid (maple red, maple orange, maple gold, oak brown, linden yellow, ...), each whole and not touching; painted. Status: `open` |
-| S4.6 | `sprites/nuts.png` | 1024 × 1024 | Six separate nuts and seeds in a row, not touching: an acorn with its cap, a black walnut in its green husk, a shelled black walnut, a hickory nut, a horse chestnut (conker), a sunflower seed head; painted storybook realism. Status: `open` |
-| S4.7 | `sprites/flower_planter.png` | 1024 × 1024 | A rectangular wooden street planter overflowing with orange and purple mums and trailing ivy, three-quarter view; painted. Status: `open` |
+| S4.1 | `sprites/maple_leaf_cluster.png` | 1024 × 1024 | A cluster of sugar maple leaves on thin twigs in autumn red, orange and gold, seen from the side, dense enough to read as foliage, for tree canopies; painted storybook realism. Status: `delivered` |
+| S4.2 | `sprites/oak_leaf_cluster.png` | 1024 × 1024 | A cluster of red oak leaves in russet and brown on twigs, for tree canopies; painted. Status: `delivered` |
+| S4.3 | `sprites/willow_strands.png` | 1024 × 1024 | Long hanging strands of weeping willow leaves in yellow-green turning gold, for the willows along the Avon; painted. Status: `delivered` |
+| S4.4 | `sprites/spruce_bough.png` | 1024 × 1024 | A dark green spruce bough seen from the side, for conifer canopies; painted. Status: `delivered` |
+| S4.5 | `sprites/fallen_leaves.png` | 1024 × 1024 | Twelve separate single fallen leaves laid out in a grid (maple red, maple orange, maple gold, oak brown, linden yellow, ...), each whole and not touching; painted. Status: `delivered` |
+| S4.6 | `sprites/nuts.png` | 1024 × 1024 | Six separate nuts and seeds in a row, not touching: an acorn with its cap, a black walnut in its green husk, a shelled black walnut, a hickory nut, a horse chestnut (conker), a sunflower seed head; painted storybook realism. Status: `delivered` |
+| S4.7 | `sprites/flower_planter.png` | 1024 × 1024 | A rectangular wooden street planter overflowing with orange and purple mums and trailing ivy, three-quarter view; painted. Status: `delivered` |
 
 ## Round 5: title and interface
 
 | # | File | Size | Prompt |
 |---|---|---|---|
-| U5.1 | `ui/logo.png` | 2048 × 1024, transparent | Title logo reading exactly **Stratford Squirrel**, in warm cream hand-lettered serif capitals with a fine dark outline, the words on two lines, a small eastern grey squirrel sitting on the first S holding an acorn and a few red maple leaves drifting past; painted storybook style; spelled exactly; transparent background. Status: `open` |
-| U5.2 | `ui/title_backdrop.png` | 1920 × 1080 | A wide painted storybook view of downtown Stratford, Ontario in October from just above street level: a row of Victorian brick shopfronts and a red-brick town hall tower in the distance, maple trees in full red and gold, fallen leaves, warm late-afternoon sun; the lower middle third kept calm for the title; no people, no readable signs. Status: `open` |
-| U5.3 | `ui/icon.png` | 1024 × 1024 | App icon: the head and raised tail of an eastern grey squirrel in profile against a round maple-red background, painted, simple, readable when small, no text. Status: `open` |
-| U5.4 | `ui/map_parchment.png` | 2048 × 2048 | A sheet of warm parchment paper with soft deckled edges and faint stains, empty, for the town map; painted. Status: `open` |
+| U5.1 | `ui/logo.png` | 2048 × 1024, transparent | Title logo reading exactly **Stratford Squirrel**, in warm cream hand-lettered serif capitals with a fine dark outline, the words on two lines, a small eastern grey squirrel sitting on the first S holding an acorn and a few red maple leaves drifting past; painted storybook style; spelled exactly; transparent background. Status: `delivered` |
+| U5.2 | `ui/title_backdrop.png` | 1920 × 1080 | A wide painted storybook view of downtown Stratford, Ontario in October from just above street level: a row of Victorian brick shopfronts and a red-brick town hall tower in the distance, maple trees in full red and gold, fallen leaves, warm late-afternoon sun; the lower middle third kept calm for the title; no people, no readable signs. Status: `delivered` |
+| U5.3 | `ui/icon.png` | 1024 × 1024 | App icon: the head and raised tail of an eastern grey squirrel in profile against a round maple-red background, painted, simple, readable when small, no text. Status: `delivered` |
+| U5.4 | `ui/map_parchment.png` | 2048 × 2048 | A sheet of warm parchment paper with soft deckled edges and faint stains, empty, for the town map; painted. Status: `delivered` |
+
+## Delivery — 2026-11-01
+
+All 44 requested PNGs generated with built-in image_gen and saved at the paths above. Cutouts have native alpha transparency rather than a magenta key. Delivery dimensions, PNG decoding, and alpha channels verified; full set visually reviewed in a contact sheet. Prompts are recorded in `generation-prompts.json`. Texture edge continuity and facade projection still need an in-game material check; some facade artwork includes small foreground details. No playable prototype exists in this checkout to perform that check.
