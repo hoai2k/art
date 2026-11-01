@@ -6,14 +6,17 @@
 // stands on (world up on the ground, the wall's normal when climbing); `fwd` the heading (unit,
 // tangent to the surface). State: 'idle' | 'move' | 'air' | 'climb' | 'sit' | 'dig' | 'swim'.
 import * as THREE from 'three';
-import { raycast, resolveCapsule } from './collide.js';
+import { raycast, resolveCapsule, pathClear } from './collide.js';
 import { climbable as defaultClimbable } from '../surface.js';
 
-const UP = new THREE.Vector3(0, 1, 0);
+const UP = new THREE.Vector3(0, 1, 0), DOWN = new THREE.Vector3(0, -1, 0);
 const v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), v3 = new THREE.Vector3(), v4 = new THREE.Vector3();
 const ca = new THREE.Vector3(), cb = new THREE.Vector3();
 
-export function createController(T, { climbable = defaultClimbable } = {}) {
+// Every move that relocates the body (attaching to a wall, turning a corner, topping out, hopping a
+// step, snapping to the ground) must have a clear straight path from where the body is to where it
+// goes (`reach`), so it can never pass through a surface; the town's colliders are thin shells.
+export function createController(T, { climbable = defaultClimbable, hangable = () => false } = {}) {
   const c = {
     T,
     pos: new THREE.Vector3(), vel: new THREE.Vector3(),
@@ -32,6 +35,9 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
     debug: {},
   };
   c.climbable = climbable;
+  // can it hold on here? climbable, not a floor, and not an underside (cornice soffits, eaves)
+  // unless the surface is one it can hang under (branches, bark)
+  c.canCling = (hit) => climbable(hit.surface) && hit.normal.y < T.walkableY && (hit.normal.y > -0.35 || hangable(hit.surface));
 
   c.reset = (spawn) => {
     c.pos.set(spawn.x, spawn.y ?? 0, spawn.z);
@@ -85,6 +91,15 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
 
   function isWalkable(n) { return n.y >= T.walkableY; }
 
+  // body centre for a contact point and its surface normal
+  const centreOf = (p, n, out = new THREE.Vector3()) => out.copy(p).addScaledVector(n, T.radius * 0.9);
+  // can the body get from its centre to (point, normal) [via points] in straight lines?
+  function reach(world, point, normal, via = []) {
+    let a = centreOf(c.pos, c.up);
+    for (const v of via) { if (!pathClear(world, a, v)) return false; a = v; }
+    return pathClear(world, a, centreOf(point, normal));
+  }
+
   // ---------------------------------------------------------------- ground
   function stepGround(dt, controls, world, camera) {
     wishFromStick(controls, camera, 'ground');
@@ -125,7 +140,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
       const hit = ray(world, o, dir, look);
       if (hit && !isWalkable(hit.normal)) {
         const top = findTop(world, hit, dir);
-        if (top !== null && top - c.pos.y <= T.stepUp && top - c.pos.y > T.radius * 0.2) {
+        if (top !== null && top - c.pos.y <= T.stepUp && top - c.pos.y > T.radius * 0.2 && hopClear(world, top, dir)) {
           // hop the step: a small real jump that keeps the forward speed
           const h = top - c.pos.y + T.radius * 0.6;
           c.vel.copy(c.fwd).multiplyScalar(Math.max(c.speed, T.runSpeed * 0.3));
@@ -133,7 +148,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
           c.hop = 1; enterAir('hop');
           return;
         }
-        if (c.climbable(hit.surface) && dir.dot(hit.normal) < -0.5 && (c.speed > 0.2 || c.wishMag > 0.5) && hit.distance < T.radius + 0.06 * T.scale / 0.25 + c.speed * dt * 2) {
+        if (c.canCling(hit) && dir.dot(hit.normal) < -0.5 && reach(world, hit.point, hit.normal) && (c.speed > 0.2 || c.wishMag > 0.5) && hit.distance < T.radius + 0.06 * T.scale / 0.25 + c.speed * dt * 2) {
           attachClimb(hit, dir);
           return;
         }
@@ -141,18 +156,21 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
     }
 
     // move
+    const prevPos = v4.copy(c.pos).clone();
     c.pos.addScaledVector(c.vel, dt);
     collide(world, (n, surf) => {
       if (!isWalkable(n)) {
         const into = c.vel.dot(n);
         if (into < 0) { c.vel.addScaledVector(n, -into); c.speed = c.vel.dot(c.fwd); }
       }
-    });
+    }, prevPos);
     // ground snap
     const snap = T.snap + Math.abs(c.speed) * dt * 1.5;
     const o = v1.copy(c.pos).addScaledVector(c.up, T.radius * 2);
     let g = ray(world, o, v2.copy(c.up).negate(), T.radius * 2 + snap);
     if (!g || !isWalkable(g.normal)) g = ray(world, v1.copy(c.pos).addScaledVector(UP, T.radius * 2), v2.set(0, -1, 0), T.radius * 2 + snap);
+    // never snap up onto something above the body's centre (the underside of a ledge we're under)
+    if (g && v1.subVectors(g.point, c.pos).dot(c.up) > T.radius * 0.75) g = null;
     if (g && isWalkable(g.normal)) {
       c.pos.copy(g.point); c.surface = g.surface;
       c.up.lerp(g.normal, 1 - Math.exp(-dt * 20)).normalize();
@@ -172,6 +190,14 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
     c.state = Math.abs(c.speed) > 0.05 || c.wishMag > 0 ? 'move' : 'idle';
   }
 
+  // the hop's path: straight up from the body to above the step, then across onto it
+  function hopClear(world, top, dir) {
+    const a = centreOf(c.pos, UP);
+    const b = a.clone(); b.y = top + T.radius * 1.2;
+    const t = a.clone().addScaledVector(dir, T.radius * 2); t.y = top + T.radius * 1.2;
+    return pathClear(world, a, b) && pathClear(world, b, t);
+  }
+
   function findTop(world, hit, dir) {
     // the height of the top of the obstacle just past the hit point (null if too high / none)
     const o = v3.copy(hit.point).addScaledVector(dir, T.radius * 0.9);
@@ -184,14 +210,18 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
     return down.point.y;
   }
 
-  function collide(world, onContact) {
+  // push the body capsule out of the world; prevPos = where the feet were before this step, so a
+  // surface the capsule crossed pushes it back to the side it came from
+  const _prevMid = new THREE.Vector3(), _before = new THREE.Vector3();
+  function collide(world, onContact, prevPos) {
     const r = T.radius;
     const center = v3.copy(c.pos).addScaledVector(c.up, r);
     ca.copy(center).addScaledVector(c.fwd, -T.capsuleBack);
     cb.copy(center).addScaledVector(c.fwd, T.capsuleFront);
-    const before = v4.copy(ca);
-    resolveCapsule(world, ca, cb, r * 0.98, onContact, 4);
-    c.pos.add(before.subVectors(ca, before));
+    _before.copy(ca);
+    const prev = prevPos ? _prevMid.copy(prevPos).addScaledVector(c.up, r).addScaledVector(c.fwd, (T.capsuleFront - T.capsuleBack) / 2) : null;
+    resolveCapsule(world, ca, cb, r * 0.98, onContact, 4, prev);
+    c.pos.add(_before.subVectors(ca, _before));
   }
 
   // ---------------------------------------------------------------- air
@@ -256,7 +286,11 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
         c.pos.copy(hit.point); land(hit, world); return;
       }
     }
+    const prevPos = c.pos.clone();
     c.pos.add(step);
+    // don't fly into a pocket with a roof just overhead and no floor under it (the slot between a
+    // wall top and an overhanging roof): it's open in the collider but it's a wall to a squirrel
+    if (pocket(world, c.pos) && !pocket(world, prevPos)) { c.pos.x = prevPos.x; c.pos.z = prevPos.z; c.vel.x = 0; c.vel.z = 0; }
     let landed = null, wall = null;
     collide(world, (n, surf) => {
       const into = c.vel.dot(n);
@@ -265,11 +299,11 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
         if (c.climbable(surf) && !c.hop) wall = { n, surf };
         if (into < 0) c.vel.addScaledVector(n, -into);
       }
-    });
+    }, prevPos);
     // grab a climbable wall we fly into
     if (wall && c.airTime > 0.06) {
       const hit = ray(world, v1.copy(c.pos).addScaledVector(UP, T.radius).addScaledVector(wall.n, T.radius), v2.copy(wall.n).negate(), T.radius * 3);
-      if (hit && c.climbable(hit.surface) && !isWalkable(hit.normal)) { attachClimb(hit, v2); return; }
+      if (hit && c.canCling(hit) && reach(world, hit.point, hit.normal)) { attachClimb(hit, v2); return; }
     }
     // ground below
     if (c.vel.y <= 0) {
@@ -277,7 +311,7 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
       if (g && isWalkable(g.normal)) { c.pos.copy(g.point); land(g, world); return; }
       if (landed) {
         const g2 = ray(world, v1.copy(c.pos).addScaledVector(UP, T.radius * 2), v2.set(0, -1, 0), T.radius * 3);
-        if (g2 && isWalkable(g2.normal)) { c.pos.copy(g2.point); land(g2, world); return; }
+        if (g2 && isWalkable(g2.normal) && g2.point.y - c.pos.y <= T.radius * 0.75) { c.pos.copy(g2.point); land(g2, world); return; }
       }
     }
     // water
@@ -286,6 +320,13 @@ export function createController(T, { climbable = defaultClimbable } = {}) {
     // keep the jump buffer alive for coyote jumps
     if (c.jumpBuffer > 0 && c.coyote > 0 && !c.jumping) { doJump(world); }
     c.coyote -= dt;
+  }
+
+  function pocket(world, p) {
+    const o = v1.copy(p).addScaledVector(UP, T.radius);
+    const up = ray(world, o, UP, T.pocketRoof);
+    if (!up) return false;
+    return !ray(world, o, DOWN, T.pocketFloor);
   }
 
   function land(hit, world) {
