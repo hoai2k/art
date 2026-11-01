@@ -1,0 +1,36 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-01",
+  "assets": [
+    {
+      "file": "kit/windows_victorian.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/windows_victorian.png, 2048 x 1024 landscape sheet. A sheet of 8 separate Victorian window units in a 4 × 2 grid on transparent background, each square-on and filling its cell, the glass a dark reflective blue-grey with a soft sky reflection and a hint of lace curtain, painted wooden sashes: tall two-over-two round-arched, tall two-over-two segmental-arched, tall one-over-one flat-topped, paired round-arched, a bay-window front panel, an attic half-round window, a pointed Gothic window with simple tracery, a small square basement window. Painted storybook realism. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Native transparent background; opaque glass and solid architectural elements."
+    },
+    {
+      "file": "kit/shopfronts.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/shopfronts.png, 2048 x 1024 landscape sheet. A sheet of 4 separate Victorian shopfront units side by side on transparent background, each square-on and filling its cell: large plate-glass display windows over a low panelled base, a recessed glazed door with a transom, slim cast-iron columns, the glass showing a soft warm-lit shop interior with shelves and goods out of focus, no readable lettering. Frames painted in deep green, oxblood red, navy and black respectively. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Native transparent background; opaque glass and solid architectural elements."
+    },
+    {
+      "file": "kit/doors.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/doors.png, 2048 x 1024 landscape sheet. A sheet of 6 separate front doors with their frames on transparent background in a 3 × 2 grid, square-on: a panelled oak door with a fanlight, a green door with sidelights, a red Victorian door with an arched transom, a double church door with iron hinges in a pointed arch, a plain glazed commercial door, a weathered back-lane door. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Native transparent background; opaque glass and solid architectural elements."
+    },
+    {
+      "file": "kit/cornices.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/cornices.png, 2048 x 1024 landscape sheet. A sheet of 4 horizontal strips stacked one above another on transparent background, each a seamless horizontally tiling front elevation of a Victorian cornice about 1 m tall: a wooden bracketed cornice painted cream with paired scroll brackets, a pressed-metal cornice in dark green with dentils, a corbelled brick cornice in red brick, a stone cornice with a moulded profile. Must tile left to right. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Native transparent background; opaque glass and solid architectural elements."
+    },
+    {
+      "file": "kit/trim.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/trim.png, 2048 x 1024 landscape sheet. A sheet of 8 separate architectural trim pieces on transparent background in a 4 × 2 grid, square-on: a stone window hood with keystone (arched), a segmental brick arch with keystone, a flat stone lintel, a stone sill, a cream-painted wooden window surround, a pair of decorative scroll brackets, a sign band panel (blank, framed), a carved gable bargeboard section. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Native transparent background; opaque glass and solid architectural elements."
+    },
+    {
+      "file": "kit/awnings.png",
+      "size": "2048 × 1024",
+      "prompt": "Asset kit/awnings.png, 2048 x 1024 landscape sheet. A sheet of 4 separate shop awning fabrics, flat and square-on, edge to edge, each filling a quarter of the sheet side by side: green and cream stripes, oxblood red plain with a scalloped edge, navy with a thin white stripe, burnt orange plain; slightly weathered canvas. Strict model texture kit: flat orthographic front elevation, no perspective, no surrounding wall, no sky or ground, no cast directional shadows, even diffuse light. Exactly the specified item count and equal grid cells, items centered filling cells without overlap; left-to-right then top-to-bottom order. Painted autumn storybook realism, fine soft gouache brushwork, warm harmonious colours, gently simplified real Victorian Ontario architecture, no photography, text, logos or watermarks. Four equal vertical quarter panels across sheet, each fabric flat not a 3D canopy."
+    }
+  ]
+}
