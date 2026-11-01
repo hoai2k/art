@@ -1,0 +1,81 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-01",
+  "assets": [
+    {
+      "file": "textures/soil_closeup.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of garden soil seen from directly above at very close range: dark brown crumbly earth with tiny grains, small pebbles, a few rootlets and bits of decayed leaf; painted, no shadows from a direction. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "textures/grass_roots_closeup.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of the ground at the base of a lawn seen from above at very close range: soil, moss, the bases of grass stems, a clover leaf, a fallen maple seed; painted. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "textures/moss.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of a cushion of green moss seen from above at close range, tiny star-shaped shoots, a few tiny fallen leaf fragments; painted. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "textures/concrete_closeup.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of weathered sidewalk concrete seen from above at very close range: exposed aggregate, fine cracks, a little grit and a speck of lichen; painted. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "textures/asphalt_closeup.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of road asphalt seen from above at very close range: black binder and grey-brown stones of different sizes, grit in the gaps; painted. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "textures/bark_closeup.png",
+      "size": "1024 × 1024",
+      "prompt": "Seamless tiling texture of maple bark at very close range, deep furrows and ridges with a patch of pale green lichen; painted, front-on. Delivery dimensions 1024 x 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Seamless periodic tile on ALL FOUR edges; perfectly square-on, no perspective or directional baked shadows, even diffuse ambient light."
+    },
+    {
+      "file": "sprites/grass_blades.png",
+      "size": "1024 × 1024",
+      "prompt": "Twenty separate single blades and stems of lawn grass and weeds, upright, not touching, in greens with a few straw-coloured dry ones, including a dandelion leaf, a plantain leaf and a clover stem with three leaves; painted, transparent background. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Separate complete objects evenly spaced in grid, no touching, no cropped objects, native transparent background."
+    },
+    {
+      "file": "sprites/pebbles.png",
+      "size": "1024 × 1024",
+      "prompt": "Sixteen separate small pebbles and stones seen from above, not touching: grey limestone, tan sandstone, a pink granite chip, a dark basalt one, rounded and angular; painted, transparent background. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Separate complete objects evenly spaced in grid, no touching, no cropped objects, native transparent background."
+    },
+    {
+      "file": "sprites/litter_bits.png",
+      "size": "1024 × 1024",
+      "prompt": "Sixteen separate tiny things found on the ground, not touching: maple keys (samaras), a broken acorn cap, a twig, a pine needle cluster, a seed husk, a bit of bark, a feather, a beech nut, a crumpled dry leaf, a tiny snail shell; painted, transparent background. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Separate complete objects evenly spaced in grid, no touching, no cropped objects, native transparent background."
+    },
+    {
+      "file": "facades/church_stone_gothic.png",
+      "size": "1024 × 1024",
+      "prompt": "Flat front elevation of a Victorian Gothic Revival church in grey-buff stone with a central pointed-arch doorway, a large pointed window with tracery above it and buttresses at the corners, the roofline at the top edge (the tower is built separately); edge to edge, no sky, no ground, no trees. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. STRICT texture elevation, flat orthographic directly front-on, fill entire square edge to edge with building facade. Roofline touches TOP border, ground line touches BOTTOM border, side walls touch SIDE borders. No margins, sky, ground surface, gardens, trees, foliage, people, cars, shadows cast outside building."
+    },
+    {
+      "file": "facades/commercial_buff_3storey.png",
+      "size": "1024 × 1024",
+      "prompt": "Flat front elevation of a three-storey 1870s commercial block in buff-yellow brick, two shopfronts with dark green wooden frames, segmental-arched upper windows with keystones, a heavy wooden bracketed cornice; edge to edge, no sky, no ground, no trees, no readable signs. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. STRICT texture elevation, flat orthographic directly front-on, fill entire square edge to edge with building facade. Roofline touches TOP border, ground line touches BOTTOM border, side walls touch SIDE borders. No margins, sky, ground surface, gardens, trees, foliage, people, cars, shadows cast outside building."
+    },
+    {
+      "file": "facades/commercial_modern_1960s.png",
+      "size": "1024 × 1024",
+      "prompt": "Flat front elevation of a plain two-storey 1960s commercial infill building in tan brick with a wide aluminium-framed shop window and a band of horizontal upper windows, blank sign band; edge to edge, no sky, no ground, no readable signs. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. STRICT texture elevation, flat orthographic directly front-on, fill entire square edge to edge with building facade. Roofline touches TOP border, ground line touches BOTTOM border, side walls touch SIDE borders. No margins, sky, ground surface, gardens, trees, foliage, people, cars, shadows cast outside building."
+    },
+    {
+      "file": "facades/house_buff_cottage.png",
+      "size": "1024 × 1024",
+      "prompt": "Flat front elevation of a one-and-a-half-storey buff-brick Ontario cottage with a centre door, a window either side and a small centre gable, edge to edge with the roofline at the top, the ground line at the bottom edge, no garden, no trees, no sky. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. STRICT texture elevation, flat orthographic directly front-on, fill entire square edge to edge with building facade. Roofline touches TOP border, ground line touches BOTTOM border, side walls touch SIDE borders. No margins, sky, ground surface, gardens, trees, foliage, people, cars, shadows cast outside building."
+    },
+    {
+      "file": "facades/garage_side.png",
+      "size": "1024 × 1024",
+      "prompt": "Flat elevation of a plain wooden garage or shed wall in weathered grey-green boards with one small window and a door, edge to edge, no sky, no ground. Delivery dimensions 1024 × 1024. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. STRICT texture elevation, flat orthographic directly front-on, fill entire square edge to edge with building facade. Roofline touches TOP border, ground line touches BOTTOM border, side walls touch SIDE borders. No margins, sky, ground surface, gardens, trees, foliage, people, cars, shadows cast outside building."
+    },
+    {
+      "file": "ui/sky_autumn.png",
+      "size": "4096 × 2048",
+      "prompt": "Equirectangular 360° sky for a game: a clear mid-October afternoon over flat southwestern Ontario, soft warm blue overhead fading to pale gold near the horizon, a few soft cumulus clouds, the sun low in the west-southwest (left of centre) with a gentle glow; no ground, no buildings, no birds; the bottom half fades to a warm haze; painted storybook style; must wrap seamlessly at the left and right edges. Delivery dimensions 4096 × 2048. Style: autumn storybook realism, fine soft gouache brushwork, harmonious warm colours, painted not photographic, real anatomy and architecture gently simplified. No text, logos, watermarks, noise, lens effects or people's faces. Equirectangular sky texture, left and right edges must join seamlessly, no text."
+    }
+  ]
+}
