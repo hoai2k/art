@@ -146,7 +146,9 @@ jobs:
         run: .github/scripts/build-game.sh stratford 'stratford/publish.sh local/pages/stratford'
       - name: Stratford Squirrel tests
         if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
-        run: node --test stratford/prototype/game/test/ && node stratford/prototype/game/scripts/browser-check.mjs
+        # Only the checks that need no browser: the Playwright ones (squirrel and
+        # town benches, scripts/browser-check.mjs) run locally before committing.
+        run: node --test stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs
       - name: Fail only if no game built
         run: .github/scripts/check-games.sh
       - uses: actions/upload-pages-artifact@v3
