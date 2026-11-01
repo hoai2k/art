@@ -1,0 +1,34 @@
+{
+  "tool": "built-in imagegen",
+  "sprites": [
+    {
+      "file": "kingdomofthefairies/assets/azurine-jump.webp",
+      "size": [
+        300,
+        500
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "63ba8a416f2cc47005792d1e570519466b5981f810666d9c20774568bfee3784"
+    },
+    {
+      "file": "kingdomofthefairies/assets/azurine-jump-tinted.webp",
+      "size": [
+        300,
+        500
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "4ed359219998e643e9b65cb550e8e46fe90b275b1af46272d4aac82036ed1302"
+    }
+  ],
+  "victoryStingerDuration": 7.000816,
+  "fadeOut": 1.65,
+  "weddingFadeIn": 2.8,
+  "victoryFadeStart": 3.45,
+  "weddingMusicLead": 1.2
+}

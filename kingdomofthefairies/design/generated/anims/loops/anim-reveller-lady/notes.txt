@@ -1,0 +1,6 @@
+Pink-clad court performer from the armoury scene, used as a lady-reveller pilot. This is a small hand flourish and sway, not a full dance routine. Original film tint retained. 18 displayed frames, ping-pong return, stable skirt/feet anchor. Judge the footage costume beside the existing painted sprite before broader rollout.
+Source: https://commons.wikimedia.org/wiki/File:Le_Royaume_des_f%C3%A9es_(1903).webm
+Original timestamps: 329.9–330.65 seconds.
+source.mp4 is a video-packet copy with approximately one second of context either side; source frames were extracted at 12 fps.
+Masks: SAM 2.1 Hiera Tiny; selection points retained in tracking.json. Tiny detached specks removed, alpha edge softened 0.45 source pixels.
+Loop duration: 1.5686274509803921 seconds at 76.5 BPM. Stored sequence already includes the return half.

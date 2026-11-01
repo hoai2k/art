@@ -1,0 +1,234 @@
+[
+  {
+    "id": "sailor-apex",
+    "source": "air.png",
+    "component": 1,
+    "sourceCrop": [
+      36,
+      53,
+      533,
+      604
+    ],
+    "sourceHeadHeight": 117,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.5128205128205128,
+    "sourceRootX": 275,
+    "placement": [
+      57,
+      157,
+      255,
+      283
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-fall",
+    "source": "air.png",
+    "component": 2,
+    "sourceCrop": [
+      539,
+      54,
+      999,
+      756
+    ],
+    "sourceHeadHeight": 119,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.5042016806722689,
+    "sourceRootX": 772,
+    "placement": [
+      63,
+      86,
+      232,
+      354
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-land",
+    "source": "air.png",
+    "component": 5,
+    "sourceCrop": [
+      77,
+      928,
+      511,
+      1439
+    ],
+    "sourceHeadHeight": 118,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.5084745762711864,
+    "sourceRootX": 290,
+    "placement": [
+      72,
+      180,
+      221,
+      260
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-throw",
+    "source": "air.png",
+    "component": 4,
+    "sourceCrop": [
+      509,
+      827,
+      1008,
+      1485
+    ],
+    "sourceHeadHeight": 114,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.5263157894736842,
+    "sourceRootX": 703,
+    "placement": [
+      78,
+      94,
+      263,
+      346
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-climb-a",
+    "source": "climb.png",
+    "component": 1,
+    "sourceCrop": [
+      58,
+      11,
+      479,
+      817
+    ],
+    "sourceHeadHeight": 127,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.47244094488188976,
+    "sourceRootX": 245,
+    "placement": [
+      92,
+      59,
+      199,
+      381
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-climb-b",
+    "source": "climb.png",
+    "component": 2,
+    "sourceCrop": [
+      602,
+      79,
+      980,
+      830
+    ],
+    "sourceHeadHeight": 125,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.48,
+    "sourceRootX": 781,
+    "placement": [
+      94,
+      80,
+      181,
+      360
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-stairs-a",
+    "source": "climb.png",
+    "component": 3,
+    "sourceCrop": [
+      71,
+      801,
+      510,
+      1508
+    ],
+    "sourceHeadHeight": 121,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.49586776859504134,
+    "sourceRootX": 270,
+    "placement": [
+      81,
+      89,
+      218,
+      351
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  },
+  {
+    "id": "sailor-stairs-b",
+    "source": "climb.png",
+    "component": 4,
+    "sourceCrop": [
+      574,
+      818,
+      989,
+      1490
+    ],
+    "sourceHeadHeight": 123,
+    "referenceHeadHeight": 60,
+    "uniformScale": 0.4878048780487805,
+    "sourceRootX": 768,
+    "placement": [
+      85,
+      112,
+      202,
+      328
+    ],
+    "size": [
+      360,
+      440
+    ],
+    "anchor": [
+      180,
+      440
+    ]
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "band-trio-idle-b",
+    "title": "The band trio, idle frame B",
+    "width": 900,
+    "height": 900,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-trio` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the guitarist's strumming hand is down across the strings; the member in the hat tilts his head to the left; the bearded singer leans a little to the left with his mouth open on a note. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "band-trio",
+    "reference": "references/band-trio.png",
+    "referenceSize": [
+      900,
+      900
+    ]
+  },
+  {
+    "id": "band-trio-idle-c",
+    "title": "The band trio, idle frame C",
+    "width": 900,
+    "height": 900,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-trio` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the guitarist's strumming hand is up above the strings; the member in the hat shifts his weight to his other foot, one hand at the hat brim; the bearded singer leans a little to the right, head tilted. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "band-trio",
+    "reference": "references/band-trio.png",
+    "referenceSize": [
+      900,
+      900
+    ]
+  },
+  {
+    "id": "band-beard-idle-b",
+    "title": "The bearded band member, idle frame B",
+    "width": 400,
+    "height": 800,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-beard` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: he leans in slightly, head tipped forward, mouth wide on a note. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "band-beard",
+    "reference": "references/band-beard.png",
+    "referenceSize": [
+      400,
+      800
+    ]
+  },
+  {
+    "id": "band-beard-idle-c",
+    "title": "The bearded band member, idle frame C",
+    "width": 400,
+    "height": 800,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-beard` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: he leans back slightly, chin raised, eyes closed, shoulders lifted. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "band-beard",
+    "reference": "references/band-beard.png",
+    "referenceSize": [
+      400,
+      800
+    ]
+  },
+  {
+    "id": "reveller-yellow-idle-b",
+    "title": "The reveller in yellow, idle frame B",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-yellow` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the other knee is raised and the arms are swapped, mid-step of the same jig. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-yellow",
+    "reference": "references/reveller-yellow.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "reveller-yellow-idle-c",
+    "title": "The reveller in yellow, idle frame C",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-yellow` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: both feet down, knees bent, arms flung up high, as if landing from a hop. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-yellow",
+    "reference": "references/reveller-yellow.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "reveller-shaggy-idle-b",
+    "title": "The shaggy sea-creature reveller, idle frame B",
+    "width": 260,
+    "height": 440,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-shaggy` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are lowered to shoulder height and the fringe strands swing out to the left. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-shaggy",
+    "reference": "references/reveller-shaggy.png",
+    "referenceSize": [
+      260,
+      440
+    ]
+  },
+  {
+    "id": "reveller-shaggy-idle-c",
+    "title": "The shaggy sea-creature reveller, idle frame C",
+    "width": 260,
+    "height": 440,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-shaggy` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are raised high and the fringe strands swing out to the right. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-shaggy",
+    "reference": "references/reveller-shaggy.png",
+    "referenceSize": [
+      260,
+      440
+    ]
+  },
+  {
+    "id": "reveller-jester-idle-b",
+    "title": "The harlequin reveller, idle frame B",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-jester` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the opposite leg is kicked out and the belled cap tips the other way. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-jester",
+    "reference": "references/reveller-jester.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "reveller-jester-idle-c",
+    "title": "The harlequin reveller, idle frame C",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-jester` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: standing on both feet with a small bow, one arm swept across the body, bells swinging. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-jester",
+    "reference": "references/reveller-jester.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "reveller-lady-idle-b",
+    "title": "The lady reveller in stripes, idle frame B",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-lady` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: she holds her skirt out to the other side and points the opposite toe. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-lady",
+    "reference": "references/reveller-lady.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "reveller-lady-idle-c",
+    "title": "The lady reveller in stripes, idle frame C",
+    "width": 220,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-lady` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: both feet together on tiptoe, skirt lifted in both hands, the hat feathers bobbing. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "reveller-lady",
+    "reference": "references/reveller-lady.png",
+    "referenceSize": [
+      220,
+      420
+    ]
+  },
+  {
+    "id": "sea-spirit-idle-b",
+    "title": "The sea spirit, idle frame B",
+    "width": 300,
+    "height": 600,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `sea-spirit` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are a little lower and the veil billows out to the left; the spray at her feet curls the other way. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s pale ghostly white with only the faintest washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "sea-spirit",
+    "reference": "references/sea-spirit.png",
+    "referenceSize": [
+      300,
+      600
+    ]
+  },
+  {
+    "id": "sea-spirit-idle-c",
+    "title": "The sea spirit, idle frame C",
+    "width": 300,
+    "height": 600,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `sea-spirit` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are a little higher and the veil billows out to the right; the spray rises a little. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s pale ghostly white with only the faintest washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "sea-spirit",
+    "reference": "references/sea-spirit.png",
+    "referenceSize": [
+      300,
+      600
+    ]
+  },
+  {
+    "id": "witch-stand-idle-b",
+    "title": "The witch, idle frame B",
+    "width": 260,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `witch-stand` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: her head turns very slightly toward the viewer and her hair drifts as if in a current; the hand with the sea rose stays where it is. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "witch-stand",
+    "reference": "references/witch-stand.png",
+    "referenceSize": [
+      260,
+      420
+    ]
+  },
+  {
+    "id": "witch-stand-idle-c",
+    "title": "The witch, idle frame C",
+    "width": 260,
+    "height": 420,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `witch-stand` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the wand in her other hand is lifted a little, its star glinting, and her robes ripple at the hem; the hand with the sea rose stays where it is. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "witch-stand",
+    "reference": "references/witch-stand.png",
+    "referenceSize": [
+      260,
+      420
+    ]
+  },
+  {
+    "id": "pageant-dancers-idle-b",
+    "title": "The line of pageant dancers, idle frame B",
+    "width": 1600,
+    "height": 700,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `pageant-dancers` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: every dancer rises on pointe with her arms raised in a high curve above her head. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "pageant-dancers",
+    "reference": "references/pageant-dancers.png",
+    "referenceSize": [
+      1600,
+      700
+    ]
+  },
+  {
+    "id": "pageant-dancers-idle-c",
+    "title": "The line of pageant dancers, idle frame C",
+    "width": 1600,
+    "height": 700,
+    "anchor": "bottom centre",
+    "section": "Fourth round: idle frames for the people",
+    "prompt": "One frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `pageant-dancers` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: every dancer steps to the side on the other foot, arms open at shoulder height. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "base": "pageant-dancers",
+    "reference": "references/pageant-dancers.png",
+    "referenceSize": [
+      1600,
+      700
+    ]
+  }
+]

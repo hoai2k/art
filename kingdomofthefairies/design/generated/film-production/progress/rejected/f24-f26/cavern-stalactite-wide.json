@@ -1,0 +1,22 @@
+{
+  "id": "cavern-stalactite",
+  "title": "A hanging stalactite",
+  "size": [
+    120,
+    280
+  ],
+  "anchor": "top centre (where it hangs from the ceiling)",
+  "transparent": true,
+  "prompt": "One long stalactite of pink and grey cavern rock exactly in the painting style and colours of cavern.webp (attach it): a lump of the cavern ceiling across the top of the canvas, about 110 px wide and 40 px deep, and from its middle the stalactite tapering down to a sharp, wet point at the bottom edge, about 48 px wide at its root, ridged and banded, a drop of water at its tip. Centred. Nothing but the rock: no background, no glow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-52df8598-5356-4802-b977-afec70c87c02.png",
+  "generation_id": "exec-52df8598-5356-4802-b977-afec70c87c02",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "pending",
+    "notes": "Awaiting prepared-sprite review."
+  }
+}

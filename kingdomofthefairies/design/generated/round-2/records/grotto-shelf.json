@@ -1,0 +1,15 @@
+{
+  "id": "grotto-shelf",
+  "title": "Wreck-site sea-floor shelf",
+  "width": 2000,
+  "height": 180,
+  "anchor": "top edge (walkable)",
+  "section": "Second round: Acts I and II",
+  "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied grotto-shelf for a platform game. A long ground row of sea-floor rock and sand at the wreck site, seen square-on, scattered with shells, a broken plank and kelp roots, the lower edge ragged. The top edge nearly level (no more than 6 px of rise and fall), as the drowned revellers lie on it. Match the top third of grotto-backcloth.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 2000:180 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Actual transparent alpha outside isolated shelf; no lettering.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/grotto-shelf-uneven.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

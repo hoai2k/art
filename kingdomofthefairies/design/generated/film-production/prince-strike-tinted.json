@@ -1,0 +1,23 @@
+{
+  "id": "prince-strike-tinted",
+  "size": [
+    300,
+    360
+  ],
+  "anchor": "bottom centre",
+  "title": "Prince striking with the sword (tinted)",
+  "transparent": true,
+  "edition": "film",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/superseded-in-game-review/prince-strike-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+  ],
+  "prompt": "Edit Image 1 (the lunging prince) to match the exact simple COSTUME and photographic hand-tinted style in Image 2 (his standing sprite). Keep Image 1's pose, face size, helmet, plume, sword, shield, limbs and silhouette exactly unchanged. Change only his torso and skirt: replace the ornate silver breastplate, gold star and gold fleurs-de-lis decoration with Image 2's plain azure-blue torso and plain azure tunic skirt with simple muted gold belt. Match image 2's soft grey photographic skin, subdued hand-stencil colours and simple stage costume, no new filigree. Keep the wrist and leg armour. Both are the same man in the same costume, only his pose differs. True transparent background; no added glow, floor, shadow or text. Entire extended sword visible.",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-db98c27d-73df-4bcd-84b0-46b7be4317aa.png",
+  "generation_id": "exec-db98c27d-73df-4bcd-84b0-46b7be4317aa",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Costume matched to tinted standing reference; pose and scale retained."
+  }
+}

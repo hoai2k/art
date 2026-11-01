@@ -1,0 +1,28 @@
+{
+  "id": "barrel-upturned-tinted",
+  "title": "A barrel falling upside down (tinted)",
+  "size": [
+    200,
+    240
+  ],
+  "anchor": "bottom centre (its open mouth)",
+  "transparent": true,
+  "edition": "film",
+  "fit_bounds": [
+    35,
+    92,
+    165,
+    240
+  ],
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-barrel-tinted.webp"
+  ],
+  "prompt": "Edit the reference to show ONLY its same wooden barrel, empty and turned UPSIDE DOWN. Remove the witch completely. CRITICAL: preserve the wooden barrel BODY's exact squat proportions, WIDTH:HEIGHT = 137:148, almost square; do not make it tall or narrow. Same stave texture, four dark hoops, muted rose grey wood and painted toy-theatre style. The barrel's wooden closed lid is now at its top, its open dark rim is at its bottom. A few tiny gold magic sparkles on the wood, no aura. Nothing above the closed lid. No witch or hands, no floor, no shadow, no lettering. True transparent background. Full barrel body visible. This replaces the wooden body beneath the witch's hands in the reference and MUST have the same body shape and size. The barrel's wooden body is 137 units wide and 148 tall, excluding all the removed witch; almost square silhouette. Render in the reference's photographic 1903 hand-stencil-coloured style: grey stage prop with soft texture and restrained sea-green and coral dye washes, no ink outlines. Match the warmer grey/coral wooden body in this tinted reference.",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "rejected",
+    "notes": "User identified the bottom opening as a broad oval with inconsistent perspective; replaced by shallow-lip correction."
+  },
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-aad5a553-2734-43a9-8435-fa906beb5731.png",
+  "generation_id": "exec-aad5a553-2734-43a9-8435-fa906beb5731"
+}

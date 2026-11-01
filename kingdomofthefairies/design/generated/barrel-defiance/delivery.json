@@ -1,0 +1,84 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-31",
+  "sprites": [
+    {
+      "file": "kingdomofthefairies/assets/witch-barrel-anger-a.webp",
+      "size": [
+        400,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "e2ad6c7b4b8d8a11402c1c4ed3cfb13dc5921cd4bb60a4f0d59207e2edc32e7c"
+    },
+    {
+      "file": "kingdomofthefairies/assets/witch-barrel-anger-a-tinted.webp",
+      "size": [
+        400,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "b77df32ed081db368564fcd5fcdc406a9ad2eddb8bccce74cd917bf172dac43d"
+    },
+    {
+      "file": "kingdomofthefairies/assets/witch-barrel-anger-b.webp",
+      "size": [
+        400,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "3dfcba69505a59e52b600a63ebff8c5117e3716f7e33ebb8d4e958ca6d92a680"
+    },
+    {
+      "file": "kingdomofthefairies/assets/witch-barrel-anger-b-tinted.webp",
+      "size": [
+        400,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "b28c5a055fe204e68bef50411101161d5146fdc95fe3e16631aae5737452e33f"
+    },
+    {
+      "file": "kingdomofthefairies/assets/azurine-jump.webp",
+      "size": [
+        300,
+        500
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "63ba8a416f2cc47005792d1e570519466b5981f810666d9c20774568bfee3784"
+    },
+    {
+      "file": "kingdomofthefairies/assets/azurine-jump-tinted.webp",
+      "size": [
+        300,
+        500
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "4ed359219998e643e9b65cb550e8e46fe90b275b1af46272d4aac82036ed1302"
+    }
+  ],
+  "victoryFadeStart": 3.45,
+  "victoryFadeOut": 1.65,
+  "weddingMusicLead": 1.2,
+  "weddingFadeIn": 2.8,
+  "musicLeadBeginsAt": "actual recording playback",
+  "azurinePaintedHeightAt160": 160
+}

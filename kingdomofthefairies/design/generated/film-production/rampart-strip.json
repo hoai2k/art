@@ -1,0 +1,17 @@
+{
+  "id": "rampart-strip",
+  "title": "The moonlit rampart",
+  "size": [
+    2560,
+    720
+  ],
+  "anchor": "bottom edge",
+  "prompt": "The castle rampart at night from references/expanded-world/moonlit-rampart.png (attach it): a carved stone balustrade with shields along the front, a walkway behind it at 80% height, the moonlit landscape beyond. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when it is repeated side by side.\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 2560:720, intended delivery 2560 x 720 pixels. True transparent background outside the single flat; preserve full silhouette. Asset rampart-strip.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-1e2bd9ae-0583-4ba1-b020-48850bbf9a03.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/expanded-world/moonlit-rampart.png"
+  ],
+  "source_commit": "1dc0344"
+}

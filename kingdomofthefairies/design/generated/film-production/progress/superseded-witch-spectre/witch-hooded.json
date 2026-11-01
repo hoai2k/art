@@ -1,0 +1,17 @@
+{
+  "id": "witch-hooded",
+  "title": "The witch standing",
+  "size": [
+    240,
+    400
+  ],
+  "anchor": "bottom centre",
+  "prompt": "the witch as in references/film-planning/originals/char-witch.png (attach it): a hunched figure in a ragged dark-teal hooded cloak that hides her face, grey clawed hands, a twisted staff, standing facing left, staff raised in a curse. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 240:400, target delivery 240 x 400 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset witch-hooded.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-7f4dcbf4-72e0-4fb0-bd48-95fe3f72499f.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-witch.png"
+  ],
+  "source_commit": "1dc0344"
+}

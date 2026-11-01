@@ -1,0 +1,23 @@
+{
+  "id": "prince-wall-side-d-tinted",
+  "title": "Traversing right, gathering (other step) (tinted)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Moving sideways to the RIGHT, gathering again: left hand closing on the right, left knee bent bringing the left foot across. Fourth traversing frame, leading back into prince-wall-side-a. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a-tinted.webp and prince-stand-tinted.webp) in costume, colours and scale. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nThe last attached image is the accepted b phase of this traverse. Preserve costume, helmet, back-slung shield, sword and body scale. Make the distinct new phase specified, not a duplicate. For C, right foot reaches LOW to the RIGHT, right arm a little above shoulder height; for D, bring the left hand across near the right hand and bend the left knee inward. Legs remain visible.",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/workspace/mini/kingdomofthefairies/assets/prince-climb-a-tinted.webp",
+    "/workspace/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+    "/workspace/mini/kingdomofthefairies/design/generated/film-production/prince-wall-side-b-tinted-original.png"
+  ],
+  "path": "/workspace/generated_images/exec-45757a99-c5fe-42ef-a54e-4b5940953d8b.png",
+  "generation_id": "exec-45757a99-c5fe-42ef-a54e-4b5940953d8b",
+  "review": {
+    "status": "accepted",
+    "notes": "C uses a low rightward step with a higher reach; D gathers toward the right. Costume, rear view and transparent silhouette accepted. Browser checks passed 36 film scenes in each look and 28 scenes in each older edition with no page errors."
+  }
+}

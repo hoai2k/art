@@ -1,0 +1,36 @@
+[
+  {
+    "asset": "cavern-platform",
+    "tool": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Production 2D side-view game scenery cutout. References: image 1 cavern.webp is the exact colour, painting texture and geology reference; image 2 cavern-ledge.webp is the walkable rim reference. Generate one broad, solid ROCK PLATFORM SUPPORT with a flat, narrow, pale horizontal walkable top spanning almost the entire canvas width and aligned flush to the top edge. Below it a substantial continuous solid rock face extends downward for two thirds of its width, made of jagged vertical strata, craggy shelves and deep dark crevices. Silhouette has rough slightly tapering sides and a broken irregular rocky foot, NOT a rectangle, NOT floating thin stalactites or a hollow arch. Keep the middle opaque rock. Match the plum, muted rose, slate teal, blue-grey and warm stone palette and front-on theatrical gouache brushwork of the cave. Painted toy-theatre scenery, flat frontal lighting, rich but restrained colours exactly like the cave. Genuine transparent alpha around the rock silhouette, no background, water, sky, reflection, characters, text, symbols, lighting effects or cast shadow. Landscape 3:2 composition, entire rock included. Top is straight and nearly full width, sides and bottom irregular natural rock. This replaces a large rectangular support below a platform.",
+    "references": [
+      "assets/cavern.webp",
+      "assets/cavern-ledge.webp"
+    ],
+    "native": "/Users/hoai/.codex/generated_images/01a193ae-f3f2-74d1-aaba-5c377bd696e3/exec-1c9748df-1eaf-48c5-8864-334cc1571a9e.png",
+    "crop": [
+      12,
+      137,
+      1526,
+      947
+    ],
+    "source": "source/cavern-platform.png"
+  },
+  {
+    "asset": "cavern-platform-tinted",
+    "tool": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Production 2D side-view game scenery cutout. References: image 1 cavern.webp is the exact colour, painting texture and geology reference; image 2 cavern-ledge.webp is the walkable rim reference. Generate one broad, solid ROCK PLATFORM SUPPORT with a flat, narrow, pale horizontal walkable top spanning almost the entire canvas width and aligned flush to the top edge. Below it a substantial continuous solid rock face extends downward for two thirds of its width, made of jagged vertical strata, craggy shelves and deep dark crevices. Silhouette has rough slightly tapering sides and a broken irregular rocky foot, NOT a rectangle, NOT floating thin stalactites or a hollow arch. Keep the middle opaque rock. Match the plum, muted rose, slate teal, blue-grey and warm stone palette and front-on theatrical gouache brushwork of the cave. A restrained hand-stencil-tinted 1903 theatrical film look, silvery grey shadows with muted rose and teal washes; same geometry and no saturation increase. Genuine transparent alpha around the rock silhouette, no background, water, sky, reflection, characters, text, symbols, lighting effects or cast shadow. Landscape 3:2 composition, entire rock included. Top is straight and nearly full width, sides and bottom irregular natural rock. This replaces a large rectangular support below a platform.",
+    "references": [
+      "assets/cavern.webp",
+      "assets/cavern-ledge.webp"
+    ],
+    "native": "/Users/hoai/.codex/generated_images/01a193ae-f3f2-74d1-aaba-5c377bd696e3/exec-fa1668c8-bfef-4490-bbd3-caa8f7793ab8.png",
+    "crop": [
+      3,
+      90,
+      1533,
+      985
+    ],
+    "source": "source/cavern-platform-tinted.png"
+  }
+]

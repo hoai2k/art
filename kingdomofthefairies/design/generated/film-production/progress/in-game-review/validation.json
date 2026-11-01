@@ -1,0 +1,32 @@
+{
+  "looks": [
+    "original",
+    "tinted"
+  ],
+  "effects": [
+    "off",
+    "gentle",
+    "full"
+  ],
+  "scene_captures": 132,
+  "page_errors": [],
+  "character_scale": "Invariant across effects; each cast look measured separately",
+  "stalactites": [
+    "attached cap",
+    "shivering spike",
+    "detached fall aligned to physics tip",
+    "grounded painted shards",
+    "no rubble on pool splash"
+  ],
+  "barrel": "Ground line/rim aligned; body widths within 8%; lower lip perspective repaired",
+  "tests": {
+    "film_art_suites": 7,
+    "widowsbay_suites": 5,
+    "partial_suites": 5
+  },
+  "extra_animations": [
+    true,
+    false
+  ],
+  "scale_comparison": "Original and Tinted calibrated separately; identical per-look scale across all effects and both animation paths"
+}

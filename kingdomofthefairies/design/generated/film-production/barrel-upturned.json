@@ -1,0 +1,28 @@
+{
+  "id": "barrel-upturned",
+  "title": "A barrel falling upside down",
+  "size": [
+    200,
+    240
+  ],
+  "anchor": "bottom centre (its open mouth)",
+  "transparent": true,
+  "edition": "film",
+  "fit_bounds": [
+    34,
+    92,
+    165,
+    240
+  ],
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/in-game-barrel-perspective/barrel-upturned-original.png"
+  ],
+  "prompt": "Correct ONLY the bottom rim perspective in this upside-down barrel image. The camera looks slightly DOWN from above, as established by the closed wooden lid at the top. The bottom is open, but its interior CANNOT be seen as an upward-facing oval from this viewpoint. Remove the broad black oval bowl at the bottom. Instead show the bottom hoop and stave ends as a natural shallow curved lower edge, with ONLY a VERY THIN dark slit immediately under the front lip, no more than 1 percent of barrel height. No oval bowl, no second lid, no visible back rim of the opening. Keep the entire rest of the barrel exactly unchanged: closed lid, body silhouette proportions, wood, hoops, sparkles, painted toy-theatre style. True transparent background. Complete silhouette.",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Bottom perspective corrected to a shallow lip; matched to occupied barrel body."
+  },
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-109e90c8-8aca-413d-b769-83f091a3898b.png",
+  "generation_id": "exec-109e90c8-8aca-413d-b769-83f091a3898b"
+}

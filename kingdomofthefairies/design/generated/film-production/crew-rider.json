@@ -1,0 +1,18 @@
+{
+  "id": "crew-rider",
+  "title": "A crewman riding a fish",
+  "size": [
+    320,
+    240
+  ],
+  "anchor": "bottom centre",
+  "prompt": "one of the prince's crew as in references/film-planning/originals/char-crew.png (attach it): azure and gold striped livery with fleurs-de-lis, magenta-plumed caps, sitting astride a saddled fish from references/film-planning/originals/char-sea-creatures.png (attach it), the fish swimming right. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 320:240, target delivery 320 x 240 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset crew-rider.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-ed154a11-dfd7-466e-a759-ac95d993dad9.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-crew.png",
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-sea-creatures.png"
+  ],
+  "source_commit": "1dc0344"
+}

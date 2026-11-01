@@ -1,0 +1,570 @@
+{
+  "samples": [
+    {
+      "tinted": false,
+      "stage": "faceoff",
+      "phase": "faceoff",
+      "witch": 566.4012021036816,
+      "hero": -100,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "cliff-whirlpool",
+        "aurora-point"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": false,
+      "stage": "arrival",
+      "phase": "arrival",
+      "witch": 680,
+      "hero": 173.03571428571303,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-carry-pass-b",
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-carry-pass-b"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": false,
+      "stage": "setdown",
+      "phase": "setdown",
+      "witch": 680,
+      "hero": 230,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-set-down",
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-set-down"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "prince-set-down",
+          "height": 148.79227053140096,
+          "width": 202.8985507246377,
+          "sourceHeight": 440
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "prince-set-down",
+          "height": 148.79227053140096,
+          "width": 202.8985507246377,
+          "sourceHeight": 440
+        }
+      ]
+    },
+    {
+      "tinted": false,
+      "stage": "rise",
+      "phase": "rise",
+      "witch": 680,
+      "hero": 230,
+      "shelter": 180,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-kneel-rise",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-kneel-rise"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": false,
+      "stage": "forward",
+      "phase": "forward",
+      "witch": 680,
+      "hero": 285.9999999999976,
+      "shelter": 180,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-pass-a",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-pass-a"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": false,
+      "stage": "fight",
+      "phase": "fight",
+      "witch": 680,
+      "hero": 350,
+      "shelter": 180,
+      "live": true,
+      "hud": {
+        "lanterns": 3,
+        "maxLanterns": 3,
+        "pearls": 0,
+        "progress": 0.9,
+        "keepsakes": [
+          {
+            "id": "tea",
+            "have": false
+          },
+          {
+            "id": "guitar",
+            "have": false
+          },
+          {
+            "id": "pearl",
+            "have": false
+          },
+          {
+            "id": "stone",
+            "have": false
+          }
+        ]
+      },
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-stand",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-stand"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 203.88349514563106,
+          "width": 145.63106796116506,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "faceoff",
+      "phase": "faceoff",
+      "witch": 566.4012021036816,
+      "hero": -100,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "cliff-whirlpool",
+        "aurora-point"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "arrival",
+      "phase": "arrival",
+      "witch": 680,
+      "hero": 173.03571428571303,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-carry-pass-b",
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-carry-pass-b"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "setdown",
+      "phase": "setdown",
+      "witch": 680,
+      "hero": 230,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-set-down",
+        "cliff-whirlpool",
+        "aurora-point",
+        "prince-set-down"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "prince-set-down",
+          "height": 149.15254237288136,
+          "width": 203.38983050847457,
+          "sourceHeight": 440
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "prince-set-down",
+          "height": 149.15254237288136,
+          "width": 203.38983050847457,
+          "sourceHeight": 440
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "rise",
+      "phase": "rise",
+      "witch": 680,
+      "hero": 230,
+      "shelter": 180,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-kneel-rise",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-kneel-rise"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "forward",
+      "phase": "forward",
+      "witch": 680,
+      "hero": 285.9999999999976,
+      "shelter": 180,
+      "live": false,
+      "hud": null,
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-pass-a",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-pass-a"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        }
+      ]
+    },
+    {
+      "tinted": true,
+      "stage": "fight",
+      "phase": "fight",
+      "witch": 680,
+      "hero": 350,
+      "shelter": 180,
+      "live": true,
+      "hud": {
+        "lanterns": 3,
+        "maxLanterns": 3,
+        "pearls": 0,
+        "progress": 0.9,
+        "keepsakes": [
+          {
+            "id": "tea",
+            "have": false
+          },
+          {
+            "id": "guitar",
+            "have": false
+          },
+          {
+            "id": "pearl",
+            "have": false
+          },
+          {
+            "id": "stone",
+            "have": false
+          }
+        ]
+      },
+      "ids": [
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-stand",
+        "cliff-whirlpool",
+        "azurine-stand",
+        "aurora-point",
+        "prince-stand"
+      ],
+      "missing": [],
+      "scales": [
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        },
+        {
+          "id": "azurine-stand",
+          "height": 140,
+          "width": 73.68421052631578,
+          "sourceHeight": 380
+        },
+        {
+          "id": "aurora-point",
+          "height": 188.7640449438202,
+          "width": 134.8314606741573,
+          "sourceHeight": 420
+        }
+      ]
+    }
+  ],
+  "heights": [
+    {
+      "id": "prince-set-down",
+      "height": 140
+    },
+    {
+      "id": "azurine-stand",
+      "height": 140
+    },
+    {
+      "id": "prince-stand",
+      "height": 140
+    },
+    {
+      "id": "prince-set-down-tinted",
+      "height": 140
+    },
+    {
+      "id": "azurine-stand-tinted",
+      "height": 140
+    },
+    {
+      "id": "prince-stand-tinted",
+      "height": 140
+    }
+  ]
+}

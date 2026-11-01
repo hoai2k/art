@@ -1,0 +1,22 @@
+{
+  "id": "cavern-stalactite-tinted",
+  "title": "A hanging stalactite (tinted)",
+  "size": [
+    120,
+    280
+  ],
+  "anchor": "top centre (where it hangs from the ceiling)",
+  "transparent": true,
+  "prompt": "One long stalactite of pink and grey cavern rock exactly in the painting style and colours of cavern.webp (attach it): a lump of the cavern ceiling across the top of the canvas, about 110 px wide and 40 px deep, and from its middle the stalactite tapering down to a sharp, wet point at the bottom edge, about 48 px wide at its root, ridged and banded, a drop of water at its tip. Centred. Nothing but the rock: no background, no glow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nCRITICAL GEOMETRY: narrow PORTRAIT canvas, width:height = 3:7 (120 by 280). Only one very long thin vertical spike. Ceiling cap occupies only the top 14% of height. Spike root width 40% of canvas, tapering over the remaining 86% of height. No fringe of multiple large stalactites and no wide horizontal strip. The spike is over twice as tall as the cap is wide.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-1699feef-b754-4e74-8806-f9a760ed5907.png",
+  "generation_id": "exec-1699feef-b754-4e74-8806-f9a760ed5907",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

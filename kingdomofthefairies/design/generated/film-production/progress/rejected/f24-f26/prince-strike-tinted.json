@@ -1,0 +1,23 @@
+{
+  "id": "prince-strike-tinted",
+  "title": "Prince striking with the sword (tinted)",
+  "size": [
+    300,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor in his armour exactly as in prince-stand-tinted.webp (attach it): the same face, helmet and plume, cloak, shield and colours, at the same scale. Lunging forward to the RIGHT and striking with the enchanted sword (the glowing blade of keepsake-sword.webp), sword arm fully extended, shield arm back, front knee bent, back leg straight. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Render it like a frame of a hand stencil-coloured 1903 Méliès print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nThe entire extended sword including tip must fit inside the image. Nose and sword point RIGHT. Two arms only: one hand visibly grips sword, the other holds the reference star shield behind the torso. Head size consistent with standing reference, no enlarged head.\nNo aura, atmospheric glow, colour spill or haze outside the figure. Glow confined inside sword blade; pixels around silhouette completely transparent.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-sword.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-8dfea205-11ae-4c57-abf1-cfae8fc333f9.png",
+  "generation_id": "exec-8dfea205-11ae-4c57-abf1-cfae8fc333f9",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "pending",
+    "notes": "Awaiting prepared-sprite review."
+  }
+}

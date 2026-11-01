@@ -1,0 +1,21 @@
+{
+  "id": "prince-court-fall",
+  "title": "In court dress, knocked back",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor in his court dress exactly as in prince-court.webp (attach it, and references/film-planning/originals/char-bel-azor.png): no armour, the same doublet, cloak, hat and colours. Knocked back off his feet by a burst of fire, facing RIGHT: arms thrown up, body arched backward, one leg kicked up, hat tumbling. Match prince-fall.webp (attach it) in scale. The same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of his standing height, which is 360 px at this size). Nothing but the figure: no ground, water, rock or shadow. Used for: Prologue: scorched on the rampart, and losing the chase. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-ea256fda-c4d6-4f4a-a3ff-9355a5965251.png",
+  "generation_id": "exec-ea256fda-c4d6-4f4a-a3ff-9355a5965251",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

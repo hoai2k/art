@@ -1,0 +1,24 @@
+{
+  "id": "lobster-guard-closed-tinted",
+  "title": "lobster-guard-closed, tinted after the film",
+  "size": [
+    500,
+    340
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Correct ONLY the limb anatomy and weapon grip in this attached lobster guard sprite. This is a human stage performer inside a lobster costume: exactly TWO arms, one coming from each shoulder, exactly TWO lobster pincers as hands, and TWO existing legs. Crouched closed pose: make BOTH of his two pincers visibly close around the existing diagonal halberd shaft, one on each existing grip position. The shaft must run THROUGH the space between each pincer\u2019s two fingers with convincing overlap, rather than float in front of either claw. Keep the exact existing character head, antennae, torso, costume, colours, rendering style, weapon design and position, lower-body stance, foot positions, overall scale, canvas framing and transparent background. Preserve the current soft photographic hand-tinted finish. Make each arm-to-claw connection anatomically unambiguous. No detached hands, duplicated forearms, ghost claws or extra limbs. Do not change the weapon into a separate floating prop.",
+  "transparent": true,
+  "replaces": "lobster-guard-closed",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/lobster-anatomy/lobster-guard-closed-tinted-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "ba92d0c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-adad4034-e959-4ad4-ad04-8a65de522943.png",
+  "generation_id": "exec-adad4034-e959-4ad4-ad04-8a65de522943",
+  "review_status": "accepted after enlarged anatomy/grip review: exactly two shoulder-to-pincer arms and two legs; shaft visibly enclosed by pincers in closed pose; open pose has one weapon-gripping closed claw and one snapping open claw",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/lobster-guard-closed-tinted-original.png"
+  ],
+  "previous_take": "progress/rejected/lobster-anatomy/lobster-guard-closed-tinted-original.png"
+}

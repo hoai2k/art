@@ -1,0 +1,17 @@
+{
+  "id": "tower-wall-tall",
+  "title": "The tower wall (climb)",
+  "size": [
+    1400,
+    3600
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The outside of the witch's tower seen front-on as a tall climbing wall, from concept-tower-climb.png (attach it): rough grey stone blocks with jutting stones and ivy, the sea breaking at the foot, battlements across the top 3%. Keep it the full width all the way up; the climb is drawn over it. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 1400:3600, intended delivery 1400 x 3600 pixels. True transparent background outside the single flat; preserve full silhouette. Asset tower-wall-tall.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-7fbadfd6-4ab6-435b-a3b5-0dc5cc757065.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/concept-tower-climb.png"
+  ],
+  "source_commit": "1dc0344"
+}

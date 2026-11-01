@@ -1,0 +1,21 @@
+{
+  "id": "prince-tumble-b-tinted",
+  "title": "Tumbling, limp (other) (tinted)",
+  "size": [
+    360,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. A second limp tumbling pose unlike prince-tumble-a (attach it): stretched out more, one arm flung wide and one leg trailing, as if turning slowly in deep water. The same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of his standing height, which is 360 px at this size). Nothing but the figure: no ground, water, rock or shadow. Used for: The same scenes, alternating with tumble-a. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 360] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency. Image 1 is accepted tumble A. Keep exact head size/costume but make this a distinctly more extended second pose, not a copy. Relaxed stretched body, one arm wide and trailing leg.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-tumble-a-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-61a5decd-de50-4086-9ce3-d4fb561546b0.png",
+  "generation_id": "exec-61a5decd-de50-4086-9ce3-d4fb561546b0",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

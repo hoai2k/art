@@ -1,0 +1,22 @@
+{
+  "id": "witch-cast",
+  "title": "The witch hurling fire",
+  "size": [
+    260,
+    400
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Edit this witch sprite to fix the framing ONLY. Zoom out by 15 percent to add clear transparent space around the entire figure. Restore the leftmost fingertips that were clipped by the LEFT image edge. Show all five fingers on the outstretched hand, intact. Keep the same face, casting pose facing LEFT, heavy teal robe, colours, texture, plain staff and its hand grip unchanged. Staff ends and complete robe entirely inside the canvas. True transparent background, no shadow or fire. Keep full figure and props visible; 5 percent empty margin on every side.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/f24-f26/witch-cast-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-f678269a-18c6-44d8-93a4-b2c0df9bfe4b.png",
+  "generation_id": "exec-f678269a-18c6-44d8-93a4-b2c0df9bfe4b",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

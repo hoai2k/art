@@ -1,0 +1,26 @@
+{
+  "id": "sea-spirit-idle-b-tinted",
+  "title": "sea-spirit-idle-b, tinted after the film",
+  "size": [
+    300,
+    600
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Change ONLY the yellow-gold hair wash in the attached sea-spirit idle sprite to silvery grey-white, matching her standing frame. Keep the same flowing hair shape, face, all limb and hand positions, pale blue gown, rose-pink scarves, teal wave base, photographic hand-stencil finish, scale, canvas and transparency exactly unchanged. Remove yellow and gold tint from hair only; no other changes. Image 1 is the edit target; image 2 is the standing-frame hair-colour reference only.",
+  "transparent": true,
+  "replaces": "sea-spirit-idle-b",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/sea-spirit-idle-b-tinted-gold-hair-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit-tinted.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "d3bc23c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-6a87b3ba-e179-4943-83af-e59abc1684de.png",
+  "generation_id": "exec-6a87b3ba-e179-4943-83af-e59abc1684de",
+  "review_status": "accepted after enlarged continuity review: silvery grey-white hair matches standing and idle-C frames; two arms and coherent hands; pose, gown, scarves and wave base retained",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/sea-spirit-idle-b-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit-tinted.webp"
+  ],
+  "previous_take": "progress/rejected/sea-spirit-idle-b-tinted-gold-hair-original.png"
+}

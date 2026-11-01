@@ -1,0 +1,37 @@
+[
+  {
+    "time": 0.18330000000000019,
+    "music": 1,
+    "track": "period-wedding",
+    "rms": 0.028601101356194484,
+    "starts": 1
+  },
+  {
+    "time": 12.183399999999997,
+    "music": 1,
+    "track": "period-wedding",
+    "rms": 0.03834457669240631,
+    "starts": 1
+  },
+  {
+    "time": 22.183400000000002,
+    "music": 1,
+    "track": "period-wedding",
+    "rms": 0.04131560461497743,
+    "starts": 1
+  },
+  {
+    "time": 39.16669999999999,
+    "music": 0.48125000000000107,
+    "track": "period-wedding",
+    "rms": 0.027194202737601415,
+    "starts": 1
+  },
+  {
+    "time": 43.28329999999999,
+    "music": 0,
+    "track": "period-wedding",
+    "rms": 0.00032365744386615914,
+    "starts": 1
+  }
+]

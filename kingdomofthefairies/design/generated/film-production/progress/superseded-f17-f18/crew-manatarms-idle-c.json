@@ -1,0 +1,17 @@
+{
+  "id": "crew-manatarms-idle-c",
+  "title": "The man-at-arms, idle frame C",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "An idle frame for crew-manatarms.webp (attach it): exactly the same figure, costume, colours, scale and foot position, so that laid over it only one detail moves: the weight shifted onto the other foot and the head tilted the other way. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery 220 x 420 pixels. Keep the reference figure proportions and the entire silhouette. EDIT the attached base sprite minimally: preserve its exact canvas aspect ratio, unchanged feet, bottom baseline and full-height proportions. Only change the small detail described. Do not redesign or replace any props.",
+  "transparent": true,
+  "replaces": null,
+  "references": [
+    "/workspace/mini/kingdomofthefairies/assets/crew-manatarms.webp"
+  ],
+  "source_commit": "762e53ca753eb88ba46e0ed23aa2f148d3b43e03",
+  "path": "/workspace/generated_images/exec-f60ab8be-8aaf-4613-97ee-a2a3478bafaf.png"
+}

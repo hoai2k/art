@@ -1,0 +1,46 @@
+{
+  "requested": 31,
+  "generated": 31,
+  "prepared": 31,
+  "reviewed": 31,
+  "remaining": [],
+  "ids": [
+    "sea-king-throne-tinted",
+    "attendant-pink-tinted",
+    "attendant-blue-tinted",
+    "attendant-green-tinted",
+    "seahorse-guard-tinted",
+    "sea-dragon-tinted",
+    "sea-spirit-tinted",
+    "sea-spirit-idle-b-tinted",
+    "sea-spirit-idle-c-tinted",
+    "jellyfish-tinted",
+    "fish-large-tinted",
+    "fish-school-tinted",
+    "whale-beached-tinted",
+    "whale-mouth-tinted",
+    "whale-tail-tinted",
+    "whale-side-tinted",
+    "gift-ring-tinted",
+    "gift-flower-tinted",
+    "gift-crown-tinted",
+    "gift-gold-tinted",
+    "keepsake-star-tinted",
+    "keepsake-sword-tinted",
+    "keepsake-shell-tinted",
+    "keepsake-seal-tinted",
+    "keepsake-lamp-tinted",
+    "sword-sinking-tinted",
+    "aurora-star-tinted",
+    "armour-helmet-tinted",
+    "armour-shield-tinted",
+    "tower-window-tinted",
+    "pearl-tinted"
+  ],
+  "corrected": [
+    "sea-spirit-idle-b-tinted"
+  ],
+  "additional_corrections": [
+    "prince-leap-tinted"
+  ]
+}

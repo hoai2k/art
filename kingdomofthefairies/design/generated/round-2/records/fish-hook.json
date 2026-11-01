@@ -1,0 +1,15 @@
+{
+  "id": "fish-hook",
+  "title": "Swinging fish-hook with float",
+  "width": 80,
+  "height": 220,
+  "anchor": "top centre (line attachment)",
+  "section": "Second round: Acts III and IV",
+  "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA short length of fishing line from the top centre down to a red-and-cream cork float, then a big barbed steel hook below it, seen square-on, the hook opening to the left. Match lantern-hanging. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 80:220. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+  "transparent": true,
+  "references": [
+    "design/generated/part-c/originals/lantern-hanging.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

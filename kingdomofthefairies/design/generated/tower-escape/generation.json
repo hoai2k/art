@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: game-prop cutout. Create ONE full-frame open escape doorway for the GROUND FLOOR RIGHT SIDE of the painted Victorian toy-theatre tower in the reference. Preserve the tower's hand-painted warm grey-pink ashlar limestone, soft theatrical lighting, worn masonry and scale of details. A tall open stone arch, viewed almost front-on with a slight view of the right jamb, chipped but sound grey-pink voussoirs and two narrow jambs. Opaque very dark passage inside, with a subtle muted midnight-blue glimpse at the far end; a simple worn stone threshold along the bottom. This opening must cover a wall image beneath it: the dark passage is opaque, not transparent. Outside the arch and jambs is genuine transparent alpha. No shut door, no panel or bars across the opening. No fire, smoke, torch, character, star, circular ornament, arrow, label, text, glowing halo or extra scenery. Restrained unobtrusive game sprite, taller than wide, full arch and threshold completely in frame. The whole doorway is about 1.55 times as tall as it is wide; its open passage takes up most of the width. Painted toy-theatre prop, not photorealistic architecture.",
+  "transparent_background": true,
+  "references": [
+    "assets/tower-interior.webp"
+  ],
+  "native_output": "/Users/hoai/.codex/generated_images/01a193ae-f3f2-74d1-aaba-5c377bd696e3/exec-b7afaa3f-22d7-4f54-bf7b-ba7304aa6fb1.png",
+  "preserved_source": "source.png",
+  "delivered_asset": "assets/tower-escape-door.webp",
+  "processing": "Trim transparent margins, fit at bottom centre on 160 \u00d7 250 transparent canvas, lossless WebP. No repainting or recolouring."
+}

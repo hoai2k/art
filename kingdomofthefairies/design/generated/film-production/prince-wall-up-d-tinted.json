@@ -1,0 +1,20 @@
+{
+  "id": "prince-wall-up-d-tinted",
+  "title": "Climbing up, pulling through (other side) (tinted)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Climbing straight up, the beat between reaches, weight a little on the other side from prince-wall-up-b: both hands near head height, the left a touch higher, knees slightly bent. Fourth frame of the cycle, leading back into prince-wall-up-a. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a-tinted.webp and prince-stand-tinted.webp) in costume, colours and scale. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nCRITICAL DIRECT REAR VIEW, no face. Both hands near head height, LEFT hand just higher, weight shifted opposite to frame B, knees slightly bent. The last attached image is accepted frame B; preserve costume, helmet, shield, sword and body proportions.\nEDIT ONLY THE HAND HEIGHTS: This is rear view, so the image LEFT hand must be slightly HIGHER than the image RIGHT hand, both near helmet height. Currently image right hand is higher; fix that. Keep the exact pose of both legs, costume, colours, helmet, shield, sword, framing and proportions unchanged.\nMANDATORY PIXEL LAYOUT: leftmost glove on the LEFT SIDE OF THE PICTURE goes UP, fingertips level with the TOP of the silver helmet dome. Rightmost glove on the RIGHT SIDE OF THE PICTURE goes DOWN, fingertips level with the BOTTOM of the helmet dome. This is a noticeable offset, left glove visibly HIGHER than right glove. Keep everything below the shoulders identical. Do not keep the existing hand placement.",
+  "references": [
+    "/workspace/generated_images/exec-d7ce7566-302d-46ad-8496-c5031b92535f.png"
+  ],
+  "path": "/workspace/generated_images/exec-2448fb66-2cf5-4170-8c9d-8afbe6f8d3c5.png",
+  "generation_id": "exec-2448fb66-2cf5-4170-8c9d-8afbe6f8d3c5",
+  "review": {
+    "status": "accepted",
+    "notes": "C raises left hand and right knee; D bridges back with left hand higher. Rear view, costume, silhouette and alpha reviewed."
+  }
+}

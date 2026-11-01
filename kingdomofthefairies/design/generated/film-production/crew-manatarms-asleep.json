@@ -1,0 +1,24 @@
+{
+  "id": "crew-manatarms-asleep",
+  "title": "The man-at-arms, asleep on the cave floor",
+  "size": [
+    440,
+    160
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "The man-at-arms of the prince's crew exactly as in crew-manatarms-redo.webp (attach it, and crew-manatarms-sit-up.webp, the pose he wakes into): the same face, livery, helmet and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-redo.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-sit-up.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-67330030-c5ff-4000-875f-58dd0a37cf85.png",
+  "generation_id": "exec-67330030-c5ff-4000-875f-58dd0a37cf85",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

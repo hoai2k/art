@@ -1,0 +1,16 @@
+{
+  "title": "Procession Royale",
+  "supplied_by": "user",
+  "date": "2026-10-31",
+  "source_file": "Procession Royale.mp3",
+  "source_sha256": "281d76a5e21ed0e94d9e20c7afaf4282c530d8ac3e9fcbe7755cf9ed0d0f9cdd",
+  "delivered_file": "assets/audio/period-wedding.mp3",
+  "delivered_sha256": "4b74084324e42917e3e862d520a6af0dd2de461c4749947e05c02d14b2448451",
+  "duration_seconds": 118.752,
+  "sample_rate": 48000,
+  "channels": 2,
+  "loudness_lufs": -12.23,
+  "true_peak_dbtp": -1.2,
+  "ending_seconds": 45,
+  "tests": "8 film/art suites and 5 suites in each older edition passed; real browser MP3 playback, no credit-roll restart, pause, fade and menu handoff passed; both looks and all film effects reviewed"
+}

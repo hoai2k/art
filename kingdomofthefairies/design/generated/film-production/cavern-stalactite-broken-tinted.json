@@ -1,0 +1,23 @@
+{
+  "id": "cavern-stalactite-broken-tinted",
+  "title": "A shattered stalactite on the rock (tinted)",
+  "size": [
+    180,
+    60
+  ],
+  "anchor": "bottom centre (on the ground)",
+  "transparent": true,
+  "prompt": "The same stalactite (cavern-stalactite.webp, attach it) fallen and shattered on the cavern floor: four or five broken lengths and shards of the pink and grey rock in a low heap, its point snapped off, a little grit, in the painting style of cavern.webp. Seen from the front; the lowest pieces on the bottom edge. Nothing but the rock: no floor, no shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nImage 1 is the matching intact stalactite; image 2 supplies the cavern palette. Low horizontal 3:1 composition (180 by 60), four or five separate broken fragments only.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/cavern-stalactite-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-d44bfc4c-826d-49be-82b4-52c0f1f7dd79.png",
+  "generation_id": "exec-d44bfc4c-826d-49be-82b4-52c0f1f7dd79",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

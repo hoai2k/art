@@ -1,0 +1,25 @@
+{
+  "id": "sailor-pass-a",
+  "title": "sailor, passing A",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Correct ONLY the extra arm/hand in this sailor passing sprite. There are currently three hands: remove the entire spurious third arm and dangling hand protruding behind the sack on the far LEFT of the canvas. Keep exactly two arms, each connected to a shoulder: the near arm/hand hanging in front of his coat and the far arm/hand toward canvas right. Keep their existing positions, the passing legs, face, cap, coat, grey trousers, boots, sack and strap, colours, illustration finish, canvas and transparency unchanged. Fill the removed arm location with genuine transparency or the unchanged sack/coat where it belongs. No new limbs, fingers or props.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/sailor-pass-a-extra-hand-original.png"
+  ],
+  "transparent": true,
+  "replaces": null,
+  "edition": "shared",
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-2b475cb8-cb9b-45fb-9b68-3d7a7e436a12.png",
+  "generation_id": "exec-2b475cb8-cb9b-45fb-9b68-3d7a7e436a12",
+  "review_status": "accepted: coherent anatomy, reference identity and costume retained, contact/passing pose and baseline reviewed",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/sailor-pass-a-original.png"
+  ],
+  "previous_take": "progress/rejected/sailor-pass-a-extra-hand-original.png"
+}

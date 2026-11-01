@@ -1,0 +1,17 @@
+{
+  "id": "playbill-film",
+  "title": "Playbill with seven panels",
+  "size": [
+    1400,
+    2000
+  ],
+  "anchor": "centre",
+  "prompt": "The same playbill as the delivered playbill.webp (attach it), but with SEVEN large empty horizontal panels down the middle (a prologue and six acts) instead of five, and the empty banner at the top for the title. No words at all. A flat Victorian theatre playbill, portrait, full bleed, printed on cream paper with ornate plum and gold letterpress borders, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one asset, no collage, no labels. Canvas aspect ratio 1400:2000, intended delivery 1400 x 2000 pixels. Exactly seven empty horizontal panels, in addition to the title banner, all large enough for text to be added later. Keep the entire cream-paper playbill visible with transparent exterior only.",
+  "transparent": true,
+  "replaces": "playbill",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/assets/playbill.webp"
+  ],
+  "source_commit": "1fb8e47",
+  "path": "/workspace/generated_images/exec-91dfc5ed-0530-4f27-9352-0cd31ddc2521.png"
+}

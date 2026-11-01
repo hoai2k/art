@@ -1,0 +1,150 @@
+{
+  "title": "Beyond the music video — The Kingdom of the Fairies",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Le_Royaume_des_f%C3%A9es_(1903).webm",
+  "source_film": "Georges Méliès, Le Royaume des fées / The Kingdom of the Fairies (1903)",
+  "source_copy_duration": "16:33",
+  "method": "Browser screenshots of the full film; cropped film areas used as built-in imagegen references. No remote video download. Interpretive world references, not exact stills or production sprites.",
+  "images": [
+    {
+      "id": "betrothal-court",
+      "title": "Royal betrothal court",
+      "frames": [
+        "00m26s"
+      ],
+      "detail": "Draw the royal ceremonial hall from the input as a wide theatrical environment study with the seated crowned ruler and a small retinue for scale. Keep the dark teal-and-gold draped central throne dais, symmetric high ornamental gold chandeliers, tall heraldic standards and weapons above the dais, sculpted niche at left, suit of armour on the right pillar, leaded window and stone steps, Persian-like patterned rectangular carpet and small gilded stools. This is the full film's opening court, a different set from the music video's highly scrolled bedchamber. Ornament should remain specific and restrained, not the marine coral grotto.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw the royal ceremonial hall from the input as a wide theatrical environment study with the seated crowned ruler and a small retinue for scale. Keep the dark teal-and-gold draped central throne dais, symmetric high ornamental gold chandeliers, tall heraldic standards and weapons above the dais, sculpted niche at left, suit of armour on the right pillar, leaded window and stone steps, Persian-like patterned rectangular carpet and small gilded stools. This is the full film's opening court, a different set from the music video's highly scrolled bedchamber. Ornament should remain specific and restrained, not the marine coral grotto.",
+      "file": "betrothal-court.png",
+      "source_frames": [
+        "source-frames/frame-00m26s.jpg"
+      ],
+      "note": "The full film’s opening ceremonial court has a different architectural set from the music video’s ornate bedchamber. Courtier faces, small heraldic marks and theatre framing are reconstructed."
+    },
+    {
+      "id": "moonlit-rampart",
+      "title": "Moonlit castle rampart",
+      "frames": [
+        "03m49s"
+      ],
+      "detail": "Draw the empty stone rampart as a wide environment study: circular shield medallions in a carved balustrade, sculpted beasts perched above it, round tower and archway at right, teal wooded slopes beyond, layered painted storm clouds, deep night sky with small gold stars and a pale crescent. Preserve the theatrical sky. Remove people to expose the world.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw the empty stone rampart as a wide environment study: circular shield medallions in a carved balustrade, sculpted beasts perched above it, round tower and archway at right, teal wooded slopes beyond, layered painted storm clouds, deep night sky with small gold stars and a pale crescent. Preserve the theatrical sky. Remove people to expose the world.",
+      "file": "moonlit-rampart.png",
+      "source_frames": [
+        "source-frames/frame-03m49s.jpg"
+      ],
+      "note": "The nocturnal rampart and aerial-abduction passage are outside the sampled music-video sequence. People are removed to reveal the carved railing, beasts, sky and landscape."
+    },
+    {
+      "id": "flying-fire-chariot",
+      "title": "Flying chariot of fire",
+      "frames": [
+        "03m32s",
+        "04m54s"
+      ],
+      "detail": "Draw a wide reference tableau of the aerial abduction carriage: bizarre gilded and coral-red dragon-headed stage chariot with a dark bat-wing canopy, a pale-robed captive passenger, teal costumed demon attendants guiding it across painted clouds. Base its structure on the actual carriage in the inputs, include a small side silhouette inset. Do not turn it into a conventional horse carriage or spaceship. The flame shapes are stage-painted ornament and modest practical-fire accents.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a wide reference tableau of the aerial abduction carriage: bizarre gilded and coral-red dragon-headed stage chariot with a dark bat-wing canopy, a pale-robed captive passenger, teal costumed demon attendants guiding it across painted clouds. Base its structure on the actual carriage in the inputs, include a small side silhouette inset. Do not turn it into a conventional horse carriage or spaceship. The flame shapes are stage-painted ornament and modest practical-fire accents.",
+      "file": "flying-fire-chariot.png",
+      "source_frames": [
+        "source-frames/frame-03m32s.jpg",
+        "source-frames/frame-04m54s.jpg"
+      ],
+      "note": "Inspired by the aerial abduction vehicle and its bat-wing canopy. This is a worldbuilding redesign: the generator combines the carriage with the rampart’s shield-decorated railing. It is not an exact reconstruction of the film vehicle."
+    },
+    {
+      "id": "royal-armoury",
+      "title": "Royal armoury and vaulted hall",
+      "frames": [
+        "04m18s",
+        "05m18s"
+      ],
+      "detail": "Draw a wide empty environment reference of the royal armoury: tall vaulted stone gallery diminishing through repeated arches, steps to an inner hall, banners, suits of ceremonial armour, polearms, round and kite-shaped shields clustered on sculpted pillars, carved bench, curved staircase at right. Preserve the theatrical painted perspective but keep overall camera square-on. No actors, so the environment and prop families can be studied.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a wide empty environment reference of the royal armoury: tall vaulted stone gallery diminishing through repeated arches, steps to an inner hall, banners, suits of ceremonial armour, polearms, round and kite-shaped shields clustered on sculpted pillars, carved bench, curved staircase at right. Preserve the theatrical painted perspective but keep overall camera square-on. No actors, so the environment and prop families can be studied.",
+      "file": "royal-armoury.png",
+      "source_frames": [
+        "source-frames/frame-04m18s.jpg",
+        "source-frames/frame-05m18s.jpg"
+      ],
+      "note": "Bonus deeper setting study. This hall appears briefly in the music video around 0:30–0:35; it is included for expanded environmental coverage, rather than claimed as an omitted setting. Actors are removed and architectural/weapon details are completed."
+    },
+    {
+      "id": "witch-prison-vision",
+      "title": "The witch's forbidden realm",
+      "frames": [
+        "04m54s"
+      ],
+      "detail": "Draw a wide ominous enchanted castle landscape using the vision tableau: steep jagged grey rocks, scattered ivy, closely grouped crooked towers with pointed roofs, barred opening high at left, steps and a round yellow moon behind streaked clouds. Include a small pale captive and two red/teal costumed demon sentries for scale; omit the large chariot so the land is readable. Keep it decorative and uncanny, a nineteenth-century stage fantasy, not realistic horror.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a wide ominous enchanted castle landscape using the vision tableau: steep jagged grey rocks, scattered ivy, closely grouped crooked towers with pointed roofs, barred opening high at left, steps and a round yellow moon behind streaked clouds. Include a small pale captive and two red/teal costumed demon sentries for scale; omit the large chariot so the land is readable. Keep it decorative and uncanny, a nineteenth-century stage fantasy, not realistic horror.",
+      "file": "witch-prison-vision.png",
+      "source_frames": [
+        "source-frames/frame-04m54s.jpg"
+      ],
+      "note": "Based on the forbidding landscape shown as a magical vision before the sea journey. The sky, tower silhouettes and colour-coded attendants are source-led; tower spacing, foreground placement and some heraldry are invented."
+    },
+    {
+      "id": "hooded-witch",
+      "title": "Hooded witch costume study",
+      "frames": [
+        "05m18s",
+        "04m54s"
+      ],
+      "detail": "Draw a character study of the original film's hunched hooded sorceress: long deeply folded dark teal cloak and robe, hood concealing most of the face, bent theatrical gesture, grasping hands. Main full figure and small rear and gesture views on aged cream paper. Face remains shadowed because the source does not resolve it; do not invent a glamorous sea queen, pointed modern Halloween hat, or a young heroine. The film's antagonist is distinct from the music video's pink magical figure and from the song's unconfirmed sea witch.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a character study of the original film's hunched hooded sorceress: long deeply folded dark teal cloak and robe, hood concealing most of the face, bent theatrical gesture, grasping hands. Main full figure and small rear and gesture views on aged cream paper. Face remains shadowed because the source does not resolve it; do not invent a glamorous sea queen, pointed modern Halloween hat, or a young heroine. The film's antagonist is distinct from the music video's pink magical figure and from the song's unconfirmed sea witch.",
+      "file": "hooded-witch.png",
+      "source_frames": [
+        "source-frames/frame-05m18s.jpg",
+        "source-frames/frame-04m54s.jpg"
+      ],
+      "note": "Study of the hunched, dark-teal-hooded antagonist in the full film. This descriptive role is distinct from the earlier pink magical figure; identification with the song’s sea witch remains unconfirmed. Hidden face, added views and scenic montage are interpretive.",
+      "refinement": {
+        "mode": "precise-object-edit",
+        "prompt": "Use case: precise-object-edit. Edit this witch reference sheet. Remove the crystal ball and skull from the table in the large left panel and from the small table study at bottom left. Leave the carved table empty. Preserve all other character poses, face concealment, teal fabric, scenery, page layout and print texture exactly. No new props or text.",
+        "reason": "Remove unobserved skull and crystal ball."
+      }
+    },
+    {
+      "id": "demon-attendants",
+      "title": "Red and teal demon attendants",
+      "frames": [
+        "04m54s",
+        "13m20s"
+      ],
+      "detail": "Draw a character and prop study of the film's theatrical demon servants: one teal and one coral-red human performer in fitted stage costume, hornlike pointed headpieces, dark waist belt or short breeches, broad comic pantomime poses. Main pair plus a smaller flame-bearing gesture and close-up of the headpiece. Their fire is a gold-orange tuft at the end of a stage pole as in the input. Keep the creatures clearly costumed people; no huge muscles, monstrous anatomy, gore or generic fantasy armour.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a character and prop study of the film's theatrical demon servants: one teal and one coral-red human performer in fitted stage costume, hornlike pointed headpieces, dark waist belt or short breeches, broad comic pantomime poses. Main pair plus a smaller flame-bearing gesture and close-up of the headpiece. Their fire is a gold-orange tuft at the end of a stage pole as in the input. Keep the creatures clearly costumed people; no huge muscles, monstrous anatomy, gore or generic fantasy armour.",
+      "file": "demon-attendants.png",
+      "source_frames": [
+        "source-frames/frame-04m54s.jpg",
+        "source-frames/frame-13m20s.jpg"
+      ],
+      "note": "The full film’s red and teal costumed servants and flame-bearing action. Facial makeup, headpiece close-ups and some costume ornament are completed from low-resolution footage. These are stage performers, rather than naturalistic monsters."
+    },
+    {
+      "id": "fairy-gifts",
+      "title": "Fairy-given helmet and sword",
+      "frames": [
+        "05m51s",
+        "04m18s"
+      ],
+      "detail": "Draw an illustrated reference sheet centred on the arming scene: pink-robed fairy with long draped sleeves and gold-striped lower skirt offering an ornate period-stage sword to a prince in a gold dark-edged tunic and fantastical silver helmet. Use source pose and costume rather than modern armour. Include separate enlarged studies of helmet, sword and ceremonial shield families from the armoury, laid out on cream card without labels. Smaller details are interpreted and must remain simple theatrical props.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw an illustrated reference sheet centred on the arming scene: pink-robed fairy with long draped sleeves and gold-striped lower skirt offering an ornate period-stage sword to a prince in a gold dark-edged tunic and fantastical silver helmet. Use source pose and costume rather than modern armour. Include separate enlarged studies of helmet, sword and ceremonial shield families from the armoury, laid out on cream card without labels. Smaller details are interpreted and must remain simple theatrical props.",
+      "file": "fairy-gifts.png",
+      "source_frames": [
+        "source-frames/frame-05m51s.jpg",
+        "source-frames/frame-04m18s.jpg"
+      ],
+      "note": "The fairy’s arming gesture before departure. The reference enlarges and elaborates helmet, sword and shield shapes; the detailed designs are adaptations, not certified prop reproductions."
+    },
+    {
+      "id": "sea-moat-tower",
+      "title": "Island tower across the sea moat",
+      "frames": [
+        "12m41s"
+      ],
+      "detail": "Draw a wide environment study of the isolated round stone fortress on the right rocky promontory, pointed dark turret roof, crenellated companion wall and narrow ledge. Across a gap of dark water at left are craggy rocks, a small rough timber gantry or railing, scrubby teal grass and layered painted stones. A grey-teal sky and pale flat sea horizon. Keep the tower detached by a clearly readable water gap. No band collage, shipwreck, whale, or collapse; this is the original film's prison approach before the rescue.",
+      "prompt": "Use case: stylized-concept. Asset type: high-resolution world reference illustration for Widow's Bay, not a production sprite. Input images are source-film references from Georges Méliès's The Kingdom of the Fairies (1903), used for the specified subject and period-stage design. Make a frontal toy-theatre tableau, painted flats and handmade props, grey/cream/sepia engraved and photographic tone with translucent stencil tints slightly off register: grotto teal, moon gold, rose pink, coral red, dark plum. Keep source-specific silhouettes, ornament and construction; charming stage illusion rather than modern cinematic realism. Soft film grain and worn card. No lettering, timestamps, player UI, watermarks or modern objects. Hidden details are conservative interpretive completion. Draw a wide environment study of the isolated round stone fortress on the right rocky promontory, pointed dark turret roof, crenellated companion wall and narrow ledge. Across a gap of dark water at left are craggy rocks, a small rough timber gantry or railing, scrubby teal grass and layered painted stones. A grey-teal sky and pale flat sea horizon. Keep the tower detached by a clearly readable water gap. No band collage, shipwreck, whale, or collapse; this is the original film's prison approach before the rescue.",
+      "file": "sea-moat-tower.png",
+      "source_frames": [
+        "source-frames/frame-12m41s.jpg"
+      ],
+      "note": "The tower and separated coastal approach before the rescue. This image adapts the source to a night mood, adding a gold moon and decorative rocky frame; those additions are not present in the captured input."
+    }
+  ]
+}

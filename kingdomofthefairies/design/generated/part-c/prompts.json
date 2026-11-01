@@ -1,0 +1,3032 @@
+{
+  "requested": 99,
+  "generated": 99,
+  "missing": [],
+  "images": [
+    {
+      "id": "sailor-stand",
+      "title": "Sailor standing",
+      "section": "Shared cast and screens",
+      "width": 220,
+      "height": 360,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-stand.png",
+      "original": "design/generated/part-c/originals/sailor-stand.png",
+      "originalSize": [
+        980,
+        1605
+      ],
+      "sourceCrop": [
+        148,
+        8,
+        826,
+        1594
+      ],
+      "placement": [
+        33,
+        0,
+        154,
+        360
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), standing in profile facing right, kit bag on one shoulder. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver exactly ONE complete asset, 220:360 canvas aspect ratio, intended final 220 × 360 pixels. Actual transparent background; isolated cut-out with no ground, no backdrop, no baked checkerboard, no shadow. Fill the frame, keeping the entire silhouette visible. Anchor: bottom centre. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/generated/mood-sailor-1.png"
+      ]
+    },
+    {
+      "id": "sailor-walk-a",
+      "title": "Sailor walking, stride A",
+      "section": "Shared cast and screens",
+      "width": 220,
+      "height": 360,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-walk-a.png",
+      "original": "design/generated/part-c/originals/sailor-walk-a.png",
+      "originalSize": [
+        980,
+        1605
+      ],
+      "sourceCrop": [
+        51,
+        9,
+        962,
+        1573
+      ],
+      "placement": [
+        5,
+        0,
+        210,
+        360
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), in profile facing right, mid-stride with the left leg forward, like a jointed paper puppet; no kit bag. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver exactly ONE complete asset, 220:360 canvas aspect ratio, intended final 220 × 360 pixels. Actual transparent background; isolated cut-out with no ground, no backdrop, no baked checkerboard, no shadow. Fill the frame, keeping the entire silhouette visible. Anchor: bottom centre. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/generated/mood-sailor-1.png"
+      ]
+    },
+    {
+      "id": "sailor-walk-b",
+      "title": "Sailor walking, stride B",
+      "section": "Shared cast and screens",
+      "width": 220,
+      "height": 360,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-walk-b.png",
+      "original": "design/generated/part-c/originals/sailor-walk-b.png",
+      "originalSize": [
+        980,
+        1605
+      ],
+      "sourceCrop": [
+        55,
+        18,
+        967,
+        1569
+      ],
+      "placement": [
+        4,
+        0,
+        212,
+        360
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), in profile facing right, mid-stride with the right leg forward, like a jointed paper puppet; no kit bag. Same scale and framing as sailor-walk-a. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). This is animation frame B of the attached frame A. Keep exactly the same sailor, camera, canvas, head height, outfit and scale; exchange the legs and swing the arms to the opposite phase. Face RIGHT. No bag. One complete asset, intended 220 × 360 pixels, matching aspect ratio and framing. Real alpha background, no surrounding glow, backdrop, ground, checkerboard, or cast shadow. Keep all art visible. Anchor: bottom centre. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/sailor-walk-a.png"
+      ]
+    },
+    {
+      "id": "sailor-leap",
+      "title": "Sailor leaping",
+      "section": "Shared cast and screens",
+      "width": 260,
+      "height": 360,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-leap.png",
+      "original": "design/generated/part-c/originals/sailor-leap.png",
+      "originalSize": [
+        1067,
+        1474
+      ],
+      "sourceCrop": [
+        35,
+        23,
+        1050,
+        1356
+      ],
+      "placement": [
+        0,
+        19,
+        260,
+        341
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), in profile facing right, leaping with knees tucked and one arm reaching up. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve this sailor identity, outfit and proportions; remove the bag for the jumping pose. One complete asset, intended 260 × 360 pixels, matching aspect ratio and framing. Real alpha background, no surrounding glow, backdrop, ground, checkerboard, or cast shadow. Keep all art visible. Anchor: bottom centre. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/sailor-stand.png"
+      ]
+    },
+    {
+      "id": "sailor-crouch",
+      "title": "Sailor frozen in a courtier pose",
+      "section": "Shared cast and screens",
+      "width": 240,
+      "height": 300,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-crouch.png",
+      "original": "design/generated/part-c/originals/sailor-crouch.png",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "sourceCrop": [
+        178,
+        0,
+        925,
+        1383
+      ],
+      "placement": [
+        39,
+        0,
+        162,
+        300
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), facing front, frozen in an exaggerated stiff courtly bow with a hand on his cap, as if pretending to be a statue. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve this sailor identity and outfit, with no bag; show the requested bowing/crouching pose. One complete asset, intended 240 × 300 pixels, matching aspect ratio and framing. Real alpha background, no surrounding glow, backdrop, ground, checkerboard, or cast shadow. Keep all art visible. Anchor: bottom centre. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/sailor-stand.png"
+      ]
+    },
+    {
+      "id": "sailor-carry",
+      "title": "Sailor carrying the beloved",
+      "section": "Shared cast and screens",
+      "width": 360,
+      "height": 400,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sailor-carry.png",
+      "original": "design/generated/part-c/originals/sailor-carry.png",
+      "originalSize": [
+        1190,
+        1322
+      ],
+      "sourceCrop": [
+        134,
+        0,
+        1059,
+        1304
+      ],
+      "placement": [
+        38,
+        0,
+        284,
+        400
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) in profile facing right, carrying the beloved (a young woman with dark auburn hair pinned up, a cream lace dress and a rose-pink shawl, a fine gold chain at her throat with its pendant pearl missing) in his arms; her arm around his neck, her shawl trailing. One cut-out piece. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the two character identities and outfits; one complete joined cut-out of the sailor carrying the beloved. No bag. One complete asset, intended 360 × 400 pixels, matching aspect ratio and framing. Real alpha background, no surrounding glow, backdrop, ground, checkerboard, or cast shadow. Keep all art visible. Anchor: bottom centre. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/sailor-stand.png",
+        "design/generated/part-c/originals/mood-beloved.png"
+      ]
+    },
+    {
+      "id": "sailor-swim-a",
+      "title": "Sailor swimming on the harness, stroke A",
+      "section": "Shared cast and screens",
+      "width": 360,
+      "height": 240,
+      "anchor": "centre (harness ring on his back)",
+      "transparent": true,
+      "file": "intake/sailor-swim-a.png",
+      "original": "design/generated/part-c/originals/sailor-swim-a.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        25,
+        194,
+        1528,
+        830
+      ],
+      "placement": [
+        0,
+        44,
+        360,
+        152
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), swimming horizontally facing right in a breaststroke with arms reaching forward, a small leather harness on his back with a brass ring for the flying wires, cap clamped on, bubbles from his beard. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Make a clean DIE-CUT PAPER CHARACTER SPRITE with a hard pale card edge and a fully opaque body. Horizontal full-body profile of this same grey-bearded sailor, swimming toward the RIGHT with both arms extended forwards; brass tether ring on back harness. No environmental lighting or glow whatsoever. Absolutely no diffuse beige halo, fog, mist, aura, vignetting, water or bubbles. All space outside the exact hard paper-cut silhouette is empty alpha 0. Transparent sprite, not a scene. Reference: costume and face only. Intended final canvas 360 by 240 pixels, centred anchor.",
+      "references": [
+        "design/generated/mood-sailor-1.png"
+      ]
+    },
+    {
+      "id": "sailor-swim-b",
+      "title": "Sailor swimming on the harness, stroke B",
+      "section": "Shared cast and screens",
+      "width": 360,
+      "height": 240,
+      "anchor": "centre (harness ring on his back)",
+      "transparent": true,
+      "file": "intake/sailor-swim-b.png",
+      "original": "design/generated/part-c/originals/sailor-swim-b.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        37,
+        200,
+        1386,
+        785
+      ],
+      "placement": [
+        0,
+        42,
+        360,
+        156
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), swimming horizontally facing right with arms swept back and legs kicking, the same harness and ring. Same scale and framing as sailor-swim-a. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). This is animation frame B of the attached swimming frame A. Preserve the same sailor identity, navy uniform, red scarf, cap, brass harness ring, scale, canvas and body position. Change only the breaststroke phase: arms swept back alongside the torso, legs kicking. Face RIGHT. One clean paper cut-out with real alpha transparency. No scenery, environmental lighting, glow, mist, water, bubbles, text or cast shadows. Intended final 360 × 240 pixels, centre anchor.",
+      "references": [
+        "design/generated/part-c/originals/sailor-swim-a.png"
+      ]
+    },
+    {
+      "id": "beloved-stand",
+      "title": "The beloved",
+      "section": "Shared cast and screens",
+      "width": 200,
+      "height": 380,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/beloved-stand.png",
+      "original": "design/generated/part-c/originals/beloved-stand.png",
+      "originalSize": [
+        910,
+        1729
+      ],
+      "sourceCrop": [
+        166,
+        7,
+        821,
+        1708
+      ],
+      "placement": [
+        27,
+        0,
+        146,
+        380
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the beloved (a young woman with dark auburn hair pinned up, a cream lace dress and a rose-pink shawl, a fine gold chain at her throat with its pendant pearl missing), standing in profile facing left, one hand at her throat, looking out to sea. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 200:380, intended final size 200 × 380 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/part-c/originals/mood-beloved.png"
+      ]
+    },
+    {
+      "id": "rival-silhouette",
+      "title": "Silhouette in the doorway",
+      "section": "Shared cast and screens",
+      "width": 200,
+      "height": 380,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/rival-silhouette.png",
+      "original": "design/generated/part-c/originals/rival-silhouette.png",
+      "originalSize": [
+        910,
+        1728
+      ],
+      "sourceCrop": [
+        84,
+        10,
+        826,
+        1715
+      ],
+      "placement": [
+        17,
+        0,
+        165,
+        380
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A solid black silhouette of a tall man in a long coat and wide-brimmed hat, standing in a doorway pose facing front. Faceless; only the outline reads. Flat toy-theatre cut-out seen square-on: a solid black silhouette with a thin warm rim of light from behind, no other colour; faint pale cut edge; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 200:380, intended final size 200 × 380 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "witch-stand",
+      "title": "The witch offering the sea rose",
+      "section": "Shared cast and screens",
+      "width": 260,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/witch-stand.png",
+      "original": "design/generated/part-c/originals/witch-stand.png",
+      "originalSize": [
+        987,
+        1593
+      ],
+      "sourceCrop": [
+        55,
+        10,
+        979,
+        1577
+      ],
+      "placement": [
+        6,
+        0,
+        248,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full figure of the sea witch (long black hair, flowing rose-pink robes, a small gold crown and a gold star wand; match mood-witch-1), standing facing left, holding out a single deep-pink sea rose in her open hand, wand lowered in the other. Alluring and ambiguous rather than evil. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 260:420, intended final size 260 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-witch-1.png"
+      ]
+    },
+    {
+      "id": "band-hat",
+      "title": "Band member with the hat",
+      "section": "Shared cast and screens",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/band-hat.png",
+      "original": "design/generated/part-c/originals/band-hat.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        122,
+        0,
+        765,
+        1763
+      ],
+      "placement": [
+        54,
+        0,
+        292,
+        800
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full-length cut-out of the band member wearing the hat in video-cover.jpg (the left of the trio), standing facing front, one hand on the hat brim. Halftone dots visible, pale card edge around the figure. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the musician identities from the attached cover cut-outs: LEFT is the dark-haired moustached man wearing the wide hat; CENTRE is the younger long dark-haired clean-shaven guitarist; RIGHT is the older white-haired white-bearded singer. Include ONLY the musician/legs specified in this request. Deliver one complete production asset, canvas aspect 400:800, intended final size 400 × 800 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/band-trio-original.png",
+        "design/references/video-cover.jpg"
+      ]
+    },
+    {
+      "id": "band-guitar",
+      "title": "Band member with the guitar",
+      "section": "Shared cast and screens",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/band-guitar.png",
+      "original": "design/generated/part-c/originals/band-guitar.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        18,
+        46,
+        872,
+        1748
+      ],
+      "placement": [
+        0,
+        3,
+        400,
+        797
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full-length cut-out of the band member playing the acoustic guitar in video-cover.jpg (the centre of the trio), facing front. Halftone dots visible, pale card edge around the figure. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the musician identities from the attached cover cut-outs: LEFT is the dark-haired moustached man wearing the wide hat; CENTRE is the younger long dark-haired clean-shaven guitarist; RIGHT is the older white-haired white-bearded singer. Include ONLY the musician/legs specified in this request. Deliver one complete production asset, canvas aspect 400:800, intended final size 400 × 800 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/band-trio-original.png",
+        "design/references/video-cover.jpg"
+      ]
+    },
+    {
+      "id": "band-beard",
+      "title": "Bearded band member",
+      "section": "Shared cast and screens",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/band-beard.png",
+      "original": "design/generated/part-c/originals/band-beard.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        116,
+        56,
+        805,
+        1728
+      ],
+      "placement": [
+        35,
+        0,
+        330,
+        800
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Full-length cut-out of the bearded band member in video-cover.jpg (the right of the trio), facing front, singing. Halftone dots visible, pale card edge around the figure. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Reference identity: ONLY THE RIGHTMOST musician of the attached trio. Preserve his older face, wavy grey/white hair and full grey/white beard, waistcoat and pale pink/white patterned shirt. Full-length standing singing pose, one man only. Do not make his beard or hair dark brown. Retain halftone/photo collage appearance. One complete cut-out, intended 400 × 800 pixels, bottom-centre anchor. Actual transparent PNG, no glow, shadow or lettering.",
+      "references": [
+        "design/generated/band-trio-original.png"
+      ]
+    },
+    {
+      "id": "tea-leaf",
+      "title": "Tea leaf pickup (Act I)",
+      "section": "Shared cast and screens",
+      "width": 64,
+      "height": 64,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/tea-leaf.png",
+      "original": "design/generated/part-c/originals/tea-leaf.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        366,
+        15,
+        1000,
+        1242
+      ],
+      "placement": [
+        15,
+        0,
+        33,
+        64
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A single curled dark tea leaf with a faint gold glow around it, like a fortune about to be read. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 64:64, intended final size 64 × 64 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "keepsake-stone",
+      "title": "The stone (Act IV keepsake)",
+      "section": "Shared cast and screens",
+      "width": 128,
+      "height": 128,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/keepsake-stone.png",
+      "original": "design/generated/part-c/originals/keepsake-stone.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        8,
+        263,
+        1246,
+        1088
+      ],
+      "placement": [
+        0,
+        43,
+        128,
+        85
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A smooth grey sea pebble, palm-sized, with a thin white quartz ring around it, resting on nothing. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 128:128, intended final size 128 × 128 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "keepsake-guitar",
+      "title": "The guitar (Act II keepsake)",
+      "section": "Shared cast and screens",
+      "width": 128,
+      "height": 128,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/keepsake-guitar.png",
+      "original": "design/generated/part-c/originals/keepsake-guitar.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        244,
+        9,
+        1177,
+        1243
+      ],
+      "placement": [
+        15,
+        0,
+        97,
+        128
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A small acoustic guitar with a pale spruce top and dark wood sides, like the one in video-cover.jpg, tilted, with a strand of kelp caught on its neck and a few bubbles. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 128:128, intended final size 128 × 128 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "band-legs-giant",
+      "title": "Band member's giant legs",
+      "section": "Shared cast and screens",
+      "width": 500,
+      "height": 1000,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/band-legs-giant.png",
+      "original": "design/generated/part-c/originals/band-legs-giant.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        887,
+        1758
+      ],
+      "placement": [
+        0,
+        9,
+        500,
+        991
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Only the legs, from the hip down, of a band member standing like a giant: striped trousers and black boots, feet apart, as cut off by the top of the frame in video frames 2:45-2:55. Cut out as one tall piece. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). CORRECT THE SUBJECT: EXACTLY TWO LEGS belonging to ONE musician, hip down ONLY. A single pair of vertically striped plum-and-cream trousers, black leather boots, feet apart, enormous giant scale. No other people or overlapping legs. Top of thighs is cut flush by the top canvas edge. Halftone photographic card cutout, soft stencil tint, pale card edge. Intended size 500 × 1000; actual alpha transparency outside the cut-out, no cast shadow or glow. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/band-legs-giant.png"
+      ]
+    },
+    {
+      "id": "playbill",
+      "title": "Playbill (act select)",
+      "section": "Shared cast and screens",
+      "width": 1400,
+      "height": 2000,
+      "anchor": "centre",
+      "transparent": false,
+      "file": "intake/playbill.png",
+      "original": "design/generated/part-c/originals/playbill.png",
+      "originalSize": [
+        1049,
+        1499
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "A Victorian playbill on cream paper with ornate plum and gold borders, shells and stars in the corners, a small crescent-moon boat vignette at the top. Leave five large empty horizontal panels down the middle for the game to letter (one per act), and an empty banner at the top for the title. No words at all. A flat Victorian theatre playbill, portrait, full bleed, printed on cream paper with ornate plum and gold letterpress borders, early-1900s stencil-tinted accents; no lettering of any kind. This is the blank production template: absolutely NO text or letters. FIVE large blank panel openings stacked vertically, plus a separate blank title banner; decoration stays outside these empty regions. Deliver one complete production asset, canvas aspect 1400:2000, intended final size 1400 × 2000 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/generated/mood-poster-1.png"
+      ]
+    },
+    {
+      "id": "deck-set",
+      "title": "Ship deck set",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 2560,
+      "height": 1000,
+      "anchor": "bottom edge",
+      "transparent": true,
+      "file": "intake/deck-set.png",
+      "original": "design/generated/part-c/originals/deck-set.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        9,
+        0,
+        1974,
+        767
+      ],
+      "placement": [
+        0,
+        1,
+        2560,
+        999
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ship's deck built as a stage set, seen square-on: a carved wooden rail along the front with a row of painted heraldic shields (as in video frame 0:25), a mast with rigging rising out of the top edge, barrels, coiled ropes and a ship's bell; two square hatch openings in the deck boards, left and right of centre, dark inside. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 2560:1000, intended final size 2560 × 1000 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "reveller-yellow",
+      "title": "Reveller in yellow",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/reveller-yellow.png",
+      "original": "design/generated/part-c/originals/reveller-yellow.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        12,
+        20,
+        903,
+        1655
+      ],
+      "placement": [
+        0,
+        16,
+        220,
+        404
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A costumed party reveller from the Méliès deck scene (video 0:30-0:35): a man in a bright yellow tunic, yellow tights and a small cap, mid-dance with one knee raised and arms out. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:420, intended final size 220 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-030s.jpg"
+      ]
+    },
+    {
+      "id": "reveller-shaggy",
+      "title": "Shaggy sea-creature reveller",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 260,
+      "height": 440,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/reveller-shaggy.png",
+      "original": "design/generated/part-c/originals/reveller-shaggy.png",
+      "originalSize": [
+        965,
+        1630
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        965,
+        1629
+      ],
+      "placement": [
+        0,
+        1,
+        260,
+        439
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A reveller in a shaggy green sea-creature costume of long fringed strands (video 0:35), arms thrown up in a dance, a comic face peering out. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 260:440, intended final size 260 × 440 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-035s.jpg"
+      ]
+    },
+    {
+      "id": "reveller-jester",
+      "title": "Harlequin reveller",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/reveller-jester.png",
+      "original": "design/generated/part-c/originals/reveller-jester.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        8,
+        9,
+        899,
+        1725
+      ],
+      "placement": [
+        1,
+        0,
+        218,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A harlequin reveller in a diamond-patched costume of plum, gold and teal with a ruff and a belled cap, mid-caper. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:420, intended final size 220 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "reveller-lady",
+      "title": "Lady reveller in stripes",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/reveller-lady.png",
+      "original": "design/generated/part-c/originals/reveller-lady.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        25,
+        8,
+        900,
+        1704
+      ],
+      "placement": [
+        1,
+        0,
+        217,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Production toy-theatre cut-out of an adult Edwardian woman doing a cheerful jig, fully clothed in a long ankle-length pink-and-cream striped dress with a high collar and long sleeves, feathered period hat, sensible shoes. Flat front-on hand-painted card, faint pale cut edge, sepia-grey gouache with muted rose pink, cream, plum and moon-gold stencil tinting, slightly off-register print texture. One complete isolated figure, intended 220 × 420 pixels, bottom-centre anchor. Real alpha transparency, no background, no shadow, no glow, no lettering. Reference image guides only the tint palette and print style.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "lantern-string",
+      "title": "String of paper lanterns",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 1200,
+      "height": 300,
+      "anchor": "top edge (hangs from the ends)",
+      "transparent": true,
+      "file": "intake/lantern-string.png",
+      "original": "design/generated/part-c/originals/lantern-string.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        10,
+        11,
+        2162,
+        686
+      ],
+      "placement": [
+        0,
+        0,
+        1200,
+        300
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A swagged string of eight round paper lanterns in rose, gold and teal, unlit, hanging from a cord whose two ends are at the top corners. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 1200:300, intended final size 1200 × 300 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: top edge (hangs from the ends). Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "sea-spirit",
+      "title": "Sea spirit (double exposure)",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 300,
+      "height": 600,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sea-spirit.png",
+      "original": "design/generated/part-c/originals/sea-spirit.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        42,
+        24,
+        878,
+        1759
+      ],
+      "placement": [
+        5,
+        0,
+        289,
+        600
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A translucent ghostly sea spirit: a tall veiled female figure in white, arms raised, her lower body dissolving into spray, like a Méliès double exposure over stormy water (video 0:50-0:55). Soft, semi-transparent edges. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s pale ghostly white with only the faintest washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 300:600, intended final size 300 × 600 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-050s.jpg"
+      ]
+    },
+    {
+      "id": "ship-wreck-bow",
+      "title": "Wrecked ship, bow half",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 300,
+      "height": 400,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/ship-wreck-bow.png",
+      "original": "design/generated/part-c/originals/ship-wreck-bow.png",
+      "originalSize": [
+        1086,
+        1448
+      ],
+      "sourceCrop": [
+        66,
+        59,
+        1074,
+        1385
+      ],
+      "placement": [
+        0,
+        5,
+        300,
+        395
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The front half of the two-masted toy-theatre ship from assets/ship.webp (brown hull, gold rail, coral stripe, cream sails), broken off amidships with splintered timbers at its left edge, its foremast snapped and sails torn, tipping forward into the water. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Make ONLY the RIGHT-HAND FRONT HALF of the reference ship. Bow points RIGHT with its gold curved prow. Include the forward mast, snapped at its top. The LEFT boundary is a ragged coral-red/brown splintered break through the middle of the hull. NO stern, rear mast, crew, people, waves or water. This is one of two separate broken ship halves. All outside space is alpha 0. One complete cut-out, intended 300 × 400 pixels, bottom-centre anchor. Actual transparent PNG, no glow, shadow or lettering.",
+      "references": [
+        "design/generated/ship-clean-original.png"
+      ]
+    },
+    {
+      "id": "ship-wreck-stern",
+      "title": "Wrecked ship, stern half",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 300,
+      "height": 400,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/ship-wreck-stern.png",
+      "original": "design/generated/part-c/originals/ship-wreck-stern.png",
+      "originalSize": [
+        1086,
+        1448
+      ],
+      "sourceCrop": [
+        83,
+        10,
+        1040,
+        1429
+      ],
+      "placement": [
+        15,
+        0,
+        270,
+        400
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The rear half of the same ship, broken off amidships with splintered timbers at its right edge, the mainmast leaning, the magenta pennant tangled, stern rising out of the water. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Make ONLY the LEFT-HAND REAR HALF of the reference ship. Rounded raised stern at LEFT with the gold rail. The RIGHT boundary is a ragged coral-red/brown splintered break through the middle of the hull. Include one rear mast leaning off vertical and a magenta pennant. NO bow, forward mast, crew, people, waves or water. This is one of two separate broken ship halves. All outside space is alpha 0. One complete cut-out, intended 300 × 400 pixels, bottom-centre anchor. Actual transparent PNG, no glow, shadow or lettering.",
+      "references": [
+        "design/generated/ship-clean-original.png"
+      ]
+    },
+    {
+      "id": "guitar-sinking",
+      "title": "The guitar, sinking",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 220,
+      "height": 520,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/guitar-sinking.png",
+      "original": "design/generated/part-c/originals/guitar-sinking.png",
+      "originalSize": [
+        815,
+        1930
+      ],
+      "sourceCrop": [
+        46,
+        22,
+        774,
+        1889
+      ],
+      "placement": [
+        8,
+        0,
+        203,
+        520
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "An acoustic guitar with a pale spruce top, sound hole and dark wood sides, like the one in video-cover.jpg, sinking head-first at a slight angle, a broken string curling, bubbles and a strand of kelp around it (video 1:05). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:520, intended final size 220 × 520 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "waterspout",
+      "title": "The witch's waterspout",
+      "section": "Act I additions — the celebration and the wreck",
+      "width": 600,
+      "height": 1100,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/waterspout.png",
+      "original": "design/generated/part-c/originals/waterspout.png",
+      "originalSize": [
+        926,
+        1698
+      ],
+      "sourceCrop": [
+        1,
+        0,
+        925,
+        1696
+      ],
+      "placement": [
+        0,
+        0,
+        599,
+        1100
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A towering twisting waterspout of painted sea water and foam, teal and white, as a tall stage flat with a visible wooden spine; spray curling at the top and a ring of waves at its base. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 600:1100, intended final size 600 × 1100 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "grotto-backcloth",
+      "title": "Grotto backcloth (tall roll)",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 2560,
+      "height": 4320,
+      "anchor": "top, scrolls up",
+      "transparent": false,
+      "file": "intake/grotto-backcloth.png",
+      "original": "design/generated/part-c/originals/grotto-backcloth.png",
+      "originalSize": [
+        965,
+        1630
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "A tall vertical backcloth that is read from top to bottom as the audience descends. Top third: dim blue water on the sea floor near the surface, faint light rays, kelp and the dark shapes of a sunken ship's timbers. Middle third: a teal grotto of rock arches and white coral, a distant painted underwater palace. Bottom third: a deep dark cave floor with faint phosphorescent anemones. The three zones blend smoothly, with no seams. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. SCENERY-ONLY CORRECTION. Remove the pink-robed woman, her moon boat and the red dragon entirely from the middle zone; replace those areas with continuous teal water, rock arches and white coral. Remove any other character or creature figures. Retain the three vertical zones, kelp, shipwreck timber, distant underwater palace and phosphorescent anemones. This empty scenery is populated separately by game sprites. Keep every other detail and the same composition. Intended size 2560 × 4320; opaque full bleed. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/grotto-backcloth.png"
+      ]
+    },
+    {
+      "id": "grotto-wing-left",
+      "title": "Grotto rock wing, left",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 640,
+      "height": 1440,
+      "anchor": "left edge",
+      "transparent": true,
+      "file": "intake/grotto-wing-left.png",
+      "original": "design/generated/part-c/originals/grotto-wing-left.png",
+      "originalSize": [
+        836,
+        1881
+      ],
+      "sourceCrop": [
+        3,
+        0,
+        820,
+        1881
+      ],
+      "placement": [
+        0,
+        0,
+        625,
+        1440
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall rock wing flat for the left side of the stage: jagged teal-grey grotto rock with white coral growing from its edge and a few anemones; the right edge is the cut rock profile. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 640:1440, intended final size 640 × 1440 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: left edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "grotto-wing-right",
+      "title": "Grotto rock wing, right",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 640,
+      "height": 1440,
+      "anchor": "right edge",
+      "transparent": true,
+      "file": "intake/grotto-wing-right.png",
+      "original": "design/generated/part-c/originals/grotto-wing-right.png",
+      "originalSize": [
+        836,
+        1881
+      ],
+      "sourceCrop": [
+        7,
+        7,
+        836,
+        1874
+      ],
+      "placement": [
+        1,
+        0,
+        639,
+        1440
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall rock wing flat for the right side of the stage: jagged teal-grey grotto rock with white coral and red sea fans; the left edge is the cut rock profile. A different shape from the left wing. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 640:1440, intended final size 640 × 1440 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: right edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "coral-flat-a",
+      "title": "Coral flat A",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 800,
+      "height": 600,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/coral-flat-a.png",
+      "original": "design/generated/part-c/originals/coral-flat-a.png",
+      "originalSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        14,
+        106,
+        1441,
+        1016
+      ],
+      "placement": [
+        0,
+        90,
+        800,
+        510
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ground row of branching white coral and pink sea fans on a rock base, as in the grotto frame of the video. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 800:600, intended final size 800 × 600 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "coral-flat-b",
+      "title": "Coral flat B",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 800,
+      "height": 600,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/coral-flat-b.png",
+      "original": "design/generated/part-c/originals/coral-flat-b.png",
+      "originalSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        12,
+        12,
+        1435,
+        1074
+      ],
+      "placement": [
+        0,
+        3,
+        800,
+        597
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ground row of coral arches forming a small gateway, with red coral, shells and a starfish. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 800:600, intended final size 800 × 600 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "kelp-hanging",
+      "title": "Hanging kelp",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 200,
+      "height": 900,
+      "anchor": "top centre",
+      "transparent": true,
+      "file": "intake/kelp-hanging.png",
+      "original": "design/generated/part-c/originals/kelp-hanging.png",
+      "originalSize": [
+        768,
+        2048
+      ],
+      "sourceCrop": [
+        118,
+        6,
+        665,
+        2043
+      ],
+      "placement": [
+        0,
+        0,
+        200,
+        745
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A long strand of kelp hanging from the top, olive and teal, with a small brass hook at the top for a wire. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 200:900, intended final size 200 × 900 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: top centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "fish-school",
+      "title": "School of fish on a stick",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 420,
+      "height": 200,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/fish-school.png",
+      "original": "design/generated/part-c/originals/fish-school.png",
+      "originalSize": [
+        1817,
+        866
+      ],
+      "sourceCrop": [
+        17,
+        12,
+        1805,
+        854
+      ],
+      "placement": [
+        0,
+        1,
+        420,
+        198
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A small school of seven gold and coral fish arranged in a swimming curve, all facing right, mounted together on one visible wooden stick. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 420:200, intended final size 420 × 200 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "clam-open",
+      "title": "Giant clam, open",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 240,
+      "height": 200,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/clam-open.png",
+      "original": "design/generated/part-c/originals/clam-open.png",
+      "originalSize": [
+        1374,
+        1145
+      ],
+      "sourceCrop": [
+        5,
+        0,
+        1373,
+        1145
+      ],
+      "placement": [
+        0,
+        0,
+        239,
+        200
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A giant fluted clam, wide open, pink inside, holding one large lustrous pearl. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver exactly ONE complete asset, 240:200 canvas aspect ratio, intended final 240 × 200 pixels. Actual transparent background; isolated cut-out with no ground, no backdrop, no baked checkerboard, no shadow. Fill the frame, keeping the entire silhouette visible. Anchor: bottom centre. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg"
+      ]
+    },
+    {
+      "id": "clam-closed",
+      "title": "Giant clam, closed",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 240,
+      "height": 200,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/clam-closed.png",
+      "original": "design/generated/part-c/originals/clam-closed.png",
+      "originalSize": [
+        1374,
+        1145
+      ],
+      "sourceCrop": [
+        1,
+        0,
+        1374,
+        1145
+      ],
+      "placement": [
+        0,
+        0,
+        240,
+        200
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The same giant fluted clam, shut tight. Same scale and framing as clam-open. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). CORRECT THE SHELL POSE. The two shell valves are pressed SHUT TIGHT, like a closed lidded clam box. Rotate the tall fan-shaped upper valve down onto the lower valve so their scalloped lips touch everywhere. There is no open cavity and no visible inner pink upright fan. Keep the gold fluting, pink scalloped rim, shell width and bottom pivot location. The pearl is hidden. Preserve camera and canvas. Intended size 240 × 200; actual alpha transparency outside the cut-out, no cast shadow or glow. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/clam-closed.png"
+      ]
+    },
+    {
+      "id": "eel",
+      "title": "Moray eel",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 520,
+      "height": 140,
+      "anchor": "left edge (emerges from a hole)",
+      "transparent": true,
+      "file": "intake/eel.png",
+      "original": "design/generated/part-c/originals/eel.png",
+      "originalSize": [
+        1998,
+        787
+      ],
+      "sourceCrop": [
+        14,
+        15,
+        1985,
+        772
+      ],
+      "placement": [
+        0,
+        0,
+        365,
+        140
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A long green-and-gold moray eel lunging to the right with its jaws open, as a single cut-out. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 520:140, intended final size 520 × 140 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: left edge (emerges from a hole). Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "eel-hole",
+      "title": "Eel hole with glowing eyes",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 160,
+      "height": 120,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/eel-hole.png",
+      "original": "design/generated/part-c/originals/eel-hole.png",
+      "originalSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        4,
+        5,
+        1444,
+        1084
+      ],
+      "placement": [
+        0,
+        0,
+        160,
+        120
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A dark hole in teal rock with two glowing yellow eyes inside. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 160:120, intended final size 160 × 120 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "jellyfish",
+      "title": "Jellyfish on a wire",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 180,
+      "height": 280,
+      "anchor": "top centre",
+      "transparent": true,
+      "file": "intake/jellyfish.png",
+      "original": "design/generated/part-c/originals/jellyfish.png",
+      "originalSize": [
+        1006,
+        1564
+      ],
+      "sourceCrop": [
+        13,
+        4,
+        994,
+        1557
+      ],
+      "placement": [
+        1,
+        0,
+        177,
+        280
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A rose-pink jellyfish with trailing ribbon tentacles, a thin brass wire hook at the top. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 180:280, intended final size 180 × 280 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: top centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "air-vent",
+      "title": "Air vent",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 160,
+      "height": 200,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/air-vent.png",
+      "original": "design/generated/part-c/originals/air-vent.png",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "sourceCrop": [
+        14,
+        9,
+        1109,
+        1391
+      ],
+      "placement": [
+        1,
+        0,
+        158,
+        200
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A small volcanic rock vent on the sea floor, cracked open, with a column of bubbles starting to rise. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 160:200, intended final size 160 × 200 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "conch-horn",
+      "title": "Conch horn",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 160,
+      "height": 140,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/conch-horn.png",
+      "original": "design/generated/part-c/originals/conch-horn.png",
+      "originalSize": [
+        1341,
+        1173
+      ],
+      "sourceCrop": [
+        9,
+        6,
+        1332,
+        1173
+      ],
+      "placement": [
+        0,
+        0,
+        159,
+        140
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A large pink-and-cream conch shell lying on a rock, its mouth facing the viewer, a faint gold glow inside. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 160:140, intended final size 160 × 140 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "wreck-debris",
+      "title": "Wreckage from the ship",
+      "section": "Act II — The Sleepers' Grotto",
+      "width": 700,
+      "height": 300,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/wreck-debris.png",
+      "original": "design/generated/part-c/originals/wreck-debris.png",
+      "originalSize": [
+        1915,
+        821
+      ],
+      "sourceCrop": [
+        5,
+        13,
+        1906,
+        810
+      ],
+      "placement": [
+        0,
+        7,
+        700,
+        293
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ground row of wreckage from the sailor's ship lying on the sea floor: a broken section of gold-railed hull with a coral stripe, a torn cream sail draped over a rock, a barrel and a coil of rope. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 700:300, intended final size 700 × 300 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "court-backcloth",
+      "title": "Court backcloth",
+      "section": "Act III — The Sea King's Court",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/court-backcloth.png",
+      "original": "design/generated/part-c/originals/court-backcloth.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "The great hall of an underwater palace, as in the Méliès court of video frames 1:55-2:10: tall gold-ornamented arches, coral-red columns, a raised dais at the back centre (left empty for the throne), shell-shaped windows letting in teal water light, drifting bubbles. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. SCENERY-ONLY CORRECTION. Remove the white shell throne/chair from the central raised dais and paint that area as bare cream marble steps/platform. The entire central dais is completely EMPTY for a separate game sprite. No throne, furniture or figures anywhere. Keep all arches, gold ornament, coral-red columns, shell windows and teal water light, identical camera and composition. Intended size 2560 × 1440; opaque full bleed. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/court-backcloth.png"
+      ]
+    },
+    {
+      "id": "court-wing-left",
+      "title": "Court column wing, left",
+      "section": "Act III — The Sea King's Court",
+      "width": 640,
+      "height": 1440,
+      "anchor": "left edge",
+      "transparent": true,
+      "file": "intake/court-wing-left.png",
+      "original": "design/generated/part-c/originals/court-wing-left.png",
+      "originalSize": [
+        836,
+        1881
+      ],
+      "sourceCrop": [
+        6,
+        4,
+        738,
+        1881
+      ],
+      "placement": [
+        0,
+        0,
+        562,
+        1440
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall wing flat of a coral-red column wrapped in gold ornament and pearls, with a hanging lamp; for the left side of the stage. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 640:1440, intended final size 640 × 1440 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: left edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "court-wing-right",
+      "title": "Court column wing, right",
+      "section": "Act III — The Sea King's Court",
+      "width": 640,
+      "height": 1440,
+      "anchor": "right edge",
+      "transparent": true,
+      "file": "intake/court-wing-right.png",
+      "original": "design/generated/part-c/originals/court-wing-right.png",
+      "originalSize": [
+        836,
+        1881
+      ],
+      "sourceCrop": [
+        449,
+        15,
+        805,
+        1863
+      ],
+      "placement": [
+        363,
+        0,
+        277,
+        1440
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall wing flat of a coral-red column wrapped in gold ornament and shells; for the right side of the stage. Mirrors the left wing in spirit but not exactly. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Asset contains architecture ONLY: one tall ornamental coral-red column with a gold capital, pearl/shell ornament and painted sea motifs, shaped as the right-hand wing of a miniature paper theatre, viewed flat from the front. Different shell arrangements from the left wing. No people, figures or statues. Whole column visible. Real alpha transparency outside the card edge, no haze or glow, no scenery backdrop. Intended 640 × 1440 pixels, right-edge anchor. Reference gives only the stencil tint palette.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "court-floor",
+      "title": "Court floor with processional grooves",
+      "section": "Act III — The Sea King's Court",
+      "width": 2560,
+      "height": 400,
+      "anchor": "top edge",
+      "transparent": true,
+      "file": "intake/court-floor.png",
+      "original": "design/generated/part-c/originals/court-floor.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        243,
+        1983,
+        519
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        400
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A strip of stage floor painted as pink and cream marble, crossed by three parallel brass-edged grooves running left to right, in which figures slide. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side. TILING CORRECTION: Replace the scalloped ornamented boundary with a PLAIN RECTANGULAR FLOOR STRIP. Three continuous horizontal brass grooves at fixed heights. Pink/cream marble paint. No vertical end borders or end caps, no rounded ends, no scalloped upper/lower edges. The painted strip goes all the way through BOTH left and right canvas boundaries. Left and right edges have the SAME marble colour, the SAME groove heights and the SAME thickness, so repetitions are continuous. Keep the tint and painted texture. One long thin horizontal tile, actual alpha only above the top silhouette; intended 2560 × 400. This is a continuous repeating strip, not a standalone plaque. No frame, text, ground, shadow or glow.",
+      "references": [
+        "design/generated/part-c/originals/court-floor.png"
+      ]
+    },
+    {
+      "id": "attendant-green",
+      "title": "Court attendant in green",
+      "section": "Act III — The Sea King's Court",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/attendant-green.png",
+      "original": "design/generated/part-c/originals/attendant-green.png",
+      "originalSize": [
+        908,
+        1733
+      ],
+      "sourceCrop": [
+        10,
+        10,
+        899,
+        1720
+      ],
+      "placement": [
+        1,
+        0,
+        218,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A court attendant from the Méliès undersea procession: a young woman in a pastel sea-green gown and a shell headdress, holding a coral fan, facing front, standing stiffly like a figure on a track. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:420, intended final size 220 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "attendant-pink",
+      "title": "Court attendant in pink",
+      "section": "Act III — The Sea King's Court",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/attendant-pink.png",
+      "original": "design/generated/part-c/originals/attendant-pink.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        38,
+        35,
+        866,
+        1703
+      ],
+      "placement": [
+        6,
+        0,
+        208,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A court attendant in a pastel rose-pink gown with a pearl headdress, holding a long-stemmed sea flower, facing front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:420, intended final size 220 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "attendant-blue",
+      "title": "Court attendant in blue",
+      "section": "Act III — The Sea King's Court",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/attendant-blue.png",
+      "original": "design/generated/part-c/originals/attendant-blue.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        72,
+        11,
+        835,
+        1722
+      ],
+      "placement": [
+        16,
+        0,
+        187,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A court attendant in a pastel powder-blue gown with a starfish headdress, holding a gilded conch, facing front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 220:420, intended final size 220 × 420 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "seahorse-guard",
+      "title": "Seahorse guard",
+      "section": "Act III — The Sea King's Court",
+      "width": 240,
+      "height": 460,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/seahorse-guard.png",
+      "original": "design/generated/part-c/originals/seahorse-guard.png",
+      "originalSize": [
+        906,
+        1736
+      ],
+      "sourceCrop": [
+        29,
+        9,
+        896,
+        1726
+      ],
+      "placement": [
+        4,
+        0,
+        232,
+        460
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A palace guard in a gold seahorse-shaped helmet and coral-red tabard, holding a trident upright, facing front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 240:460, intended final size 240 × 460 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "sea-king-throne",
+      "title": "The Sea King on his throne",
+      "section": "Act III — The Sea King's Court",
+      "width": 600,
+      "height": 620,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sea-king-throne.png",
+      "original": "design/generated/part-c/originals/sea-king-throne.png",
+      "originalSize": [
+        1233,
+        1275
+      ],
+      "sourceCrop": [
+        1,
+        4,
+        1233,
+        1275
+      ],
+      "placement": [
+        0,
+        1,
+        600,
+        619
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The Sea King of the Méliès undersea court (video 1:45): a crowned, long white-bearded ruler in flowing white and pale-blue robes with gold trim, holding a gold trident, seated facing front on a tall gold scallop-shell throne flanked by white coral. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 600:620, intended final size 600 × 620 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "sentry-creature-closed",
+      "title": "Red sea-creature sentry, jaws shut",
+      "section": "Act III — The Sea King's Court",
+      "width": 500,
+      "height": 340,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sentry-creature-closed.png",
+      "original": "design/generated/part-c/originals/sentry-creature-closed.png",
+      "originalSize": [
+        1521,
+        1034
+      ],
+      "sourceCrop": [
+        4,
+        0,
+        1521,
+        1029
+      ],
+      "placement": [
+        0,
+        1,
+        500,
+        339
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "One of the giant red sea creatures that line the foreground of the video's court (2:00-2:25): a crouching coral-red beast with a frilled, finned crest, scaly body and a curled tail, jaws shut, facing right. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver exactly ONE complete asset, 500:340 canvas aspect ratio, intended final 500 × 340 pixels. Actual transparent background; isolated cut-out with no ground, no backdrop, no baked checkerboard, no shadow. Fill the frame, keeping the entire silhouette visible. Anchor: bottom centre. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/references/video-frames/frame-130s.jpg"
+      ]
+    },
+    {
+      "id": "sentry-creature-open",
+      "title": "Red sea-creature sentry, jaws open",
+      "section": "Act III — The Sea King's Court",
+      "width": 500,
+      "height": 340,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/sentry-creature-open.png",
+      "original": "design/generated/part-c/originals/sentry-creature-open.png",
+      "originalSize": [
+        1521,
+        1034
+      ],
+      "sourceCrop": [
+        2,
+        3,
+        1517,
+        1031
+      ],
+      "placement": [
+        0,
+        1,
+        500,
+        339
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The same red sea-creature sentry with its jaws snapped wide open, crest flared. Same scale and framing as sentry-creature-closed. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Edit this SAME creature to open its jaws very wide. Identical body, scales, tail, feet, pose and canvas framing; only the jaw changes. One complete asset, intended 500 × 340 pixels, matching aspect ratio and framing. Real alpha background, no surrounding glow, backdrop, ground, checkerboard, or cast shadow. Keep all art visible. Anchor: bottom centre. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/sentry-creature-closed.png"
+      ]
+    },
+    {
+      "id": "gaze-lantern",
+      "title": "The king's gaze lantern",
+      "section": "Act III — The Sea King's Court",
+      "width": 200,
+      "height": 300,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/gaze-lantern.png",
+      "original": "design/generated/part-c/originals/gaze-lantern.png",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "sourceCrop": [
+        167,
+        4,
+        857,
+        1530
+      ],
+      "placement": [
+        32,
+        0,
+        136,
+        300
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall gilded pole topped by a lantern shaped like a single wide-open eye with a pink iris, glowing. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 200:300, intended final size 200 × 300 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "pearl-pedestal",
+      "title": "Pedestal with her pearl",
+      "section": "Act III — The Sea King's Court",
+      "width": 260,
+      "height": 340,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/pearl-pedestal.png",
+      "original": "design/generated/part-c/originals/pearl-pedestal.png",
+      "originalSize": [
+        1097,
+        1434
+      ],
+      "sourceCrop": [
+        63,
+        0,
+        1040,
+        1419
+      ],
+      "placement": [
+        13,
+        0,
+        234,
+        340
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A white coral pedestal holding an open scallop shell; in it, one large pearl on a broken fine gold chain. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 260:340, intended final size 260 × 340 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "whale-side",
+      "title": "Giant whale, side view",
+      "section": "Act III — The Sea King's Court",
+      "width": 3000,
+      "height": 1100,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/whale-side.png",
+      "original": "design/generated/part-c/originals/whale-side.png",
+      "originalSize": [
+        2071,
+        759
+      ],
+      "sourceCrop": [
+        8,
+        9,
+        2064,
+        747
+      ],
+      "placement": [
+        0,
+        11,
+        3000,
+        1077
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A colossal dark whale in profile facing left, as a single enormous stage flat: barnacled slate-grey and black body, pale ridged throat, small knowing eye, a few painted highlights. Built like a Méliès stage illusion, deliberately artificial. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 3000:1100, intended final size 3000 × 1100 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-095s.jpg",
+        "design/generated/mood-act2-1.png"
+      ]
+    },
+    {
+      "id": "whale-mouth",
+      "title": "Whale, mouth open to the audience",
+      "section": "Act III — The Sea King's Court",
+      "width": 1600,
+      "height": 1200,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/whale-mouth.png",
+      "original": "design/generated/part-c/originals/whale-mouth.png",
+      "originalSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        1,
+        0,
+        1448,
+        1083
+      ],
+      "placement": [
+        0,
+        2,
+        1600,
+        1198
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The same giant whale turned head-on to the audience, jaws gaping wide to swallow the stage: pink mouth, rows of baleen, dark throat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the SAME whale's grey-black barnacled hide, pale ridged throat and flat painted card texture from the reference. HEAD-ON, open mouth facing the viewer directly, no side-on body. One complete isolated cut-out, intended 1600 × 1200 pixels, anchor bottom centre. Real alpha transparency outside the painted silhouette, no backdrop, glow, shadows, text or extra animals.",
+      "references": [
+        "design/generated/part-c/originals/whale-side.png"
+      ]
+    },
+    {
+      "id": "fish-large",
+      "title": "Large fantastical fish",
+      "section": "Act III — The Sea King's Court",
+      "width": 700,
+      "height": 400,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/fish-large.png",
+      "original": "design/generated/part-c/originals/fish-large.png",
+      "originalSize": [
+        1659,
+        948
+      ],
+      "sourceCrop": [
+        66,
+        58,
+        1629,
+        893
+      ],
+      "placement": [
+        0,
+        13,
+        700,
+        374
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A large fantastical fish from the Méliès undersea tableau, facing left: gold and coral scales, frilled fins, a comic wide eye. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Render ONE large ordinary-bodied fantastical FISH, head at LEFT and tail at RIGHT. Short round fish mouth, round comic eye, gold/coral fish scales and frilled fins. Use one of the reference fish as the design basis, enlarge it and face LEFT. No dragon head, reptile snout, seahorse form, harness or brass stick. Intended final 700 × 400 pixels, anchor centre. Real alpha transparency outside the painted card shape, no shadows or glow. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/fish-school.png"
+      ]
+    },
+    {
+      "id": "belly-backcloth",
+      "title": "Inside the whale",
+      "section": "Act IV — The Whale's Road",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/belly-backcloth.png",
+      "original": "design/generated/part-c/originals/belly-backcloth.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "The inside of a giant whale painted as a stage set: great curved ribs rising like Gothic arches, dim red-violet light, a glimmer of daylight high in the throat at the upper right, wet glistening walls. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Deliver one complete production asset, canvas aspect 2560:1440, intended final size 2560 × 1440 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "rib-arch",
+      "title": "Rib arch, foreground",
+      "section": "Act IV — The Whale's Road",
+      "width": 900,
+      "height": 1300,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/rib-arch.png",
+      "original": "design/generated/part-c/originals/rib-arch.png",
+      "originalSize": [
+        1044,
+        1507
+      ],
+      "sourceCrop": [
+        10,
+        8,
+        1026,
+        1500
+      ],
+      "placement": [
+        7,
+        0,
+        885,
+        1300
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A single huge curved whale rib, ivory and grey, as a free-standing foreground flat, with a narrow ledge partway up. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 900:1300, intended final size 900 × 1300 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "belly-water",
+      "title": "Stomach water strip",
+      "section": "Act IV — The Whale's Road",
+      "width": 2560,
+      "height": 300,
+      "anchor": "top edge (water line)",
+      "transparent": true,
+      "file": "intake/belly-water.png",
+      "original": "design/generated/part-c/originals/belly-water.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        283,
+        1983,
+        793
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        300
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A strip of murky green-violet water with lazy painted ripples along the top edge; the body below is solid painted water. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side. TILING CORRECTION: Make a PERIODIC water strip with low lazy ripples ONLY along the top edge. The entire body beneath the wave line is SOLID murky green-violet painted water, extending to a FLAT STRAIGHT bottom edge. No wavy bottom edge and no transparent holes below the waterline. Both left and right edges extend flush through the canvas boundary with the SAME waterline height and colour. No end outline, end cap or vertical line at either side; repeats must be continuous. One long thin horizontal tile, actual alpha only above the top silhouette; intended 2560 × 300. This is a continuous repeating strip, not a standalone plaque. No frame, text, ground, shadow or glow.",
+      "references": [
+        "design/generated/part-c/originals/belly-water.png"
+      ]
+    },
+    {
+      "id": "barrel",
+      "title": "Floating barrel",
+      "section": "Act IV — The Whale's Road",
+      "width": 160,
+      "height": 200,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/barrel.png",
+      "original": "design/generated/part-c/originals/barrel.png",
+      "originalSize": [
+        1122,
+        1402
+      ],
+      "sourceCrop": [
+        10,
+        19,
+        1112,
+        1383
+      ],
+      "placement": [
+        0,
+        2,
+        160,
+        198
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A wooden barrel floating upright, iron hoops, a little seaweed on it. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 160:200, intended final size 160 × 200 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "crate",
+      "title": "Floating crate",
+      "section": "Act IV — The Whale's Road",
+      "width": 180,
+      "height": 180,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/crate.png",
+      "original": "design/generated/part-c/originals/crate.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        105,
+        132,
+        1148,
+        1137
+      ],
+      "placement": [
+        0,
+        7,
+        180,
+        173
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A wooden shipping crate stencilled with an anchor, floating. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Direct front-on view of ONE square wooden crate face, with the painted anchor stencil. Draw only its front planks and square border; no side face or perspective angle. No surrounding waves or water: the isolated crate is placed on a separate water sprite by the game. Intended final 180 × 180 pixels, anchor bottom centre. Real alpha transparency outside the painted card shape, no shadows or glow. No lettering.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "figurehead",
+      "title": "Ship's figurehead",
+      "section": "Act IV — The Whale's Road",
+      "width": 320,
+      "height": 420,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/figurehead.png",
+      "original": "design/generated/part-c/originals/figurehead.png",
+      "originalSize": [
+        1095,
+        1437
+      ],
+      "sourceCrop": [
+        10,
+        0,
+        1088,
+        1437
+      ],
+      "placement": [
+        2,
+        0,
+        315,
+        420
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A carved ship's figurehead of a mermaid, gilded and chipped, lying at an angle as a platform. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). A carved WOODEN ship ornament, clearly an inanimate gilded sculpture with chipped gold paint, not a living person. Mermaid figurehead wearing a carved high-necked bodice covering the torso, curled fish tail, tilted so its projecting wooden ledge can be a platform. Muted antique toy-theatre painting, flat front view. Whole ornament isolated on real alpha transparency, no background or text. Intended 320 × 420 pixels, bottom-centre anchor. Reference is palette/style only.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "piano",
+      "title": "Swallowed piano",
+      "section": "Act IV — The Whale's Road",
+      "width": 420,
+      "height": 320,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/piano.png",
+      "original": "design/generated/part-c/originals/piano.png",
+      "originalSize": [
+        1437,
+        1095
+      ],
+      "sourceCrop": [
+        53,
+        5,
+        1377,
+        1090
+      ],
+      "placement": [
+        15,
+        0,
+        390,
+        320
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "An upright parlour piano, lid open, keys showing, floating absurdly, a starfish on top. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 420:320, intended final size 420 × 320 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "lantern-hanging",
+      "title": "Hanging lantern",
+      "section": "Act IV — The Whale's Road",
+      "width": 120,
+      "height": 260,
+      "anchor": "top centre",
+      "transparent": true,
+      "file": "intake/lantern-hanging.png",
+      "original": "design/generated/part-c/originals/lantern-hanging.png",
+      "originalSize": [
+        853,
+        1844
+      ],
+      "sourceCrop": [
+        39,
+        0,
+        808,
+        1831
+      ],
+      "placement": [
+        5,
+        0,
+        109,
+        260
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ship's brass lantern hanging from a chain, warm yellow light. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 120:260, intended final size 120 × 260 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: top centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "cradle",
+      "title": "Rocking cradle",
+      "section": "Act IV — The Whale's Road",
+      "width": 1400,
+      "height": 220,
+      "anchor": "top centre",
+      "transparent": true,
+      "file": "intake/cradle.png",
+      "original": "design/generated/part-c/originals/cradle.png",
+      "originalSize": [
+        2110,
+        745
+      ],
+      "sourceCrop": [
+        20,
+        102,
+        2102,
+        639
+      ],
+      "placement": [
+        0,
+        0,
+        1400,
+        220
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The stage machinery under the set: a long curved wooden rocker on a pivot with ropes and a crank, seen from the front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). This is EMPTY STAGE MACHINERY: one very long, low, curved wooden rocker beam, a small central brass pivot underneath, ropes at both ends, and a crank at the right end. Mechanical painted wood only. No boat hull, flesh, organs, whale jaw, scenery, people or cargo. Direct frontal flat view, approximately six times wider than tall. Intended final 1400 × 220 pixels, anchor top centre. Real alpha transparency outside the painted card shape, no shadows or glow. No lettering.",
+      "references": [
+        "design/generated/mood-palette-1.png"
+      ]
+    },
+    {
+      "id": "whale-throat",
+      "title": "Throat opening with daylight",
+      "section": "Act IV — The Whale's Road",
+      "width": 800,
+      "height": 800,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/whale-throat.png",
+      "original": "design/generated/part-c/originals/whale-throat.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        4,
+        0,
+        1252,
+        1254
+      ],
+      "placement": [
+        2,
+        0,
+        796,
+        800
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A round fleshy opening framed by baleen, with bright daylight and a glimpse of rocky shore beyond. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 800:800, intended final size 800 × 800 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "shore-rocks",
+      "title": "Rocky shore",
+      "section": "Act IV — The Whale's Road",
+      "width": 2560,
+      "height": 600,
+      "anchor": "bottom edge",
+      "transparent": true,
+      "file": "intake/shore-rocks.png",
+      "original": "design/generated/part-c/originals/shore-rocks.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        3,
+        89,
+        1983,
+        735
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        600
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A ground row of rocky shoreline with white surf breaking along it and a few gulls, as a long stage flat; the rocks painted in pale stone tones so the game's rose-pink wash (video 2:30-2:40) reads well on them. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 2560:600, intended final size 2560 × 600 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "whale-tail",
+      "title": "Whale tail",
+      "section": "Act IV — The Whale's Road",
+      "width": 700,
+      "height": 500,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/whale-tail.png",
+      "original": "design/generated/part-c/originals/whale-tail.png",
+      "originalSize": [
+        1484,
+        1060
+      ],
+      "sourceCrop": [
+        34,
+        24,
+        1463,
+        1041
+      ],
+      "placement": [
+        0,
+        2,
+        700,
+        498
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The whale's great tail fluke rising from the water as it swims away, streaming water. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the SAME whale's grey-black barnacled hide, pale ridged throat and flat painted card texture from the reference. Show only its tail fluke, no body. One complete isolated cut-out, intended 700 × 500 pixels, anchor bottom centre. Real alpha transparency outside the painted silhouette, no backdrop, glow, shadows, text or extra animals.",
+      "references": [
+        "design/generated/part-c/originals/whale-side.png"
+      ]
+    },
+    {
+      "id": "whale-beached",
+      "title": "Whale beached on the rocks",
+      "section": "Act IV — The Whale's Road",
+      "width": 1800,
+      "height": 900,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/whale-beached.png",
+      "original": "design/generated/part-c/originals/whale-beached.png",
+      "originalSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        16,
+        51,
+        1757,
+        873
+      ],
+      "placement": [
+        0,
+        50,
+        1800,
+        850
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The giant whale lying beached on its belly across rocks, side view facing right, its huge mouth open at the right with baleen showing, so figures can crawl out (video 2:30-2:35); slate-grey body, pale ridged throat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Preserve the SAME whale's grey-black barnacled hide, pale ridged throat and flat painted card texture from the reference. Face RIGHT with the huge baleen mouth OPEN. One complete isolated cut-out, intended 1800 × 900 pixels, anchor bottom centre. Real alpha transparency outside the painted silhouette, no backdrop, glow, shadows, text or extra animals.",
+      "references": [
+        "design/generated/part-c/originals/whale-side.png"
+      ]
+    },
+    {
+      "id": "bay-backcloth",
+      "title": "Widow's Bay at night",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/bay-backcloth.png",
+      "original": "design/generated/part-c/originals/bay-backcloth.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Widow's Bay at night: a moonlit harbour, a high cliff with a tall stone house on top at the left, the red-and-white lighthouse distant on a headland at the right, fishing boats at anchor. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Deliver exactly ONE complete asset, 2560:1440 canvas aspect ratio, intended final 2560 × 1440 pixels. Opaque full-bleed scenery, fill entire frame. Anchor: full frame. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "bay-backcloth-fire",
+      "title": "Widow's Bay burning",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/bay-backcloth-fire.png",
+      "original": "design/generated/part-c/originals/bay-backcloth-fire.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "The same composition as bay-backcloth, but washed in a strong red-orange tint as in the video's closing: the stone house on the cliff ablaze, smoke rolling across the moon, sparks over the water. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Edit this exact bay backcloth: preserve every location, cliff silhouette, house outline, harbour, boat, moon and lighthouse. Add the specified house fire and smoke, red-orange stage lighting. One complete asset, intended 2560 × 1440 pixels, matching aspect ratio and framing. Opaque full bleed to all edges. Anchor: full frame. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/bay-backcloth.png"
+      ]
+    },
+    {
+      "id": "stone-house",
+      "title": "Stone house, cutaway",
+      "section": "Act V — Widow's Bay",
+      "width": 1400,
+      "height": 1800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/stone-house.png",
+      "original": "design/generated/part-c/originals/stone-house.png",
+      "originalSize": [
+        1106,
+        1422
+      ],
+      "sourceCrop": [
+        1,
+        0,
+        1105,
+        1421
+      ],
+      "placement": [
+        1,
+        0,
+        1398,
+        1800
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall three-storey stone house as a dollhouse cutaway with the front wall removed: three floors of rooms (kitchen, parlour, bedroom with a window seat), simple wooden floors, a shuttered window on the middle floor. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver exactly ONE complete asset, 1400:1800 canvas aspect ratio, intended final 1400 × 1800 pixels. Actual transparent background; isolated cut-out with no ground, no backdrop, no baked checkerboard, no shadow. Fill the frame, keeping the entire silhouette visible. Anchor: bottom centre. Attached images are source/style references; render ONLY the requested subject.",
+      "references": [
+        "design/references/video-frames/frame-175s.jpg"
+      ]
+    },
+    {
+      "id": "staircase",
+      "title": "Staircase",
+      "section": "Act V — Widow's Bay",
+      "width": 500,
+      "height": 500,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/staircase.png",
+      "original": "design/generated/part-c/originals/staircase.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        138,
+        0,
+        1169,
+        1253
+      ],
+      "placement": [
+        44,
+        0,
+        411,
+        500
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A narrow wooden staircase rising to the right, with a bannister. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 500:500, intended final size 500 × 500 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "ladder",
+      "title": "Ladder",
+      "section": "Act V — Widow's Bay",
+      "width": 120,
+      "height": 500,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/ladder.png",
+      "original": "design/generated/part-c/originals/ladder.png",
+      "originalSize": [
+        788,
+        1997
+      ],
+      "sourceCrop": [
+        13,
+        5,
+        775,
+        1986
+      ],
+      "placement": [
+        0,
+        188,
+        120,
+        312
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A wooden ladder, slightly charred. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 120:500, intended final size 120 × 500 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "beam-fall",
+      "title": "Falling beam",
+      "section": "Act V — Widow's Bay",
+      "width": 600,
+      "height": 120,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/beam-fall.png",
+      "original": "design/generated/part-c/originals/beam-fall.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        11,
+        10,
+        2161,
+        712
+      ],
+      "placement": [
+        0,
+        0,
+        600,
+        120
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A burning wooden roof beam, charred black with painted flames along it. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 600:120, intended final size 600 × 120 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "debris-stones",
+      "title": "Falling stones",
+      "section": "Act V — Widow's Bay",
+      "width": 300,
+      "height": 200,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/debris-stones.png",
+      "original": "design/generated/part-c/originals/debris-stones.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        28,
+        13,
+        1508,
+        1011
+      ],
+      "placement": [
+        1,
+        0,
+        297,
+        200
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A cluster of falling masonry stones and dust. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 300:200, intended final size 300 × 200 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "flame-flat",
+      "title": "Stage flame on a stick",
+      "section": "Act V — Widow's Bay",
+      "width": 300,
+      "height": 400,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/flame-flat.png",
+      "original": "design/generated/part-c/originals/flame-flat.png",
+      "originalSize": [
+        1086,
+        1448
+      ],
+      "sourceCrop": [
+        58,
+        11,
+        1044,
+        1439
+      ],
+      "placement": [
+        12,
+        0,
+        276,
+        400
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A painted stage flame in orange, gold and red, cut from card with a visible wooden stick at the bottom. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 300:400, intended final size 300 × 400 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-190s.jpg"
+      ]
+    },
+    {
+      "id": "smoke-flat",
+      "title": "Smoke flat",
+      "section": "Act V — Widow's Bay",
+      "width": 800,
+      "height": 500,
+      "anchor": "centre",
+      "transparent": true,
+      "file": "intake/smoke-flat.png",
+      "original": "design/generated/part-c/originals/smoke-flat.png",
+      "originalSize": [
+        1586,
+        992
+      ],
+      "sourceCrop": [
+        3,
+        0,
+        1585,
+        987
+      ],
+      "placement": [
+        0,
+        0,
+        800,
+        499
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A rolling cloud of grey-violet smoke as a cut-out flat, soft edges painted on. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 800:500, intended final size 800 × 500 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-190s.jpg"
+      ]
+    },
+    {
+      "id": "harbour-quay",
+      "title": "Harbour quay",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 400,
+      "anchor": "bottom edge",
+      "transparent": true,
+      "file": "intake/harbour-quay.png",
+      "original": "design/generated/part-c/originals/harbour-quay.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        8,
+        10,
+        1975,
+        782
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        400
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A long stone quay with iron bollards, coiled ropes, lobster pots and a lamp post, as a ground-row flat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 2560:400, intended final size 2560 × 400 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom edge. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "cliff-face",
+      "title": "Cliff face",
+      "section": "Act V — Widow's Bay",
+      "width": 1400,
+      "height": 1800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/cliff-face.png",
+      "original": "design/generated/part-c/originals/cliff-face.png",
+      "originalSize": [
+        1106,
+        1422
+      ],
+      "sourceCrop": [
+        8,
+        0,
+        1103,
+        1415
+      ],
+      "placement": [
+        3,
+        0,
+        1393,
+        1800
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A tall sea-cliff flat climbing from the shore (video 2:45-3:05): pale layered rock with green ivy, jutting ledges at different heights for climbing, a dark vertical gap in the rock about two-thirds of the way up, and a flat grassy top edge. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 1400:1800, intended final size 1400 × 1800 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-180s.jpg"
+      ]
+    },
+    {
+      "id": "house-front",
+      "title": "Stone house, front with door",
+      "section": "Act V — Widow's Bay",
+      "width": 1400,
+      "height": 1800,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/house-front.png",
+      "original": "design/generated/part-c/originals/house-front.png",
+      "originalSize": [
+        1106,
+        1422
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1106,
+        1421
+      ],
+      "placement": [
+        0,
+        1,
+        1400,
+        1799
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "The front of the tall three-storey stone house, closed: grey stone walls hung with ivy, a heavy wooden door with iron hinges at ground level (as in video frames 2:45-3:05), a shuttered window on the middle floor and a small window at the top. Same outline and scale as stone-house, so it can swing open like a dollhouse front to reveal it. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Close the front wall of THIS EXACT THREE-STOREY cutaway house, without changing its outer silhouette, roof, chimneys, width, height or the THREE floor levels. Paint THREE distinct ordinary storeys below the roof: UPPER bedroom floor has a large illuminated casement window directly below the eaves, MIDDLE parlour floor has a shuttered window, LOWER kitchen floor has the ground-floor door. Keep the tiny roof dormer as a separate roof feature above all THREE storeys. Do not collapse this into a two-storey house. Add ivy along the stone facade sides. Flat front-on, complete hard-edged paper cut-out, true alpha outside, no shadow or ground, no lettering. Intended 1400 × 1800 pixels, bottom-centre anchor.",
+      "references": [
+        "design/generated/part-c/originals/stone-house.png"
+      ]
+    },
+    {
+      "id": "pageant-backcloth",
+      "title": "Pageant backcloth (apotheosis)",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/pageant-backcloth.png",
+      "original": "design/generated/part-c/originals/pageant-backcloth.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "A Méliès apotheosis finale set (video 3:20): a gilded fairy palace of tiered arches, fountains and coral, shells and stars, a radiant sunburst behind the central arch, everything shimmering as if in a dissolve; an open stage floor across the front for the dancers. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. SCENERY-ONLY EDIT: remove every dancer, musician, courtier, human figure, fairy, statue and sea creature from all tiers and from the central arch. Replace them with continuous palace architecture, open platforms and fountains. Retain the tiered gilded fairy palace, arches, coral and shell ornament, fountains and painted stars. Put an unpersonified radiant golden SUN DISC behind the central arch, with no humanoid silhouette. Entire foreground stage and tiers EMPTY for separate game sprites. Keep camera, palette and overall architecture. Intended final 2560 × 1440 pixels, anchor full frame. Opaque full-bleed backcloth. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/pageant-backcloth.png"
+      ]
+    },
+    {
+      "id": "pageant-dancers",
+      "title": "Line of pageant dancers",
+      "section": "Act V — Widow's Bay",
+      "width": 1600,
+      "height": 700,
+      "anchor": "bottom centre",
+      "transparent": true,
+      "file": "intake/pageant-dancers.png",
+      "original": "design/generated/part-c/originals/pageant-dancers.png",
+      "originalSize": [
+        1895,
+        830
+      ],
+      "sourceCrop": [
+        14,
+        11,
+        1880,
+        813
+      ],
+      "placement": [
+        0,
+        12,
+        1600,
+        688
+      ],
+      "mode": "built-in image_gen",
+      "prompt": "A line of five ballet dancers in pink tutus and pale bodices with flower crowns, arms raised in unison, as in the closing tableau of the video (3:20), mounted together as one ground-row cut-out. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Deliver one complete production asset, canvas aspect 1600:700, intended final size 1600 × 700 pixels. REAL alpha transparency outside the silhouette, one isolated cut-out, no backdrop, no ground plane, no checkerboard or cast shadow. Keep the whole requested object visible and use almost all of the canvas. Anchor: bottom centre. Attached images guide appearance and style; generate ONLY the requested subject and pose. No extra labels, typography, framing or unrequested accessories.",
+      "references": [
+        "design/references/video-frames/frame-200s.jpg"
+      ]
+    },
+    {
+      "id": "ending-lamp",
+      "title": "Ending: a lamp in the window",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/ending-lamp.png",
+      "original": "design/generated/part-c/originals/ending-lamp.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Night. The stone house on the cliff, saved, a warm lamp in its window; on the quay below, the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) and the beloved (a young woman with dark auburn hair pinned up, a cream lace dress and a rose-pink shawl, a fine gold chain at her throat with its pendant pearl missing) embrace; the pearl is back on her chain. The moon smiles. A painted toy-theatre tableau seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Use the bay image as the exact scenery layout. Keep the same cliffs, buildings, moon and lighthouse. Use the attached cast identities. The house is intact, lit and saved. One complete asset, intended 2560 × 1440 pixels, matching aspect ratio and framing. Opaque full bleed to all edges. Anchor: full frame. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/bay-backcloth.png",
+        "design/generated/part-c/originals/sailor-stand.png",
+        "design/generated/part-c/originals/mood-beloved.png"
+      ]
+    },
+    {
+      "id": "ending-witch",
+      "title": "Ending: the sea witch's",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/ending-witch.png",
+      "original": "design/generated/part-c/originals/ending-witch.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Moonlit bay. the sea witch (long black hair, flowing rose-pink robes, a small gold crown and a gold star wand; match mood-witch-1) rides away in her gold crescent shell boat drawn by the red sea dragon, the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) beside her holding a sea rose; on the quay, the beloved (a young woman with dark auburn hair pinned up, a cream lace dress and a rose-pink shawl, a fine gold chain at her throat with its pendant pearl missing) watches them go. A painted toy-theatre tableau seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Preserve the bay's exact scenery layout and these cast identities. Make the specified melancholy moon-boat ending. One complete asset, intended 2560 × 1440 pixels, matching aspect ratio and framing. Opaque full bleed to all edges. Anchor: full frame. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/bay-backcloth.png",
+        "design/generated/part-c/originals/sailor-stand.png",
+        "design/generated/part-c/originals/mood-beloved.png",
+        "design/generated/mood-witch-1.png"
+      ]
+    },
+    {
+      "id": "ending-dark",
+      "title": "Ending: the window is dark",
+      "section": "Act V — Widow's Bay",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/ending-dark.png",
+      "original": "design/generated/part-c/originals/ending-dark.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Night. The stone house on the cliff with one dark window and a black silhouette in the doorway; on the quay, the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) alone, throwing a small stone into the bay, rings spreading on the water. A painted toy-theatre tableau seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. Preserve the bay's exact scenery layout and the sailor identity. Make the specified dark solitary ending. One complete asset, intended 2560 × 1440 pixels, matching aspect ratio and framing. Opaque full bleed to all edges. Anchor: full frame. No lettering.",
+      "references": [
+        "design/generated/part-c/originals/bay-backcloth.png",
+        "design/generated/part-c/originals/sailor-stand.png"
+      ]
+    },
+    {
+      "id": "mood-deck-party",
+      "title": "Act I: the celebration on deck",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-deck-party.png",
+      "original": "design/generated/part-c/originals/mood-deck-party.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. A carnival on a ship's deck as a stage set: costumed revellers in yellow tights, a shaggy green sea creature and a harlequin dancing between barrels and ropes, paper lanterns in the rigging, a band of three musicians sitting on the barrels, a carved rail with heraldic shields; then, behind, a white storm sky with ghostly figures rising from the sea. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-030s.jpg",
+        "design/generated/band-trio-original.png"
+      ]
+    },
+    {
+      "id": "mood-sleepers",
+      "title": "Act II: the drowned sleepers",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-sleepers.png",
+      "original": "design/generated/part-c/originals/mood-sleepers.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. The sea floor among kelp and coral: costumed revellers lying asleep in a heap, a red sea dragon nosing past, a woman in rose-pink robes with a gold crown bending over a grey-bearded sailor to wake him, a guitar sinking through bubbles above. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-080s.jpg",
+        "design/generated/mood-sailor-1.png",
+        "design/generated/mood-witch-1.png"
+      ]
+    },
+    {
+      "id": "mood-court",
+      "title": "Act III: the undersea court",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-court.png",
+      "original": "design/generated/part-c/originals/mood-court.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. A Méliès undersea court: rows of attendants in pastel green, pink and blue among gold ornament and coral-red creatures; a white-bearded Sea King with a trident on a shell throne, the sea witch beside him; a vast dark whale passing in front of everything. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-120s.jpg",
+        "design/generated/mood-witch-1.png"
+      ]
+    },
+    {
+      "id": "mood-whale-belly",
+      "title": "Act IV: inside the whale",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-whale-belly.png",
+      "original": "design/generated/part-c/originals/mood-whale-belly.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. The inside of a whale as a stage set: ribs like Gothic arches, swallowed barrels, a figurehead and a piano floating in murky water, a lantern swinging, daylight in the throat. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-150s.jpg"
+      ]
+    },
+    {
+      "id": "mood-finale-fire",
+      "title": "Act V: the burning house",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-finale-fire.png",
+      "original": "design/generated/part-c/originals/mood-finale-fire.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. A stone house on a cliff collapsing in stage fire: painted flame flats, a red-orange wash over everything, a sailor carrying a woman down the stairs, the moon behind smoke. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-190s.jpg",
+        "design/generated/mood-sailor-1.png",
+        "design/generated/part-c/originals/mood-beloved.png"
+      ]
+    },
+    {
+      "id": "mood-pageant",
+      "title": "Finale: the pageant",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-pageant.png",
+      "original": "design/generated/part-c/originals/mood-pageant.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. A Méliès apotheosis: a gilded fairy palace with fountains, a line of dancers in pink tutus, sea creatures and courtiers arranged in tiers, a band of three musicians at the centre, shimmering like a dissolve. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/references/video-frames/frame-200s.jpg",
+        "design/generated/band-trio-original.png"
+      ]
+    },
+    {
+      "id": "mood-beloved",
+      "title": "The beloved, character sheet",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-beloved.png",
+      "original": "design/generated/part-c/originals/mood-beloved.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. Character sheet with front and profile cut-outs of the beloved (a young woman with dark auburn hair pinned up, a cream lace dress and a rose-pink shawl, a fine gold chain at her throat with its pendant pearl missing). Two full-length views of ONE consistent woman, front and left profile. The attached sheet is only a rendering-style reference; create the woman described here. Opaque landscape character reference sheet.",
+      "references": [
+        "design/generated/mood-sailor-1.png"
+      ]
+    },
+    {
+      "id": "mood-playbill",
+      "title": "The playbill",
+      "section": "Mood boards",
+      "width": 1536,
+      "height": 1024,
+      "anchor": "full frame",
+      "transparent": false,
+      "file": "intake/mood-playbill.png",
+      "original": "design/generated/part-c/originals/mood-playbill.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": null,
+      "placement": null,
+      "mode": "built-in image_gen",
+      "prompt": "Mood board, not a game asset. Hand-tinted 1903 Méliès film still and Victorian toy-theatre sheet; stencil colour in plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88; front-on stage view; film grain. A Victorian playbill for \"Widow's Bay, a toy theatre in five acts\", shells, stars and a moon boat in the border. Deliver one reference mood board, canvas aspect 1536:1024, intended final size 1536 × 1024 pixels. OPAQUE full-bleed painted image, fill every edge. Anchor: full frame. Attached images guide appearance and style; generate ONLY the requested subject and pose. ",
+      "references": [
+        "design/generated/mood-poster-1.png"
+      ]
+    }
+  ]
+}

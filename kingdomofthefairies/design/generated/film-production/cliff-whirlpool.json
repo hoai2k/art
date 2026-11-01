@@ -1,0 +1,17 @@
+{
+  "id": "cliff-whirlpool",
+  "title": "The cliff over the whirlpool",
+  "size": [
+    2560,
+    1440
+  ],
+  "anchor": "full frame",
+  "prompt": "From references/film-planning/originals/concept-barrel.png (attach it) without figures or the barrel: a cliff top at the left with roses, the night sea below at the right with a whirlpool, moon. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; faint film grain; no figures unless the prompt asks for them.\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 2560:1440, intended delivery 2560 x 1440 pixels. Full-bleed painted background to all four edges; no transparency or frame. Asset cliff-whirlpool.",
+  "transparent": false,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-b94807a2-1c5c-433a-b970-cfe3370de75e.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/concept-barrel.png"
+  ],
+  "source_commit": "1dc0344"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prince-court-stride-b",
+  "title": "Prince in court dress, stride B",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His nearer LEFT arm swings forward, open hand at waist height on canvas right; his farther RIGHT arm swings backward, relaxed hand on canvas left behind his hip. Bareheaded, no armour or weapons, no hand frozen on his chest. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+  "transparent": true,
+  "replaces": "prince-court-walk-b",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-court-stride-a-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "b",
+  "pair": "prince-court-stride-a",
+  "round": "F10",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-0f951447-2198-4f85-867d-926d009d5fc5.png",
+  "generation_id": "exec-0f951447-2198-4f85-867d-926d009d5fc5",
+  "review_status": "accepted: full separated stride, coherent arms and legs, standing costume and face retained, paired gait and costume continuity reviewed"
+}

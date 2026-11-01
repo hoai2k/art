@@ -1,0 +1,15 @@
+{
+  "id": "vane-plaque",
+  "title": "Weathervane plaque",
+  "width": 280,
+  "height": 90,
+  "anchor": "centre",
+  "section": "Second round: stage machinery, footlights and the HUD",
+  "prompt": "Use case: precise-object-edit. Keep ONLY the small OVAL plum enamel plaque, its GOLD ROPE BORDER and a tiny hanging loop at its upper centre. Remove the entire surrounding valance, curtains, columns and all other theatre architecture. Plain blank oval centre. One isolated low horizontal oval plaque, 280:90 aspect ratio. Keep the enamel and gilding style of supplied art. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/vane-plaque-first.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

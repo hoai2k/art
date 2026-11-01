@@ -1,0 +1,17 @@
+{
+  "id": "dolphin-carriage",
+  "title": "Conch carriage and dolphin",
+  "size": [
+    520,
+    340
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The dolphin harnessed to a conch-shell carriage on shell wheels from references/film-planning/originals/char-sea-creatures.png (attach it), travelling right, the carriage empty. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate exactly ONE isolated game prop/creature, with true transparent background. No model sheet, labels, extra examples or stage backdrop. Canvas aspect ratio 520:340, intended delivery 520 x 340 pixels. Preserve the entire silhouette. Asset dolphin-carriage.",
+  "transparent": true,
+  "replaces": "witch-moonboat",
+  "path": "/workspace/generated_images/exec-aa724153-ad2a-469b-86d7-29d8111b8924.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-sea-creatures.png"
+  ],
+  "source_commit": "1dc0344"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "sailor-seated",
+  "title": "Sailor seated with the guitar",
+  "width": 220,
+  "height": 220,
+  "anchor": "bottom centre",
+  "section": "Second round: Acts I and II",
+  "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nthe returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), seated on a low bench facing right, the band's acoustic guitar resting on his knee, no kit bag; for the moon-boat ride beside the witch. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 220:220. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+  "transparent": true,
+  "references": [
+    "design/generated/part-c/originals/sailor-stand.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

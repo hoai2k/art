@@ -1,0 +1,23 @@
+{
+  "id": "cavern-stalactite-broken",
+  "title": "A shattered stalactite on the rock",
+  "size": [
+    180,
+    60
+  ],
+  "anchor": "bottom centre (on the ground)",
+  "transparent": true,
+  "prompt": "The same stalactite (cavern-stalactite.webp, attach it) fallen and shattered on the cavern floor: four or five broken lengths and shards of the pink and grey rock in a low heap, its point snapped off, a little grit, in the painting style of cavern.webp. Seen from the front; the lowest pieces on the bottom edge. Nothing but the rock: no floor, no shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nImage 1 is the matching intact stalactite; image 2 supplies the cavern palette. Low horizontal 3:1 composition (180 by 60), four or five separate broken fragments only.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/cavern-stalactite-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-895c56ad-6587-42ca-bd68-e3bb3b6a117c.png",
+  "generation_id": "exec-895c56ad-6587-42ca-bd68-e3bb3b6a117c",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

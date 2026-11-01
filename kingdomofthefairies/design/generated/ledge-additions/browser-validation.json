@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "id": "clam-open-empty",
+      "loaded": true,
+      "status": "delivered",
+      "width": 240,
+      "height": 200
+    },
+    {
+      "id": "sailor-hang",
+      "loaded": true,
+      "status": "delivered",
+      "width": 220,
+      "height": 440
+    },
+    {
+      "id": "sailor-pullup",
+      "loaded": true,
+      "status": "delivered",
+      "width": 260,
+      "height": 300
+    }
+  ],
+  "pageErrors": []
+}

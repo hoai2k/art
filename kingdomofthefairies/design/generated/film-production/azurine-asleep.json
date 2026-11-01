@@ -1,0 +1,17 @@
+{
+  "id": "azurine-asleep",
+  "title": "Azurine asleep (carried off)",
+  "size": [
+    360,
+    160
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Princess Azurine as in references/film-planning/originals/char-azurine.png (attach it): dark hair in a jewelled circlet, a pale azure gown with gold stars and rose-pink sleeves, lying asleep on her back as if borne along, one arm trailing, gown and hair falling. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 360:160, target delivery 360 x 160 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset azurine-asleep.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-76371be7-f7f6-4974-91b1-52ded0b32527.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-azurine.png"
+  ],
+  "source_commit": "1dc0344"
+}

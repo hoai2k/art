@@ -1,0 +1,20 @@
+{
+  "id": "attendant-pink-tumble-tinted",
+  "title": "The pink attendant, tumbling (tinted)",
+  "size": [
+    300,
+    300
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "The courtier exactly as in attendant-pink-tinted.webp (attach it): the same face, gown, colours and scale (her standing figure fills a 420 px canvas), tumbling head over heels as she is swept into the whale's throat, gown and veil streaming, arms flung out. Nothing but the figure: no water or shadow. Used for: Act III, swept into the whale beside the prince (drawn now as her standing figure spun round). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [300, 300] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/attendant-pink-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-29c3c31d-4cbe-46c2-a0f1-0f5241d12284.png",
+  "generation_id": "exec-29c3c31d-4cbe-46c2-a0f1-0f5241d12284",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

@@ -1,0 +1,192 @@
+[
+  {
+    "id": "cavern-stalactite",
+    "title": "A hanging stalactite",
+    "size": [
+      120,
+      280
+    ],
+    "anchor": "top centre (where it hangs from the ceiling)",
+    "transparent": true,
+    "prompt": "One long stalactite of pink and grey cavern rock exactly in the painting style and colours of cavern.webp (attach it): a lump of the cavern ceiling across the top of the canvas, about 110 px wide and 40 px deep, and from its middle the stalactite tapering down to a sharp, wet point at the bottom edge, about 48 px wide at its root, ridged and banded, a drop of water at its tip. Centred. Nothing but the rock: no background, no glow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "cavern-stalactite-tinted",
+    "title": "A hanging stalactite (tinted)",
+    "size": [
+      120,
+      280
+    ],
+    "anchor": "top centre (where it hangs from the ceiling)",
+    "transparent": true,
+    "prompt": "One long stalactite of pink and grey cavern rock exactly in the painting style and colours of cavern.webp (attach it): a lump of the cavern ceiling across the top of the canvas, about 110 px wide and 40 px deep, and from its middle the stalactite tapering down to a sharp, wet point at the bottom edge, about 48 px wide at its root, ridged and banded, a drop of water at its tip. Centred. Nothing but the rock: no background, no glow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "cavern-stalactite-broken",
+    "title": "A shattered stalactite on the rock",
+    "size": [
+      180,
+      60
+    ],
+    "anchor": "bottom centre (on the ground)",
+    "transparent": true,
+    "prompt": "The same stalactite (cavern-stalactite.webp, attach it) fallen and shattered on the cavern floor: four or five broken lengths and shards of the pink and grey rock in a low heap, its point snapped off, a little grit, in the painting style of cavern.webp. Seen from the front; the lowest pieces on the bottom edge. Nothing but the rock: no floor, no shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "cavern-stalactite-broken-tinted",
+    "title": "A shattered stalactite on the rock (tinted)",
+    "size": [
+      180,
+      60
+    ],
+    "anchor": "bottom centre (on the ground)",
+    "transparent": true,
+    "prompt": "The same stalactite (cavern-stalactite.webp, attach it) fallen and shattered on the cavern floor: four or five broken lengths and shards of the pink and grey rock in a low heap, its point snapped off, a little grit, in the painting style of cavern.webp. Seen from the front; the lowest pieces on the bottom edge. Nothing but the rock: no floor, no shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/cavern.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-strike",
+    "title": "Prince striking with the sword",
+    "size": [
+      300,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his armour exactly as in prince-stand.webp (attach it): the same face, helmet and plume, cloak, shield and colours, at the same scale. Lunging forward to the RIGHT and striking with the enchanted sword (the glowing blade of keepsake-sword.webp), sword arm fully extended, shield arm back, front knee bent, back leg straight. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-sword.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-strike-tinted",
+    "title": "Prince striking with the sword (tinted)",
+    "size": [
+      300,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his armour exactly as in prince-stand-tinted.webp (attach it): the same face, helmet and plume, cloak, shield and colours, at the same scale. Lunging forward to the RIGHT and striking with the enchanted sword (the glowing blade of keepsake-sword.webp), sword arm fully extended, shield arm back, front knee bent, back leg straight. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-sword.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "witch-cast",
+    "title": "The witch hurling fire",
+    "size": [
+      260,
+      400
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the witch exactly as she appears in M\u00e9li\u00e8s's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, flinging her free hand forward and down to hurl a bolt of fire along the ground, staff raised high behind her, robe flaring, a wicked grin. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "witch-cast-tinted",
+    "title": "The witch hurling fire (tinted)",
+    "size": [
+      260,
+      400
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the witch exactly as she appears in M\u00e9li\u00e8s's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded-tinted.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, flinging her free hand forward and down to hurl a bolt of fire along the ground, staff raised high behind her, robe flaring, a wicked grin. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "witch-recoil",
+    "title": "The witch recoiling from a blow",
+    "size": [
+      260,
+      400
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the witch exactly as she appears in M\u00e9li\u00e8s's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, reeling backward from a sword blow, arms flung up, staff tilting away, hood slipping, her face twisted in fury and pain. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "witch-recoil-tinted",
+    "title": "The witch recoiling from a blow (tinted)",
+    "size": [
+      260,
+      400
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the witch exactly as she appears in M\u00e9li\u00e8s's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded-tinted.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, reeling backward from a sword blow, arms flung up, staff tilting away, hood slipping, her face twisted in fury and pain. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "barrel-upturned",
+    "title": "A barrel falling upside down",
+    "size": [
+      200,
+      240
+    ],
+    "anchor": "bottom centre (its open mouth)",
+    "transparent": true,
+    "prompt": "The witch's barrel exactly as in witch-barrel.webp (attach it), the same staves, hoops, wood colour and size, but EMPTY and turned UPSIDE DOWN, its open mouth at the bottom (we see a sliver of its dark inside at the rim), the closed lid at the top, a few magical sparkles of Aurora's gold light clinging to it. Seen from the front. The open rim on the bottom edge. Nothing but the barrel: no witch, ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-barrel.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "barrel-upturned-tinted",
+    "title": "A barrel falling upside down (tinted)",
+    "size": [
+      200,
+      240
+    ],
+    "anchor": "bottom centre (its open mouth)",
+    "transparent": true,
+    "prompt": "The witch's barrel exactly as in witch-barrel-tinted.webp (attach it), the same staves, hoops, wood colour and size, but EMPTY and turned UPSIDE DOWN, its open mouth at the bottom (we see a sliver of its dark inside at the rim), the closed lid at the top, a few magical sparkles of Aurora's gold light clinging to it. Seen from the front. The open rim on the bottom edge. Nothing but the barrel: no witch, ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-barrel-tinted.webp"
+    ],
+    "edition": "film"
+  }
+]

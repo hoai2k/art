@@ -1,0 +1,22 @@
+{
+  "id": "barrel-upturned",
+  "title": "A barrel falling upside down",
+  "size": [
+    200,
+    240
+  ],
+  "anchor": "bottom centre (its open mouth)",
+  "transparent": true,
+  "prompt": "The witch's barrel exactly as in witch-barrel.webp (attach it), the same staves, hoops, wood colour and size, but EMPTY and turned UPSIDE DOWN, its open mouth at the bottom (we see a sliver of its dark inside at the rim), the closed lid at the top, a few magical sparkles of Aurora's gold light clinging to it. Seen from the front. The open rim on the bottom edge. Nothing but the barrel: no witch, ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-barrel.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-8c32b4a6-16a4-440f-8fb1-a8d454dd5a06.png",
+  "generation_id": "exec-8c32b4a6-16a4-440f-8fb1-a8d454dd5a06",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prince-wall-up-a",
+  "title": "Climbing up, right hand high",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Climbing straight up: RIGHT hand reaching high above his head, left hand at shoulder height, LEFT knee raised with the left foot high, right leg straight below. The first of four frames of a smooth climbing cycle. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a.webp and prince-stand.webp) in costume, colours and scale. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nCRITICAL POSE CORRECTION: In this DIRECT REAR VIEW, his RIGHT hand is the high hand on the IMAGE RIGHT, and his LEFT knee is the raised knee on the IMAGE LEFT. His RIGHT leg hangs straight down on the IMAGE RIGHT. Opposite hand and knee raised. Do not raise his right knee. Show only the back of the helmet, no face. Left hand at shoulder height. His cloak is gathered behind his torso to reveal BOTH legs.",
+  "references": [
+    "/workspace/generated_images/exec-be2fed57-d286-45ef-b144-b890a84dde99.png"
+  ],
+  "path": "/workspace/generated_images/exec-741f4041-96b8-4739-a8ca-6769abe43e8a.png",
+  "review": {
+    "status": "accepted",
+    "notes": "Rear-view pose, costume continuity and complete transparent silhouette reviewed at preview size. A has right hand and opposite left knee raised; B has both hands near head height with knees bent."
+  },
+  "generation_id": "exec-741f4041-96b8-4739-a8ca-6769abe43e8a",
+  "source_commit": "dd91f2e62546256cd74206da2c05a0c84565e6ea"
+}

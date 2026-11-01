@@ -1,0 +1,24 @@
+{
+  "id": "lobster-guard-open",
+  "title": "Lobster guard, claws snapping",
+  "size": [
+    500,
+    340
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Correct ONLY the limb anatomy and weapon grip in this attached lobster guard sprite. This is a human stage performer inside a lobster costume: exactly TWO arms, one coming from each shoulder, exactly TWO lobster pincers as hands, and TWO existing legs. Open/snap pose: REMOVE the extra raised open claw and its entire extra arm on the LEFT side of the canvas. Keep ONE left arm from the left shoulder to the smaller claw gripping the upright halberd. This weapon claw must stay CLOSED, visibly clamped around the shaft. Keep ONE right arm from the right shoulder to the large OPEN snapping pincer at the RIGHT side of the canvas. Exactly two arms and two pincers in total; never add a small third hand for the weapon. Keep the exact existing character head, antennae, torso, costume, colours, rendering style, weapon design and position, lower-body stance, foot positions, overall scale, canvas framing and transparent background. Preserve the current ornate painted toy-theatre finish. Make each arm-to-claw connection anatomically unambiguous. No detached hands, duplicated forearms, ghost claws or extra limbs. Do not change the weapon into a separate floating prop.",
+  "transparent": true,
+  "replaces": "sentry-creature-open",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-0e26a516-82df-423a-ac62-84bfd4ea60cc.png",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/lobster-anatomy/lobster-guard-open-original.png"
+  ],
+  "source_commit": "1dc0344",
+  "generation_id": "exec-0e26a516-82df-423a-ac62-84bfd4ea60cc",
+  "generator": "built-in image_gen",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/lobster-guard-open-original.png"
+  ],
+  "review_status": "accepted after enlarged anatomy/grip review: exactly two shoulder-to-pincer arms and two legs; shaft visibly enclosed by pincers in closed pose; open pose has one weapon-gripping closed claw and one snapping open claw",
+  "previous_take": "progress/rejected/lobster-anatomy/lobster-guard-open-original.png"
+}

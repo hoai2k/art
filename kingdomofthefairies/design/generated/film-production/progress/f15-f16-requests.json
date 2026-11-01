@@ -1,0 +1,252 @@
+[
+  {
+    "id": "fairy-ring-empty-tinted",
+    "title": "The fairy of the ring, empty-handed (tinted)",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-ring-tinted.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the ring: her right hand still raised high, fingers curled as if holding a small ring up to the light, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-ring-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-ring-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-a2f50e29-90b3-40f5-b8fd-68f0e494af38.png",
+    "generation_id": "exec-a2f50e29-90b3-40f5-b8fd-68f0e494af38",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "fairy-ring-empty",
+    "title": "The fairy of the ring, empty-handed",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-ring.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the ring: her right hand still raised high, fingers curled as if holding a small ring up to the light, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-ring.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-ring",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7bed4c63-a95b-4814-affa-e646626d6c93.png",
+    "generation_id": "exec-7bed4c63-a95b-4814-affa-e646626d6c93",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "fairy-crown-empty-tinted",
+    "title": "The fairy of the crown, empty-handed (tinted)",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-crown-tinted.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the crown on its cushion: both hands still held out flat at chest height, palms up, as if bearing a cushion, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-crown-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-crown-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-6a5fe99c-dcb7-4d9b-ab96-43b95a981662.png",
+    "generation_id": "exec-6a5fe99c-dcb7-4d9b-ab96-43b95a981662",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "fairy-crown-empty",
+    "title": "The fairy of the crown, empty-handed",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-crown.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the crown on its cushion: both hands still held out flat at chest height, palms up, as if bearing a cushion, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-crown.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-crown",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-bb7a85f6-3376-41c3-9f23-50e479625677.png",
+    "generation_id": "exec-bb7a85f6-3376-41c3-9f23-50e479625677",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "fairy-gold-empty-tinted",
+    "title": "The fairy of gold, empty-handed (tinted)",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-gold-tinted.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the casket of gold: both hands still held out at chest height, cupped as if bearing a small casket, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-gold-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-gold-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7acd37ea-a5a1-4736-91d9-eacf84e19a84.png",
+    "generation_id": "exec-7acd37ea-a5a1-4736-91d9-eacf84e19a84",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "fairy-gold-empty",
+    "title": "The fairy of gold, empty-handed",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-gold.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the casket of gold: both hands still held out at chest height, cupped as if bearing a small casket, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-gold.webp"
+    ],
+    "transparent": true,
+    "replaces": "fairy-gold",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-c0c6216e-e74b-4e9d-98e2-564eef3dafdf.png",
+    "generation_id": "exec-c0c6216e-e74b-4e9d-98e2-564eef3dafdf",
+    "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+  },
+  {
+    "id": "prince-stride-a-tinted-redo",
+    "title": "Prince armed, stride A (tinted), redrawn to the passing height",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-stride-a-tinted.webp (attach it with prince-pass-a-tinted.webp and prince-pass-b-tinted.webp). Exactly the same figure, costume, colours, body size and stride, walking right with the LEFT leg forward; but the figure stands taller, so the top of the head is 6-10 px below the top of the canvas (the passing frames reach 0-1 px). Keep the stride shorter if needed rather than shrinking the figure: the head, shoulders and hands must be exactly the size they are in the passing frames. Feet on the bottom ground line; no floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Images 2 and 3 are size references. Keep the head and torso at their size; shorten the stride to fit a taller silhouette within narrow canvas. A natural 6\u201310 pixel head dip from passing poses at delivery scale. Sword must be firmly gripped in the correct hand. Do not add arms or limbs.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stride-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-pass-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-pass-b-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-stride-a-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-bb471996-f736-4baa-adf8-872592c38740.png",
+    "generation_id": "exec-bb471996-f736-4baa-adf8-872592c38740",
+    "review_status": "accepted: distinct opposite contact poses, costume and weapon grips preserved; export head top normalized to 8 px with under 3% proportional adjustment",
+    "install_as": "prince-stride-a-tinted",
+    "archive_directory": "progress/superseded-f16",
+    "fit_bounds": [
+      4,
+      8,
+      216,
+      360
+    ]
+  },
+  {
+    "id": "prince-stride-b-tinted-redo",
+    "title": "Prince armed, stride B (tinted), redrawn to the passing height",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-stride-b-tinted.webp (attach it with prince-pass-a-tinted.webp and prince-pass-b-tinted.webp). Exactly the same figure, costume, colours, body size and stride, walking right with the RIGHT leg forward; but the figure stands taller, so the top of the head is 6-10 px below the top of the canvas (the passing frames reach 0-1 px). Keep the stride shorter if needed rather than shrinking the figure: the head, shoulders and hands must be exactly the size they are in the passing frames. Feet on the bottom ground line; no floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio.\nUse Image 1 (the NEW stride A) as edit target. Critical: create the OPPOSITE contact pose, not a duplicate. Exchange which leg is in front: the NEAR visible leg must now trail LEFT behind the pelvis with heel lifted and toes touching ground; the FAR leg must extend RIGHT forward with heel planted. Keep torso, face, costume and stride span. Reverse the knee overlap and supporting leg. Do not mirror whole figure. Preserve head and foot heights, narrow canvas and natural stride.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-stride-a-tinted-redo-original.png",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-pass-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-pass-b-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-stride-b-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-88b79252-016a-4321-aaf7-a4197a70397e.png",
+    "generation_id": "exec-88b79252-016a-4321-aaf7-a4197a70397e",
+    "review_status": "accepted: distinct opposite contact poses, costume and weapon grips preserved; export head top normalized to 8 px with under 3% proportional adjustment",
+    "install_as": "prince-stride-b-tinted",
+    "archive_directory": "progress/superseded-f16",
+    "fit_bounds": [
+      2,
+      8,
+      218,
+      360
+    ]
+  },
+  {
+    "id": "prince-court-stride-a-tinted-redo",
+    "title": "Prince in court dress, stride A (tinted), redrawn to the passing height",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-court-stride-a-tinted.webp (attach it with prince-court-pass-a-tinted.webp and prince-court-pass-b-tinted.webp). Exactly the same figure, costume, colours, body size and stride, walking right with the LEFT leg forward; but the figure stands taller, so the top of the head is 6-10 px below the top of the canvas (the passing frames reach 0-1 px). Keep the stride shorter if needed rather than shrinking the figure: the head, shoulders and hands must be exactly the size they are in the passing frames. Feet on the bottom ground line; no floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Images 2 and 3 are size references. Keep the head and torso at their size; shorten the stride to fit a taller silhouette within narrow canvas. A natural 6\u201310 pixel head dip from passing poses at delivery scale. Sword must be firmly gripped in the correct hand. Do not add arms or limbs.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-stride-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-pass-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-pass-b-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-court-stride-a-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-aa9195b1-50b0-428c-931b-1955bff3c41b.png",
+    "generation_id": "exec-aa9195b1-50b0-428c-931b-1955bff3c41b",
+    "review_status": "accepted: distinct opposite contact poses, costume and weapon grips preserved; export head top normalized to 8 px with under 3% proportional adjustment",
+    "install_as": "prince-court-stride-a-tinted",
+    "archive_directory": "progress/superseded-f16",
+    "fit_bounds": [
+      0,
+      8,
+      220,
+      360
+    ]
+  },
+  {
+    "id": "prince-court-stride-b-tinted-redo",
+    "title": "Prince in court dress, stride B (tinted), redrawn to the passing height",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-court-stride-b-tinted.webp (attach it with prince-court-pass-a-tinted.webp and prince-court-pass-b-tinted.webp). Exactly the same figure, costume, colours, body size and stride, walking right with the RIGHT leg forward; but the figure stands taller, so the top of the head is 6-10 px below the top of the canvas (the passing frames reach 0-1 px). Keep the stride shorter if needed rather than shrinking the figure: the head, shoulders and hands must be exactly the size they are in the passing frames. Feet on the bottom ground line; no floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio.\nUse Image 1 (the NEW stride A) as edit target. Critical: create the OPPOSITE contact pose, not a duplicate. Exchange which leg is in front: the NEAR visible leg must now trail LEFT behind the pelvis with heel lifted and toes touching ground; the FAR leg must extend RIGHT forward with heel planted. Keep torso, face, costume and stride span. Reverse the knee overlap and supporting leg. Do not mirror whole figure. Preserve head and foot heights, narrow canvas and natural stride.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-court-stride-a-tinted-redo-original.png",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-pass-a-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-pass-b-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-court-stride-b-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "cad0b98",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-f23efc7f-ddee-4df1-add9-ce6bb612fa8b.png",
+    "generation_id": "exec-f23efc7f-ddee-4df1-add9-ce6bb612fa8b",
+    "review_status": "accepted: distinct opposite contact poses, costume and weapon grips preserved; export head top normalized to 8 px with under 3% proportional adjustment",
+    "install_as": "prince-court-stride-b-tinted",
+    "archive_directory": "progress/superseded-f16",
+    "fit_bounds": [
+      2,
+      8,
+      218,
+      360
+    ]
+  }
+]

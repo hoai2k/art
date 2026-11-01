@@ -1,0 +1,21 @@
+{
+  "id": "azurine-pass-b",
+  "title": "azurine, passing B",
+  "size": [
+    200,
+    380
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Exactly the character in azurine-stand.webp (attach it and the matching delivered stride-A frame): walking left, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 200:380 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp"
+  ],
+  "transparent": true,
+  "replaces": null,
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-bbed87bf-b327-4afb-b3d4-64f274e72137.png",
+  "generation_id": "exec-bbed87bf-b327-4afb-b3d4-64f274e72137",
+  "review_status": "accepted: coherent anatomy, reference identity and costume retained, contact/passing pose and baseline reviewed"
+}

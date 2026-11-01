@@ -1,0 +1,24 @@
+{
+  "id": "prince-court-stride-b-tinted",
+  "title": "Prince in court dress, stride B (tinted)",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His nearer LEFT arm swings forward, open hand at waist height on canvas right; his farther RIGHT arm swings backward, relaxed hand on canvas left behind his hip. Bareheaded, no armour or weapons, no hand frozen on his chest. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+  "transparent": true,
+  "replaces": "prince-court-walk-b-tinted",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-court-stride-a-tinted-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "b",
+  "pair": "prince-court-stride-a-tinted",
+  "round": "F10",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-cb4e0802-0a27-420e-87ca-422a9e88a00a.png",
+  "generation_id": "exec-cb4e0802-0a27-420e-87ca-422a9e88a00a",
+  "review_status": "accepted: full separated stride, coherent arms and legs, standing costume and face retained, paired gait and costume continuity reviewed"
+}

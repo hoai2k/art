@@ -1,0 +1,470 @@
+[
+  {
+    "id": "prince-pass-a-tinted",
+    "title": "prince, passing A (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-stand-tinted.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-pass-b-tinted",
+    "title": "prince, passing B (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-stand-tinted.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-pass-a",
+    "title": "prince, passing A",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-stand.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-pass-b",
+    "title": "prince, passing B",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-stand.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-court-pass-a-tinted",
+    "title": "prince-court, passing A (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-court-tinted.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-court-pass-b-tinted",
+    "title": "prince-court, passing B (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-court-tinted.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-court-pass-a",
+    "title": "prince-court, passing A",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-court.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-court-pass-b",
+    "title": "prince-court, passing B",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in prince-court.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "azurine-pass-a-tinted",
+    "title": "azurine, passing A (tinted)",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in azurine-stand-tinted.webp (attach it and the matching delivered stride-A frame): walking left, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 200:380 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "azurine-pass-b-tinted",
+    "title": "azurine, passing B (tinted)",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in azurine-stand-tinted.webp (attach it and the matching delivered stride-A frame): walking left, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 200:380 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "azurine-pass-a",
+    "title": "azurine, passing A",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in azurine-stand.webp (attach it and the matching delivered stride-A frame): walking left, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 200:380 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "azurine-pass-b",
+    "title": "azurine, passing B",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in azurine-stand.webp (attach it and the matching delivered stride-A frame): walking left, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 200:380 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-pass-a",
+    "title": "sailor, passing A",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in sailor-stand.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-pass-b",
+    "title": "sailor, passing B",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the character in sailor-stand.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The right leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-stand.webp"
+    ],
+    "transparent": true,
+    "replaces": null,
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-walk-a-tinted",
+    "title": "prince carrying, walk-a (tinted)",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry-tinted.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-a phase. Left leg forward, heel down; right leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-pass-a-tinted",
+    "title": "prince carrying, pass-a (tinted)",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry-tinted.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-a phase. Left support leg vertical beneath the hip; right knee bent and right foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-walk-b-tinted",
+    "title": "prince carrying, walk-b (tinted)",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry-tinted.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-b phase. Right leg forward with a bent leading knee, heel down; left leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-pass-b-tinted",
+    "title": "prince carrying, pass-b (tinted)",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry-tinted.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-b phase. Right support leg vertical beneath the hip; left knee bent and left foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-walk-a",
+    "title": "prince carrying, walk-a",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-a phase. Left leg forward, heel down; right leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-pass-a",
+    "title": "prince carrying, pass-a",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-a phase. Left support leg vertical beneath the hip; right knee bent and right foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-walk-b",
+    "title": "prince carrying, walk-b",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-b phase. Right leg forward with a bent leading knee, heel down; left leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "prince-carry-pass-b",
+    "title": "prince carrying, pass-b",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in prince-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-b phase. Right support leg vertical beneath the hip; left knee bent and left foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "prince-carry",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-carry-walk-a",
+    "title": "sailor carrying, walk-a",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in sailor-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-a phase. Left leg forward, heel down; right leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "sailor-carry",
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-carry-pass-a",
+    "title": "sailor carrying, pass-a",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in sailor-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-a phase. Left support leg vertical beneath the hip; right knee bent and right foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "sailor-carry",
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-carry-walk-b",
+    "title": "sailor carrying, walk-b",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in sailor-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-b phase. Right leg forward with a bent leading knee, heel down; left leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "sailor-carry",
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  },
+  {
+    "id": "sailor-carry-pass-b",
+    "title": "sailor carrying, pass-b",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Exactly the two figures and carrying hold in sailor-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-b phase. Right support leg vertical beneath the hip; left knee bent and left foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-carry.webp"
+    ],
+    "transparent": true,
+    "replaces": "sailor-carry",
+    "edition": "shared",
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a"
+  }
+]

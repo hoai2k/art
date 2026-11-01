@@ -1,0 +1,15 @@
+{
+  "id": "keepsake-lamp",
+  "title": "Keepsake: Aurora's lamp",
+  "size": [
+    128,
+    128
+  ],
+  "anchor": "bottom centre",
+  "prompt": "A small brass fairy lamp with a star-shaped flame. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate exactly ONE isolated game prop/creature, with true transparent background. No model sheet, labels, extra examples or stage backdrop. Canvas aspect ratio 128:128, intended delivery 128 x 128 pixels. Preserve the entire silhouette. Asset keepsake-lamp.",
+  "transparent": true,
+  "replaces": "keepsake-stone",
+  "path": "/workspace/generated_images/exec-966b34f7-0036-4716-a65e-731e2d8d9b75.png",
+  "references": [],
+  "source_commit": "1dc0344"
+}

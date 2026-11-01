@@ -1,0 +1,24 @@
+{
+  "id": "demon-teal-carry",
+  "title": "Teal demon flying, bearing someone aloft",
+  "size": [
+    260,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Create a single teal demon flying LEFT bearing a princess drawn separately. Image 1 supplies the painted gouache cut-out STYLE, teal costume, horned cap, face and palette. Image 2 supplies the EXACT POSE and CORRECT ARM ANATOMY: use the wide U-shaped arrangement of arms from image 2, one arm rises along the LEFT side of head and the other rises along the RIGHT side of head. Both elbows and upper arms must be visible, attached directly to their respective shoulder. Do NOT put both forearms left of his head. Repaint image 2 in the full-colour painted toy theatre style of image 1. Two open cupped palms above head; legs together trailing to lower right; torch at belt. No princess, no lettering, no floor, no shadow. Complete figure inside frame on true transparent background. Intended canvas 260 x 360.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-teal.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/demon-teal-carry-tinted-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-a72f608c-1de4-4ed9-8a90-6f4e0f9446e1.png",
+  "generation_id": "exec-a72f608c-1de4-4ed9-8a90-6f4e0f9446e1",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite. Both raised arms connect visibly to their shoulders; user-marked arm error repaired."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

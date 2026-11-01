@@ -1,0 +1,15 @@
+{
+  "id": "grotto-floor",
+  "title": "Grotto cave floor",
+  "width": 2080,
+  "height": 260,
+  "anchor": "top edge (walkable)",
+  "section": "Second round: Acts I and II",
+  "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied grotto-floor for a platform game. The dark floor of the deep cave as a ground row: black-teal sand and stones with faint phosphorescent pink and green anemones, the top edge gently undulating within 6 px of level (the witch and the guitar stand on it). Match the bottom third of grotto-backcloth.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 2080:260 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Actual transparent alpha outside isolated shelf; no lettering.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/grotto-floor-uneven.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

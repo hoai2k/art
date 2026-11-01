@@ -1,0 +1,24 @@
+{
+  "id": "prince-caught-lobster-tinted",
+  "title": "prince caught lobster tinted",
+  "size": [
+    640,
+    480
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Use case: style-transfer. Image 1 is the exact pose/composition target: keep prince LEFT held by lobster RIGHT, grip at upper arm, same ground baseline, complete silhouettes. Image 2 defines prince tinted-film identity/costume: plain muted blue torso with gold star, silver helmet with pink plume, short dark beard, red cloak and blue skirt. Image 3 defines tinted lobster guard identity: red lobster shell, seaweed mantle, coral crown and halberd. Render the capture pair as period 1903 hand-tinted photographic theatre performers with muted colors, gray skin, photographic shading and fine film grain matching images 2 and 3, rather than saturated engraved illustration. Exactly two arms on prince, claw closed around his sleeve, other claw holds weapon away. Full bodies, margin around all tips. Genuine transparent background including gaps. No background, halo, glow, shadow, scenery or text.",
+  "references": [
+    "prince-caught-lobster-original.png",
+    "../../../assets/prince-stand-tinted.webp",
+    "../../../assets/lobster-guard-closed-tinted.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-1282fa5b-91dc-49e6-9014-758771612477.png",
+  "generation_id": "exec-1282fa5b-91dc-49e6-9014-758771612477",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Connected upper-arm grip, coherent anatomy, complete extremities, transparent composite and reference costume reviewed; standing head scale checked in real renderer."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prince-carry-pass-b",
+  "title": "prince carrying, pass-b",
+  "size": [
+    360,
+    400
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Exactly the two figures and carrying hold in prince-carry.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the pass-b phase. Right support leg vertical beneath the hip; left knee bent and left foot lifted beside the support ankle. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp"
+  ],
+  "transparent": true,
+  "replaces": "prince-carry",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-67b64691-3cc6-40f1-a9a8-cceb7d6f4c42.png",
+  "generation_id": "exec-67b64691-3cc6-40f1-a9a8-cceb7d6f4c42",
+  "review_status": "accepted: coherent anatomy, reference identity and costume retained, contact/passing pose and baseline reviewed"
+}

@@ -1,0 +1,425 @@
+{
+  "count": 22,
+  "images": [
+    {
+      "id": "crew-squire-asleep",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        7,
+        440,
+        160
+      ],
+      "native_sha256": "0ede24cc256621573d4087e924277ceb3e989f27ec74fe289a4e48b656de1ecb",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-squire-asleep-tinted",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        22,
+        440,
+        160
+      ],
+      "native_sha256": "4fb4a6c629b0fe26719fb8225edda969f3134c80a3d49684bd580f4215504869",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-bosun-asleep",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        26,
+        440,
+        160
+      ],
+      "native_sha256": "2b6004368582c93e61a43e36d692d9960b75dcf54873b992f292a7637b83502b",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-bosun-asleep-tinted",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        17,
+        440,
+        160
+      ],
+      "native_sha256": "9e6ffd2a6a510cf8eb46f6dbd440464da4fae0f89187f45bd01b02376573ea17",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-helmsman-asleep",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        7,
+        440,
+        160
+      ],
+      "native_sha256": "1516a543b16fb5f9e1cba7b9590902cda6bce197aeba88cc092e6b16299d8fa8",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-helmsman-asleep-tinted",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        11,
+        440,
+        160
+      ],
+      "native_sha256": "0e90f4b301c6c9dcfb3da4c67a54d5e3e29fbc301ea81b8b4daf381049d2f0d8",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-manatarms-asleep",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        0,
+        440,
+        160
+      ],
+      "native_sha256": "d5ad64c472aba88f071aae3911537d9e6ff4128795f0ff4e532033fb706505d8",
+      "review": "accepted"
+    },
+    {
+      "id": "crew-manatarms-asleep-tinted",
+      "size": [
+        440,
+        160
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        2,
+        440,
+        160
+      ],
+      "native_sha256": "94a7963fc129f3403aecb7bad39452ed8073eeac996b23fa91607a48ec4f5429",
+      "review": "accepted"
+    },
+    {
+      "id": "aurora-glide-a",
+      "size": [
+        300,
+        420
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        7,
+        300,
+        420
+      ],
+      "native_sha256": "3ff5a43111ef123e8f8ad24fbd647e55706ea0fa44dda90fb0a857701f922650",
+      "review": "accepted"
+    },
+    {
+      "id": "aurora-glide-a-tinted",
+      "size": [
+        300,
+        420
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        11,
+        300,
+        420
+      ],
+      "native_sha256": "b18b8046afb89338a75cde2a80029d41efcd5f7e4bd40188108757a3282ed731",
+      "review": "accepted"
+    },
+    {
+      "id": "aurora-glide-b",
+      "size": [
+        300,
+        420
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        9,
+        300,
+        420
+      ],
+      "native_sha256": "0c9c2e41f1916ad8684d525fff8695e7ff322d0a88d116573645d6aa7e00637a",
+      "review": "accepted"
+    },
+    {
+      "id": "aurora-glide-b-tinted",
+      "size": [
+        300,
+        420
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        37,
+        300,
+        420
+      ],
+      "native_sha256": "b6b7be27730b24ce94a31e00ffbbd7f43b14b48bf446f7c70aa02382ae6637e4",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-struggle-a",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        0,
+        236,
+        360
+      ],
+      "native_sha256": "5dc1af6b4819147ea839842e27a86d3209ef7bf0eb5ec67c2114deb4c5ba2029",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-struggle-a-tinted",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        23,
+        0,
+        236,
+        360
+      ],
+      "native_sha256": "ca16797d10d4f61dec488cb72286470e824b001e48ac852135c64345e19152f1",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-struggle-b",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        23,
+        0,
+        236,
+        360
+      ],
+      "native_sha256": "cea136ebdbab04a55b12f68056d424f92ff9617d1ef3020b36c79edfcd686558",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-struggle-b-tinted",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        22,
+        0,
+        238,
+        360
+      ],
+      "native_sha256": "a1678d277ba69dabc7799dfb8a40045e85a18fcb62f69356e72a6a51901fc6c6",
+      "review": "accepted"
+    },
+    {
+      "id": "azurine-swoon",
+      "size": [
+        260,
+        380
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        18,
+        0,
+        241,
+        380
+      ],
+      "native_sha256": "4a284a2ea5b7bbd379f3bc96c2fb0350473e57e64a0123d7e11f2f7d32ba653b",
+      "review": "accepted"
+    },
+    {
+      "id": "azurine-swoon-tinted",
+      "size": [
+        260,
+        380
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        18,
+        0,
+        242,
+        380
+      ],
+      "native_sha256": "650ede28e23a3b9f5a8357030e7f78ebe772700c25da43dfd663f1f561e99a01",
+      "review": "accepted"
+    },
+    {
+      "id": "demon-red-carry",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        26,
+        0,
+        233,
+        360
+      ],
+      "native_sha256": "077e0aecca0ea09005c101b48670c728c4ec4e699d8b6d71f36dea20d09b4227",
+      "review": "accepted"
+    },
+    {
+      "id": "demon-red-carry-tinted",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        0,
+        236,
+        360
+      ],
+      "native_sha256": "4f55f6e0ae55e7019878d746c9e126b0ea8b8b721b27ad5a0f338924cd558668",
+      "review": "accepted"
+    },
+    {
+      "id": "demon-teal-carry",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        0,
+        2,
+        260,
+        360
+      ],
+      "native_sha256": "eda46d81e6185f5e4a0f7fa9f5bd50ba4e5f7c85e3c362c932b7d37e1b339768",
+      "review": "accepted"
+    },
+    {
+      "id": "demon-teal-carry-tinted",
+      "size": [
+        260,
+        360
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "bounds": [
+        15,
+        0,
+        245,
+        360
+      ],
+      "native_sha256": "3c8e0e4e60e6be61b8ae0d17e13b26f7a7f1949fb87ebb0f8450dfe21e1ce596",
+      "review": "accepted"
+    }
+  ],
+  "browser": "film original/tinted: 36 scenes each; partial and widowsbay: 28 scenes each; no page errors",
+  "tests": "8 suites passed; legacy act2/act3/act4 fail identically using synced main manifest"
+}

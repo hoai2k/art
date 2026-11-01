@@ -1,0 +1,20 @@
+{
+  "id": "crew-helmsman-sit-up-tinted",
+  "title": "The helmsman, sitting up, waking (tinted)",
+  "size": [
+    260,
+    220
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "The helmsman of the prince's crew exactly as in crew-helmsman-tinted.webp (attach it): the same face, livery, cap and colours, at the same scale (his standing figure fills a 420 px canvas), sitting up from lying on the ground, waking: legs out in front, propped on one hand, the other hand rubbing his eyes. Nothing but the figure: no ground, water or shadow. Used for: Act II: waking from the spell (drawn now as his standing frame swung up from the floor). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [260, 220] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency. Only this crewman; no boat, ladder, rope, lantern or loose halberd. His hands must perform the specified crawl/tumble/sit-up action, with no handheld tools. If he has a shield, secure it on his back. Keep his exact face, cap or iron kettle-hat, livery and body proportions from Image 1. Do not turn him into the prince.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7ceb0a9c-1e1d-4cb9-8bfc-310767b89718.png",
+  "generation_id": "exec-7ceb0a9c-1e1d-4cb9-8bfc-310767b89718",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

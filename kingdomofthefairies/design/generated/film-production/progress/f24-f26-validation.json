@@ -1,0 +1,195 @@
+{
+  "count": 12,
+  "images": [
+    {
+      "id": "cavern-stalactite",
+      "size": [
+        120,
+        280
+      ],
+      "bounds": [
+        1,
+        0,
+        118,
+        280
+      ],
+      "native_sha256": "b24530ec311e2567e932b29e1c1fe87a60f8a49f3ba1f3e218e7abc0eba54f8b",
+      "review": "accepted"
+    },
+    {
+      "id": "cavern-stalactite-tinted",
+      "size": [
+        120,
+        280
+      ],
+      "bounds": [
+        9,
+        0,
+        111,
+        280
+      ],
+      "native_sha256": "17124b38005a96aed84515ded4e8490fb06cf1c35527a2c80660b77f4e441001",
+      "review": "accepted"
+    },
+    {
+      "id": "cavern-stalactite-broken",
+      "size": [
+        180,
+        60
+      ],
+      "bounds": [
+        0,
+        13,
+        180,
+        60
+      ],
+      "native_sha256": "eca66887fc3b94ec05da2284ba9dbc4071a7a6034635306bef465f1ef0b1e4a2",
+      "review": "accepted"
+    },
+    {
+      "id": "cavern-stalactite-broken-tinted",
+      "size": [
+        180,
+        60
+      ],
+      "bounds": [
+        0,
+        15,
+        180,
+        60
+      ],
+      "native_sha256": "0dfd1fa3bb7c2c30d9c685b38ab2a9a8aa3097bd1c0de2692ba9227e38999ab6",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-strike",
+      "size": [
+        300,
+        360
+      ],
+      "bounds": [
+        0,
+        173,
+        300,
+        360
+      ],
+      "native_sha256": "9ddcf9238598d8f2cd8bc0015e8fb7e6c7b1251ead1e78fab469f7c42fc82700",
+      "review": "accepted"
+    },
+    {
+      "id": "prince-strike-tinted",
+      "size": [
+        300,
+        360
+      ],
+      "bounds": [
+        0,
+        101,
+        300,
+        360
+      ],
+      "native_sha256": "5976f43723e2b3be74daafcb3795ddc192c0048a74ccdb4857b0cc1c1e771319",
+      "review": "accepted"
+    },
+    {
+      "id": "witch-cast",
+      "size": [
+        260,
+        400
+      ],
+      "bounds": [
+        0,
+        134,
+        260,
+        400
+      ],
+      "native_sha256": "f33e52385843b8f2174b788f6267bcaf592212f53037e50f8180054efeebd0b9",
+      "review": "accepted"
+    },
+    {
+      "id": "witch-cast-tinted",
+      "size": [
+        260,
+        400
+      ],
+      "bounds": [
+        0,
+        95,
+        260,
+        400
+      ],
+      "native_sha256": "fe1ce615ae30d2cc40f8dae921215d7e94d6599c9122689b1677a666adc0566a",
+      "review": "accepted"
+    },
+    {
+      "id": "witch-recoil",
+      "size": [
+        260,
+        400
+      ],
+      "bounds": [
+        14,
+        0,
+        246,
+        400
+      ],
+      "native_sha256": "5e8c41da24b1e807cb5424a475c2962608dd89f88198461bc7de3885dd4081ce",
+      "review": "accepted"
+    },
+    {
+      "id": "witch-recoil-tinted",
+      "size": [
+        260,
+        400
+      ],
+      "bounds": [
+        10,
+        0,
+        250,
+        400
+      ],
+      "native_sha256": "c4ab68e0d3c6bb13aa41f46d59dc615741ee967305681726ebdb8d928932ca8a",
+      "review": "accepted"
+    },
+    {
+      "id": "barrel-upturned",
+      "size": [
+        200,
+        240
+      ],
+      "bounds": [
+        34,
+        92,
+        165,
+        240
+      ],
+      "native_sha256": "5f57be0c8c4da921b8ee5ab95720d8cd2b2db2dd2da742ef13fc67a0dfd0eb7e",
+      "review": "accepted"
+    },
+    {
+      "id": "barrel-upturned-tinted",
+      "size": [
+        200,
+        240
+      ],
+      "bounds": [
+        33,
+        92,
+        167,
+        240
+      ],
+      "native_sha256": "6c6f4cafca05f37757d87b34734d7f682629f1a42930c71202b579257573999a",
+      "review": "accepted"
+    }
+  ],
+  "sprite_audit": "No redraws",
+  "tests": {
+    "film": "6 suites passed",
+    "widowsbay": "5 suites passed",
+    "partial": "5 suites passed"
+  },
+  "browser": "36 scenes in each film look; 28 scenes in each older edition; no page errors",
+  "combat_browser": "Original/Tinted with Off/Gentle/Full effects: 66 scene captures, scale invariance, barrel handoff and real stalactite lifecycle passed",
+  "person_sizes": "Reference-head measurements, by-eye witch overrides, review sheets and fingerprint check passed",
+  "in_game_review": "progress/in-game-review/README.md"
+}

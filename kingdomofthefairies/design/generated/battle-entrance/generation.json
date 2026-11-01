@@ -1,0 +1,26 @@
+[
+  {
+    "asset": "prince-set-down",
+    "tool": "image_gen.imagegen",
+    "prompt": "Use case: identity-preserve game animation pose. Create ONE connected full-body sprite of the exact prince and Princess Azurine from the references. This is the gentle moment just AFTER he has carried her in and puts her down. Azurine is on the LEFT, standing upright with both matching shoes touching the ground, facing RIGHT. The prince is on the RIGHT, kneeling on ONE knee facing LEFT toward her, one hand gently supporting her forearm and the other steadying her upper back. Clear comfortable protective gesture, no embrace or kiss. They are adults of the SAME STANDING HEIGHT; he is lower only because he kneels. Preserve their exact faces, head sizes relative to bodies, hair, costumes, armour, helmet plume, cloak, gown, crown, muted colours and texture from the references. His shield rests attached to his far arm/back and sword is sheathed or out of view, no new props. She is steadying herself after rescue, calm and visibly safe. Keep both complete people in frame; feet and kneeling foot share one ground baseline. No carrying her in this frame: she is clearly upright with feet down. Painted Victorian toy-theatre cutouts with the exact existing painted palette. Genuine transparent alpha background, no floor, shadow, scenery, sparkles, halo, text or extra people. Leave a little clear separation so each person's face and silhouette reads. Single connected paired pose, not a sprite sheet.",
+    "references": [
+      "assets/prince-carry.webp",
+      "assets/prince-stand.webp",
+      "assets/azurine-stand.webp"
+    ],
+    "source": "source/prince-set-down.png",
+    "transparent_background": true
+  },
+  {
+    "asset": "prince-set-down-tinted",
+    "tool": "image_gen.imagegen",
+    "prompt": "Use case: identity-preserve game animation pose. Create ONE connected full-body sprite of the exact prince and Princess Azurine from the references. This is the gentle moment just AFTER he has carried her in and puts her down. Azurine is on the LEFT, standing upright with both matching shoes touching the ground, facing RIGHT. The prince is on the RIGHT, kneeling on ONE knee facing LEFT toward her, one hand gently supporting her forearm and the other steadying her upper back. Clear comfortable protective gesture, no embrace or kiss. They are adults of the SAME STANDING HEIGHT; he is lower only because he kneels. Preserve their exact faces, head sizes relative to bodies, hair, costumes, armour, helmet plume, cloak, gown, crown, muted colours and texture from the references. His shield rests attached to his far arm/back and sword is sheathed or out of view, no new props. She is steadying herself after rescue, calm and visibly safe. Keep both complete people in frame; feet and kneeling foot share one ground baseline. No carrying her in this frame: she is clearly upright with feet down. Hand-tinted 1903 photographic grey with the same restrained washes as the tinted references, no brightening or saturation increase. Genuine transparent alpha background, no floor, shadow, scenery, sparkles, halo, text or extra people. Leave a little clear separation so each person's face and silhouette reads. Single connected paired pose, not a sprite sheet.",
+    "references": [
+      "assets/prince-carry-tinted.webp",
+      "assets/prince-stand-tinted.webp",
+      "assets/azurine-stand-tinted.webp"
+    ],
+    "source": "source/prince-set-down-tinted.png",
+    "transparent_background": true
+  }
+]

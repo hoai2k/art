@@ -1,0 +1,167 @@
+{
+  "count": 18,
+  "images": [
+    {
+      "id": "band-trio-idle-b",
+      "dimensions": [
+        900,
+        900
+      ],
+      "baseline": 888,
+      "alpha": true
+    },
+    {
+      "id": "band-trio-idle-c",
+      "dimensions": [
+        900,
+        900
+      ],
+      "baseline": 888,
+      "alpha": true
+    },
+    {
+      "id": "band-beard-idle-b",
+      "dimensions": [
+        400,
+        800
+      ],
+      "baseline": 799,
+      "alpha": true
+    },
+    {
+      "id": "band-beard-idle-c",
+      "dimensions": [
+        400,
+        800
+      ],
+      "baseline": 799,
+      "alpha": true
+    },
+    {
+      "id": "reveller-yellow-idle-b",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "reveller-yellow-idle-c",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "reveller-shaggy-idle-b",
+      "dimensions": [
+        260,
+        440
+      ],
+      "baseline": 440,
+      "alpha": true
+    },
+    {
+      "id": "reveller-shaggy-idle-c",
+      "dimensions": [
+        260,
+        440
+      ],
+      "baseline": 440,
+      "alpha": true
+    },
+    {
+      "id": "reveller-jester-idle-b",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "reveller-jester-idle-c",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "reveller-lady-idle-b",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "reveller-lady-idle-c",
+      "dimensions": [
+        220,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "sea-spirit-idle-b",
+      "dimensions": [
+        300,
+        600
+      ],
+      "baseline": 600,
+      "alpha": true
+    },
+    {
+      "id": "sea-spirit-idle-c",
+      "dimensions": [
+        300,
+        600
+      ],
+      "baseline": 600,
+      "alpha": true
+    },
+    {
+      "id": "witch-stand-idle-b",
+      "dimensions": [
+        260,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "witch-stand-idle-c",
+      "dimensions": [
+        260,
+        420
+      ],
+      "baseline": 420,
+      "alpha": true
+    },
+    {
+      "id": "pageant-dancers-idle-b",
+      "dimensions": [
+        1600,
+        700
+      ],
+      "baseline": 700,
+      "alpha": true
+    },
+    {
+      "id": "pageant-dancers-idle-c",
+      "dimensions": [
+        1600,
+        700
+      ],
+      "baseline": 700,
+      "alpha": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "demon-teal-carry-tinted",
+  "title": "Teal demon flying, bearing someone aloft (tinted)",
+  "size": [
+    260,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in teal, exactly as in demon-teal-tinted.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning LEFT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.\nCritical: nose points LEFT, head and raised hands to the LEFT of his hips; feet trail down to the RIGHT. Both cupped hands fully inside frame.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-teal-tinted.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-3d49feb6-2d9a-406a-9b94-8a51d6582995.png",
+  "generation_id": "exec-3d49feb6-2d9a-406a-9b94-8a51d6582995",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

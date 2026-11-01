@@ -1,0 +1,17 @@
+{
+  "id": "king-stand",
+  "title": "The king",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Azurine's father as in char-royal-court.png (attach it): elderly white-bearded king in crimson and ermine with a gold crown, standing facing right, hand raised in welcome. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 220:420, target delivery 220 x 420 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset king-stand.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-2ec95d6b-c9be-433b-a053-a6962528fe5e.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-royal-court.png"
+  ],
+  "source_commit": "1dc0344"
+}

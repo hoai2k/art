@@ -1,0 +1,23 @@
+{
+  "id": "prince-strike-tinted",
+  "title": "Prince striking with the sword (tinted)",
+  "size": [
+    300,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Create a single sprite of Prince Bel-Azor striking with his sword. Image 1 supplies his identity and TINTED LOOK: soft-focus photographic performer with grey skin, translucent hand-stencil dyes, silver cuirass over azure tunic, crimson cloak, silver plumed helmet and magenta plume, star shield. Image 2 supplies the exact lunge pose and equipment: front knee bent, back leg straight, sword extended RIGHT, entire blade visible, shield behind. KEEP THE SILVER METAL CUIRASS covering his chest and abdomen, as in BOTH references; do not replace it with bare blue cloth. Render in the simple 1903 tinted-photo style of image 1. Full figure isolated on true transparent background; no haze or halo, no floor, no cast shadow, no text. Correct sword hand grip, two arms only. Complete extremities within frame, tiny safety margin. Intended transparent game canvas 300x360, bottom centre anchor.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-strike-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-a3882d58-1263-4bfa-b511-cf9b2d26098c.png",
+  "generation_id": "exec-a3882d58-1263-4bfa-b511-cf9b2d26098c",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

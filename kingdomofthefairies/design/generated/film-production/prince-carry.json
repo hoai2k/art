@@ -1,0 +1,17 @@
+{
+  "id": "prince-carry",
+  "title": "Carrying Azurine",
+  "size": [
+    360,
+    400
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard, walking right carrying Princess Azurine as in references/film-planning/originals/char-azurine.png (attach it): dark hair in a jewelled circlet, a pale azure gown with gold stars and rose-pink sleeves in his arms, her head on his shoulder, her gown trailing. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate one single isolated game sprite, not a sheet. Canvas aspect ratio 360:400, target delivery 360 x 400 pixels. Preserve the complete silhouette and pose. Do not add a second figure or extra sketches unless expressly requested. No text. Asset prince-carry.",
+  "transparent": true,
+  "replaces": "sailor-carry",
+  "path": "/workspace/generated_images/exec-f6c99037-4ae4-43ab-bd7e-777f2df731b8.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-azurine.png"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prince-caught-human-tinted",
+  "title": "Prince caught by human guard (tinted)",
+  "size": [
+    640,
+    480
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Use case: style-transfer. Image 1 is exact capture pose/composition target; image 2 prince tinted-film costume/face reference, image 3 human guard tinted-film costume/face reference. Transform image 1 into the muted 1903 hand-tinted photographic theatre-performer style of images 2 and 3. Preserve connected pair prince LEFT, human seahorse guard RIGHT visibly gripping prince's upper arm with free hand, other hand holding upright gold trident. Prince plain muted blue torso with gold star, red cloak, blue gold-star skirt, silver helmet pink plume; guard red and gold costume seahorse helmet red cape. Match adult head scale between figures. Keep exactly two arms each and visible five-finger grip. Full bodies and COMPLETE trident sharp tip well inside frame with transparent margin all sides. Background truly transparent, no scenery, halo, glow or shadow. No text.",
+  "references": [
+    "prince-caught-human-original.png",
+    "../../../assets/prince-stand-tinted.webp",
+    "../../../assets/seahorse-guard-tinted.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-a0be751a-0b23-4444-93c2-059db0f90156.png",
+  "generation_id": "exec-a0be751a-0b23-4444-93c2-059db0f90156",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Connected grip, correct tinted costume, coherent limbs and fully framed trident reviewed; renderer scale review recorded in progress/court-review."
+  }
+}

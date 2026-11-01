@@ -1,0 +1,22 @@
+{
+  "id": "prince-lying-front-tinted",
+  "title": "Lying face down, senseless (tinted)",
+  "size": [
+    400,
+    200
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Use case: precise-object-edit. Image 1 is the exact edit target. Fix ONLY the visible near hand and its wrist at the lower centre, about x45%, y70%. This arm is the performer's RIGHT arm while he lies face down with head at LEFT, boots RIGHT. It must end in a proper anatomical RIGHT hand, not a left hand flipped onto his wrist. The back of his right hand faces the viewer, fingers relax pointing toward his feet at image right, correct thumb emerges on the inner torso side. Natural continuous forearm-wrist-hand attachment, five coherent digits, no extra hand. Keep pose, face, closed eyes, helmet, shield, costume, cloak, colours, all other pixels and transparent background unchanged. Image 2 confirms identity only. One complete full-body cutout.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/user-anatomy-corrections/prince-lying-front-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-210cee80-dc02-4943-9d1e-56f3f3fc57a4.png",
+  "generation_id": "exec-210cee80-dc02-4943-9d1e-56f3f3fc57a4",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette",
+  "review_notes": "User-marked reversed hand corrected to anatomically coherent right hand; enlarged wrist/hand crop reviewed."
+}

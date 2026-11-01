@@ -1,0 +1,23 @@
+{
+  "id": "prince-mantle-a",
+  "title": "Hauling onto a ledge: hands on the lip",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Hanging from the lip of a ledge by both hands, seen from behind: both hands gripping a level edge at the top of the frame, arms bent, chin at the level of his hands, legs hanging and feet scrabbling below. The ledge top is NOT drawn; his hands rest on an invisible level line 40 px below the top of the canvas. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a.webp and prince-stand.webp) in costume, colours and scale. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-wall-idle.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-climb-a.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-58219f14-8658-4818-b555-06326fc5114c.png",
+  "generation_id": "exec-58219f14-8658-4818-b555-06326fc5114c",
+  "review_status": "pending"
+}

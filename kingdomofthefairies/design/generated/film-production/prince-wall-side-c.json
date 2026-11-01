@@ -1,0 +1,20 @@
+{
+  "id": "prince-wall-side-c",
+  "title": "Traversing right, reaching (other step)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Moving sideways to the RIGHT, a second reach unlike prince-wall-side-a: the right foot steps out first and low, the right hand reaching a little higher, head turned to look right along the wall. Third traversing frame. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a.webp and prince-stand.webp) in costume, colours and scale. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nThe last attached image is the accepted a phase of this traverse. Preserve costume, helmet, back-slung shield, sword and body scale. Make the distinct new phase specified, not a duplicate. For C, right foot reaches LOW to the RIGHT, right arm a little above shoulder height; for D, bring the left hand across near the right hand and bend the left knee inward. Legs remain visible.\nEDIT ONLY THE RIGHT LEG, on IMAGE RIGHT: lower the raised knee and extend the leg DIAGONALLY DOWN and RIGHT. The right boot should be low, near the height of the left boot, with a slight knee bend. A low side-step, not a high knee lift. Leave the entire upper body and left leg unchanged.",
+  "references": [
+    "/workspace/generated_images/exec-98acd81c-b15e-4265-9429-1b190bdb25d8.png"
+  ],
+  "path": "/workspace/generated_images/exec-297bf336-737d-4aa3-b03d-a43a0ac643a8.png",
+  "generation_id": "exec-297bf336-737d-4aa3-b03d-a43a0ac643a8",
+  "review": {
+    "status": "accepted",
+    "notes": "C uses a low rightward step with a higher reach; D gathers toward the right. Costume, rear view and transparent silhouette accepted. Browser checks passed 36 film scenes in each look and 28 scenes in each older edition with no page errors."
+  }
+}

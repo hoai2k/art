@@ -1,0 +1,623 @@
+[
+  {
+    "id": "sea-king-throne-tinted",
+    "title": "sea-king-throne, tinted after the film",
+    "size": [
+      600,
+      620
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw sea-king-throne.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 600:620, intended delivery 600 x 620. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "sea-king-throne",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-king-throne.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "attendant-pink-tinted",
+    "title": "attendant-pink, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw attendant-pink.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. One of Neptune's attendants: a dancer in a pale gown with a shell head-dress, one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 220:420, intended delivery 220 x 420. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "attendant-pink",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/attendant-pink.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "attendant-blue-tinted",
+    "title": "attendant-blue, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw attendant-blue.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. One of Neptune's attendants: a dancer in a pale gown with a shell head-dress, one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 220:420, intended delivery 220 x 420. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "attendant-blue",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/attendant-blue.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "attendant-green-tinted",
+    "title": "attendant-green, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw attendant-green.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. One of Neptune's attendants: a dancer in a pale gown with a shell head-dress, one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 220:420, intended delivery 220 x 420. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "attendant-green",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/attendant-green.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "seahorse-guard-tinted",
+    "title": "seahorse-guard, tinted after the film",
+    "size": [
+      240,
+      460
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw seahorse-guard.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A performer in a seahorse guard's costume, a coral red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 240:460, intended delivery 240 x 460. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "seahorse-guard",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/seahorse-guard.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "sea-dragon-tinted",
+    "title": "sea-dragon, tinted after the film",
+    "size": [
+      400,
+      160
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw sea-dragon.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 400:160, intended delivery 400 x 160. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "sea-dragon",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-dragon.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "sea-spirit-tinted",
+    "title": "sea-spirit, tinted after the film",
+    "size": [
+      300,
+      600
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw sea-spirit.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 300:600, intended delivery 300 x 600. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "sea-spirit",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "sea-spirit-idle-b-tinted",
+    "title": "sea-spirit-idle-b, tinted after the film",
+    "size": [
+      300,
+      600
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw sea-spirit-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 300:600, intended delivery 300 x 600. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "sea-spirit-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "sea-spirit-idle-c-tinted",
+    "title": "sea-spirit-idle-c, tinted after the film",
+    "size": [
+      300,
+      600
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw sea-spirit-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 300:600, intended delivery 300 x 600. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.\nImage 5 is the accepted tinted standing sea spirit: match her face, silvery grey-white hair (no gold hair wash), pale blue gown, rose scarves and teal waves, while preserving the idle pose of image 1.",
+    "transparent": true,
+    "replaces": "sea-spirit-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "jellyfish-tinted",
+    "title": "jellyfish, tinted after the film",
+    "size": [
+      180,
+      280
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw jellyfish.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A painted gauze stage prop, rose wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 180:280, intended delivery 180 x 280. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "jellyfish",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/jellyfish.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "fish-large-tinted",
+    "title": "fish-large, tinted after the film",
+    "size": [
+      700,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fish-large.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A painted card fish prop, orange wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 700:400, intended delivery 700 x 400. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "fish-large",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fish-large.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "fish-school-tinted",
+    "title": "fish-school, tinted after the film",
+    "size": [
+      420,
+      200
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fish-school.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A painted card fish prop, orange wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 420:200, intended delivery 420 x 200. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "fish-school",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fish-school.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "whale-beached-tinted",
+    "title": "whale-beached, tinted after the film",
+    "size": [
+      1800,
+      900
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw whale-beached.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's whale is a huge painted canvas prop with a hinged jaw: grey photographic paint, a single blue-grey wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 1800:900, intended delivery 1800 x 900. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "whale-beached",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/whale-beached.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "whale-mouth-tinted",
+    "title": "whale-mouth, tinted after the film",
+    "size": [
+      1600,
+      1200
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw whale-mouth.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's whale is a huge painted canvas prop with a hinged jaw: grey photographic paint, a single blue-grey wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 1600:1200, intended delivery 1600 x 1200. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "whale-mouth",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/whale-mouth.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "whale-tail-tinted",
+    "title": "whale-tail, tinted after the film",
+    "size": [
+      700,
+      500
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw whale-tail.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's whale is a huge painted canvas prop with a hinged jaw: grey photographic paint, a single blue-grey wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 700:500, intended delivery 700 x 500. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "whale-tail",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/whale-tail.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "whale-side-tinted",
+    "title": "whale-side, tinted after the film",
+    "size": [
+      3000,
+      1100
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw whale-side.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's whale is a huge painted canvas prop with a hinged jaw: grey photographic paint, a single blue-grey wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 3000:1100, intended delivery 3000 x 1100. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "whale-side",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/whale-side.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "gift-ring-tinted",
+    "title": "gift-ring, tinted after the film",
+    "size": [
+      96,
+      96
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw gift-ring.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A theatre prop: card and paste jewels, a yellow wash for gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 96:96, intended delivery 96 x 96. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "gift-ring",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/gift-ring.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "gift-flower-tinted",
+    "title": "gift-flower, tinted after the film",
+    "size": [
+      96,
+      96
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw gift-flower.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A theatre prop: card and paste jewels, a yellow wash for gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 96:96, intended delivery 96 x 96. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "gift-flower",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/gift-flower.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "gift-crown-tinted",
+    "title": "gift-crown, tinted after the film",
+    "size": [
+      96,
+      96
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw gift-crown.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A theatre prop: card and paste jewels, a yellow wash for gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 96:96, intended delivery 96 x 96. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "gift-crown",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/gift-crown.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "gift-gold-tinted",
+    "title": "gift-gold, tinted after the film",
+    "size": [
+      96,
+      96
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw gift-gold.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A theatre prop: card and paste jewels, a yellow wash for gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 96:96, intended delivery 96 x 96. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "gift-gold",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/gift-gold.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "keepsake-star-tinted",
+    "title": "keepsake-star, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw keepsake-star.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A small theatre prop, yellow and one other wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "keepsake-star",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-star.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "keepsake-sword-tinted",
+    "title": "keepsake-sword, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw keepsake-sword.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A small theatre prop, yellow and one other wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "keepsake-sword",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-sword.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "keepsake-shell-tinted",
+    "title": "keepsake-shell, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw keepsake-shell.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A small theatre prop, yellow and one other wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "keepsake-shell",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-shell.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "keepsake-seal-tinted",
+    "title": "keepsake-seal, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw keepsake-seal.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A small theatre prop, yellow and one other wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "keepsake-seal",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-seal.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "keepsake-lamp-tinted",
+    "title": "keepsake-lamp, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw keepsake-lamp.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A small theatre prop, yellow and one other wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "keepsake-lamp",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-lamp.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "sword-sinking-tinted",
+    "title": "sword-sinking, tinted after the film",
+    "size": [
+      220,
+      520
+    ],
+    "anchor": "centre",
+    "prompt": "Redraw sword-sinking.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A stage sword, grey steel, a yellow wash on the hilt. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 220:520, intended delivery 220 x 520. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "sword-sinking",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sword-sinking.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "aurora-star-tinted",
+    "title": "aurora-star, tinted after the film",
+    "size": [
+      64,
+      64
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw aurora-star.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A painted card star on a wand, yellow wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 64:64, intended delivery 64 x 64. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "aurora-star",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-star.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "armour-helmet-tinted",
+    "title": "armour-helmet, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw armour-helmet.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A stage armour piece, grey metal, the plume a rose wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "armour-helmet",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/armour-helmet.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "armour-shield-tinted",
+    "title": "armour-shield, tinted after the film",
+    "size": [
+      128,
+      128
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw armour-shield.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A stage armour piece, grey metal, the plume a rose wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 128:128, intended delivery 128 x 128. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "armour-shield",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/armour-shield.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "tower-window-tinted",
+    "title": "tower-window, tinted after the film",
+    "size": [
+      200,
+      260
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw tower-window.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A painted window in the tower flat, a warm yellow wash in the glass. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 200:260, intended delivery 200 x 260. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "tower-window",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/tower-window.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  },
+  {
+    "id": "pearl-tinted",
+    "title": "pearl, tinted after the film",
+    "size": [
+      64,
+      64
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw pearl.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. A white paste pearl, no colour. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 64:64, intended delivery 64 x 64. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+    "transparent": true,
+    "replaces": "pearl",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/pearl.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "d3bc23c"
+  }
+]

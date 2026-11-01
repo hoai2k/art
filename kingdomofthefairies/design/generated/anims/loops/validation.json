@@ -1,0 +1,103 @@
+{
+  "assets": [
+    {
+      "id": "anim-band-giant",
+      "frames": 18,
+      "bytes": 141988,
+      "decodedBytes": 7603200,
+      "closingDelta": 1.9730879068374634,
+      "medianStepDelta": 1.9764124155044556,
+      "method": "tracked music-video footage"
+    },
+    {
+      "id": "anim-band-play",
+      "frames": 24,
+      "bytes": 351594,
+      "decodedBytes": 8064000,
+      "closingDelta": 5.0565972328186035,
+      "medianStepDelta": 5.0568156242370605,
+      "method": "tracked footage"
+    },
+    {
+      "id": "anim-jellyfish",
+      "frames": 18,
+      "bytes": 480548,
+      "decodedBytes": 3628800,
+      "closingDelta": 7.034657955169678,
+      "medianStepDelta": 5.828790187835693,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-pageant-dancers",
+      "frames": 12,
+      "bytes": 797408,
+      "decodedBytes": 7545600,
+      "closingDelta": 8.683014869689941,
+      "medianStepDelta": 8.723464012145996,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-reveller-jester",
+      "frames": 18,
+      "bytes": 471190,
+      "decodedBytes": 6652800,
+      "closingDelta": 7.876333236694336,
+      "medianStepDelta": 5.829553604125977,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-reveller-lady",
+      "frames": 18,
+      "bytes": 227330,
+      "decodedBytes": 6652800,
+      "closingDelta": 22.48570442199707,
+      "medianStepDelta": 16.668909072875977,
+      "method": "tracked footage"
+    },
+    {
+      "id": "anim-reveller-shaggy",
+      "frames": 16,
+      "bytes": 874118,
+      "decodedBytes": 8236800,
+      "closingDelta": 15.699554443359375,
+      "medianStepDelta": 10.472145080566406,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-reveller-yellow",
+      "frames": 18,
+      "bytes": 443548,
+      "decodedBytes": 6652800,
+      "closingDelta": 8.26067066192627,
+      "medianStepDelta": 5.53339147567749,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-sea-dragon",
+      "frames": 24,
+      "bytes": 668748,
+      "decodedBytes": 6144000,
+      "closingDelta": 5.601651191711426,
+      "medianStepDelta": 5.920665264129639,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-sea-spirit",
+      "frames": 18,
+      "bytes": 645482,
+      "decodedBytes": 8294400,
+      "closingDelta": 5.422921180725098,
+      "medianStepDelta": 5.0739898681640625,
+      "method": "painted-puppet deformation"
+    },
+    {
+      "id": "anim-witch-wand",
+      "frames": 14,
+      "bytes": 498482,
+      "decodedBytes": 7862400,
+      "closingDelta": 17.001358032226562,
+      "medianStepDelta": 2.9671263694763184,
+      "method": "painted-puppet deformation"
+    }
+  ]
+}

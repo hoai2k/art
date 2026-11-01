@@ -1,0 +1,23 @@
+{
+  "id": "prince-stride-a-tinted",
+  "title": "Prince armed, stride A (tinted)",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-stand-tinted.webp (attach it, and prince-stride-b-tinted.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360.",
+  "transparent": true,
+  "replaces": "prince-walk-a-tinted",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "a",
+  "pair": "prince-stride-b-tinted",
+  "round": "F10",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-e0dad951-899b-4eee-bdf6-f04c7e3fddfb.png",
+  "generation_id": "exec-e0dad951-899b-4eee-bdf6-f04c7e3fddfb",
+  "review_status": "accepted: full separated stride, coherent arms and legs, standing costume and face retained, paired gait and costume continuity reviewed"
+}

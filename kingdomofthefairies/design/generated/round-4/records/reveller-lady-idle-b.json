@@ -1,0 +1,38 @@
+{
+  "id": "reveller-lady-idle-b",
+  "title": "The lady reveller in stripes, idle frame B",
+  "width": 220,
+  "height": 420,
+  "anchor": "bottom centre",
+  "section": "Fourth round: idle frames for the people",
+  "base": "reveller-lady",
+  "transparent": true,
+  "mode": "built-in image_gen",
+  "source_commit": "1755227",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/round-4/references/reveller-lady.png"
+  ],
+  "prompt": "Use case: precise-object-edit. This image is the EXACT frame A edit target for a sprite idle cycle. Copy this same lady, face, rose-and-cream striped gown, purple waist sash, hat, plume, lace hem, stockings, shoes, colours, painted gouache texture, canvas framing and head/body proportions. Change ONLY a small idle movement: hold her skirt out a little farther to her other side and point the opposite toe. CRITICAL: retain the complete GREY LACE VEIL hanging behind the LEFT side of her hat and shoulder, in the same shape, texture, opacity and length as frame A. It must not disappear, move sides or become a solid cloak. Keep head and feet within a few pixels of original positions; same 220:420 aspect ratio, full figure. Coherent hands grasp the skirt edge, two arms only. Genuine transparent background. No new props, text, ground, cast shadow or redesign.",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-df9e4991-7357-41a9-ad88-f9ed2d4577f1.png",
+  "generation_id": "exec-df9e4991-7357-41a9-ad88-f9ed2d4577f1",
+  "file": "intake/reveller-lady-idle-b.png",
+  "original": "design/generated/round-4/originals/reveller-lady-idle-b.png",
+  "originalSize": [
+    907,
+    1733
+  ],
+  "sourceCrop": [
+    13,
+    0,
+    907,
+    1714
+  ],
+  "placement": [
+    0,
+    0,
+    219,
+    420
+  ],
+  "gameFile": "assets/reveller-lady-idle-b.webp",
+  "review_status": "accepted: grey lace veil retained, coherent skirt grips, opposite pointed toe and matching costume/scale"
+}

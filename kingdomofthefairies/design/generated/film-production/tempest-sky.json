@@ -1,0 +1,15 @@
+{
+  "id": "tempest-sky",
+  "title": "The tempest sky",
+  "size": [
+    2560,
+    820
+  ],
+  "anchor": "top edge",
+  "prompt": "A storm sky over the sea: black and violet clouds with magenta lightning, a pale moon swallowed by cloud. Tiles left to right. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; faint film grain; no figures unless the prompt asks for them.\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 2560:820, intended delivery 2560 x 820 pixels. Full-bleed painted background to all four edges; no transparency or frame. Asset tempest-sky.",
+  "transparent": false,
+  "replaces": "sky-backdrop",
+  "path": "/workspace/generated_images/exec-cd6dfb3d-f733-4ee0-a1e3-41a05d6ab2c1.png",
+  "references": [],
+  "source_commit": "1dc0344"
+}

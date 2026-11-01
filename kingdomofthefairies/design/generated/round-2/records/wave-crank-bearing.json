@@ -1,0 +1,15 @@
+{
+  "id": "wave-crank-bearing",
+  "title": "Crank bearing in the wing",
+  "width": 140,
+  "height": 260,
+  "anchor": "right edge (axle at the middle of the right edge)",
+  "section": "Second round: stage machinery, footlights and the HUD",
+  "prompt": "Use case: precise-object-edit. Correct this painted brass bearing plate to a FLAT FRONT VIEW for a toy theatre. An upright strip of dark plum wing timber runs FULL image height. A flat black iron plate bolted to it, with ONE round brass axle collar at exactly halfway down, at the RIGHTMOST canvas boundary. Camera points straight into the axle hole: collar is a CIRCLE, not a perspective oval or protruding cylinder. Axle centre at (100% width,50% height), so right half of the circular brass collar is naturally clipped by the right canvas edge. Full tall timber on left, exposed bearing collar on its right edge. No crank or handle. Keep painted worn sepia/brass/plum/teal stage-machinery material, simpler ironwork, no unnecessary flowers. Portrait 140:260 aspect ratio. Genuine transparent background around isolated machinery, no text or cast shadow.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/wave-crank-bearing-perspective.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

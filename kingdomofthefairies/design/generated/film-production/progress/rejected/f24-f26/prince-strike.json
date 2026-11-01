@@ -1,0 +1,23 @@
+{
+  "id": "prince-strike",
+  "title": "Prince striking with the sword",
+  "size": [
+    300,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor in his armour exactly as in prince-stand.webp (attach it): the same face, helmet and plume, cloak, shield and colours, at the same scale. Lunging forward to the RIGHT and striking with the enchanted sword (the glowing blade of keepsake-sword.webp), sword arm fully extended, shield arm back, front knee bent, back leg straight. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nThe entire extended sword including tip must fit inside the image. Nose and sword point RIGHT. Two arms only: one hand visibly grips sword, the other holds the reference star shield behind the torso. Head size consistent with standing reference, no enlarged head.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/keepsake-sword.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-1e7bd82e-e407-4b5d-bd08-3064bf141056.png",
+  "generation_id": "exec-1e7bd82e-e407-4b5d-bd08-3064bf141056",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "pending",
+    "notes": "Awaiting prepared-sprite review."
+  }
+}

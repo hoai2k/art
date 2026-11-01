@@ -1,0 +1,14 @@
+{
+  "id": "clam-open-empty",
+  "title": "Giant clam, open and empty",
+  "width": 240,
+  "height": 200,
+  "anchor": "bottom centre",
+  "section": "Fourth round: Act II regrowing clams",
+  "prompt": "Use case: precise-object-edit. Production sprite for Widow's Bay.\nThe same giant fluted clam as clam-open (attach it as the image reference), wide open, at exactly the same scale, framing and position, with the same shell, colours and lip, but EMPTY: no pearl, the pink fluted inside and the lower lip visible where the pearl sat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nThe input is the delivered clam-open sprite. Preserve the exact painted style, palette, face, clothing detail and pale card edge. Transparent alpha background, no lettering, no cast shadow. Edit ONLY removal of the pearl. Preserve every shell contour, colour, fluted ridge, lip and framing. Fill the pearl's former area with matching pink fluted shell interior. Same 240:200 canvas proportions.",
+  "reference": "clam-open",
+  "references": [
+    "design/generated/ledge-additions/references/clam-open.png"
+  ],
+  "mode": "built-in image_gen"
+}

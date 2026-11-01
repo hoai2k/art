@@ -1,0 +1,17 @@
+{
+  "id": "demon-teal",
+  "title": "Teal demon with a torch",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in teal, running right with a flaming torch held high. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 220:360, target delivery 220 x 360 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset demon-teal.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-bd07d029-88ba-4c98-8232-dabf1185155d.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-demons.png"
+  ],
+  "source_commit": "1dc0344"
+}

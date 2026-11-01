@@ -1,0 +1,129 @@
+{
+  "requested": 3,
+  "generated": 3,
+  "images": [
+    {
+      "id": "clam-open-empty",
+      "title": "Giant clam, open and empty",
+      "width": 240,
+      "height": 200,
+      "anchor": "bottom centre",
+      "section": "Fourth round: Act II regrowing clams",
+      "prompt": "Use case: precise-object-edit. Production sprite for Widow's Bay.\nThe same giant fluted clam as clam-open (attach it as the image reference), wide open, at exactly the same scale, framing and position, with the same shell, colours and lip, but EMPTY: no pearl, the pink fluted inside and the lower lip visible where the pearl sat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nThe input is the delivered clam-open sprite. Preserve the exact painted style, palette, face, clothing detail and pale card edge. Transparent alpha background, no lettering, no cast shadow. Edit ONLY removal of the pearl. Preserve every shell contour, colour, fluted ridge, lip and framing. Fill the pearl's former area with matching pink fluted shell interior. Same 240:200 canvas proportions.",
+      "reference": "clam-open",
+      "references": [
+        "design/generated/ledge-additions/references/clam-open.png"
+      ],
+      "mode": "built-in image_gen",
+      "originalSize": [
+        1374,
+        1145
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1374,
+        1145
+      ],
+      "sourceAnchor": null,
+      "placement": [
+        0,
+        0,
+        240,
+        200
+      ],
+      "file": "intake/clam-open-empty.png",
+      "original": "design/generated/ledge-additions/originals/clam-open-empty.png",
+      "gameFile": "assets/clam-open-empty.webp",
+      "gameBytes": 31660
+    },
+    {
+      "id": "sailor-hang",
+      "title": "Sailor hanging from an edge",
+      "width": 220,
+      "height": 440,
+      "anchor": "top centre (his hands)",
+      "section": "Fourth round: Act IV ledge hang",
+      "prompt": "Use case: precise-object-edit. Image 1 is the current pose to refine; images 2 and 3 are exact references for the same sailor's face, navy coat, cap, red neckerchief, grey trousers, boots and painted-card texture. Preserve identity and painting finish. Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), hanging at full stretch by both hands from a ledge edge, seen in profile facing right: both hands together gripping at the very top centre of the canvas, arms straight up above his head, body hanging straight down, the toes of his boots just touching an unseen wall in front of him, cap still on. Effortful but determined. The top of his fingers touches the top edge of the canvas; nothing else of the ledge is drawn. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nReal transparent alpha outside the sailor. No ledge, wall, drawn guideline, labels or cast shadow. Keep the existing full-stretch hanging pose and placement. Refine the two hands so fingers hook forward as they grip an unseen horizontal edge at EXACT TOP CENTRE. Hands meet the top boundary, head below extended arms; full body in 220:440 portrait canvas. All other elements stay the same. Both additional source references must guide the face and coat details.",
+      "reference": "sailor-stand",
+      "references": [
+        "design/generated/ledge-additions/rejected/sailor-hang-first.png",
+        "design/generated/ledge-additions/references/sailor-stand.png",
+        "design/generated/ledge-additions/references/sailor-leap.png"
+      ],
+      "mode": "built-in image_gen",
+      "targetAnchor": [
+        110.0,
+        0
+      ],
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        218,
+        0,
+        678,
+        1706
+      ],
+      "sourceAnchor": [
+        465.0,
+        0
+      ],
+      "placement": [
+        46,
+        0,
+        119,
+        440
+      ],
+      "file": "intake/sailor-hang.png",
+      "original": "design/generated/ledge-additions/originals/sailor-hang.png",
+      "gameFile": "assets/sailor-hang.webp",
+      "gameBytes": 29356
+    },
+    {
+      "id": "sailor-pullup",
+      "title": "Sailor pulling himself up",
+      "width": 260,
+      "height": 300,
+      "anchor": "ledge line 25% up from the bottom, centred",
+      "section": "Fourth round: Act IV ledge hang",
+      "prompt": "Use case: precise-object-edit. Image 1 is the current pose to refine; images 2 and 3 are exact references for the same sailor's face, navy coat, cap, red neckerchief, grey trousers, boots and painted-card texture. Preserve identity and painting finish. Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), seen in profile facing right, mid-way through hauling himself up over a ledge: both forearms and his right knee planted on a level, unseen ledge top that runs across the canvas 25% up from the bottom edge; his chest and head above that line, leaning forward; his left leg still dangling below it. Nothing of the ledge itself is drawn, only the man. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nReal transparent alpha outside the sailor. No ledge, wall, drawn guideline, labels or cast shadow. CRITICAL CORRECTION: In image 1 the forearms/knee contact is at about 56% height, too high. Compose on a 260:300 canvas with that contact at EXACTLY 75% height (y=225 in a 300-pixel canvas). Keep the full man visible: head near y=40, chest leaning forward above the line; forearms horizontal and right knee touching y=225; LEFT BOOT only below that line, ending near y=290. Bend/fold the left thigh and knee near the body so ONLY the lower dangling leg occupies the last quarter. All hands, boots, cap visible. Do not draw a platform, only adjust the body pose and canvas framing.",
+      "reference": "sailor-stand",
+      "references": [
+        "design/generated/ledge-additions/rejected/sailor-pullup-first.png",
+        "design/generated/ledge-additions/references/sailor-stand.png",
+        "design/generated/ledge-additions/references/sailor-leap.png"
+      ],
+      "mode": "built-in image_gen",
+      "targetAnchor": [
+        130.0,
+        225.0
+      ],
+      "originalSize": [
+        1168,
+        1347
+      ],
+      "sourceCrop": [
+        84,
+        154,
+        1160,
+        1325
+      ],
+      "sourceAnchor": [
+        622.0,
+        947
+      ],
+      "placement": [
+        24,
+        70,
+        211,
+        229
+      ],
+      "file": "intake/sailor-pullup.png",
+      "original": "design/generated/ledge-additions/originals/sailor-pullup.png",
+      "gameFile": "assets/sailor-pullup.webp",
+      "gameBytes": 25012
+    }
+  ]
+}

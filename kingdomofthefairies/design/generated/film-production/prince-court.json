@@ -1,0 +1,17 @@
+{
+  "id": "prince-court",
+  "title": "In court dress (prologue)",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor in his court dress as in the small figure on char-bel-azor.png: plum doublet with gold stars, ermine-edged cape, no armour, standing facing right with one hand open in greeting. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated sprite, no model sheet or labels. Use transparent background. Canvas aspect ratio 220:360, target delivery 220 x 360 pixels. Show the full silhouette. Keep the prince's face, proportions, costume and scale consistent with the reference. Asset prince-court.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-ba27e1ed-5839-47ea-9586-2bb3f2fbb982.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png"
+  ],
+  "source_commit": "1dc0344"
+}

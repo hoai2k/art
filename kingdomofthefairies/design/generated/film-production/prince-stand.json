@@ -1,0 +1,16 @@
+{
+  "id": "prince-stand",
+  "title": "Standing",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard, standing at ease, sword lowered, shield on his left arm. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate one single isolated sprite, not a sheet. Canvas target 220 x 360 pixels. Preserve the full silhouette including plume, sword and shield. This is asset prince-stand.",
+  "transparent": true,
+  "replaces": "sailor-stand",
+  "path": "/workspace/generated_images/exec-f7d6f7ac-54b9-4b9d-bda5-900f65e65a9a.png",
+  "references": [
+    "design/references/film-planning/originals/char-bel-azor.png"
+  ]
+}

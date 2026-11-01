@@ -1,0 +1,308 @@
+[
+  {
+    "id": "logo",
+    "width": 1600,
+    "height": 1200,
+    "prompt": "Use case: logo-brand. Create Widow's Bay game title card, 1600 x 1200 PNG. Deep plum #2a1424 background, fine double pale pink rule framing. Center exact text \"Widow's Bay\" in large flowing 1970s swash script pale pink #f3c6dc with apostrophe; beneath exact text \"by LANGAN, FROST & WANE\" in small bold geometric capitals. Match the supplied intertitle in spirit: crisp legible lettering, elegantly curled terminals, square-on silent-film title card. No extra text, no watermark.",
+    "mood": false,
+    "original": "logo-original.png",
+    "output": "../../assets/logo.png"
+  },
+  {
+    "id": "witch-moonboat",
+    "width": 520,
+    "height": 340,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: witch-moonboat, requested export 520 x 340 pixels. Woman in flowing pink robes long dark hair pearl crown seated in a gold crescent shell boat raising gold star wand. Red coral sea dragon in harness pulls boat from front facing LEFT. One single cut-out piece. Entire figure boat and dragon visible, tightly framed, bottom-center anchor.",
+    "mood": false,
+    "original": "witch-moonboat-original.png",
+    "output": "../../assets/witch-moonboat.png"
+  },
+  {
+    "id": "ship",
+    "width": 380,
+    "height": 400,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: ship, requested export 380 x 400 pixels. Small two-masted sailing ship side elevation bow RIGHT. Brown hull gold rail coral stripe exactly three gunports full cream sails magenta pennant. Tiny sailor navy pea coat and cap at stern. Small puppet-wire hole at top of each mast. Hull cut off at waterline at bottom edge. Entire ship visible tightly framed.",
+    "mood": false,
+    "original": "ship-original.png",
+    "output": "../../assets/ship.png"
+  },
+  {
+    "id": "sky-backdrop",
+    "width": 2560,
+    "height": 820,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: sky-backdrop, requested export 2560 x 820 pixels. Long painted seamless horizontally repeating night-sky panorama. Stars and faint Milky Way, low distant headlands along bottom edge, dark teal fading to plum. NO moon. Identical left and right edge colors and heights, landscape 3.12:1.",
+    "mood": false,
+    "original": "sky-backdrop-original.png",
+    "output": "../../assets/sky-backdrop.png"
+  },
+  {
+    "id": "rock",
+    "width": 240,
+    "height": 220,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: rock, requested export 240 x 220 pixels. Transparent background, isolated art ONLY, no backdrop. Single jagged grey-brown sea rock like a menacing crooked tooth, painted light from left, white painted foam at base. Entire rock visible, base at canvas bottom, tightly framed.",
+    "mood": false,
+    "original": "rock-original.png",
+    "output": "../../assets/rock.png"
+  },
+  {
+    "id": "cloud",
+    "width": 400,
+    "height": 180,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: cloud, requested export 400 x 180 pixels. Transparent background, isolated art ONLY, no backdrop. Single lavender hanging cloud flat, rounded lobes on top and perfectly straight cut bottom edge, darker lilac cut outline. Midtone painting so it can darken to storm cloud. Entire cloud visible, tightly framed.",
+    "mood": false,
+    "original": "cloud-original.png",
+    "output": "../../assets/cloud.png"
+  },
+  {
+    "id": "pearl",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: pearl, requested export 64 x 64 pixels. Transparent background, isolated art ONLY, no backdrop. Single lustrous round white pearl with lilac sheen bright highlight rendered as hand-painted miniature cardboard game sprite. Large centered pearl, tightly framed, bottom anchor.",
+    "mood": false,
+    "original": "pearl-original.png",
+    "output": "../../assets/pearl.png"
+  },
+  {
+    "id": "waves-back",
+    "width": 2560,
+    "height": 300,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: waves-back, requested export 2560 x 300 pixels. Transparent background, isolated art ONLY, no backdrop. Single ultrawide continuous dark teal #2f5552 cut-out wave strip. Scalloped crests white painted foam curls. Solid opaque body below crests reaches bottom edge. Horizontally seamless repeating wave geometry left-right same height. Small wooden crank axle at far left. Transparent above crests. 8.53:1 panorama.",
+    "mood": false,
+    "original": "waves-back-original.png",
+    "output": "../../assets/waves-back.png"
+  },
+  {
+    "id": "waves-front",
+    "width": 2560,
+    "height": 300,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: waves-front, requested export 2560 x 300 pixels. Transparent background, isolated art ONLY, no backdrop. Single ultrawide continuous light teal #5f8c88 cut-out wave strip. Scalloped crests white painted foam curls. Solid opaque body below crests reaches bottom edge. Horizontally seamless repeating wave geometry left-right same height. Small wooden crank axle at far left. Transparent above crests. 8.53:1 panorama.",
+    "mood": false,
+    "original": "waves-front-original.png",
+    "output": "../../assets/waves-front.png"
+  },
+  {
+    "id": "waves-mid",
+    "width": 2560,
+    "height": 300,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark.  Asset: waves-mid, requested export 2560 x 300 pixels. Transparent background, isolated art ONLY, no backdrop. Single ultrawide continuous medium teal #3f6f6a cut-out wave strip. Scalloped crests white painted foam curls. Solid opaque body below crests reaches bottom edge. Horizontally seamless repeating wave geometry left-right same height. Small wooden crank axle at far left. Transparent above crests. 8.53:1 panorama.",
+    "mood": false,
+    "original": "waves-mid-original.png",
+    "output": "../../assets/waves-mid.png"
+  },
+  {
+    "id": "band-trio",
+    "width": 900,
+    "height": 900,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Exactly THREE male band members as one full-body halftone cut-out: one with a hat, one with an acoustic guitar, one bearded. Match the figures in supplied cover reference in spirit. Black-and-white halftone with faint hand-tint wash, pale cardboard cut edge. Only trio, no text or poster background. Standing with feet at bottom center.",
+    "mood": false,
+    "original": "band-trio-original.png",
+    "output": "../../assets/band-trio.png"
+  },
+  {
+    "id": "moon-face",
+    "width": 260,
+    "height": 260,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Single full circular moon sleepy kindly face, closed eyes gentle smile pink cheeks, M\u00e9li\u00e8s manner pale gold #f4e7b8. Small visible puppet-wire hanging hole at very top. Entire round disc tightly framed centered.",
+    "mood": false,
+    "original": "moon-face-original.png",
+    "output": "../../assets/moon-face.png"
+  },
+  {
+    "id": "lighthouse",
+    "width": 700,
+    "height": 420,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. White lighthouse with red bands lit lamp room on dark headland. Beside it small cottage with exactly ONE window, DARK unlit. Entire headland cottage lighthouse visible, tightly framed, base at bottom edge.",
+    "mood": false,
+    "original": "lighthouse-original.png",
+    "output": "../../assets/lighthouse.png"
+  },
+  {
+    "id": "sea-dragon",
+    "width": 400,
+    "height": 160,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Single long coral red sea dragon facing LEFT, spined back, gold eye, gold harness lines trailing RIGHT, creature painted in early-1900s undersea grotto style. Entire dragon tightly framed centered.",
+    "mood": false,
+    "original": "sea-dragon-original.png",
+    "output": "../../assets/sea-dragon.png"
+  },
+  {
+    "id": "mood-act1-1",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Victorian toy-theatre stage square-on red velvet curtains scalloped gold valance three cardboard wave rows little sailing ship on rail sleepy-faced moon hanging on wire lavender clouds on strings. Night teal/plum sea. Stencil-tinted 1903 film still with grain. Take 1.",
+    "mood": true,
+    "original": "mood-act1-1-original.png",
+    "output": "mood-act1-1.png"
+  },
+  {
+    "id": "mood-act1-2",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Victorian toy-theatre stage square-on red velvet curtains scalloped gold valance three cardboard wave rows little sailing ship on rail sleepy-faced moon hanging on wire lavender clouds on strings. Night teal/plum sea. Stencil-tinted 1903 film still with grain. Take 2.",
+    "mood": true,
+    "original": "mood-act1-2-original.png",
+    "output": "mood-act1-2.png"
+  },
+  {
+    "id": "mood-act2-1",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. M\u00e9li\u00e8s undersea grotto painted stage flats teal rock arches opening bright water white coral and anemones gold crescent shell boat pulled by red sea dragon woman in pink robes holding star wand. Stencil-tinted 1903 film still front-on. Take 1.",
+    "mood": true,
+    "original": "mood-act2-1-original.png",
+    "output": "mood-act2-1.png"
+  },
+  {
+    "id": "mood-act2-2",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. M\u00e9li\u00e8s undersea grotto painted stage flats teal rock arches opening bright water white coral and anemones gold crescent shell boat pulled by red sea dragon woman in pink robes holding star wand. Stencil-tinted 1903 film still front-on. Take 2.",
+    "mood": true,
+    "original": "mood-act2-2-original.png",
+    "output": "mood-act2-2.png"
+  },
+  {
+    "id": "ship-clean",
+    "width": 380,
+    "height": 400,
+    "prompt": "Remove ALL painted background behind and between the masts, sails and rigging, making it fully transparent. Remove the ocean wave strip below hull. Keep ship, cream sails, sailor, rigging, hull, pennants, pale card edge unchanged. Cut hull at bottom waterline. Entire ship isolated on actual transparent alpha background with no halo or backdrop.",
+    "mood": false,
+    "original": "ship-clean-original.png",
+    "output": "../../assets/ship.png"
+  },
+  {
+    "id": "mood-witch-1",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Character sheet with two cut-outs: FRONT and PROFILE only. Same sea witch flowing pink robes long black hair gold star wand small pearl crown riding gold crescent shell. Silent-film costume drama stencil tint flat painted card. Take 1: restrained, faded hand-tinted print, delicate flat washes.",
+    "mood": true,
+    "original": "mood-witch-1-original.png",
+    "output": "mood-witch-1.png"
+  },
+  {
+    "id": "mood-act3-1",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 864, full painted scene on opaque background. Painted harbour at night red-and-white lighthouse sweeping beam small cottage with ONE lit window fishing boat flat cut-outs cliffs. Victorian toy-theatre hand-tint film grain square-on. Take 1: restrained, faded hand-tinted print, delicate flat washes.",
+    "mood": true,
+    "original": "mood-act3-1-original.png",
+    "output": "mood-act3-1.png"
+  },
+  {
+    "id": "keepsake-pearl",
+    "width": 128,
+    "height": 128,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Open pink scallop shell holding one large lustrous pearl. Entire shell and pearl tightly framed, bottom-center anchor.",
+    "mood": false,
+    "original": "keepsake-pearl-original.png",
+    "output": "../../assets/keepsake-pearl.png"
+  },
+  {
+    "id": "mood-sailor-2",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Character sheet with two cut-outs: FRONT and PROFILE only. Returning sailor navy pea coat flat cap bundle on shoulder weathered face. Flat painted card sepia line blue and red stencil tint. Take 2: bolder stencil tint, decorative Victorian toy-theatre printing, grey-sepia tonal base.",
+    "mood": true,
+    "original": "mood-sailor-2-original.png",
+    "output": "mood-sailor-2.png"
+  },
+  {
+    "id": "mood-poster-2",
+    "width": 1024,
+    "height": 1536,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1024 x 1536, full painted scene on opaque background. Psychedelic 1968 folk-rock poster. Exact title \"WIDOW'S BAY\" in lavender bubble lettering on black cloud shape over vertical orange and cream stripes sepia M\u00e9li\u00e8s collage ships waves sea witch. Halftone risograph grain. No other text. Take 2: bolder stencil tint and visible cardboard scenic mechanisms, still grey-sepia tonal base.",
+    "mood": true,
+    "original": "mood-poster-2-original.png",
+    "output": "mood-poster-2.png"
+  },
+  {
+    "id": "proscenium",
+    "width": 2560,
+    "height": 1440,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Full theatre frame 16:9 with large fully TRANSPARENT empty center. Red velvet curtains gathered at left and right wings gold tiebacks. Top scalloped valance gold fringe tassels gilt outer frame. Small weathervane mount top center. No background scenery; see-through center; curtains do not fill opening.",
+    "mood": false,
+    "original": "proscenium-original.png",
+    "output": "../../assets/proscenium.png"
+  },
+  {
+    "id": "keepsake-rose",
+    "width": 128,
+    "height": 128,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Single sea rose deep pink petals pale centre short green stem dripping water. Entire flower tightly framed, bottom-center anchor.",
+    "mood": false,
+    "original": "keepsake-rose-original.png",
+    "output": "../../assets/keepsake-rose.png"
+  },
+  {
+    "id": "mood-sailor-1",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Character sheet with two cut-outs: FRONT and PROFILE only. Returning sailor navy pea coat flat cap bundle on shoulder weathered face. Flat painted card sepia line blue and red stencil tint. Take 1: restrained, faded hand-tinted print, delicate flat washes.",
+    "mood": true,
+    "original": "mood-sailor-1-original.png",
+    "output": "mood-sailor-1.png"
+  },
+  {
+    "id": "mood-poster-1",
+    "width": 1024,
+    "height": 1536,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1024 x 1536, full painted scene on opaque background. Psychedelic 1968 folk-rock poster. Exact title \"WIDOW'S BAY\" in lavender bubble lettering on black cloud shape over vertical orange and cream stripes sepia M\u00e9li\u00e8s collage ships waves sea witch. Halftone risograph grain. No other text. Take 1: restrained, faded hand-tinted print, delicate flat washes.",
+    "mood": true,
+    "original": "mood-poster-1-original.png",
+    "output": "mood-poster-1.png"
+  },
+  {
+    "id": "keepsake-tea",
+    "width": 128,
+    "height": 128,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, no text, no watermark. Cream china teacup and saucer magenta band. Dark tea leaves curl up out of it, fortune symbols painted just visibly inside cup. Entire still-life tightly framed, bottom-center anchor.",
+    "mood": false,
+    "original": "keepsake-tea-original.png",
+    "output": "../../assets/keepsake-tea.png"
+  },
+  {
+    "id": "mood-witch-2",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Character sheet with two cut-outs: FRONT and PROFILE only. Same sea witch flowing pink robes long black hair gold star wand small pearl crown riding gold crescent shell. Silent-film costume drama stencil tint flat painted card. Take 2: bolder stencil tint, decorative Victorian toy-theatre printing, grey-sepia tonal base.",
+    "mood": true,
+    "original": "mood-witch-2-original.png",
+    "output": "mood-witch-2.png"
+  },
+  {
+    "id": "mood-act3-2",
+    "width": 1536,
+    "height": 864,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 864, full painted scene on opaque background. Painted harbour at night red-and-white lighthouse sweeping beam small cottage with ONE lit window fishing boat flat cut-outs cliffs. Victorian toy-theatre hand-tint film grain square-on. Take 2: bolder stencil tint and visible cardboard scenic mechanisms, still grey-sepia tonal base.",
+    "mood": true,
+    "original": "mood-act3-2-original.png",
+    "output": "mood-act3-2.png"
+  },
+  {
+    "id": "lighthouse-lit",
+    "width": 700,
+    "height": 420,
+    "prompt": "Change ONLY the single cottage window from dark to glowing warm amber lamp light. Preserve lighthouse lamp, all scenery geometry, exact composition, cardboard paint texture and existing transparency. Lighthouse and cottage remain opaque. No other changes.",
+    "mood": false,
+    "original": "lighthouse-lit-original.png",
+    "output": "../../assets/lighthouse-lit.png"
+  },
+  {
+    "id": "mood-palette-2",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Palette swatch board torn painted paper chips, exact color labels and colors: Plum #2a1424, Card pink #f3c6dc, Magenta #e0127a, Lavender #cfc0dc, Moon gold #d9b34a, Dragon coral #c8321e, Grotto teal #5f8c88, Foam #eef3ea, Cover orange #e9a46a, Velvet #8e1730. Each name legible below its chip. Hand-tinted film paint texture. Take 2: bolder stencil tint, decorative Victorian toy-theatre printing, grey-sepia tonal base.",
+    "mood": true,
+    "original": "mood-palette-2-original.png",
+    "output": "mood-palette-2.png"
+  },
+  {
+    "id": "mood-palette-1",
+    "width": 1536,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Widow's Bay toy-theatre game art: square-on, flat painted cardboard cut-out, gouache on card with faint pale cut edge. Grey-sepia line and tone under translucent flat stencil tints slightly out of register, early-1900s M\u00e9li\u00e8s silent-film finish. Palette plum #2a1424, pink #f3c6dc, magenta #e0127a, lavender #cfc0dc, gold #d9b34a, coral #c8321e, teal #5f8c88, foam #eef3ea. No cast shadow, no perspective tilt, text only if specified, no watermark.  Concept mood board, 1536 x 1024, full painted sheet on opaque cream paper. Palette swatch board torn painted paper chips, exact color labels and colors: Plum #2a1424, Card pink #f3c6dc, Magenta #e0127a, Lavender #cfc0dc, Moon gold #d9b34a, Dragon coral #c8321e, Grotto teal #5f8c88, Foam #eef3ea, Cover orange #e9a46a, Velvet #8e1730. Each name legible below its chip. Hand-tinted film paint texture. Take 1: restrained, faded hand-tinted print, delicate flat washes.",
+    "mood": true,
+    "original": "mood-palette-1-original.png",
+    "output": "mood-palette-1.png"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "id": "azurine-walk-b-tinted",
+  "title": "Azurine walking, stride B (tinted)",
+  "size": [
+    200,
+    380
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Princess Azurine walking to the LEFT, exactly the figure, gown, colours, scale and head height of azurine-stand-tinted.webp (attach it, and azurine-walk-a-tinted.webp if already drawn, which must match it in every detail but the stride). Her RIGHT foot steps forward from under the hem, the gown swinging the other way; the hands as in stride A but mirrored in their swing. Feet and hem on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the stride and the swing of the gown. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 200:380; one isolated transparent sprite, target delivery 200 x 380.\nImage 2 supplies the accepted stride-A costume, face and scale, not a pose template. Generate a NEW opposite stride rather than copying its hem or feet. Her nearer LEFT leg trails back toward canvas right and her farther RIGHT foot steps forward toward canvas left, its heel visible beneath the hem. The gown swings toward canvas RIGHT in B, opposite A. Swap the hand swing: the near hand lifts the skirt on the opposite side from A while the other swings relaxed. Keep the same exact gown colours, stars/embroidery if present, circlet and hair; exactly two arms, two hands and two feet. Keep head height and foot baseline stable.",
+  "transparent": true,
+  "replaces": "azurine-stand",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/azurine-walk-a-tinted-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "b",
+  "pair": "azurine-walk-a-tinted",
+  "round": "F11",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-427b4841-41e6-4d88-90a9-e984aead55ec.png",
+  "generation_id": "exec-427b4841-41e6-4d88-90a9-e984aead55ec",
+  "review_status": "accepted: full separated stride, coherent arms and legs, standing costume and face retained, paired gait and costume continuity reviewed"
+}

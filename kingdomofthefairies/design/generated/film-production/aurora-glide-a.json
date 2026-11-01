@@ -1,0 +1,23 @@
+{
+  "id": "aurora-glide-a",
+  "title": "Aurora gliding, frame A",
+  "size": [
+    300,
+    420
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "the fairy Aurora as in references/film-planning/originals/char-aurora.png (attach it): white and moon-gold gauze with rose and plum veils, a starred diadem and a star-tipped wand, exactly as in aurora-stand.webp (attach it): the same face, gown, veils, diadem, colours and scale (her figure fills the same height). Gliding through the air facing LEFT, a fairy's flight rather than a walk: feet together and pointed just clear of the ground, her body leaning slightly forward into the glide, veils and gown streaming out BEHIND her to the right, wand held forward and low with its star glowing. Frame A: veils lifted high behind her. The lowest point of the figure (her pointed toes) on the bottom edge; centred on the canvas. Nothing but the figure: no sparkle trail, ground or shadow (the game adds the sparkle). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-533f0e0b-bcc0-4b47-bf38-9ba78759b551.png",
+  "generation_id": "exec-533f0e0b-bcc0-4b47-bf38-9ba78759b551",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

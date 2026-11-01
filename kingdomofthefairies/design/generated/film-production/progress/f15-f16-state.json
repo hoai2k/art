@@ -1,0 +1,17 @@
+{
+  "active": false,
+  "requested": 10,
+  "completed": [
+    "fairy-ring-empty-tinted",
+    "fairy-ring-empty",
+    "fairy-crown-empty-tinted",
+    "fairy-crown-empty",
+    "fairy-gold-empty-tinted",
+    "fairy-gold-empty",
+    "prince-stride-a-tinted-redo",
+    "prince-stride-b-tinted-redo",
+    "prince-court-stride-a-tinted-redo",
+    "prince-court-stride-b-tinted-redo"
+  ],
+  "pending": []
+}

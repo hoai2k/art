@@ -1,0 +1,3 @@
+Method: continuous deformation of the existing painted cut-out; not rotoscoped footage and not AI-generated video. No frames were independently redrawn. Source art: assets/reveller-yellow.webp.
+Motion: dance. Frames sampled around a periodic deformation (except the one-shot wand gesture). Premultiplied-alpha resampling prevents dark fringes. Frame dimensions balance legibility with the ~8 MB decoded-sheet target; larger sprites have lower spatial resolution than the still artwork.
+source.mp4 is the offline puppet renderer output on a grey preview background; source.png preserves the original still.

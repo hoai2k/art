@@ -1,0 +1,24 @@
+{
+  "id": "crew-squire-asleep-tinted",
+  "title": "The squire, asleep on the cave floor (tinted)",
+  "size": [
+    440,
+    160
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "The squire of the prince's crew exactly as in crew-squire-tinted.webp (attach it, and crew-squire-sit-up-tinted.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-sit-up-tinted.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-fae895e4-976c-40dc-94d2-371577e4b780.png",
+  "generation_id": "exec-fae895e4-976c-40dc-94d2-371577e4b780",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

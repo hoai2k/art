@@ -1,0 +1,52 @@
+[
+  {
+    "look": "original",
+    "w": {
+      "y": 549.8638000000001,
+      "on": false
+    },
+    "az": {
+      "y": 549.8638000000001,
+      "on": false
+    },
+    "wave": {
+      "at": 2.016699999999999,
+      "order": [
+        "crew-helmsman",
+        "crew-squire",
+        "crew-manatarms",
+        "crew-bosun",
+        "fairy-ring",
+        "fairy-crown",
+        "fairy-gold",
+        "king-stand",
+        "queen-stand"
+      ]
+    }
+  },
+  {
+    "look": "tinted",
+    "w": {
+      "y": 549.3093599999995,
+      "on": false
+    },
+    "az": {
+      "y": 549.3093599999995,
+      "on": false
+    },
+    "wave": {
+      "at": 2.0167000000000006,
+      "order": [
+        "crew-helmsman",
+        "crew-squire",
+        "crew-manatarms",
+        "crew-bosun",
+        "fairy-ring",
+        "fairy-crown",
+        "fairy-gold",
+        "king-stand",
+        "queen-stand"
+      ]
+    }
+  }
+]

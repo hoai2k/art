@@ -1,0 +1,17 @@
+{
+  "id": "witch-cloud",
+  "title": "The witch on her storm cloud",
+  "size": [
+    400,
+    400
+  ],
+  "anchor": "bottom centre",
+  "prompt": "the witch as in references/film-planning/originals/char-witch.png (attach it): a hunched figure in a ragged dark-teal hooded cloak that hides her face, grey clawed hands, a twisted staff, rising out of a churning black-and-magenta storm cloud, arms and staff raised, lightning at her hands. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 400:400, target delivery 400 x 400 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset witch-cloud.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-2179e64c-e22f-4728-aff3-e2ed9af8dd2e.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-witch.png"
+  ],
+  "source_commit": "1dc0344"
+}

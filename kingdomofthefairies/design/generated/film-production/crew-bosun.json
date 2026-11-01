@@ -1,0 +1,20 @@
+{
+  "id": "crew-bosun",
+  "title": "The bosun",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The lanky bosun, one of the prince's crew as in references/film-planning/originals/char-crew.png (attach it): azure and gold striped livery with fleurs-de-lis, magenta-plumed caps, standing, a coil of rope over one shoulder and a lantern held up in one hand; plainly a different man from the squire, helmsman and man-at-arms (attach crew-squire.webp, crew-helmsman.webp and crew-manatarms.webp for scale and to keep him distinct). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery 220 x 420 pixels. Keep the reference figure proportions and the entire silhouette.",
+  "transparent": true,
+  "replaces": "reveller-shaggy",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-crew.png",
+    "/workspace/mini/kingdomofthefairies/assets/crew-squire.webp",
+    "/workspace/mini/kingdomofthefairies/assets/crew-helmsman.webp",
+    "/workspace/mini/kingdomofthefairies/assets/crew-manatarms.webp"
+  ],
+  "source_commit": "762e53ca753eb88ba46e0ed23aa2f148d3b43e03",
+  "path": "/workspace/generated_images/exec-23c4f0ca-4b98-4838-bd28-0b2016f74753.png"
+}

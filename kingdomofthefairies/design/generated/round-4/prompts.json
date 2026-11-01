@@ -1,0 +1,911 @@
+{
+  "requested": 18,
+  "generated": 18,
+  "images": [
+    {
+      "id": "band-trio-idle-b",
+      "title": "The band trio, idle frame B",
+      "width": 900,
+      "height": 900,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-trio` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the guitarist's strumming hand is down across the strings; the member in the hat tilts his head to the left; the bearded singer leans a little to the left with his mouth open on a note. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 900:900. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props. Exactly THREE band members, the same faces, lineup and guitar; keep the guitar and all three pairs of boots in their original positions.",
+      "transparent": true,
+      "base": "band-trio",
+      "referenceSize": [
+        900,
+        900
+      ],
+      "references": [
+        "design/generated/round-4/references/band-trio.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/band-trio-idle-b.png",
+      "original": "design/generated/round-4/originals/band-trio-idle-b.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "referenceBounds": [
+        154,
+        17,
+        818,
+        888
+      ],
+      "placement": [
+        0,
+        -1,
+        900,
+        900
+      ],
+      "gameFile": "assets/band-trio-idle-b.webp",
+      "gameBytes": 276222,
+      "paintedBounds": [
+        219,
+        38,
+        1143,
+        1239
+      ]
+    },
+    {
+      "id": "band-trio-idle-c",
+      "title": "The band trio, idle frame C",
+      "width": 900,
+      "height": 900,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-trio` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the guitarist's strumming hand is up above the strings; the member in the hat shifts his weight to his other foot, one hand at the hat brim; the bearded singer leans a little to the right, head tilted. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 900:900. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props. Exactly THREE band members, the same faces, lineup and guitar; keep the guitar and all three pairs of boots in their original positions.",
+      "transparent": true,
+      "base": "band-trio",
+      "referenceSize": [
+        900,
+        900
+      ],
+      "references": [
+        "design/generated/round-4/references/band-trio.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/band-trio-idle-c.png",
+      "original": "design/generated/round-4/originals/band-trio-idle-c.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "referenceBounds": [
+        154,
+        17,
+        818,
+        888
+      ],
+      "placement": [
+        0,
+        -1,
+        900,
+        900
+      ],
+      "gameFile": "assets/band-trio-idle-c.webp",
+      "gameBytes": 304048,
+      "paintedBounds": [
+        198,
+        20,
+        1142,
+        1238
+      ]
+    },
+    {
+      "id": "band-beard-idle-b",
+      "title": "The bearded band member, idle frame B",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-beard` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: he leans in slightly, head tipped forward, mouth wide on a note. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 400:800. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "band-beard",
+      "referenceSize": [
+        400,
+        800
+      ],
+      "references": [
+        "design/generated/round-4/references/band-beard.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/band-beard-idle-b.png",
+      "original": "design/generated/round-4/originals/band-beard-idle-b.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        887,
+        1774
+      ],
+      "referenceBounds": [
+        36,
+        1,
+        364,
+        799
+      ],
+      "placement": [
+        0,
+        5,
+        400,
+        800
+      ],
+      "gameFile": "assets/band-beard-idle-b.webp",
+      "gameBytes": 120816,
+      "paintedBounds": [
+        81,
+        20,
+        822,
+        1761
+      ]
+    },
+    {
+      "id": "band-beard-idle-c",
+      "title": "The bearded band member, idle frame C",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `band-beard` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: he leans back slightly, chin raised, eyes closed, shoulders lifted. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 400:800. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "band-beard",
+      "referenceSize": [
+        400,
+        800
+      ],
+      "references": [
+        "design/generated/round-4/references/band-beard.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/band-beard-idle-c.png",
+      "original": "design/generated/round-4/originals/band-beard-idle-c.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        887,
+        1774
+      ],
+      "referenceBounds": [
+        36,
+        1,
+        364,
+        799
+      ],
+      "placement": [
+        0,
+        13,
+        400,
+        800
+      ],
+      "gameFile": "assets/band-beard-idle-c.webp",
+      "gameBytes": 123392,
+      "paintedBounds": [
+        82,
+        3,
+        819,
+        1742
+      ]
+    },
+    {
+      "id": "reveller-yellow-idle-b",
+      "title": "The reveller in yellow, idle frame B",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-yellow` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the other knee is raised and the arms are swapped, mid-step of the same jig. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 220:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-yellow",
+      "referenceSize": [
+        220,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-yellow.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-yellow-idle-b.png",
+      "original": "design/generated/round-4/originals/reveller-yellow-idle-b.png",
+      "originalSize": [
+        908,
+        1733
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        908,
+        1733
+      ],
+      "referenceBounds": [
+        0,
+        16,
+        220,
+        420
+      ],
+      "placement": [
+        0,
+        12,
+        220,
+        420
+      ],
+      "gameFile": "assets/reveller-yellow-idle-b.webp",
+      "gameBytes": 34550,
+      "paintedBounds": [
+        9,
+        56,
+        895,
+        1682
+      ]
+    },
+    {
+      "id": "reveller-yellow-idle-c",
+      "title": "The reveller in yellow, idle frame C",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-yellow` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: both feet down, knees bent, arms flung up high, as if landing from a hop. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 220:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-yellow",
+      "referenceSize": [
+        220,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-yellow.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-yellow-idle-c.png",
+      "original": "design/generated/round-4/originals/reveller-yellow-idle-c.png",
+      "originalSize": [
+        907,
+        1733
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        907,
+        1733
+      ],
+      "referenceBounds": [
+        0,
+        16,
+        220,
+        420
+      ],
+      "placement": [
+        0,
+        27,
+        220,
+        420
+      ],
+      "gameFile": "assets/reveller-yellow-idle-c.webp",
+      "gameBytes": 40030,
+      "paintedBounds": [
+        19,
+        50,
+        890,
+        1621
+      ]
+    },
+    {
+      "id": "reveller-shaggy-idle-b",
+      "title": "The shaggy sea-creature reveller, idle frame B",
+      "width": 260,
+      "height": 440,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-shaggy` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are lowered to shoulder height and the fringe strands swing out to the left. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 260:440. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-shaggy",
+      "referenceSize": [
+        260,
+        440
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-shaggy.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-shaggy-idle-b.png",
+      "original": "design/generated/round-4/originals/reveller-shaggy-idle-b.png",
+      "originalSize": [
+        964,
+        1631
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        964,
+        1631
+      ],
+      "referenceBounds": [
+        0,
+        2,
+        260,
+        440
+      ],
+      "placement": [
+        0,
+        5,
+        260,
+        440
+      ],
+      "gameFile": "assets/reveller-shaggy-idle-b.webp",
+      "gameBytes": 68692,
+      "paintedBounds": [
+        11,
+        84,
+        951,
+        1613
+      ]
+    },
+    {
+      "id": "reveller-shaggy-idle-c",
+      "title": "The shaggy sea-creature reveller, idle frame C",
+      "width": 260,
+      "height": 440,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-shaggy` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are raised high and the fringe strands swing out to the right. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 260:440. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-shaggy",
+      "referenceSize": [
+        260,
+        440
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-shaggy.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-shaggy-idle-c.png",
+      "original": "design/generated/round-4/originals/reveller-shaggy-idle-c.png",
+      "originalSize": [
+        964,
+        1632
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        964,
+        1632
+      ],
+      "referenceBounds": [
+        0,
+        2,
+        260,
+        440
+      ],
+      "placement": [
+        0,
+        3,
+        260,
+        440
+      ],
+      "gameFile": "assets/reveller-shaggy-idle-c.webp",
+      "gameBytes": 78624,
+      "paintedBounds": [
+        34,
+        10,
+        954,
+        1621
+      ]
+    },
+    {
+      "id": "reveller-jester-idle-b",
+      "title": "The harlequin reveller, idle frame B",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-jester` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the opposite leg is kicked out and the belled cap tips the other way. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 220:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-jester",
+      "referenceSize": [
+        220,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-jester.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-jester-idle-b.png",
+      "original": "design/generated/round-4/originals/reveller-jester-idle-b.png",
+      "originalSize": [
+        907,
+        1734
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        907,
+        1734
+      ],
+      "referenceBounds": [
+        1,
+        0,
+        219,
+        420
+      ],
+      "placement": [
+        0,
+        11,
+        220,
+        420
+      ],
+      "gameFile": "assets/reveller-jester-idle-b.webp",
+      "gameBytes": 35764,
+      "paintedBounds": [
+        12,
+        0,
+        907,
+        1689
+      ]
+    },
+    {
+      "id": "reveller-jester-idle-c",
+      "title": "The harlequin reveller, idle frame C",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-jester` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: standing on both feet with a small bow, one arm swept across the body, bells swinging. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 220:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-jester",
+      "referenceSize": [
+        220,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-jester.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-jester-idle-c.png",
+      "original": "design/generated/round-4/originals/reveller-jester-idle-c.png",
+      "originalSize": [
+        907,
+        1733
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        907,
+        1733
+      ],
+      "referenceBounds": [
+        1,
+        0,
+        219,
+        420
+      ],
+      "placement": [
+        0,
+        18,
+        220,
+        420
+      ],
+      "gameFile": "assets/reveller-jester-idle-c.webp",
+      "gameBytes": 30386,
+      "paintedBounds": [
+        97,
+        178,
+        900,
+        1657
+      ]
+    },
+    {
+      "id": "reveller-lady-idle-b",
+      "title": "The lady reveller in stripes, idle frame B",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "base": "reveller-lady",
+      "transparent": true,
+      "mode": "built-in image_gen",
+      "source_commit": "1755227",
+      "references": [
+        "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/round-4/references/reveller-lady.png"
+      ],
+      "prompt": "Use case: precise-object-edit. This image is the EXACT frame A edit target for a sprite idle cycle. Copy this same lady, face, rose-and-cream striped gown, purple waist sash, hat, plume, lace hem, stockings, shoes, colours, painted gouache texture, canvas framing and head/body proportions. Change ONLY a small idle movement: hold her skirt out a little farther to her other side and point the opposite toe. CRITICAL: retain the complete GREY LACE VEIL hanging behind the LEFT side of her hat and shoulder, in the same shape, texture, opacity and length as frame A. It must not disappear, move sides or become a solid cloak. Keep head and feet within a few pixels of original positions; same 220:420 aspect ratio, full figure. Coherent hands grasp the skirt edge, two arms only. Genuine transparent background. No new props, text, ground, cast shadow or redesign.",
+      "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-df9e4991-7357-41a9-ad88-f9ed2d4577f1.png",
+      "generation_id": "exec-df9e4991-7357-41a9-ad88-f9ed2d4577f1",
+      "file": "intake/reveller-lady-idle-b.png",
+      "original": "design/generated/round-4/originals/reveller-lady-idle-b.png",
+      "originalSize": [
+        907,
+        1733
+      ],
+      "sourceCrop": [
+        13,
+        0,
+        907,
+        1714
+      ],
+      "placement": [
+        0,
+        0,
+        219,
+        420
+      ],
+      "gameFile": "assets/reveller-lady-idle-b.webp",
+      "review_status": "accepted: grey lace veil retained, coherent skirt grips, opposite pointed toe and matching costume/scale"
+    },
+    {
+      "id": "reveller-lady-idle-c",
+      "title": "The lady reveller in stripes, idle frame C",
+      "width": 220,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `reveller-lady` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: both feet together on tiptoe, skirt lifted in both hands, the hat feathers bobbing. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 220:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "reveller-lady",
+      "referenceSize": [
+        220,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/reveller-lady.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/reveller-lady-idle-c.png",
+      "original": "design/generated/round-4/originals/reveller-lady-idle-c.png",
+      "originalSize": [
+        908,
+        1733
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        908,
+        1733
+      ],
+      "referenceBounds": [
+        1,
+        0,
+        218,
+        420
+      ],
+      "placement": [
+        0,
+        14,
+        220,
+        420
+      ],
+      "gameFile": "assets/reveller-lady-idle-c.webp",
+      "gameBytes": 52642,
+      "paintedBounds": [
+        17,
+        5,
+        897,
+        1676
+      ]
+    },
+    {
+      "id": "sea-spirit-idle-b",
+      "title": "The sea spirit, idle frame B",
+      "width": 300,
+      "height": 600,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `sea-spirit` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are a little lower and the veil billows out to the left; the spray at her feet curls the other way. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s pale ghostly white with only the faintest washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 300:600. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "sea-spirit",
+      "referenceSize": [
+        300,
+        600
+      ],
+      "references": [
+        "design/generated/round-4/references/sea-spirit.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/sea-spirit-idle-b.png",
+      "original": "design/generated/round-4/originals/sea-spirit-idle-b.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        887,
+        1774
+      ],
+      "referenceBounds": [
+        5,
+        0,
+        294,
+        600
+      ],
+      "placement": [
+        0,
+        0,
+        300,
+        600
+      ],
+      "gameFile": "assets/sea-spirit-idle-b.webp",
+      "gameBytes": 86548,
+      "paintedBounds": [
+        12,
+        124,
+        886,
+        1774
+      ]
+    },
+    {
+      "id": "sea-spirit-idle-c",
+      "title": "The sea spirit, idle frame C",
+      "width": 300,
+      "height": 600,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `sea-spirit` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the arms are a little higher and the veil billows out to the right; the spray rises a little. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s pale ghostly white with only the faintest washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 300:600. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "sea-spirit",
+      "referenceSize": [
+        300,
+        600
+      ],
+      "references": [
+        "design/generated/round-4/references/sea-spirit.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/sea-spirit-idle-c.png",
+      "original": "design/generated/round-4/originals/sea-spirit-idle-c.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        887,
+        1774
+      ],
+      "referenceBounds": [
+        5,
+        0,
+        294,
+        600
+      ],
+      "placement": [
+        0,
+        0,
+        300,
+        600
+      ],
+      "gameFile": "assets/sea-spirit-idle-c.webp",
+      "gameBytes": 94520,
+      "paintedBounds": [
+        12,
+        6,
+        880,
+        1773
+      ]
+    },
+    {
+      "id": "witch-stand-idle-b",
+      "title": "The witch, idle frame B",
+      "width": 260,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `witch-stand` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: her head turns very slightly toward the viewer and her hair drifts as if in a current; the hand with the sea rose stays where it is. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 260:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "witch-stand",
+      "referenceSize": [
+        260,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/witch-stand.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/witch-stand-idle-b.png",
+      "original": "design/generated/round-4/originals/witch-stand-idle-b.png",
+      "originalSize": [
+        987,
+        1594
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        987,
+        1594
+      ],
+      "referenceBounds": [
+        6,
+        0,
+        254,
+        420
+      ],
+      "placement": [
+        0,
+        6,
+        260,
+        420
+      ],
+      "gameFile": "assets/witch-stand-idle-b.webp",
+      "gameBytes": 60264,
+      "paintedBounds": [
+        20,
+        0,
+        960,
+        1572
+      ]
+    },
+    {
+      "id": "witch-stand-idle-c",
+      "title": "The witch, idle frame C",
+      "width": 260,
+      "height": 420,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `witch-stand` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: the wand in her other hand is lifted a little, its star glinting, and her robes ripple at the hem; the hand with the sea rose stays where it is. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 260:420. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props.",
+      "transparent": true,
+      "base": "witch-stand",
+      "referenceSize": [
+        260,
+        420
+      ],
+      "references": [
+        "design/generated/round-4/references/witch-stand.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/witch-stand-idle-c.png",
+      "original": "design/generated/round-4/originals/witch-stand-idle-c.png",
+      "originalSize": [
+        987,
+        1594
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        987,
+        1594
+      ],
+      "referenceBounds": [
+        6,
+        0,
+        254,
+        420
+      ],
+      "placement": [
+        0,
+        1,
+        260,
+        420
+      ],
+      "gameFile": "assets/witch-stand-idle-c.webp",
+      "gameBytes": 68464,
+      "paintedBounds": [
+        12,
+        0,
+        987,
+        1590
+      ]
+    },
+    {
+      "id": "pageant-dancers-idle-b",
+      "title": "The line of pageant dancers, idle frame B",
+      "width": 1600,
+      "height": 700,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `pageant-dancers` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: every dancer rises on pointe with her arms raised in a high curve above her head. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 1600:700. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props. Exactly FIVE dancers, the same five faces, floral costume details, order and horizontal positions as the reference.",
+      "transparent": true,
+      "base": "pageant-dancers",
+      "referenceSize": [
+        1600,
+        700
+      ],
+      "references": [
+        "design/generated/round-4/references/pageant-dancers.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/pageant-dancers-idle-b.png",
+      "original": "design/generated/round-4/originals/pageant-dancers-idle-b.png",
+      "originalSize": [
+        1897,
+        829
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1897,
+        829
+      ],
+      "referenceBounds": [
+        0,
+        12,
+        1600,
+        700
+      ],
+      "placement": [
+        0,
+        0,
+        1600,
+        700
+      ],
+      "gameFile": "assets/pageant-dancers-idle-b.webp",
+      "gameBytes": 492986,
+      "paintedBounds": [
+        0,
+        0,
+        1897,
+        829
+      ]
+    },
+    {
+      "id": "pageant-dancers-idle-c",
+      "title": "The line of pageant dancers, idle frame C",
+      "width": 1600,
+      "height": 700,
+      "anchor": "bottom centre",
+      "section": "Fourth round: idle frames for the people",
+      "prompt": "Use case: precise-object-edit. This supplied PNG is the EXACT edit target and frame A of a sprite animation, NOT a loose style reference.\nOne frame of a short idle loop, like a figure in a hand-cranked 1903 film. Use the delivered `pageant-dancers` as the image reference and copy it exactly: the same figure, costume, colours, linework, scale, canvas size and framing, with the feet (or lowest point) in exactly the same place on the bottom edge and the head within a few pixels of where it is, so the frames can be flicked between without the figure jumping. Change only this: every dancer steps to the side on the other foot, arms open at shoulder height. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nProduction constraints: final canvas aspect ratio 1600:700. Keep the same camera, placement, overall character height, baseline, faces, costumes, colours, halftone/gouache texture, pale cut edge, and framing as the supplied image. Make only the small requested pose changes. Keep grounded feet/lowest painted point on exactly the same bottom baseline. Do not zoom, recenter or simplify the artwork. Real transparent alpha outside the figures; ignore hidden RGB residue in fully transparent source pixels. No cast shadow, lettering, background or new props. Exactly FIVE dancers, the same five faces, floral costume details, order and horizontal positions as the reference.",
+      "transparent": true,
+      "base": "pageant-dancers",
+      "referenceSize": [
+        1600,
+        700
+      ],
+      "references": [
+        "design/generated/round-4/references/pageant-dancers.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/pageant-dancers-idle-c.png",
+      "original": "design/generated/round-4/originals/pageant-dancers-idle-c.png",
+      "originalSize": [
+        1896,
+        830
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1896,
+        830
+      ],
+      "referenceBounds": [
+        0,
+        12,
+        1600,
+        700
+      ],
+      "placement": [
+        0,
+        1,
+        1600,
+        700
+      ],
+      "gameFile": "assets/pageant-dancers-idle-c.webp",
+      "gameBytes": 505498,
+      "paintedBounds": [
+        9,
+        88,
+        1890,
+        829
+      ]
+    }
+  ]
+}

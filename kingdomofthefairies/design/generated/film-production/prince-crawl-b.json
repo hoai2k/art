@@ -1,0 +1,21 @@
+{
+  "id": "prince-crawl-b",
+  "title": "Crawling out, reach B",
+  "size": [
+    360,
+    240
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. The other phase of prince-crawl-a (attach it): left hand forward, right knee drawn up, the same height and scale, so the two alternate as a crawl. The same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of his standing height, which is 360 px at this size). Nothing but the figure: no ground, water, rock or shadow. Used for: Act IV beach crawl. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 240] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency. Image 1 is the newly accepted crawl A, the exact cycle reference. Exchange the front and rear reaching hand/knee roles; left hand forward and right knee tucked under. Preserve head height, body length and costume. Create a visibly different crawl contact, not a duplicate. MANDATORY LARGE PHASE DIFFERENCE: The NEAR arm (fully visible across chest) extends diagonally forward all the way to the RIGHT, palm flat far ahead of shoulder, nearly under the face. FAR arm is vertical with palm directly under shoulder. NEAR knee is advanced well forward under the belly and far leg extends behind. Do not put the near hand vertically below the shoulder again. Show distinct opposite knee/hand placement from A.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-crawl-a-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7eba5b64-16ec-4e2c-9870-2c4b392e9650.png",
+  "generation_id": "exec-7eba5b64-16ec-4e2c-9870-2c4b392e9650",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "hud-voyage-ship",
+  "title": "Voyage marker ship",
+  "width": 60,
+  "height": 50,
+  "anchor": "bottom centre",
+  "section": "Second round: stage machinery, footlights and the HUD",
+  "prompt": "Use case: precise-object-edit. Remove ONLY the painted waves and rectangular seaband under the hull. Preserve the same two-masted ship, sails, flags, direction, hull and simplified 30-pixel-readable design. Hull must be entirely surrounded below by real transparent alpha; no water, no rectangular base. One tiny right-facing toy ship silhouette. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/hud-voyage-ship-first.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

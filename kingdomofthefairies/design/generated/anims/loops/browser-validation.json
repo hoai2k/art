@@ -1,0 +1,123 @@
+{
+  "pageErrors": [],
+  "normalClockDelta": 0.7000000000000001,
+  "quarterClockDelta": 0.1999999999999995,
+  "cycleChecks": [
+    {
+      "id": "anim-band-giant",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-band-play",
+      "framesSeen": 24,
+      "expected": 24,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-jellyfish",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-pageant-dancers",
+      "framesSeen": 12,
+      "expected": 12,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-reveller-jester",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-reveller-lady",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-reveller-shaggy",
+      "framesSeen": 16,
+      "expected": 16,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-reveller-yellow",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-sea-dragon",
+      "framesSeen": 24,
+      "expected": 24,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-sea-spirit",
+      "framesSeen": 18,
+      "expected": 18,
+      "tenCycles": true
+    },
+    {
+      "id": "anim-witch-wand",
+      "framesSeen": 14,
+      "expected": 14,
+      "tenCycles": true
+    }
+  ],
+  "integrated": {
+    "loaded": 11,
+    "drawn": [
+      {
+        "id": "anim-band-giant",
+        "drawn": true
+      },
+      {
+        "id": "anim-jellyfish",
+        "drawn": true
+      },
+      {
+        "id": "anim-band-play",
+        "drawn": true
+      },
+      {
+        "id": "anim-pageant-dancers",
+        "drawn": true
+      },
+      {
+        "id": "anim-reveller-jester",
+        "drawn": true
+      },
+      {
+        "id": "anim-reveller-lady",
+        "drawn": true
+      },
+      {
+        "id": "anim-reveller-shaggy",
+        "drawn": true
+      },
+      {
+        "id": "anim-reveller-yellow",
+        "drawn": true
+      },
+      {
+        "id": "anim-sea-dragon",
+        "drawn": true
+      },
+      {
+        "id": "anim-sea-spirit",
+        "drawn": true
+      },
+      {
+        "id": "anim-witch-wand",
+        "drawn": true
+      }
+    ],
+    "fallback": true
+  }
+}

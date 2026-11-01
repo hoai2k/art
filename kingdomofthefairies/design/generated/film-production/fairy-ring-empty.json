@@ -1,0 +1,21 @@
+{
+  "id": "fairy-ring-empty",
+  "title": "The fairy of the ring, empty-handed",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw fairy-ring.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the ring: her right hand still raised high, fingers curled as if holding a small ring up to the light, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-ring.webp"
+  ],
+  "transparent": true,
+  "replaces": "fairy-ring",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "cad0b98",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7bed4c63-a95b-4814-affa-e646626d6c93.png",
+  "generation_id": "exec-7bed4c63-a95b-4814-affa-e646626d6c93",
+  "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+}

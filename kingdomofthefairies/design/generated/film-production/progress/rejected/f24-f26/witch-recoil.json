@@ -1,0 +1,24 @@
+{
+  "id": "witch-recoil",
+  "title": "The witch recoiling from a blow",
+  "size": [
+    260,
+    400
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "the witch exactly as she appears in Méliès's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, reeling backward from a sword blow, arms flung up, staff tilting away, hood slipping, her face twisted in fury and pain. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-fa18ced1-d37f-455d-99b9-3b3973912120.png",
+  "generation_id": "exec-fa18ced1-d37f-455d-99b9-3b3973912120",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "pending",
+    "notes": "Awaiting prepared-sprite review."
+  }
+}

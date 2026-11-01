@@ -1,0 +1,15 @@
+{
+  "id": "bay-backcloth-fire-empty",
+  "title": "Widow's Bay burning, cliff top empty",
+  "width": 2560,
+  "height": 1440,
+  "anchor": "full frame",
+  "section": "Second round: re-requests",
+  "prompt": "Use case: precise-object-edit. The same composition as bay-backcloth-empty, washed in a strong red-orange tint as in the video's burning scenes (3:10-3:15), with smoke and sparks in the sky; no house on the cliff top. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Opaque full bleed to every edge. No text or watermark.",
+  "transparent": false,
+  "references": [
+    "design/generated/round-2/originals/bay-backcloth-empty.png"
+  ],
+  "dependency": "bay-backcloth-empty",
+  "mode": "built-in image_gen"
+}

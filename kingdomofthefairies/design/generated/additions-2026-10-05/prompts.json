@@ -1,0 +1,255 @@
+{
+  "requested": 8,
+  "generated": 8,
+  "missing": [],
+  "images": [
+    {
+      "id": "pearl-pedestal-empty",
+      "title": "Pedestal, pearl taken",
+      "width": 260,
+      "height": 340,
+      "anchor": "bottom centre",
+      "section": "Additions after integration",
+      "prompt": "The same white coral pedestal and open scallop shell as pearl-pedestal, but the shell is empty: only the broken fine gold chain lies in it. Same scale and framing as pearl-pedestal, so it can replace it in place when the sailor takes the pearl (Act III). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Edit target: the supplied pedestal. Change ONLY the removal of the pearl; preserve all shell, coral, broken chain, colours, silhouette, camera, canvas and framing. Intended final 260 \u00d7 340 pixels, anchor bottom centre. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/pearl-pedestal.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/pearl-pedestal-empty.png",
+      "original": "design/generated/additions-2026-10-05/originals/pearl-pedestal-empty.png",
+      "originalSize": [
+        1097,
+        1434
+      ],
+      "sourceCrop": [
+        62,
+        0,
+        1045,
+        1418
+      ],
+      "placement": [
+        12,
+        0,
+        236,
+        340
+      ]
+    },
+    {
+      "id": "court-floor-3",
+      "title": "Court floor with three grooves",
+      "width": 2560,
+      "height": 400,
+      "anchor": "top edge",
+      "section": "Additions after integration",
+      "prompt": "The same pink-and-cream marble stage floor as court-floor, but with exactly three parallel brass-edged grooves running left to right, evenly spaced at about 25%, 50% and 80% of the strip height (the delivered court-floor has only two, and Act III needs three processional rows). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side. Edit target: supplied floor. EXACTLY THREE dark recessed horizontal tracks, each edged in brass, centred at 25%, 50%, 80% of the painted strip height. Three tracks, not three brass lines enclosing only two tracks. No vertical endcaps or outlines. Art extends through both left/right edges at identical heights. Intended final 2560 \u00d7 400 pixels, anchor top edge. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/court-floor.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/court-floor-3.png",
+      "original": "design/generated/additions-2026-10-05/originals/court-floor-3.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        241,
+        1983,
+        587
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        400
+      ]
+    },
+    {
+      "id": "band-guitarist-empty",
+      "title": "Guitarist without the guitar",
+      "width": 400,
+      "height": 800,
+      "anchor": "bottom centre",
+      "section": "Additions after integration",
+      "prompt": "The same band member as band-guitar (the centre of the trio in video-cover.jpg: long dark hair, pink embroidered jacket, jeans, boots), standing facing front with empty hands raised in a bow, no guitar. Used in the finale pageant when the guitar was not recovered in Act II. Flat toy-theatre cut-out seen square-on: a black-and-white halftone photograph with soft hand-tinted washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88, halftone dots visible, a pale card edge around the figure; no lettering; transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Edit target: supplied guitarist. Preserve his exact face, hair, embroidered shirt, jeans, boots, frontal camera, scale and framing. Remove guitar and strap entirely. Raise both empty hands outward in a grateful curtain-call bow. Intended final 400 \u00d7 800 pixels, anchor bottom centre. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/band-guitar.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/band-guitarist-empty.png",
+      "original": "design/generated/additions-2026-10-05/originals/band-guitarist-empty.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        6,
+        78,
+        887,
+        1698
+      ],
+      "placement": [
+        0,
+        64,
+        400,
+        736
+      ]
+    },
+    {
+      "id": "app-icon",
+      "title": "Home-screen icon",
+      "width": 1024,
+      "height": 1024,
+      "anchor": "full frame (opaque)",
+      "section": "Phones and tablets",
+      "prompt": "A tiny toy-theatre proscenium with red velvet curtains and a gold valance framing a crescent-moon shell boat on three rows of painted waves under a sleepy-faced moon, all on deep plum #2a1424. Bold, simple shapes that still read at 60 px; keep the important art inside the central 80% (it may be cropped to a circle or rounded square). No lettering. A square app icon, full bleed, no transparency, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. References show the existing theatre, boat, and moon designs. Simplify these motifs boldly for a tiny app icon; omit the dragon and detailed human figures. Keep all significant elements in central 80%, with deep plum corners. Intended final 1024 \u00d7 1024 pixels, anchor full frame (opaque). Opaque full-bleed square icon. No lettering.",
+      "transparent": false,
+      "references": [
+        "design/generated/proscenium-original.png",
+        "design/generated/witch-moonboat-original.png",
+        "design/generated/moon-face-original.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/app-icon.png",
+      "original": "design/generated/additions-2026-10-05/originals/app-icon.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "rotate-card",
+      "title": "Turn-sideways card",
+      "width": 800,
+      "height": 800,
+      "anchor": "centre",
+      "section": "Phones and tablets",
+      "prompt": "Correct the supplied Victorian toy-theatre rotation instruction card, preserving its red curtains, gold ornament, plum/teal tint, pale cardboard edges, single gloved stagehand hand, and one curved arrow. The action must show a 90-degree clockwise rotation IN THE IMAGE PLANE, like turning a phone from portrait to landscape. Show two SMALL complete FRONT-FACING flat theatre cards: upright portrait card upper left, same card rotated 90 degrees CLOCKWISE lower right (its valance and finial now on RIGHT SIDE, columns now horizontal). Both remain frontal FLAT cut-outs. Absolutely NO edge-on view, NO depth/perspective swivel. One curved quarter-turn arrow connects the two positions. One gloved hand grips a corner of the second card. Arrange spaciously inside square canvas. No text. Real transparent background outside all elements. Gouache on card, early-1900s stencil-tinted palette plum #2a1424 rose #f3c6dc magenta #e0127a gold #d9b34a coral #c8321e teal #5f8c88, no cast shadow.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/rejected/rotate-card-edge-on.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/rotate-card.png",
+      "original": "design/generated/additions-2026-10-05/originals/rotate-card.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        21,
+        22,
+        1245,
+        1198
+      ],
+      "placement": [
+        0,
+        15,
+        800,
+        769
+      ]
+    },
+    {
+      "id": "touch-stick-base",
+      "title": "Touch stick base",
+      "width": 264,
+      "height": 264,
+      "anchor": "centre",
+      "section": "Phones and tablets",
+      "prompt": "A round brass stage-machinery dial seen straight on: a ring of riveted brass with four small engraved arrow marks (up, down, left, right) on a dark plum velvet centre. Empty in the middle, where the knob sits. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Reference guides gold theatre ornament and painted texture only. Exactly FOUR small direction arrow engravings at cardinal points. Centre is plain dark plum velvet with no knob and no lettering. Intended final 264 \u00d7 264 pixels, anchor centre. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/touch-stick-base.png",
+      "original": "design/generated/additions-2026-10-05/originals/touch-stick-base.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1254,
+        1246
+      ],
+      "placement": [
+        0,
+        1,
+        264,
+        262
+      ]
+    },
+    {
+      "id": "touch-stick-knob",
+      "title": "Touch stick knob",
+      "width": 128,
+      "height": 128,
+      "anchor": "centre",
+      "section": "Phones and tablets",
+      "prompt": "A round polished brass knob with a small star engraved on top, seen straight on, as on a theatre crank handle. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Reference guides brass/gold ornament and painted texture only. ONE circular brass knob, viewed perfectly straight-on, ONE small engraved star at centre, no handle or shaft visible. Intended final 128 \u00d7 128 pixels, anchor centre. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/touch-stick-knob.png",
+      "original": "design/generated/additions-2026-10-05/originals/touch-stick-knob.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        258,
+        244,
+        994,
+        990
+      ],
+      "placement": [
+        1,
+        0,
+        126,
+        128
+      ]
+    },
+    {
+      "id": "touch-button",
+      "title": "Touch action button",
+      "width": 208,
+      "height": 208,
+      "anchor": "centre",
+      "section": "Phones and tablets",
+      "prompt": "A round button seen straight on: a deep plum enamel disc with a gold scalloped rim like the proscenium valance, plain in the middle (the game letters it). Should look pressable, like a theatre call bell. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Reference guides gold scalloped theatre ornament and painted texture only. ONE circular deep plum enamel button with a gold scalloped rim. Centre completely plain, no symbols, text, or letters. Intended final 208 \u00d7 208 pixels, anchor centre. Actual alpha transparency outside the isolated art, no backdrop, shadow, diffuse halo or baked checkerboard. No lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/touch-button.png",
+      "original": "design/generated/additions-2026-10-05/originals/touch-button.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        43,
+        24,
+        1211,
+        1206
+      ],
+      "placement": [
+        1,
+        0,
+        206,
+        208
+      ]
+    }
+  ]
+}

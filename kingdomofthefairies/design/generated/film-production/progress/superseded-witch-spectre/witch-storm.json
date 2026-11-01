@@ -1,0 +1,17 @@
+{
+  "id": "witch-storm",
+  "title": "The witch in the storm sky (Act I)",
+  "size": [
+    520,
+    340
+  ],
+  "anchor": "bottom centre",
+  "prompt": "the witch as in references/film-planning/originals/char-witch.png (attach it): a hunched figure in a ragged dark-teal hooded cloak that hides her face, grey clawed hands, a twisted staff, riding a small churning black-and-magenta storm cloud across the sky toward the left, staff raised, lightning crackling from it. Replaces the witch in her moon boat in the voyage's sky; keep the same overall footprint as witch-moonboat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one asset, no collage, no labels. Canvas aspect ratio 520:340, intended delivery 520 x 340 pixels. One witch and small storm cloud, facing left, true transparent exterior.",
+  "transparent": true,
+  "replaces": "witch-moonboat",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-witch.png"
+  ],
+  "source_commit": "1fb8e47",
+  "path": "/workspace/generated_images/exec-acd5f626-67d9-4ec2-9920-61fe9e4aa104.png"
+}

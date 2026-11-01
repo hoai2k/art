@@ -1,0 +1,23 @@
+{
+  "id": "prince-court-stride-a",
+  "title": "Prince in court dress, stride A",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-court.webp (attach it, and prince-court-stride-b.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360. Court dress remains bareheaded and unarmoured with no sword or shield; copy the standing reference\u2019s tights and belt colours exactly.",
+  "transparent": true,
+  "replaces": "prince-court-walk-a",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "a",
+  "pair": "prince-court-stride-b",
+  "round": "F10",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-fe3fcc29-030e-4d33-a4a8-89e4e410aee6.png",
+  "generation_id": "exec-fe3fcc29-030e-4d33-a4a8-89e4e410aee6",
+  "review_status": "accepted: full separated stride, coherent arms and legs, standing costume and face retained, paired gait and costume continuity reviewed"
+}

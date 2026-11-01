@@ -1,0 +1,1780 @@
+{
+  "requested": 56,
+  "generated": 56,
+  "missing": [],
+  "images": [
+    {
+      "id": "wave-crank",
+      "title": "Wave-row crank handle",
+      "width": 200,
+      "height": 200,
+      "anchor": "centre (axle hub)",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA stage-machinery crank seen square-on, as a stagehand turns it from the wing: a round brass hub boss with a square axle hole at the exact centre of the image, a flat black iron crank arm running from the hub straight out to the right, and a turned dark-wood handle knob standing at the end of the arm, worn pale where hands grip it. The hub must sit exactly at the image centre, as the game spins the whole piece around it. Match the brass of touch-stick-knob and the gold of the proscenium. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 200:200. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. Allocate transparent padding to LEFT so the axle hole sits at exactly 50% canvas width and height, with arm pointing right. Do not centre the whole silhouette.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/originals/touch-stick-knob.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/wave-crank.png",
+      "original": "design/generated/round-2/originals/wave-crank.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": null,
+      "placement": [
+        0,
+        0,
+        200,
+        200
+      ]
+    },
+    {
+      "id": "wave-crank-bearing",
+      "title": "Crank bearing in the wing",
+      "width": 140,
+      "height": 260,
+      "anchor": "right edge (axle at the middle of the right edge)",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: precise-object-edit. Correct this painted brass bearing plate to a FLAT FRONT VIEW for a toy theatre. An upright strip of dark plum wing timber runs FULL image height. A flat black iron plate bolted to it, with ONE round brass axle collar at exactly halfway down, at the RIGHTMOST canvas boundary. Camera points straight into the axle hole: collar is a CIRCLE, not a perspective oval or protruding cylinder. Axle centre at (100% width,50% height), so right half of the circular brass collar is naturally clipped by the right canvas edge. Full tall timber on left, exposed bearing collar on its right edge. No crank or handle. Keep painted worn sepia/brass/plum/teal stage-machinery material, simpler ironwork, no unnecessary flowers. Portrait 140:260 aspect ratio. Genuine transparent background around isolated machinery, no text or cast shadow.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/wave-crank-bearing-perspective.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/wave-crank-bearing.png",
+      "original": "design/generated/round-2/originals/wave-crank-bearing.png",
+      "originalSize": [
+        921,
+        1708
+      ],
+      "sourceCrop": [
+        326,
+        0,
+        623,
+        1708
+      ],
+      "placement": [
+        95,
+        0,
+        45,
+        260
+      ]
+    },
+    {
+      "id": "footlight",
+      "title": "Footlight hood",
+      "width": 120,
+      "height": 60,
+      "anchor": "bottom centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nOne brass theatre footlight seen from the audience: a low scalloped shell-shaped reflector hood, the lamp hidden behind its rim, riveted to a small wooden block. Warm metal, no glow painted (the game adds the light). Match the gold of the proscenium. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 120:60. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/footlight.png",
+      "original": "design/generated/round-2/originals/footlight.png",
+      "originalSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        304,
+        94,
+        1471,
+        787
+      ],
+      "placement": [
+        9,
+        0,
+        101,
+        60
+      ]
+    },
+    {
+      "id": "curtain-panel",
+      "title": "Travelling curtain, left panel",
+      "width": 1300,
+      "height": 1440,
+      "anchor": "top edge (leading edge at the right)",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe left half of a theatre travelling curtain seen square-on: deep crimson velvet hanging in heavy vertical folds from the top edge to the bottom edge, a gold bullion fringe along the bottom and down the right-hand leading edge, the folds a little bunched toward the left. Full height, no tie-back, no rail. Match the painted drapes of proscenium exactly in colour and fold style; the game mirrors it for the right panel. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 1300:1440. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/curtain-panel.png",
+      "original": "design/generated/round-2/originals/curtain-panel.png",
+      "originalSize": [
+        1192,
+        1320
+      ],
+      "sourceCrop": [
+        44,
+        58,
+        718,
+        1267
+      ],
+      "placement": [
+        497,
+        0,
+        803,
+        1440
+      ]
+    },
+    {
+      "id": "vane-plaque",
+      "title": "Weathervane plaque",
+      "width": 280,
+      "height": 90,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: precise-object-edit. Keep ONLY the small OVAL plum enamel plaque, its GOLD ROPE BORDER and a tiny hanging loop at its upper centre. Remove the entire surrounding valance, curtains, columns and all other theatre architecture. Plain blank oval centre. One isolated low horizontal oval plaque, 280:90 aspect ratio. Keep the enamel and gilding style of supplied art. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/vane-plaque-first.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/vane-plaque.png",
+      "original": "design/generated/round-2/originals/vane-plaque.png",
+      "originalSize": [
+        2206,
+        713
+      ],
+      "sourceCrop": [
+        326,
+        24,
+        1880,
+        671
+      ],
+      "placement": [
+        32,
+        0,
+        216,
+        90
+      ]
+    },
+    {
+      "id": "vane-arrow",
+      "title": "Weathervane arrow",
+      "width": 230,
+      "height": 50,
+      "anchor": "centre (pivot)",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA gilded weathervane arrow seen side-on, pointing right: a pointed head at the right, a slim shaft and a forked feathered tail at the left, its pivot at the exact centre of the image. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 230:50. Real transparent alpha outside the isolated art.\nMatch the established M\u00e9li\u00e8s hand-painted toy-theatre look.\nNo text or watermark.",
+      "transparent": true,
+      "references": [],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/vane-arrow.png",
+      "original": "design/generated/round-2/originals/vane-arrow.png",
+      "originalSize": [
+        1902,
+        827
+      ],
+      "sourceCrop": [
+        17,
+        143,
+        1886,
+        586
+      ],
+      "placement": [
+        9,
+        0,
+        211,
+        50
+      ]
+    },
+    {
+      "id": "vane-arrow-warn",
+      "title": "Weathervane arrow, spinning",
+      "width": 230,
+      "height": 50,
+      "anchor": "centre (pivot)",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: precise-object-edit. The same arrow as vane-arrow with the same framing, but enamelled magenta #e0127a with gold edges, as the witch spins the wind. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Real transparent alpha outside painted art. No text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/originals/vane-arrow.png"
+      ],
+      "dependency": "vane-arrow",
+      "mode": "built-in image_gen",
+      "file": "intake/vane-arrow-warn.png",
+      "original": "design/generated/round-2/originals/vane-arrow-warn.png",
+      "originalSize": [
+        1902,
+        827
+      ],
+      "sourceCrop": [
+        15,
+        141,
+        1882,
+        589
+      ],
+      "placement": [
+        11,
+        0,
+        208,
+        50
+      ]
+    },
+    {
+      "id": "cloud-storm",
+      "title": "Storm cloud flat",
+      "width": 400,
+      "height": 180,
+      "anchor": "bottom centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe same hung cloud flat as cloud, with the same outline and framing, painted in heavy slate-violet storm tones with a darker underside and a faint gold crackle of lightning inside. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 400:180. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. This is a precise edit of the supplied image: preserve outline, framing, all positions and ornament. Change only the light/colour/symbol requested.",
+      "transparent": true,
+      "references": [
+        "design/generated/cloud-original.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cloud-storm.png",
+      "original": "design/generated/round-2/originals/cloud-storm.png",
+      "originalSize": [
+        1870,
+        841
+      ],
+      "sourceCrop": [
+        36,
+        51,
+        1836,
+        793
+      ],
+      "placement": [
+        0,
+        15,
+        400,
+        165
+      ]
+    },
+    {
+      "id": "hud-plaque",
+      "title": "HUD plaque (stretchable)",
+      "width": 800,
+      "height": 80,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA long low plaque of plum enamel with a thin inset gold rule and small gold scroll end caps. The middle 70% is plain and even along its length, so the game can stretch the middle and keep the two ends. Match the proscenium floor band and gilding. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 800:80. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/proscenium-original.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-plaque.png",
+      "original": "design/generated/round-2/originals/hud-plaque.png",
+      "originalSize": [
+        2103,
+        748
+      ],
+      "sourceCrop": [
+        23,
+        210,
+        2083,
+        494
+      ],
+      "placement": [
+        0,
+        0,
+        800,
+        80
+      ]
+    },
+    {
+      "id": "hud-lantern-lit",
+      "title": "Life lantern, lit",
+      "width": 48,
+      "height": 64,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA tiny ship's brass lantern seen square-on, with a cap, a carrying ring and a base, its glass glowing warm yellow; the same lantern as lantern-hanging, simplified to read at 24 px. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 48:64. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/lantern-hanging.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-lantern-lit.png",
+      "original": "design/generated/round-2/originals/hud-lantern-lit.png",
+      "originalSize": [
+        1086,
+        1448
+      ],
+      "sourceCrop": [
+        160,
+        20,
+        921,
+        1439
+      ],
+      "placement": [
+        7,
+        0,
+        34,
+        64
+      ]
+    },
+    {
+      "id": "hud-lantern-out",
+      "title": "Life lantern, out",
+      "width": 48,
+      "height": 64,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: precise-object-edit. The same tiny lantern as hud-lantern-lit with the same framing, its glass dark and smoky. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Real transparent alpha outside painted art. No text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/originals/hud-lantern-lit.png"
+      ],
+      "dependency": "hud-lantern-lit",
+      "mode": "built-in image_gen",
+      "file": "intake/hud-lantern-out.png",
+      "original": "design/generated/round-2/originals/hud-lantern-out.png",
+      "originalSize": [
+        1086,
+        1448
+      ],
+      "sourceCrop": [
+        158,
+        18,
+        923,
+        1441
+      ],
+      "placement": [
+        7,
+        0,
+        34,
+        64
+      ]
+    },
+    {
+      "id": "hud-voyage-rope",
+      "title": "Voyage ribbon rope",
+      "width": 700,
+      "height": 16,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA thin twisted cream rope running straight from the left edge to the right edge. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side.\nRequested final aspect ratio 700:16. Real transparent alpha outside the isolated art.\nMatch the established M\u00e9li\u00e8s hand-painted toy-theatre look.\nNo text or watermark.",
+      "transparent": true,
+      "references": [],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-voyage-rope.png",
+      "original": "design/generated/round-2/originals/hud-voyage-rope.png",
+      "originalSize": [
+        2116,
+        743
+      ],
+      "sourceCrop": [
+        0,
+        326,
+        2116,
+        417
+      ],
+      "placement": [
+        0,
+        0,
+        700,
+        16
+      ]
+    },
+    {
+      "id": "hud-voyage-ship",
+      "title": "Voyage marker ship",
+      "width": 60,
+      "height": 50,
+      "anchor": "bottom centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: precise-object-edit. Remove ONLY the painted waves and rectangular seaband under the hull. Preserve the same two-masted ship, sails, flags, direction, hull and simplified 30-pixel-readable design. Hull must be entirely surrounded below by real transparent alpha; no water, no rectangular base. One tiny right-facing toy ship silhouette. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/hud-voyage-ship-first.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-voyage-ship.png",
+      "original": "design/generated/round-2/originals/hud-voyage-ship.png",
+      "originalSize": [
+        1374,
+        1145
+      ],
+      "sourceCrop": [
+        38,
+        19,
+        1358,
+        1114
+      ],
+      "placement": [
+        0,
+        0,
+        60,
+        50
+      ]
+    },
+    {
+      "id": "hud-voyage-flag",
+      "title": "Voyage end flag",
+      "width": 36,
+      "height": 56,
+      "anchor": "bottom centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA tiny coral-red post with a cream pennant flying to the right, like a harbour marker. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 36:56. Real transparent alpha outside the isolated art.\nMatch the established M\u00e9li\u00e8s hand-painted toy-theatre look.\nNo text or watermark.",
+      "transparent": true,
+      "references": [],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-voyage-flag.png",
+      "original": "design/generated/round-2/originals/hud-voyage-flag.png",
+      "originalSize": [
+        1006,
+        1563
+      ],
+      "sourceCrop": [
+        151,
+        60,
+        894,
+        1496
+      ],
+      "placement": [
+        3,
+        0,
+        29,
+        56
+      ]
+    },
+    {
+      "id": "hud-air-bubble",
+      "title": "Air icon",
+      "width": 40,
+      "height": 40,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA single round silvery air bubble with a highlight, as rising from the grotto vents. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 40:40. Real transparent alpha outside the isolated art.\nMatch the established M\u00e9li\u00e8s hand-painted toy-theatre look.\nNo text or watermark.",
+      "transparent": true,
+      "references": [],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-air-bubble.png",
+      "original": "design/generated/round-2/originals/hud-air-bubble.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        100,
+        103,
+        1156,
+        1129
+      ],
+      "placement": [
+        0,
+        0,
+        40,
+        39
+      ]
+    },
+    {
+      "id": "hud-air-tube",
+      "title": "Air gauge tube",
+      "width": 160,
+      "height": 32,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nAn empty horizontal glass tube with brass end caps, the inside clear and even so the game can fill it. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 160:32. Real transparent alpha outside the isolated art.\nMatch the established M\u00e9li\u00e8s hand-painted toy-theatre look.\nNo text or watermark.",
+      "transparent": true,
+      "references": [],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-air-tube.png",
+      "original": "design/generated/round-2/originals/hud-air-tube.png",
+      "originalSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        0,
+        254,
+        1774,
+        632
+      ],
+      "placement": [
+        0,
+        0,
+        160,
+        32
+      ]
+    },
+    {
+      "id": "hud-sleeper",
+      "title": "Sleepers-woken icon",
+      "width": 48,
+      "height": 32,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA tiny reclining reveller in a yellow tunic and cap, asleep, simplified from reveller-yellow to read at 24 px. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 48:32. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/reveller-yellow.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/hud-sleeper.png",
+      "original": "design/generated/round-2/originals/hud-sleeper.png",
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        42,
+        190,
+        1507,
+        764
+      ],
+      "placement": [
+        0,
+        6,
+        48,
+        19
+      ]
+    },
+    {
+      "id": "omen-token",
+      "title": "Tea-leaf omen token",
+      "width": 80,
+      "height": 80,
+      "anchor": "centre",
+      "section": "Second round: stage machinery, footlights and the HUD",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA small round plum enamel medallion with a gold rim and a plain centre (the game places the tea leaf on it). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 80:80. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/originals/touch-button.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/omen-token.png",
+      "original": "design/generated/round-2/originals/omen-token.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        37,
+        18,
+        1215,
+        1208
+      ],
+      "placement": [
+        0,
+        0,
+        79,
+        80
+      ]
+    },
+    {
+      "id": "lantern-string-lit",
+      "title": "String of paper lanterns, lit",
+      "width": 1200,
+      "height": 300,
+      "anchor": "top edge (hangs from the ends)",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nExactly the same swagged string of eight round paper lanterns as lantern-string, with the same framing and lantern positions, every lantern glowing warm from inside (the game lights them one by one by showing parts of this image over the unlit string). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 1200:300. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. This is a precise edit of the supplied image: preserve outline, framing, all positions and ornament. Change only the light/colour/symbol requested.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/lantern-string.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/lantern-string-lit.png",
+      "original": "design/generated/round-2/originals/lantern-string-lit.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        10,
+        11,
+        2161,
+        689
+      ],
+      "placement": [
+        124,
+        0,
+        952,
+        300
+      ]
+    },
+    {
+      "id": "grotto-ledge",
+      "title": "Grotto rock ledge",
+      "width": 320,
+      "height": 100,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA free-standing shelf of teal-grey grotto rock jutting out into the water, seen square-on: both ends tapering, the underside ragged with small white coral, anemones and a red sea fan hanging below. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match grotto-wing-left. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 320:100. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/grotto-wing-left.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/grotto-ledge.png",
+      "original": "design/generated/round-2/originals/grotto-ledge.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        15,
+        154,
+        2160,
+        641
+      ],
+      "placement": [
+        0,
+        0,
+        320,
+        100
+      ]
+    },
+    {
+      "id": "grotto-ledge-wall",
+      "title": "Grotto ledge growing from the wall",
+      "width": 320,
+      "height": 100,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied grotto-ledge-wall for a platform game. The same rock shelf as grotto-ledge, but its left end merges into a sheer slab of wall rock cut off at the left edge of the image, and its right end tapers to a point (the game mirrors it for the right-hand wall). The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match grotto-wing-left.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 320:100 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Actual transparent alpha outside isolated shelf; no lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/grotto-ledge-wall-uneven.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/grotto-ledge-wall.png",
+      "original": "design/generated/round-2/originals/grotto-ledge-wall.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        43,
+        141,
+        2125,
+        719
+      ],
+      "placement": [
+        0,
+        0,
+        320,
+        100
+      ]
+    },
+    {
+      "id": "grotto-shelf",
+      "title": "Wreck-site sea-floor shelf",
+      "width": 2000,
+      "height": 180,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied grotto-shelf for a platform game. A long ground row of sea-floor rock and sand at the wreck site, seen square-on, scattered with shells, a broken plank and kelp roots, the lower edge ragged. The top edge nearly level (no more than 6 px of rise and fall), as the drowned revellers lie on it. Match the top third of grotto-backcloth.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 2000:180 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Actual transparent alpha outside isolated shelf; no lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/grotto-shelf-uneven.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/grotto-shelf.png",
+      "original": "design/generated/round-2/originals/grotto-shelf.png",
+      "originalSize": [
+        2089,
+        753
+      ],
+      "sourceCrop": [
+        50,
+        325,
+        2041,
+        640
+      ],
+      "placement": [
+        0,
+        0,
+        2000,
+        180
+      ]
+    },
+    {
+      "id": "grotto-floor",
+      "title": "Grotto cave floor",
+      "width": 2080,
+      "height": 260,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied grotto-floor for a platform game. The dark floor of the deep cave as a ground row: black-teal sand and stones with faint phosphorescent pink and green anemones, the top edge gently undulating within 6 px of level (the witch and the guitar stand on it). Match the bottom third of grotto-backcloth.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 2080:260 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). Actual transparent alpha outside isolated shelf; no lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/grotto-floor-uneven.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/grotto-floor.png",
+      "original": "design/generated/round-2/originals/grotto-floor.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        45,
+        467,
+        1940,
+        764
+      ],
+      "placement": [
+        0,
+        0,
+        2080,
+        260
+      ]
+    },
+    {
+      "id": "deep-panorama",
+      "title": "Deep-sea panorama (scrolling)",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nOpen deep water seen square-on for the moon-boat ride: dark teal fading to near-black below, soft shafts of light from the surface above, a low line of distant rock silhouettes along the lower third, faint drifting fish. Match grotto-backcloth. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. The left and right edges must join seamlessly when the cloth is repeated side by side.\nRequested final aspect ratio 2560:1440. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": false,
+      "references": [
+        "design/generated/part-c/originals/grotto-backcloth.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/deep-panorama.png",
+      "original": "design/generated/round-2/originals/deep-panorama.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "palace-distant",
+      "title": "The Sea King's palace, distant",
+      "width": 760,
+      "height": 660,
+      "anchor": "bottom centre",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: precise-object-edit. Repaint the supplied palace as a PALE TEAL-WHITE DISTANT SILHOUETTE flat: retain recognisable tiered towers, domes and arches, soften all edges with atmospheric distance, remove all colourful coral, foliage and foreground rocks. Very low contrast, pale muted teal-white monochromatic wash, no bright pink or gold details. The subject is a far-away underwater palace, not a detailed foreground set. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/palace-distant-first.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/palace-distant.png",
+      "original": "design/generated/round-2/originals/palace-distant.png",
+      "originalSize": [
+        1346,
+        1169
+      ],
+      "sourceCrop": [
+        9,
+        8,
+        1339,
+        1149
+      ],
+      "placement": [
+        0,
+        8,
+        760,
+        652
+      ]
+    },
+    {
+      "id": "sailor-seated",
+      "title": "Sailor seated with the guitar",
+      "width": 220,
+      "height": 220,
+      "anchor": "bottom centre",
+      "section": "Second round: Acts I and II",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nthe returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), seated on a low bench facing right, the band's acoustic guitar resting on his knee, no kit bag; for the moon-boat ride beside the witch. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 220:220. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/sailor-stand.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/sailor-seated.png",
+      "original": "design/generated/round-2/originals/sailor-seated.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        197,
+        0,
+        1187,
+        1237
+      ],
+      "placement": [
+        22,
+        0,
+        176,
+        220
+      ]
+    },
+    {
+      "id": "groove-slider",
+      "title": "Groove slider shoe",
+      "width": 56,
+      "height": 28,
+      "anchor": "bottom centre",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA small brass slider shoe seen square-on, as fitted under a toy-theatre figure that runs in a floor groove: a rounded brass block with two rivets. Match the brass edges of court-floor-3. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 56:28. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/originals/court-floor-3.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/groove-slider.png",
+      "original": "design/generated/round-2/originals/groove-slider.png",
+      "originalSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        364,
+        242,
+        1410,
+        645
+      ],
+      "placement": [
+        0,
+        6,
+        56,
+        22
+      ]
+    },
+    {
+      "id": "court-floor-edge",
+      "title": "Court floor front fascia",
+      "width": 2560,
+      "height": 40,
+      "anchor": "top edge",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe front edge of the marble processional floor: a narrow gilded moulding over a plum fascia. Match court-floor-3. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side.\nRequested final aspect ratio 2560:40. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/originals/court-floor-3.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/court-floor-edge.png",
+      "original": "design/generated/round-2/originals/court-floor-edge.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        306,
+        1983,
+        482
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        39
+      ]
+    },
+    {
+      "id": "rib-ledge",
+      "title": "Bone shelf on a rib",
+      "width": 360,
+      "height": 70,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA shelf of whale bone jutting from a rib, seen square-on: ivory and grey bone with a rounded front lip, a short curved bone bracket underneath at the centre, wet highlights. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match rib-arch's bone painting. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 360:70. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/rib-arch.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/rib-ledge.png",
+      "original": "design/generated/round-2/originals/rib-ledge.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        11,
+        127,
+        2162,
+        594
+      ],
+      "placement": [
+        0,
+        0,
+        360,
+        70
+      ]
+    },
+    {
+      "id": "belly-bank",
+      "title": "Stomach-wall bank",
+      "width": 900,
+      "height": 1000,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA thick shelf of the whale's stomach wall seen square-on: dark red-violet wet flesh with folds and veins, its right end a rounded fleshy lip curling down. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match belly-backcloth. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 900:1000. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/belly-backcloth.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/belly-bank.png",
+      "original": "design/generated/round-2/originals/belly-bank.png",
+      "originalSize": [
+        1190,
+        1322
+      ],
+      "sourceCrop": [
+        0,
+        394,
+        1186,
+        1308
+      ],
+      "placement": [
+        0,
+        0,
+        900,
+        1000
+      ]
+    },
+    {
+      "id": "throat-lip",
+      "title": "Lower lip of the throat",
+      "width": 900,
+      "height": 300,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe soft lower lip of the whale's throat seen from inside: a rounded tongue of pink-violet flesh, the underside curving away into shadow. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match belly-backcloth. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 900:300. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/belly-backcloth.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/throat-lip.png",
+      "original": "design/generated/round-2/originals/throat-lip.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        6,
+        119,
+        2166,
+        632
+      ],
+      "placement": [
+        0,
+        0,
+        900,
+        300
+      ]
+    },
+    {
+      "id": "belly-floor",
+      "title": "Stomach floor ground row",
+      "width": 2560,
+      "height": 400,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: precise-object-edit. Correct the top silhouette of supplied belly-floor for a platform game. The whale's stomach floor as a ground row: wet ridged red-violet lining with folds and a few swallowed shells, the top edge level. Match belly-backcloth.\nCRITICAL GEOMETRY: upper outline is ONE perfectly straight horizontal line, like a rectangular stage shelf cut with a ruler. Continuous solid painted material immediately BELOW that line from extreme left to extreme right. NO rock, foliage, coral, raised wall, fold, shell or decoration projects ABOVE this straight top boundary anywhere. All decorative texture and coral lie on the FRONT FACE BELOW the top line. Keep the existing palette, painted stone/lining texture and ragged lower edge; flatten only the top silhouette. Do not draw perspective; front-on shallow ground row. Wide 2560:400 aspect ratio.  Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side. Actual transparent alpha outside isolated shelf; no lettering.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/rejected/belly-floor-uneven.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/belly-floor.png",
+      "original": "design/generated/round-2/originals/belly-floor.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        277,
+        1983,
+        554
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        400
+      ]
+    },
+    {
+      "id": "belly-water-body",
+      "title": "Stomach water body (tiling)",
+      "width": 1024,
+      "height": 1024,
+      "anchor": "full frame",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nMurky green-violet water seen square-on, darkening slightly, with faint drifting murk; no surface line (it fills the water below belly-water). A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. It must tile seamlessly in both directions (left to right and top to bottom).\nRequested final aspect ratio 1024:1024. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": false,
+      "references": [
+        "design/generated/part-c/originals/belly-water.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/belly-water-body.png",
+      "original": "design/generated/round-2/originals/belly-water-body.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "fish-hook",
+      "title": "Swinging fish-hook with float",
+      "width": 80,
+      "height": 220,
+      "anchor": "top centre (line attachment)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA short length of fishing line from the top centre down to a red-and-cream cork float, then a big barbed steel hook below it, seen square-on, the hook opening to the left. Match lantern-hanging. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 80:220. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/lantern-hanging.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/fish-hook.png",
+      "original": "design/generated/round-2/originals/fish-hook.png",
+      "originalSize": [
+        757,
+        2078
+      ],
+      "sourceCrop": [
+        92,
+        0,
+        616,
+        2000
+      ],
+      "placement": [
+        11,
+        0,
+        58,
+        220
+      ]
+    },
+    {
+      "id": "chain-strip",
+      "title": "Lantern chain (tiling)",
+      "width": 24,
+      "height": 400,
+      "anchor": "top centre",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA hanging iron chain of oval links seen square-on, dark and slightly rusted. Match lantern-hanging's chain. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The top and bottom edges must join seamlessly when it is repeated one above the other.\nRequested final aspect ratio 24:400. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/lantern-hanging.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/chain-strip.png",
+      "original": "design/generated/round-2/originals/chain-strip.png",
+      "originalSize": [
+        971,
+        1619
+      ],
+      "sourceCrop": [
+        389,
+        0,
+        583,
+        1619
+      ],
+      "placement": [
+        0,
+        0,
+        24,
+        400
+      ]
+    },
+    {
+      "id": "set-platform-edge",
+      "title": "Rocking set platform edge",
+      "width": 2560,
+      "height": 40,
+      "anchor": "top edge",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe front edge of a wooden stage platform: a dark timber beam with a pale worn top edge and iron bolts. Match cradle. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The left and right edges must join seamlessly when the strip is repeated side by side.\nRequested final aspect ratio 2560:40. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cradle.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/set-platform-edge.png",
+      "original": "design/generated/round-2/originals/set-platform-edge.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        320,
+        1983,
+        466
+      ],
+      "placement": [
+        0,
+        0,
+        2560,
+        39
+      ]
+    },
+    {
+      "id": "cradle-fulcrum",
+      "title": "Cradle fulcrum",
+      "width": 160,
+      "height": 120,
+      "anchor": "bottom centre (pivot at the top centre)",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA triangular block of dark timber bound in iron, with a brass pivot pin at its apex, the pivot of a rocking stage cradle. Match cradle. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 160:120. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cradle.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cradle-fulcrum.png",
+      "original": "design/generated/round-2/originals/cradle-fulcrum.png",
+      "originalSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        101,
+        201,
+        1342,
+        922
+      ],
+      "placement": [
+        0,
+        0,
+        160,
+        93
+      ]
+    },
+    {
+      "id": "shore-backcloth",
+      "title": "Daylight sea and sky",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Second round: Acts III and IV",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nOpen sea under a pale rose daylight sky with a few soft clouds and distant gulls; the horizon level at 60% of the height (860 px), a calm grey-teal sea with white lines of surf below it; no foreground rocks (the shore-rocks ground row stands in front). Match shore-rocks. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.\nRequested final aspect ratio 2560:1440. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": false,
+      "references": [
+        "design/generated/part-c/originals/shore-rocks.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/shore-backcloth.png",
+      "original": "design/generated/round-2/originals/shore-backcloth.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "cliff-hold",
+      "title": "Cliff handhold",
+      "width": 110,
+      "height": 44,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA small knob of pale layered rock jutting from a cliff, seen square-on: a shadowed underside and a tuft of ivy. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match cliff-face. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 110:44. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cliff-face.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-hold.png",
+      "original": "design/generated/round-2/originals/cliff-hold.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        19,
+        48,
+        1966,
+        766
+      ],
+      "placement": [
+        0,
+        0,
+        110,
+        44
+      ]
+    },
+    {
+      "id": "cliff-ledge",
+      "title": "Cliff ledge",
+      "width": 220,
+      "height": 50,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA wider shelf of the same pale layered rock as cliff-hold. The walkable top edge must be straight and level across the full width of the image, as the game stands figures on it. Match cliff-face. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 220:50. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cliff-face.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-ledge.png",
+      "original": "design/generated/round-2/originals/cliff-ledge.png",
+      "originalSize": [
+        2079,
+        756
+      ],
+      "sourceCrop": [
+        19,
+        48,
+        2060,
+        722
+      ],
+      "placement": [
+        0,
+        0,
+        220,
+        50
+      ]
+    },
+    {
+      "id": "cliff-hold-crumble",
+      "title": "Crumbling handhold",
+      "width": 110,
+      "height": 44,
+      "anchor": "top edge (walkable)",
+      "section": "Second round: Act V",
+      "prompt": "Use case: precise-object-edit. The same knob as cliff-hold with the same framing, split by dark cracks, grit trickling from beneath. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Real transparent alpha outside painted art. No text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/originals/cliff-hold.png"
+      ],
+      "dependency": "cliff-hold",
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-hold-crumble.png",
+      "original": "design/generated/round-2/originals/cliff-hold-crumble.png",
+      "originalSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        19,
+        47,
+        1964,
+        773
+      ],
+      "placement": [
+        0,
+        0,
+        110,
+        41
+      ]
+    },
+    {
+      "id": "cliff-hold-gone",
+      "title": "Broken-off handhold",
+      "width": 80,
+      "height": 24,
+      "anchor": "top edge",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe broken stump left in a cliff where a rock knob has fallen away: a rough pale scar. Match cliff-face. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 80:24. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cliff-face.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-hold-gone.png",
+      "original": "design/generated/round-2/originals/cliff-hold-gone.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        132,
+        10,
+        2041,
+        711
+      ],
+      "placement": [
+        7,
+        0,
+        65,
+        24
+      ]
+    },
+    {
+      "id": "shutter-shut",
+      "title": "Locked shutter",
+      "width": 110,
+      "height": 230,
+      "anchor": "bottom centre",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA pair of closed wooden window shutters with horizontal slats, iron hinges and a heavy padlock across the middle, seen square-on. Match the shutters painted on house-front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 110:230. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/house-front.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/shutter-shut.png",
+      "original": "design/generated/round-2/originals/shutter-shut.png",
+      "originalSize": [
+        868,
+        1812
+      ],
+      "sourceCrop": [
+        16,
+        170,
+        852,
+        1700
+      ],
+      "placement": [
+        0,
+        29,
+        110,
+        201
+      ]
+    },
+    {
+      "id": "shutter-smashed",
+      "title": "Smashed shutter",
+      "width": 110,
+      "height": 230,
+      "anchor": "bottom centre",
+      "section": "Second round: Act V",
+      "prompt": "Use case: precise-object-edit. The same window as shutter-shut with the same framing, its shutters smashed open: splintered slats hanging from the hinges, fire-orange glow through the frame. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Real transparent alpha outside painted art. No text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/originals/shutter-shut.png"
+      ],
+      "dependency": "shutter-shut",
+      "mode": "built-in image_gen",
+      "file": "intake/shutter-smashed.png",
+      "original": "design/generated/round-2/originals/shutter-smashed.png",
+      "originalSize": [
+        868,
+        1812
+      ],
+      "sourceCrop": [
+        15,
+        153,
+        853,
+        1736
+      ],
+      "placement": [
+        0,
+        22,
+        110,
+        208
+      ]
+    },
+    {
+      "id": "floor-hole",
+      "title": "Burnt-through floor",
+      "width": 300,
+      "height": 90,
+      "anchor": "top edge (floor line)",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA gap burnt through wooden floorboards seen square-on: charred, broken plank ends hanging down at the left and right edges, glowing embers along the broken edges, the middle open and transparent. Match the floors of stone-house. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 300:90. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/stone-house.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/floor-hole.png",
+      "original": "design/generated/round-2/originals/floor-hole.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        6,
+        186,
+        2170,
+        554
+      ],
+      "placement": [
+        0,
+        0,
+        300,
+        51
+      ]
+    },
+    {
+      "id": "floor-slope",
+      "title": "Fallen floor section",
+      "width": 600,
+      "height": 60,
+      "anchor": "left end (pivot)",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA long section of broken floorboards lying along its length, planks side by side, charred jagged ends at the right; the game tilts it into a slope. Match the floors of stone-house. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 600:60. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/stone-house.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/floor-slope.png",
+      "original": "design/generated/round-2/originals/floor-slope.png",
+      "originalSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        23,
+        234,
+        2152,
+        558
+      ],
+      "placement": [
+        0,
+        0,
+        600,
+        60
+      ]
+    },
+    {
+      "id": "ivy-climb",
+      "title": "Ivy to climb (tiling)",
+      "width": 80,
+      "height": 400,
+      "anchor": "bottom centre",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA thick vertical rope of ivy stems and leaves, sturdy enough to climb. Match the ivy on house-front. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable). The top and bottom edges must join seamlessly when it is repeated one above the other.\nRequested final aspect ratio 80:400. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/house-front.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/ivy-climb.png",
+      "original": "design/generated/round-2/originals/ivy-climb.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        288,
+        0,
+        600,
+        1774
+      ],
+      "placement": [
+        5,
+        0,
+        70,
+        400
+      ]
+    },
+    {
+      "id": "rubble-planks",
+      "title": "Fallen planks",
+      "width": 300,
+      "height": 80,
+      "anchor": "bottom centre",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA heap of three charred fallen floorboards and splinters. Match stone-house. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 300:80. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/stone-house.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/rubble-planks.png",
+      "original": "design/generated/round-2/originals/rubble-planks.png",
+      "originalSize": [
+        2103,
+        748
+      ],
+      "sourceCrop": [
+        12,
+        0,
+        2068,
+        686
+      ],
+      "placement": [
+        30,
+        0,
+        240,
+        80
+      ]
+    },
+    {
+      "id": "ladder-stub",
+      "title": "Burnt ladder stub",
+      "width": 40,
+      "height": 110,
+      "anchor": "bottom centre",
+      "section": "Second round: Act V",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe burnt-off lower end of the wooden ladder, charred black at the top. Match ladder. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 40:110. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/ladder.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/ladder-stub.png",
+      "original": "design/generated/round-2/originals/ladder-stub.png",
+      "originalSize": [
+        756,
+        2079
+      ],
+      "sourceCrop": [
+        15,
+        0,
+        744,
+        2049
+      ],
+      "placement": [
+        0,
+        0,
+        39,
+        110
+      ]
+    },
+    {
+      "id": "rib-arch-tall",
+      "title": "Rib arch, rooted in the water",
+      "width": 900,
+      "height": 1800,
+      "anchor": "bottom centre",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA single huge curved whale rib, ivory and grey, as a free-standing foreground flat. Its base dissolves softly into murky water at the bottom edge (no hard cut-off bottom edge, no rocks), and it curves up and over to the right. Leave the top quarter free of any ledge or spur (the game adds rib-ledge where the sailor stands). Replaces rib-arch, whose straight-cut base floats in mid-air on high ledges. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 900:1800. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. Reference is bone texture only. Smooth unobstructed curved rib, no ledge anywhere near top. Base fades into genuine alpha.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/rib-arch.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/rib-arch-tall.png",
+      "original": "design/generated/round-2/originals/rib-arch-tall.png",
+      "originalSize": [
+        887,
+        1774
+      ],
+      "sourceCrop": [
+        9,
+        9,
+        873,
+        1758
+      ],
+      "placement": [
+        5,
+        0,
+        889,
+        1800
+      ]
+    },
+    {
+      "id": "whale-throat-inside",
+      "title": "Throat opening seen from inside",
+      "width": 800,
+      "height": 800,
+      "anchor": "centre",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe way out of the whale seen from INSIDE its body: a round opening in pink-violet wet flesh, framed above by hanging baleen, bright daylight and a glimpse of rocky shore beyond. No outside skin, no eye, no barnacles, no jaw outline. The bottom of the opening is level, about 70% of the way down. Replaces whale-throat, which shows the whale's whole head from outside. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 800:800. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. A theatrical fantasy whale interior, no blood or injuries. Reference supplies lining colour only; show the internal exit framing daylight shore.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/belly-backcloth.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/whale-throat-inside.png",
+      "original": "design/generated/round-2/originals/whale-throat-inside.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        0,
+        2,
+        1254,
+        1249
+      ],
+      "placement": [
+        0,
+        2,
+        800,
+        796
+      ]
+    },
+    {
+      "id": "cliff-face-tall",
+      "title": "Tall cliff face",
+      "width": 1400,
+      "height": 3600,
+      "anchor": "bottom centre",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe same sea cliff as cliff-face (pale layered rock with green ivy, jutting ledges at many heights, a dark vertical gap in the rock), but twice as tall: surf breaking only at the very foot, grass and the cliff top only at the very top, the climb continuous between them with no repeated section. The dark gap runs from about 35% to 50% of the height up from the bottom, at about two-thirds of the width. Replaces the two stacked copies of cliff-face. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 1400:3600. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": true,
+      "references": [
+        "design/generated/part-c/originals/cliff-face.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-face-tall.png",
+      "original": "design/generated/round-2/originals/cliff-face-tall.png",
+      "originalSize": [
+        782,
+        2010
+      ],
+      "sourceCrop": [
+        1,
+        0,
+        782,
+        2010
+      ],
+      "placement": [
+        0,
+        0,
+        1399,
+        3600
+      ]
+    },
+    {
+      "id": "bay-backcloth-empty",
+      "title": "Widow's Bay at night, cliff top empty",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe same composition as bay-backcloth (a moonlit harbour, a high cliff at the left, the red-and-white lighthouse distant on a headland at the right, fishing boats at anchor) but with NO house on the cliff top: the game stands its own stone house there. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.\nRequested final aspect ratio 2560:1440. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. Precisely preserve supplied harbour composition, moon, lighthouse, cliffs and boats. Remove ONLY the house; replace its footprint with bare grassy clifftop.",
+      "transparent": false,
+      "references": [
+        "design/generated/part-c/originals/bay-backcloth.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/bay-backcloth-empty.png",
+      "original": "design/generated/round-2/originals/bay-backcloth-empty.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "bay-backcloth-fire-empty",
+      "title": "Widow's Bay burning, cliff top empty",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: precise-object-edit. The same composition as bay-backcloth-empty, washed in a strong red-orange tint as in the video's burning scenes (3:10-3:15), with smoke and sparks in the sky; no house on the cliff top. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Opaque full bleed to every edge. No text or watermark.",
+      "transparent": false,
+      "references": [
+        "design/generated/round-2/originals/bay-backcloth-empty.png"
+      ],
+      "dependency": "bay-backcloth-empty",
+      "mode": "built-in image_gen",
+      "file": "intake/bay-backcloth-fire-empty.png",
+      "original": "design/generated/round-2/originals/bay-backcloth-fire-empty.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "ending-dark-2",
+      "title": "Ending: the window is dark (with the doorway)",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Second round: re-requests",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nNight. The stone house on the cliff at the left with one dark window and a black silhouette of another figure standing in its lit doorway; on the quay in front, the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) alone, throwing a small stone into the bay, rings spreading on the water. All three must be clearly visible. Replaces ending-dark, which is missing the doorway. A painted toy-theatre tableau seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.\nRequested final aspect ratio 2560:1440. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+      "transparent": false,
+      "references": [
+        "design/generated/part-c/originals/ending-dark.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/ending-dark-2.png",
+      "original": "design/generated/round-2/originals/ending-dark-2.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    },
+    {
+      "id": "touch-pause",
+      "title": "Touch pause button",
+      "width": 92,
+      "height": 92,
+      "anchor": "centre",
+      "section": "Phones and tablets",
+      "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nA small round button seen straight on: a plum enamel disc with the same gold scalloped rim as touch-button and two upright gold pause bars engraved in the middle. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 92:92. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark. This is a precise edit of the supplied image: preserve outline, framing, all positions and ornament. Change only the light/colour/symbol requested.",
+      "transparent": true,
+      "references": [
+        "design/generated/additions-2026-10-05/originals/touch-button.png"
+      ],
+      "dependency": null,
+      "mode": "built-in image_gen",
+      "file": "intake/touch-pause.png",
+      "original": "design/generated/round-2/originals/touch-pause.png",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        43,
+        24,
+        1211,
+        1205
+      ],
+      "placement": [
+        0,
+        0,
+        91,
+        92
+      ]
+    }
+  ]
+}

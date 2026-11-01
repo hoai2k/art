@@ -1,0 +1,22 @@
+{
+  "id": "prince-strike",
+  "title": "Prince striking with the sword",
+  "size": [
+    300,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Edit this sprite: REMOVE ALL background glow, halo, haze and atmospheric colour spill. Create a crisp transparent cut-out around the complete prince, cloak, plume, shield, boots and sword. Keep every part of the prince, pose, costume, face, silver cuirass and sword unchanged. No shadow and no glow outside the silhouette. No new scenery. Entire background must be fully transparent including between limbs. Keep the complete sword tip and all extremities inside frame.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/f24-f26/prince-strike-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-2f38b5ee-8dff-460b-957a-d6ce30e06f2f.png",
+  "generation_id": "exec-2f38b5ee-8dff-460b-957a-d6ce30e06f2f",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

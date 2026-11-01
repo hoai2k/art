@@ -1,0 +1,162 @@
+{
+  "sizes": [
+    {
+      "id": "witch-hooded",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-cast",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-recoil",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-barrel-anger-a",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-barrel-anger-b",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-hooded-tinted",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-cast-tinted",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-recoil-tinted",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-barrel-anger-a-tinted",
+      "height": 172,
+      "target": 172
+    },
+    {
+      "id": "witch-barrel-anger-b-tinted",
+      "height": 172,
+      "target": 172
+    }
+  ],
+  "samples": [
+    {
+      "tinted": false,
+      "pose": "idle",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "warn",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "reel",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "barrel-a",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "barrel-b",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "push",
+      "face": 1,
+      "palms": {
+        "x": 635.0000067471591,
+        "y": 317.4390909090909,
+        "barrelLeft": 632
+      },
+      "x": 680
+    },
+    {
+      "tinted": false,
+      "pose": "aurora-left",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "idle",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "warn",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "reel",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "barrel-a",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "barrel-b",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "push",
+      "face": 1,
+      "palms": {
+        "x": 635.0000248579545,
+        "y": 313.9795454545455,
+        "barrelLeft": 632
+      },
+      "x": 680
+    },
+    {
+      "tinted": true,
+      "pose": "aurora-left",
+      "face": 1,
+      "palms": null,
+      "x": 680
+    }
+  ]
+}

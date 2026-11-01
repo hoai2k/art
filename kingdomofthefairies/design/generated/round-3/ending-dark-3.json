@@ -1,0 +1,14 @@
+{
+  "id": "ending-dark-3",
+  "title": "Ending: the window is dark (house in frame)",
+  "width": 2560,
+  "height": 1440,
+  "anchor": "full frame",
+  "section": "Third round: re-requests",
+  "prompt": "Use case: precise-object-edit. Move ONLY the cottage, its ivy/roses, steps and lit doorway silhouette to the RIGHT within the supplied scene. Currently the cottage centre is at 22% of canvas width, too far left. Its NEW centre must be at exactly 32% of canvas width, with the entire roof and facade between 22% and 42% of canvas width. Keep the same size, modest pale-stone architecture, dark upstairs window, GREEN open door, warm-lit doorway and black silhouette. Extend the grassy cliff-top naturally underneath its new position and fill its former position with empty grass/rock/sky. Preserve sailor, his clothing/face/pose and position, stone, splash rings, quay, boats, moon, sea, sky and painterly texture unchanged. Same landscape aspect and opaque full-bleed framing. No curtains, text or new objects. This positional correction is essential: no portion of cottage or doorway may lie in the leftmost 20% of the canvas.",
+  "transparent": false,
+  "references": [
+    "design/generated/round-3/rejected/ending-dark-3-left.png"
+  ],
+  "mode": "built-in image_gen"
+}

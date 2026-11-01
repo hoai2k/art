@@ -1,0 +1,23 @@
+{
+  "id": "prince-caught-lobster",
+  "title": "prince caught lobster",
+  "size": [
+    640,
+    480
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Edit target: this capture sprite. Remove the entire colored background and glow, making a crisp genuinely transparent cutout around the prince and lobster pair. Keep the complete two figures, grip, costume, weapons, proportions and colors unchanged. Transparent gaps between all limbs and around weapons. No backdrop, no halo, no shadow. Add a little empty transparent margin around the complete silhouettes so no tip touches the canvas. Do not draw a checkerboard.",
+  "references": [
+    "progress/rejected/court-capture/lobster-background.png"
+  ],
+  "source_generation": {"prompt":"Use case: illustration-story. Production game sprite, transparent background. Reference 1 defines exactly the prince's face, silver cuirass, blue gold-star skirt, crimson gold-star cloak and plumed helmet; reference 2 defines exactly the crowned red lobster guard with seaweed mantle and halberd. Create ONE connected two-character capture pose, complete full bodies, prince on LEFT and lobster on RIGHT. Lobster firmly closes one claw around the prince's upper arm near his shoulder, visibly grabbing and restraining him; other claw holds its own halberd upright away from prince. Prince recoils with bent knees, free hand raised, boots on same baseline as lobster feet. Clear nonviolent stage pantomime, no injuries. Match the reference painted engraved Victorian theatre cutouts, fine ink contours, watercolor texture. Prince standing size proportional to existing guard (human head to boot about 1.1 times lobster body height excluding weapon). All limbs anatomically coherent, exactly two arms on prince, clearly readable single claw grip. No scenery, text, ground, drop shadow or glow. Genuine transparent background everywhere outside silhouettes. Wide composition with margin around all weapon tips, plume, feet and tail.","references":["assets/prince-stand.webp","assets/lobster-guard-closed.webp"]},
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-1118ee26-816b-4f4c-8a41-4f52e2c71f60.png",
+  "generation_id": "exec-1118ee26-816b-4f4c-8a41-4f52e2c71f60",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Connected upper-arm grip, coherent anatomy, complete extremities, transparent composite and reference costume reviewed; standing head scale checked in real renderer."
+  }
+}

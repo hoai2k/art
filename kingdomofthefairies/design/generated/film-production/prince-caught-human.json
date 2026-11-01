@@ -1,0 +1,23 @@
+{
+  "id": "prince-caught-human",
+  "title": "prince caught human",
+  "size": [
+    640,
+    480
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Edit this transparent two-character sprite. Keep the prince, guard, connected upper-arm grip, costume and art style exactly unchanged. Pull the view back about 12 percent so both full figures fit with clear empty transparent margin on all four sides. Reconstruct the COMPLETE sharp gold trident tip above the guard: it must end well inside the image, no cropping. Keep all feet, plume and cloak entirely visible. No other changes, no backdrop, halo, glow, ground or shadow; genuine transparency.",
+  "references": [
+    "progress/rejected/court-capture/human-tight-framing.png"
+  ],
+  "source_generation": {"prompt":"Use case: illustration-story. Production transparent game cutout matching these two character references exactly. Reference 1 prince silver cuirass, azure gold-star skirt, crimson cloak and plumed helmet; reference 2 human seahorse guard gold armor, red tunic and cloak, seahorse helmet, moustache, gold trident. Create ONE connected two-character capture pose: prince LEFT, guard RIGHT, same ground baseline and similarly sized adult human heads. Guard's LEFT hand firmly grips prince's upper arm beside shoulder, fingers visibly wrapped over sleeve; guard's other hand holds upright trident away from prince. Prince recoils, bent knees, free arm raised, clearly caught by this guard. Anatomically correct exactly two arms each; no extra hands. Complete full bodies with margin around every tip. Victorian watercolor engraved painted theatre cutout matching reference 1, fine outlines. No injuries. Entire background genuinely alpha transparent including gaps between limbs; NO colored backdrop, glow, halo, shadow, floor or scenery. No text.","references":["assets/prince-stand.webp","assets/seahorse-guard.webp"]},
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-0c314392-a3d9-4af5-87eb-6975b3a8f0cd.png",
+  "generation_id": "exec-0c314392-a3d9-4af5-87eb-6975b3a8f0cd",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Connected upper-arm grip, coherent anatomy, complete extremities, transparent composite and reference costume reviewed; standing head scale checked in real renderer."
+  }
+}

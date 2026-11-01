@@ -1,0 +1,18 @@
+{
+  "fps": 10.2,
+  "duration": 1.5686274509803921,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/reveller-shaggy.webp",
+  "rig": "dance",
+  "beats": 2,
+  "bpm": 76.5,
+  "id": "anim-reveller-shaggy",
+  "frameW": 260,
+  "frameH": 440,
+  "frames": 16,
+  "cols": 6,
+  "decodedBytes": 8236800,
+  "bytes": 874118
+}

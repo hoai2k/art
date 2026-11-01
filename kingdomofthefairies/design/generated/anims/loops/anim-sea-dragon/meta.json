@@ -1,0 +1,16 @@
+{
+  "fps": 12.0,
+  "duration": 2,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/sea-dragon.webp",
+  "rig": "dragon",
+  "id": "anim-sea-dragon",
+  "frameW": 400,
+  "frameH": 160,
+  "frames": 24,
+  "cols": 6,
+  "decodedBytes": 6144000,
+  "bytes": 668748
+}

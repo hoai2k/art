@@ -1,0 +1,21 @@
+{
+  "id": "prince-carry-climb-b",
+  "title": "Carrying Azurine on a ladder, B",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Use case: precise-object-edit. Image 1 is carry-climb B edit target. Image 2 is carry-climb A for identity. Keep both people, princess pose, costume, exact scale, back shield and bent/extended legs unchanged. CRITICAL CORRECTION: prince's RIGHT arm must be visible, bent at the elbow and extending around the outside of Azurine, with its RIGHT hand visibly CLOSED in a gripping fist around an unseen vertical ladder rail at WAIST height, to the IMAGE RIGHT of the princess's skirt. His right wrist and all fingers must be coherent and attached to that one forearm. His LEFT arm continues cradling Azurine against his chest, unchanged. Prince has exactly TWO arms total, princess has two own arms. Do not hide his right gripping hand under her gown; do not add a third arm, ladder, rung or visible rail. Sword sheathed. Preserve exact image style, colours, full framing and transparent background.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/carry-climb-b-hidden-grip/prince-carry-climb-b-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-carry-climb-a-original.png"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-b0f2489b-b3f2-4ae5-b361-cdc30f9be4b2.png",
+  "generation_id": "exec-b0f2489b-b3f2-4ae5-b361-cdc30f9be4b2",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette"
+}

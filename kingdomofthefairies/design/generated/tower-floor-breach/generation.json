@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: game-prop cutout. Create ONE wide, low horizontal ruined stone-floor breach sprite for the hand-painted Victorian toy-theatre tower interior in reference 1. Reference 2 is only an example of a platform-gap asset; do NOT copy its bright wooden platform tops. Match reference 1's warm grey-pink ashlar limestone ledge, soot, painted grain, soft stage lighting and restrained palette. Front-on theatrical view, a little top surface visible. A narrow strip of floor is broken open: jagged fractured stone edges at LEFT and RIGHT, chipped stone fascia, a few charred supporting timber ends hanging below, a DEEP DARK IRREGULAR PAINTED VOID in the central 65\u201370% of the strip. The void itself must be opaque near-black painted shadow, NOT transparent, so it can convincingly cover a continuous floor image underneath. This dark centre must connect between the left and right broken edges; no intact boards or bridge across it. Outer silhouette around the broken stones is genuine transparent alpha. Keep the entire cutout wide and shallow, roughly 3:1 aspect, nothing cropped. No oval or circular rim, no geometric outline, no luminous orange halo, no sparks, no fire, no glow, no text, no characters, no scenery outside this small floor breach. The art should blend unobtrusively into the existing floor. Return a single transparent-background sprite, no sheet.",
+  "references": [
+    "assets/tower-interior.webp",
+    "assets/floor-hole.webp"
+  ],
+  "native_output": "/Users/hoai/.codex/generated_images/01a193ae-f3f2-74d1-aaba-5c377bd696e3/exec-de28abdd-6e3f-4e34-92fc-e42f6948f72e.png",
+  "preserved_source": "source.png",
+  "delivered_asset": "assets/tower-floor-breach.webp",
+  "processing": "Alpha-bound trim and proportionate resize to 600 \u00d7 95, lossless WebP; no repainting or recolouring. The generated central opening is about 42% of the full width, so rendering uses that measured opening instead of the requested proportion."
+}

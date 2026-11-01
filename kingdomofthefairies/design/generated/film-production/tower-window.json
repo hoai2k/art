@@ -1,0 +1,15 @@
+{
+  "id": "tower-window",
+  "title": "The tower window",
+  "size": [
+    200,
+    260
+  ],
+  "anchor": "bottom centre",
+  "prompt": "A barred arched window in rough stone, faint golden light inside, a few ivy leaves. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate exactly ONE isolated game prop/creature, with true transparent background. No model sheet, labels, extra examples or stage backdrop. Canvas aspect ratio 200:260, intended delivery 200 x 260 pixels. Preserve the entire silhouette. Asset tower-window.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-60c1f59d-c6d5-4bc0-bd30-88b061cfe595.png",
+  "references": [],
+  "source_commit": "1dc0344"
+}

@@ -1,0 +1,16 @@
+{
+  "fps": 7.2,
+  "duration": 2.5,
+  "loop": "loop",
+  "anchor": "centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/sea-spirit.webp",
+  "rig": "spirit",
+  "id": "anim-sea-spirit",
+  "frameW": 240,
+  "frameH": 480,
+  "frames": 18,
+  "cols": 6,
+  "decodedBytes": 8294400,
+  "bytes": 645482
+}

@@ -1,0 +1,17 @@
+{
+  "id": "betrothal-court",
+  "title": "The betrothal court",
+  "size": [
+    2560,
+    1440
+  ],
+  "anchor": "full frame",
+  "prompt": "The royal throne room from references/film-planning/originals/concept-betrothal.png (attach it) without its figures: two thrones on a dais under a crimson canopy, heraldic banners, gold chandeliers, a marble floor in front across the bottom quarter. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; faint film grain; no figures unless the prompt asks for them.\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 2560:1440, intended delivery 2560 x 1440 pixels. Full-bleed painted background to all four edges; no transparency or frame. Asset betrothal-court.",
+  "transparent": false,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-62f3ce55-51b0-494a-8e44-9b222cc9375f.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/concept-betrothal.png"
+  ],
+  "source_commit": "1dc0344"
+}

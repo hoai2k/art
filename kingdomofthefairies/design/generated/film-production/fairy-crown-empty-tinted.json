@@ -1,0 +1,21 @@
+{
+  "id": "fairy-crown-empty-tinted",
+  "title": "The fairy of the crown, empty-handed (tinted)",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw fairy-crown-tinted.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the crown on its cushion: both hands still held out flat at chest height, palms up, as if bearing a cushion, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-crown-tinted.webp"
+  ],
+  "transparent": true,
+  "replaces": "fairy-crown-tinted",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "cad0b98",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-6a5fe99c-dcb7-4d9b-ab96-43b95a981662.png",
+  "generation_id": "exec-6a5fe99c-dcb7-4d9b-ab96-43b95a981662",
+  "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+}

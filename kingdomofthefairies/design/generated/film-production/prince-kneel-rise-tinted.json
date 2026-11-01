@@ -1,0 +1,22 @@
+{
+  "id": "prince-kneel-rise-tinted",
+  "title": "Rising from his knees (tinted)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Use case: precise-object-edit. Image 1 is the exact kneeling edit target. Image 2 is the standing prince, the authoritative HEAD/BODY PROPORTIONS reference. Correct the oversized head and long neck in Image 1. Reduce the head and helmet together by about 20-25% relative to the unchanged torso, and shorten the neck so chin sits naturally above collar. Match standing reference's mature face and normal adult proportions, approximately one eighth to one ninth of projected standing height from top of helmet (excluding plume) to chin. Keep torso, arms, hands, legs, kneeling pose, sword, shield and full-canvas framing unchanged. Plume remains attached and scaled consistently with helmet. Preserve soft monochrome photograph with translucent stencil colours, exact costume colours and transparency. Do not shrink entire figure. One complete isolated figure.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/user-anatomy-corrections/prince-kneel-rise-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-a2882082-84a7-4525-b985-6ca786d4a848.png",
+  "generation_id": "exec-a2882082-84a7-4525-b985-6ca786d4a848",
+  "review_status": "accepted: preview reviewed for specified pose, correct facing, coherent limbs/hands, costume and style continuity, complete transparent silhouette",
+  "review_notes": "User-marked head/body mismatch corrected: head and helmet reduced and neck shortened against standing prince reference."
+}

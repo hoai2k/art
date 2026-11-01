@@ -1,0 +1,25 @@
+{
+  "id": "crew-manatarms-redo",
+  "title": "The man-at-arms, redrawn unlike the prince",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Use case: precise-object-edit. Image 1 is the edit target, the newly redrawn man-at-arms. Change ONLY the RED cloth portions of his puff sleeves and tunic/short breeches to AZURE BLUE, preserving the golden ochre stripes and gold decoration. Images 2 and 3 give the crew's blue-and-gold livery colours. Keep the red-and-ochre striped heater shield unchanged. Keep iron kettle-hat without plume, short green-and-ochre cloak, armour, halberd, face, hands, pose, ground position, proportions and full framing EXACTLY unchanged. Preserve original painted toy-theatre gouache style and transparent background. No extra limbs or hands.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/f17-red-livery/crew-manatarms-redo-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman.webp"
+  ],
+  "transparent": true,
+  "replaces": "crew-manatarms",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "df2337c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-e5bfce21-98f2-4e5c-a1e3-37dd97ad5e2f.png",
+  "generation_id": "exec-e5bfce21-98f2-4e5c-a1e3-37dd97ad5e2f",
+  "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+  "install_as": "crew-manatarms",
+  "archive_directory": "progress/superseded-f17-f18"
+}

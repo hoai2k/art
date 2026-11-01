@@ -1,0 +1,24 @@
+{
+  "id": "crew-bosun-idle-b-tinted",
+  "title": "crew-bosun-idle-b, tinted after the film",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw crew-bosun-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+  "transparent": true,
+  "replaces": "crew-bosun-idle-b",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-idle-b.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-tinted.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "ba92d0c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-06c5f428-0afd-4294-8448-c4dd56affd31.png",
+  "generation_id": "exec-06c5f428-0afd-4294-8448-c4dd56affd31",
+  "review_status": "accepted: photographic stage finish, sparse stencil washes, complete silhouette, original facing direction and pose reviewed"
+}

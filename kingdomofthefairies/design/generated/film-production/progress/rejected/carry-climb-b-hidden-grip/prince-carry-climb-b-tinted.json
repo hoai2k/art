@@ -1,0 +1,21 @@
+{
+  "id": "prince-carry-climb-b-tinted",
+  "title": "Carrying Azurine on a ladder, B (tinted)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. The other phase of prince-carry-climb-a (attach it): his right hand lower on the rail, left foot lower, the same hold on Azurine. The same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of his standing height, which is 360 px at this size). Nothing but the figure: no ground, water, rock or shadow. Used for: Act VI ladders, alternating with A. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nImage 1 is the exact identity, costume, palette and style reference. Repose that same performer as specified; exactly two arms and two legs per person, anatomically coherent hands, no extra limbs. If hands must plant on the ground or grip a ledge, sword stays SHEATHED at hip and shield is secured on back. No floating weapon or duplicated equipment. Preserve full silhouette and match requested canvas aspect ratio. Retain true transparency. Image 1 is accepted carry-climb A. Keep the SAME two people and one supporting arm, but right gripping hand is now lower at chest/waist height, LEFT foot is the lower extended leg and right knee raised. No extra arms, no ladder drawn, sword sheathed.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-carry-climb-a-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+  ],
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "1755227",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-f9f0b440-e817-476d-9fe4-29c8123b4c4b.png",
+  "generation_id": "exec-f9f0b440-e817-476d-9fe4-29c8123b4c4b",
+  "review_status": "pending"
+}

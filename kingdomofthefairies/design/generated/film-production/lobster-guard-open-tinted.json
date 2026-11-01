@@ -1,0 +1,24 @@
+{
+  "id": "lobster-guard-open-tinted",
+  "title": "lobster-guard-open, tinted after the film",
+  "size": [
+    500,
+    340
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Correct ONLY the limb anatomy and weapon grip in this attached lobster guard sprite. This is a human stage performer inside a lobster costume: exactly TWO arms, one coming from each shoulder, exactly TWO lobster pincers as hands, and TWO existing legs. Open/snap pose: REMOVE the extra raised open claw and its entire extra arm on the LEFT side of the canvas. Keep ONE left arm from the left shoulder to the smaller claw gripping the upright halberd. This weapon claw must stay CLOSED, visibly clamped around the shaft. Keep ONE right arm from the right shoulder to the large OPEN snapping pincer at the RIGHT side of the canvas. Exactly two arms and two pincers in total; never add a small third hand for the weapon. Keep the exact existing character head, antennae, torso, costume, colours, rendering style, weapon design and position, lower-body stance, foot positions, overall scale, canvas framing and transparent background. Preserve the current soft photographic hand-tinted finish. Make each arm-to-claw connection anatomically unambiguous. No detached hands, duplicated forearms, ghost claws or extra limbs. Do not change the weapon into a separate floating prop.",
+  "transparent": true,
+  "replaces": "lobster-guard-open",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/lobster-anatomy/lobster-guard-open-tinted-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "ba92d0c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-80b59037-a4bd-4a47-a2f8-5712022665f4.png",
+  "generation_id": "exec-80b59037-a4bd-4a47-a2f8-5712022665f4",
+  "review_status": "accepted after enlarged anatomy/grip review: exactly two shoulder-to-pincer arms and two legs; shaft visibly enclosed by pincers in closed pose; open pose has one weapon-gripping closed claw and one snapping open claw",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/lobster-guard-open-tinted-original.png"
+  ],
+  "previous_take": "progress/rejected/lobster-anatomy/lobster-guard-open-tinted-original.png"
+}

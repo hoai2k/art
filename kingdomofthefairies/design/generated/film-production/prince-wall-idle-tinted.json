@@ -1,0 +1,23 @@
+{
+  "id": "prince-wall-idle-tinted",
+  "title": "Clinging still (tinted)",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Clinging still to the wall at rest: both hands at head height a shoulder-width apart, both feet planted a hip-width apart, knees softly bent, head tilted slightly up as if looking for the next hold. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a-tinted.webp and prince-stand-tinted.webp) in costume, colours and scale. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nThe last attachment defines this cycle's rear-view costume and proportions. This is a stable rest pose: both hands level near head, both feet planted hip-width apart, knees slightly bent. No face; both legs visible.",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/workspace/mini/kingdomofthefairies/assets/prince-climb-a-tinted.webp",
+    "/workspace/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+    "/workspace/mini/kingdomofthefairies/design/generated/film-production/prince-wall-up-b-tinted-original.png"
+  ],
+  "path": "/workspace/generated_images/exec-fa09fc63-9ecf-467e-bc22-a7f52a9570f3.png",
+  "generation_id": "exec-fa09fc63-9ecf-467e-bc22-a7f52a9570f3",
+  "review": {
+    "status": "accepted",
+    "notes": "Stable rear-view rest poses, hands near head height, feet hip-width apart; costume, silhouette and transparency reviewed."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ladder-stub",
+  "title": "Burnt ladder stub",
+  "width": 40,
+  "height": 110,
+  "anchor": "bottom centre",
+  "section": "Second round: Act V",
+  "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nThe burnt-off lower end of the wooden ladder, charred black at the top. Match ladder. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nRequested final aspect ratio 40:110. Real transparent alpha outside the isolated art.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+  "transparent": true,
+  "references": [
+    "design/generated/part-c/originals/ladder.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

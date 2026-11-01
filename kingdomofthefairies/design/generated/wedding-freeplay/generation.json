@@ -1,0 +1,86 @@
+[
+  {
+    "asset": "prince-court-stairs-a",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "assets/prince-court.webp",
+      "assets/prince-stairs-a.webp"
+    ],
+    "prompt": "Use case: identity-preserve. Create ONE full-body stair-climbing game sprite, pose A, of the court-dress prince from reference 1. Preserve exactly that person's face, head size relative to body, hairstyle, costume, colour values, brightness, saturation, details and art style. Reference 2 is ONLY a guide to a natural step on stairs, never copy its armour or weapons. Face RIGHT in side/three-quarter profile, walking upstairs: front knee bent with front foot resting one step higher, rear foot lower and pushing off. Natural small step, not jumping or lunging. Same court tunic, tights, cap, cloak and shoes; no armour, sword or shield. Full figure in frame, lowest rear shoe at bottom centre; same person scale as the standing sprite. Painted Victorian toy-theatre cut-out, exact standing palette. Genuine transparent alpha background, no stair, floor, scenery, text, glow, shadow or extra people.",
+    "raw": "source/prince-court-stairs-a.png"
+  },
+  {
+    "asset": "prince-court-stairs-b",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "source/prince-court-stairs-a.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Make stair-walking animation frame B of this exact character. Change ONLY the lower-body step: swap the legs, so the leg currently raised is now the lower weight-bearing leg and the previously lower leg bends up to the next stair. A small natural stair step, not a jump. Allow a very small opposite arm swing, keeping the cloak and costume unchanged. Keep facing RIGHT, identical face, head size and height, torso length, costume, colours, brightness, saturation, texture, canvas and framing. The person must not grow, bob, or brighten between frames. Entire body and feet fully framed, lowest shoe at bottom centre. No stair, floor, scene, props, glow, shadow or text. Preserve genuine transparent alpha.",
+    "raw": "source/prince-court-stairs-b.png"
+  },
+  {
+    "asset": "prince-court-stairs-a-tinted",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "assets/prince-court-tinted.webp",
+      "assets/prince-stairs-a-tinted.webp"
+    ],
+    "prompt": "Use case: identity-preserve. Create ONE full-body stair-climbing game sprite, pose A, of the court-dress prince from reference 1. Preserve exactly that person's face, head size relative to body, hairstyle, costume, colour values, brightness, saturation, details and art style. Reference 2 is ONLY a guide to a natural step on stairs, never copy its armour or weapons. Face RIGHT in side/three-quarter profile, walking upstairs: front knee bent with front foot resting one step higher, rear foot lower and pushing off. Natural small step, not jumping or lunging. Same court tunic, tights, cap, cloak and shoes; no armour, sword or shield. Full figure in frame, lowest rear shoe at bottom centre; same person scale as the standing sprite. Muted hand-tinted 1903 photographic grey with restrained washes, no new vivid colour or brightening. Genuine transparent alpha background, no stair, floor, scenery, text, glow, shadow or extra people.",
+    "raw": "source/prince-court-stairs-a-tinted.png"
+  },
+  {
+    "asset": "prince-court-stairs-b-tinted",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "source/prince-court-stairs-a-tinted.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Make stair-walking animation frame B of this exact character. Change ONLY the lower-body step: swap the legs, so the leg currently raised is now the lower weight-bearing leg and the previously lower leg bends up to the next stair. A small natural stair step, not a jump. Allow a very small opposite arm swing, keeping the cloak and costume unchanged. Keep facing RIGHT, identical face, head size and height, torso length, costume, colours, brightness, saturation, texture, canvas and framing. The person must not grow, bob, or brighten between frames. Entire body and feet fully framed, lowest shoe at bottom centre. No stair, floor, scene, props, glow, shadow or text. Preserve genuine transparent alpha.",
+    "raw": "source/prince-court-stairs-b-tinted.png"
+  },
+  {
+    "asset": "azurine-stairs-a",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "assets/azurine-stand.webp",
+      "assets/prince-stairs-a.webp"
+    ],
+    "prompt": "Use case: identity-preserve. Create ONE full-body stair-climbing game sprite, pose A, of Princess Azurine from reference 1. Preserve exactly that person's face, head size relative to body, hairstyle, costume, colour values, brightness, saturation, details and art style. Reference 2 is ONLY a guide to a natural step on stairs, never copy its armour or weapons. Face RIGHT in side/three-quarter profile, walking upstairs: front knee bent with front foot resting one step higher, rear foot lower and pushing off. Natural small step, not jumping or lunging. Gently lift the front hem with one hand so the two matching shoes and step are readable; keep her same full-length gown and muted colours. Full figure in frame, lowest rear shoe at bottom centre; same person scale as the standing sprite. Painted Victorian toy-theatre cut-out, exact standing palette. Genuine transparent alpha background, no stair, floor, scenery, text, glow, shadow or extra people.",
+    "raw": "source/azurine-stairs-a.png"
+  },
+  {
+    "asset": "azurine-stairs-b",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "source/azurine-stairs-a.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Make stair-walking animation frame B of this exact character. Change ONLY the lower-body step: swap the legs, so the leg currently raised is now the lower weight-bearing leg and the previously lower leg bends up to the next stair. A small natural stair step, not a jump. The same hand gently lifts the hem; show the opposite matching shoe raised, with only a restrained corresponding change in the gown folds. Keep facing RIGHT, identical face, head size and height, torso length, costume, colours, brightness, saturation, texture, canvas and framing. The person must not grow, bob, or brighten between frames. Entire body and feet fully framed, lowest shoe at bottom centre. No stair, floor, scene, props, glow, shadow or text. Preserve genuine transparent alpha.",
+    "raw": "source/azurine-stairs-b.png"
+  },
+  {
+    "asset": "azurine-stairs-a-tinted",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "assets/azurine-stand-tinted.webp",
+      "assets/prince-stairs-a-tinted.webp"
+    ],
+    "prompt": "Use case: identity-preserve. Create ONE full-body stair-climbing game sprite, pose A, of Princess Azurine from reference 1. Preserve exactly that person's face, head size relative to body, hairstyle, costume, colour values, brightness, saturation, details and art style. Reference 2 is ONLY a guide to a natural step on stairs, never copy its armour or weapons. Face RIGHT in side/three-quarter profile, walking upstairs: front knee bent with front foot resting one step higher, rear foot lower and pushing off. Natural small step, not jumping or lunging. Gently lift the front hem with one hand so the two matching shoes and step are readable; keep her same full-length gown and muted colours. Full figure in frame, lowest rear shoe at bottom centre; same person scale as the standing sprite. Muted hand-tinted 1903 photographic grey with restrained washes, no new vivid colour or brightening. Genuine transparent alpha background, no stair, floor, scenery, text, glow, shadow or extra people.",
+    "raw": "source/azurine-stairs-a-tinted.png"
+  },
+  {
+    "asset": "azurine-stairs-b-tinted",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      "source/azurine-stairs-a-tinted.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Make stair-walking animation frame B of this exact character. Change ONLY the lower-body step: swap the legs, so the leg currently raised is now the lower weight-bearing leg and the previously lower leg bends up to the next stair. A small natural stair step, not a jump. The same hand gently lifts the hem; show the opposite matching shoe raised, with only a restrained corresponding change in the gown folds. Keep facing RIGHT, identical face, head size and height, torso length, costume, colours, brightness, saturation, texture, canvas and framing. The person must not grow, bob, or brighten between frames. Entire body and feet fully framed, lowest shoe at bottom centre. No stair, floor, scene, props, glow, shadow or text. Preserve genuine transparent alpha.",
+    "raw": "source/azurine-stairs-b-tinted.png"
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "id": "anim-band-play",
+  "frameW": 420,
+  "frameH": 200,
+  "frames": 24,
+  "cols": 6,
+  "fps": 12,
+  "beats": 4,
+  "bpm": 76.5,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "source": "https://www.youtube.com/watch?v=7zoGfdN4dgE",
+  "sourceStart": 38.3,
+  "sourceEnd": 39.8,
+  "sourceFps": 12,
+  "frameOrder": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    16,
+    18,
+    16,
+    15,
+    14,
+    12,
+    10,
+    9,
+    8,
+    6,
+    4,
+    3,
+    2
+  ],
+  "closure": "ping-pong, endpoints not repeated",
+  "sourceCrop": [
+    102,
+    373,
+    796,
+    719
+  ],
+  "monochrome": true,
+  "decodedBytes": 8064000,
+  "bytes": 352556,
+  "armMatteRepair": {
+    "keyframes": [
+      13,
+      18
+    ],
+    "region": [
+      112,
+      418,
+      220,
+      480
+    ],
+    "preserveReviewedBody": true
+  }
+}

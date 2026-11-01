@@ -1,0 +1,18 @@
+{
+  "fps": 11.666666666666668,
+  "duration": 1.2,
+  "loop": "once",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/witch-stand.webp",
+  "rig": "wand",
+  "id": "anim-witch-wand",
+  "frameW": 260,
+  "frameH": 420,
+  "frames": 14,
+  "cols": 6,
+  "decodedBytes": 7862400,
+  "bytes": 495024,
+  "previewReplay": true,
+  "wandLiftSourcePixels": 32
+}

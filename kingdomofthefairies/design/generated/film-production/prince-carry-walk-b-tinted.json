@@ -1,0 +1,21 @@
+{
+  "id": "prince-carry-walk-b-tinted",
+  "title": "prince carrying, walk-b (tinted)",
+  "size": [
+    360,
+    400
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Exactly the two figures and carrying hold in prince-carry-tinted.webp (attach it). Keep both faces, costumes, colours, the carried woman\u2019s pose and the supporting arms unchanged. The carrier walks RIGHT in the walk-b phase. Right leg forward with a bent leading knee, heel down; left leg straight behind, toe down. The passing phases have the legs together under the hips, distinct from the spread-leg contacts. Preserve the carrier\u2019s head height and body scale, place the planted foot on the bottom ground line. Exactly the existing two people, no extra limbs or hands; no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 360:400 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry-tinted.webp"
+  ],
+  "transparent": true,
+  "replaces": "prince-carry",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-99d4c698-028c-48a3-b55e-aba668f74840.png",
+  "generation_id": "exec-99d4c698-028c-48a3-b55e-aba668f74840",
+  "review_status": "accepted: coherent anatomy, reference identity and costume retained, contact/passing pose and baseline reviewed"
+}

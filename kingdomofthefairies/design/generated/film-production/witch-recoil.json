@@ -1,0 +1,23 @@
+{
+  "id": "witch-recoil",
+  "title": "The witch recoiling from a blow",
+  "size": [
+    260,
+    400
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Create the Original-look witch recoiling from a sword blow. Image 1 supplies the face, heavy deep teal wool robe, plain staff and painted gouache toy-theatre cut-out style. Image 2 supplies the recoil POSE: facing LEFT, reeling backward toward RIGHT, one bare hand flung up, the other bare hand visibly gripping the tilted plain wooden staff, hood slipping, fury and pain in the face. Match that pose while using the painted full-colour style of image 1. Exactly two coherent arms, staff firmly held, not floating. All fingers and both staff ends entirely inside frame with a safe transparent margin. Complete floor-length heavy robe pooled at feet, not torn. No fire, ground, cast shadow, text or other figures. True transparent background. Intended game delivery 260x400, bottom centre anchor.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/witch-recoil-tinted-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-cbe4d504-a884-4a95-80e5-876609269b56.png",
+  "generation_id": "exec-cbe4d504-a884-4a95-80e5-876609269b56",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "palace-distant",
+  "title": "The Sea King's palace, distant",
+  "width": 760,
+  "height": 660,
+  "anchor": "bottom centre",
+  "section": "Second round: Acts I and II",
+  "prompt": "Use case: precise-object-edit. Repaint the supplied palace as a PALE TEAL-WHITE DISTANT SILHOUETTE flat: retain recognisable tiered towers, domes and arches, soften all edges with atmospheric distance, remove all colourful coral, foliage and foreground rocks. Very low contrast, pale muted teal-white monochromatic wash, no bright pink or gold details. The subject is a far-away underwater palace, not a detailed foreground set. Flat gouache toy-theatre card, sepia-grey under early-1900s stencil-tinted washes. No lettering, no shadow, real transparent background.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/rejected/palace-distant-first.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

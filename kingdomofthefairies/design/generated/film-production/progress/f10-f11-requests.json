@@ -1,0 +1,248 @@
+[
+  {
+    "id": "prince-stride-a-tinted",
+    "title": "Prince armed, stride A (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-stand-tinted.webp (attach it, and prince-stride-b-tinted.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360.",
+    "transparent": true,
+    "replaces": "prince-walk-a-tinted",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "prince-stride-b-tinted",
+    "round": "F10"
+  },
+  {
+    "id": "prince-stride-b-tinted",
+    "title": "Prince armed, stride B (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His LEFT arm holds the shield forward on canvas right; his RIGHT arm swings back on canvas left, gripping the sword naturally with four fingers and thumb enclosing the hilt, blade down behind him. Exactly two arms and two legs. Never swap which hand carries which prop. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "replaces": "prince-walk-b-tinted",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-stride-a-tinted-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "prince-stride-a-tinted",
+    "round": "F10"
+  },
+  {
+    "id": "prince-stride-a",
+    "title": "Prince armed, stride A",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-stand.webp (attach it, and prince-stride-b.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360.",
+    "transparent": true,
+    "replaces": "prince-walk-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "prince-stride-b",
+    "round": "F10"
+  },
+  {
+    "id": "prince-stride-b",
+    "title": "Prince armed, stride B",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His LEFT arm holds the shield forward on canvas right; his RIGHT arm swings back on canvas left, gripping the sword naturally with four fingers and thumb enclosing the hilt, blade down behind him. Exactly two arms and two legs. Never swap which hand carries which prop. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "replaces": "prince-walk-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-stride-a-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "prince-stride-a",
+    "round": "F10"
+  },
+  {
+    "id": "prince-court-stride-a-tinted",
+    "title": "Prince in court dress, stride A (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-court-tinted.webp (attach it, and prince-court-stride-b-tinted.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360. Court dress remains bareheaded and unarmoured with no sword or shield; copy the standing reference\u2019s tights and belt colours exactly.",
+    "transparent": true,
+    "replaces": "prince-court-walk-a-tinted",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "prince-court-stride-b-tinted",
+    "round": "F10"
+  },
+  {
+    "id": "prince-court-stride-b-tinted",
+    "title": "Prince in court dress, stride B (tinted)",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His nearer LEFT arm swings forward, open hand at waist height on canvas right; his farther RIGHT arm swings backward, relaxed hand on canvas left behind his hip. Bareheaded, no armour or weapons, no hand frozen on his chest. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "replaces": "prince-court-walk-b-tinted",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-court-stride-a-tinted-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "prince-court-stride-a-tinted",
+    "round": "F10"
+  },
+  {
+    "id": "prince-court-stride-a",
+    "title": "Prince in court dress, stride A",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-court.webp (attach it, and prince-court-stride-b.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the LEFT leg forward, heel down, and the right leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360. Court dress remains bareheaded and unarmoured with no sword or shield; copy the standing reference\u2019s tights and belt colours exactly.",
+    "transparent": true,
+    "replaces": "prince-court-walk-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "prince-court-stride-b",
+    "round": "F10"
+  },
+  {
+    "id": "prince-court-stride-b",
+    "title": "Prince in court dress, stride B",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Generate a NEW stride-B pose for Prince Bel-Azor walking RIGHT. Image 1 and image 2 are identity and costume references ONLY: do not copy either reference pose. Copy exactly the face, hairstyle/helmet, tunic/doublet, tights colour, belt and buckle, cloak and patterns of image 2. Keep his head and torso at the same height and size. Give him a clearly DIFFERENT leg configuration from image 2: his nearer LEFT thigh and leg stretch STRAIGHT BACK diagonally toward canvas left, back heel raised with only the toe on the bottom baseline. His farther RIGHT thigh comes FORWARD, knee visibly BENT with the shin nearly VERTICAL under it, and the forward heel planted. Place the forward knee around 74% of canvas width and 72% of height, the leading heel around 73% width at the bottom, and the trailing toe around 12% width at the bottom. The forward boot must be closer beneath his body than in reference A, while the rear leg reaches farther back. Make the overlapping thighs and knee bend unambiguous. His nearer LEFT arm swings forward, open hand at waist height on canvas right; his farther RIGHT arm swings backward, relaxed hand on canvas left behind his hip. Bareheaded, no armour or weapons, no hand frozen on his chest. The clothing and face must not change between A and B. Both feet on the bottom baseline; preserve standing head height. One full isolated figure, 220:360 canvas, transparent background. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true,
+    "replaces": "prince-court-walk-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-court-stride-a-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "prince-court-stride-a",
+    "round": "F10"
+  },
+  {
+    "id": "azurine-walk-a-tinted",
+    "title": "Azurine walking, stride A (tinted)",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Princess Azurine walking to the LEFT, exactly the figure, gown, colours, scale and head height of azurine-stand-tinted.webp (attach it, and azurine-walk-b-tinted.webp if already drawn, which must match it in every detail but the stride). Her LEFT foot steps forward from under the hem, the gown swinging forward with it; one hand lifts her skirt a little, the other relaxed. Feet and hem on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the stride and the swing of the gown. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 200:380; one isolated transparent sprite, target delivery 200 x 380.",
+    "transparent": true,
+    "replaces": "azurine-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "azurine-walk-b-tinted",
+    "round": "F11"
+  },
+  {
+    "id": "azurine-walk-b-tinted",
+    "title": "Azurine walking, stride B (tinted)",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Princess Azurine walking to the LEFT, exactly the figure, gown, colours, scale and head height of azurine-stand-tinted.webp (attach it, and azurine-walk-a-tinted.webp if already drawn, which must match it in every detail but the stride). Her RIGHT foot steps forward from under the hem, the gown swinging the other way; the hands as in stride A but mirrored in their swing. Feet and hem on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the stride and the swing of the gown. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 200:380; one isolated transparent sprite, target delivery 200 x 380.\nImage 2 supplies the accepted stride-A costume, face and scale, not a pose template. Generate a NEW opposite stride rather than copying its hem or feet. Her nearer LEFT leg trails back toward canvas right and her farther RIGHT foot steps forward toward canvas left, its heel visible beneath the hem. The gown swings toward canvas RIGHT in B, opposite A. Swap the hand swing: the near hand lifts the skirt on the opposite side from A while the other swings relaxed. Keep the same exact gown colours, stars/embroidery if present, circlet and hair; exactly two arms, two hands and two feet. Keep head height and foot baseline stable.",
+    "transparent": true,
+    "replaces": "azurine-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/azurine-walk-a-tinted-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "azurine-walk-a-tinted",
+    "round": "F11"
+  },
+  {
+    "id": "azurine-walk-a",
+    "title": "Azurine walking, stride A",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Princess Azurine walking to the LEFT, exactly the figure, gown, colours, scale and head height of azurine-stand.webp (attach it, and azurine-walk-b.webp if already drawn, which must match it in every detail but the stride). Her LEFT foot steps forward from under the hem, the gown swinging forward with it; one hand lifts her skirt a little, the other relaxed. Feet and hem on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the stride and the swing of the gown. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 200:380; one isolated transparent sprite, target delivery 200 x 380.",
+    "transparent": true,
+    "replaces": "azurine-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "a",
+    "pair": "azurine-walk-b",
+    "round": "F11"
+  },
+  {
+    "id": "azurine-walk-b",
+    "title": "Azurine walking, stride B",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Princess Azurine walking to the LEFT, exactly the figure, gown, colours, scale and head height of azurine-stand.webp (attach it, and azurine-walk-a.webp if already drawn, which must match it in every detail but the stride). Her RIGHT foot steps forward from under the hem, the gown swinging the other way; the hands as in stride A but mirrored in their swing. Feet and hem on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the stride and the swing of the gown. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 200:380; one isolated transparent sprite, target delivery 200 x 380.\nImage 2 supplies the accepted stride-A costume, face and scale, not a pose template. Generate a NEW opposite stride rather than copying its hem or feet. Her nearer LEFT leg trails back toward canvas right and her farther RIGHT foot steps forward toward canvas left, its heel visible beneath the hem. The gown swings toward canvas RIGHT in B, opposite A. Swap the hand swing: the near hand lifts the skirt on the opposite side from A while the other swings relaxed. Keep the same exact gown colours, stars/embroidery if present, circlet and hair; exactly two arms, two hands and two feet. Keep head height and foot baseline stable.",
+    "transparent": true,
+    "replaces": "azurine-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/azurine-walk-a-original.png"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "0c80c5a",
+    "phase": "b",
+    "pair": "azurine-walk-a",
+    "round": "F11"
+  }
+]

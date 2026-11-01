@@ -1,0 +1,19 @@
+{
+  "fps": 12,
+  "duration": 1.5686274509803921,
+  "beats": 2,
+  "bpm": 76.5,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "tracked music-video footage",
+  "source": "music video 38.3\u201339.05 s",
+  "sourceUrl": "https://www.youtube.com/watch?v=7zoGfdN4dgE",
+  "closure": "ping-pong return encoded",
+  "id": "anim-band-giant",
+  "frameW": 240,
+  "frameH": 440,
+  "frames": 18,
+  "cols": 6,
+  "decodedBytes": 7603200,
+  "bytes": 141988
+}

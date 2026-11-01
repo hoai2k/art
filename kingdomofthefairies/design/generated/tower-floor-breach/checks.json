@@ -1,0 +1,30 @@
+[
+  {
+    "tinted": false,
+    "carry": false,
+    "breaches": 4,
+    "badges": [],
+    "ellipses": []
+  },
+  {
+    "tinted": false,
+    "carry": true,
+    "breaches": 4,
+    "badges": [],
+    "ellipses": []
+  },
+  {
+    "tinted": true,
+    "carry": false,
+    "breaches": 4,
+    "badges": [],
+    "ellipses": []
+  },
+  {
+    "tinted": true,
+    "carry": true,
+    "breaches": 4,
+    "badges": [],
+    "ellipses": []
+  }
+]

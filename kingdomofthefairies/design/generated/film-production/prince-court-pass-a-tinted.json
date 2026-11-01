@@ -1,0 +1,21 @@
+{
+  "id": "prince-court-pass-a-tinted",
+  "title": "prince-court, passing A (tinted)",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Exactly the character in prince-court-tinted.webp (attach it and the matching delivered stride-A frame): walking right, at the legs-together PASSING phase. The left leg supports the body vertically, its foot planted beneath the hip; the other knee is bent and its foot is lifted just off the floor as it passes close beside the support ankle. Both legs close together beneath the hips, not spread in a stride and not both feet standing flat. Arms counter-swing through a neutral position. Same face, costume, tights, belt, cloak/gown, props, body scale and head height as the standing and stride frames. The planted sole meets the bottom ground line. Keep anatomically coherent hands and weapon grips, and exactly two arms and two legs. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes the exact identity, costume and scale. One isolated transparent sprite on a 220:360 canvas. Copy all costume colours exactly; do not redesign clothes or add props.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+  ],
+  "transparent": true,
+  "replaces": null,
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-b1796ecc-8bc0-458b-bc8e-4f54c102556d.png",
+  "generation_id": "exec-b1796ecc-8bc0-458b-bc8e-4f54c102556d",
+  "review_status": "accepted: coherent anatomy, reference identity and costume retained, contact/passing pose and baseline reviewed"
+}

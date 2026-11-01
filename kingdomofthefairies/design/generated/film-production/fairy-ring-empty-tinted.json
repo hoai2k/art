@@ -1,0 +1,21 @@
+{
+  "id": "fairy-ring-empty-tinted",
+  "title": "The fairy of the ring, empty-handed (tinted)",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw fairy-ring-tinted.webp (attach it) exactly: the same fairy, gown, veil, hennin or crown, colours, scale, pose, framing, foot position and 220 x 420 canvas, so it lays over the original pixel for pixel. Only leave out the ring: her right hand still raised high, fingers curled as if holding a small ring up to the light, with nothing in them. Paint what the gift covered (sleeve, gown, veil) in the same style. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve identity, costume, pose and all unaffected pixels. One isolated sprite, genuine transparent background. Match original aspect ratio. Remove only the held gift; keep original silhouette and framing exactly. Anatomically coherent hands, exactly two arms. Do not change raised arm or hand orientation.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-ring-tinted.webp"
+  ],
+  "transparent": true,
+  "replaces": "fairy-ring-tinted",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "cad0b98",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-a2f50e29-90b3-40f5-b8fd-68f0e494af38.png",
+  "generation_id": "exec-a2f50e29-90b3-40f5-b8fd-68f0e494af38",
+  "review_status": "accepted: gift removed with coherent empty hands and preserved costume/pose"
+}

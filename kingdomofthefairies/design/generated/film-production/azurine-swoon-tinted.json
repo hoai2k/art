@@ -1,0 +1,23 @@
+{
+  "id": "azurine-swoon-tinted",
+  "title": "Azurine swooning under the curse (tinted)",
+  "size": [
+    260,
+    380
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Princess Azurine as in references/film-planning/originals/char-azurine.png (attach it): dark hair in a jewelled circlet, a pale azure gown with gold stars and rose-pink sleeves, exactly as in azurine-stand-tinted.webp (attach it): the same face, gown, circlet, colours and scale. Swooning under the witch's curse: sinking backward at the knees, head thrown back and eyes closing, one hand to her brow and the other arm falling, gown and sleeves billowing as she faints. Facing LEFT, toward the court. Feet on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.\nCritical pose direction: her nose points toward the LEFT edge of the image, eyes shut, knees buckle and torso falls backward toward the RIGHT. Do not keep the standing reference pose.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-b4ef7db2-6a00-450f-b7a4-792a363a0138.png",
+  "generation_id": "exec-b4ef7db2-6a00-450f-b7a4-792a363a0138",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

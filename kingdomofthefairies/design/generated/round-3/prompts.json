@@ -1,0 +1,61 @@
+{
+  "requested": 2,
+  "generated": 2,
+  "missing": [],
+  "images": [
+    {
+      "id": "cliff-face-tall-2",
+      "title": "Tall cliff face, level top",
+      "width": 1400,
+      "height": 3600,
+      "anchor": "bottom centre",
+      "section": "Third round: re-requests",
+      "prompt": "Use case: stylized-concept. Production artwork for Widow's Bay.\nThe same tall sea cliff as cliff-face-tall (pale layered rock with green ivy, jutting ledges at many heights, surf only at the very foot, no repeated section), with two changes: the grassy top is LEVEL and runs straight across the full width of the cliff within the top 3% of the image (the delivered one slopes down to the right, so the house on top floats), and the rock face keeps its full width all the way up instead of narrowing toward the top. The dark vertical crack runs from 20% to 80% of the height at about two-thirds of the width. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nFinal image aspect ratio 1400:3600. Reference is the exact cliff edit target: keep pale layered rock, ivy, ledges, surf and gouache texture. Change its outer silhouette into a tall rectangle, with parallel near-vertical sides and the SAME WIDTH from bottom to top. Its grassy top is a single perfectly straight HORIZONTAL edge, perpendicular to sides, at y=2% of image height. No top hill, no slope, no narrowing/pyramid. Dark crack at x=66%, extending y=20% through80%. Leave only narrow transparent padding. Whole cliff, including level top and surf foot, visible. Actual transparent background.",
+      "transparent": true,
+      "references": [
+        "design/generated/round-2/originals/cliff-face-tall.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/cliff-face-tall-2.png",
+      "original": "design/generated/round-3/originals/cliff-face-tall-2.png",
+      "originalSize": [
+        782,
+        2010
+      ],
+      "sourceCrop": [
+        28,
+        64,
+        757,
+        1999
+      ],
+      "placement": [
+        0,
+        0,
+        1400,
+        3600
+      ]
+    },
+    {
+      "id": "ending-dark-3",
+      "title": "Ending: the window is dark (house in frame)",
+      "width": 2560,
+      "height": 1440,
+      "anchor": "full frame",
+      "section": "Third round: re-requests",
+      "prompt": "Use case: precise-object-edit. Move ONLY the cottage, its ivy/roses, steps and lit doorway silhouette to the RIGHT within the supplied scene. Currently the cottage centre is at 22% of canvas width, too far left. Its NEW centre must be at exactly 32% of canvas width, with the entire roof and facade between 22% and 42% of canvas width. Keep the same size, modest pale-stone architecture, dark upstairs window, GREEN open door, warm-lit doorway and black silhouette. Extend the grassy cliff-top naturally underneath its new position and fill its former position with empty grass/rock/sky. Preserve sailor, his clothing/face/pose and position, stone, splash rings, quay, boats, moon, sea, sky and painterly texture unchanged. Same landscape aspect and opaque full-bleed framing. No curtains, text or new objects. This positional correction is essential: no portion of cottage or doorway may lie in the leftmost 20% of the canvas.",
+      "transparent": false,
+      "references": [
+        "design/generated/round-3/rejected/ending-dark-3-left.png"
+      ],
+      "mode": "built-in image_gen",
+      "file": "intake/ending-dark-3.png",
+      "original": "design/generated/round-3/originals/ending-dark-3.png",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "sourceCrop": null,
+      "placement": null
+    }
+  ]
+}

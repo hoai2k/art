@@ -1,0 +1,78 @@
+[
+  {
+    "look": "original",
+    "pose": "a",
+    "ids": [
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-a",
+      "prince-stand",
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-a",
+      "prince-stand"
+    ],
+    "face": 1
+  },
+  {
+    "look": "original",
+    "pose": "b",
+    "ids": [
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-b",
+      "prince-stand",
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-b",
+      "prince-stand"
+    ],
+    "face": 1
+  },
+  {
+    "look": "tinted",
+    "pose": "a",
+    "ids": [
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-a",
+      "prince-stand",
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-a",
+      "prince-stand"
+    ],
+    "face": 1
+  },
+  {
+    "look": "tinted",
+    "pose": "b",
+    "ids": [
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-b",
+      "prince-stand",
+      "cliff-whirlpool",
+      "aurora-point",
+      "witch-barrel-anger-b",
+      "prince-stand"
+    ],
+    "face": 1
+  },
+  {
+    "side": "left",
+    "bolts": 0,
+    "smoke": 1,
+    "lanterns": 3,
+    "before": 3,
+    "face": -1
+  },
+  {
+    "side": "right",
+    "bolts": 0,
+    "smoke": 1,
+    "lanterns": 3,
+    "before": 3,
+    "face": 1
+  }
+]

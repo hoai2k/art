@@ -1,0 +1,17 @@
+{
+  "id": "keepsake-sword",
+  "title": "Keepsake: the enchanted sword",
+  "size": [
+    128,
+    128
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The prince's enchanted sword, tilted, with a star on the pommel. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate exactly ONE isolated game prop/creature, with true transparent background. No model sheet, labels, extra examples or stage backdrop. Canvas aspect ratio 128:128, intended delivery 128 x 128 pixels. Preserve the entire silhouette. Asset keepsake-sword.",
+  "transparent": true,
+  "replaces": "keepsake-guitar",
+  "path": "/workspace/generated_images/exec-a3dc9476-b2c4-4e9b-867e-11802df35b52.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png"
+  ],
+  "source_commit": "1dc0344"
+}

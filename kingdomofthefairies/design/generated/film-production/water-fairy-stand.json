@@ -1,0 +1,17 @@
+{
+  "id": "water-fairy-stand",
+  "title": "The Water Fairy",
+  "size": [
+    260,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "the Water Fairy as in references/film-planning/originals/char-water-fairy.png (attach it): sea-green and pearl gown hung with shells and starfish, a crown of shells and coral, long golden hair like weed, standing facing left, one hand held out low in blessing (where witch-stand holds the rose, so the game's sparkles still line up), the other at her side. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 260:420, target delivery 260 x 420 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset water-fairy-stand.",
+  "transparent": true,
+  "replaces": "witch-stand",
+  "path": "/workspace/generated_images/exec-fdd3b3d1-3139-4241-8896-b54397337351.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-water-fairy.png"
+  ],
+  "source_commit": "1dc0344"
+}

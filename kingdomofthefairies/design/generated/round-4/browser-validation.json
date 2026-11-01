@@ -1,0 +1,93 @@
+{
+  "loadedVariants": 18,
+  "checks": [
+    {
+      "id": "band-trio",
+      "seq": [
+        "band-trio",
+        "band-trio-idle-b",
+        "band-trio",
+        "band-trio-idle-c"
+      ]
+    },
+    {
+      "id": "band-beard",
+      "seq": [
+        "band-beard",
+        "band-beard-idle-b",
+        "band-beard",
+        "band-beard-idle-c"
+      ]
+    },
+    {
+      "id": "reveller-yellow",
+      "seq": [
+        "reveller-yellow",
+        "reveller-yellow-idle-b",
+        "reveller-yellow",
+        "reveller-yellow-idle-c"
+      ]
+    },
+    {
+      "id": "reveller-shaggy",
+      "seq": [
+        "reveller-shaggy",
+        "reveller-shaggy-idle-b",
+        "reveller-shaggy",
+        "reveller-shaggy-idle-c"
+      ]
+    },
+    {
+      "id": "reveller-jester",
+      "seq": [
+        "reveller-jester",
+        "reveller-jester-idle-b",
+        "reveller-jester",
+        "reveller-jester-idle-c"
+      ]
+    },
+    {
+      "id": "reveller-lady",
+      "seq": [
+        "reveller-lady",
+        "reveller-lady-idle-b",
+        "reveller-lady",
+        "reveller-lady-idle-c"
+      ]
+    },
+    {
+      "id": "sea-spirit",
+      "seq": [
+        "sea-spirit",
+        "sea-spirit-idle-b",
+        "sea-spirit",
+        "sea-spirit-idle-c"
+      ]
+    },
+    {
+      "id": "witch-stand",
+      "seq": [
+        "witch-stand",
+        "witch-stand-idle-b",
+        "witch-stand",
+        "witch-stand-idle-c"
+      ]
+    },
+    {
+      "id": "pageant-dancers",
+      "seq": [
+        "pageant-dancers",
+        "pageant-dancers-idle-b",
+        "pageant-dancers",
+        "pageant-dancers-idle-c"
+      ]
+    }
+  ],
+  "extraAnimationsDefault": false,
+  "galleryFramesSeen": [
+    0,
+    1,
+    2
+  ],
+  "pageErrors": []
+}

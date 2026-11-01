@@ -1,0 +1,24 @@
+{
+  "id": "prince-wall-up-b",
+  "title": "Climbing up, pulling through",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Climbing straight up, the beat between reaches: both hands at about head height, body pulled up close to them, both knees slightly bent and feet level below. Hips and shoulders level and square. Second of the four-frame cycle. Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a.webp and prince-stand.webp) in costume, colours and scale. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nThe last attached image is the ACCEPTED frame A of this exact rear-view cycle. Preserve its rear-view helmet, shield on back, cloak, ornate blue/gold tunic and limb proportions. Both hands near head height in this transitional pulling-through frame, knees only slightly bent; no face.",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/workspace/mini/kingdomofthefairies/assets/prince-climb-a.webp",
+    "/workspace/mini/kingdomofthefairies/assets/prince-stand.webp",
+    "/workspace/mini/kingdomofthefairies/design/generated/film-production/prince-wall-up-a-original.png"
+  ],
+  "path": "/workspace/generated_images/exec-ce89a8a6-b6e9-4407-8a75-b3b4866cca44.png",
+  "generation_id": "exec-ce89a8a6-b6e9-4407-8a75-b3b4866cca44",
+  "source_commit": "dd91f2e62546256cd74206da2c05a0c84565e6ea",
+  "review": {
+    "status": "accepted",
+    "notes": "Rear-view pose, costume continuity and complete transparent silhouette reviewed at preview size. A has right hand and opposite left knee raised; B has both hands near head height with knees bent."
+  }
+}

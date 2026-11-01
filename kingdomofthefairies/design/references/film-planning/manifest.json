@@ -1,0 +1,778 @@
+{
+  "title": "Kingdom of the Fairies — film adaptation planning artwork",
+  "generator": "image_gen.imagegen",
+  "images": [
+    {
+      "id": "char-bel-azor",
+      "title": "Prince Bel-Azor",
+      "kind": "character",
+      "generation_prompt": "Prince Bel-Azor (a mature, dignified prince with a dark moustache and short pointed beard, played in the film by Méliès himself) in the enchanted armour Aurora gives him: a silver plumed helmet, a silver cuirass over an azure tunic, a sword and a round shield with a star; one small extra figure of him in his court dress for the prologue. He is the player character, so his silhouette must read clearly at small size. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-bel-azor.png",
+      "preview": "originals/char-bel-azor.png",
+      "original": "originals/char-bel-azor.png"
+    },
+    {
+      "id": "char-azurine",
+      "title": "Princess Azurine",
+      "kind": "character",
+      "generation_prompt": "Princess Azurine (a young princess with dark hair in a jewelled circlet and a pale azure-blue gown); add one small figure of her asleep, as she is carried off, and one in her wedding veil. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-azurine.png",
+      "preview": "originals/char-azurine.png",
+      "original": "originals/char-azurine.png"
+    },
+    {
+      "id": "char-aurora",
+      "title": "The fairy Aurora",
+      "kind": "character",
+      "generation_prompt": "the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand), raising her wand in the arming gesture. Kind and commanding, never sinister; clearly a different person from the witch and the Water Fairy. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-aurora.png",
+      "preview": "originals/char-aurora.png",
+      "original": "originals/char-aurora.png"
+    },
+    {
+      "id": "char-witch",
+      "title": "The witch",
+      "kind": "character",
+      "generation_prompt": "the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png); add one small figure of her rising on a storm cloud and one shut in a barrel. Menacing but theatrical, a stage villain. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-witch.png",
+      "preview": "originals/char-witch.png",
+      "original": "originals/char-witch.png"
+    },
+    {
+      "id": "char-water-fairy",
+      "title": "The Water Fairy",
+      "kind": "character",
+      "generation_prompt": "the Water Fairy (a mermaid-queen figure in sea-green and pearl, a crown of shells and coral, flowing hair like weed), bending to revive a sleeper with a breath of bubbles. Benevolent; distinct in colour and shape from Aurora and the witch. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "Revised to include a revival vignette.",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-water-fairy.png",
+      "preview": "originals/char-water-fairy.png",
+      "original": "originals/char-water-fairy.png"
+    },
+    {
+      "id": "char-neptune",
+      "title": "Neptune",
+      "kind": "character",
+      "generation_prompt": "Neptune (white-bearded, white-robed, gold crown and trident; match the delivered sea-king art), seated on a shell throne and standing; gracious, an ally. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "Revised to include a seated profile on a shell throne.",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-neptune.png",
+      "preview": "originals/char-neptune.png",
+      "original": "originals/char-neptune.png"
+    },
+    {
+      "id": "char-royal-court",
+      "title": "The king, the queen and the three gift fairies",
+      "kind": "character",
+      "generation_prompt": "Azurine's parents, an elderly king and queen in ermine and crowns, and the three fairies who bring gifts beside Aurora, each with her gift: the ring, the crown and a casket of gold (Aurora's own gift is the protective flower). One line-up at the same scale. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-royal-court.png",
+      "preview": "originals/char-royal-court.png",
+      "original": "originals/char-royal-court.png"
+    },
+    {
+      "id": "char-demons",
+      "title": "The demons",
+      "kind": "character",
+      "generation_prompt": "The witch's demon attendants as stage performers, in red and in teal, with horned caps and flaming torches; match references/expanded-world/demon-attendants.png. A front, profile and running pose for each colour. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/demon-attendants.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-demons.png",
+      "preview": "originals/char-demons.png",
+      "original": "originals/char-demons.png"
+    },
+    {
+      "id": "char-crew",
+      "title": "The prince's crew",
+      "kind": "character",
+      "generation_prompt": "the prince's crew (royal sailors and men-at-arms in azure and gold livery): a stout comic squire, a helmsman and a man-at-arms. The same men will appear asleep on the sea floor, riding fish and lobsters, and crawling out of the whale, so add one small figure of a sleeper lying on his side. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-crew.png",
+      "preview": "originals/char-crew.png",
+      "original": "originals/char-crew.png"
+    },
+    {
+      "id": "char-sea-creatures",
+      "title": "Sea creatures",
+      "kind": "character",
+      "generation_prompt": "A creature sheet of the film's sea creatures as painted stage props: a great octopus, a dolphin harnessed to a conch-shell carriage, a lobster guard standing upright with a halberd, and a large fish with a saddle as a mount. A character model sheet in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. One full figure seen front-on, one in profile facing right and one three-quarter view, standing side by side at the same scale on a flat warm-grey card background, with two or three small detail sketches (face, hands, a key prop) along the bottom. Painted as a toy-theatre cut-out: gouache on card with a faint pale cut edge, no cast shadow.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        2400,
+        1600
+      ],
+      "delivery_size": [
+        1536,
+        1024
+      ],
+      "file": "originals/char-sea-creatures.png",
+      "preview": "originals/char-sea-creatures.png",
+      "original": "originals/char-sea-creatures.png"
+    },
+    {
+      "id": "concept-betrothal",
+      "title": "Prologue: the betrothal and the gifts",
+      "kind": "scene",
+      "generation_prompt": "The royal court at the betrothal: Prince Bel-Azor (a mature, dignified prince with a dark moustache and short pointed beard, played in the film by Méliès himself) in court dress and Princess Azurine (a young princess with dark hair in a jewelled circlet and a pale azure-blue gown) before the king and queen; the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand) and the three gift fairies step forward one by one with the ring, the flower, the crown and the gold, each gift glowing; courtiers in tiers. Base the architecture on references/expanded-world/betrothal-court.png. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/betrothal-court.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "Revised Bel-Azor to court dress before his enchanted arming.",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-betrothal.png",
+      "preview": "originals/concept-betrothal.png",
+      "original": "originals/concept-betrothal.png"
+    },
+    {
+      "id": "concept-curse",
+      "title": "Prologue: the witch's curse",
+      "kind": "scene",
+      "generation_prompt": "The same court, darkened: the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png) has burst in through a trapdoor in smoke, pointing her staff in a curse; the fairies shield the princess; the courtiers recoil. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-curse.png",
+      "preview": "originals/concept-curse.png",
+      "original": "originals/concept-curse.png"
+    },
+    {
+      "id": "concept-abduction",
+      "title": "Prologue: the abduction from the rampart",
+      "kind": "scene",
+      "generation_prompt": "Night on the castle rampart (base it on references/expanded-world/moonlit-rampart.png): demons bear the sleeping princess up into a fiery winged chariot (references/expanded-world/flying-fire-chariot.png) climbing away across the moon; guards with lanterns run along the rampart walkway, which runs left to right as a playable lane. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/moonlit-rampart.png",
+        "references/expanded-world/flying-fire-chariot.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-abduction.png",
+      "preview": "originals/concept-abduction.png",
+      "original": "originals/concept-abduction.png"
+    },
+    {
+      "id": "concept-arming",
+      "title": "Prologue: the prison vision and the arming",
+      "kind": "scene",
+      "generation_prompt": "The royal armoury (references/expanded-world/royal-armoury.png): on one side the wall dissolves into a vision of Azurine confined in a far dark tower; on the other the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand) raises her wand over Prince Bel-Azor (a mature, dignified prince with a dark moustache and short pointed beard, played in the film by Méliès himself) as the enchanted helmet, sword and shield appear on him in a shower of stars. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/royal-armoury.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-arming.png",
+      "preview": "originals/concept-arming.png",
+      "original": "originals/concept-arming.png"
+    },
+    {
+      "id": "concept-galley-departure",
+      "title": "Act I: the royal galley sets out",
+      "kind": "scene",
+      "generation_prompt": "A royal galley with azure sails and gold trim, Prince Bel-Azor (a mature, dignified prince with a dark moustache and short pointed beard, played in the film by Méliès himself) armoured at the prow and the prince's crew (royal sailors and men-at-arms in azure and gold livery) at the oars and rigging, riding three rows of painted waves from left to right; Aurora's three small stars glinting over the sea; calm moonlit sky. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-galley-departure.png",
+      "preview": "originals/concept-galley-departure.png",
+      "original": "originals/concept-galley-departure.png"
+    },
+    {
+      "id": "concept-tempest",
+      "title": "Act I: the tempest and the wreck",
+      "kind": "scene",
+      "generation_prompt": "The same sea in a storm: the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png) rising on a black storm cloud with lightning, the crew hauling ropes, the galley breaking on jagged rocks and beginning to sink; the enchanted sword falling from the prince's hand into the waves. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-tempest.png",
+      "preview": "originals/concept-tempest.png",
+      "original": "originals/concept-tempest.png"
+    },
+    {
+      "id": "concept-water-fairy",
+      "title": "Act II: the Water Fairy's revival",
+      "kind": "scene",
+      "generation_prompt": "The sea floor among kelp and coral: the Water Fairy (a mermaid-queen figure in sea-green and pearl, a crown of shells and coral, flowing hair like weed) bends over the armoured prince, waking him with a breath of bubbles; the drowned crew lie asleep around the wreck; conch horns glow on the rocks; the sword sinks far below. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-water-fairy.png",
+      "preview": "originals/concept-water-fairy.png",
+      "original": "originals/concept-water-fairy.png"
+    },
+    {
+      "id": "concept-octopus",
+      "title": "Act II: the octopus and the sword",
+      "kind": "scene",
+      "generation_prompt": "A deep grotto where the enchanted sword lies on a rock, guarded by a great painted octopus whose arms sweep across the way; the prince swims toward it with air bubbles rising from vents. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-octopus.png",
+      "preview": "originals/concept-octopus.png",
+      "original": "originals/concept-octopus.png"
+    },
+    {
+      "id": "concept-procession",
+      "title": "Act II: the marine procession",
+      "kind": "scene",
+      "generation_prompt": "The prince in a conch-shell carriage drawn by a dolphin, the Water Fairy (a mermaid-queen figure in sea-green and pearl, a crown of shells and coral, flowing hair like weed) leading, the revived crew riding saddled fish and lobsters beside him, all moving left to right along three rows of undersea waves, with sea nymphs on wires overhead. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-procession.png",
+      "preview": "originals/concept-procession.png",
+      "original": "originals/concept-procession.png"
+    },
+    {
+      "id": "concept-azure-grotto",
+      "title": "Act III: from the lobster palace to the azure grotto",
+      "kind": "scene",
+      "generation_prompt": "A Méliès transformation in three stages side by side: a palace guarded by upright lobsters, dissolving through giant sea flowers, into a glowing azure grotto of shells, pearls and coral. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-azure-grotto.png",
+      "preview": "originals/concept-azure-grotto.png",
+      "original": "originals/concept-azure-grotto.png"
+    },
+    {
+      "id": "concept-neptune-hall",
+      "title": "Act III: Neptune's hall",
+      "kind": "scene",
+      "generation_prompt": "Neptune's court as a long hall: Neptune (white-bearded, white-robed, gold crown and trident; match the delivered sea-king art) on his shell throne at the far right, rows of pastel courtiers gliding along three floor grooves, lobster guards snapping by the front groove, and a sweeping beam from a ghostly eye of the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png) (her scrying spell) hunting across the floor while the prince hides among the courtiers. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-neptune-hall.png",
+      "preview": "originals/concept-neptune-hall.png",
+      "original": "originals/concept-neptune-hall.png"
+    },
+    {
+      "id": "concept-whale-shore",
+      "title": "Act IV: ashore from the whale",
+      "kind": "scene",
+      "generation_prompt": "A painted shore at dawn: the great whale beached with its mouth open, the prince and the crew climbing out over its lip onto the rocks; the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand) appearing in light at the mouth of a cave in the cliff behind, pointing the way. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-whale-shore.png",
+      "preview": "originals/concept-whale-shore.png",
+      "original": "originals/concept-whale-shore.png"
+    },
+    {
+      "id": "concept-cavern",
+      "title": "Act V: the cavern route",
+      "kind": "scene",
+      "generation_prompt": "A winding stage cavern of painted rock flats and stalactites, lit by Aurora's glow, with ledges to leap between from left to right and a far opening onto the night sea. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-cavern.png",
+      "preview": "originals/concept-cavern.png",
+      "original": "originals/concept-cavern.png"
+    },
+    {
+      "id": "concept-cliff-gap",
+      "title": "Act V: the cliff and the sea gap",
+      "kind": "scene",
+      "generation_prompt": "A high cliff at the left; across a strip of rough sea, the witch's isolated tower on a rock (base it on references/expanded-world/sea-moat-tower.png); the prince diving from the cliff; the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png) swooping down after him and the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand)'s light driving her back. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/sea-moat-tower.png",
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-cliff-gap.png",
+      "preview": "originals/concept-cliff-gap.png",
+      "original": "originals/concept-cliff-gap.png"
+    },
+    {
+      "id": "concept-tower-climb",
+      "title": "Act V: the tower wall",
+      "kind": "scene",
+      "generation_prompt": "The outside of the witch's tower seen front-on as a tall climbing wall: rough stone with jutting stones and ivy, a barred window high up with a faint glow, the sea breaking at its foot; the armoured prince climbing. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-tower-climb.png",
+      "preview": "originals/concept-tower-climb.png",
+      "original": "originals/concept-tower-climb.png"
+    },
+    {
+      "id": "concept-tower-fire",
+      "title": "Act VI: demons fire the tower",
+      "kind": "scene",
+      "generation_prompt": "Inside the tower: a winding stone stair round a central well, torch-bearing demons setting painted flame flats alight, smoke rising, and the prince finding Princess Azurine (a young princess with dark hair in a jewelled circlet and a pale azure-blue gown) in a high chamber. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-tower-fire.png",
+      "preview": "originals/concept-tower-fire.png",
+      "original": "originals/concept-tower-fire.png"
+    },
+    {
+      "id": "concept-stair-carry",
+      "title": "Act VI: down the collapsing stair",
+      "kind": "scene",
+      "generation_prompt": "The prince carrying Princess Azurine (a young princess with dark hair in a jewelled circlet and a pale azure-blue gown) down the stair as it breaks away behind them in stage fire, falling scenery and sparks, the doorway ahead. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-stair-carry.png",
+      "preview": "originals/concept-stair-carry.png",
+      "original": "originals/concept-stair-carry.png"
+    },
+    {
+      "id": "concept-barrel",
+      "title": "Act VI: the barrel and the whirlpool",
+      "kind": "scene",
+      "generation_prompt": "On the cliff top at night: the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand) holding the witch (hunched, in a dark teal hood and ragged cloak that hide her face, a crooked staff; match references/expanded-world/hooded-witch.png) pinned in her light, half inside a barrel; the prince ready to roll it over the edge into a spiralling painted whirlpool below; Azurine safe behind them. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [
+        "references/expanded-world/hooded-witch.png"
+      ],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-barrel.png",
+      "preview": "originals/concept-barrel.png",
+      "original": "originals/concept-barrel.png"
+    },
+    {
+      "id": "concept-wedding",
+      "title": "Epilogue: the wedding procession",
+      "kind": "scene",
+      "generation_prompt": "The wedding procession returning to court: Prince Bel-Azor (a mature, dignified prince with a dark moustache and short pointed beard, played in the film by Méliès himself) and Princess Azurine (a young princess with dark hair in a jewelled circlet and a pale azure-blue gown) in a palanquin carried by pages, heralds with banners, the crew and courtiers, moving left to right before the castle. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        941
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        941
+      ],
+      "file": "originals/concept-wedding.png",
+      "preview": "originals/concept-wedding.png",
+      "original": "originals/concept-wedding.png"
+    },
+    {
+      "id": "concept-apotheosis",
+      "title": "Epilogue: the apotheosis",
+      "kind": "scene",
+      "generation_prompt": "The final tableau: clouds dissolving into the fairy kingdom, a marble colonnade in tiers of light, the fairy Aurora (Azurine's fairy godmother: tall, luminous, in white and moon-gold gauze with a starred diadem and a star-tipped wand) and the fairies crowning the prince and princess at the centre, Neptune and the Water Fairy among the tiers, the crew below. A concept tableau for a toy-theatre video game, in the manner of Georges Méliès' 1903 film Le Royaume des fées: theatrical costume, deliberate stage gesture, early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register), faint film grain; no lettering, no modern elements, no musicians. The scene is staged front-on inside a small theatre with a red velvet proscenium, painted backcloths, cut-out flats and visible stage machinery (wires, wave rows, trapdoors) where it suits; a wide 16:9 frame; the playable space reads clearly from left to right.",
+      "prompt_scope": "Original source request brief; additional generation guidance is not fully retained.",
+      "references": [],
+      "reference_scope": "Named scenery references from the brief; character sheets also guided scene generation.",
+      "revision_notes": "",
+      "native_size": [
+        1672,
+        940
+      ],
+      "requested_size": [
+        2560,
+        1440
+      ],
+      "delivery_size": [
+        1672,
+        940
+      ],
+      "file": "originals/concept-apotheosis.png",
+      "preview": "originals/concept-apotheosis.png",
+      "original": "originals/concept-apotheosis.png"
+    }
+  ]
+}

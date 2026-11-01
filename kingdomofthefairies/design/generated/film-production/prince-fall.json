@@ -1,0 +1,17 @@
+{
+  "id": "prince-fall",
+  "title": "Falling",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard, falling, arms flung up, legs apart, cloak billowing up. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated sprite, no model sheet or labels. Use transparent background. Canvas aspect ratio 360:440, target delivery 360 x 440 pixels. Show the full silhouette. Keep the prince's face, proportions, costume and scale consistent with the reference. Asset prince-fall.",
+  "transparent": true,
+  "replaces": "sailor-fall",
+  "path": "/workspace/generated_images/exec-ee844c3c-06ea-4bfa-b968-1111210b0c20.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png"
+  ],
+  "source_commit": "1dc0344"
+}

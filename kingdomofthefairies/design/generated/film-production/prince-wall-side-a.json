@@ -1,0 +1,23 @@
+{
+  "id": "prince-wall-side-a",
+  "title": "Traversing right, reaching",
+  "size": [
+    360,
+    440
+  ],
+  "anchor": "bottom centre (lowest boot)",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor exactly as in references/film-planning/originals/char-bel-azor.png (attach it): silver plumed helmet with a magenta plume, silver cuirass with a gold star over an azure tunic with gold fleurs-de-lis, a crimson cloak, sword and round star shield, dark moustache and pointed beard. Moving sideways to the RIGHT across the wall: right arm stretched out to the right at shoulder height, right leg stepping out to the right, left hand and foot still where they were, so he is spread wide. First of four traversing frames (the game mirrors them for moving left). Seen from directly BEHIND, his back to us, flat against a vertical wall that is not drawn: we see the back of his plumed helmet, the crimson cloak hanging down his back (gathered so it does not hide his legs), the star shield slung across his back and the sword at his hip. The same scale and proportions as every other prince- sprite (prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Hands and boot-toes press on the unseen wall; nothing but the figure: no wall, rock, ivy or shadow. Match the other climbing frames of this set (attach prince-climb-a.webp and prince-stand.webp) in costume, colours and scale. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery [360, 440] px. Keep the complete silhouette inside the canvas.\nThe last attached image is an accepted rear-view sprite for costume continuity. Preserve that costume, helmet, back-slung star shield, sword and body proportions; change only the pose as specified. Direct rear view, no face. The cloak must not hide the legs.",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png",
+    "/workspace/mini/kingdomofthefairies/assets/prince-climb-a.webp",
+    "/workspace/mini/kingdomofthefairies/assets/prince-stand.webp",
+    "/workspace/mini/kingdomofthefairies/design/generated/film-production/prince-wall-up-b-original.png"
+  ],
+  "path": "/workspace/generated_images/exec-ae208d70-2ab8-4a8d-9541-cad47d5aac2d.png",
+  "generation_id": "exec-ae208d70-2ab8-4a8d-9541-cad47d5aac2d",
+  "review": {
+    "status": "accepted",
+    "notes": "A spreads right arm and leg rightward; B gathers hands and feet inward. Rear-view identity, costume and alpha accepted."
+  }
+}

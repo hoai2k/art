@@ -1,0 +1,18 @@
+{
+  "id": "crew-asleep-b",
+  "title": "A second drowned crewman, asleep",
+  "size": [
+    260,
+    120
+  ],
+  "anchor": "bottom centre",
+  "prompt": "one of the prince's crew as in references/film-planning/originals/char-crew.png (attach it): azure and gold striped livery with fleurs-de-lis, magenta-plumed caps, the man-at-arms this time, lying asleep on his back on the sea floor with his helmet tipped over his eyes and his halberd beside him, a few bubbles; the same scale as crew-asleep.webp (attach it). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery 260 x 120 pixels. Keep the reference figure proportions and the entire silhouette.",
+  "transparent": true,
+  "replaces": null,
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-crew.png",
+    "/workspace/mini/kingdomofthefairies/assets/crew-asleep.webp"
+  ],
+  "source_commit": "762e53ca753eb88ba46e0ed23aa2f148d3b43e03",
+  "path": "/workspace/generated_images/exec-1f9db50c-06ee-4843-9a9f-f743b7f3fc5e.png"
+}

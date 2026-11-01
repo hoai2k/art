@@ -1,0 +1,8 @@
+Band performance insert. Three separate SAM 2 object tracks combined; monochrome. 24 displayed frames sampled from 19 source frames, ping-pong order. The source sequence is reversed on the return half to close the loop. Frame box is 2× the 210-pixel Act I band width; transparent padding is trimmed vertically. Tempo-locked playback is 7.65 displayed frames/s to keep the decoded sheet near 8 MB.
+Source: https://www.youtube.com/watch?v=7zoGfdN4dgE
+Original timestamps: 38.3–39.8 seconds.
+source.mp4 is a video-packet copy with approximately one second of context either side; source frames were extracted at 12 fps.
+Masks: SAM 2.1 Hiera Tiny; selection points retained in tracking.json. Tiny detached specks removed, alpha edge softened 0.45 source pixels.
+Loop duration: 3.1372549019607843 seconds at 76.5 BPM. Stored sequence already includes the return half.
+
+Correction: local arm masks reinforced at source frames 13 and 18; reviewed body/face masks retained outside the correction region.

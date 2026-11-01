@@ -1,0 +1,24 @@
+{
+  "id": "prince-leap-tinted",
+  "title": "prince-leap, tinted after the film",
+  "size": [
+    260,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Correct ONLY the sword-holding hand in this exact sprite, at about x=86.5%, y=25.3%. It is Prince Bel-Azor's raised RIGHT arm, so replace the malformed/reversed glove with one anatomically correct RIGHT hand in a plain silver-grey gauntlet. Form a clear believable sword grip: four distinct fingers curl together around the handle, the opposable thumb wraps across the other side of the grip, wrist naturally aligned with the existing forearm; the handle is visibly enclosed by the fist, the crossguard is above the fist and the pommel below it. Correct the handedness and finger structure, no extra fingers or fused mitten shapes. Keep EVERYTHING else unchanged: the face, helmet, plume, arm angle, sword blade and crossguard and their position, shield, cloak, tunic, legs, jumping pose, proportions, canvas framing, soft grey photographic texture, sparse hand-stencilled colour, and existing transparency. No other edits.",
+  "transparent": true,
+  "replaces": "prince-leap",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/prince-leap-hand/prince-leap-tinted-original.png"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "d3bc23c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7eabbb70-14c0-4a3b-9b23-a1a457ca2a29.png",
+  "generation_id": "exec-7eabbb70-14c0-4a3b-9b23-a1a457ca2a29",
+  "review_status": "accepted after enlarged hand review: anatomically coherent right gauntlet, distinct curled fingers enclosing sword handle, crossguard above and pommel below fist, wrist aligned with forearm",
+  "submitted_references": [
+    "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-b54bc2fe-aea8-475a-9c81-d33554b5e783.png"
+  ],
+  "previous_take": "progress/rejected/prince-leap-hand/prince-leap-tinted-original.png"
+}

@@ -1,0 +1,21 @@
+{
+  "requested": 12,
+  "generated": 12,
+  "prepared": 12,
+  "reviewed": 12,
+  "remaining": [],
+  "ids": [
+    "prince-stride-a-tinted",
+    "prince-stride-b-tinted",
+    "prince-stride-a",
+    "prince-stride-b",
+    "prince-court-stride-a-tinted",
+    "prince-court-stride-b-tinted",
+    "prince-court-stride-a",
+    "prince-court-stride-b",
+    "azurine-walk-a-tinted",
+    "azurine-walk-b-tinted",
+    "azurine-walk-a",
+    "azurine-walk-b"
+  ]
+}

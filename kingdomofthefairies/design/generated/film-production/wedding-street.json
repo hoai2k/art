@@ -1,0 +1,17 @@
+{
+  "id": "wedding-street",
+  "title": "The wedding procession",
+  "size": [
+    2560,
+    1440
+  ],
+  "anchor": "full frame",
+  "prompt": "From references/film-planning/originals/concept-wedding.png (attach it) without figures: the castle with banners and garlands in daylight, a paved way across the bottom. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; faint film grain; no figures unless the prompt asks for them.\nGenerate exactly one production theatre set, no collage, labels, border, proscenium or figures beyond explicitly requested set ornaments. Canvas aspect ratio 2560:1440, intended delivery 2560 x 1440 pixels. Full-bleed painted background to all four edges; no transparency or frame. Asset wedding-street.",
+  "transparent": false,
+  "replaces": "pageant-backcloth",
+  "path": "/workspace/generated_images/exec-0377b9f1-0487-40e1-b4b6-de7ae9f0ea57.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/concept-wedding.png"
+  ],
+  "source_commit": "1dc0344"
+}

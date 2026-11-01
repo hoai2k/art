@@ -1,0 +1,17 @@
+{
+  "id": "sailor-seated-plain",
+  "title": "The sailor seated, without the guitar",
+  "size": [
+    220,
+    220
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The sailor exactly as in sailor-seated.webp (attach it): the same scale, pose, seat height and foot position, but with no guitar. His hands rest on his knees and a sword in its scabbard lies across his lap. Nothing else changes. For the ?widowsbay=partial edition. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate one asset only, no collage or labels. True transparent background. Intended delivery 220 x 220 pixels. Keep the reference figure proportions and the entire silhouette.",
+  "transparent": true,
+  "replaces": "sailor-seated",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/assets/sailor-seated.webp"
+  ],
+  "source_commit": "762e53ca753eb88ba46e0ed23aa2f148d3b43e03",
+  "path": "/workspace/generated_images/exec-b780c27d-9a46-412c-827e-2ab840a8037e.png"
+}

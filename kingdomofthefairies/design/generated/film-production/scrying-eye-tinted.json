@@ -1,0 +1,23 @@
+{
+  "id": "scrying-eye-tinted",
+  "title": "scrying-eye, tinted after the film",
+  "size": [
+    200,
+    300
+  ],
+  "anchor": "top centre (it hangs)",
+  "prompt": "Redraw scrying-eye.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A painted stage effect: a glowing eye in drifting teal smoke. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 200:300; delivery 200 x 300. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+  "transparent": true,
+  "replaces": "scrying-eye",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/scrying-eye.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "ba92d0c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-e47388ee-aba3-4760-90a3-3cc8eb8f15b3.png",
+  "generation_id": "exec-e47388ee-aba3-4760-90a3-3cc8eb8f15b3",
+  "review_status": "accepted: photographic stage finish, sparse stencil washes, complete silhouette, original facing direction and pose reviewed"
+}

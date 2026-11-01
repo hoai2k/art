@@ -1,0 +1,15 @@
+{
+  "id": "deep-panorama",
+  "title": "Deep-sea panorama (scrolling)",
+  "width": 2560,
+  "height": 1440,
+  "anchor": "full frame",
+  "section": "Second round: Acts I and II",
+  "prompt": "Use case: stylized-concept. Production sprite for Widow's Bay.\nOpen deep water seen square-on for the moon-boat ride: dark teal fading to near-black below, soft shafts of light from the surface above, a low line of distant rock silhouettes along the lower third, faint drifting fish. Match grotto-backcloth. A painted theatre backcloth seen square-on, full bleed to every edge, scene painting in the manner of Georges Méliès' 1903 film Le Royaume des fées; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering. The left and right edges must join seamlessly when the cloth is repeated side by side.\nRequested final aspect ratio 2560:1440. Opaque full-bleed scene; paint right to every boundary.\nInput image is a style/palette reference; follow the written subject and geometry rather than reproducing unwanted elements.\nNo text or watermark.",
+  "transparent": false,
+  "references": [
+    "design/generated/part-c/originals/grotto-backcloth.png"
+  ],
+  "dependency": null,
+  "mode": "built-in image_gen"
+}

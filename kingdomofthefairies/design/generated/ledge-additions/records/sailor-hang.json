@@ -1,0 +1,16 @@
+{
+  "id": "sailor-hang",
+  "title": "Sailor hanging from an edge",
+  "width": 220,
+  "height": 440,
+  "anchor": "top centre (his hands)",
+  "section": "Fourth round: Act IV ledge hang",
+  "prompt": "Use case: precise-object-edit. Image 1 is the current pose to refine; images 2 and 3 are exact references for the same sailor's face, navy coat, cap, red neckerchief, grey trousers, boots and painted-card texture. Preserve identity and painting finish. Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), hanging at full stretch by both hands from a ledge edge, seen in profile facing right: both hands together gripping at the very top centre of the canvas, arms straight up above his head, body hanging straight down, the toes of his boots just touching an unseen wall in front of him, cap still on. Effortful but determined. The top of his fingers touches the top edge of the canvas; nothing else of the ledge is drawn. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nReal transparent alpha outside the sailor. No ledge, wall, drawn guideline, labels or cast shadow. Keep the existing full-stretch hanging pose and placement. Refine the two hands so fingers hook forward as they grip an unseen horizontal edge at EXACT TOP CENTRE. Hands meet the top boundary, head below extended arms; full body in 220:440 portrait canvas. All other elements stay the same. Both additional source references must guide the face and coat details.",
+  "reference": "sailor-stand",
+  "references": [
+    "design/generated/ledge-additions/rejected/sailor-hang-first.png",
+    "design/generated/ledge-additions/references/sailor-stand.png",
+    "design/generated/ledge-additions/references/sailor-leap.png"
+  ],
+  "mode": "built-in image_gen"
+}

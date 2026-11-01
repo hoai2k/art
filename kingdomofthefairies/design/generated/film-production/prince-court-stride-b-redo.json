@@ -1,0 +1,26 @@
+{
+  "id": "prince-court-stride-b-redo",
+  "title": "Prince in court dress, stride B, redrawn to match stride A",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw prince-court-stride-b.webp (attach it with prince-court-stride-a.webp, prince-court-pass-a.webp and prince-court.webp). Exactly the same figure, costume and colours, walking right, with the RIGHT leg forward, heel down, and the left leg behind on its toes; but the stride exactly as long as in prince-court-stride-a.webp (mirrored legs), so the top of the head sits within 6 px of where it is in stride A (about 5 px from the top of the canvas). Same arm swing as stride A mirrored. Feet on the bottom ground line; no floor or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is stride A, the geometry/scale reference and edit target. Image 2 is the old B showing the opposite support leg only; do NOT copy its wider lunge or reduced head height. Images 3 and 4 confirm identity and scale. Produce stride B by exchanging only the legs and arm swing of image 1. Keep its head, torso, exact costume, canvas placement and stride span unchanged. Do not stretch the trailing leg farther, spread the feet wider, lower the head, redesign the costume, or mirror the entire figure. Target canvas 220 x 360, aspect ratio 220:360. One isolated sprite on genuine transparency.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-stride-a.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-stride-b.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-pass-a.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+  ],
+  "transparent": true,
+  "replaces": "prince-court-stride-b",
+  "edition": "film",
+  "generator": "built-in image_gen",
+  "source_commit": "6300475",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-7775f7db-6db8-4723-afbd-e75a6dca000b.png",
+  "generation_id": "exec-7775f7db-6db8-4723-afbd-e75a6dca000b",
+  "review_status": "accepted: matched costume and moderate opposite stride; export painted bounds aligned to stride A within 3% adjustment; measured head-top and ground line match A",
+  "install_as": "prince-court-stride-b",
+  "align_to": "prince-court-stride-a"
+}

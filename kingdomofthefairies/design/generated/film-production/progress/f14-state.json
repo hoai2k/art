@@ -1,0 +1,15 @@
+{
+  "requested": 4,
+  "generated": 4,
+  "prepared": 4,
+  "reviewed": 4,
+  "remaining": [],
+  "installed_replacements": [
+    "prince-stride-b",
+    "prince-court-stride-b"
+  ],
+  "shared_sailor": [
+    "sailor-stride-a",
+    "sailor-stride-b"
+  ]
+}

@@ -1,0 +1,1290 @@
+[
+  {
+    "id": "prince-stand-tinted",
+    "title": "prince-stand, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-walk-a-tinted",
+    "title": "prince-walk-a, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-walk-a.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-walk-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-walk-a.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-walk-b-tinted",
+    "title": "prince-walk-b, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-walk-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-walk-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-walk-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-leap-tinted",
+    "title": "prince-leap, tinted after the film",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-leap.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:360; delivery 260 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-leap",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-leap.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-crouch-tinted",
+    "title": "prince-crouch, tinted after the film",
+    "size": [
+      240,
+      300
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-crouch.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 240:300; delivery 240 x 300. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-crouch",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-crouch.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-carry-tinted",
+    "title": "prince-carry, tinted after the film",
+    "size": [
+      360,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-carry.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:400; delivery 360 x 400. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-carry",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-carry.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-swim-a-tinted",
+    "title": "prince-swim-a, tinted after the film",
+    "size": [
+      360,
+      240
+    ],
+    "anchor": "centre (between his shoulder blades)",
+    "prompt": "Redraw prince-swim-a.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:240; delivery 360 x 240. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-swim-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-swim-a.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-swim-b-tinted",
+    "title": "prince-swim-b, tinted after the film",
+    "size": [
+      360,
+      240
+    ],
+    "anchor": "centre (between his shoulder blades)",
+    "prompt": "Redraw prince-swim-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:240; delivery 360 x 240. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-swim-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-swim-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-seated-tinted",
+    "title": "prince-seated, tinted after the film",
+    "size": [
+      220,
+      220
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-seated.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:220; delivery 220 x 220. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-seated",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-seated.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-hang-tinted",
+    "title": "prince-hang, tinted after the film",
+    "size": [
+      220,
+      440
+    ],
+    "anchor": "top centre (his hands)",
+    "prompt": "Redraw prince-hang.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:440; delivery 220 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-hang",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-hang.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-pullup-tinted",
+    "title": "prince-pullup, tinted after the film",
+    "size": [
+      260,
+      300
+    ],
+    "anchor": "ledge line 25% up from the bottom, centred",
+    "prompt": "Redraw prince-pullup.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:300; delivery 260 x 300. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-pullup",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-pullup.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-climb-a-tinted",
+    "title": "prince-climb-a, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-climb-a.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-climb-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-climb-a.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-climb-b-tinted",
+    "title": "prince-climb-b, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-climb-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-climb-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-climb-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-apex-tinted",
+    "title": "prince-apex, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-apex.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-apex",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-apex.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-fall-tinted",
+    "title": "prince-fall, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-fall.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-fall",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-fall.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-land-tinted",
+    "title": "prince-land, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-land.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-land",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-land.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-stairs-a-tinted",
+    "title": "prince-stairs-a, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-stairs-a.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-stairs-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stairs-a.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-stairs-b-tinted",
+    "title": "prince-stairs-b, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-stairs-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-stairs-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stairs-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-push-tinted",
+    "title": "prince-push, tinted after the film",
+    "size": [
+      360,
+      440
+    ],
+    "anchor": "bottom centre (lowest boot)",
+    "prompt": "Redraw prince-push.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:440; delivery 360 x 440. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "prince-push",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-push.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-court-tinted",
+    "title": "prince-court, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-court.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nCourt-dress invariant: keep him unarmoured, bareheaded, without sword or shield, just as in image 1.",
+    "transparent": true,
+    "replaces": "prince-court",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-court-walk-a-tinted",
+    "title": "prince-court-walk-a, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-court-walk-a.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nCourt-dress invariant: keep him unarmoured, bareheaded, without sword or shield, just as in image 1.",
+    "transparent": true,
+    "replaces": "prince-court-walk-a",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-walk-a.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-court-walk-b-tinted",
+    "title": "prince-court-walk-b, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-court-walk-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nCourt-dress invariant: keep him unarmoured, bareheaded, without sword or shield, just as in image 1.",
+    "transparent": true,
+    "replaces": "prince-court-walk-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-walk-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "prince-bound-tinted",
+    "title": "prince-bound, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw prince-bound.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Bel-Azor is an actor in a plain belted tunic and tights with a simple helmet and plume, not ornate plate armour: keep the star shield and sword but make the armour plain grey metal and the cloak a single red wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nCourt-dress invariant: keep him unarmoured, bareheaded, without sword or shield, just as in image 1.",
+    "transparent": true,
+    "replaces": "prince-bound",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "azurine-stand-tinted",
+    "title": "azurine-stand, tinted after the film",
+    "size": [
+      200,
+      380
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw azurine-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. In the film Azurine is a young woman in a plain pale gown, almost white, with long dark hair; keep only a faint blue wash and a simple circlet. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 200:380; delivery 200 x 380. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "azurine-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "azurine-asleep-tinted",
+    "title": "azurine-asleep, tinted after the film",
+    "size": [
+      360,
+      160
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw azurine-asleep.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. In the film Azurine is a young woman in a plain pale gown, almost white, with long dark hair; keep only a faint blue wash and a simple circlet. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 360:160; delivery 360 x 160. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "azurine-asleep",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-asleep.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "azurine-window-tinted",
+    "title": "azurine-window, tinted after the film",
+    "size": [
+      160,
+      200
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw azurine-window.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. In the film Azurine is a young woman in a plain pale gown, almost white, with long dark hair; keep only a faint blue wash and a simple circlet. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 160:200; delivery 160 x 200. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "azurine-window",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-window.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "aurora-stand-tinted",
+    "title": "aurora-stand, tinted after the film",
+    "size": [
+      260,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw aurora-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Aurora is a dancer in a light rose gown with a yellow-tinted skirt and a simple star wand; far less gold and drapery. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:420; delivery 260 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "aurora-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "aurora-point-tinted",
+    "title": "aurora-point, tinted after the film",
+    "size": [
+      300,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw aurora-point.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's Aurora is a dancer in a light rose gown with a yellow-tinted skirt and a simple star wand; far less gold and drapery. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 300:420; delivery 300 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "aurora-point",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-point.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "water-fairy-stand-tinted",
+    "title": "water-fairy-stand, tinted after the film",
+    "size": [
+      260,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw water-fairy-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A dancer in a pale sea-green gown with a few shells, the hair loose; the green as one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:420; delivery 260 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "water-fairy-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/water-fairy-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "water-fairy-stand-idle-b-tinted",
+    "title": "water-fairy-stand-idle-b, tinted after the film",
+    "size": [
+      260,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw water-fairy-stand-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A dancer in a pale sea-green gown with a few shells, the hair loose; the green as one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:420; delivery 260 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "water-fairy-stand-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/water-fairy-stand-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "water-fairy-stand-idle-c-tinted",
+    "title": "water-fairy-stand-idle-c, tinted after the film",
+    "size": [
+      260,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw water-fairy-stand-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A dancer in a pale sea-green gown with a few shells, the hair loose; the green as one translucent wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:420; delivery 260 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "water-fairy-stand-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/water-fairy-stand-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "king-stand-tinted",
+    "title": "king-stand, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw king-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A stage king in a long robe with an ermine-edged cape and a card crown; reds and whites only, little gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "king-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/king-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "queen-stand-tinted",
+    "title": "queen-stand, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw queen-stand.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A stage queen in a long gown and veil with a card crown; reds and whites only, little gold. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "queen-stand",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/queen-stand.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "fairy-ring-tinted",
+    "title": "fairy-ring, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-ring.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. One of the film's court ladies: a pastel gown and a tall pointed white hennin with a veil, the gift held simply. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "fairy-ring",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-ring.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "fairy-crown-tinted",
+    "title": "fairy-crown, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-crown.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. One of the film's court ladies: a pastel gown and a tall pointed white hennin with a veil, the gift held simply. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "fairy-crown",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-crown.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "fairy-gold-tinted",
+    "title": "fairy-gold, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw fairy-gold.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. One of the film's court ladies: a pastel gown and a tall pointed white hennin with a veil, the gift held simply. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "fairy-gold",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/fairy-gold.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "demon-red-tinted",
+    "title": "demon-red, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw demon-red.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. As in the film: a performer in close-fitting tights tinted solid red (or teal) with a horned cap, a real torch; already close, needs only the photographic look. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "demon-red",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-red.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "demon-teal-tinted",
+    "title": "demon-teal, tinted after the film",
+    "size": [
+      220,
+      360
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw demon-teal.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. As in the film: a performer in close-fitting tights tinted solid red (or teal) with a horned cap, a real torch; already close, needs only the photographic look. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:360; delivery 220 x 360. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "demon-teal",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-teal.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-squire-tinted",
+    "title": "crew-squire, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-squire.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-squire",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-helmsman-tinted",
+    "title": "crew-helmsman, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-helmsman.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-helmsman",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-manatarms-tinted",
+    "title": "crew-manatarms, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-manatarms",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-bosun-tinted",
+    "title": "crew-bosun, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-bosun.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-bosun",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-squire-idle-b-tinted",
+    "title": "crew-squire-idle-b, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-squire-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-squire-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-squire-idle-c-tinted",
+    "title": "crew-squire-idle-c, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-squire-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-squire-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-helmsman-idle-b-tinted",
+    "title": "crew-helmsman-idle-b, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-helmsman-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-helmsman-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-helmsman-idle-c-tinted",
+    "title": "crew-helmsman-idle-c, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-helmsman-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-helmsman-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-manatarms-idle-b-tinted",
+    "title": "crew-manatarms-idle-b, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-manatarms-idle-c-tinted",
+    "title": "crew-manatarms-idle-c, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-bosun-idle-b-tinted",
+    "title": "crew-bosun-idle-b, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-bosun-idle-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-bosun-idle-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-idle-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-bosun-idle-c-tinted",
+    "title": "crew-bosun-idle-c, tinted after the film",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-bosun-idle-c.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 220:420; delivery 220 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.\nImage 5 is the accepted tinted standing frame of this character: match its face, costume, colour washes and prop sides, while keeping the idle pose from image 1.",
+    "transparent": true,
+    "replaces": "crew-bosun-idle-c",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-idle-c.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-tinted.webp"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-asleep-tinted",
+    "title": "crew-asleep, tinted after the film",
+    "size": [
+      260,
+      120
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-asleep.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:120; delivery 260 x 120. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-asleep",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-asleep.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-asleep-b-tinted",
+    "title": "crew-asleep-b, tinted after the film",
+    "size": [
+      260,
+      120
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-asleep-b.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 260:120; delivery 260 x 120. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-asleep-b",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-asleep-b.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "crew-rider-tinted",
+    "title": "crew-rider, tinted after the film",
+    "size": [
+      320,
+      240
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-rider.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A courtier of the film's court in a padded doublet, hose and soft cap, colours as pale washes rather than bold stripes. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 320:240; delivery 320 x 240. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "crew-rider",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-rider.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "witch-hooded-tinted",
+    "title": "witch-hooded, tinted after the film",
+    "size": [
+      240,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw witch-hooded.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. Keep the redrawn crone (references/film-witch/) and give her the photographic base and a single teal wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 240:400; delivery 240 x 400. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "witch-hooded",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "witch-cloud-tinted",
+    "title": "witch-cloud, tinted after the film",
+    "size": [
+      400,
+      400
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw witch-cloud.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. Keep the redrawn crone (references/film-witch/) and give her the photographic base and a single teal wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 400:400; delivery 400 x 400. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "witch-cloud",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-cloud.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "witch-storm-tinted",
+    "title": "witch-storm, tinted after the film",
+    "size": [
+      520,
+      340
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw witch-storm.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. Keep the redrawn crone (references/film-witch/) and give her the photographic base and a single teal wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 520:340; delivery 520 x 340. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "witch-storm",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-storm.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "witch-swoop-tinted",
+    "title": "witch-swoop, tinted after the film",
+    "size": [
+      400,
+      240
+    ],
+    "anchor": "centre",
+    "prompt": "Redraw witch-swoop.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. Keep the redrawn crone (references/film-witch/) and give her the photographic base and a single teal wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 400:240; delivery 400 x 240. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "witch-swoop",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-swoop.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "witch-barrel-tinted",
+    "title": "witch-barrel, tinted after the film",
+    "size": [
+      200,
+      240
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw witch-barrel.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. Keep the redrawn crone (references/film-witch/) and give her the photographic base and a single teal wash. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 200:240; delivery 200 x 240. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "witch-barrel",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-barrel.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "octopus-tinted",
+    "title": "octopus, tinted after the film",
+    "size": [
+      600,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw octopus.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A painted stage prop: a large octopus cut-out on wires, flatter and less jewelled. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 600:420; delivery 600 x 420. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "octopus",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/octopus.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "dolphin-carriage-tinted",
+    "title": "dolphin-carriage, tinted after the film",
+    "size": [
+      520,
+      340
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw dolphin-carriage.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A stage float: a painted card dolphin drawing a shell car, little jewellery. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 520:340; delivery 520 x 340. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "dolphin-carriage",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/dolphin-carriage.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "lobster-guard-closed-tinted",
+    "title": "lobster-guard-closed, tinted after the film",
+    "size": [
+      500,
+      340
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw lobster-guard-closed.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A performer in a lobster costume, as in the film's court of sea creatures; coral red wash, few ornaments. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 500:340; delivery 500 x 340. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "lobster-guard-closed",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/lobster-guard-closed.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "lobster-guard-open-tinted",
+    "title": "lobster-guard-open, tinted after the film",
+    "size": [
+      500,
+      340
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw lobster-guard-open.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A performer in a lobster costume, as in the film's court of sea creatures; coral red wash, few ornaments. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 500:340; delivery 500 x 340. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "lobster-guard-open",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/lobster-guard-open.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "chariot-tinted",
+    "title": "chariot, tinted after the film",
+    "size": [
+      600,
+      320
+    ],
+    "anchor": "centre",
+    "prompt": "Redraw chariot.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. The film's fiery chariot: a dark painted car with bat wings and orange-yellow stencilled flames. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 600:320; delivery 600 x 320. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "chariot",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/chariot.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  },
+  {
+    "id": "scrying-eye-tinted",
+    "title": "scrying-eye, tinted after the film",
+    "size": [
+      200,
+      300
+    ],
+    "anchor": "top centre (it hangs)",
+    "prompt": "Redraw scrying-eye.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same character, pose, framing, scale, foot position and canvas, so it lays over the original. A painted stage effect: a glowing eye in drifting teal smoke. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target and controls the pose and canvas. Images 2\u20134 are film-style references only. Output exactly one complete isolated sprite, no scenery, no lettering. Canvas aspect ratio 200:300; delivery 200 x 300. Preserve limb positions, facing direction, prop sides, and full silhouette from image 1. The requested simplified costume and photographic finish are the changes.",
+    "transparent": true,
+    "replaces": "scrying-eye",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/scrying-eye.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+    ],
+    "generator": "built-in image_gen",
+    "source_commit": "ba92d0c"
+  }
+]

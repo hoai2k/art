@@ -1,0 +1,24 @@
+{
+  "id": "prince-stride-b",
+  "title": "Prince armed, stride B",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Prince Bel-Azor walking to the right, exactly the figure, costume, colours, scale and head height of prince-stand.webp (attach it, and prince-stride-a.webp if already drawn, which must match it in every detail but the legs and arms). A full stride with the RIGHT leg forward, heel down, and the left leg straight behind on its toes; the arms swing opposite to the legs. Both feet on one level ground line at the very bottom of the canvas; the head at the same height as in the standing pose. Nothing changes between the two frames but the legs and arms: same tights, belt, cloak, sword and shield. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the standing character and fixes the exact costume, colours, face, belt, tights, cape, armour and prop sides. Do not reinterpret the costume. Preserve anatomically coherent hands gripping any carried weapons; exactly two arms and two legs. Draw a clearly separated full walking stride with the two feet apart, never the standing pose. Both soles meet the same horizontal baseline at the bottom; keep the standing head and plume/circlet height. No ground or cast shadow. Canvas aspect ratio 220:360; one isolated transparent sprite, target delivery 220 x 360.\nImage 2 is the already drawn stride A and is the edit target. Match its face and every garment, tights colour, belt colour and buckle, cape pattern, sword and shield exactly. Change only the limbs to the OPPOSITE stride: right leg forward on its heel, left leg behind on its toes, arms counter-swinging. Do not copy the leg arrangement from A. Keep its torso, head, costume details and head/foot heights unchanged. No costume redesign or additional props.",
+  "transparent": true,
+  "replaces": "prince-walk-b",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stride-a.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "0c80c5a",
+  "phase": "b",
+  "pair": "prince-stride-a",
+  "round": "F10",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-422c8493-b79e-40d5-93ba-8c4e8afb405a.png",
+  "generation_id": "exec-422c8493-b79e-40d5-93ba-8c4e8afb405a",
+  "review_status": "awaiting gait and costume review"
+}

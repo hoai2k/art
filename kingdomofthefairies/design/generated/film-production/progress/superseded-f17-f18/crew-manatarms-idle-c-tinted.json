@@ -1,0 +1,26 @@
+{
+  "id": "crew-manatarms-idle-c-tinted",
+  "title": "crew-manatarms-idle-c, tinted after the film",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Edit image 1, the accepted tinted man-at-arms idle frame. Change ONLY his head direction: turn his head sharply backward toward the LEFT of the canvas and tilt the chin upward, matching the head gesture in image 2, the original idle-C sprite. His nose must point LEFT while his torso remains in its present stance. Keep the exact face identity, helmet and plume, photographic hand-tinted finish, all costume colours, shield, halberd, hands, legs, feet, body scale, canvas and transparent background unchanged. Do not mirror the figure or move the props. Preserve every other part of image 1.",
+  "transparent": true,
+  "replaces": "crew-manatarms-idle-c",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/crew-manatarms-idle-c-tinted-head-direction-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-idle-c.webp"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "ba92d0c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-9d8ec72a-cb0d-4da2-ba98-cceb791d7a4f.png",
+  "generation_id": "exec-9d8ec72a-cb0d-4da2-ba98-cceb791d7a4f",
+  "review_status": "accepted: head turns backward left with chin raised, matching original idle C; costume, prop sides, body pose and transparency retained",
+  "previous_take": "progress/rejected/crew-manatarms-idle-c-tinted-head-direction-original.png",
+  "submitted_references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/crew-manatarms-idle-c-tinted-original.png",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-idle-c.webp"
+  ]
+}

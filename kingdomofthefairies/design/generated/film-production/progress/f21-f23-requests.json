@@ -1,0 +1,344 @@
+[
+  {
+    "id": "crew-squire-asleep",
+    "title": "The squire, asleep on the cave floor",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The squire of the prince's crew exactly as in crew-squire.webp (attach it, and crew-squire-sit-up.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-sit-up.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-squire-asleep-tinted",
+    "title": "The squire, asleep on the cave floor (tinted)",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The squire of the prince's crew exactly as in crew-squire-tinted.webp (attach it, and crew-squire-sit-up-tinted.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-sit-up-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-bosun-asleep",
+    "title": "The bosun, asleep on the cave floor",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The bosun of the prince's crew exactly as in crew-bosun.webp (attach it, and crew-bosun-sit-up.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his lantern and coiled rope beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-sit-up.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-bosun-asleep-tinted",
+    "title": "The bosun, asleep on the cave floor (tinted)",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The bosun of the prince's crew exactly as in crew-bosun-tinted.webp (attach it, and crew-bosun-sit-up-tinted.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his lantern and coiled rope beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-bosun-sit-up-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-helmsman-asleep",
+    "title": "The helmsman, asleep on the cave floor",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The helmsman of the prince's crew exactly as in crew-helmsman.webp (attach it, and crew-helmsman-sit-up.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his coil of rope beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-sit-up.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-helmsman-asleep-tinted",
+    "title": "The helmsman, asleep on the cave floor (tinted)",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The helmsman of the prince's crew exactly as in crew-helmsman-tinted.webp (attach it, and crew-helmsman-sit-up-tinted.webp, the pose he wakes into): the same face, livery, cap and plume and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his coil of rope beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-sit-up-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-manatarms-asleep",
+    "title": "The man-at-arms, asleep on the cave floor",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The man-at-arms of the prince's crew exactly as in crew-manatarms-redo.webp (attach it, and crew-manatarms-sit-up.webp, the pose he wakes into): the same face, livery, helmet and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-redo.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-sit-up.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "crew-manatarms-asleep-tinted",
+    "title": "The man-at-arms, asleep on the cave floor (tinted)",
+    "size": [
+      440,
+      160
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "The man-at-arms of the prince's crew exactly as in crew-manatarms-tinted-redo.webp (attach it, and crew-manatarms-sit-up-tinted.webp, the pose he wakes into): the same face, livery, helmet and colours. Lying asleep on his back on the ground, drowned in an enchanted sleep, head to the LEFT, feet to the RIGHT, eyes closed, one arm across his chest, the other at his side, his halberd beside him. At exactly his standing scale: his head the same size as in his standing sprite, so lying full length he is about 420 px long, filling the 440 px canvas from side to side; the lowest point of the figure on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-tinted-redo.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-manatarms-sit-up-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "aurora-glide-a",
+    "title": "Aurora gliding, frame A",
+    "size": [
+      300,
+      420
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the fairy Aurora as in references/film-planning/originals/char-aurora.png (attach it): white and moon-gold gauze with rose and plum veils, a starred diadem and a star-tipped wand, exactly as in aurora-stand.webp (attach it): the same face, gown, veils, diadem, colours and scale (her figure fills the same height). Gliding through the air facing LEFT, a fairy's flight rather than a walk: feet together and pointed just clear of the ground, her body leaning slightly forward into the glide, veils and gown streaming out BEHIND her to the right, wand held forward and low with its star glowing. Frame A: veils lifted high behind her. The lowest point of the figure (her pointed toes) on the bottom edge; centred on the canvas. Nothing but the figure: no sparkle trail, ground or shadow (the game adds the sparkle). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "aurora-glide-a-tinted",
+    "title": "Aurora gliding, frame A (tinted)",
+    "size": [
+      300,
+      420
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the fairy Aurora as in references/film-planning/originals/char-aurora.png (attach it): white and moon-gold gauze with rose and plum veils, a starred diadem and a star-tipped wand, exactly as in aurora-stand-tinted.webp (attach it): the same face, gown, veils, diadem, colours and scale (her figure fills the same height). Gliding through the air facing LEFT, a fairy's flight rather than a walk: feet together and pointed just clear of the ground, her body leaning slightly forward into the glide, veils and gown streaming out BEHIND her to the right, wand held forward and low with its star glowing. Frame A: veils lifted high behind her. The lowest point of the figure (her pointed toes) on the bottom edge; centred on the canvas. Nothing but the figure: no sparkle trail, ground or shadow (the game adds the sparkle). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "aurora-glide-b",
+    "title": "Aurora gliding, frame B",
+    "size": [
+      300,
+      420
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the fairy Aurora as in references/film-planning/originals/char-aurora.png (attach it): white and moon-gold gauze with rose and plum veils, a starred diadem and a star-tipped wand, exactly as in aurora-stand.webp (attach it): the same face, gown, veils, diadem, colours and scale (her figure fills the same height). Gliding through the air facing LEFT, a fairy's flight rather than a walk: feet together and pointed just clear of the ground, her body leaning slightly forward into the glide, veils and gown streaming out BEHIND her to the right, wand held forward and low with its star glowing. Frame B: the same glide a moment later, veils falling lower and gown fluttering the other way, so A and B alternate as a gentle flutter. The lowest point of the figure (her pointed toes) on the bottom edge; centred on the canvas. Nothing but the figure: no sparkle trail, ground or shadow (the game adds the sparkle). Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "aurora-glide-b-tinted",
+    "title": "Aurora gliding, frame B (tinted)",
+    "size": [
+      300,
+      420
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "the fairy Aurora as in references/film-planning/originals/char-aurora.png (attach it): white and moon-gold gauze with rose and plum veils, a starred diadem and a star-tipped wand, exactly as in aurora-stand-tinted.webp (attach it): the same face, gown, veils, diadem, colours and scale (her figure fills the same height). Gliding through the air facing LEFT, a fairy's flight rather than a walk: feet together and pointed just clear of the ground, her body leaning slightly forward into the glide, veils and gown streaming out BEHIND her to the right, wand held forward and low with its star glowing. Frame B: the same glide a moment later, veils falling lower and gown fluttering the other way, so A and B alternate as a gentle flutter. The lowest point of the figure (her pointed toes) on the bottom edge; centred on the canvas. Nothing but the figure: no sparkle trail, ground or shadow (the game adds the sparkle). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/aurora-stand-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-struggle-a",
+    "title": "Prince struggling against the cords, back to the left",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his court dress exactly as in prince-bound.webp (attach it, and prince-court.webp): the same face, doublet, cloak, colours and scale, his arms still bound to his sides by the glowing teal cords of the witch's magic. Wrenching against them back to the left: his whole body twisted and leaning back toward the LEFT, one shoulder heaved up, teeth gritted, the cords biting and stretched tight on the right side, one foot braced. Feet on the bottom edge, centred so the two frames line up with prince-bound when swapped. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-struggle-a-tinted",
+    "title": "Prince struggling against the cords, back to the left (tinted)",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his court dress exactly as in prince-bound-tinted.webp (attach it, and prince-court-tinted.webp): the same face, doublet, cloak, colours and scale, his arms still bound to his sides by the glowing teal cords of the witch's magic. Wrenching against them back to the left: his whole body twisted and leaning back toward the LEFT, one shoulder heaved up, teeth gritted, the cords biting and stretched tight on the right side, one foot braced. Feet on the bottom edge, centred so the two frames line up with prince-bound when swapped. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-struggle-b",
+    "title": "Prince struggling against the cords, forward to the right",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his court dress exactly as in prince-bound.webp (attach it, and prince-court.webp): the same face, doublet, cloak, colours and scale, his arms still bound to his sides by the glowing teal cords of the witch's magic. Wrenching against them forward to the right: his whole body twisted and leaning forward toward the RIGHT, the other shoulder heaved up, straining, the cords stretched tight on the left side, the other foot braced. Feet on the bottom edge, centred so the two frames line up with prince-bound when swapped. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "prince-struggle-b-tinted",
+    "title": "Prince struggling against the cords, forward to the right (tinted)",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Prince Bel-Azor in his court dress exactly as in prince-bound-tinted.webp (attach it, and prince-court-tinted.webp): the same face, doublet, cloak, colours and scale, his arms still bound to his sides by the glowing teal cords of the witch's magic. Wrenching against them forward to the right: his whole body twisted and leaning forward toward the RIGHT, the other shoulder heaved up, straining, the cords stretched tight on the left side, the other foot braced. Feet on the bottom edge, centred so the two frames line up with prince-bound when swapped. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-court-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "azurine-swoon",
+    "title": "Azurine swooning under the curse",
+    "size": [
+      260,
+      380
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Princess Azurine as in references/film-planning/originals/char-azurine.png (attach it): dark hair in a jewelled circlet, a pale azure gown with gold stars and rose-pink sleeves, exactly as in azurine-stand.webp (attach it): the same face, gown, circlet, colours and scale. Swooning under the witch's curse: sinking backward at the knees, head thrown back and eyes closing, one hand to her brow and the other arm falling, gown and sleeves billowing as she faints. Facing LEFT, toward the court. Feet on the bottom edge. Nothing but the figure: no ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "azurine-swoon-tinted",
+    "title": "Azurine swooning under the curse (tinted)",
+    "size": [
+      260,
+      380
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "Princess Azurine as in references/film-planning/originals/char-azurine.png (attach it): dark hair in a jewelled circlet, a pale azure gown with gold stars and rose-pink sleeves, exactly as in azurine-stand-tinted.webp (attach it): the same face, gown, circlet, colours and scale. Swooning under the witch's curse: sinking backward at the knees, head thrown back and eyes closing, one hand to her brow and the other arm falling, gown and sleeves billowing as she faints. Facing LEFT, toward the court. Feet on the bottom edge. Nothing but the figure: no ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/azurine-stand-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "demon-red-carry",
+    "title": "Red demon flying, bearing someone aloft",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in red, exactly as in demon-red.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning RIGHT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-red.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "demon-red-carry-tinted",
+    "title": "Red demon flying, bearing someone aloft (tinted)",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in red, exactly as in demon-red-tinted.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning RIGHT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-red-tinted.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "demon-teal-carry",
+    "title": "Teal demon flying, bearing someone aloft",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in teal, exactly as in demon-teal.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning LEFT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-teal.webp"
+    ],
+    "edition": "film"
+  },
+  {
+    "id": "demon-teal-carry-tinted",
+    "title": "Teal demon flying, bearing someone aloft (tinted)",
+    "size": [
+      260,
+      360
+    ],
+    "anchor": "bottom centre",
+    "transparent": true,
+    "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in teal, exactly as in demon-teal-tinted.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning LEFT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-teal-tinted.webp"
+    ],
+    "edition": "film"
+  }
+]

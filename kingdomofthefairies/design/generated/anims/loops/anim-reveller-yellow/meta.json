@@ -1,0 +1,18 @@
+{
+  "fps": 11.475,
+  "duration": 1.5686274509803921,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/reveller-yellow.webp",
+  "rig": "dance",
+  "beats": 2,
+  "bpm": 76.5,
+  "id": "anim-reveller-yellow",
+  "frameW": 220,
+  "frameH": 420,
+  "frames": 18,
+  "cols": 6,
+  "decodedBytes": 6652800,
+  "bytes": 443548
+}

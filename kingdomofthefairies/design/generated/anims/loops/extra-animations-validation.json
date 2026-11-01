@@ -1,0 +1,19 @@
+{
+  "defaultOff": true,
+  "toggleOnDraws": true,
+  "persists": true,
+  "toggleOffStops": true,
+  "wandPreviewIndices": [
+    1,
+    4,
+    7,
+    10,
+    13,
+    13,
+    13,
+    13,
+    3,
+    5
+  ],
+  "pageErrors": []
+}

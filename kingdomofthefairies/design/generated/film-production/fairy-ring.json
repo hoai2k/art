@@ -1,0 +1,17 @@
+{
+  "id": "fairy-ring",
+  "title": "The fairy with the ring",
+  "size": [
+    220,
+    420
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The gift fairy in cream and gold from char-royal-court.png (attach it), standing facing left, holding up a ruby ring. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly ONE isolated game sprite with transparent background, no labels or character sheet. Canvas aspect ratio 220:420, target delivery 220 x 420 pixels. Show complete silhouette, preserving the named figure's appearance from the attached reference. Asset fairy-ring.",
+  "transparent": true,
+  "replaces": null,
+  "path": "/workspace/generated_images/exec-217915f8-0b58-4812-9d30-1eaf850116ec.png",
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-royal-court.png"
+  ],
+  "source_commit": "1dc0344"
+}

@@ -1,0 +1,173 @@
+[
+  {
+    "id": "crew-manatarms-tinted-redo",
+    "title": "The man-at-arms (tinted), redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-tinted.webp (attach it, and prince-stand-tinted.webp to show what he must NOT resemble). The same man, pose, halberd, scale, foot position and 220 x 420 canvas, in the same striped crew livery as crew-squire-tinted.webp and crew-helmsman-tinted.webp. Change everything he shares with the prince: an open iron kettle-hat with no plume instead of the plumed silver helmet; a short cloak in the crew's green and ochre instead of the red cape; a red-and-ochre striped heater shield with no star, or no shield at all, instead of the blue star shield. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Images 2 and 3 give crew livery, Image 4 is the prince who he must differ from. Choose the striped red-and-ochre heater shield, no star. Iron kettle-hat with no plume; short green-and-ochre cloak. Keep the same choices throughout all idle frames.",
+    "references": [
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/crew-manatarms-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-stand-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-0365ab9b-c80a-4cd3-b9c0-74d623173f70.png",
+    "generation_id": "exec-0365ab9b-c80a-4cd3-b9c0-74d623173f70",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms-tinted",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "crew-manatarms-redo",
+    "title": "The man-at-arms, redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Use case: precise-object-edit. Image 1 is the edit target, the newly redrawn man-at-arms. Change ONLY the RED cloth portions of his puff sleeves and tunic/short breeches to AZURE BLUE, preserving the golden ochre stripes and gold decoration. Images 2 and 3 give the crew's blue-and-gold livery colours. Keep the red-and-ochre striped heater shield unchanged. Keep iron kettle-hat without plume, short green-and-ochre cloak, armour, halberd, face, hands, pose, ground position, proportions and full framing EXACTLY unchanged. Preserve original painted toy-theatre gouache style and transparent background. No extra limbs or hands.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/progress/rejected/f17-red-livery/crew-manatarms-redo-original.png",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-squire.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/crew-helmsman.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-e5bfce21-98f2-4e5c-a1e3-37dd97ad5e2f.png",
+    "generation_id": "exec-e5bfce21-98f2-4e5c-a1e3-37dd97ad5e2f",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "crew-manatarms-idle-b-tinted-redo",
+    "title": "The man-at-arms, idle frame B (tinted), redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-b-tinted.webp (attach it, and prince-stand-tinted.webp to show what he must NOT resemble). The same man, pose, halberd, scale, foot position and 220 x 420 canvas, in the same striped crew livery as crew-squire-tinted.webp and crew-helmsman-tinted.webp. Change everything he shares with the prince: an open iron kettle-hat with no plume instead of the plumed silver helmet; a short cloak in the crew's green and ochre instead of the red cape; a red-and-ochre striped heater shield with no star, or no shield at all, instead of the blue star shield. No floor or shadow. Keep it an idle frame of the redrawn crew-manatarms-tinted-redo.webp: exactly the same figure, with only the detail that moved in crew-manatarms-idle-b-tinted.webp moving. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Images 2 and 3 give crew livery, Image 4 is the prince who he must differ from. Choose the striped red-and-ochre heater shield, no star. Iron kettle-hat with no plume; short green-and-ochre cloak. Keep the same choices throughout all idle frames.\nREFERENCE OVERRIDE: Image 1 is the accepted NEW standing man-at-arms, the identity/costume/size edit target. Image 2 is the OLD idle pose and shows ONLY the tiny head turn to reproduce. Use exactly the NEW kettle-hat, green/ochre short cloak, striped heater shield, tunic, armour and face from Image 1. No plumage or star shield. Keep body, feet, halberd and hands fixed; change only head angle to match Image 2. Idle B looks a little farther right; idle C turns his head back LEFT. Only one figure.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/crew-manatarms-tinted-redo-original.png",
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/crew-manatarms-idle-b-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-b-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-d11d27dc-7230-46ae-b256-2bc87bb07cc2.png",
+    "generation_id": "exec-d11d27dc-7230-46ae-b256-2bc87bb07cc2",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms-idle-b-tinted",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "crew-manatarms-idle-b-redo",
+    "title": "The man-at-arms, idle frame B, redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-b.webp (attach it, and prince-stand.webp to show what he must NOT resemble). The same man, pose, halberd, scale, foot position and 220 x 420 canvas, in the same striped crew livery as crew-squire.webp and crew-helmsman.webp. Change everything he shares with the prince: an open iron kettle-hat with no plume instead of the plumed silver helmet; a short cloak in the crew's green and ochre instead of the red cape; a red-and-ochre striped heater shield with no star, or no shield at all, instead of the blue star shield. No floor or shadow. Keep it an idle frame of the redrawn crew-manatarms-redo.webp: exactly the same figure, with only the detail that moved in crew-manatarms-idle-b.webp moving. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Images 2 and 3 give crew livery, Image 4 is the prince who he must differ from. Choose the striped red-and-ochre heater shield, no star. Iron kettle-hat with no plume; short green-and-ochre cloak. Keep the same choices throughout all idle frames.\nREFERENCE OVERRIDE: Image 1 is the accepted NEW standing man-at-arms, the identity/costume/size edit target. Image 2 is the OLD idle pose and shows ONLY the tiny head turn to reproduce. Use exactly the NEW kettle-hat, green/ochre short cloak, striped heater shield, tunic, armour and face from Image 1. No plumage or star shield. Keep body, feet, halberd and hands fixed; change only head angle to match Image 2. Idle B looks a little farther right; idle C turns his head back LEFT. Only one figure.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/crew-manatarms-redo-original.png",
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/crew-manatarms-idle-b.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-b",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-c9c6d4c7-dbc9-40f5-a8a0-ff9af7bfc506.png",
+    "generation_id": "exec-c9c6d4c7-dbc9-40f5-a8a0-ff9af7bfc506",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms-idle-b",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "crew-manatarms-idle-c-tinted-redo",
+    "title": "The man-at-arms, idle frame C (tinted), redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-c-tinted.webp (attach it, and prince-stand-tinted.webp to show what he must NOT resemble). The same man, pose, halberd, scale, foot position and 220 x 420 canvas, in the same striped crew livery as crew-squire-tinted.webp and crew-helmsman-tinted.webp. Change everything he shares with the prince: an open iron kettle-hat with no plume instead of the plumed silver helmet; a short cloak in the crew's green and ochre instead of the red cape; a red-and-ochre striped heater shield with no star, or no shield at all, instead of the blue star shield. No floor or shadow. Keep it an idle frame of the redrawn crew-manatarms-tinted-redo.webp: exactly the same figure, with only the detail that moved in crew-manatarms-idle-c-tinted.webp moving. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Images 2 and 3 give crew livery, Image 4 is the prince who he must differ from. Choose the striped red-and-ochre heater shield, no star. Iron kettle-hat with no plume; short green-and-ochre cloak. Keep the same choices throughout all idle frames.\nREFERENCE OVERRIDE: Image 1 is the accepted NEW standing man-at-arms, the identity/costume/size edit target. Image 2 is the OLD idle pose and shows ONLY the tiny head turn to reproduce. Use exactly the NEW kettle-hat, green/ochre short cloak, striped heater shield, tunic, armour and face from Image 1. No plumage or star shield. Keep body, feet, halberd and hands fixed; change only head angle to match Image 2. Idle B looks a little farther right; idle C turns his head back LEFT. Only one figure.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/crew-manatarms-tinted-redo-original.png",
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/crew-manatarms-idle-c-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-c-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-96f11177-da03-469a-a667-d6c3749b6fc0.png",
+    "generation_id": "exec-96f11177-da03-469a-a667-d6c3749b6fc0",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms-idle-c-tinted",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "crew-manatarms-idle-c-redo",
+    "title": "The man-at-arms, idle frame C, redrawn unlike the prince",
+    "size": [
+      220,
+      420
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw crew-manatarms-idle-c.webp (attach it, and prince-stand.webp to show what he must NOT resemble). The same man, pose, halberd, scale, foot position and 220 x 420 canvas, in the same striped crew livery as crew-squire.webp and crew-helmsman.webp. Change everything he shares with the prince: an open iron kettle-hat with no plume instead of the plumed silver helmet; a short cloak in the crew's green and ochre instead of the red cape; a red-and-ochre striped heater shield with no star, or no shield at all, instead of the blue star shield. No floor or shadow. Keep it an idle frame of the redrawn crew-manatarms-redo.webp: exactly the same figure, with only the detail that moved in crew-manatarms-idle-c.webp moving. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Images 2 and 3 give crew livery, Image 4 is the prince who he must differ from. Choose the striped red-and-ochre heater shield, no star. Iron kettle-hat with no plume; short green-and-ochre cloak. Keep the same choices throughout all idle frames.\nREFERENCE OVERRIDE: Image 1 is the accepted NEW standing man-at-arms, the identity/costume/size edit target. Image 2 is the OLD idle pose and shows ONLY the tiny head turn to reproduce. Use exactly the NEW kettle-hat, green/ochre short cloak, striped heater shield, tunic, armour and face from Image 1. No plumage or star shield. Keep body, feet, halberd and hands fixed; change only head angle to match Image 2. Idle B looks a little farther right; idle C turns his head back LEFT. Only one figure.",
+    "references": [
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/crew-manatarms-redo-original.png",
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/crew-manatarms-idle-c.webp"
+    ],
+    "transparent": true,
+    "replaces": "crew-manatarms-idle-c",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-37817392-dcaa-4544-a2df-0f25f09ada09.png",
+    "generation_id": "exec-37817392-dcaa-4544-a2df-0f25f09ada09",
+    "review_status": "accepted: consistent crew costume and head-turn idles; distinct kettle-hat, striped shield and short green/ochre cloak; coherent hands gripping halberd",
+    "install_as": "crew-manatarms-idle-c",
+    "archive_directory": "progress/superseded-f17-f18"
+  },
+  {
+    "id": "lobster-guard-closed-tinted-redo",
+    "title": "The lobster guard, claws shut (tinted), matched to the open pose",
+    "size": [
+      500,
+      340
+    ],
+    "anchor": "bottom centre",
+    "prompt": "Redraw lobster-guard-closed-tinted.webp (attach it, and lobster-guard-open-tinted.webp, which it must match). The same pose: crouched, the halberd held across the way, claws shut; the same canvas, scale and foot position. But exactly the colouring, shading, weed, shells and film finish of lobster-guard-open-tinted.webp: the same red of the shell, the same depth of shadow, the same sea-green and rose weed and pearl trim. Laid side by side the two must read as one guard in two poses. No floor or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target. Preserve pose, scale, ground line, facing and unaffected details. Genuine transparent background. No letters or shadow. Anatomically coherent: exactly two arms, two hands, both securely gripping the halberd or their assigned prop, no extra limbs. Image 2 is the exact colour/material/style and anatomy reference: match the warm shaded red shell and dense full sea-green weed. Only two claw arms total: weapon claw firmly wraps halberd shaft, the free claw is CLOSED. Do not add human hands, floating claws or third arm.",
+    "references": [
+      "kingdomofthefairies/design/generated/film-production/progress/superseded-f17-f18/lobster-guard-closed-tinted.webp",
+      "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/lobster-guard-open-tinted.webp"
+    ],
+    "transparent": true,
+    "replaces": "lobster-guard-closed-tinted",
+    "edition": "film",
+    "generator": "built-in image_gen",
+    "source_commit": "df2337c",
+    "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-6c91005d-5976-4727-a240-a6747f47302a.png",
+    "generation_id": "exec-6c91005d-5976-4727-a240-a6747f47302a",
+    "review_status": "accepted: closed pose matches open warm shaded red shell, full sea-green/rose weed and pearl trim; exactly two claw arms visibly gripping halberd",
+    "install_as": "lobster-guard-closed-tinted",
+    "archive_directory": "progress/superseded-f17-f18"
+  }
+]

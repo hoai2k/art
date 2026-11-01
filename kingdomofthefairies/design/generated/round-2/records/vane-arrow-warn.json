@@ -1,0 +1,15 @@
+{
+  "id": "vane-arrow-warn",
+  "title": "Weathervane arrow, spinning",
+  "width": 230,
+  "height": 50,
+  "anchor": "centre (pivot)",
+  "section": "Second round: stage machinery, footlights and the HUD",
+  "prompt": "Use case: precise-object-edit. The same arrow as vane-arrow with the same framing, but enamelled magenta #e0127a with gold edges, as the witch spins the wind. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nInput image is the exact edit target. Preserve its canvas framing, scale, all unchanged outlines and positions. Change ONLY the requested state or tint. Real transparent alpha outside painted art. No text or watermark.",
+  "transparent": true,
+  "references": [
+    "design/generated/round-2/originals/vane-arrow.png"
+  ],
+  "dependency": "vane-arrow",
+  "mode": "built-in image_gen"
+}

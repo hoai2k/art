@@ -1,0 +1,382 @@
+{
+  "source": "https://www.youtube.com/watch?v=7zoGfdN4dgE",
+  "method": "Captured source frames and built-in imagegen reconstructions. Generated images complete blurred or occluded details and are not exact film stills. Story motifs are inferred from song captions, with frames used only for style.",
+  "images": [
+    {
+      "id": "scene-palace",
+      "title": "Palace ceremony",
+      "frames": [
+        10,
+        20
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the entire ornate palace ceremony set as one frontal scene. Include the gold scrollwork throne architecture, patterned stairs, pale floor and teal-tinted courtiers in the supplied frames. Preserve the period fairy-tale costumes and visible stage-flat construction.",
+      "file": "scene-palace.png",
+      "source_frames": [
+        "../video-frames/frame-010s.jpg",
+        "../video-frames/frame-020s.jpg"
+      ]
+    },
+    {
+      "id": "scene-ship-deck",
+      "title": "Voyage and deck travellers",
+      "frames": [
+        25,
+        30,
+        35
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct one rich reference scene of the ornate ship deck: decorated railing, ropes, painted rough sea and clouds, costumed deck travellers. Include the deck tableau and ship scale from the frames; no band collage in this image.",
+      "file": "scene-ship-deck.png",
+      "source_frames": [
+        "../video-frames/frame-025s.jpg",
+        "../video-frames/frame-030s.jpg",
+        "../video-frames/frame-035s.jpg"
+      ]
+    },
+    {
+      "id": "scene-harbour-band",
+      "title": "Band at the harbour",
+      "frames": [
+        40,
+        45
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the harbour performance tableau with the three band members in their observed left-to-right order, the gold carved ship stern, ropes, barrels and mast. Preserve their distinct hats, hair, clothing and monochrome treatment against lightly tinted scenery. Do not invent instruments not visible.",
+      "file": "scene-harbour-band.png",
+      "source_frames": [
+        "../video-frames/frame-040s.jpg",
+        "../video-frames/frame-045s.jpg"
+      ]
+    },
+    {
+      "id": "scene-storm-wreck",
+      "title": "Storm and shipwreck water",
+      "frames": [
+        50,
+        55,
+        60
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the rocky storm sea with layered painted waves, white spray, pale superimposed spectral forms and distant rocks. Preserve the visibly theatrical handmade early-cinema character; do not invent a named ghost or a new ship.",
+      "file": "scene-storm-wreck.png",
+      "source_frames": [
+        "../video-frames/frame-050s.jpg",
+        "../video-frames/frame-055s.jpg",
+        "../video-frames/frame-060s.jpg"
+      ]
+    },
+    {
+      "id": "scene-undersea-arrival",
+      "title": "Undersea arrival",
+      "frames": [
+        65,
+        70,
+        85
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the fantastical submarine world: painted rocks, white coral, large fish, reclining travellers and richly dressed attendants. Present a clear front-on stage tableau, faithful to supplied frames. No band in this reconstruction.",
+      "file": "scene-undersea-arrival.png",
+      "source_frames": [
+        "../video-frames/frame-065s.jpg",
+        "../video-frames/frame-070s.jpg",
+        "../video-frames/frame-085s.jpg"
+      ]
+    },
+    {
+      "id": "scene-grotto-boat",
+      "title": "Grotto and magical vessel",
+      "frames": [
+        80,
+        95,
+        105
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct a teal underwater grotto scene with the pink-robed magical woman, curved gold shell-like boat and coral-red dragon-like marine creature, following the actual frame shapes. Include white coral and painted rocky depth.",
+      "file": "scene-grotto-boat.png",
+      "source_frames": [
+        "../video-frames/frame-080s.jpg",
+        "../video-frames/frame-095s.jpg",
+        "../video-frames/frame-105s.jpg"
+      ]
+    },
+    {
+      "id": "scene-undersea-court",
+      "title": "Underwater court and whale",
+      "frames": [
+        115,
+        130,
+        145
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the underwater court: pastel-robed women and gold-costumed attendants behind red marine monsters, a huge dark prop whale passing through the tableau. Show the extraordinary scale and mechanical-stage illusion.",
+      "file": "scene-undersea-court.png",
+      "source_frames": [
+        "../video-frames/frame-115s.jpg",
+        "../video-frames/frame-130s.jpg",
+        "../video-frames/frame-145s.jpg"
+      ]
+    },
+    {
+      "id": "scene-whale-shore",
+      "title": "Whale at the rocky shore",
+      "frames": [
+        150,
+        155,
+        160
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the giant whale at the rocky shoreline, mouth open with the emerging costumed traveller visible. Keep rocky theatrical flats, dark painted water and soft selective tints. Show the whale as the observed constructed fantasy prop.",
+      "file": "scene-whale-shore.png",
+      "source_frames": [
+        "../video-frames/frame-150s.jpg",
+        "../video-frames/frame-155s.jpg",
+        "../video-frames/frame-160s.jpg"
+      ]
+    },
+    {
+      "id": "scene-cliff-band",
+      "title": "Cliff and band collage",
+      "frames": [
+        170,
+        180,
+        185
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the stone building and cliff tableau with the monochrome band collage at impossible scales: small guitarist in the watery gap and large foreground musician. Preserve their visible appearances from the frames and the intentionally theatrical collage.",
+      "file": "scene-cliff-band.png",
+      "source_frames": [
+        "../video-frames/frame-170s.jpg",
+        "../video-frames/frame-180s.jpg",
+        "../video-frames/frame-185s.jpg"
+      ]
+    },
+    {
+      "id": "scene-collapse-rescue",
+      "title": "Collapse and rescue",
+      "frames": [
+        190,
+        195
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the red-orange smoke-filled collapsing stone building with broken stairs and timbers. Include the costumed man carrying the woman as seen in the frame. Preserve dramatic theatrical destruction and rescue, no gore.",
+      "file": "scene-collapse-rescue.png",
+      "source_frames": [
+        "../video-frames/frame-190s.jpg",
+        "../video-frames/frame-195s.jpg"
+      ]
+    },
+    {
+      "id": "scene-final-pageant",
+      "title": "Final fantasy pageant",
+      "frames": [
+        200,
+        10
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Reconstruct the closing fantasy pageant from the first input, an ornate gold architectural centre framed by performers in pink and pale costumes, with a layered dissolve-like theatrical dream atmosphere. Second input only informs matching gold stage ornament. No new plot objects.",
+      "file": "scene-final-pageant.png",
+      "source_frames": [
+        "../video-frames/frame-200s.jpg",
+        "../video-frames/frame-010s.jpg"
+      ]
+    },
+    {
+      "id": "character-band-left",
+      "title": "Band member in dark hat",
+      "frames": [
+        15,
+        40,
+        45
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create an individual full-length character reference of the LEFT band member: dark broad theatrical hat, long dark hair, dark jacket and lighter trousers, preserving visible appearance and stance. One clear full body plus a larger head-and-shoulders inset on cream paper. Do not attach a real name or invent an instrument.",
+      "file": "character-band-left.png",
+      "source_frames": [
+        "../video-frames/frame-015s.jpg",
+        "../video-frames/frame-040s.jpg",
+        "../video-frames/frame-045s.jpg"
+      ]
+    },
+    {
+      "id": "character-band-centre",
+      "title": "Band member with beard",
+      "frames": [
+        15,
+        40,
+        185
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create an individual character reference of the CENTRE bearded band member with curly light hair, pale shirt and decorated waistcoat, dark trousers. Use the later frame for his visible dark string instrument. One full-length figure and head-and-shoulders inset. Preserve appearance rather than generic pirate styling.",
+      "file": "character-band-centre.png",
+      "source_frames": [
+        "../video-frames/frame-015s.jpg",
+        "../video-frames/frame-040s.jpg",
+        "../video-frames/frame-185s.jpg"
+      ]
+    },
+    {
+      "id": "character-band-right",
+      "title": "Band member in curved hat",
+      "frames": [
+        15,
+        40,
+        175
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create an individual character reference of the RIGHT band member: dark curved or tricorn-like hat with pale detail, pale patterned shirt, dark trousers. Use the later frame for the small dark string instrument he visibly holds. One full body and head-and-shoulders inset, faithful appearance.",
+      "file": "character-band-right.png",
+      "source_frames": [
+        "../video-frames/frame-015s.jpg",
+        "../video-frames/frame-040s.jpg",
+        "../video-frames/frame-175s.jpg"
+      ]
+    },
+    {
+      "id": "character-palace-cast",
+      "title": "Palace figures and courtiers",
+      "frames": [
+        10,
+        20
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a costume reference sheet of the most visible original-film figures in the palace: seated royal-looking figure(s) and the teal-tinted attendants. Keep their distinguishing headwear and costume shapes from the frames. Label only descriptively, without names. Where occluded details must be completed keep completion modest and consistent with the costume.",
+      "file": "character-palace-cast.png",
+      "source_frames": [
+        "../video-frames/frame-010s.jpg",
+        "../video-frames/frame-020s.jpg"
+      ]
+    },
+    {
+      "id": "character-deck-travellers",
+      "title": "Costumed deck travellers",
+      "frames": [
+        30,
+        35,
+        25
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a costume reference sheet of the original-film deck travellers: the green patterned coat and striped breeches figure, the dark-vested pale-breeches figure, and gold-tinted deck attendant. Preserve headwear, period silhouette and broad stage gestures from frames. No modern band figures.",
+      "file": "character-deck-travellers.png",
+      "source_frames": [
+        "../video-frames/frame-030s.jpg",
+        "../video-frames/frame-035s.jpg",
+        "../video-frames/frame-025s.jpg"
+      ]
+    },
+    {
+      "id": "character-pink-magical-woman",
+      "title": "Pink-robed magical figure",
+      "frames": [
+        80,
+        95,
+        85
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a full-length costume and pose reference for the pink-robed magical woman with elaborate headwear or crown visible in the source, flowing long dress and broad guiding gesture beside the red creature. One full-length pose and head detail. Do not label her a sea witch or establish a name; that is unconfirmed.",
+      "file": "character-pink-magical-woman.png",
+      "source_frames": [
+        "../video-frames/frame-080s.jpg",
+        "../video-frames/frame-095s.jpg",
+        "../video-frames/frame-085s.jpg"
+      ]
+    },
+    {
+      "id": "character-undersea-cast",
+      "title": "Undersea women and attendants",
+      "frames": [
+        115,
+        120,
+        125
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a costume reference sheet for the underwater court: distinctly pale teal, rose pink and green long-robed women, plus gold-clad attendants, preserving observed silhouettes and theatrical hairstyles. Show five readable full-length figures from actual frame roles, no invented queen or new character.",
+      "file": "character-undersea-cast.png",
+      "source_frames": [
+        "../video-frames/frame-115s.jpg",
+        "../video-frames/frame-120s.jpg",
+        "../video-frames/frame-125s.jpg"
+      ]
+    },
+    {
+      "id": "character-undersea-ruler",
+      "title": "Crowned undersea figure",
+      "frames": [
+        70,
+        80,
+        85
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Create a full-length character costume reference of the seated crowned gold-and-teal undersea figure visible near the upper right of these inputs. Preserve the ornate crown, robe, beard and staff-like object actually visible; one full-length reconstruction plus head detail on cream paper. Do not assign a name, divine status or relationship to another character. Complete hidden lower clothing conservatively.",
+      "file": "character-undersea-ruler.png",
+      "source_frames": [
+        "../video-frames/frame-070s.jpg",
+        "../video-frames/frame-080s.jpg",
+        "../video-frames/frame-085s.jpg"
+      ]
+    },
+    {
+      "id": "character-rescue-pair",
+      "title": "Rescuer and carried woman",
+      "frames": [
+        195,
+        165,
+        155
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a reference of the man carrying the woman in the final rescue frame: one clear faithful carrying pose, with smaller costume details of each where visible. Use other frames only to match original-film costuming, not to assert they are the same people. Preserve uncertainty by avoiding identity labels.",
+      "file": "character-rescue-pair.png",
+      "source_frames": [
+        "../video-frames/frame-195s.jpg",
+        "../video-frames/frame-165s.jpg",
+        "../video-frames/frame-155s.jpg"
+      ]
+    },
+    {
+      "id": "creature-red-sea-dragon",
+      "title": "Red marine dragon",
+      "frames": [
+        75,
+        80,
+        115
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a creature reference sheet of the coral-red marine dragon-like prop seen in the frames: curling neck, ornamental fins, large round eye, scalloped scales and flamboyant head shapes. One side profile and one front three-quarter head detail. Maintain the stage-prop design, not realistic reptilian biology.",
+      "file": "creature-red-sea-dragon.png",
+      "source_frames": [
+        "../video-frames/frame-075s.jpg",
+        "../video-frames/frame-080s.jpg",
+        "../video-frames/frame-115s.jpg"
+      ]
+    },
+    {
+      "id": "creature-whale",
+      "title": "Giant prop whale",
+      "frames": [
+        145,
+        150,
+        155,
+        160
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a reference sheet for the giant dark grey stage whale: full side silhouette, open-mouth head detail and tail shape, matching observed rounded form, white lip lines and painted prop texture. Keep visibly handmade toy-theatre anatomy.",
+      "file": "creature-whale.png",
+      "source_frames": [
+        "../video-frames/frame-145s.jpg",
+        "../video-frames/frame-150s.jpg",
+        "../video-frames/frame-155s.jpg",
+        "../video-frames/frame-160s.jpg"
+      ]
+    },
+    {
+      "id": "creature-fish",
+      "title": "Grotto fish and marine ornaments",
+      "frames": [
+        70,
+        100,
+        105,
+        115
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a reference sheet of the visible fantastical fish and marine ornaments: large pale fish with long fins and round eye, scaled gold-red fish and coral-like pale branching shapes. Match actual input designs, one isolated study per subject, no invented species.",
+      "file": "creature-fish.png",
+      "source_frames": [
+        "../video-frames/frame-070s.jpg",
+        "../video-frames/frame-100s.jpg",
+        "../video-frames/frame-105s.jpg",
+        "../video-frames/frame-115s.jpg"
+      ]
+    },
+    {
+      "id": "story-motifs",
+      "title": "Pearls tea and flowers",
+      "frames": [
+        80,
+        115
+      ],
+      "prompt": "Use case: historical-scene / stylized-concept. Asset type: visual reference for a game design document. Input images are actual source-video frames, used for costume, scenery, silhouette, colour and composition. Make a clearer painterly reconstruction of the specified observed subject in the same hand-coloured M\u00e9li\u00e8s silent-film/toy-theatre aesthetic: soft cream-grey photographic base, selective uneven stencil tints, painted flats, light film grain. Retain specificity and visual oddness. No modern fantasy armour, glossy 3D, naturalistic underwater lighting, captions, UI, seek arrows, numbers, watermarks or fabricated names. No text in the image. Reconstruct obscured detail conservatively. Create a visual motif reference of a pearl, a small tea cup with leaves, and flowers, as possible adaptation objects for the song's textual themes. Use the input frames ONLY as style reference, matching early-cinema painted props, cream-grey base with pale gold and rose/teal tint. These objects are interpretive additions, not claimed visible film props. Three separate object studies on cream ground.",
+      "file": "story-motifs.png",
+      "source_frames": [
+        "../video-frames/frame-080s.jpg",
+        "../video-frames/frame-115s.jpg"
+      ]
+    }
+  ]
+}

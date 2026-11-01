@@ -1,0 +1,23 @@
+{
+  "id": "demon-red-carry",
+  "title": "Red demon flying, bearing someone aloft",
+  "size": [
+    260,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "a demon as in references/film-planning/originals/char-demons.png (attach it): a stage performer in tights with a horned cap, in red, exactly as in demon-red.webp (attach it): the same face, horned cap, tights and colours, at the same scale. Flying, not running: legs trailing behind and below him, body leaning RIGHT, both arms raised above his head with the hands open and cupped as if bearing a sleeping princess aloft on them (she is drawn separately, above his hands), his flaming torch tucked through his belt. Lowest point of the figure on the bottom edge. Nothing but the figure: no princess, ground or shadow. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/demon-red.webp"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-f970eb43-7dae-42d0-b549-f0008a7b189a.png",
+  "generation_id": "exec-f970eb43-7dae-42d0-b549-f0008a7b189a",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

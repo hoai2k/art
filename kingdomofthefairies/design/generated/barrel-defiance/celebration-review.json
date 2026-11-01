@@ -1,0 +1,81 @@
+[
+  {
+    "look": "original",
+    "w": {
+      "y": 543.3333600000001,
+      "on": false
+    },
+    "az": {
+      "y": 543.3333600000001,
+      "on": false
+    },
+    "wave": {
+      "at": 5.016599999999999,
+      "order": [
+        "crew-helmsman",
+        "crew-squire",
+        "crew-manatarms",
+        "crew-bosun",
+        "fairy-ring",
+        "fairy-crown",
+        "fairy-gold",
+        "king-stand",
+        "queen-stand"
+      ]
+    }
+  },
+  {
+    "look": "tinted",
+    "w": {
+      "y": 549.3453600000004,
+      "on": false
+    },
+    "az": {
+      "y": 549.3453600000004,
+      "on": false
+    },
+    "wave": {
+      "at": 5.016599999999999,
+      "order": [
+        "crew-helmsman",
+        "crew-squire",
+        "crew-manatarms",
+        "crew-bosun",
+        "fairy-ring",
+        "fairy-crown",
+        "fairy-gold",
+        "king-stand",
+        "queen-stand"
+      ]
+    }
+  },
+  {
+    "waiting": {
+      "time": 0.016700000000000274,
+      "fade": 1
+    },
+    "prelude": {
+      "time": 0.4001000000000003,
+      "fade": 1,
+      "track": "period-wedding"
+    },
+    "sizes": [
+      {
+        "id": "azurine-stand",
+        "paintedHeight": 160
+      },
+      {
+        "id": "azurine-jump",
+        "paintedHeight": 160
+      },
+      {
+        "id": "azurine-stand-tinted",
+        "paintedHeight": 160
+      },
+      {
+        "id": "azurine-jump-tinted",
+        "paintedHeight": 160
+      }
+    ]
+  }
+]

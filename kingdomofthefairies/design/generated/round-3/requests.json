@@ -1,0 +1,22 @@
+[
+  {
+    "id": "cliff-face-tall-2",
+    "title": "Tall cliff face, level top",
+    "width": 1400,
+    "height": 3600,
+    "anchor": "bottom centre",
+    "section": "Third round: re-requests",
+    "prompt": "The same tall sea cliff as cliff-face-tall (pale layered rock with green ivy, jutting ledges at many heights, surf only at the very foot, no repeated section), with two changes: the grassy top is LEVEL and runs straight across the full width of the cliff within the top 3% of the image (the delivered one slopes down to the right, so the house on top floats), and the rock face keeps its full width all the way up instead of narrowing toward the top. The dark vertical crack runs from 20% to 80% of the height at about two-thirds of the width. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "transparent": true
+  },
+  {
+    "id": "ending-dark-3",
+    "title": "Ending: the window is dark (house in frame)",
+    "width": 2560,
+    "height": 1440,
+    "anchor": "full frame",
+    "section": "Third round: re-requests",
+    "prompt": "Night. The stone cottage on the cliff (two storeys of pale stone hung with ivy and pink roses, one window, a green wooden door; the same house as house-front), standing between 15% and 45% of the width so the theatre drapes do not hide it: its window dark, and a black silhouette of another figure in its lit doorway. On the quay in front at the right of centre, the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1) alone, throwing a small stone into the bay, rings spreading on the water. Replaces ending-dark-2, which paints a castle and puts the doorway under the left drape. A painted toy-theatre tableau seen square-on, full bleed to every edge, scene painting in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es; early-1900s stencil-tinted colour: sepia-grey tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 slightly out of register; faint film grain; no lettering.",
+    "transparent": false
+  }
+]

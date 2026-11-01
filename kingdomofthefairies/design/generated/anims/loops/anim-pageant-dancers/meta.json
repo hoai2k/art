@@ -1,0 +1,18 @@
+{
+  "fps": 7.65,
+  "duration": 1.5686274509803921,
+  "loop": "loop",
+  "anchor": "bottom centre",
+  "method": "painted-puppet deformation",
+  "source": "assets/pageant-dancers.webp",
+  "rig": "pageant",
+  "beats": 2,
+  "bpm": 76.5,
+  "id": "anim-pageant-dancers",
+  "frameW": 600,
+  "frameH": 262,
+  "frames": 12,
+  "cols": 6,
+  "decodedBytes": 7545600,
+  "bytes": 797408
+}

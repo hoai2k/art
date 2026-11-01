@@ -1,0 +1,23 @@
+{
+  "id": "sea-spirit-tinted",
+  "title": "sea-spirit, tinted after the film",
+  "size": [
+    300,
+    600
+  ],
+  "anchor": "bottom centre",
+  "prompt": "Redraw sea-spirit.webp (attach it) in the look of the 1903 film (attach references/expanded-world/source-frames/frame-00m26s.jpg, frame-04m54s.jpg and frame-05m51s.jpg). Keep exactly the same subject, pose, framing, scale, foot position and canvas, so it lays over the original. The film's sea court: Neptune is an actor with a white beard, a crown and a trident on a painted shell throne; his attendants and the sea spirit are dancers in pale gowns; the seahorse guard a performer in costume; the dragon and fish painted card props on wires. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 is the edit target, images 2\u20134 are film-style references only. Keep the exact subject, pose, prop positions, facing direction and full silhouette of image 1. Output one isolated sprite on a genuinely transparent canvas with aspect ratio 300:600, intended delivery 300 x 600. Preserve correct limb counts and anatomical hand grips for any performer; no extra arms, hands, fingers or detached props.",
+  "transparent": true,
+  "replaces": "sea-spirit",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sea-spirit.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-00m26s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-04m54s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/expanded-world/source-frames/frame-05m51s.jpg"
+  ],
+  "generator": "built-in image_gen",
+  "source_commit": "d3bc23c",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-9e828a51-70ee-4fa9-85b9-6fc96f026fb9.png",
+  "generation_id": "exec-9e828a51-70ee-4fa9-85b9-6fc96f026fb9",
+  "review_status": "accepted: photographic stage finish, sparse stencil washes, complete silhouette, original facing direction and pose reviewed"
+}

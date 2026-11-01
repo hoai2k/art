@@ -1,0 +1,15 @@
+{
+  "id": "scrying-eye",
+  "title": "The witch's scrying eye",
+  "size": [
+    200,
+    300
+  ],
+  "anchor": "top centre (it hangs)",
+  "prompt": "A ghostly hooded eye: a pale staring eye inside a swirl of dark-teal smoke shaped like the witch's hood, a thin thread of smoke above, glowing faintly. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nCreate exactly ONE isolated game prop/creature, with true transparent background. No model sheet, labels, extra examples or stage backdrop. Canvas aspect ratio 200:300, intended delivery 200 x 300 pixels. Preserve the entire silhouette. Asset scrying-eye.",
+  "transparent": true,
+  "replaces": "gaze-lantern",
+  "path": "/workspace/generated_images/exec-fc85ffc0-35b1-4685-9fb7-5df2417f9cb8.png",
+  "references": [],
+  "source_commit": "1dc0344"
+}

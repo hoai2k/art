@@ -1,0 +1,23 @@
+{
+  "id": "sailor-stride-b",
+  "title": "The sailor, stride B, with his sack",
+  "size": [
+    220,
+    360
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The sailor exactly as in sailor-stand.webp and sailor-pass-b.webp (attach both, and sailor-stride-a.webp if drawn): the same face, cap, pea coat, red scarf, trousers, boots, cream cut-out outline, scale and head height, AND the same sack over his shoulder, held as in the passing frame. Walking right in a full stride: RIGHT leg forward, heel down; left leg straight behind on its toes. The free arm swings opposite the legs; the sack hand stays on the sack. Head within 10 px of its height in the passing frames. Feet on the bottom ground line; no floor or shadow. Shared by the default (partial) and Widow\u2019s Bay editions. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges M\u00e9li\u00e8s' 1903 film Le Royaume des f\u00e9es: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nImage 1 fixes identity, clothing, sack and head scale; image 2 fixes the passing-frame costume and sack. Exactly two anatomically coherent arms: ONE hand grips the sack strap, the other swings naturally. No third hand behind the sack. Keep the same sack on the same shoulder in every frame. Use a moderate full stride so the head height and body scale match the reference rather than a very wide lunge. Target canvas 220 x 360, aspect ratio 220:360. One isolated sprite on genuine transparency.\nImage 3 is the accepted stride A: copy its face, cap, coat, sack, strap-hand position, boots, colours and head/foot height exactly. Change only the legs to the opposite stride and the free arm swing. Do not make a longer lunge or change the sack.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-stand.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-pass-b.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/sailor-stride-a.webp"
+  ],
+  "transparent": true,
+  "replaces": "sailor-walk-b",
+  "edition": "shared",
+  "generator": "built-in image_gen",
+  "source_commit": "6300475",
+  "path": "/Users/hoai/.codex/generated_images/01a12c3b-6d36-7021-b741-4772e373f30e/exec-0432e258-06b6-4b34-ae54-6525b3ea800c.png",
+  "generation_id": "exec-0432e258-06b6-4b34-ae54-6525b3ea800c",
+  "review_status": "accepted: same cap, coat, scarf, trousers, boots and sack in both strides; coherent two-arm strap grip; head-top and ground line match passing poses"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "clam-open-empty",
+    "title": "Giant clam, open and empty",
+    "width": 240,
+    "height": 200,
+    "anchor": "bottom centre",
+    "section": "Fourth round: Act II regrowing clams",
+    "prompt": "The same giant fluted clam as clam-open (attach it as the image reference), wide open, at exactly the same scale, framing and position, with the same shell, colours and lip, but EMPTY: no pearl, the pink fluted inside and the lower lip visible where the pearl sat. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "reference": "clam-open"
+  },
+  {
+    "id": "sailor-hang",
+    "title": "Sailor hanging from an edge",
+    "width": 220,
+    "height": 440,
+    "anchor": "top centre (his hands)",
+    "section": "Fourth round: Act IV ledge hang",
+    "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), hanging at full stretch by both hands from a ledge edge, seen in profile facing right: both hands together gripping at the very top centre of the canvas, arms straight up above his head, body hanging straight down, the toes of his boots just touching an unseen wall in front of him, cap still on. Effortful but determined. The top of his fingers touches the top edge of the canvas; nothing else of the ledge is drawn. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "reference": "sailor-stand"
+  },
+  {
+    "id": "sailor-pullup",
+    "title": "Sailor pulling himself up",
+    "width": 260,
+    "height": 300,
+    "anchor": "ledge line 25% up from the bottom, centred",
+    "section": "Fourth round: Act IV ledge hang",
+    "prompt": "Full figure of the returning sailor (a weathered, grey-bearded seaman in a navy pea coat, flat navy cap, red neckerchief, grey trousers and black boots; match mood-sailor-1), seen in profile facing right, mid-way through hauling himself up over a ledge: both forearms and his right knee planted on a level, unseen ledge top that runs across the canvas 25% up from the bottom edge; his chest and head above that line, leaning forward; his left leg still dangling below it. Nothing of the ledge itself is drawn, only the man. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge; early-1900s stencil-tinted colour: sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e and grotto teal #5f8c88 laid slightly out of register; no cast shadow; no lettering; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).",
+    "reference": "sailor-stand"
+  }
+]

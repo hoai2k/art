@@ -1,0 +1,24 @@
+{
+  "id": "prince-struggle-a-tinted",
+  "title": "Prince struggling against the cords, back to the left (tinted)",
+  "size": [
+    260,
+    360
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "Prince Bel-Azor in his court dress exactly as in prince-bound-tinted.webp (attach it, and prince-court-tinted.webp): the same face, doublet, cloak, colours and scale, his arms still bound to his sides by the glowing teal cords of the witch's magic. Wrenching against them back to the left: his whole body twisted and leaning back toward the LEFT, one shoulder heaved up, teeth gritted, the cords biting and stretched tight on the right side, one foot braced. Feet on the bottom edge, centred so the two frames line up with prince-bound when swapped. Seen in profile facing right, the same scale and proportions as every other prince- sprite (match prince-stand: cap-of-helmet to chin is one ninth of a standing figure). Nothing but the figure: no ground, wall, ledge or shadow. Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one complete figure, no collage, labels or other figures. True transparent background. Preserve reference identity and proportions. Leave a tiny safe margin so no extremity is clipped; delivery fitting will align the bottom edge.\nCritical correction: head and shoulders clearly LEFT of hips and feet; arch his back backward toward image LEFT while nose still points RIGHT. Torso slopes from upper LEFT down to lower RIGHT. Do not lean forward. Braced knees, clenched teeth, arms bound, cords taut on his RIGHT. Both shoes entirely visible.\nImage 2 is the EXACT backward-arching pose required. Match its body angles and leg placement precisely, but use image 1's grey photographic skin and simple hand-tinted costume. The head must shift LEFT relative to image 1.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/prince-bound-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/generated/film-production/prince-struggle-a-original.png"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-ade82104-0e9e-45a7-a5ab-882748afbc6d.png",
+  "generation_id": "exec-ade82104-0e9e-45a7-a5ab-882748afbc6d",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed reference identity, requested pose and facing, complete silhouette, transparency and prepared sprite."
+  },
+  "method": "built-in imagegen",
+  "source_commit": "ee697304348dfb4b67d6c6b5eea87c397eeaa2e4"
+}

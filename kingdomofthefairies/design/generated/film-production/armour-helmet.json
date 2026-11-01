@@ -1,0 +1,17 @@
+{
+  "id": "armour-helmet",
+  "title": "The plumed helmet (pickup)",
+  "size": [
+    128,
+    128
+  ],
+  "anchor": "bottom centre",
+  "prompt": "The prince's silver plumed helmet with its magenta plume, from char-bel-azor.png (attach it), resting on its own, seen from the side. Flat painted toy-theatre cut-out seen square-on, gouache on card with a faint pale cut edge, in the manner of Georges Méliès' 1903 film Le Royaume des fées: early-1900s stencil-tinted colour (sepia-grey line and tone with translucent washes of plum #2a1424, rose pink #f3c6dc, magenta #e0127a, moon gold #d9b34a, coral red #c8321e, grotto teal #5f8c88 and azure #6f9fc8 laid slightly out of register); no lettering; no cast shadow; isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one asset, no collage or labels. True transparent background. Intended delivery 128 x 128 pixels. Match the reference character, costume, palette and painted card edges. Preserve the complete silhouette.",
+  "transparent": true,
+  "replaces": null,
+  "references": [
+    "/workspace/mini/kingdomofthefairies/design/references/film-planning/originals/char-bel-azor.png"
+  ],
+  "source_commit": "58420cce76c9e36411144e7f90df774c1f2b0d4e",
+  "path": "/workspace/generated_images/exec-9be5f504-519b-49cd-b177-12f44a34d309.png"
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "look": "original",
+    "film": "off",
+    "sizes": {
+      "prince-stand": 360,
+      "prince-strike": 209,
+      "witch-hooded": 363,
+      "witch-cast": 218,
+      "witch-recoil": 327
+    }
+  },
+  {
+    "look": "original",
+    "film": "gentle",
+    "sizes": {
+      "prince-stand": 360,
+      "prince-strike": 209,
+      "witch-hooded": 363,
+      "witch-cast": 218,
+      "witch-recoil": 327
+    }
+  },
+  {
+    "look": "original",
+    "film": "full",
+    "sizes": {
+      "prince-stand": 360,
+      "prince-strike": 209,
+      "witch-hooded": 363,
+      "witch-cast": 218,
+      "witch-recoil": 327
+    }
+  },
+  {
+    "look": "tinted",
+    "film": "off",
+    "sizes": {
+      "prince-stand": 359,
+      "prince-strike": 258,
+      "witch-hooded": 364,
+      "witch-cast": 262,
+      "witch-recoil": 328
+    }
+  },
+  {
+    "look": "tinted",
+    "film": "gentle",
+    "sizes": {
+      "prince-stand": 359,
+      "prince-strike": 258,
+      "witch-hooded": 364,
+      "witch-cast": 262,
+      "witch-recoil": 328
+    }
+  },
+  {
+    "look": "tinted",
+    "film": "full",
+    "sizes": {
+      "prince-stand": 359,
+      "prince-strike": 258,
+      "witch-hooded": 364,
+      "witch-cast": 262,
+      "witch-recoil": 328
+    }
+  }
+]

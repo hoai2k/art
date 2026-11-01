@@ -1,0 +1,24 @@
+{
+  "id": "witch-cast-tinted",
+  "title": "The witch hurling fire (tinted)",
+  "size": [
+    260,
+    400
+  ],
+  "anchor": "bottom centre",
+  "transparent": true,
+  "prompt": "the witch exactly as she appears in M\u00e9li\u00e8s's 1903 film (attach references/film-witch/witch-05m18s.jpg and witch-13m20s.jpg, frames from the film): an old crone played on stage, bent almost double at the waist, in one heavy, long, shaggy woollen hooded robe hand-tinted a deep sea-green teal, hanging in thick soft folds to the ground and pooling at her feet (whole cloth, not torn into rags or wisps), tied with a cord girdle with tassels; the hood is up but her face shows beneath it: pale, deeply wrinkled, hook-nosed, with wisps of straggling white hair; bare bony old hands (not claws); a plain, straight, long wooden walking staff. A living old woman, never a faceless spectre or a grim reaper, exactly as in witch-hooded-tinted.webp (attach it): the same face, hooded robe, staff and colours, at the same scale (her standing figure the same height). Facing LEFT, flinging her free hand forward and down to hurl a bolt of fire along the ground, staff raised high behind her, robe flaring, a wicked grin. Feet on the bottom edge. Nothing but the figure: no ground, fire or shadow (the game adds them). Render it like a frame of a hand stencil-coloured 1903 M\u00e9li\u00e8s print, not an illustration: a soft-focus black-and-white photograph of a real stage performer in costume (silvery greys, deep blacks, gentle film grain and a little halation), with only a few flat, translucent aniline dye washes laid over by stencil (sea-green teal, orange-yellow, rose and coral red, pale sky blue, magenta), each bleeding slightly past its edges and a little out of register, and large areas left untinted grey; a simple theatre costume of cloth, tights, wig and painted card props with little fine detail and no gold filigree; flat frontal stage lighting; no ink outlines and no glossy finish. Isolated on a transparent background (or flat pure magenta #FF00FF if transparency is unavailable).\nGenerate exactly one requested asset, no collage or labels. True transparent background. Retain the complete silhouette with a small transparent safety margin; delivery sizing will align the requested anchor.\nZoom out enough that the complete outstretched hand and staff are inside the frame. Leave 5% clear transparent margin around every extremity. Nose points LEFT; bare fingers intact and connected.",
+  "references": [
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/assets/witch-hooded-tinted.webp",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-05m18s.jpg",
+    "/Volumes/BACKUP/Backup/Games/mini/kingdomofthefairies/design/references/film-witch/witch-13m20s.jpg"
+  ],
+  "edition": "film",
+  "path": "/Users/hoai/.codex/generated_images/01a18d73-0123-72f0-9148-a1319c31802a/exec-153d6703-6258-40ea-ac37-1cda0d6a5b4d.png",
+  "generation_id": "exec-153d6703-6258-40ea-ac37-1cda0d6a5b4d",
+  "method": "built-in imagegen",
+  "review": {
+    "status": "accepted",
+    "notes": "Reviewed full silhouette, facing, costume/prop identity, transparent composite and prepared dimensions/anchor. Corrected staff grip and framing where needed; character size is calibrated in person-size.js."
+  }
+}
