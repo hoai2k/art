@@ -245,3 +245,23 @@ edge, no sky, no ground, no trees" more firmly.
 ## Rounds 6–7 delivery — 2026-11-01
 
 All 15 new images delivered at the listed asset paths with built-in image_gen; prompts recorded in `generation-prompts-rounds-6-7.json`. PNG integrity and requested dimensions verified, including the 4096 × 2048 sky; all three cutout sheets have native alpha. Full set visually reviewed, web copies and manifest rebuilt and checked. Seamless tiling and sky wrapping remain subject to in-game material review. Assets only; no deployment.
+
+## Round 8: a facade kit for modelled building fronts
+
+Playing the prototype showed that painting a whole building front onto a flat
+wall reads badly up close (painted depth, sky peeking over the roofline). The
+fronts are now modelled in 3D: real recessed windows and doors, sills, hoods,
+cornices, brackets, storefronts and awnings, built per building from its data.
+These are the textures for those parts. Each is a **flat, square-on, edge to
+edge** picture of one part, with no surrounding wall, no sky, no ground, no
+shadows cast from a direction. The game cuts them to fit, so keep each item
+centred and filling its cell.
+
+| # | File | Size | Prompt |
+|---|---|---|---|
+| K8.1 | `kit/windows_victorian.png` | 2048 × 1024 | A sheet of 8 separate Victorian window units in a 4 × 2 grid on transparent background, each square-on and filling its cell, the glass a dark reflective blue-grey with a soft sky reflection and a hint of lace curtain, painted wooden sashes: tall two-over-two round-arched, tall two-over-two segmental-arched, tall one-over-one flat-topped, paired round-arched, a bay-window front panel, an attic half-round window, a pointed Gothic window with simple tracery, a small square basement window. Painted storybook realism. Status: `open` |
+| K8.2 | `kit/shopfronts.png` | 2048 × 1024 | A sheet of 4 separate Victorian shopfront units side by side on transparent background, each square-on and filling its cell: large plate-glass display windows over a low panelled base, a recessed glazed door with a transom, slim cast-iron columns, the glass showing a soft warm-lit shop interior with shelves and goods out of focus, no readable lettering. Frames painted in deep green, oxblood red, navy and black respectively. Status: `open` |
+| K8.3 | `kit/doors.png` | 2048 × 1024 | A sheet of 6 separate front doors with their frames on transparent background in a 3 × 2 grid, square-on: a panelled oak door with a fanlight, a green door with sidelights, a red Victorian door with an arched transom, a double church door with iron hinges in a pointed arch, a plain glazed commercial door, a weathered back-lane door. Status: `open` |
+| K8.4 | `kit/cornices.png` | 2048 × 1024 | A sheet of 4 horizontal strips stacked one above another on transparent background, each a seamless horizontally tiling front elevation of a Victorian cornice about 1 m tall: a wooden bracketed cornice painted cream with paired scroll brackets, a pressed-metal cornice in dark green with dentils, a corbelled brick cornice in red brick, a stone cornice with a moulded profile. Must tile left to right. Status: `open` |
+| K8.5 | `kit/trim.png` | 2048 × 1024 | A sheet of 8 separate architectural trim pieces on transparent background in a 4 × 2 grid, square-on: a stone window hood with keystone (arched), a segmental brick arch with keystone, a flat stone lintel, a stone sill, a cream-painted wooden window surround, a pair of decorative scroll brackets, a sign band panel (blank, framed), a carved gable bargeboard section. Status: `open` |
+| K8.6 | `kit/awnings.png` | 2048 × 1024 | A sheet of 4 separate shop awning fabrics, flat and square-on, edge to edge, each filling a quarter of the sheet side by side: green and cream stripes, oxblood red plain with a scalloped edge, navy with a thin white stripe, burnt orange plain; slightly weathered canvas. Status: `open` |
