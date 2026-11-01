@@ -1,0 +1,15 @@
+{
+  "name": "Stratford Squirrel",
+  "short_name": "Squirrel",
+  "description": "Run, leap and climb as an eastern grey squirrel through downtown Stratford, Ontario.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#2a1d14",
+  "theme_color": "#2a1d14",
+  "icons": [
+    { "src": "assets/ui/icon.png", "sizes": "1024x1024", "type": "image/png" },
+    { "src": "assets/ui/icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
+  ]
+}
