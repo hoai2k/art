@@ -71,14 +71,14 @@ export function createHud({ reduceMotion = false } = {}) {
       kind = k;
       renderStrip();
       stripLeft = 9;
-      els.strip.classList.remove('faded');
+      els.strip.classList.remove('faded', 'gone');
     },
     setHintsEnabled(on) { hintsOn = !!on; els.hud.classList.toggle('nohints', !on); },
     // At the start of play: show the controls strip for a while.
     startPlay() {
       renderStrip();
       stripLeft = 22;
-      els.strip.classList.remove('faded');
+      els.strip.classList.remove('faded', 'gone');
       lastHeading = null;
       api.setContext('');
     },
@@ -98,34 +98,38 @@ export function createHud({ reduceMotion = false } = {}) {
       if (h !== lastHeading) { lastHeading = h; drawCompass(h); }
       if (stripLeft > 0) {
         stripLeft -= dt;
-        if (stripLeft <= 0) els.strip.classList.add('faded');
+        if (stripLeft <= 0) {
+          els.strip.classList.add('faded');
+          setTimeout(() => { if (els.strip.classList.contains('faded')) els.strip.classList.add('gone'); }, 1300);
+        }
       }
     },
     setContext(text) {
       if (text === ctxText) return;
       ctxText = text;
       if (text) els.ctx.textContent = text;
-      els.ctx.classList.toggle('show', !!text);
+      els.ctx.hidden = !text;
     },
     showDiscovery(lm) {
       clearTimeout(cardTimer);
       els.name.textContent = lm.name;
       els.blurb.textContent = lm.blurb || '';
+      // A bottom panel under the squirrel that fades in, stays a while and fades out.
       els.card.hidden = false;
-      els.card.classList.remove('out');
-      // Restart the entrance animation.
-      els.card.style.animation = 'none'; void els.card.offsetWidth; els.card.style.animation = '';
+      els.card.classList.remove('in');
+      void els.card.offsetWidth;
+      els.card.classList.add('in');
       cardTimer = setTimeout(() => {
-        els.card.classList.add('out');
+        els.card.classList.remove('in');
         cardTimer = setTimeout(() => { els.card.hidden = true; }, reduceMotion ? 0 : 650);
-      }, 7000);
+      }, 8000);
     },
-    hideDiscovery() { clearTimeout(cardTimer); els.card.hidden = true; },
+    hideDiscovery() { clearTimeout(cardTimer); els.card.classList.remove('in'); els.card.hidden = true; },
     toast(text, ms = 2200) {
       els.toast.textContent = text;
-      els.toast.classList.add('show');
+      els.toast.hidden = false;
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => els.toast.classList.remove('show'), ms);
+      toastTimer = setTimeout(() => { els.toast.hidden = true; }, ms);
     },
   };
   void hintsOn;

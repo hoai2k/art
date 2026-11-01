@@ -21,7 +21,7 @@ function plinth(vb, cb, P, b, base, h, ox, oz, kit) {
     // a sloped stone cap
     const A2 = b.outer[i], C2 = b.outer[(i + 1) % n];
     const ids2 = [[a, base + h], [c, base + h], [C2, base + h + 0.12], [A2, base + h + 0.12]].map(([p, y]) => vb.v(p[0] - ox, y, p[1] - oz, nx * 0.5, 0.86, nz * 0.5, p[0], p[1]));
-    vb.quad(ids2[0], ids2[1], ids2[2], ids2[3]); vb.quad(ids2[1], ids2[0], ids2[3], ids2[2]);
+    vb.quadFacing(ids2[0], ids2[1], ids2[2], ids2[3], [nx * 0.5, 0.86, nz * 0.5]);
   }
 }
 
@@ -30,7 +30,7 @@ function plinth(vb, cb, P, b, base, h, ox, oz, kit) {
 function gable(vb, cb, P, x, y, z, dx, dz, nx, nz, w, h, kit) {
   const hw = w / 2, V = (s, up, out) => [x + dx * s + nx * out, y + up, z + dz * s + nz * out];
   kit.setPart(vb, P, PART.wall, P.mat, 0, w, 0.1, 1);
-  const tri = (a, b, c, n) => { const ids = [a, b, c].map((p) => vb.v(p[0], p[1], p[2], n[0], n[1], n[2], (p[0] - x) * dx + (p[2] - z) * dz + hw, p[1] - y + 50)); vb.tri(ids[0], ids[1], ids[2]); vb.tri(ids[0], ids[2], ids[1]); cb.tri(a, b, c, SURFACE.wall_brick); };
+  const tri = (a, b, c, n) => { const ids = [a, b, c].map((p) => vb.v(p[0], p[1], p[2], n[0], n[1], n[2], (p[0] - x) * dx + (p[2] - z) * dz + hw, p[1] - y + 50)); vb.triFacing(ids[0], ids[1], ids[2], n); cb.tri(a, b, c, SURFACE.wall_brick); };
   tri(V(-hw, 0, 0.3), V(hw, 0, 0.3), V(0, h, 0.3), [nx, 0, nz]);
   kit.setPart(vb, P, PART.roof);
   const ridgeBack = V(0, h, -3.5), ridgeFront = V(0, h, 0.4);
@@ -38,7 +38,7 @@ function gable(vb, cb, P, x, y, z, dx, dz, nx, nz, w, h, kit) {
     const e0 = V(sg * (hw + 0.3), -0.2, 0.4), e1 = V(sg * (hw + 0.3), -0.2, -3.5);
     const n = [0, 1, 0];
     const ids = [e0, e1, ridgeBack, ridgeFront].map((p) => vb.v(p[0], p[1], p[2], n[0], n[1], n[2], p[0], p[2]));
-    vb.quad(ids[0], ids[1], ids[2], ids[3]); vb.quad(ids[1], ids[0], ids[3], ids[2]);
+    vb.quadFacing(ids[0], ids[1], ids[2], ids[3], [0, 1, 0]);
     cb.quad(e0, e1, ridgeBack, ridgeFront, SURFACE.roof);
   }
   // white bargeboards along the rakes
@@ -55,7 +55,8 @@ function gable(vb, cb, P, x, y, z, dx, dz, nx, nz, w, h, kit) {
     const C = [P0(-1, -1, -1), P0(1, -1, -1), P0(1, -1, 1), P0(-1, -1, 1), P0(-1, 1, -1), P0(1, 1, -1), P0(1, 1, 1), P0(-1, 1, 1)];
     for (const [i, j, k, l] of [[0, 1, 2, 3], [4, 7, 6, 5], [0, 4, 5, 1], [3, 2, 6, 7], [1, 5, 6, 2]]) {
       const ids = [C[i], C[j], C[k], C[l]].map((p) => vb.v(p[0], p[1], p[2], nx, 0.3, nz, p[0], p[1]));
-      vb.quad(ids[0], ids[1], ids[2], ids[3]); vb.quad(ids[1], ids[0], ids[3], ids[2]);
+      const cx2 = (C[i][0] + C[k][0]) / 2 - mx, cy2 = (C[i][1] + C[k][1]) / 2 - my, cz2 = (C[i][2] + C[k][2]) / 2 - mz;
+      vb.quadFacing(ids[0], ids[1], ids[2], ids[3], [cx2, cy2, cz2]);
     }
   }
 }
@@ -214,10 +215,12 @@ export const landmarkParts = {
         const ux = q[0] - p[0], uy = q[1] - p[1], uz = q[2] - p[2], vx = s[0] - p[0], vy = s[1] - p[1], vz = s[2] - p[2];
         let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx; const l = Math.hypot(nx, ny, nz) || 1;
         nx /= l; ny /= l; nz /= l;
-        const ids = [p, q, s].map((v, k) => vb.v(v[0], v[1], v[2], nx, ny, nz, k * 2, v[1] - yc));
-        vb.tri(ids[0], ids[1], ids[2]);
-        const ids2 = [p, s, q].map((v, k) => vb.v(v[0], v[1], v[2], -nx, -ny, -nz, k * 2, v[1] - yc));
-        vb.tri(ids2[0], ids2[1], ids2[2]);
+        // face out of the crown (up, or away from its axis)
+        const ax = (p[0] + q[0] + s[0]) / 3 - cx, az = (p[2] + q[2] + s[2]) / 3 - cz;
+        const want = ny > 0.2 || ny < -0.2 ? [nx * Math.sign(ny), Math.abs(ny), nz * Math.sign(ny)] : [ax, 0, az];
+        const sg = nx * want[0] + ny * want[1] + nz * want[2] >= 0 ? 1 : -1;
+        const ids = [p, q, s].map((v, k) => vb.v(v[0], v[1], v[2], nx * sg, ny * sg, nz * sg, k * 2, v[1] - yc));
+        vb.triFacing(ids[0], ids[1], ids[2], want);
         cb.tri(p, q, s, SURFACE.roof);
       };
       for (let i = 0; i < pts; i++) {

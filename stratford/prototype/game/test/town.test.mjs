@@ -160,6 +160,23 @@ test('chunks stream: moving the focus frees chunks and keeps memory flat; scale 
   } finally { await page.close(); }
 });
 
+test('every visible ground matches the collider (ground probe)', { timeout: 900000 }, async () => {
+  const real = await hasRealData();
+  const { page, errors } = await openTown(real ? '?norender' : '?norender&data=fixture');
+  try {
+    // spawn (Market Square), a park (Shakespearean Gardens), a residential street, Ontario Street
+    const foci = real ? [null, { x: -234.8, z: -215.8 }, { x: 442.8, z: 188.9 }, { x: 65, z: -170 }] : [null];
+    const r = await page.evaluate((foci) => bench.groundProbe({ foci: foci.map((f) => f || bench.world.spawn), perFocus: 140 }), foci);
+    console.log(`  ground probe: ${r.n} points, above +1 cm ${r.above1cm}, below -1 cm ${r.below1cm}, max ${r.maxAbove.toFixed(3)} / ${r.maxBelow.toFixed(3)} m, close layers ${JSON.stringify(r.pairs)}`);
+    assert.ok(r.n > 300, `enough probe points (${r.n})`);
+    assert.equal(r.above1cm, 0, `no visible ground more than 1 cm above the collider: ${JSON.stringify(r.worst.slice(0, 3))}`);
+    assert.ok(r.below1cm <= r.n * 0.01, `visible ground below the collider at under 1% of points (${r.below1cm})`);
+    const fights = Object.entries(r.pairs).filter(([k]) => k !== 'markings+streets' && k !== 'streets+streets').reduce((a, [, v]) => a + v, 0);
+    assert.ok(fights <= r.n * 0.01, `different ground layers drawn within 1.5 cm of each other at under 1% of points (${fights})`);
+    assert.deepEqual(errors, [], 'no console errors');
+  } finally { await page.close(); }
+});
+
 test('the fixture town builds too', { timeout: 300000 }, async () => {
   const fx = JSON.parse(await readFile(join(GAME, 'test/fixtures/town-mini.json'), 'utf8'));
   const { page, errors } = await openTown('?data=fixture&norender');

@@ -69,6 +69,31 @@ async function run(browser, base, label, query) {
   const press = async (i, fn, arg = null, timeout = 30000) => { await btn(i, 1); const ok = await until(fn, arg, timeout); await btn(i, 0); await wait(250); return ok; };
   const frames = (n) => G((n) => new Promise((res) => { let k = 0; const f = () => (++k >= n ? res(true) : requestAnimationFrame(f)); requestAnimationFrame(f); }), n);
   const S = () => G(() => ({ screen: window.stratford.ui.screen, modals: [...window.stratford.ui.modals], paused: window.stratford.state.paused, tr: window.stratford.state.transitioning, titleNav: window.stratford.ui.titleNav }));
+  // During play, every visible piece of text sits in the bottom 30% of the view
+  // or in a corner HUD (never over the squirrel, who is drawn around the middle).
+  const textLayout = () => G(() => {
+    const W = innerWidth; const H = innerHeight;
+    const shown = (el) => {
+      for (let e = el; e && e !== document.body; e = e.parentElement) {
+        const cs = getComputedStyle(e);
+        if (cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) < 0.05 || e.hidden) return false;
+      }
+      return true;
+    };
+    const bad = [];
+    const els = [...document.querySelectorAll('#app *')].filter((el) => !el.closest('.modal, #title, #loading, #fade, svg, canvas')
+      && [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) && shown(el));
+    for (const el of els) {
+      const r = el.getBoundingClientRect();
+      if (!r.width || !r.height) continue;
+      const bottom = r.top >= H * 0.7 - 0.5 && r.bottom <= H + 0.5;
+      const corner = (r.right <= W * 0.25 || r.left >= W * 0.75) && (r.bottom <= H * 0.22 || r.top >= H * 0.7);
+      if (!bottom && !corner) bad.push(`${el.id || el.className || el.tagName} "${el.textContent.trim().slice(0, 30)}" at ${Math.round(r.left)},${Math.round(r.top)} ${Math.round(r.width)}x${Math.round(r.height)}`);
+      if (bottom && !corner && (r.left < W * 0.18 || r.right > W * 0.82)) bad.push(`${el.id || el.className} wider than the middle 60%`);
+    }
+    return { count: els.length, bad };
+  });
+  const layoutOk = async (what) => { const l = await textLayout(); check(l.bad.length === 0, `${what}: ${l.count} text items, all at the bottom or in a corner${l.bad.length ? ' — ' + l.bad.join('; ') : ''}`); };
   const settled = () => until(() => window.stratford?.ui.screen === 'play' && !window.stratford.state.transitioning, null, 60000);
 
   await page.goto(`${base}/${query}`);
@@ -76,6 +101,8 @@ async function run(browser, base, label, query) {
   await wait(1200);
   const info = await G(() => ({ world: window.stratford.world.stand ? 'minimal' : window.stratford.world.constructor?.name, creature: window.stratford.creature.kind, landmarks: window.stratford.exploration.landmarks.length, nuts: window.stratford.exploration.nutTotal }));
   console.log(`  world/creature: ${JSON.stringify(info)}`);
+
+  check(await G(() => window.stratford.settings.invertY === false && window.stratford.settings.version === 2), 'camera Y is not inverted by default (settings version 2)');
 
   // ---- title -----------------------------------------------------------------
   check((await shot('01-title').then(() => page.screenshot())).length > 120000, 'title draws the 3D town behind it');
@@ -150,6 +177,8 @@ async function run(browser, base, label, query) {
     await G((l) => window.stratford.teleport(l.x, l.z), lm);
     check(await until((id) => window.stratford.exploration.isFound(id) && !document.querySelector('#discovery').hidden && document.querySelector('#d-name').textContent.length > 0, lm.id, 60000), 'entering a landmark discovers it and shows its card');
     await wait(900);
+    await layoutOk('discovery card in play');
+    check(await G(() => { const r = document.querySelector('#discovery').getBoundingClientRect(); return r.top >= innerHeight * 0.7 && r.width <= innerWidth * 0.62 && document.querySelector('#d-blurb').textContent.length > 20; }), 'the discovery card is a compact bottom panel with name and blurb');
     await shot('06-discovery');
     check(await G(() => Object.keys(JSON.parse(localStorage.getItem('stratford.save')).discovered).length >= 2), 'the discovery is saved');
   } else check(false, 'there is a landmark to find');
@@ -161,8 +190,24 @@ async function run(browser, base, label, query) {
     // Y buries it where the squirrel stands.
     check(await press(3, () => window.stratford.exploration.buriedCount === 1, null, 20000), 'Y buries a carried nut');
     check(await G(() => JSON.parse(localStorage.getItem('stratford.save')).buried.length === 1), 'the buried nut is saved');
+    check(await until(() => !document.querySelector('#ctx-hint').hidden && /dig/i.test(document.querySelector('#ctx-hint').textContent), null, 20000), 'a contextual hint offers to dig the nut up');
+    await layoutOk('hint and toast in play');
+    await shot('06b-hint');
     check(await press(3, () => window.stratford.exploration.buriedCount === 0 && window.stratford.exploration.carried === 1, null, 20000), 'Y again digs it up');
   } else check(false, 'there is a nut to find');
+
+  // A small landscape phone: the corners stay clear of the squirrel, text stays low.
+  await G(() => document.fullscreenElement && document.exitFullscreen().catch(() => {}));
+  await wait(800);
+  await page.setViewportSize({ width: 667, height: 375 });
+  await wait(1500);
+  await G(() => window.stratford.hud.toast('A toast on a small screen', 15000));
+  await wait(300);
+  await layoutOk('small screen');
+  check(await G(() => [...document.querySelectorAll('.hud-top-left, .compass')].every((el) => { const r = el.getBoundingClientRect(); return r.bottom <= innerHeight * 0.3; })), 'small screen: HUD corners and compass stay in the top band, clear of the squirrel');
+  await shot('06c-small-screen');
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await wait(800);
 
   // ---- pause, map, settings -----------------------------------------------------------------------
   await wait(500);
@@ -190,7 +235,7 @@ async function run(browser, base, label, query) {
   await shot('09-settings');
   await G(() => { document.querySelector('[data-setting="invertY"]').click(); document.querySelector('[data-setting="coat"]').click(); document.querySelector('[data-setting="quality"]').click(); });
   const saved = await G(() => JSON.parse(localStorage.getItem('stratford.settings')));
-  check(saved.invertY === true && saved.coat === 'black' && saved.quality !== 'medium', `settings change and persist (${JSON.stringify(saved)})`);
+  check(saved.invertY === true && saved.coat === 'black' && saved.quality !== 'medium' && saved.version === 2 && saved.changed.includes('invertY'), `settings change and persist (${JSON.stringify(saved)})`);
   check(await G(() => window.stratford.input.settings.invertY === true), 'the input sees the new setting');
   // Reset progress asks first.
   await G(() => document.querySelector('[data-action="reset-progress"]').click());
@@ -253,6 +298,16 @@ async function run(browser, base, label, query) {
   await page.reload();
   check(await until(() => window.stratford?.ui.screen === 'title', null, 120000), 'reloads to the title');
   check(await G(() => window.stratford.settings.coat === 'black' && window.stratford.exploration.landmarksFound >= 1), 'settings and progress persist across a reload');
+
+  // An old (version 1) settings file takes the new camera default and keeps the rest.
+  const old = await browser.newContext({ viewport: { width: 800, height: 450 } });
+  const op = await old.newPage();
+  watch(op);
+  await op.addInitScript(() => localStorage.setItem('stratford.settings', JSON.stringify({ camSens: 1.5, invertY: false, coat: 'black', quality: 'low', volume: 0.5, rumble: true, hints: true, sound: true })));
+  await op.goto(`${base}/${query}`);
+  await op.waitForFunction(() => window.stratford?.ui.screen === 'title', null, { timeout: 120000 }).catch(() => {});
+  check(await op.evaluate(() => { const s = window.stratford.settings; return s.invertY === false && s.version === 2 && s.coat === 'black' && s.camSens === 1.5; }), 'a version 1 settings file migrates to the new camera default and keeps the rest');
+  await old.close();
 
   check(errors.length === 0, `no console errors${errors.length ? ': ' + errors.slice(0, 4).join(' | ') : ''}`);
   await ctx.close();

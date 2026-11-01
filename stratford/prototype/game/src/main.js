@@ -164,7 +164,10 @@ function applySettings(key) {
     if (can && key) world.setQuality(settings.quality);
     $('#quality-note').hidden = can || !key;
   }
-  if (key) writeSettings(settings);
+  if (key) {
+    if (key in settings && !settings.changed.includes(key)) settings.changed.push(key);
+    writeSettings(settings);
+  }
 }
 
 function syncSoundButton() {
@@ -179,6 +182,7 @@ function syncSoundButton() {
 }
 function toggleSound() {
   settings.sound = !settings.sound;
+  if (!settings.changed.includes('sound')) settings.changed.push('sound');
   audio.setEnabled(settings.sound);
   writeSettings(settings);
   syncSoundButton();

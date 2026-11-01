@@ -1,7 +1,7 @@
 // node --test stratford/prototype/game/test/shell.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultSave, sanitizeSave, loadSave, writeSave, SAVE_KEY, SAVE_VERSION, loadSettings, sanitizeSettings, SETTINGS_KEY } from '../src/game/save.js';
+import { defaultSave, sanitizeSave, loadSave, writeSave, SAVE_KEY, SAVE_VERSION, loadSettings, sanitizeSettings, writeSettings, SETTINGS_KEY, SETTINGS_VERSION } from '../src/game/save.js';
 import { placeNuts, nutWithin, SURFACE_IDS } from '../src/game/nuts.js';
 import { newDiscoveries } from '../src/game/discover.js';
 import { createExploration } from '../src/game/exploration.js';
@@ -42,8 +42,28 @@ test('save: corruption and storage failure are tolerated', () => {
   assert.equal(odd.discovered.b, 0);
 });
 
+test('settings: the camera Y default and the version 1 migration', () => {
+  assert.equal(sanitizeSettings(null).invertY, false);
+  assert.equal(sanitizeSettings(null).version, SETTINGS_VERSION);
+  // Version 1 (no version field) saved invertY whatever it was: it takes the new default.
+  for (const v of [true, false]) {
+    const st = memory({ [SETTINGS_KEY]: JSON.stringify({ camSens: 1.4, invertY: v, coat: 'black' }) });
+    const s = loadSettings(st);
+    assert.equal(s.invertY, false, `v1 invertY ${v}`);
+    assert.equal(s.coat, 'black'); assert.equal(s.camSens, 1.4);
+  }
+  // Version 2 keeps a choice, explicit or not, and writes its version.
+  const st = memory({ [SETTINGS_KEY]: JSON.stringify({ version: 2, invertY: true, changed: ['invertY', 'bogus'] }) });
+  const s = loadSettings(st);
+  assert.equal(s.invertY, true); assert.deepEqual(s.changed, ['invertY']);
+  writeSettings(s, st);
+  const back = JSON.parse(st.getItem(SETTINGS_KEY));
+  assert.equal(back.version, SETTINGS_VERSION); assert.equal(back.invertY, true);
+  assert.equal(loadSettings(st).invertY, true);
+});
+
 test('settings: clamped and kept', () => {
-  const s = sanitizeSettings({ camSens: 99, coat: 'purple', quality: 'high', volume: -1, invertY: true });
+  const s = sanitizeSettings({ version: 2, camSens: 99, coat: 'purple', quality: 'high', volume: -1, invertY: true });
   assert.equal(s.camSens, 2.5); assert.equal(s.coat, 'grey'); assert.equal(s.quality, 'high'); assert.equal(s.volume, 0); assert.equal(s.invertY, true);
   const st = memory({ [SETTINGS_KEY]: JSON.stringify({ coat: 'black' }) });
   assert.equal(loadSettings(st).coat, 'black');
@@ -149,7 +169,21 @@ test('input: keyboard builds the controls object', () => {
   assert.equal(c.jump, false); assert.equal(c.move[1], -1);
   key('keydown', 'ArrowRight'); key('keydown', 'ArrowDown');
   c = input.controls(0.1);
-  assert.ok(c.look[0] > 0 && c.look[1] > 0);
+  assert.ok(c.look[0] > 0 && c.look[1] < 0, 'arrow right turns right, arrow down looks down');
+});
+
+test('input: by default stick up and arrow up look up; Invert camera Y reverses it', () => {
+  const s = { camSens: 1, invertY: false, rumble: true };
+  const { input, key, pads } = rig(s);
+  // Positive look[1] tilts the view up (src/creatures/camera.js: pitch -= look[1]).
+  key('keydown', 'ArrowUp');
+  assert.ok(input.controls(0.1).look[1] > 0, 'arrow up looks up');
+  key('keyup', 'ArrowUp');
+  const pad = fakePad(); pads[0] = pad; input.poll();
+  pad.axes = [0, 0, 0, -1]; input.poll();
+  assert.ok(input.controls(0.1).look[1] > 0, 'right stick up looks up');
+  s.invertY = true;
+  assert.ok(input.controls(0.1).look[1] < 0, 'inverted: right stick up looks down');
 });
 
 test('input: look honours sensitivity and invert Y', () => {

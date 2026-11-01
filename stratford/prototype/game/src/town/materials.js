@@ -216,10 +216,10 @@ vec3 groundColor(vec3 wp) {
 // ---------------------------------------------------------------- streets
 // aSt: x kind, y distance from curb (m), z boulevard width, w seed; aDir: street direction
 export const STREET = { road: 0, plate: 1, curb: 2, footway: 3, path: 4, service: 5, white: 6, yellow: 7, stone: 8, railing: 9, deck: 10, pavers: 11 };
-export function streetMaterial(shared, assets) {
+export function streetMaterial(shared, assets, offset = {}) {
   const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'stone', 'soil_cu', 'grass_cu', 'concrete_cu', 'asphalt_cu'];
   const td = texDefines(assets, slots);
-  return painted({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 }, {
+  return painted({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2, ...offset }, {
     shared, key: 'town-street', defines: td.defines, uniforms: td.uniforms,
     vertHead: 'attribute vec4 aSt; attribute vec2 aDir; varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;',
     vertMain: 'vSt = aSt; vDir = aDir; vBlv = aSt.z;',
@@ -331,33 +331,53 @@ vec3 streetBase(vec3 wp) {
 // uv: (u along the wall from its start, m; v height above the base, m)
 // aF0: part, wall length, eaves height, storeys
 // aF1: material, flags, seed, ground-floor height
-// aFac: facade-elevation candidate (index into FACADES) or -1
-export const PART = { wall: 0, roof: 1, flat: 2, trim: 3, awning: 4, glass: 5, plain: 6, clock: 7, copper: 8, dark: 9, porch: 10, stone: 11, sign: 12 };
+// aFac: 0 ordinary; 1 a street front drawn flat (painted windows) that a 3D
+//       front replaces near the focus; 2 part of a 3D front (facade3d.js)
+// aBid: building index (for the per-building "3D front is built" flag); aCen: its centre (x, z)
+// Panels (parts 13-17) carry uv 0..1 or metres as noted, and their size in aF0.yz.
+export const PART = { wall: 0, roof: 1, flat: 2, trim: 3, awning: 4, glass: 5, plain: 6, clock: 7, copper: 8, dark: 9, porch: 10, stone: 11, sign: 12,
+  window: 13, door: 14, signband: 15, shopglass: 16, kick: 17 };
+// facade kit sheets (round 8 image requests): slot -> [file, columns, rows]
+export const KIT = {
+  kit_windows: ['kit/windows_victorian.png', 4, 2], kit_shopfronts: ['kit/shopfronts.png', 4, 1], kit_doors: ['kit/doors.png', 3, 2],
+  kit_cornices: ['kit/cornices.png', 1, 4], kit_trim: ['kit/trim.png', 4, 2], kit_awnings: ['kit/awnings.png', 4, 1],
+};
 export const MAT = { brick_red: 0, brick_buff: 1, stone: 2, clapboard: 3, stucco: 4, glass: 5, metal: 6 };
 export const FLAG = { store: 1, arched: 2, front: 4, church: 8, house: 16, theatre: 32, noWindows: 64, painted: 128 };
 
-export function buildingMaterial(shared, assets) {
+// detail: { flags: DataTexture (R8, 256 wide, one texel per building), focus: {value: Vector3}, radius: {value} }
+export function buildingMaterial(shared, assets, detail) {
   const slots = ['brick_red', 'brick_buff', 'stone', 'clapboard', 'shingles', 'slate', 'roof_metal'];
   const td = texDefines(assets, slots);
-  const uniforms = { ...td.uniforms };
+  const uniforms = { ...td.uniforms, tDetail: { value: detail.flags }, uFocus: detail.focus, uFacR: detail.radius };
   const defines = { ...td.defines };
-  if (assets && assets.facadeArray) {
-    defines.FACADES = '';
-    uniforms.tFac = { value: assets.facadeArray };
-    uniforms.uFacLayer = { value: assets.facadeLayer.map((v) => v) };
-    uniforms.uFacAspect = { value: assets.facadeAspect.slice() };
-    defines.N_FAC = String(assets.facadeLayer.length);
+  for (const [slot, [, cols, rows]] of Object.entries(KIT)) {
+    const t = assets && assets.tex[slot]; if (!t) continue;
+    defines[slot.toUpperCase()] = ''; uniforms['t_' + slot] = { value: t.texture };
+    void cols; void rows;
   }
-  const m = painted({ color: 0xffffff }, {
+  const kitDecl = Object.keys(KIT).map((k) => `#ifdef ${k.toUpperCase()}\nuniform sampler2D t_${k};\n#endif`).join('\n');
+  // double-sided: a camera that ends up inside a building sees a dark interior, not the world through the wall
+  const m = painted({ color: 0xffffff, side: THREE.DoubleSide }, {
     shared, key: 'town-building', defines, uniforms,
-    vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac;',
-    vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac;',
-    fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac;\n${texDecl(slots)}
-#ifdef FACADES
-uniform highp sampler2DArray tFac; uniform float uFacLayer[N_FAC]; uniform float uFacAspect[N_FAC];
-#endif
+    vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; attribute float aBid; attribute vec2 aCen; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;',
+    vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac; vBid = aBid; vCen = aCen;',
+    fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;
+uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR;
+${texDecl(slots)}
+${kitDecl}
 ${GLSL_COMMON}\n${GLSL_BUILDING}`,
-    color: 'float glow = 0.0; diffuseColor.rgb = buildingColor(glow);',
+    color: `
+      // a building shows exactly one street front: the flat one, or (near the focus,
+      // once built) the modelled one; both read the same flag and the same distance
+      if (vFac > 0.5) {
+        int id = int(vBid + 0.5);
+        bool modelled = texelFetch(tDetail, ivec2(id % 256, id / 256), 0).r > 0.5 && distance(vCen, uFocus.xz) < uFacR;
+        if (vFac < 1.5 ? modelled : !modelled) discard;
+      }
+      float glow = 0.0; diffuseColor.rgb = buildingColor(glow);
+      // inside a shell: dark (awnings are thin canvas and stay lit on both sides)
+      if (!gl_FrontFacing && floor(vF0.x + 0.5) != 4.0) { diffuseColor.rgb = vec3(0.075, 0.065, 0.06); glow = 0.0; }`,
     emissive: 'totalEmissiveRadiance += vec3(1.0, 0.72, 0.38) * glow * uNight * 0.9;',
   });
   return m;
@@ -482,6 +502,39 @@ vec3 windowAt(vec2 q, float ww, float wh, float kind, vec3 wall, vec3 trim, vec3
   return c;
 }
 
+// one cell of a facade-kit sheet (cols x rows, cell 0 at the top left)
+vec4 kitCell(sampler2D t, float cols, float rows, float idx, vec2 uv) {
+  float c = mod(idx, cols), r = floor(idx / cols);
+  return texture2D(t, vec2((c + clamp(uv.x, 0.002, 0.998)) / cols, 1.0 - (r + 1.0 - clamp(uv.y, 0.002, 0.998)) / rows));
+}
+
+// a window unit seen square-on: frame, two-over-two sashes, glass; outside an
+// arched head the masonry of the tympanum. q in metres from the bottom centre.
+vec3 windowUnit(vec2 uv, float w, float h, float style, float mat, float seed, out float glow) {
+  glow = 0.0;
+  vec2 q = vec2((uv.x - 0.5) * w, uv.y * h);
+  float px = max(length(fwidth(q)), 1e-4);
+  float kind = style > 2.5 ? 2.0 : style > 0.5 && style < 1.5 ? 1.0 : 0.0;
+  float d = winSD(q, w, h, kind);
+  if (style > 1.5 && style < 2.5) d = max(d, q.y - (h - 0.12 * (1.0 - pow(2.0 * abs(q.x) / w, 2.0))));
+#ifdef KIT_WINDOWS
+  { float cell = style > 2.5 ? 6.0 : style > 1.5 ? 1.0 : style > 0.5 ? 0.0 : 2.0;
+    vec4 k = kitCell(t_kit_windows, 4.0, 2.0, cell, uv);
+    if (k.a > 0.5) { glow = step(0.5, fract(seed * 13.7)) * 0.6; return k.rgb; } }
+#endif
+  if (d > 0.0) return wallMat(mat, seed, q + vec2(seed * 10.0, 0.0), px) * 0.9;     // tympanum
+  vec3 fr = mat > 2.5 && mat < 3.5 ? vec3(0.92, 0.91, 0.86) : trimColor(seed + 0.21);
+  float lit; vec3 g = glassColor(q, h, fract(seed * 17.0), lit);
+  float frame = smoothstep(-0.085 - px, -0.085 + px, d);
+  float rail = 1.0 - smoothstep(0.025, 0.025 + px, abs(q.y - h * 0.47));
+  float mull = 1.0 - smoothstep(0.02, 0.02 + px, abs(q.x));
+  float bars = max(frame, max(rail, mull));
+  glow = lit * (1.0 - bars);
+  // the glass sits in shadow at the top of the reveal
+  g *= 0.8 + 0.2 * smoothstep(0.0, 0.4, h - q.y);
+  return mix(g, fr, bars);
+}
+
 vec3 buildingColor(out float glow) {
   glow = 0.0;
   float part = floor(vF0.x + 0.5), len = vF0.y, eaves = vF0.z, storeys = max(1.0, vF0.w);
@@ -489,6 +542,62 @@ vec3 buildingColor(out float glow) {
   vec2 uv = vUv2;
   float px = max(length(fwidth(uv)), 1e-4);
   vec3 trim = trimColor(seed);
+
+  if (part == 13.0) return windowUnit(uv, vF0.y, vF0.z, vF0.w, mat, seed, glow);
+  if (part == 14.0) {                      // a door: panels below, glass above (shop doors glazed)
+    float w = vF0.y, h = vF0.z, style = vF0.w;
+    vec2 q = vec2(uv.x * w, uv.y * h);
+    float dpx = max(length(fwidth(q)), 1e-4);
+#ifdef KIT_DOORS
+    { vec4 k = kitCell(t_kit_doors, 3.0, 2.0, style > 1.5 ? 3.0 : style > 0.5 ? 4.0 : floor(fract(seed * 3.1) * 3.0), uv);
+      if (k.a > 0.5) return k.rgb; }
+#endif
+    vec3 dc = style > 0.5 ? trimColor(seed + 0.4) * 0.8 : signColor(fract(seed * 2.9 + 0.2));
+    float fr = 1.0 - sbox(q, vec2(0.07), vec2(w - 0.07, h - 0.07), dpx);
+    float glassTop = style > 0.5 ? 0.45 : h * 0.6;
+    float pane = sbox(q, vec2(0.16, glassTop), vec2(w - 0.16, h - 0.16), dpx);
+    float lit; vec3 g = glassColor(q - vec2(w * 0.5, glassTop), h - glassTop, seed, lit);
+    float pan = sbox(vec2(fract(q.x / (w * 0.5)), q.y), vec2(0.18, 0.18), vec2(0.82, glassTop - 0.15), dpx / (w * 0.5));
+    vec3 c = dc * (0.85 + 0.15 * pan);
+    c = mix(c, g, pane); glow = lit * pane;
+    c = mix(c, dc * 0.7, fr);
+    float knob = 1.0 - smoothstep(0.03, 0.035, length(q - vec2(w - 0.13, 1.0)));
+    return mix(c, vec3(0.78, 0.62, 0.28), knob);
+  }
+  if (part == 15.0) {                      // a blank sign band in a moulded frame
+    float L = vF0.y, h = vF0.z;
+    vec3 sc = signColor(fract(seed * 5.7));
+#ifdef KIT_TRIM
+    { vec4 k = kitCell(t_kit_trim, 4.0, 2.0, 6.0, vec2(fract(uv.x / max(1.0, L / max(1.0, floor(L / (h * 4.0) + 0.5)))), uv.y / h));
+      if (k.a > 0.5) return mix(k.rgb, k.rgb * sc * 1.6, 0.5); }
+#endif
+    float mould = 1.0 - sbox(uv, vec2(0.08, 0.07), vec2(L - 0.08, h - 0.07), px);
+    return mix(sc, trimColor(seed) * 1.1, mould);
+  }
+  if (part == 16.0) {                      // shop display glass and the warm shop behind it
+    float w = vF0.y, h = vF0.z;
+#ifdef KIT_SHOPFRONTS
+    { vec4 k = kitCell(t_kit_shopfronts, 4.0, 1.0, floor(fract(seed * 4.7) * 4.0), vec2(0.18 + 0.64 * fract(uv.x / 3.2), 0.22 + 0.5 * uv.y / max(h, 0.5)));
+      if (k.a > 0.5) { glow = 0.8; return k.rgb; } }
+#endif
+    vec2 cell = floor(vec2(uv.x * 2.2, uv.y * 3.0));
+    vec3 goods = mix(vec3(0.20, 0.15, 0.11), signColor(th(cell + seed * 13.0)) * 1.3, 0.35 * step(0.45, th(cell + 2.0)) * step(uv.y, 1.6));
+    vec3 g = mix(goods, vec3(0.55, 0.62, 0.66), 0.16 + 0.25 * smoothstep(0.0, h, uv.y));
+    g += smoothstep(0.12, 0.0, abs(fract(uv.x * 0.35 + uv.y * 0.25 + seed) - 0.5) - 0.3) * 0.16;
+    glow = 0.9;
+    return g;
+  }
+  if (part == 17.0) {                      // panelled base under a shop window
+    vec3 tc = trimColor(seed + 0.11);
+    float inset = sbox(vec2(fract(uv.x / 1.1), uv.y), vec2(0.07, 0.09), vec2(0.93, vF0.z - 0.09), px / 1.1);
+    return tc * (0.72 + 0.22 * inset);
+  }
+  if (part == 3.0) {
+#ifdef KIT_CORNICES
+    if (vFac > 1.5) { vec4 k = kitCell(t_kit_cornices, 1.0, 4.0, floor(fract(seed * 3.3) * 4.0), vec2(fract(uv.x / 4.0), clamp(uv.y / max(0.3, vF0.z), 0.0, 1.0)));
+      if (k.a > 0.5) return k.rgb; }
+#endif
+  }
 
   if (part == 1.0) {                       // pitched roof
     float h = fract(seed * 11.3);
@@ -532,6 +641,10 @@ vec3 buildingColor(out float glow) {
     return c * (1.0 - 0.18 * br) * (1.0 - 0.08 * dent);
   }
   if (part == 4.0) {                       // awning stripes
+#ifdef KIT_AWNINGS
+    { vec4 k = kitCell(t_kit_awnings, 4.0, 1.0, floor(fract(seed * 3.3) * 4.0), vec2(fract(uv.x / 2.0), fract(uv.y)));
+      if (k.a > 0.5) return k.rgb; }
+#endif
     vec3 a = signColor(fract(seed * 3.3 + floor(uv.y * 0.0)));
     float plain = step(0.6, fract(seed * 5.1));
     float stripe = step(0.5, fract(uv.x / 0.32));
@@ -579,19 +692,7 @@ vec3 buildingColor(out float glow) {
   float ao = 0.72 + 0.28 * smoothstep(0.0, 1.4, y);
   wall *= 0.93 + 0.12 * tfbm(uv * 0.25 + seed * 7.0);
 
-#ifdef FACADES
-  if (vFac >= -0.5 && y < eaves) {
-    int fi = int(vFac + 0.5);
-    float L = uFacLayer[fi];
-    if (L >= 0.0) {
-      // tile the elevation along the wall at its own aspect, stretched to whole tiles
-      float n = max(1.0, floor(len / (eaves * uFacAspect[fi]) + 0.5));
-      vec2 fc = vec2(uv.x / (len / n), clamp(y / eaves, 0.0, 1.0));
-      vec3 c = textureGrad(tFac, vec3(fract(fc.x), fc.y, L), dFdx(fc), dFdy(fc)).rgb;
-      return c * (0.86 + 0.14 * smoothstep(0.0, 0.8, y));
-    }
-  }
-#endif
+
 
   if (y > eaves - 0.02) return wall * ao;        // gables and parapets: plain
   // foundation band

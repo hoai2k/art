@@ -9,7 +9,7 @@ import { landmarkParts } from './landmarks.js';
 import { FAC } from './assets.js';
 import * as THREE from 'three';
 
-export const BUILDING_ATTRS = { aF0: 4, aF1: 4, aFac: 1 };
+export const BUILDING_ATTRS = { aF0: 4, aF1: 4, aFac: 1, aBid: 1, aCen: 2 };
 
 const WALL_SURF = [SURFACE.wall_brick, SURFACE.wall_brick, SURFACE.wall_stone, SURFACE.wall_wood, SURFACE.wall_smooth, SURFACE.wall_smooth, SURFACE.wall_smooth];
 
@@ -54,7 +54,7 @@ export function buildingParams(ctx, b) {
 
 // Edges facing a street: the data's front edge, plus (for shops and civic
 // buildings) any long edge running alongside a curbed road close by.
-function frontEdges(ctx, b, P) {
+export function frontEdges(ctx, b, P) {
   const out = new Set();
   if (b.front >= 0) out.add(b.front);
   if (!(P.commercial || P.civic || P.church)) return out;
@@ -72,24 +72,14 @@ function frontEdges(ctx, b, P) {
   return out;
 }
 
-// Which elevation picture a wall shows (-1: the procedural facade): street
-// fronts by building type; brick side walls of shops get the plain side wall,
-// rear walls onto lanes and car parks the back-lane picture.
-function wallFacade(ctx, P, isFront, a, c, L, nx, nz, b) {
-  const has = (f) => f >= 0 && ctx.assets && ctx.assets.facadeLayer[f] >= 0;
-  if (P.shed) return has(FAC.garage) && L > 1.5 ? FAC.garage : -1;          // sheds and garages all round
-  if (isFront) return has(P.fac) && L > 3 && P.eaves > 2.6 ? P.fac : -1;
-  if (!P.commercial || P.storeys < 2 || L < 4 || ctx.landmarkByBuilding.has(b.id)) return -1;
-  const brick = P.mat === MAT.brick_red || P.mat === MAT.brick_buff;
-  if (!brick) return -1;
-  const mx = (a[0] + c[0]) / 2 + nx * 4, mz = (a[1] + c[1]) / 2 + nz * 4;
-  if (ctx.buildingAt && ctx.buildingAt(mx, mz)) return -1;      // a party wall
-  const g = ctx.groundClass ? ctx.groundClass(mx, mz) : 0;
-  const q = ctx.streets.grid.nearest(mx, mz, 20);
-  const onStreet = q && q.d - q.seg.data.hw < 3;
-  if (g === 2 && !onStreet && has(FAC.back)) return FAC.back;
-  if (P.mat === MAT.brick_red && has(FAC.side)) return FAC.side;
-  return -1;
+// Does this wall get a modelled 3D front near the focus (facade3d.js)? Street
+// fronts of ordinary buildings: 1 (the flat wall, its awnings and cornice are
+// swapped out for the model), else 0.
+export function modelledFront(ctx, P, b, isFront, L) {
+  if (!isFront || L < 3 || P.eaves < 2.6 || P.shed || P.church) return 0;
+  if (ctx.landmarkByBuilding.has(b.id) || b.use === 'theatre') return 0;
+  if (P.mat === MAT.glass || P.mat === MAT.metal) return 0;
+  return 1;
 }
 
 // Miter inset of a ring (positive area = CCW in x,z), clamped.
@@ -117,6 +107,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   if (special && special.override) b = { ...b, ...special.override };
   const P = buildingParams(ctx, b);
   if (special && special.params) Object.assign(P, special.params(P, b));
+  const cen = centroid(b.outer);
+  vb.set('aBid', [b._idx || 0]).set('aCen', [cen[0], cen[1]]);
   const fronts = frontEdges(ctx, b, P);
   const base = P.base;
   const y0 = base - 0.8;                                  // sink into sloping ground
@@ -129,7 +121,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   const top = eaves + parapet;
   const area = polyArea(b.outer);
   const S = (part, extraFlags = 0, mat = P.mat) => {
-    vb.set('aF0', [part, 0, b.height, P.storeys]).set('aF1', [mat, P.flags | extraFlags, P.seed, P.gfh]).set('aFac', [P.fac]);
+    vb.set('aF0', [part, 0, b.height, P.storeys]).set('aF1', [mat, P.flags | extraFlags, P.seed, P.gfh]).set('aFac', [0]);
   };
   const rel = (p, y) => [p[0] - ox, y, p[1] - oz];
   const rings = [b.outer, ...b.holes.map((h) => (signedArea(h) > 0 ? h.slice().reverse() : h))];
@@ -141,8 +133,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 0.05) continue;
       const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
       const isFront = ri === 0 && fronts.has(i);
-      const fac = wallFacade(ctx, P, isFront, a, c, L, nx, nz, b);
-      vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
+      const swap = ri === 0 ? modelledFront(ctx, P, b, isFront, L) : 0;
+      vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [swap]);
       const i0 = vb.v(a[0] - ox, y0, a[1] - oz, nx, 0, nz, 0, y0 - base);
       const i1 = vb.v(c[0] - ox, y0, c[1] - oz, nx, 0, nz, L, y0 - base);
       const i2 = vb.v(c[0] - ox, top, c[1] - oz, nx, 0, nz, L, top - base);
@@ -150,8 +142,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       vb.quad(i1, i0, i3, i2);
       cb.quad(rel(a, y0), rel(c, y0), rel(c, top), rel(a, top), WALL_SURF[P.mat]);
       // storefront awnings and cornices on street fronts
-      if (isFront && fac < 0 && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, i);
-      if (isFront && parapet > 0.5 && L > 2) cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz);
+      if (isFront && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, swap ? null : cb, a, c, L, nx, nz, base, P, ox, oz, i, swap);
+      if (isFront && parapet > 0.5 && L > 2) cornice(vb, swap ? null : cb, a, c, L, nx, nz, top, P, ox, oz, swap);
     }
   });
   // ---- roof
@@ -202,7 +194,7 @@ function parapetInside(vb, cb, ring, y0, y1, P, ox, oz) {
     const a = inner[i], c = inner[(i + 1) % n], A = ring[i], C = ring[(i + 1) % n];
     const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 0.05) continue;
     const nx = -(c[1] - a[1]) / L, nz = (c[0] - a[0]) / L;      // facing inward
-    vb.set('aF0', [PART.plain, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [-1]);
+    vb.set('aF0', [PART.plain, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
     const i0 = vb.v(a[0] - ox, y0, a[1] - oz, nx, 0, nz, 0, 0), i1 = vb.v(c[0] - ox, y0, c[1] - oz, nx, 0, nz, L, 0);
     const i2 = vb.v(c[0] - ox, y1, c[1] - oz, nx, 0, nz, L, y1 - y0), i3 = vb.v(a[0] - ox, y1, a[1] - oz, nx, 0, nz, 0, y1 - y0);
     vb.quad(i0, i1, i2, i3);
@@ -210,18 +202,18 @@ function parapetInside(vb, cb, ring, y0, y1, P, ox, oz) {
     vb.set('aF0', [PART.trim, L, 0, 1]);
     const j0 = vb.v(A[0] - ox, y1 + 0.06, A[1] - oz, 0, 1, 0, 0, 0), j1 = vb.v(C[0] - ox, y1 + 0.06, C[1] - oz, 0, 1, 0, L, 0);
     const j2 = vb.v(c[0] - ox, y1 + 0.06, c[1] - oz, 0, 1, 0, L, 0.25), j3 = vb.v(a[0] - ox, y1 + 0.06, a[1] - oz, 0, 1, 0, 0, 0.25);
-    vb.quad(j1, j0, j3, j2); vb.quad(j0, j1, j2, j3);
+    vb.quadFacing(j0, j1, j2, j3, [0, 1, 0]);
     cb.quad([a[0] - ox, y0, a[1] - oz], [c[0] - ox, y0, c[1] - oz], [c[0] - ox, y1, c[1] - oz], [a[0] - ox, y1, a[1] - oz], WALL_SURF[P.mat]);
     cb.quad([A[0] - ox, y1 + 0.06, A[1] - oz], [C[0] - ox, y1 + 0.06, C[1] - oz], [c[0] - ox, y1 + 0.06, c[1] - oz], [a[0] - ox, y1 + 0.06, a[1] - oz], SURFACE.roof);
   }
 }
 
-function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz) {
+export function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, swap = 0) {
   const d = 0.42, h = 0.55, yb = top - h - 0.05, yt = top + 0.08;
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
   const A = [a[0] - dx * 0.1, a[1] - dz * 0.1], C = [c[0] + dx * 0.1, c[1] + dz * 0.1];
   const Ao = [A[0] + nx * d, A[1] + nz * d], Co = [C[0] + nx * d, C[1] + nz * d];
-  vb.set('aF0', [PART.trim, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [-1]);
+  vb.set('aF0', [PART.trim, L, h, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [swap]);
   const v = (p, y, n, u, w) => vb.v(p[0] - ox, y, p[1] - oz, n[0], n[1], n[2], u, w);
   const N = [nx, 0, nz];
   // front face (slightly sloped forward at the top), underside, top
@@ -235,15 +227,16 @@ function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz) {
   for (const [P0, P1, s] of [[A, Ao, -1], [C, Co, 1]]) {
     const n2 = [dx * s, 0, dz * s];
     q = [v(P0, yb, n2, 0, 0), v(P1, yb, n2, 0.4, 0), v(P1, yt, n2, 0.4, h), v(P0, yt, n2, 0, h)];
-    vb.quad(q[0], q[1], q[2], q[3]); vb.quad(q[1], q[0], q[3], q[2]);
+    vb.quadFacing(q[0], q[1], q[2], q[3], n2);
   }
   const r = (p, y) => [p[0] - ox, y, p[1] - oz];
+  if (!cb) return;
   cb.quad(r(Ao, yb), r(Co, yb), r(Co, yt), r(Ao, yt), WALL_SURF[P.mat]);
   cb.quad(r(A, yb), r(C, yb), r(Co, yb), r(Ao, yb), WALL_SURF[P.mat]);
   cb.quad(r(A, yt), r(C, yt), r(Co, yt), r(Ao, yt), SURFACE.roof);
 }
 
-function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge) {
+export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0) {
   const units = Math.max(1, Math.floor(L / 7 + 0.4)), uw = L / units;
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
   for (let u = 0; u < units; u++) {
@@ -252,21 +245,21 @@ function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge) {
     const s0 = u * uw + 0.45, s1 = (u + 1) * uw - 0.45; if (s1 - s0 < 1.5) continue;
     const yTop = base + P.gfh - 0.98, out = 1.25, drop = 0.7, val = 0.28;
     const p = (s, o) => [a[0] + dx * s + nx * o, a[1] + dz * s + nz * o];
-    vb.set('aF0', [PART.awning, s1 - s0, 0, 1]).set('aF1', [P.mat, 0, P.seed + h * 3.1, 3]).set('aFac', [-1]);
+    vb.set('aF0', [PART.awning, s1 - s0, 0, 1]).set('aF1', [P.mat, 0, P.seed + h * 3.1, 3]).set('aFac', [swap]);
     const slope = Math.atan2(drop, out); const sn = [nx * Math.sin(slope), Math.cos(slope), nz * Math.sin(slope)];
     const V = (q, y, n, uu, w) => vb.v(q[0] - ox, y, q[1] - oz, n[0], n[1], n[2], uu, w);
     let q = [V(p(s0, 0.02), yTop, sn, s0, 0), V(p(s1, 0.02), yTop, sn, s1, 0), V(p(s1, out), yTop - drop, sn, s1, 1), V(p(s0, out), yTop - drop, sn, s0, 1)];
-    vb.quad(q[0], q[1], q[2], q[3]); vb.quad(q[1], q[0], q[3], q[2]);
+    vb.quadFacing(q[0], q[1], q[2], q[3], sn);
     const fn = [nx, 0, nz];
     q = [V(p(s0, out), yTop - drop - val, fn, s0, 1.3), V(p(s1, out), yTop - drop - val, fn, s1, 1.3), V(p(s1, out), yTop - drop, fn, s1, 1), V(p(s0, out), yTop - drop, fn, s0, 1)];
-    vb.quad(q[1], q[0], q[3], q[2]); vb.quad(q[0], q[1], q[2], q[3]);
+    vb.quadFacing(q[0], q[1], q[2], q[3], fn);
     for (const [s, sgn] of [[s0, -1], [s1, 1]]) {
       const n2 = [dx * sgn, 0, dz * sgn];
       const t = [V(p(s, 0.02), yTop, n2, 0, 0), V(p(s, out), yTop - drop, n2, 1, 1), V(p(s, out), yTop - drop - val, n2, 1, 1.3)];
-      vb.tri(t[0], t[1], t[2]); vb.tri(t[0], t[2], t[1]);
+      vb.triFacing(t[0], t[1], t[2], n2);
     }
     const r = (q2, y) => [q2[0] - ox, y, q2[1] - oz];
-    cb.quad(r(p(s0, 0.02), yTop), r(p(s1, 0.02), yTop), r(p(s1, out), yTop - drop), r(p(s0, out), yTop - drop), SURFACE.prop);
+    if (cb) cb.quad(r(p(s0, 0.02), yTop), r(p(s1, 0.02), yTop), r(p(s1, out), yTop - drop), r(p(s0, out), yTop - drop), SURFACE.prop);
   }
 }
 
@@ -277,7 +270,7 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
   const area = polyArea(b.outer);
   const rectish = o && area / o.area > 0.86 && rings.length === 1;
   const roofPart = (P.church || P.civic) && P.seed < 0.5 ? PART.copper : PART.roof;
-  const set = (L) => vb.set('aF0', [roofPart === PART.copper ? PART.roof : PART.roof, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [-1]);
+  const set = (L) => vb.set('aF0', [roofPart === PART.copper ? PART.roof : PART.roof, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
   if (rectish && roof !== 'dome' && roof !== 'mansard') {
     // long axis
     let ux = o.ux, uz = o.uz, hl = o.hu, hs = o.hv;
@@ -319,18 +312,26 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
       for (const s of [-1, 1]) {
         const g = s * (hl - e);
         const nrm = [ux * s, 0, uz * s];
-        vb.set('aF0', [PART.wall, 2 * hs, b.height, P.storeys]).set('aF1', [P.mat, P.flags, P.seed, P.gfh]).set('aFac', [-1]);
+        vb.set('aF0', [PART.wall, 2 * hs, b.height, P.storeys]).set('aF1', [P.mat, P.flags, P.seed, P.gfh]).set('aFac', [0]);
         const base = P.base;
         const ids = [W(g, -hs + e, eaves), W(g, hs - e, eaves), W(g, 0, yR - 0.05)].map((p, k) => vb.v(p[0], p[1], p[2], nrm[0], 0, nrm[2], k === 0 ? 0 : k === 1 ? 2 * (hs - e) : hs - e, p[1] - base));
-        if (s > 0) vb.tri(ids[0], ids[1], ids[2]); else vb.tri(ids[1], ids[0], ids[2]);
-        vb.tri(ids[0], ids[2], ids[1]);
+        vb.triFacing(ids[0], ids[1], ids[2], nrm);
         cb.tri(W(g, -hs + e, eaves), W(g, hs - e, eaves), W(g, 0, yR - 0.05), WALL_SURF[P.mat]);
+      }
+      // bargeboards along the rakes of house gables (painted trim)
+      if (P.house) {
+        vb.set('aF0', [PART.trim, 2, 0.22, 1]).set('aF1', [P.mat, 0, P.seed + 0.37, 3]).set('aFac', [0]);
+        for (const sg of [-1, 1]) {
+          const o = [ux * sg * 0.03, 0, uz * sg * 0.03];
+          const E1 = W(sg * hl, -hs, yE - 0.02), Rg = W(sg * hl, 0, yR + 0.02), E2 = W(sg * hl, hs, yE - 0.02);
+          for (const [A, C] of [[E1, Rg], [Rg, E2]]) board(vb, [A[0] + o[0], A[1], A[2] + o[2]], [C[0] + o[0], C[1], C[2] + o[2]], [ux * sg, 0, uz * sg], 0.24, 0.05);
+        }
       }
     }
     // soffit (underside) so the overhang reads from below
-    vb.set('aF0', [PART.trim, 2 * hl, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [-1]);
+    vb.set('aF0', [PART.trim, 2 * hl, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
     const sids = [W(-hl, -hs, yE), W(hl, -hs, yE), W(hl, hs, yE), W(-hl, hs, yE)].map((p) => vb.v(p[0], p[1], p[2], 0, -1, 0, p[0], p[2]));
-    vb.quad(sids[0], sids[1], sids[2], sids[3]); vb.quad(sids[1], sids[0], sids[3], sids[2]);
+    vb.quadFacing(sids[0], sids[1], sids[2], sids[3], [0, -1, 0]);
     return;
   }
   // inset (hip-like) roof for irregular footprints
@@ -357,6 +358,20 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
   set(1);
   capPoly(vb, cb, [inner], yT, ox, oz, PART.roof);
   if (rings.length > 1) { set(1); capPoly(vb, cb, rings.slice(1).map((h) => h), eaves, ox, oz, PART.roof); }
+}
+// a flat board from A to C (thickness along `side`, width across it), all six faces
+function board(vb, A, C, side, width, thick) {
+  const d = [C[0] - A[0], C[1] - A[1], C[2] - A[2]], L = Math.hypot(...d);
+  const sv = side.map((v) => v * thick / 2);
+  let t = [d[1] * side[2] - d[2] * side[1], d[2] * side[0] - d[0] * side[2], d[0] * side[1] - d[1] * side[0]];
+  const tl = Math.hypot(...t) || 1; t = t.map((v) => (v / tl) * width / 2);
+  const P = (a, b, e) => [(a ? C : A)[0] + sv[0] * b + t[0] * e, (a ? C : A)[1] + sv[1] * b + t[1] * e, (a ? C : A)[2] + sv[2] * b + t[2] * e];
+  const faces = [[P(0, 1, -1), P(1, 1, -1), P(1, 1, 1), P(0, 1, 1)], [P(1, -1, -1), P(0, -1, -1), P(0, -1, 1), P(1, -1, 1)],
+    [P(0, -1, 1), P(0, 1, 1), P(1, 1, 1), P(1, -1, 1)], [P(1, -1, -1), P(1, 1, -1), P(0, 1, -1), P(0, -1, -1)]];
+  for (const f of faces) {
+    const ids = f.map((p, k) => vb.v(p[0], p[1], p[2], side[0], 0.2, side[2], k === 1 || k === 2 ? L : 0, k >= 2 ? width : 0));
+    vb.quad(ids[0], ids[1], ids[2], ids[3]);
+  }
 }
 function selfCross(r) {
   const n = r.length; if (n > 60) return false;
@@ -399,7 +414,7 @@ function porch(vb, cb, b, base, P, ox, oz) {
   const p = (s, o) => [a[0] + dx * s + nx * o, a[1] + dz * s + nz * o];
   const yaw = Math.atan2(-dz, dx);
   const mid = p(s0 + w / 2, depth / 2);
-  vb.set('aF0', [PART.porch, w, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [-1]);
+  vb.set('aF0', [PART.porch, w, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
   KIT.box(vb, cb, mid[0] - ox, deck - 0.3, mid[1] - oz, w / 2, 0.3, depth / 2, yaw, SURFACE.prop);
   KIT.box(vb, cb, mid[0] - ox, roofY + 0.12, mid[1] - oz, w / 2 + 0.15, 0.12, depth / 2 + 0.15, yaw, SURFACE.roof);
   const posts = Math.max(2, Math.round(w / 2.2) + 1);
@@ -451,7 +466,7 @@ export const KIT = {
     }
   },
   setPart(vb, P, part, mat = P.mat, flags = 0, len = 4, eaves = 100, storeys = 1) {
-    vb.set('aF0', [part, len, eaves, storeys]).set('aF1', [mat, flags, P.seed, 3]).set('aFac', [-1]);
+    vb.set('aF0', [part, len, eaves, storeys]).set('aF1', [mat, flags, P.seed, 3]).set('aFac', [0]);
   },
   // square tower: shaft, belfry with arched openings painted, optional clocks, roof
   tower(vb, cb, P, x, base, z, w, top, yaw, opt = {}) {

@@ -70,15 +70,25 @@ export function clearSave(storage = globalThis.localStorage) {
   try { storage?.removeItem(SAVE_KEY); } catch { /* fine */ }
 }
 
+// Settings version 2 flipped the camera's vertical direction: what version 1
+// called "not inverted" is now "Invert camera Y: On". Version 1 saved every key
+// whether or not the player chose it, so its invertY says nothing: a version 1
+// file takes the new default. From version 2 on, `changed` records the keys the
+// player actually set, so a later change of default can keep their choice.
+export const SETTINGS_VERSION = 2;
 export const DEFAULT_SETTINGS = {
+  version: SETTINGS_VERSION, changed: [],
   camSens: 1, invertY: false, coat: 'grey', quality: 'medium', volume: 0.8, rumble: true, hints: true, sound: true,
 };
 
 export function sanitizeSettings(raw) {
-  const s = { ...DEFAULT_SETTINGS };
-  if (!raw || typeof raw !== 'object') return s;
+  const s = { ...DEFAULT_SETTINGS, changed: [] };
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return s;
+  const version = Number.isInteger(raw.version) ? raw.version : 1;
+  if (Array.isArray(raw.changed)) s.changed = [...new Set(raw.changed.filter((k) => typeof k === 'string' && k in DEFAULT_SETTINGS))];
   if (Number.isFinite(raw.camSens)) s.camSens = Math.min(2.5, Math.max(0.2, raw.camSens));
-  if (typeof raw.invertY === 'boolean') s.invertY = raw.invertY;
+  // Version 1's invertY was the old default (or a choice we cannot tell apart from it): drop it.
+  if (typeof raw.invertY === 'boolean' && version >= 2) s.invertY = raw.invertY;
   if (raw.coat === 'grey' || raw.coat === 'black') s.coat = raw.coat;
   if (['low', 'medium', 'high'].includes(raw.quality)) s.quality = raw.quality;
   if (Number.isFinite(raw.volume)) s.volume = Math.min(1, Math.max(0, raw.volume));
@@ -89,8 +99,8 @@ export function sanitizeSettings(raw) {
 }
 
 export function loadSettings(storage = globalThis.localStorage) {
-  try { return sanitizeSettings(JSON.parse(storage?.getItem(SETTINGS_KEY) || 'null')); } catch { return { ...DEFAULT_SETTINGS }; }
+  try { return sanitizeSettings(JSON.parse(storage?.getItem(SETTINGS_KEY) || 'null')); } catch { return sanitizeSettings(null); }
 }
 export function writeSettings(s, storage = globalThis.localStorage) {
-  try { storage?.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch { /* fine */ }
+  try { storage?.setItem(SETTINGS_KEY, JSON.stringify({ ...s, version: SETTINGS_VERSION })); } catch { /* fine */ }
 }

@@ -100,12 +100,16 @@
       </div>
       <canvas id="compass" class="compass" width="440" height="56" role="img" aria-label="Compass"></canvas>
       <button class="hud-pause pic-btn" data-action="pause" aria-label="Pause" title="Pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>
-      <div id="discovery" class="discovery" role="status" aria-live="polite" hidden>
-        <svg class="d-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z" fill="#b3261e" stroke="#4b1410" stroke-width="1.4"/><circle cx="12" cy="10" r="2.6" fill="#f4e8cf"/></svg>
-        <div><p class="d-kicker">Discovered</p><h3 id="d-name"></h3><p id="d-blurb"></p></div>
+      <!-- Everything said during play sits here, under the squirrel. -->
+      <div class="bottom-stack" id="bottom-stack">
+        <div id="discovery" class="discovery" role="status" aria-live="polite" hidden>
+          <svg class="d-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z" fill="#b3261e" stroke="#4b1410" stroke-width="1.4"/><circle cx="12" cy="10" r="2.6" fill="#f4e8cf"/></svg>
+          <div><div class="d-head"><h3 id="d-name"></h3><p class="d-kicker">Discovered</p></div><p id="d-blurb"></p></div>
+        </div>
+        <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+        <p id="ctx-hint" class="ctx-hint" aria-live="polite" hidden></p>
+        <div id="hint-strip" class="hint-strip" aria-hidden="true"></div>
       </div>
-      <p id="ctx-hint" class="ctx-hint" aria-live="polite"></p>
-      <div id="hint-strip" class="hint-strip" aria-hidden="true"></div>
       <div id="touch" class="touch" hidden>
         <div class="stick-zone" id="touch-move"><i></i></div>
         <div class="touch-btns">
@@ -259,7 +263,6 @@
     </section>
 
     <div id="fade" class="fade" aria-hidden="true"><p id="fade-text"></p></div>
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <div id="bars-hint" hidden><span class="arrow" aria-hidden="true">&uarr;</span> Swipe up</div>
   </div>
   <script type="module" src="src/main.js"></script>

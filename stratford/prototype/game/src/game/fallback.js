@@ -89,11 +89,12 @@ export function createCapsuleCamera({ THREE, camera, creature }) {
   return {
     update(dt, controls) {
       creature.camYaw -= controls.look[0];
-      pitch = Math.max(-0.15, Math.min(1.2, pitch + controls.look[1]));
+      pitch = Math.max(-0.15, Math.min(1.2, pitch - controls.look[1])); // as src/creatures/camera.js: positive look[1] tilts the view up
       if (controls.recenter) creature.camYaw = creature.yaw;
       const d = 2.4;
       const p = creature.position;
       const fx = -Math.sin(creature.camYaw); const fz = -Math.cos(creature.camYaw);
+      // pitch is how far the view looks down; the camera rises behind to do it.
       camera.position.set(p.x - fx * d * Math.cos(pitch), p.y + 0.35 + d * Math.sin(pitch), p.z - fz * d * Math.cos(pitch));
       look.set(p.x, p.y + 0.2, p.z);
       camera.lookAt(look);

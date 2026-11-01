@@ -65,18 +65,19 @@ export function prepareStreets(ctx) {
       s += l;
     }
   }
+  // the deck starts and ends at the bank heights and rises (to clear the water) in between
   const deckAt = (b, s) => {
-    const t = s / b.L;
-    let y = b.h0 + (b.h1 - b.h0) * t + Math.sin(Math.PI * t) * Math.min(0.8, b.L / 40);
-    if (Number.isFinite(b.wl)) y = Math.max(y, b.wl + 1.1 + 0.6 * Math.sin(Math.PI * t));
-    return y;
+    const t = Math.min(1, Math.max(0, s / b.L));
+    const lift = Math.max(Math.min(0.8, b.L / 40), Number.isFinite(b.wl) ? b.wl + 1.2 - Math.min(b.h0, b.h1) : 0);
+    return b.h0 + (b.h1 - b.h0) * t + lift * Math.sin(Math.PI * t);
   };
   // drape height: terrain, or a bridge deck
   const H = (x, z) => {
     const q = bgrid.nearest(x, z, 14);
     if (q && q.d <= q.seg.data.b.half) {
-      const { b, s0, s1 } = q.seg.data;
-      return deckAt(b, s0 + (s1 - s0) * q.t);
+      const { b, s0, s1 } = q.seg.data, s = s0 + (s1 - s0) * q.t;
+      // only beside the deck, not beyond its ends
+      if (s > 0.01 && s < b.L - 0.01) return Math.max(deckAt(b, s), hf.at(x, z));
     }
     return hf.at(x, z);
   };
@@ -217,13 +218,15 @@ export function buildGroundMap(ctx, mPerPx) {
 
 // ---------------------------------------------------------------- per chunk
 const R = 0.5;            // raster resolution (m)
+const ROAD_Y = 0.02;      // carriageway above the (sunken) terrain
+const MARK_Y = 0.004;     // paint above the carriageway (drawn with a stronger depth offset)
 const MARGIN = 16;        // px around the chunk so blur and strokes see their neighbours
 let _canvas = null, _canvas2 = null;
 
 // Builds a chunk's streets into vb (visual Builder with aSt/aDir) and cb
 // (ColliderBuilder). ox, oz: the chunk origin (vertices are stored relative to
 // it). Generator: yields between the heavy steps for time slicing.
-export function* buildChunkStreets(ctx, chunk, vb, cb) {
+export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
   const { streets, curb } = ctx;
   const { x0, z0, size } = chunk;
   const ox = chunk.ox, oz = chunk.oz;
@@ -271,14 +274,17 @@ export function* buildChunkStreets(ctx, chunk, vb, cb) {
     const roadLoops = contourLoops(road, N, x0, z0, R);
     yield;
     for (const P of polygons(roadLoops.map((l) => cleanLoop(l, 0.04, 3)).filter(Boolean))) {
+      // the carriageway is walked on: the collider gets exactly the drawn triangles
+      const ry = new Map();
       triangulate(P, (pts) => {
         const idx = pts.map((p) => {
           const i = info(p[0], p[1]);
+          const y = H(p[0], p[1]) + ROAD_Y; ry.set(p, y);
           vb.set('aSt', [STREET.road, 0, 0, 0]).set('aDir', [i.dx, i.dz]);
-          return vb.v(p[0] - ox, H(p[0], p[1]) + 0.02, p[1] - oz, 0, 1, 0);
+          return vb.v(p[0] - ox, y, p[1] - oz, 0, 1, 0);
         });
         return idx;
-      }, vb);
+      }, vb, (a, b, c) => cb.tri([a[0] - ox, ry.get(a), a[1] - oz], [b[0] - ox, ry.get(b), b[1] - oz], [c[0] - ox, ry.get(c), c[1] - oz], SURFACE.road));
     }
     yield;
     // sidewalks + boulevards, and the curbs along their road side
@@ -326,20 +332,24 @@ export function* buildChunkStreets(ctx, chunk, vb, cb) {
   // ribbons: footways, paths, service lanes (segments whose midpoint is in the chunk)
   for (const r of ctx.ribbonsIn(chunk)) {
     const kind = RIBBON[r.road.kind];
-    const y0 = kind === STREET.service ? 0.012 : 0.026;
-    ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz);
+    // each kind a clear step above the terrain and each other (no depth fighting), all in the collider
+    const y0 = kind === STREET.service ? 0.03 : kind === STREET.path ? 0.04 : 0.045;
+    const surf = kind === STREET.service ? SURFACE.road : kind === STREET.path ? SURFACE.ground : SURFACE.sidewalk;
+    ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz, cb, surf);
     if (r.road.kind === 'steps') { /* drawn as a footway */ }
   }
   // markings
   for (const m of ctx.markingsIn(chunk)) {
     const n = Math.max(1, Math.ceil((m.hl * 2) / 2));
     const nx = -m.dz, nz = m.dx;
-    vb.set('aSt', [m.kind, 0, 0, 0]).set('aDir', [m.dx, m.dz]);
+    mb.set('aSt', [m.kind, 0, 0, 0]).set('aDir', [m.dx, m.dz]);
     for (let k = 0; k < n; k++) {
       const s0 = -m.hl + (2 * m.hl * k) / n, s1 = -m.hl + (2 * m.hl * (k + 1)) / n;
       const P = [[s0, -m.hw], [s1, -m.hw], [s1, m.hw], [s0, m.hw]].map(([s, o]) => [m.cx + m.dx * s + nx * o, m.cz + m.dz * s + nz * o]);
-      const ids = P.map((p) => vb.v(p[0] - ox, H(p[0], p[1]) + 0.032, p[1] - oz, 0, 1, 0));
-      vb.quad(ids[0], ids[3], ids[2], ids[1]);
+      const Q = P.map((p) => [p[0] - ox, H(p[0], p[1]) + ROAD_Y + MARK_Y, p[1] - oz]);
+      const ids = Q.map((q) => mb.v(q[0], q[1], q[2], 0, 1, 0));
+      mb.quad(ids[0], ids[3], ids[2], ids[1]);
+      cb.quad(Q[0], Q[3], Q[2], Q[1], SURFACE.road);        // paint is walked on too (4 mm proud)
     }
   }
   // bridges
@@ -363,7 +373,7 @@ function triangulate(P, emit, vb, onTri) {
   }
 }
 
-function ribbon(pts, width, yAt, kind, vb, ox, oz) {
+function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0) {
   const hw = width / 2;
   const dense = [];
   for (let i = 0; i < pts.length - 1; i++) {
@@ -381,10 +391,11 @@ function ribbon(pts, width, yAt, kind, vb, ox, oz) {
     const ext = i === 0 ? -hw * 0.6 : i === dense.length - 1 ? hw * 0.6 : 0;
     const cx = x + dx * ext, cz = z + dz * ext;
     vb.set('aSt', [kind, 0, 0, 0]).set('aDir', [dx, dz]);
-    const L = vb.v(cx - dz * hw - ox, yAt(cx - dz * hw, cz + dx * hw), cz + dx * hw - oz, 0, 1, 0);
-    const Rr = vb.v(cx + dz * hw - ox, yAt(cx + dz * hw, cz - dx * hw), cz - dx * hw - oz, 0, 1, 0);
-    if (prev) vb.quad(prev[0], L, Rr, prev[1]);
-    prev = [L, Rr];
+    const pl = [cx - dz * hw - ox, yAt(cx - dz * hw, cz + dx * hw), cz + dx * hw - oz], pr = [cx + dz * hw - ox, yAt(cx + dz * hw, cz - dx * hw), cz - dx * hw - oz];
+    const L = vb.v(pl[0], pl[1], pl[2], 0, 1, 0);
+    const Rr = vb.v(pr[0], pr[1], pr[2], 0, 1, 0);
+    if (prev) { vb.quad(prev[0], L, Rr, prev[1]); if (cb) cb.quad(prev[2], pl, pr, prev[3], surf); }
+    prev = [L, Rr, pl, pr];
   }
 }
 
@@ -407,7 +418,9 @@ function buildBridge(ctx, b, chunk, vb, cb) {
       const ya = ctx.streets.deckAt(b, s + L * t0), yb = ctx.streets.deckAt(b, s + L * t1);
       const W = (p, side, y) => [p[0] + nx * side - ox, y, p[1] + nz * side - oz];
       // deck collider (the visual deck is the road/sidewalk/footway drape)
-      cb.quad(W(pa, -half, ya), W(pa, half, ya), W(pb, half, yb), W(pb, -half, yb), foot ? SURFACE.sidewalk : SURFACE.road);
+      // a footbridge's timber deck is drawn 3 cm up and walked on there; a road bridge's
+      // carriageway and sidewalks are already in the collider exactly as drawn
+      if (foot) cb.quad(W(pa, -half, ya + 0.03), W(pa, half, ya + 0.03), W(pb, half, yb + 0.03), W(pb, -half, yb + 0.03), SURFACE.sidewalk);
       if (foot) {
         vb.set('aSt', [STREET.deck, 0, 0, 0]).set('aDir', [dx, dz]);
         quadV(vb, W(pa, -half, ya + 0.03), W(pb, -half, yb + 0.03), W(pb, half, yb + 0.03), W(pa, half, ya + 0.03), [0, 1, 0]);
@@ -442,6 +455,7 @@ function buildBridge(ctx, b, chunk, vb, cb) {
       vb.set('aSt', [STREET.stone, 0, 0, 0]);
       const lo = foot ? 0.35 : 1.0;
       quadV(vb, W(pa, half, ya - lo), W(pa, -half, ya - lo), W(pb, -half, yb - lo), W(pb, half, yb - lo), [0, -1, 0]);
+      cb.quad(W(pa, half, ya - lo), W(pa, -half, ya - lo), W(pb, -half, yb - lo), W(pb, half, yb - lo), SURFACE.wall_stone);   // the underside, from below
     }
     s += L;
   }

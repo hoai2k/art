@@ -181,7 +181,87 @@ const la = world.data.spawn?.lookAt;
 look(new THREE.Vector3(la ? la[0] : world.spawn.x, world.spawn.y, la ? la[1] : world.spawn.z - 10));
 setScale(0.25);
 if (params.get('view')) await jumpTo(params.get('view'), params.get('mode') || 'fly');
-window.bench = { world, camera, renderer, scene, pos, vec: (x, y, z) => new THREE.Vector3(x, y, z), box: (a, b, c, d, e, f) => new THREE.Box3(new THREE.Vector3(a, b, c), new THREE.Vector3(d, e, f)), setMode, setScale, jumpTo, look: (x, y, z) => look(new THREE.Vector3(x, y, z)), set: (x, y, z, yw, p) => { pos.set(x, y, z); yaw = yw; pitch = p; }, errors };
+
+// ---- ground probe: does every visible walkable ground surface match the collider?
+// At sample points (random, under trees, near curbs, on chunk borders, in a park) a
+// downward ray against the visible ground meshes is compared with one against the
+// colliders. diff = visible - collider (m): > +1 cm means the creature sinks into
+// what it sees. layers = how many distinct visible surfaces lie within 1.5 cm of the top
+// (two drawn grounds that close fight in the depth buffer).
+async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
+  const { MeshBVH } = await import('three-mesh-bvh');
+  const w = world;
+  let s = seed >>> 0 || 1; const rnd = () => { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return (s >>> 0) / 4294967296; };
+  const down = new THREE.Vector3(0, -1, 0), ray = new THREE.Ray(), inv = new THREE.Matrix4(), nm = new THREE.Matrix3();
+  const GROUND = new Set([0, 1, 2, 3, 11]);
+  const samples = [];
+  for (const f of foci) {
+    pos.set(f.x, w.groundAt(f.x, f.z) + 2, f.z);           // the bench's own focus follows too
+    await w.ready({ x: f.x, y: 0, z: f.z });
+    for (let k = 0; k < 30; k++) w.update(0.016, camera, new THREE.Vector3(f.x, w.groundAt(f.x, f.z), f.z));
+    await w.ready({ x: f.x, y: 0, z: f.z });
+    const pts = [];
+    for (let i = 0; i < perFocus; i++) { const a = rnd() * 6.283, r = Math.sqrt(rnd()) * 90; pts.push(['random', f.x + Math.cos(a) * r, f.z + Math.sin(a) * r]); }
+    for (const t of w.trees) if (Math.hypot(t.x - f.x, t.z - f.z) < 90 && rnd() < 0.5) { const a = rnd() * 6.283, r = rnd() * t.crown; pts.push(['under-tree', t.x + Math.cos(a) * r, t.z + Math.sin(a) * r]); }
+    for (const r of w.data.roads) {
+      if (!['primary', 'secondary', 'tertiary', 'residential', 'unclassified'].includes(r.kind)) continue;
+      for (let i = 1; i < r.points.length; i++) {
+        const A = r.points[i - 1], B = r.points[i], mx = (A[0] + B[0]) / 2, mz = (A[1] + B[1]) / 2;
+        if (Math.hypot(mx - f.x, mz - f.z) > 90) continue;
+        const L = Math.hypot(B[0] - A[0], B[1] - A[1]); if (L < 1) continue;
+        const nx = -(B[1] - A[1]) / L, nz = (B[0] - A[0]) / L;
+        for (const o of [0, r.width / 2 - 1, r.width / 2 - 0.15, r.width / 2 + 0.15, r.width / 2 + 1.2, r.width / 2 + 3]) for (const sg of [-1, 1]) { const t = rnd(); pts.push([o < r.width / 2 ? 'road' : 'curbside', A[0] + (B[0] - A[0]) * t + nx * o * sg, A[1] + (B[1] - A[1]) * t + nz * o * sg]); }
+      }
+    }
+    const C = w.chunkSize, O = w.chunkOrigin;
+    for (let i = 0; i < 40; i++) {
+      const bx = O.x + Math.round((f.x - O.x) / C + (rnd() - 0.5) * 0.8) * C, bz = O.z + Math.round((f.z - O.z) / C + (rnd() - 0.5) * 0.8) * C;
+      const along = (rnd() - 0.5) * 160, e = (rnd() - 0.5) * 0.2;
+      pts.push(['chunk-border', bx + e, f.z + along]); pts.push(['chunk-border', f.x + along, bz + e]);
+    }
+    for (const [cat, x, z] of pts) {
+      const top = w.groundAt(x, z) + 6;
+      const col = w.raycast(new THREE.Vector3(x, top, z), down, 10);
+      if (!col || !GROUND.has(col.surface)) continue;          // inside a building, under an awning, on a prop...
+      if (w.waterAt(x, z) !== null) continue;
+      const hits = [];
+      for (const m of w.debugGroundMeshes(x, z, 4)) {
+        const g = m.geometry; if (!g.index && !g.attributes.position) continue;
+        if (!g.boundsTree) g.boundsTree = new MeshBVH(g);
+        m.updateMatrixWorld(); inv.copy(m.matrixWorld).invert();
+        ray.origin.set(x, top, z).applyMatrix4(inv); ray.direction.copy(down).transformDirection(inv);
+        for (const h of g.boundsTree.raycast(ray, THREE.DoubleSide)) {
+          const p = h.point.clone().applyMatrix4(m.matrixWorld);
+          const n = h.face.normal.clone().applyMatrix3(nm.getNormalMatrix(m.matrixWorld)).normalize();
+          if (n.y < -0.3) continue;                             // undersides and ceilings face away from a creature above
+          hits.push({ y: p.y, name: m.userData.detailLayer || m.name });
+        }
+      }
+      if (!hits.length) { samples.push({ cat, x, z, diff: null, col: col.point.y, surface: col.surface }); continue; }
+      hits.sort((a, b) => b.y - a.y);
+      const vis = hits.find((h) => h.name !== 'buildings') || hits[0];
+      if (vis.name === 'buildings') continue;
+      const close = [...new Set(hits.filter((h) => vis.y - h.y < 0.015 && h.name !== 'buildings').map((h) => `${h.name}@${h.y.toFixed(3)}`))];
+      samples.push({ cat, x: +x.toFixed(2), z: +z.toFixed(2), diff: vis.y - col.point.y, vis: vis.name, surface: col.surface, layers: close.length, pair: close.map((c) => c.split('@')[0]).sort().join('+') });
+    }
+  }
+  const ok = samples.filter((p) => p.diff !== null);
+  const pct = (a, q) => { const b = a.slice().sort((u, v) => u - v); return b.length ? b[Math.min(b.length - 1, Math.floor(q * b.length))] : 0; };
+  const by = {};
+  for (const p of ok) { const k = `${p.cat}/${p.vis}`; (by[k] ||= []).push(p.diff); }
+  const summary = {};
+  for (const [k, a] of Object.entries(by)) summary[k] = { n: a.length, above1cm: a.filter((d) => d > 0.01).length, below1cm: a.filter((d) => d < -0.01).length, p50: +pct(a, 0.5).toFixed(4), max: +Math.max(...a).toFixed(4), min: +Math.min(...a).toFixed(4) };
+  return {
+    n: ok.length, missing: samples.length - ok.length,
+    above1cm: ok.filter((p) => p.diff > 0.01).length, below1cm: ok.filter((p) => p.diff < -0.01).length,
+    maxAbove: Math.max(0, ...ok.map((p) => p.diff)), maxBelow: Math.min(0, ...ok.map((p) => p.diff)),
+    multiLayer: ok.filter((p) => p.layers > 1).length,
+    pairs: ok.filter((p) => p.layers > 1).reduce((a, p) => { a[p.pair] = (a[p.pair] || 0) + 1; return a; }, {}),
+    summary, worst: ok.slice().sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff)).slice(0, 12),
+  };
+}
+
+window.bench = { groundProbe, rayAt: (o, d, inv) => new THREE.Ray(o.clone().applyMatrix4(inv), d.clone().transformDirection(inv)), world, camera, renderer, scene, pos, vec: (x, y, z) => new THREE.Vector3(x, y, z), box: (a, b, c, d, e, f) => new THREE.Box3(new THREE.Vector3(a, b, c), new THREE.Vector3(d, e, f)), setMode, setScale, jumpTo, look: (x, y, z) => look(new THREE.Vector3(x, y, z)), set: (x, y, z, yw, p) => { pos.set(x, y, z); yaw = yw; pitch = p; }, errors };
 requestAnimationFrame(loop);
 </script>
 </body>

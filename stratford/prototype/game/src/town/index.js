@@ -17,6 +17,7 @@ import { createTrees, prepareTrees } from './trees.js';
 import { placeProps, createProps } from './props.js';
 import { createSky } from './sky.js';
 import { leavesLayer, grassLayer, cellSeed } from './detail.js';
+import { facadeLayer, FACADE_SHOW_RADIUS } from './facade3d.js';
 
 export const CHUNK = 200;
 const QUALITY = {
@@ -49,6 +50,7 @@ export async function createTown(opts = {}) {
   // lookups shared by the builders
   const bGrid = new Map();
   const bKey = (i, j) => i * 100003 + j;
+  data.buildings.forEach((b, i) => { b._idx = i; });
   for (const b of data.buildings) {
     b.bb = bbox(b.outer);
     for (let i = Math.floor(b.bb.minX / 20); i <= Math.floor(b.bb.maxX / 20); i++) for (let j = Math.floor(b.bb.minZ / 20); j <= Math.floor(b.bb.maxZ / 20); j++) {
@@ -95,10 +97,16 @@ export async function createTown(opts = {}) {
   // materials and global objects
   const shared = sharedUniforms();
   const minWater = data.water.all.length ? Math.min(...data.water.all.map((p) => p.level)) : -100;
+  // one texel per building: 1 when its modelled street front is built (facade3d.js)
+  const flagRows = Math.max(1, Math.ceil(data.buildings.length / 256));
+  const detailFlags = new THREE.DataTexture(new Uint8Array(256 * flagRows), 256, flagRows, THREE.RedFormat, THREE.UnsignedByteType);
+  detailFlags.needsUpdate = true;
+  const facadeUniforms = { flags: detailFlags, focus: { value: new THREE.Vector3() }, radius: { value: FACADE_SHOW_RADIUS } };
   const mats = {
     ground: groundMaterial(shared, ground, assets, minWater),
     street: streetMaterial(shared, assets),
-    building: buildingMaterial(shared, assets),
+    markings: streetMaterial(shared, assets, { polygonOffsetFactor: -2, polygonOffsetUnits: -8 }),
+    building: buildingMaterial(shared, assets, facadeUniforms),
     water: waterMaterial(shared, assets),
   };
   const root = new THREE.Group(); root.name = 'town'; scene.add(root);
@@ -138,33 +146,50 @@ export async function createTown(opts = {}) {
   };
   setScaleRadii(opts.scale || 0.25);
 
-  function terrainMesh(c, step, sink) {
-    const b = new Builder({});
+  // Terrain node heights for a chunk at a step (in grid cells). Near chunks sink
+  // the nodes under carriageways a little so the road surface always covers them;
+  // the collider is built from the very same heights, so what is drawn is what is walked on.
+  const SINK = 0.12;
+  function terrainHeights(c, step, sink) {
     const i0 = Math.round((c.x0 - hf.x0) / hf.cell), j0 = Math.round((c.z0 - hf.z0) / hf.cell);
-    const n = Math.round(CHUNK / hf.cell);
-    const cols = Math.floor(n / step) + 1;
+    const cols = Math.floor(Math.round(CHUNK / hf.cell) / step) + 1;
+    const y = new Float32Array(cols * cols);
+    for (let jj = 0; jj < cols; jj++) for (let ii = 0; ii < cols; ii++) {
+      const i = i0 + ii * step, j = j0 + jj * step;
+      let h = hf.node(i, j);
+      if (sink) {
+        const x = hf.x0 + i * hf.cell, z = hf.z0 + j * hf.cell;
+        const q = ctx.streets.grid.nearest(x, z, 12);
+        if (q && q.d < q.seg.data.hw - 0.4) h -= SINK;
+      }
+      y[jj * cols + ii] = h;
+    }
+    return { y, cols, i0, j0, step };
+  }
+
+  function terrainMesh(c, T) {
+    const { y: Y, cols, i0, j0, step } = T;
+    const b = new Builder({});
     const H = (i, j) => hf.node(i, j);
     const ids = [];
     for (let jj = 0; jj < cols; jj++) for (let ii = 0; ii < cols; ii++) {
       const i = i0 + ii * step, j = j0 + jj * step;
       const x = hf.x0 + i * hf.cell, z = hf.z0 + j * hf.cell;
-      let y = H(i, j);
-      if (sink) { const q = ctx.streets.grid.nearest(x, z, 12); if (q && q.d < q.seg.data.hw - 0.4) y -= 0.12; }
       const dx = H(i + step, j) - H(i - step, j), dz = H(i, j + step) - H(i, j - step);
       const nx = -dx, ny = 4 * hf.cell * step, nz = -dz; const l = Math.hypot(nx, ny, nz);
-      ids.push(b.v(x - c.ox, y, z - c.oz, nx / l, ny / l, nz / l));
+      ids.push(b.v(x - c.ox, Y[jj * cols + ii], z - c.oz, nx / l, ny / l, nz / l));
     }
     for (let jj = 0; jj < cols - 1; jj++) for (let ii = 0; ii < cols - 1; ii++) {
       const a = ids[jj * cols + ii], b1 = ids[jj * cols + ii + 1], c1 = ids[(jj + 1) * cols + ii + 1], d = ids[(jj + 1) * cols + ii];
       b.tri(a, d, c1); b.tri(a, c1, b1);
     }
-    // skirts against cracks between levels of detail
+    // skirts hang straight down (never walkable, never above the ground) against cracks between levels of detail
     const drop = step > 1 ? 1.5 : 0.6;
     const edge = (list) => {
       for (let k = 0; k < list.length - 1; k++) {
         const pa = list[k], pb = list[k + 1];
         const A = [b.pos[pa * 3], b.pos[pa * 3 + 1], b.pos[pa * 3 + 2]], B = [b.pos[pb * 3], b.pos[pb * 3 + 1], b.pos[pb * 3 + 2]];
-        const v0 = b.v(A[0], A[1], A[2], 0, 1, 0), v1 = b.v(B[0], B[1], B[2], 0, 1, 0), v2 = b.v(B[0], B[1] - drop, B[2], 0, 1, 0), v3 = b.v(A[0], A[1] - drop, A[2], 0, 1, 0);
+        const v0 = b.v(A[0], A[1] - 0.002, A[2], 0, 1, 0), v1 = b.v(B[0], B[1] - 0.002, B[2], 0, 1, 0), v2 = b.v(B[0], B[1] - drop, B[2], 0, 1, 0), v3 = b.v(A[0], A[1] - drop, A[2], 0, 1, 0);
         b.quad(v0, v1, v2, v3); b.quad(v1, v0, v3, v2);
       }
     };
@@ -174,29 +199,36 @@ export async function createTown(opts = {}) {
     return m;
   }
 
-  // terrain collider: 8 m quads where the ground is flat enough, else 4 m
-  function terrainCollider(c, cb) {
-    const i0 = Math.round((c.x0 - hf.x0) / hf.cell), j0 = Math.round((c.z0 - hf.z0) / hf.cell), n = Math.round(CHUNK / hf.cell);
-    const P = (i, j) => [hf.x0 + i * hf.cell - c.ox, hf.node(i, j), hf.z0 + j * hf.cell - c.oz];
-    const surf = (i, j) => {
-      const x = hf.x0 + (i + 0.5) * hf.cell, z = hf.z0 + (j + 0.5) * hf.cell;
+  // terrain collider: the drawn triangles, two cells merged only where all four are exactly coplanar
+  function terrainCollider(c, cb, T) {
+    const { y: Y, cols, i0, j0 } = T;
+    const P = (ii, jj) => [hf.x0 + (i0 + ii) * hf.cell - c.ox, Y[jj * cols + ii], hf.z0 + (j0 + jj) * hf.cell - c.oz];
+    const surf = (ii, jj) => {
+      const x = hf.x0 + (i0 + ii + 0.5) * hf.cell, z = hf.z0 + (j0 + jj + 0.5) * hf.cell;
       if (hf.waterAt(x, z) !== null) return SURFACE.water_bed;
       const g = groundClass(x, z);
       return g === 2 ? SURFACE.road : g === 3 ? SURFACE.sidewalk : g === 4 ? SURFACE.ground : SURFACE.grass;
     };
-    for (let j = 0; j < n; j += 2) for (let i = 0; i < n; i += 2) {
-      // planar test over the 3x3 nodes
-      const a = hf.node(i0 + i, j0 + j), b = hf.node(i0 + i + 2, j0 + j), d = hf.node(i0 + i, j0 + j + 2), e = hf.node(i0 + i + 2, j0 + j + 2);
-      let flat = Math.abs(a + e - b - d) < 0.04;
-      for (let q = 0; q <= 2 && flat; q++) for (let p = 0; p <= 2 && flat; p++) {
-        const u = p / 2, v = q / 2, interp = (a * (1 - u) + b * u) * (1 - v) + (d * (1 - u) + e * u) * v;
-        if (Math.abs(hf.node(i0 + i + p, j0 + j + q) - interp) > 0.03) flat = false;
+    const tri = (A, B, C, s) => cb.tri(A, B, C, s);
+    const n = cols - 1;
+    for (let jj = 0; jj < n; jj += 2) for (let ii = 0; ii < n; ii += 2) {
+      // the drawn diagonal runs (ii, jj)-(ii+1, jj+1); a 2x2 block may become 2 triangles
+      // only if all nine nodes lie on one plane (to 2 mm) and share a surface
+      let flat = ii + 2 <= n && jj + 2 <= n;
+      if (flat) {
+        const a = Y[jj * cols + ii], bq = Y[jj * cols + ii + 2], d = Y[(jj + 2) * cols + ii];
+        const gx = (bq - a) / 2, gz = (d - a) / 2;
+        for (let q = 0; q <= 2 && flat; q++) for (let p = 0; p <= 2 && flat; p++) if (Math.abs(Y[(jj + q) * cols + ii + p] - (a + gx * p + gz * q)) > 0.002) flat = false;
       }
-      const s00 = surf(i0 + i, j0 + j), same = s00 === surf(i0 + i + 1, j0 + j + 1) && s00 === surf(i0 + i + 1, j0 + j) && s00 === surf(i0 + i, j0 + j + 1);
-      if (flat && same) { cb.quad(P(i0 + i, j0 + j), P(i0 + i, j0 + j + 2), P(i0 + i + 2, j0 + j + 2), P(i0 + i + 2, j0 + j), s00); continue; }
+      const s00 = surf(ii, jj);
+      if (flat && s00 === surf(ii + 1, jj) && s00 === surf(ii, jj + 1) && s00 === surf(ii + 1, jj + 1)) {
+        tri(P(ii, jj), P(ii, jj + 2), P(ii + 2, jj + 2), s00); tri(P(ii, jj), P(ii + 2, jj + 2), P(ii + 2, jj), s00);
+        continue;
+      }
       for (let q = 0; q < 2; q++) for (let p = 0; p < 2; p++) {
-        const I = i0 + i + p, J = j0 + j + q;
-        cb.quad(P(I, J), P(I, J + 1), P(I + 1, J + 1), P(I + 1, J), surf(I, J));
+        const I = ii + p, J = jj + q; if (I >= n || J >= n) continue;
+        const s = surf(I, J);
+        tri(P(I, J), P(I, J + 1), P(I + 1, J + 1), s); tri(P(I, J), P(I + 1, J + 1), P(I + 1, J), s);
       }
     }
   }
@@ -220,7 +252,7 @@ export async function createTown(opts = {}) {
   // Far level: coarse terrain + buildings. Generator (time-sliced).
   function* buildFar(c) {
     const group = new THREE.Group(); group.position.set(c.ox, 0, c.oz); group.name = `chunk ${c.key}`;
-    const terr = terrainMesh(c, 2, false);
+    const terr = terrainMesh(c, terrainHeights(c, 2, false));
     group.add(terr);
     yield;
     const vb = new Builder(BUILDING_ATTRS), cb = new ColliderBuilder();
@@ -243,15 +275,19 @@ export async function createTown(opts = {}) {
   }
   // Near level: fine terrain, streets, colliders with BVHs.
   function* buildNear(c) {
-    const vb = new Builder({ aSt: 4, aDir: 2 }), cb = new ColliderBuilder();
-    const terr = terrainMesh(c, 1, true);
+    const vb = new Builder({ aSt: 4, aDir: 2 }), mb = new Builder({ aSt: 4, aDir: 2 }), cb = new ColliderBuilder();
+    const T = terrainHeights(c, 1, true);
+    const terr = terrainMesh(c, T);
     yield;
-    yield* buildChunkStreets(ctx, c, vb, cb);
+    yield* buildChunkStreets(ctx, c, vb, cb, mb);
     const streetMesh = vb.n ? new THREE.Mesh(vb.geometry(), mats.street) : null;
     if (streetMesh) { streetMesh.receiveShadow = true; streetMesh.castShadow = true; streetMesh.name = 'streets'; }
+    // road paint sits 4 mm over the carriageway; a stronger depth offset keeps it on top
+    const markMesh = mb.n ? new THREE.Mesh(mb.geometry(), mats.markings) : null;
+    if (markMesh) { markMesh.receiveShadow = true; markMesh.name = 'markings'; markMesh.renderOrder = 1; }
     yield;
     const tc = new ColliderBuilder();
-    terrainCollider(c, tc);
+    terrainCollider(c, tc, T);
     const e = binned.get(c.key) || { trees: [], props: [] };
     const oc = new ColliderBuilder();
     trees.addColliders(e.trees, oc, c.ox, c.oz);
@@ -274,12 +310,13 @@ export async function createTown(opts = {}) {
     c.far.terr.visible = false;
     c.group.add(terr);
     if (streetMesh) c.group.add(streetMesh);
-    c.near = { terr, streetMesh };
+    if (markMesh) c.group.add(markMesh);
+    c.near = { terr, streetMesh, markMesh };
     c.colliders = meshes;
   }
   function dropNear(c) {
     if (!c.near) return;
-    for (const m of [c.near.terr, c.near.streetMesh]) if (m) { c.group.remove(m); m.geometry.dispose(); }
+    for (const m of [c.near.terr, c.near.streetMesh, c.near.markMesh]) if (m) { c.group.remove(m); m.geometry.dispose(); }
     for (const m of c.colliders) { stats.colliderTris -= m.geometry.attributes.position.count / 3; m.geometry.boundsTree = null; m.geometry.dispose(); }
     c.colliders = [];
     c.near = null;
@@ -387,11 +424,19 @@ export async function createTown(opts = {}) {
   // built-in layers proving the scale system
   details.add(leavesLayer(details.env));
   details.add(grassLayer(details.env));
+  // modelled street fronts near the focus
+  const bByCell = new Map();
+  for (const b of data.buildings) { const c = centroid(b.outer); const k = `${Math.floor(c[0] / 40)},${Math.floor(c[1] / 40)}`; let a = bByCell.get(k); if (!a) bByCell.set(k, a = []); a.push(b); }
+  details.add(facadeLayer({
+    ctx, material: mats.building,
+    buildingsIn: (x0, z0, size) => (size === 40 ? bByCell.get(`${Math.round(x0 / 40)},${Math.round(z0 / 40)}`) || [] : data.buildings.filter((b) => { const c = centroid(b.outer); return c[0] >= x0 && c[0] < x0 + size && c[1] >= z0 && c[1] < z0 + size; })),
+    setFlag: (i, on) => { const d = detailFlags.image.data; if (d[i] !== (on ? 255 : 0)) { d[i] = on ? 255 : 0; detailFlags.needsUpdate = true; } },
+  }));
 
   // ---------------------------------------------------------------- world
   const spawn = { x: focus.x, y: 0, z: focus.z, yaw: data.spawn ? data.spawn.yaw : 0 };
   const landmarks = data.landmarks.map((l) => ({ ...l, y: hf.at(l.x, l.z) }));
-  let elapsed = 0, disposed = false;
+  let elapsed = 0, disposed = false, pinned = null;
   const tmpFocus = new THREE.Vector3();
 
   const world = {
@@ -411,15 +456,19 @@ export async function createTown(opts = {}) {
     removeDetailLayer: (id) => details.remove(id),
     setDetailLayerEnabled: (id, on) => details.enable(id, on),
     get detailLayers() { return details.list(); },
+    // Resolves when the chunks and detail layers around p are built. Until then
+    // p stays the streaming focus, whatever update() is told (a transition).
     ready(p) {
-      if (p) focus.set(p.x, p.y || 0, p.z);
+      if (p) { focus.set(p.x, p.y || 0, p.z); pinned = { x: p.x, y: p.y || 0, z: p.z }; }
+      const pin = pinned;
       return new Promise((resolve) => {
         const t = performance.now();
         const tick = () => {
           if (disposed) return resolve(false);
+          if (pin) focus.set(pin.x, pin.y, pin.z);
           step(40);
           details.update(focus, scale);
-          if (nearDone(focus, Math.min(nearR, CHUNK * 0.75)) && details.done(focus)) { stats.readyMs = Math.round(performance.now() - t); resolve(true); } else setTimeout(tick, 0);
+          if (nearDone(focus, Math.min(nearR, CHUNK * 0.75)) && details.done(focus)) { if (pinned === pin) pinned = null; stats.readyMs = Math.round(performance.now() - t); resolve(true); } else setTimeout(tick, 0);
         };
         tick();
       });
@@ -427,9 +476,11 @@ export async function createTown(opts = {}) {
     update(dt, camera, f) {
       elapsed += dt || 0;
       shared.uTime.value = elapsed;
-      if (f) focus.set(f.x, f.y, f.z);
+      if (pinned) focus.set(pinned.x, pinned.y, pinned.z);
+      else if (f) focus.set(f.x, f.y, f.z);
       else if (camera) focus.copy(camera.position);
       sky.update(camera, f || (camera && camera.position));
+      facadeUniforms.focus.value.copy(focus);
       trees.update(focus, Q.treeNear * Math.max(0.6, Math.min(1.5, scale / 0.25)), farR * 0.9);
       props.update(focus, Q.propR);
       details.update(focus, scale);
@@ -437,6 +488,20 @@ export async function createTown(opts = {}) {
     },
     setTimeOfDay: (h) => sky.setTimeOfDay(h),
     get timeOfDay() { return sky.hours; },
+    // for tests and probes: the visible ground-level meshes of the chunks
+    // around (x, z) (terrain, streets, buildings) and of the detail layers
+    debugGroundMeshes(x, z, r = 30) {
+      const out = [];
+      for (const c of chunks.values()) {
+        if (!c.group || x < c.x0 - r || x > c.x0 + CHUNK + r || z < c.z0 - r || z > c.z0 + CHUNK + r) continue;
+        c.group.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.parent && o.parent.visible) out.push(o); });
+      }
+      root.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.userData.detailLayer) out.push(o); });
+      return out;
+    },
+    debugChunk(x, z) { const c = chunks.get(keyOf(x, z)); return c && { key: c.key, level: c.level, want: c.want, task: !!c.task, colliders: c.colliders.length, error: c.error || null }; },
+    get chunkSize() { return CHUNK; },
+    get chunkOrigin() { return { x: X0, z: Z0 }; },
     // counts for benches and tests
     info() {
       const lv = [0, 0, 0]; for (const c of chunks.values()) lv[c.level]++;
@@ -453,7 +518,7 @@ export async function createTown(opts = {}) {
       trees.dispose(); props.dispose(); sky.dispose();
       if (water) { water.geometry.dispose(); }
       for (const k in mats) mats[k].dispose();
-      ground.texA.dispose(); ground.texB.dispose();
+      ground.texA.dispose(); ground.texB.dispose(); detailFlags.dispose();
       for (const t of Object.values(assets.tex)) t.texture.dispose();
       assets.sky?.texture.dispose(); for (const t of Object.values(assets.sprites)) t.dispose?.();
       assets.facadeArray?.dispose();
@@ -540,6 +605,7 @@ function createDetails({ scene, chunkReady, chunkKeyOf, env }) {
   };
   const drop = (L, key) => {
     const cell = L.cells.get(key); if (!cell) return;
+    if (cell.onDrop) { try { cell.onDrop(); } catch (e) { console.warn(e); } }
     if (cell.object) { scene.remove(cell.object); cell.object.traverse((o) => o.geometry && o.geometry.dispose()); }
     for (const m of cell.colliders || []) { m.geometry.boundsTree = null; m.geometry.dispose(); }
     L.cells.delete(key);
@@ -584,8 +650,8 @@ function createDetails({ scene, chunkReady, chunkKeyOf, env }) {
         const cell = { key, i, j, x0, z0, size: cs, ox: x0, oz: z0, seed, rng: rngf, scale };
         let res = null;
         try { res = L.layer.build(chunkKeyOf(x0 + cs / 2, z0 + cs / 2), cell); } catch (e) { console.warn('[town] detail layer', L.layer.id, e); }
-        const entry = { cx: x0 + cs / 2, cz: z0 + cs / 2, object: null, colliders: [] };
-        if (res && res.object) { res.object.position.set(x0, 0, z0); res.object.updateMatrixWorld(true); scene.add(res.object); entry.object = res.object; }
+        const entry = { cx: x0 + cs / 2, cz: z0 + cs / 2, object: null, colliders: [], onDrop: res && res.onDrop };
+        if (res && res.object) { res.object.position.set(x0, 0, z0); res.object.updateMatrixWorld(true); res.object.traverse((o) => { o.userData.detailLayer = L.layer.id; }); scene.add(res.object); entry.object = res.object; }
         if (res && res.colliders) for (const m of res.colliders) {
           m.position.set(x0, 0, z0); m.updateMatrixWorld(true);
           if (!m.geometry.boundsTree) m.geometry.boundsTree = new MeshBVH(m.geometry);

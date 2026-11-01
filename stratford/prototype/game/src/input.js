@@ -220,7 +220,10 @@ export function createInput(opts = {}) {
         sit = sit || touch.sit; dig = dig || touch.dig;
         touch.sit = touch.dig = false;
       }
-      if (settings.invertY) lookY = -lookY;
+      // The camera's vertical direction is set here and only here (the creature
+      // cameras take look[1] as given: positive tilts the view up). Default
+      // (settings version 2): stick or mouse up looks up; Invert camera Y: up looks down.
+      if (!settings.invertY) lookY = -lookY;
       c.move = [mx, my];
       c.look = [lookX, lookY];
       c.jump = jump; c.jumpPressed = jumpPressed; c.sprint = Math.min(1, sprint);

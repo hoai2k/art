@@ -44,6 +44,7 @@ export function leavesLayer(env) {
     build(chunkKey, cell) {
       const { x0, z0, size, rng } = cell;
       const b = new Builder({ color: 3 }), pb = new Builder({ color: 3 });
+      const pcoll = [];
       // density from the trees nearby and the ground
       const treesNear = env.treesNear(x0 + size / 2, z0 + size / 2, size * 0.75 + 12);
       const nTry = Math.round(size * size * 1.4);
@@ -62,7 +63,7 @@ export function leavesLayer(env) {
         const y = s.y + 0.004;
         const lx = x - cell.ox, lz = z - cell.oz;
         if (isPebble && env.sprites && env.sprites.pebbles) {
-          pebble(pb, lx, y - 0.003, lz, 0.008 + rng() * 0.02, Math.floor(rng() * 16), rng);
+          pcoll.push(...pebble(pb, lx, y - 0.003, lz, 0.008 + rng() * 0.02, Math.floor(rng() * 16), rng));
         } else if (isPebble) {
           const r = 0.008 + rng() * 0.02, g = 0.45 + rng() * 0.25;
           pb.set('color', [g, g * 0.97, g * 0.92]);
@@ -97,7 +98,14 @@ export function leavesLayer(env) {
       const group = new THREE.Group();
       if (b.n) { const m = new THREE.Mesh(b.geometry(), mat); m.receiveShadow = true; group.add(m); }
       if (pb.n) { const m = new THREE.Mesh(pb.geometry(), pebbleMat); m.receiveShadow = true; group.add(m); }
-      return { object: group };
+      // pebbles stand up to a few centimetres proud: creatures step on them, not through them
+      if (!pcoll.length) return { object: group };
+      const pos = new Float32Array(pcoll.length * 3); pcoll.forEach((P, i) => pos.set(P, i * 3));
+      const cg = new THREE.BufferGeometry();
+      cg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      cg.setAttribute('surface', new THREE.BufferAttribute(new Uint8Array(pcoll.length).fill(SURFACE.prop), 1));
+      cg.boundsTree = new MeshBVH(cg);
+      return { object: group, colliders: [new THREE.Mesh(cg)] };
     },
     dispose() { if (!sheet) tex.dispose(); mat.dispose(); pebbleMat.dispose(); },
   };

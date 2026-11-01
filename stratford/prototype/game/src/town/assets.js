@@ -16,6 +16,9 @@ export const TEXTURE_SLOTS = {
   // close-ups, blended in near the camera when the creature is small
   soil_cu: ['textures/soil_closeup.png', 0.2], grass_cu: ['textures/grass_roots_closeup.png', 0.2], moss: ['textures/moss.png', 0.3],
   concrete_cu: ['textures/concrete_closeup.png', 0.3], asphalt_cu: ['textures/asphalt_closeup.png', 0.3], bark_cu: ['textures/bark_closeup.png', 0.3],
+  // the facade kit (round 8): sheets of parts for the modelled fronts (see materials.js KIT)
+  kit_windows: ['kit/windows_victorian.png', 1], kit_shopfronts: ['kit/shopfronts.png', 1], kit_doors: ['kit/doors.png', 1],
+  kit_cornices: ['kit/cornices.png', 1], kit_trim: ['kit/trim.png', 1], kit_awnings: ['kit/awnings.png', 1],
 };
 // Facade elevations, in the order of the shader's candidates (aFac). The
 // delivered pictures are not edge to edge (sky, bushes, margins), so each has
@@ -90,7 +93,8 @@ export async function loadAssets(manifestUrl, opts = {}) {
       sky = { texture: t, horizon: new THREE.Color().setRGB(r / n / 255, g / n / 255, b / n / 255, THREE.SRGBColorSpace) };
     } catch (e) { console.warn('[town] sky failed', e); }
   }
-  const facadeImgs = await Promise.all(FACADES.map(([f]) => (listed.has(f) ? load(f).catch(() => null) : null)));
+  // whole-building elevations are a colour and layout reference only: fronts are modelled (facade3d.js)
+  const facadeImgs = opts.facades ? await Promise.all(FACADES.map(([f]) => (listed.has(f) ? load(f).catch(() => null) : null))) : FACADES.map(() => null);
   await Promise.all(jobs);
   let facadeArray = null; const facadeLayer = FACADES.map(() => -1);
   // crop (u0, v0, u1, v1 with v up from the ground) and tile aspect (width / height)

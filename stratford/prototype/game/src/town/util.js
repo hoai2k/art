@@ -231,6 +231,14 @@ export class Builder {
     return this.n++;
   }
   tri(a, b, c) { this.idx.push(a, b, c); }
+  // a triangle / quad wound so its front faces `want` (a direction)
+  triFacing(a, b, c, want) {
+    const P = this.pos, A = a * 3, B = b * 3, C = c * 3;
+    const ux = P[B] - P[A], uy = P[B + 1] - P[A + 1], uz = P[B + 2] - P[A + 2], vx = P[C] - P[A], vy = P[C + 1] - P[A + 1], vz = P[C + 2] - P[A + 2];
+    const d = (uy * vz - uz * vy) * want[0] + (uz * vx - ux * vz) * want[1] + (ux * vy - uy * vx) * want[2];
+    if (d >= 0) this.tri(a, b, c); else this.tri(a, c, b);
+  }
+  quadFacing(a, b, c, d, want) { this.triFacing(a, b, c, want); this.triFacing(a, c, d, want); }
   quad(a, b, c, d) { this.idx.push(a, b, c, a, c, d); }
   get triangles() { return this.idx.length / 3; }
   // Flat quad from 4 corners (CCW seen from the side the normal points to).
