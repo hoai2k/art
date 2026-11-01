@@ -98,10 +98,10 @@ test('chunks stream: moving the focus frees chunks and keeps memory flat; scale 
   const { page, errors } = await openTown(real ? '?norender' : '?norender&data=fixture');
   try {
     const res = await page.evaluate(async () => {
-      const w = bench.world, sp = w.spawn, r = bench.renderer;
+      const w = bench.world, sp = w.spawn;
       const far = w.landmarks.reduce((a, l) => (Math.hypot(l.x - sp.x, l.z - sp.z) > Math.hypot(a.x - sp.x, a.z - sp.z) ? l : a), w.landmarks[0]);
       const go = async (p) => { bench.set(p.x, w.groundAt(p.x, p.z) + 2, p.z, 0, 0); await w.ready({ x: p.x, y: 0, z: p.z }); for (let i = 0; i < 40; i++) { w.update(0.016, bench.camera, bench.vec(p.x, w.groundAt(p.x, p.z), p.z)); } await w.ready({ x: p.x, y: 0, z: p.z }); };
-      const snap = () => ({ geo: r.info.memory.geometries, ...w.info() });
+      const snap = () => ({ ...w.info(), geo: w.info().geometries });
       const out = { far: { id: far.id, d: Math.hypot(far.x - sp.x, far.z - sp.z) } };
       bench.setMode('fly');
       await go(sp); out.a = snap();
@@ -139,6 +139,7 @@ test('chunks stream: moving the focus frees chunks and keeps memory flat; scale 
     assert.equal(res.spawnColsAway, 0, 'the spawn chunk colliders are freed after moving away');
     assert.ok(res.farCols > 0, 'colliders at the far landmark');
     assert.ok(res.b.near <= res.a.near + 4 && res.b.near > 0, 'a bounded number of near chunks');
+    assert.ok(res.a.geo > 50, `geometries are counted (${res.a.geo})`);
     assert.ok(res.c.geo <= res.b.geo * 1.15 + 20, `memory stays flat over round trips (geometries ${res.b.geo} -> ${res.c.geo})`);
     assert.ok(res.d.geo <= res.a.geo * 1.15 + 20, `memory at the spawn is the same after the trips (${res.a.geo} -> ${res.d.geo})`);
     assert.ok(Math.abs(res.d.colliderTris - res.a.colliderTris) < res.a.colliderTris * 0.15 + 1000, 'collider triangles return to the same count');
@@ -162,6 +163,8 @@ test('the fixture town builds too', { timeout: 300000 }, async () => {
     assert.deepEqual(r.ids, fx.landmarks.map((l) => l.id));
     assert.equal(r.n, fx.buildings.length);
     assert.ok(r.info.near > 0);
+    const left = await page.evaluate(() => { bench.world.dispose(); let n = 0; bench.scene.traverse((o) => { if (o.name === 'town') n++; }); return { n, fog: bench.scene.fog }; });
+    assert.equal(left.n, 0, 'dispose removes the town from the scene');
     assert.deepEqual(errors, [], 'no console errors');
   } finally { await page.close(); }
 });

@@ -440,7 +440,11 @@ export async function createTown(opts = {}) {
     // counts for benches and tests
     info() {
       const lv = [0, 0, 0]; for (const c of chunks.values()) lv[c.level]++;
-      return { chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale };
+      // live geometries the town holds (visual meshes in the scene, chunk and detail colliders)
+      const seen = new Set(); root.traverse((o) => { if (o.geometry) seen.add(o.geometry); });
+      let cols = 0; for (const c of chunks.values()) cols += c.colliders.length;
+      const box = new THREE.Box3(new THREE.Vector3(-1e9, -1e9, -1e9), new THREE.Vector3(1e9, 1e9, 1e9)); const dc = []; details.collidersNear(box, dc);
+      return { geometries: seen.size + cols + dc.length, chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale };
     },
     dispose() {
       disposed = true;

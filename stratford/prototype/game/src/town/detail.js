@@ -149,12 +149,21 @@ export function grassLayer(env) {
       for (let k = 0; k < (useSprites ? 300 : 520); k++) {
         const x = x0 + rng() * size, z = z0 + rng() * size;
         const s = (k % 8 === 0) ? env.surfaceAt(x, z) : s0;
-        if (!lawn(s)) continue;
         const ground = env.groundClass(x, z);
-        if (ground !== 0 && ground !== 1 && ground !== 5) continue;
-        const y = k % 8 ? env.heightNear(s0, x, z) : s.y;
+        const y = k % 8 ? env.heightNear(s0, x, z) : (s ? s.y : 0);
         const lx = x - cell.ox, lz = z - cell.oz;
         const a = rng() * Math.PI * 2, dx = Math.cos(a), dz = Math.sin(a);
+        if (!lawn(s) || (ground !== 0 && ground !== 1 && ground !== 5)) {
+          // paving and paths: now and then a pebble or a bit of litter
+          if (!useSprites || !s || s.surface > SURFACE.grass || k % 12) continue;
+          if (rng() < 0.6) { pcoll.push(...pebble(pb, lx, y - 0.001, lz, 0.002 + rng() * 0.008, Math.floor(rng() * 16), rng)); continue; }
+          const j = Math.floor(rng() * 16), r = 0.008 + rng() * 0.02;
+          const cu = 0.5 + ((j % 4) / 4) * 0.5, cv = 1 - (Math.floor(j / 4) + 1) / 4, c = Math.cos(a) * r, sn = Math.sin(a) * r;
+          b.set('color', [1, 1, 1]);
+          const ids = [[-c + sn, -sn - c, cu, cv], [c + sn, sn - c, cu + 0.125, cv], [c - sn, sn + c, cu + 0.125, cv + 0.25], [-c - sn, -sn + c, cu, cv + 0.25]].map(([ox2, oz2, u, v]) => b.v(lx + ox2, y + 0.0015, lz + oz2, 0, 1, 0, u, v));
+          b.quad(ids[0], ids[1], ids[2], ids[3]);
+          continue;
+        }
         if (useSprites) {
           // a blade or weed card from the sheet (2 rows of 10), crossed
           const i = Math.floor(rng() * 20), h = 0.04 + rng() * 0.1, w = h * 0.2, lean = (rng() - 0.5) * 0.3 * h;
