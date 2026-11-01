@@ -53,6 +53,7 @@ dependencies, caches and build output).
 | `bronzedrum/` | Bronze Drum | https://games.hoai.net/art/bronzedrum/ |
 | `kingdomofthefairies/` | Kingdom of the Fairies (includes the preserved Widow's Bay edition) | https://games.hoai.net/art/kingdomofthefairies/ |
 | `fibreart/` | Fibre Art (a shifting collage after the fibre art, paintings and drawings of Hanneke de Neve: controllers move, stretch, swirl and dissolve the parts of her pictures) | https://games.hoai.net/art/fibreart/ |
+| `stratford/` | Stratford (the prototype *Stratford Squirrel*: exploring a 3D model of downtown Stratford, Ontario as small creatures; unlisted, no library card or `/stratford/` page until the game proper) | https://games.hoai.net/art/stratford/prototype/ |
 
 The site is published at https://games.hoai.net/art/ (the owner's
 `hoai2k.github.io` user site serves every repository's Pages under its custom
@@ -137,7 +138,7 @@ arrives.
 
 ## Intake
 
-Each game has its own drop box at `<game>/intake/` (`kingdomofthefairies/intake/`, `bronzedrum/intake/`, `icecreamcone/intake/`, `fibreart/intake/`). The user drops files there for
+Each game has its own drop box at `<game>/intake/` (`kingdomofthefairies/intake/`, `bronzedrum/intake/`, `icecreamcone/intake/`, `fibreart/intake/`, `stratford/intake/`). The user drops files there for
 integration: artwork, audio, models, exported data, notes from another agent.
 A file belongs to the game whose intake it was dropped in. If it plainly
 belongs to a different game, move it there; if that is unclear, ask.

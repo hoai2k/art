@@ -4,7 +4,7 @@
 //
 // Serves game/ and drives it with a simulated Xbox controller
 // (navigator.getGamepads is replaced before the page loads) and the keyboard,
-// once with the real town and once with ?world=standin:
+// a smoke run on the real town and the full suite with ?world=standin:
 //   title draws, utility navigation with the stick, a held button does not start,
 //   a button starts play, the stick moves the squirrel, A jumps, Menu pauses,
 //   View opens the map and B closes it, settings change and persist, a landmark
@@ -12,6 +12,7 @@
 //   and nothing logs a console error.
 // Screenshots (title, play, pause, map, ...) go to --shots.
 
+import { tmpdir } from 'node:os';
 import { existsSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -20,7 +21,7 @@ import { launch, serve } from '../../../../shared/test/lib.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : d; };
-const SHOTS = arg('--shots', '/tmp/claude-0/-home-user-art/ae607519-6356-54fa-91fb-69b85992c198/scratchpad/shell-review');
+const SHOTS = arg('--shots', join(tmpdir(), 'stratford-shots'));
 const only = arg('--only');
 
 const PAD = `
@@ -257,11 +258,48 @@ async function run(browser, base, label, query) {
   await ctx.close();
 }
 
+// The real town in software WebGL draws a frame in seconds, so the full
+// interactive suite runs on the stand-in world; the real town gets a smoke run:
+// it loads with no errors, the town (not a fallback) is the world, the game
+// starts, the stick moves the creature and Menu pauses.
+async function smoke(browser, base) {
+  console.log('\n== real town (smoke) ==');
+  const errors = [];
+  const ctx = await browser.newContext({ viewport: { width: 640, height: 360 } });
+  const page = await ctx.newPage();
+  page.on('pageerror', (e) => errors.push(String(e)));
+  page.on('console', (m) => {
+    const url = m.location()?.url || '';
+    if (m.type() === 'error' && (!url || url.startsWith(base))) errors.push(m.text() + (url ? ` (${url})` : ''));
+  });
+  await page.addInitScript(PAD);
+  const G = (fn, a) => page.evaluate(fn, a);
+  const until = (fn, arg = null, timeout = 180000) => page.waitForFunction(fn, arg, { timeout, polling: 500 }).then(() => true, () => false);
+  const btn = (i, v) => G(([i, v]) => { const b = window.__pad.buttons[i]; b.pressed = v > 0.5; b.value = v; }, [i, v]);
+  await page.goto(`${base}/`);
+  check(await until(() => window.stratford && window.stratford.ui.screen === 'title'), 'real town: loads to the title screen');
+  const info = await G(() => ({ town: typeof window.stratford.world.addDetailLayer === 'function', creature: window.stratford.creature.kind, landmarks: window.stratford.exploration.landmarks.length }));
+  check(info.town && info.creature === 'squirrel' && info.landmarks >= 10, `real town: the streaming town and the squirrel are loaded (${JSON.stringify(info)})`);
+  await btn(0, 1);
+  check(await until(() => window.stratford.ui.screen === 'play' && !window.stratford.state.transitioning), 'real town: A starts play');
+  await btn(0, 0);
+  const p0 = await G(() => window.stratford.creature.position.toArray());
+  await G(() => { window.__pad.axes = [0, -1, 0, 0]; });
+  check(await until((p0) => { const p = window.stratford.creature.position; return Math.hypot(p.x - p0[0], p.z - p0[2]) > 0.3; }, p0), 'real town: the stick moves the squirrel');
+  await G(() => { window.__pad.axes = [0, 0, 0, 0]; });
+  if (SHOTS) await page.screenshot({ path: join(SHOTS, 'real-play.png') });
+  await btn(9, 1);
+  check(await until(() => window.stratford.state.paused), 'real town: Menu pauses');
+  await btn(9, 0);
+  check(errors.length === 0, `real town: no console errors${errors.length ? ': ' + errors.slice(0, 4).join(' | ') : ''}`);
+  await ctx.close();
+}
+
 await mkdir(SHOTS, { recursive: true });
 const server = await serve(root);
 const browser = await launch();
 try {
-  if (only !== 'standin') await run(browser, server.url, 'real', '');
+  if (only !== 'standin') await smoke(browser, server.url);
   if (only !== 'real') await run(browser, server.url, 'standin', '?world=standin');
 } catch (e) {
   console.error(e);
