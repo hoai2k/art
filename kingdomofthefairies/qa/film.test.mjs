@@ -15,7 +15,7 @@ import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
 import { createCavern, stepCavern, surfaces, EXIT_X } from '../src/acts/act4cavern.js';
 import { HOUSE } from '../src/acts/act5.js';
-import { FINALE_END } from '../src/finale.js';
+import { FINALE, FINALE_END } from '../src/finale.js';
 import { HOOKS } from '../src/acts/act4.js';
 
 let n = 0;
@@ -714,19 +714,22 @@ test('The backward exit needs a continuous one-second hold; releasing or walking
  run(actBurning,st,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(st.phase,'apotheosis');
 });
 
-test('Credits free play: hold the jump, release slowly on any direction, visit both sets and jump again without restarting credits',()=>{
+test('Credits free play: held aloft until the roll begins, then released slowly by any direction, visit both sets and jump again without restarting credits',()=>{
  const st=actBurning.create({from:{scene:4}});st.phaseT=5;st.weddingIntro=false;
  run(actBurning,st,20,()=>({moveX:1}),s=>s.phase!=='wedding');
  st.w.x=APOTH.mark;st.w.vx=0;st.az.x=APOTH.mark-70;
  actBurning.step(st,DT,{a:true,aHeld:true});run(actBurning,st,FILM_T.rise+.1);
  assert.equal(st.flight,'hold');assert.equal(st.lift,140);assert.equal(st.phase,'finale');
- run(actBurning,st,3);assert.equal(st.flight,'hold');const firstClock=st.creditsT;
+ run(actBurning,st,3);assert.equal(st.flight,'hold');
+ actBurning.step(st,DT,{moveY:1});assert.equal(st.flight,'hold','held aloft until the credits begin to roll');
+ run(actBurning,st,FINALE.celebrate-3);assert.equal(st.flight,'hold');const firstClock=st.creditsT;
  actBurning.step(st,DT,{moveY:1});assert.equal(st.flight,'descend');assert.ok(st.lift>130);
- run(actBurning,st,2.1,()=>({moveY:1}));assert.equal(st.flight,null);assert.equal(st.w.on,true);assert.equal(st.az.on,true);
+ run(actBurning,st,FILM_T.descend/2,()=>({moveY:1}));assert.ok(st.lift>20&&st.lift<120,'a slow descent');
+ run(actBurning,st,FILM_T.descend/2+.1,()=>({moveY:1}));assert.equal(st.flight,null);assert.equal(st.w.on,true);assert.equal(st.az.on,true);
  assert.equal(st.w.y,APOTH.y);assert.ok(st.creditsT>firstClock);
  const beforeJump=st.creditsT;actBurning.step(st,DT,{a:true});run(actBurning,st,FILM_T.rise+.1);
  assert.equal(st.flight,'hold');assert.ok(st.creditsT>beforeJump,'a repeated jump never restarts the roll');
- run(actBurning,st,2.1,()=>({moveX:-1}));run(actBurning,st,8,()=>({moveX:-1}),s=>s.phase==='wedding');
+ run(actBurning,st,FILM_T.descend+.1,()=>({moveX:-1}));run(actBurning,st,8,()=>({moveX:-1}),s=>s.phase==='wedding');
  assert.equal(st.phase,'wedding');const outsideClock=st.creditsT;
  run(actBurning,st,20,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(st.phase,'finale');assert.ok(st.creditsT>outsideClock);
  run(actBurning,st,FINALE_END+1);assert.equal(st.status,'play');assert.equal(st.phase,'finale');

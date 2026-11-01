@@ -79,23 +79,24 @@ BY_EYE = {
     'prince-court-stairs-b': 1.24645892,
     'prince-court-stairs-a-tinted': 1.24293785,
     'prince-court-stairs-b-tinted': 1.24293785,
-    # Match the full painted height of the recoil in the cliff duel. These
-    # broad gestures confound the template; checked in the duel size review.
-    'witch-barrel-anger-a': 0.95867769,
-    'witch-barrel-anger-b': 0.97796143,
-    'witch-barrel-anger-a-tinted': 0.88736264,
-    'witch-barrel-anger-b-tinted': 0.89010989,
+    # In the barrel her head is painted about twice its size in her duel
+    # poses (hood to chin 90 art px tinted, against 53 hooded): measured by
+    # the head, checked by eye on a sheet (1 Nov 2026). The barrel itself is
+    # drawn at its own prop size (BARREL_WITCH in src/acts/act5film-art.js).
+    'witch-barrel-anger-a': 1.59779614, 'witch-barrel-anger-b': 1.59779614,
+    'witch-barrel-anger-a-tinted': 1.48351648, 'witch-barrel-anger-b-tinted': 1.48351648,
 
     # Compact celebration pose: same painted crown-to-hem height as standing,
     # with face and palette checked on the v2 review sheet.
     'azurine-jump': 1.17895,
     'azurine-jump-tinted': 1.10526,
 
-    # Cliff duel: normalize the full cutout height, then draw every pose at
-    # the former recoil height (172 stage px), as requested. No sprite grows
-    # on impact; the standing/casting witch and barrel are equally imposing.
-    'witch-cast': 0.73278237, 'witch-cast-tinted': 0.83791209,
-    'witch-recoil': 1.10192837, 'witch-recoil-tinted': 1.09890110,
+    # Cliff duel: one person size in every pose, by the head (hood top to
+    # chin and hood width against the hooded reference), checked by eye side
+    # by side (1 Nov 2026). The crouching cast and the upright recoil have
+    # other silhouettes, not other sizes.
+    'witch-cast': 0.82644628, 'witch-cast-tinted': 0.87912088,
+    'witch-recoil': 1.04683196, 'witch-recoil-tinted': 1.03021978,
     # her swoon is painted larger than her standing figure: her face 26-30 px
     # eye to chin, tipped back, against 18-20 standing (the template, thrown
     # by the raised arm, read 0.42-0.48; 1.0 by a glance was wrong, seen in

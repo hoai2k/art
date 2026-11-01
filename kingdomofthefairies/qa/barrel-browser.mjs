@@ -23,7 +23,7 @@ try{
    const st=mod.actBurning.create({from:{scene:3, introDone: true}});st.duel=null;st.phaseT=10;
    st.barrel={x:610,rot:0,fallT:null};st.w.x=530;
    const r=createRenderer(canvas,window.__kingdomOfTheFairies.assets),ids=[];
-   const asset=r.kit.asset;r.kit.asset=(id,...args)=>{ids.push(id);return asset(id,...args);};
+   const asset=r.kit.asset,crop=r.kit.assetCrop;r.kit.asset=(id,...args)=>{ids.push(id);return asset(id,...args);};r.kit.assetCrop=(id,...args)=>{ids.push(id);return crop(id,...args);};
    r.render({act:mod.actBurning,state:st,t:pose==='a'?0.2:0.8,curtain:1,film:'off',tinted:look==='tinted'});
    return {ids,face:mod.auroraFacing(st)};
   },{look,pose});

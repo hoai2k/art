@@ -8,17 +8,27 @@ try{
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(server.url+'/?qa');await page.waitForFunction(()=>window.__kingdomOfTheFairies?.assets?.all&&!document.body.classList.contains('booting'));
  await page.evaluate(()=>window.__kingdomOfTheFairies.assets.all);
+ // One person size by the head in every pose: the crouching cast is painted
+ // lower than she stands, the upright recoil taller, and in the barrel only
+ // she is drawn at her person size, the woodwork at its own prop size.
  const sizes=await page.evaluate(async()=>{
-  const {PERSON}=await import('/src/person-size.js'),{DUEL}=await import('/src/acts/act5film.js'),images=window.__kingdomOfTheFairies.assets.images,rows=[];
+  const {PERSON}=await import('/src/person-size.js'),{DUEL}=await import('/src/acts/act5film.js'),{BARREL_WITCH}=await import('/src/acts/act5film-art.js'),images=window.__kingdomOfTheFairies.assets.images,rows=[];
   for(const look of ['','-tinted'])for(const pose of ['hooded','cast','recoil','barrel-anger-a','barrel-anger-b']){
    const id='witch-'+pose+look,im=images[id],canvas=document.createElement('canvas');canvas.width=im.naturalWidth;canvas.height=im.naturalHeight;
    const c=canvas.getContext('2d');c.drawImage(im,0,0);const pixels=c.getImageData(0,0,canvas.width,canvas.height).data;let top=canvas.height,bottom=0;
    for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++)if(pixels[(y*canvas.width+x)*4+3]>40){top=Math.min(top,y);bottom=Math.max(bottom,y);}
-   rows.push({id,height:(bottom-top+1)*DUEL.witchHeight/PERSON[id].px,target:DUEL.witchHeight});
+   const fit=BARREL_WITCH[id];
+   rows.push({id,pose,look,height:(bottom-top+1)*DUEL.witchHeight/PERSON[id].px,barrel:fit?(im.naturalHeight-fit.rim)*DUEL.witchHeight/fit.px:null,who:PERSON[id].who});
   }
   return rows;
  });
- for(const row of sizes)assert.ok(Math.abs(row.height-row.target)<.5,`${row.id} remains as large as the recoil`);
+ for(const look of ['','-tinted']){
+  const at=pose=>sizes.find(r=>r.look===look&&r.pose===pose);
+  assert.ok(at('cast').height<at('hooded').height-5,`the casting crouch${look} is lower than her stance, not enlarged to it`);
+  assert.ok(at('recoil').height>at('hooded').height,`the upright recoil${look} stands taller than her stoop`);
+  for(const p of ['barrel-anger-a','barrel-anger-b'])assert.ok(at(p).barrel>90&&at(p).barrel<115,`${p}${look} keeps its barrel at prop size`);
+ }
+ for(const row of sizes)assert.equal(row.who,'witch');
  await page.evaluate(async()=>{
   const {createRenderer}=await import('/src/art.js'),mod=await import('/src/acts/act5film.js');const canvas=document.createElement('canvas');canvas.id='duel-review';canvas.width=1280;canvas.height=720;canvas.style.cssText='position:fixed;inset:0;z-index:99999;width:1280px;height:720px';document.body.append(canvas);
   window.duelReview={createRenderer,mod,canvas};
@@ -67,5 +77,5 @@ try{
  await page.keyboard.down('ArrowRight');await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.pushing);await page.keyboard.up('ArrowRight');
  await page.locator('#stage').screenshot({path:out+'/actual-three-approaches-barrel.png'});
  assert.deepEqual(errors,[]);await writeFile(out+'/checks.json',JSON.stringify({sizes,samples},null,2)+'\n');
- console.log('All witch poses remain at recoil size; Aurora faces right; palms touch the barrel; real three-jump-approach combat passes without damage');
+ console.log('Witch poses share one person size and the barrel keeps its prop size; Aurora faces right; palms touch the barrel; real three-jump-approach combat passes without damage');
 }finally{await browser.close();server.close();}
