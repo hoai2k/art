@@ -1,0 +1,4550 @@
+{
+ "version": 1,
+ "source": "Street-level photos from Mapillary (CC BY-SA 4.0), surveyed 2026-11",
+ "buildings": {
+  "w1024040073": {
+   "storeys": 4,
+   "material": "brick_red",
+   "wall": "#a2452f",
+   "trim": "#ddd3bd",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 8,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 8,
+     "head": "flat"
+    },
+    {
+     "storey": 4,
+     "count": 8,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#e3dcc8"
+    }
+   ],
+   "features": [
+    "glazed bay"
+   ],
+   "notes": "Modern four-storey red-brick block over a cream precast-stone ground floor with storefronts and a projecting precast entrance canopy; a vertical glazed bay rises on the corner. town.json height 3.5 m / 1 level is far too low.",
+   "photos": [
+    "485547085923326"
+   ],
+   "confidence": 0.55
+  },
+  "w1024040080": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#e8e4da",
+   "storefronts": [
+    {
+     "colour": "#2a2a2c"
+    }
+   ],
+   "notes": "Two-storey red brick front in the same row, dark storefront and sign band; seen obliquely.",
+   "photos": [
+    "301145594787024"
+   ],
+   "confidence": 0.3
+  },
+  "w1024040081": {
+   "material": "brick_red",
+   "wall": "#8a3e2e",
+   "notes": "Only a distant oblique view: a red brick commercial building near the corner with a modern glazed entrance. town.json gives 1 level.",
+   "photos": [
+    "145501404194064"
+   ],
+   "confidence": 0.2
+  },
+  "w1024040082": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#a24a33",
+   "trim": "#e9e2d0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 10,
+     "head": "segmental",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 10,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "pressed_metal",
+   "storefronts": [
+    {
+     "colour": "#3d3a38",
+     "awning": {
+      "colour": "#b2452c"
+     }
+    },
+    {
+     "colour": "#4a4a48"
+    }
+   ],
+   "bay": true,
+   "features": [
+    "corner tower",
+    "oriel bays"
+   ],
+   "notes": "Long three-storey red brick Victorian block: round-arched third-floor windows, segmental second-floor windows, projecting oriel bays and a corner tower with a steep roof at the Ontario Street end; dark storefronts with a rust-red awning. town.json gives 2 levels / 7 m and brick_buff; the photos show three storeys of red brick.",
+   "photos": [
+    "829266111040260",
+    "467268257669280"
+   ],
+   "confidence": 0.6
+  },
+  "w1024040083": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#b8a07a",
+   "trim": "#e8e2d4",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 8,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#2a3a5a"
+    },
+    {
+     "colour": "#e2c03a"
+    },
+    {
+     "colour": "#3a3a3a"
+    }
+   ],
+   "features": [
+    "patio"
+   ],
+   "notes": "Long two-storey tan brick row on Erie Street with mixed storefronts (navy, yellow, dark grey) and plain flat-headed upper windows; a red brick building with red banners at its south end. Seen edge-on. town.json gives 1.5 levels / 4.8 m.",
+   "photos": [
+    "166228435431610"
+   ],
+   "confidence": 0.35
+  },
+  "w1024040084": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#e4e1da",
+   "trim": "#e4e1da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 5,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 5,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#3a3d40"
+    }
+   ],
+   "notes": "Three-storey brick block painted white (corner building), tall segmental-headed windows, bracketed cornice; dark grey storefront with a fabric awning frame. Neighbours to the east are buff brick.",
+   "photos": [
+    "214592457136164",
+    "316075339920755"
+   ],
+   "confidence": 0.5
+  },
+  "w1024040085": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#bca984",
+   "trim": "#6a4a3a",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "segmental",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 6,
+     "head": "segmental",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#3b3b3b"
+    },
+    {
+     "colour": "#5a5a55"
+    }
+   ],
+   "notes": "Three-storey buff (yellow) brick Italianate block with tall segmental-headed windows under dark brown painted hoods and a bracketed cornice; plain dark storefronts. town.json says brick_red; photos show buff brick.",
+   "photos": [
+    "822625675356135",
+    "176959914209735",
+    "2827839517431314"
+   ],
+   "confidence": 0.65
+  },
+  "w1354069680": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a4472e",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a4e48",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "arched entry gable",
+    "attached garage",
+    "steps"
+   ],
+   "notes": "Two-storey Tudor-revival red brick house: steep front gable with a swept, white-trimmed round-arched entry hood over an arched door, white-framed windows, an attached flat-roofed brick garage with a beige door.",
+   "photos": [
+    "3014091292193439",
+    "510820896624120",
+    "4171519809575910"
+   ],
+   "confidence": 0.7
+  },
+  "w1354069681": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a4472e",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#4e4a48",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "entry porch"
+   ],
+   "notes": "Two-storey red brick house with white multi-pane windows, central steps and a small entry, a big maple in front. town.json gives 1.5 levels.",
+   "photos": [
+    "510820896624120",
+    "492073958698136",
+    "487061365951621"
+   ],
+   "confidence": 0.5
+  },
+  "w1354069682": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4a34",
+   "trim": "#ffffff",
+   "features": [
+    "entry porch",
+    "brick porch piers"
+   ],
+   "notes": "Red brick house with a porch on brick piers, mostly hidden by trees and a tall unmown garden.",
+   "photos": [
+    "205108684784135",
+    "1422864028075540",
+    "754010541955810"
+   ],
+   "confidence": 0.3
+  },
+  "w1354069683": {
+   "storeys": 1,
+   "material": "brick_buff",
+   "wall": "#bfa478",
+   "trim": "#2a2a2a",
+   "roof": "cross_gable",
+   "roof_colour": "#5e5650",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "round"
+    }
+   ],
+   "features": [
+    "gable front",
+    "front chimney",
+    "arched door",
+    "storybook cottage",
+    "small entry gable"
+   ],
+   "notes": "One-and-a-half-storey storybook cottage in buff/tan brick: steep main front gable with a small round-headed attic window, a smaller entry gable with a dark arched door, a tall brick chimney on the front, dark window frames.",
+   "photos": [
+    "117541460384066",
+    "613843586680394",
+    "143536024458725"
+   ],
+   "confidence": 0.7
+  },
+  "w1354069684": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a3e2c",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#4e4642",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "round"
+    }
+   ],
+   "features": [
+    "gable front",
+    "enclosed porch",
+    "siding porch"
+   ],
+   "notes": "Two-storey red brick house with its gable to the street, a round-headed window in the gable, and a full-width enclosed front porch clad in sage-grey siding with white windows; detached garage beside.",
+   "photos": [
+    "830464651214311",
+    "948174542680171",
+    "1012282022925092"
+   ],
+   "confidence": 0.65
+  },
+  "w1354069685": {
+   "storeys": 1,
+   "material": "brick_buff",
+   "wall": "#c4aa78",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5e5a56",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "siding in gable",
+    "chimney"
+   ],
+   "notes": "One-and-a-half-storey buff brick house with a broad front gable clad in pale cream siding, a full-width front porch with a white railing and steps, and a chimney at the side.",
+   "photos": [
+    "1191673524593621",
+    "188276709823149"
+   ],
+   "confidence": 0.7
+  },
+  "w1354069686": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#6e7270",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "dormers",
+    "shutters",
+    "chimney",
+    "detached garage"
+   ],
+   "notes": "One-and-a-half-storey red brick Cape Cod: side-gabled grey roof with one gabled dormer, white shutters, an end chimney, white detached garage. town.json says clapboard.",
+   "photos": [
+    "2695720364052867",
+    "4277231662327541"
+   ],
+   "confidence": 0.7
+  },
+  "w1375909188": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#2a2a2a",
+   "roof": "gable_side",
+   "roof_colour": "#3e3e40",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "shutters",
+    "black railings"
+   ],
+   "notes": "Two-storey red brick house (now an office) with black shutters, a full-width porch on black posts with black railings and flower boxes, side-gabled dark roof. town.json gives 1.5 levels / clapboard.",
+   "photos": [
+    "187202146627986",
+    "3002134596735306",
+    "949414265877793"
+   ],
+   "confidence": 0.6
+  },
+  "w1379184807": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#e6ddb8",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5654",
+   "features": [
+    "giant portico",
+    "white columns",
+    "pediment",
+    "chimneys"
+   ],
+   "notes": "Neoclassical house in pale cream with a full-height portico of white columns under a pediment across the front, low hipped roof with chimneys. Seen at a distance. town.json says brick_buff/gabled.",
+   "photos": [
+    "180943677273292"
+   ],
+   "confidence": 0.5
+  },
+  "w1379184808": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a24a36",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5250",
+   "features": [
+    "full-width porch",
+    "gabled dormers"
+   ],
+   "notes": "Large two-and-a-half-storey red brick house with steep gables and dormers and a white-trimmed front porch, seen at a distance past a maple. town.json says clapboard.",
+   "photos": [
+    "491365938586080"
+   ],
+   "confidence": 0.4
+  },
+  "w1430325132": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a3e30",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a4a48",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "siding in gable",
+    "full-width porch"
+   ],
+   "notes": "One-and-a-half-storey red brick house with a large front gable in white siding with one window, a deck/porch with a wooden railing, hedges and hydrangeas in front.",
+   "photos": [
+    "291359122410950",
+    "1187639528347488",
+    "2958231911163002"
+   ],
+   "confidence": 0.6
+  },
+  "w1430325133": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a3e30",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#6a5450",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "verandah",
+    "brackets",
+    "dormers",
+    "detached garage"
+   ],
+   "notes": "Two-and-a-half-storey red brick Arts-and-Crafts house: broad hipped roof with a front dormer, a deep wrap verandah under a shingled roof with curved white brackets, white-framed windows, a natural wood door, detached red-doored garage.",
+   "photos": [
+    "531267624702536",
+    "224552772764252"
+   ],
+   "confidence": 0.75
+  },
+  "w1430325134": {
+   "storeys": 2,
+   "material": "clapboard",
+   "wall": "#8a9a86",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5a5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "board-and-batten",
+    "gingerbread",
+    "gable front",
+    "entry hood",
+    "side wing"
+   ],
+   "notes": "Sage-green board-and-batten gothic cottage: steep front gable with scalloped white bargeboard, a small arched hood over the front door, white trim, and a lower white-sided wing to the side. town.json says brick_buff.",
+   "photos": [
+    "1134896286978150",
+    "1081452422378766"
+   ],
+   "confidence": 0.75
+  },
+  "w1430325135": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d2b878",
+   "trim": "#5a2e2a",
+   "roof": "cross_gable",
+   "roof_colour": "#4a3a3e",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "pointed"
+    }
+   ],
+   "bay": true,
+   "features": [
+    "gingerbread",
+    "steep gables",
+    "finial",
+    "verandah",
+    "bay",
+    "oculus in entry gable"
+   ],
+   "notes": "Gothic-revival buff brick house: steep gables trimmed with white/cream gingerbread bargeboards and a finial, dark maroon shutters and trim, a dark plum-brown metal roof, a canted bay window, a small entry gable with a round window over the door and a verandah on the left.",
+   "photos": [
+    "506302844013479",
+    "157496003000199",
+    "163080949097897"
+   ],
+   "confidence": 0.75
+  },
+  "w1430325136": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#eceae4",
+   "trim": "#2a2a2a",
+   "roof": "gable_front",
+   "roof_colour": "#4e4e50",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "balcony over porch",
+    "white columns"
+   ],
+   "notes": "One-and-a-half-storey white-sided house, gable to the street, black window frames, a full-width porch on white columns whose roof is a railed balcony; large tree in front.",
+   "photos": [
+    "2114383415535031",
+    "157496003000199",
+    "3073859552835850"
+   ],
+   "confidence": 0.65
+  },
+  "w1430325137": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4a36",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#4a3e3a",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat",
+     "paired": true
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "white columns",
+    "pedimented porch",
+    "siding in gable"
+   ],
+   "notes": "One-and-a-half/two-storey house: red brick ground floor, upper gable in cream siding with paired windows, a full-width porch on white square columns with a small pediment over the steps. town.json says clapboard.",
+   "photos": [
+    "2114383415535031",
+    "206513241134726",
+    "1197609214024311"
+   ],
+   "confidence": 0.75
+  },
+  "w1430325138": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#c2a87a",
+   "trim": "#e8e0cc",
+   "roof": "gable_front",
+   "roof_colour": "#6a5a4a",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "bay": true,
+   "features": [
+    "gable front",
+    "bay",
+    "entry porch",
+    "decorative bargeboard"
+   ],
+   "notes": "Two-and-a-half-storey buff brick house with its gable to the street, a projecting ground-floor bay under a small hipped roof, and a gabled entry porch on turned posts with a dark red door; chimney on the ridge.",
+   "photos": [
+    "2950270941884291",
+    "206513241134726",
+    "297711638516529"
+   ],
+   "confidence": 0.7
+  },
+  "w1430325156": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#e4d6b0",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#6a5e54",
+   "features": [
+    "entry porch",
+    "white columns"
+   ],
+   "notes": "Two-storey pale cream house with a white-columned entry porch, mostly behind garden planting and trees.",
+   "photos": [
+    "519740345821940",
+    "1096538720852967"
+   ],
+   "confidence": 0.25
+  },
+  "w1430325160": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#b8a888",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a5048",
+   "features": [
+    "full-width porch",
+    "gable front"
+   ],
+   "notes": "One-and-a-half-storey house in tan siding with a front gable and a white-railed porch, behind a large maple.",
+   "photos": [
+    "274381294429955",
+    "1641819959344685"
+   ],
+   "confidence": 0.3
+  },
+  "w1431054150": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#6e3e32",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a4a42",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "half-timbered gable",
+    "entry porch",
+    "pilastered doorway"
+   ],
+   "notes": "Two-and-a-half-storey dark red-brown brick house with steep gables (one half-timbered over the entrance), white-framed windows and a white classical doorway; seen from across the street. town.json says clapboard.",
+   "photos": [
+    "512292380126510",
+    "136798305162173"
+   ],
+   "confidence": 0.5
+  },
+  "w1431054151": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d6c494",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5e5c5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "pointed"
+    }
+   ],
+   "features": [
+    "gable front",
+    "shutters",
+    "Ontario cottage"
+   ],
+   "notes": "One-and-a-half-storey buff brick house with a steep front gable holding a pointed-arch window, white shutters on the ground-floor windows and a recessed entry. town.json says brick_red.",
+   "photos": [
+    "865107494086344",
+    "459456968450530"
+   ],
+   "confidence": 0.65
+  },
+  "w1431054154": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "full-width porch",
+    "detached garage with steep gable"
+   ],
+   "notes": "Red brick two-storey house with a front porch behind shrubs; a white-sided garage with a steep black-trimmed gable stands at the end of its drive. Attribution between house and garage uncertain.",
+   "photos": [
+    "224766375708305",
+    "843807526223860"
+   ],
+   "confidence": 0.35
+  },
+  "w1431054155": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a24a34",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5a5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "segmental"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "balcony over porch",
+    "white columns"
+   ],
+   "notes": "Two-and-a-half-storey red brick house with a full-width porch on white columns carrying a railed balcony, white trim, segmental-headed upper windows.",
+   "photos": [
+    "843807526223860",
+    "3314613345308584"
+   ],
+   "confidence": 0.6
+  },
+  "w1431054156": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8482e",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a5652",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "half-timbered gable",
+    "entry porch"
+   ],
+   "notes": "Two-and-a-half-storey red brick house whose front gable is mustard-yellow render with brown half-timbering, white-framed windows, a small entry porch roof. town.json says brick_buff, hipped.",
+   "photos": [
+    "529366304756334",
+    "487783109210236"
+   ],
+   "confidence": 0.6
+  },
+  "w1431054157": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a24a36",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5654",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "dormers",
+    "entry porch",
+    "chimney"
+   ],
+   "notes": "Two-and-a-half-storey red brick foursquare with a hipped roof, a front dormer, chimneys and a small entry porch, behind shrubs.",
+   "photos": [
+    "314376433404843"
+   ],
+   "confidence": 0.5
+  },
+  "w1431061568": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#e8e4d8",
+   "trim": "#8a2a2a",
+   "roof": "gable_side",
+   "roof_colour": "#4e4e50",
+   "features": [
+    "entry porch",
+    "balcony over porch"
+   ],
+   "notes": "Two-storey house in cream siding with dark red shutters and a porch with a railed balcony above, behind a big tree. town.json says brick_buff.",
+   "photos": [
+    "477597976850634",
+    "527832041914198"
+   ],
+   "confidence": 0.35
+  },
+  "w1431061569": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d8c08a",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5e64",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "two-storey porch",
+    "balcony over porch",
+    "shingled gable",
+    "flags"
+   ],
+   "notes": "Two-and-a-half-storey buff brick house, one of a matching pair: front gable with a pale shingled attic, a two-tier white porch with a railed upper balcony, grey metal roof. town.json says brick_red, hipped.",
+   "photos": [
+    "124830186304327",
+    "311261373914844"
+   ],
+   "confidence": 0.6
+  },
+  "w1431061570": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d8c08a",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5e64",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "two-storey porch",
+    "balcony over porch",
+    "shingled gable"
+   ],
+   "notes": "Two-and-a-half-storey buff brick house, the twin of its neighbour: front gable with a shingled attic, white two-tier porch with a railed balcony, grey standing-seam metal roof. town.json says clapboard.",
+   "photos": [
+    "653600359356770",
+    "312455943767353"
+   ],
+   "confidence": 0.6
+  },
+  "w1431061571": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4a36",
+   "trim": "#ffffff",
+   "notes": "Red brick house with white-framed windows, mostly hidden by a large tree. town.json says clapboard.",
+   "photos": [
+    "228832655244514",
+    "312455943767353"
+   ],
+   "confidence": 0.25
+  },
+  "w1431061573": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#c8b088",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a4e48",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "roof walk railing",
+    "chimney",
+    "brick garden wall with piers"
+   ],
+   "notes": "Two-storey buff brick Italianate house with a low hipped roof topped by a railed roof walk and a chimney, set behind a tall buff brick garden wall with capped piers and recessed panels along the sidewalk. town.json gives 1.5 levels / 4.6 m (possibly the wall).",
+   "photos": [
+    "538740317234748",
+    "486159102709865",
+    "597146111257546"
+   ],
+   "confidence": 0.6
+  },
+  "w1431061574": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#e6e2d4",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "corner store",
+    "bay",
+    "gable front",
+    "hanging sign"
+   ],
+   "notes": "Corner variety store in a converted one-and-a-half-storey house: pale siding, a front gable with a bay window, grey roof, a tall hanging sign board on a post; partly behind shrubs.",
+   "photos": [
+    "845228349676544",
+    "214049927018733",
+    "368003284674927"
+   ],
+   "confidence": 0.4
+  },
+  "w1431061575": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#eeeeea",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "front dormer gable",
+    "picket fence"
+   ],
+   "notes": "One-and-a-half-storey white-sided cottage with a front gable dormer, white picket fence and flower beds. town.json says clapboard (consistent).",
+   "photos": [
+    "5478194298918866",
+    "1118170785339180"
+   ],
+   "confidence": 0.45
+  },
+  "w1431061576": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#a8382e",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#4e4e50",
+   "notes": "Garage/outbuilding in barn-red siding with white trim and a front gable, beside a red brick house.",
+   "photos": [
+    "526281905420403"
+   ],
+   "confidence": 0.35
+  },
+  "w1431061577": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8482e",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "gable front",
+    "entry porch",
+    "white columns"
+   ],
+   "notes": "Red brick house with cross gables, white trim and a gabled cream entry porch on columns; low hedge in front.",
+   "photos": [
+    "1432202587137599",
+    "1179088399276824"
+   ],
+   "confidence": 0.4
+  },
+  "w1431061579": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "features": [
+    "enclosed porch"
+   ],
+   "notes": "Red brick house with a white enclosed front porch, seen obliquely past garden planting.",
+   "photos": [
+    "1619571874900412",
+    "171283254925644"
+   ],
+   "confidence": 0.3
+  },
+  "w1431061580": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#ece6d6",
+   "trim": "#8a6a50",
+   "roof": "hipped",
+   "roof_colour": "#5a5654",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "pointed"
+    }
+   ],
+   "features": [
+    "centre gable",
+    "gingerbread",
+    "shutters",
+    "verandah",
+    "two chimneys",
+    "Ontario cottage"
+   ],
+   "notes": "One-and-a-half-storey Ontario Gothic cottage in cream-painted render: hipped roof with a steep centre gable trimmed with a fretted bargeboard over a pointed window with brown shutters, two end chimneys, a low verandah; a tall cedar hedge screens the front. town.json says brick_red.",
+   "photos": [
+    "813076905994133",
+    "767122297339806"
+   ],
+   "confidence": 0.65
+  },
+  "w1444369934": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8482e",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a4e4a",
+   "features": [
+    "full-width porch",
+    "chimney"
+   ],
+   "notes": "Two-and-a-half-storey orange-red brick house with a hipped roof and a front porch, between large street trees. town.json gives 1.5 levels / clapboard.",
+   "photos": [
+    "471370110615627"
+   ],
+   "confidence": 0.45
+  },
+  "w1444369937": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4a36",
+   "trim": "#ffffff",
+   "features": [
+    "full-width porch"
+   ],
+   "notes": "Red brick house with a deep porch and arched porch openings, mostly hidden behind shrubs and trees.",
+   "photos": [
+    "289503129494990",
+    "752417602088780",
+    "108384308194456"
+   ],
+   "confidence": 0.3
+  },
+  "w1447256345": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#4e4e50",
+   "features": [
+    "gable front",
+    "bay"
+   ],
+   "notes": "Two-storey red brick house with a white-trimmed front gable and a bay on the ground floor; a white-sided cottage stands next door. Attribution uncertain.",
+   "photos": [
+    "1104709833341889",
+    "537250747718609"
+   ],
+   "confidence": 0.3
+  },
+  "w1447256346": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#eeeeea",
+   "trim": "#3a8a4a",
+   "roof": "gable_front",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "corner store",
+    "gable front",
+    "green lower siding",
+    "side wing"
+   ],
+   "notes": "Corner store in a one-and-a-half-storey white-sided building with its gable to the street; the ground floor of the shop is clad in bright green, a sign board over the door and a free-standing sign on a post.",
+   "photos": [
+    "467614701010242",
+    "485368182728225",
+    "2951263991806579"
+   ],
+   "confidence": 0.6
+  },
+  "w1456757651": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#3a3e44",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#4a4a4c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "front gable dormer",
+    "picket fence",
+    "flag"
+   ],
+   "notes": "One-and-a-half-storey cottage in charcoal siding with white trim and a white front gable, white picket fence with flower baskets. town.json says brick_red, flat.",
+   "photos": [
+    "222694029303661",
+    "1092838754458274"
+   ],
+   "confidence": 0.55
+  },
+  "w1457264772": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#eeeeea",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#4e4e50",
+   "features": [
+    "gable front",
+    "full-width porch",
+    "white columns"
+   ],
+   "notes": "Two-storey white-sided house with its gable to the street and a full-width porch on white columns; largely hidden by a flowering tree. town.json says brick_buff.",
+   "photos": [
+    "218783756420065",
+    "4169022309785979",
+    "526334795354909"
+   ],
+   "confidence": 0.35
+  },
+  "w1458626963": {
+   "storeys": 1,
+   "material": "stone",
+   "wall": "#8f8a82",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#b8323a",
+   "storefronts": [
+    {
+     "colour": "#5a4a3a"
+    }
+   ],
+   "notes": "Single-storey fast-food building: grey split-face block walls, white fascia, red standing-seam metal roof with a gable over the entry; set back behind its parking lot.",
+   "photos": [
+    "474330843816119"
+   ],
+   "confidence": 0.55
+  },
+  "w1459655530": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d8c8a0",
+   "trim": "#1e1e22",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5a5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "shutters",
+    "siding upper storey",
+    "entry porch"
+   ],
+   "notes": "Two-and-a-half-storey house: buff brick ground floor with black shutters, pale cream siding above, a gabled roof and a small entry porch; young tree and evergreens in front. town.json says brick_red.",
+   "photos": [
+    "4000921163325752",
+    "333955331486797"
+   ],
+   "confidence": 0.5
+  },
+  "w1462603580": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#8c8c88",
+   "trim": "#ece8dc",
+   "notes": "Seen at a distance: a two-storey front clad in mid-grey siding between the red brick infill row and a taller grey-panelled building.",
+   "photos": [
+    "2604627919839138"
+   ],
+   "confidence": 0.25
+  },
+  "w1462603581": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8604a",
+   "trim": "#e6e1d4",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#5a4a40",
+     "awning": {
+      "colour": "#7a4a3a"
+     }
+    }
+   ],
+   "notes": "Two-storey salmon-red brick front with plain flat-headed windows and a continuous brown shed canopy over the storefronts. town.json gives 3 levels / 10.6 m.",
+   "photos": [
+    "1192845951157067"
+   ],
+   "confidence": 0.4
+  },
+  "w1462603583": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8553c",
+   "trim": "#ece8dc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 5,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#5a3a30",
+     "awning": {
+      "colour": "#ecebe6",
+      "stripes": "#6a6a6a"
+     }
+    }
+   ],
+   "notes": "Continuation of the modern two-storey red brick row: tall segmental and arched upper windows, cream sign band and white awnings with grey stripes.",
+   "photos": [
+    "1433493246986099"
+   ],
+   "confidence": 0.5
+  },
+  "w1462603584": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a5a44",
+   "trim": "#e8e6e0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#3a3a3a"
+    }
+   ],
+   "notes": "Two-storey red brick front with a white-painted upper band and a dark storefront; seen obliquely in a single 2020 frame. town.json gives 1 level / 3.4 m.",
+   "photos": [
+    "302293828017556"
+   ],
+   "confidence": 0.3
+  },
+  "w1462603585": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#a7a59a",
+   "trim": "#ece8dc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#3a4048"
+    }
+   ],
+   "notes": "Plain two-storey front in grey-green render with white-framed upper windows and a dark storefront; red brick three-storey building with an awning to its north.",
+   "photos": [
+    "196760195604883"
+   ],
+   "confidence": 0.45
+  },
+  "w1462603586": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8553c",
+   "trim": "#ece8dc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#5a3a30",
+     "awning": {
+      "colour": "#ecebe6",
+      "stripes": "#6a6a6a"
+     }
+    }
+   ],
+   "notes": "Modern two-storey red brick infill row: tall segmental-headed upper windows (one wider arched window), corbelled brick eaves, cream sign band and white awnings with grey stripes over the storefronts.",
+   "photos": [
+    "1460430870962112"
+   ],
+   "confidence": 0.55
+  },
+  "w1462603587": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8e4834",
+   "trim": "#ece8dc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#5a4a40"
+    }
+   ],
+   "notes": "Two-storey red brick front with white-painted pilaster strips and corbelled eaves, between the cream-stuccoed corner shop and a grey-clad two-storey building. Partly hidden by a young tree.",
+   "photos": [
+    "795635924393171"
+   ],
+   "confidence": 0.35
+  },
+  "w1462603588": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a2533d",
+   "trim": "#ecebe6",
+   "notes": "Seen only at a distance along the street: a two-storey red brick front in the row with white awnings.",
+   "photos": [
+    "771061100270178"
+   ],
+   "confidence": 0.25
+  },
+  "w1462606511": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9a4a34",
+   "trim": "#e8e2d0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "flat",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2a2a2c"
+    }
+   ],
+   "features": [
+    "flags",
+    "decorative gable with arched window"
+   ],
+   "notes": "Three-storey red brick block on Market Place with stone-lintelled windows, a decorative raised gable holding a round-arched window at the cornice, black storefront fascia; Canadian flags on poles.",
+   "photos": [
+    "462482645056365"
+   ],
+   "confidence": 0.45
+  },
+  "w1462606512": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#e3d9c2",
+   "trim": "#7a5a3c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "segmental",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2e2e30"
+    }
+   ],
+   "notes": "Three-storey Italianate block painted cream with brown hood mouldings and a deep bracketed cornice; black storefronts with a dark awning frame. town.json gives 1.5 levels / 5 m, far too low.",
+   "photos": [
+    "4407661779295688"
+   ],
+   "confidence": 0.5
+  },
+  "w1462606513": {
+   "storeys": 2,
+   "material": "brick_painted",
+   "wall": "#2b2b2d",
+   "trim": "#c4302b",
+   "storefronts": [
+    {
+     "colour": "#2b2b2d"
+    }
+   ],
+   "notes": "Front painted black with red lettering bands, two storeys; the adjoining cream-painted three-storey Italianate block is its neighbour. Partly hidden by a street tree.",
+   "photos": [
+    "586764532298004"
+   ],
+   "confidence": 0.35
+  },
+  "w1462606514": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9a3e30",
+   "trim": "#5f8f7c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "pressed_metal",
+   "storefronts": [
+    {
+     "colour": "#3a3a3a"
+    }
+   ],
+   "bay": true,
+   "features": [
+    "copper-green dormer gables",
+    "bay"
+   ],
+   "notes": "Three-storey red brick front with small gabled dormers and trim painted copper green, beside the olive-green painted block with stacked oriel bay windows; facing Market Square. town.json says brick_buff.",
+   "photos": [
+    "491780848836859"
+   ],
+   "confidence": 0.4
+  },
+  "w1462606517": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#e8e6e0",
+   "trim": "#e8e6e0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2e2e30"
+    }
+   ],
+   "notes": "Three-storey brick front painted white with a bracketed cornice, between red brick neighbours on Market Place. town.json gives 2 levels, clapboard, residential.",
+   "photos": [
+    "4053950574650776"
+   ],
+   "confidence": 0.35
+  },
+  "w1462606518": {
+   "material": "brick_painted",
+   "wall": "#d8d8d2",
+   "trim": "#3e4a44",
+   "notes": "Seen behind 2017 construction fencing on the square: a light grey/white painted front with dark trim; little detail.",
+   "photos": [
+    "1085160128639168"
+   ],
+   "confidence": 0.2
+  },
+  "w1462606519": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8e3a2e",
+   "trim": "#5f8f7c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "pressed_metal",
+   "features": [
+    "copper-green gabled dormers"
+   ],
+   "notes": "Three-storey red brick front with small green-trimmed gabled dormers on the cornice line, between the white-painted block and the olive-green block on Market Place. town.json gives 2 levels, brick_buff.",
+   "photos": [
+    "491780848836859"
+   ],
+   "confidence": 0.35
+  },
+  "w1462606521": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#7f8a5a",
+   "trim": "#e8e0c8",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "round"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#4a5a3a"
+    }
+   ],
+   "bay": true,
+   "features": [
+    "oriel bays",
+    "ornate gable pediment",
+    "finials"
+   ],
+   "notes": "Ornate three-storey front painted olive green with cream trim: stacked oriel bay windows and a tall decorative gable/pediment with finials over the cornice. town.json says brick_red. The plain red brick three-storey block with flags is next door.",
+   "photos": [
+    "846736152888177"
+   ],
+   "confidence": 0.45
+  },
+  "w1462606788": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#a8875f",
+   "trim": "#e8e4da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#5a4a3a"
+    }
+   ],
+   "notes": "Two-storey tan/brown brick front with plain flat-headed windows and a recessed door, south of the navy storefront of the pale green block.",
+   "photos": [
+    "133938048721737"
+   ],
+   "confidence": 0.4
+  },
+  "w1462606789": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#c9d0b8",
+   "trim": "#4a4f4c",
+   "storefronts": [
+    {
+     "colour": "#2a3550"
+    }
+   ],
+   "notes": "Narrow front at the south end of the pale green block: navy-blue storefront and fascia; the tan brick building with a recessed door is the next one south.",
+   "photos": [
+    "385102302669132",
+    "515268169473847"
+   ],
+   "confidence": 0.35
+  },
+  "w1462606790": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#c9d0b8",
+   "trim": "#4a4f4c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#c9d0b8"
+    }
+   ],
+   "features": [
+    "painted pilasters"
+   ],
+   "notes": "Three-storey corner block painted pale sage green with dark charcoal pilaster strips, window frames and bracketed cornice; large plate-glass storefront in the same pale green. town.json says brick_buff/gabled.",
+   "photos": [
+    "385102302669132",
+    "515268169473847"
+   ],
+   "confidence": 0.6
+  },
+  "w1463843448": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9c5039",
+   "trim": "#ffffff",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#24304a"
+    }
+   ],
+   "features": [
+    "gooseneck lamps"
+   ],
+   "notes": "Red brick three-storey front with white window frames over a navy storefront sign band lit by gooseneck lamps; neighbours to the south are a lower navy-painted row.",
+   "photos": [
+    "259279739309513"
+   ],
+   "confidence": 0.4
+  },
+  "w1463843451": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#2c3446",
+   "trim": "#e8e8e4",
+   "roof": "gable_side",
+   "roof_colour": "#4a4a4c",
+   "storefronts": [
+    {
+     "colour": "#2c3446"
+    }
+   ],
+   "notes": "Single-storey shop painted dark navy with a white sign band and white-framed windows, low gabled roof behind.",
+   "photos": [
+    "1192845951157067"
+   ],
+   "confidence": 0.4
+  },
+  "w1463843453": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9c5039",
+   "trim": "#ffffff",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#24304a"
+    }
+   ],
+   "features": [
+    "gooseneck lamps"
+   ],
+   "notes": "Red brick three-storey front with white-framed windows and a navy sign band with gooseneck lamps, just south of the shaped-gable hall (which the front-on frame shows instead).",
+   "photos": [
+    "932940070894496",
+    "259279739309513"
+   ],
+   "confidence": 0.35
+  },
+  "w1463843455": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#34363a",
+   "trim": "#e8e8e4",
+   "roof": "gable_front",
+   "roof_colour": "#3a3a3c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front"
+   ],
+   "notes": "Small front-gabled one-and-a-half-storey building painted charcoal with a white sign band and one window in the gable.",
+   "photos": [
+    "302293828017556"
+   ],
+   "confidence": 0.4
+  },
+  "w1463843456": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#8e4834",
+   "trim": "#d8d2c4",
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#6a6a66"
+    }
+   ],
+   "features": [
+    "raised gable parapet"
+   ],
+   "notes": "Single-storey red brick shop with a tall raking gable-shaped parapet carrying round signs, glazed front with a grey frame; pale grey metal-clad building adjoins to the north.",
+   "photos": [
+    "795635924393171"
+   ],
+   "confidence": 0.45
+  },
+  "w1463843457": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#7d4636",
+   "trim": "#d9d1bf",
+   "roof": "mansard",
+   "roof_colour": "#6c6460",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 6,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#5a5048"
+    }
+   ],
+   "notes": "Row of single-storey units: brown-red brick bays between cream concrete pilasters, under a continuous grey shingled mansard canopy roof; a taller red-roofed brick block rises behind.",
+   "photos": [
+    "482996043028979"
+   ],
+   "confidence": 0.5
+  },
+  "w1463843458": {
+   "storeys": 1,
+   "material": "metal",
+   "wall": "#c9ccd0",
+   "trim": "#2a4f9a",
+   "notes": "Low one-storey front: pale grey corrugated/panel cladding with a small blue sign, wooden patio screens in front; partly hidden by a street tree.",
+   "photos": [
+    "1433493246986099"
+   ],
+   "confidence": 0.3
+  },
+  "w1463843462": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#8e4834",
+   "trim": "#d8d2c4",
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#6a6a66"
+    }
+   ],
+   "notes": "Same single-storey red brick strip as its neighbour, under the raking gable parapet; low and plain.",
+   "photos": [
+    "795635924393171"
+   ],
+   "confidence": 0.35
+  },
+  "w1463843464": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a0533d",
+   "trim": "#d8cbb0",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 4,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 5,
+     "head": "segmental",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "round"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#3a3a38"
+    }
+   ],
+   "features": [
+    "shaped gable",
+    "oculus",
+    "pilasters with ball finials",
+    "gooseneck lamps"
+   ],
+   "notes": "Two-storey red brick hall front crowned by a tall shaped (curvilinear Dutch) gable with a round oculus, brick pilasters ending in stone ball finials, round-arched ground-floor openings with dark glazing. town.json says brick_buff.",
+   "photos": [
+    "932940070894496",
+    "534012660945629"
+   ],
+   "confidence": 0.65
+  },
+  "w1464490237": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d4c09a",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#9a4a48",
+   "features": [
+    "full-width porch",
+    "gable front",
+    "chimney"
+   ],
+   "notes": "Two-and-a-half-storey buff brick house with a red-brown roof, a front gable and a white-railed porch at the top of front steps; mostly screened by trees and shrubs. town.json says clapboard.",
+   "photos": [
+    "318186306385924",
+    "904815213692441",
+    "560319344998955"
+   ],
+   "confidence": 0.45
+  },
+  "w1464490238": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d4c08e",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5654",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "dormers",
+    "chimney"
+   ],
+   "notes": "Large two-and-a-half-storey buff brick house with a hipped roof and front dormer, a deep front porch on columns, chimney; screened by evergreens and garden. town.json says brick_red.",
+   "photos": [
+    "1222247814897264",
+    "331117325252966"
+   ],
+   "confidence": 0.5
+  },
+  "w1464490240": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#eeeeea",
+   "trim": "#1e2a40",
+   "roof": "gable_front",
+   "roof_colour": "#2e3444",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "balcony over porch",
+    "shingled gable",
+    "round window"
+   ],
+   "notes": "White-painted house with a dark navy shingle-clad upper gable, a deep full-width porch on dark posts with a railed balcony above, a small round window; garden in front. town.json says brick_buff.",
+   "photos": [
+    "818416835441777",
+    "382105189742788",
+    "964842967619964"
+   ],
+   "confidence": 0.55
+  },
+  "w1464490241": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#cdb88e",
+   "trim": "#3e6a8a",
+   "roof": "cross_gable",
+   "roof_colour": "#4e4c4c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "entry porch",
+    "arched porch gable",
+    "siding upper storey",
+    "stone porch pier"
+   ],
+   "notes": "Buff brick house with a large round-headed ground-floor window trimmed in slate blue, cream siding on the upper storey and gable, and an entry porch with an arched gable on a rock-faced stone pier. town.json says brick_red.",
+   "photos": [
+    "386368535928033",
+    "477485633490096"
+   ],
+   "confidence": 0.6
+  },
+  "w1464490243": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#c8b08a",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5a5250",
+   "features": [
+    "full-width porch"
+   ],
+   "notes": "Two-storey buff brick house with a hipped roof and front porch, seen across the street.",
+   "photos": [
+    "312000843631583"
+   ],
+   "confidence": 0.35
+  },
+  "w1468637601": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#6a4e40",
+   "trim": "#d8d0c0",
+   "roof": "cross_gable",
+   "roof_colour": "#3e3a3a",
+   "features": [
+    "chimney",
+    "garage"
+   ],
+   "notes": "Modern two-storey brown brick house with stone accents, a tall front chimney and dark roof; seen at a distance. town.json gives 1.5 levels.",
+   "photos": [
+    "257433909454084"
+   ],
+   "confidence": 0.35
+  },
+  "w1470281823": {
+   "storeys": 2,
+   "material": "brick_painted",
+   "wall": "#e9d9c8",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#6b6560",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "entry porch",
+    "gable front"
+   ],
+   "notes": "Two-storey house used as an office: cream/pale-pink painted walls, white trim, blue front door under a small gabled entry porch, round-headed ground-floor window. The oblique 2019 frame instead shows a red-brick gabled house next door.",
+   "photos": [
+    "370284047672979",
+    "519867709031527"
+   ],
+   "confidence": 0.45
+  },
+  "w1470281884": {
+   "storeys": 2,
+   "notes": "Frames disagree: the front-on view puts the edge on a modern glass-and-stone office, the oblique one on a grey-buff brick house behind a large tree. Left mostly blank.",
+   "photos": [
+    "370284047672979",
+    "943192939772928"
+   ],
+   "confidence": 0.2
+  },
+  "w1470455731": {
+   "storeys": 3,
+   "material": "stucco",
+   "wall": "#c9a86a",
+   "trim": "#8a6a4a",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "flat",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 6,
+     "head": "flat",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#b0282c",
+     "awning": {
+      "colour": "#7a4a3a",
+      "stripes": "#efe6d2"
+     }
+    }
+   ],
+   "corner_entrance": true,
+   "features": [
+    "clock",
+    "rounded corner",
+    "quoined window surrounds",
+    "striped awnings",
+    "planters"
+   ],
+   "notes": "Three-storey corner block with a rounded corner: ochre/tan rendered walls, windows framed by brown quoin-like surrounds, a dark cornice, a round wall clock between second-floor windows, a deep red sign band and brown-and-cream striped awnings at street level. town.json gives 2 levels, brick_red.",
+   "photos": [
+    "817290205830053",
+    "484270792855388",
+    "4064661686926164"
+   ],
+   "confidence": 0.75
+  },
+  "w1470456080": {
+   "material": "stucco",
+   "wall": "#ece9e1",
+   "trim": "#9a8a6a",
+   "storefronts": [
+    {
+     "colour": "#ece9e1"
+    }
+   ],
+   "notes": "Smooth white/cream rendered shopfront with large raised lettering and a deep recessed glazed entry; the upper part of the front is not visible in the frames. town.json gives 1 level / 3.5 m.",
+   "photos": [
+    "262003005626357",
+    "1448074275561056"
+   ],
+   "confidence": 0.4
+  },
+  "w1470456082": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#b8a07a",
+   "trim": "#e8e2d4",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#3b3f45",
+     "awning": {
+      "colour": "#3b3f45"
+     }
+    }
+   ],
+   "notes": "Two-storey buff brick front with a triple window group upstairs and a dark grey storefront with dark grey awnings, just east of the three-storey buff corner block with round-headed windows. town.json gives 2.5 levels.",
+   "photos": [
+    "268663418332326",
+    "474484897118194"
+   ],
+   "confidence": 0.45
+  },
+  "w1470456083": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9c4c36",
+   "trim": "#3d6fa8",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "bracketed",
+   "notes": "Red brick three-storey front with blue window frames (the same block as its neighbour); town.json gives 1.5 levels / 4.5 m, which the photos do not support for the street front. Attribution uncertain among narrow fronts.",
+   "photos": [
+    "307925757459588",
+    "539766860347064",
+    "767701893911710"
+   ],
+   "confidence": 0.3
+  },
+  "w1470456084": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#a05a40",
+   "trim": "#e8e2d0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#3a3d42"
+    }
+   ],
+   "notes": "Red brick three-storey Victorian front with round-arched windows under brick hoods and a bracketed cornice; dark grey storefront with a sign band, just west of the magenta awning.",
+   "photos": [
+    "307925757459588",
+    "297917525174367"
+   ],
+   "confidence": 0.4
+  },
+  "w1470456085": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#a89272",
+   "trim": "#e8e3d8",
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#c63a2a",
+     "awning": {
+      "colour": "#c63a2a"
+     }
+    }
+   ],
+   "features": [
+    "hanging baskets",
+    "blade sign"
+   ],
+   "notes": "Narrow front in a continuous three-storey row: bright red storefront with a red shed awning and white fascia board, between a white storefront and the tan-clad shop to the east. Attribution among the 5 m fronts here is uncertain.",
+   "photos": [
+    "1448074275561056",
+    "498672194503269",
+    "452464939185080"
+   ],
+   "confidence": 0.35
+  },
+  "w1470456086": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#c2ab84",
+   "trim": "#d8c8a4",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2c3e5c"
+    }
+   ],
+   "corner_entrance": false,
+   "notes": "Three-storey buff brick block with tall round-headed windows under moulded hoods and a bracketed cornice; navy-blue storefront wrapping the corner. town.json gives 1 level / 3.5 m, far too low.",
+   "photos": [
+    "1628813517312127",
+    "816458779272766"
+   ],
+   "confidence": 0.55
+  },
+  "w1470456087": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9b5a43",
+   "trim": "#e9e4d8",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#6b4a35",
+     "awning": {
+      "colour": "#e0318a",
+      "stripes": "#f2d23a"
+     }
+    }
+   ],
+   "features": [
+    "patio"
+   ],
+   "notes": "Red brick three-storey front with round-headed upper windows; bright magenta box awning with a yellow fan pattern over a recessed glazed storefront.",
+   "photos": [
+    "767701893911710"
+   ],
+   "confidence": 0.45
+  },
+  "w1470456088": {
+   "storeys": 3,
+   "material": "brick_painted",
+   "wall": "#e3e1da",
+   "trim": "#e3e1da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 8,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 8,
+     "head": "round"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#e3e1da"
+    }
+   ],
+   "notes": "Long three-storey brick front painted off-white throughout, segmental-headed second-floor and round-headed third-floor windows, plain painted parapet; ground floor with plain doors and windows rather than shopfronts. town.json says brick_red/hipped.",
+   "photos": [
+    "583242519737081",
+    "333977558146317"
+   ],
+   "confidence": 0.55
+  },
+  "w1470456089": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#b39a76",
+   "trim": "#e8e2d4",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#7a2232",
+     "awning": {
+      "colour": "#7a2232"
+     }
+    }
+   ],
+   "notes": "Two-storey tan/buff brick front with a deep maroon storefront and fabric awning, part of the low two-storey row across from the Bentley block.",
+   "photos": [
+    "368467621156221",
+    "784678805808255",
+    "502000147820441"
+   ],
+   "confidence": 0.45
+  },
+  "w1470456090": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#c9b48a",
+   "trim": "#e8e0cc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#2a4f9a"
+    },
+    {
+     "colour": "#e6dfcf"
+    }
+   ],
+   "features": [
+    "painted sign board"
+   ],
+   "notes": "Narrow two-storey front: large blue painted fascia board over a glazed storefront with a low red-brick bulkhead; a cream stucco shopfront to the right in the same front edge.",
+   "photos": [
+    "284657613316853"
+   ],
+   "confidence": 0.45
+  },
+  "w1470456091": {
+   "storefronts": [
+    {
+     "colour": "#4a5560"
+    }
+   ],
+   "notes": "Narrow front: slate grey-blue storefront with a light sign panel, in the continuous row; upper floors not visible in the frames.",
+   "photos": [
+    "262003005626357"
+   ],
+   "confidence": 0.3
+  },
+  "w1470456092": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#b9a37c",
+   "trim": "#d9c9a5",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "round",
+     "paired": true
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "round",
+     "paired": true
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#c8a46a"
+    }
+   ],
+   "notes": "Narrow three-storey buff brick front with round-headed paired windows and an ornate cornice; the ground floor has a tan/ochre clad storefront with a large fascia sign panel.",
+   "photos": [
+    "498672194503269",
+    "1448074275561056",
+    "452464939185080"
+   ],
+   "confidence": 0.45
+  },
+  "w1470456093": {
+   "storeys": 3,
+   "material": "stucco",
+   "wall": "#e6dfcc",
+   "trim": "#e6dfcc",
+   "storefronts": [
+    {
+     "colour": "#e6dfcc"
+    }
+   ],
+   "features": [
+    "patio"
+   ],
+   "notes": "Cream rendered storefront with tall glazing and a sidewalk patio; above it the row's red brick with round-arched windows shows at the top edge. town.json gives 1 level / 3.5 m, which looks too low.",
+   "photos": [
+    "297917525174367"
+   ],
+   "confidence": 0.35
+  },
+  "w1470456094": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#b39a76",
+   "trim": "#ece7da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#2f3a4a"
+    },
+    {
+     "colour": "#7a2232",
+     "awning": {
+      "colour": "#7a2232"
+     }
+    }
+   ],
+   "notes": "Long two-storey tan brick row, plain parapet, upper floor with small white-framed flat-headed windows in groups; navy and dark grey storefronts and a maroon awning. Seen square-on from across Ontario Street.",
+   "photos": [
+    "188434889765762",
+    "372532030701889",
+    "969229386815577"
+   ],
+   "confidence": 0.6
+  },
+  "w1470456095": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9a4a35",
+   "trim": "#3d6fa8",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat",
+     "paired": false
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "flat",
+     "paired": false
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2b2b2b"
+    }
+   ],
+   "features": [
+    "patio",
+    "hanging baskets"
+   ],
+   "notes": "Red brick three-storey block with blue-painted window frames; black sign band and dark storefront at ground with a fenced sidewalk patio. town.json says brick_buff; photos show red brick.",
+   "photos": [
+    "307925757459588",
+    "220106069447266"
+   ],
+   "confidence": 0.6
+  },
+  "w1470456096": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#a89272",
+   "storefronts": [
+    {
+     "colour": "#e9e6df"
+    }
+   ],
+   "features": [
+    "blade sign"
+   ],
+   "notes": "Narrow front in the three-storey row west of the red-awning shop; white storefront with a vertical blade sign above. Attribution among the narrow fronts is uncertain.",
+   "photos": [
+    "1448074275561056",
+    "498672194503269"
+   ],
+   "confidence": 0.3
+  },
+  "w1470456097": {
+   "storefronts": [
+    {
+     "colour": "#3e4a44"
+    }
+   ],
+   "notes": "Narrow front: dark grey-green storefront with small-paned glazing and a gold-edged sign board; upper floors not visible.",
+   "photos": [
+    "417982815973350"
+   ],
+   "confidence": 0.35
+  },
+  "w1470457560": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d4c094",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5e5850",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "wraparound verandah",
+    "front dormer",
+    "chimney"
+   ],
+   "notes": "Two-and-a-half-storey buff brick house with a hipped roof, a gabled front dormer and chimney, segmental-headed windows and a white wrap-around verandah.",
+   "photos": [
+    "155700879849881",
+    "155922749852570"
+   ],
+   "confidence": 0.6
+  },
+  "w1470457565": {
+   "material": "brick_red",
+   "wall": "#8e4a35",
+   "features": [
+    "banner"
+   ],
+   "notes": "Only an oblique view of a red brick wall with a large theatre banner and a planter at its foot.",
+   "photos": [
+    "733361453967762"
+   ],
+   "confidence": 0.2
+  },
+  "w1470457569": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#a8452e",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a5a5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 1,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "segmental"
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "white columns"
+   ],
+   "notes": "Two-storey red brick house with its gable to the street, white trim, and a white front porch on columns with lattice skirting.",
+   "photos": [
+    "1001482960256831",
+    "1636097326585227"
+   ],
+   "confidence": 0.55
+  },
+  "w1470457571": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#c8b386",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 1,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "enclosed porch",
+    "sunroom"
+   ],
+   "notes": "Two-storey buff brick house with a white enclosed sunroom porch on the front corner; a flat-roofed dark brown painted outbuilding sits just to its north on the street line. town.json says brick_red. Attribution between the two is uncertain.",
+   "photos": [
+    "1957846937686711",
+    "330889291759222"
+   ],
+   "confidence": 0.4
+  },
+  "w1470457572": {
+   "material": "brick_red",
+   "wall": "#8a4a36",
+   "features": [
+    "blade sign"
+   ],
+   "notes": "Only seen edge-on: red brick wall with large ground-floor glazing and a projecting sign.",
+   "photos": [
+    "290573689367138",
+    "511571446678306"
+   ],
+   "confidence": 0.2
+  },
+  "w1470457578": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#e4e2dc",
+   "trim": "#ffffff",
+   "roof": "gable_side",
+   "roof_colour": "#4a4a4c",
+   "features": [
+    "full-width porch"
+   ],
+   "notes": "Two-storey house in pale siding with a full-width porch, largely hidden by a street tree.",
+   "photos": [
+    "2339973729470718"
+   ],
+   "confidence": 0.25
+  },
+  "w1470457581": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#e4e6e2",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#5c5a58",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "pointed"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "centre gable",
+    "Ontario cottage"
+   ],
+   "notes": "One-and-a-half-storey Ontario cottage: pale grey/white siding, hipped roof with a steep centre gable holding a small pointed window, full-width front porch; clipped round shrubs in front.",
+   "photos": [
+    "4598710600144459"
+   ],
+   "confidence": 0.6
+  },
+  "w1470457582": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d6c29a",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#6a645c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "entry porch",
+    "enclosed upper porch",
+    "white columns"
+   ],
+   "notes": "Buff brick two-and-a-half-storey house with a front porch on white posts and an enclosed upper-storey sun porch of small-paned windows above it.",
+   "photos": [
+    "1263035764126548",
+    "4598710600144459"
+   ],
+   "confidence": 0.5
+  },
+  "w1470457586": {
+   "material": "brick_red",
+   "wall": "#8a4a36",
+   "notes": "Only seen edge-on: a plain red brick street wall in the row south of Ontario Street.",
+   "photos": [
+    "290573689367138",
+    "511571446678306"
+   ],
+   "confidence": 0.2
+  },
+  "w1470457588": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#3e3e42",
+   "features": [
+    "full-width porch",
+    "siding in gable",
+    "gable front"
+   ],
+   "notes": "Two-and-a-half-storey red brick house with a front gable clad in pale green-grey siding and a full-width front porch; behind street trees, evening light.",
+   "photos": [
+    "496978908021450"
+   ],
+   "confidence": 0.35
+  },
+  "w1470457593": {
+   "storeys": 2,
+   "material": "clapboard",
+   "wall": "#eeeee8",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#9a3a32",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "entry porch"
+   ],
+   "notes": "Two-storey white clapboard house, gable end to the street with a red roof, small entry porch on the side; grey siding on a rear wing.",
+   "photos": [
+    "540172234025790",
+    "1472457482924833"
+   ],
+   "confidence": 0.55
+  },
+  "w1470457594": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d2bf98",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a5048",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "full-width porch",
+    "white columns",
+    "beige siding upper storey"
+   ],
+   "notes": "Two-and-a-half-storey house: buff brick ground floor, beige vinyl siding on the upper storey, full-width front porch with white turned columns and railings; a large tree in front.",
+   "photos": [
+    "1911324759020870",
+    "1120502088472355"
+   ],
+   "confidence": 0.55
+  },
+  "w1471432585": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#7e4a38",
+   "trim": "#d8cdb6",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "bracketed",
+   "notes": "Two-storey red-brown brick front with a cornice, seen at a distance from across the street; the second (oblique) frame looks along the street past it and is not useful.",
+   "photos": [
+    "516953769498679",
+    "111339564334670"
+   ],
+   "confidence": 0.3
+  },
+  "w1471432597": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8c4a3a",
+   "storefronts": [
+    {
+     "colour": "#2a3e4a"
+    }
+   ],
+   "notes": "Two-storey red brick front with a dark slate-blue sign band and storefront, seen obliquely along the sidewalk.",
+   "photos": [
+    "412518676653058",
+    "515268169473847"
+   ],
+   "confidence": 0.3
+  },
+  "w1471432599": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#b9a27a",
+   "trim": "#e2d8c2",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "round"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#b5532e"
+    }
+   ],
+   "features": [
+    "patio",
+    "hanging baskets"
+   ],
+   "notes": "Two-storey buff brick front with an orange-red fascia board and a fenced sidewalk patio with yellow umbrellas; the orange-red brick building with the bracketed cornice is its neighbour.",
+   "photos": [
+    "896099397900524",
+    "215539300339299",
+    "516953769498679"
+   ],
+   "confidence": 0.4
+  },
+  "w1471432608": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#e8e4da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#1e1e20"
+    }
+   ],
+   "notes": "Two-storey red brick front with white-framed upper windows over a black storefront and fascia.",
+   "photos": [
+    "301145594787024"
+   ],
+   "confidence": 0.4
+  },
+  "w1471432610": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#c9b07a",
+   "trim": "#e8e2d0",
+   "cornice": "bracketed",
+   "notes": "Seen only far down the street: three-storey buff brick front with an ornate bracketed cornice, next to a white-painted three-storey block.",
+   "photos": [
+    "898451521001113"
+   ],
+   "confidence": 0.25
+  },
+  "w1471435256": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#5a4a44",
+   "features": [
+    "gable front",
+    "full-width porch"
+   ],
+   "notes": "Two-storey red brick house with steep front gables (one clad in grey siding) and a white front porch; seen obliquely.",
+   "photos": [
+    "1472457482924833"
+   ],
+   "confidence": 0.35
+  },
+  "w1471435259": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a5a5c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "siding in gable"
+   ],
+   "notes": "Two-and-a-half-storey red brick house, its front gable clad in pale grey-blue siding, a white full-width porch on columns; next to a single-storey buff block.",
+   "photos": [
+    "540172234025790"
+   ],
+   "confidence": 0.5
+  },
+  "w1491094217": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8e3e2c",
+   "trim": "#e6dfcc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#2e3a30"
+    }
+   ],
+   "features": [
+    "gabled dormers",
+    "hanging baskets"
+   ],
+   "notes": "Three-storey red brick block with round-arched windows and a roofline of small gabled dormers, next to the buff brick block with arched windows on its south side.",
+   "photos": [
+    "450399322721177",
+    "914498702683261"
+   ],
+   "confidence": 0.45
+  },
+  "w1491094219": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8c4a38",
+   "trim": "#e2dccb",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2e2e2e"
+    }
+   ],
+   "notes": "Three-storey red-brown brick block with tall round-headed upper windows and a bracketed cornice; black storefront sign band. Next to a lower two-storey red brick building with a cream sign band. town.json gives 1 level / 4.1 m.",
+   "photos": [
+    "487937362643534"
+   ],
+   "confidence": 0.4
+  },
+  "w1491094222": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#c9b07a",
+   "trim": "#e8e2d0",
+   "windows": [
+    {
+     "storey": 2,
+     "head": "round"
+    },
+    {
+     "storey": 3,
+     "head": "round"
+    }
+   ],
+   "cornice": "bracketed",
+   "notes": "Seen only far down the street: a three-storey buff brick front with round-headed windows and a bracketed cornice between white-painted and red brick neighbours. town.json gives 2.5 levels.",
+   "photos": [
+    "794441138163532"
+   ],
+   "confidence": 0.25
+  },
+  "w1491094225": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8c3f2e",
+   "trim": "#c9c4b8",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "features": [
+    "glazed stair bay"
+   ],
+   "notes": "Modern two-storey red brick building with a tall glazed vertical bay with dark frames and a plain flat parapet, across from City Hall. town.json says brick_buff/hipped.",
+   "photos": [
+    "242381677644527",
+    "771672486813758"
+   ],
+   "confidence": 0.55
+  },
+  "w1491094227": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8e3e2c",
+   "trim": "#e6dfcc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round",
+     "paired": true,
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "round",
+     "paired": true
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "storefronts": [
+    {
+     "colour": "#3a3a3a"
+    }
+   ],
+   "features": [
+    "gabled dormers"
+   ],
+   "notes": "Red brick three-storey front with paired round-arched windows and steep gabled dormers. town.json gives 2 levels / 7 m.",
+   "photos": [
+    "229667445582400"
+   ],
+   "confidence": 0.4
+  },
+  "w1491094229": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8e3e2c",
+   "trim": "#e6dfcc",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "features": [
+    "gabled dormers"
+   ],
+   "notes": "Red brick three-storey front with round-arched paired windows and gabled dormers at the roofline (town.json material 'glass' does not match).",
+   "photos": [
+    "875259769717320",
+    "914498702683261"
+   ],
+   "confidence": 0.4
+  },
+  "w1491094232": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#8a4434",
+   "trim": "#e2dccb",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "round",
+     "hood": "brick"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#3a3a3a",
+     "awning": {
+      "colour": "#3a3a3a"
+     }
+    }
+   ],
+   "notes": "Three-storey red brick front in the Wellington Street row with round-arched upper windows and a dark storefront and awning. town.json gives 1 level / 3.5 m.",
+   "photos": [
+    "1117255122114294",
+    "607408403994068"
+   ],
+   "confidence": 0.4
+  },
+  "w1491997098": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#5e3c34",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#3a3a3c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "townhouses",
+    "front gables",
+    "entry porch",
+    "hanging baskets"
+   ],
+   "notes": "Modern three-storey townhouses in dark brown brick with white window trim, steep front gables and small entry porches; a red brick unit with a white columned portico at the end. town.json gives 1 level / 3.5 m.",
+   "photos": [
+    "220216169435049",
+    "318582812942301"
+   ],
+   "confidence": 0.5
+  },
+  "w1491997100": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#5e3c34",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#3a3a3c",
+   "features": [
+    "townhouses",
+    "front gables",
+    "entry porch",
+    "hanging baskets"
+   ],
+   "notes": "The same modern dark brown brick three-storey townhouse row with steep front gables, white trim and small porches with hanging baskets. town.json gives 1.5 levels.",
+   "photos": [
+    "2609391986028061",
+    "318582812942301"
+   ],
+   "confidence": 0.45
+  },
+  "w1496825607": {
+   "storeys": 4,
+   "material": "brick_red",
+   "wall": "#8a3a2c",
+   "trim": "#e8e4da",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "flat"
+    },
+    {
+     "storey": 4,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "notes": "Plain red brick apartment block of at least four storeys with regular white-framed windows (seen close, from below). town.json gives 2 levels / 7 m, commercial.",
+   "photos": [
+    "1708955193394398"
+   ],
+   "confidence": 0.45
+  },
+  "w164420370": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9a3f2c",
+   "trim": "#e9e4d6",
+   "cornice": "stone",
+   "features": [
+    "rock-faced stone basement",
+    "hanging baskets",
+    "clock",
+    "turret"
+   ],
+   "notes": "City Hall (see landmarks.city-hall): deep red brick over a tall rock-faced grey limestone basement storey; white-painted trim.",
+   "photos": [
+    "969792703756661"
+   ],
+   "confidence": 0.6
+  },
+  "w240409734": {
+   "storeys": 1,
+   "material": "brick_buff",
+   "wall": "#d6c48e",
+   "trim": "#e8e8e4",
+   "roof": "hipped",
+   "roof_colour": "#6a6a62",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "raised entry with steps"
+   ],
+   "notes": "Single-storey mid-century buff brick office with a low hipped roof and a raised entry with steps and white rails; trees in front. town.json gives 2 levels, glass.",
+   "photos": [
+    "966813274093911",
+    "829967011231890"
+   ],
+   "confidence": 0.5
+  },
+  "w246660294": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#7a4b3a",
+   "roof": "gable_front",
+   "roof_colour": "#5b4a40",
+   "features": [
+    "ivy-covered",
+    "gable front"
+   ],
+   "notes": "House-like office mostly covered in ivy, with a front gable; set back behind a lawn and parking.",
+   "photos": [
+    "1723710981157455"
+   ],
+   "confidence": 0.35
+  },
+  "w246660295": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#7f4536",
+   "trim": "#e6e1d6",
+   "features": [
+    "glazed stair tower",
+    "gable front",
+    "flagpoles"
+   ],
+   "notes": "Mostly hidden by a large tree: red-brown brick with a gable and a tall glazed curtain-wall bay, flags on poles at the front lawn.",
+   "photos": [
+    "777968156420306",
+    "3823285344434269"
+   ],
+   "confidence": 0.3
+  },
+  "w246660296": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#d8c98c",
+   "trim": "#b23a2e",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 6,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 5,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#8c3a2e"
+    }
+   ],
+   "notes": "Modern two-storey commercial building: red brick ground floor with glazed storefronts, upper floor in pale yellow panels with red accent strips; flat projecting roof edge. Set back behind a lawn at the Waterloo Street corner.",
+   "photos": [
+    "396176848093236"
+   ],
+   "confidence": 0.5
+  },
+  "w257380794": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#5e3a30",
+   "trim": "#d9d2bd",
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#d9d2bd"
+    }
+   ],
+   "notes": "Low single-storey commercial unit set back behind a lawn: dark brown brick with a cream fascia band over the windows. Seen only obliquely.",
+   "photos": [
+    "310328874144931"
+   ],
+   "confidence": 0.35
+  },
+  "w257380795": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#8c4a38",
+   "trim": "#e3dcc6",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 6,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#3a3a3a"
+    }
+   ],
+   "features": [
+    "metal fascia band"
+   ],
+   "notes": "Single-storey modern commercial strip: red-brown brick piers and wide glazed storefronts under a deep cream ribbed-metal fascia.",
+   "photos": [
+    "2303016669838586",
+    "853637141889080"
+   ],
+   "confidence": 0.6
+  },
+  "w257380807": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#7d3b2c",
+   "trim": "#5f9a82",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "pointed",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "none",
+   "features": [
+    "gable front",
+    "copper copings",
+    "round medallion",
+    "pointed-arch entrance",
+    "buttresses",
+    "tower"
+   ],
+   "notes": "Knox Presbyterian: dark red-brown brick (not stone as town.json says), green copper copings on stepped gables and buttress caps, deep pointed-arch stone entrance, Gothic pointed windows.",
+   "photos": [
+    "486888009226794",
+    "466391334438856"
+   ],
+   "confidence": 0.65
+  },
+  "w257380808": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#7c3b2e",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#3a3d44",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 4,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "flat"
+    }
+   ],
+   "cornice": "none",
+   "storefronts": [
+    {
+     "colour": "#24304a"
+    }
+   ],
+   "notes": "Two-storey red brick office building: tall round-arched ground-floor windows, white-framed flat-headed windows upstairs, a navy sign band between floors, dark hipped roof; set back behind lawn and planting.",
+   "photos": [
+    "300468748471478",
+    "484370532979337"
+   ],
+   "confidence": 0.55
+  },
+  "w283422255": {
+   "storeys": 1,
+   "material": "metal",
+   "wall": "#d8dad8",
+   "trim": "#d8dad8",
+   "notes": "Tall blank wall of pale grey ribbed metal cladding with a service door (the back of the large store).",
+   "photos": [
+    "276207997546497"
+   ],
+   "confidence": 0.45
+  },
+  "w283422256": {
+   "storeys": 1,
+   "material": "stucco",
+   "wall": "#d9dad6",
+   "trim": "#c4282e",
+   "cornice": "parapet_plain",
+   "features": [
+    "large graphic panels"
+   ],
+   "notes": "Big single-storey pale grey box store with a deep red sign band at the parapet and large graphic panels on the street wall; set back behind a lawn and trees. town.json says 2 levels, brick_red.",
+   "photos": [
+    "339732097486160",
+    "320218596111560"
+   ],
+   "confidence": 0.6
+  },
+  "w286688354": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d8c072",
+   "trim": "#8a8070",
+   "roof": "gable_front",
+   "roof_colour": "#4a4a4a",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 4,
+     "head": "segmental"
+    },
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "round"
+    }
+   ],
+   "features": [
+    "rock-faced stone base",
+    "oculus",
+    "infilled arched windows",
+    "gable front"
+   ],
+   "notes": "Large yellow (buff) brick hall with a gable end and an oculus, a rock-faced stone plinth, and tall round-arched window openings infilled with grey panels, a few small windows inset. town.json says brick_red, flat roof; photos show buff brick and a gabled roof.",
+   "photos": [
+    "1436453896725638",
+    "326172302336748",
+    "982461292497915"
+   ],
+   "confidence": 0.65
+  },
+  "w292664394": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#7a4a38",
+   "trim": "#f2f2ee",
+   "cornice": "none",
+   "features": [
+    "white concrete fins",
+    "mid-century canopy",
+    "dark green sign panel"
+   ],
+   "notes": "Mid-century single-storey store: brown brick wall panels between white concrete fins that rise into a folded white canopy roof edge; dark green sign panel. Set back behind a lawn. town.json says stone.",
+   "photos": [
+    "582782656234387",
+    "1422358091460718"
+   ],
+   "confidence": 0.6
+  },
+  "w305208659": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#4a4a50",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "flat",
+     "paired": false
+    }
+   ],
+   "features": [
+    "dormers",
+    "entry porch"
+   ],
+   "notes": "Two-and-a-half-storey red brick foursquare house with a hipped roof and a wide hipped dormer of three windows, white trim, front steps and shrubs. town.json says brick_buff.",
+   "photos": [
+    "503837220985489",
+    "809407003319225"
+   ],
+   "confidence": 0.6
+  },
+  "w305208665": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4232",
+   "trim": "#ffffff",
+   "roof": "hipped",
+   "roof_colour": "#4a4a50",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "dormers",
+    "chimney"
+   ],
+   "notes": "Red brick two-and-a-half-storey house with a hipped roof, a gabled dormer with paired windows and a side chimney; seen square-on. town.json gives 1.5 levels / 5.4 m.",
+   "photos": [
+    "508734990317231",
+    "479141100095722"
+   ],
+   "confidence": 0.6
+  },
+  "w305208666": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#6e4a3a",
+   "roof": "gable_side",
+   "roof_colour": "#4a4a4a",
+   "notes": "Low building behind a clipped hedge and a big tree: brown brick with a shallow roof and a projecting porch canopy. Mostly hidden.",
+   "photos": [
+    "3734327826677277"
+   ],
+   "confidence": 0.2
+  },
+  "w305459945": {
+   "storeys": 3,
+   "material": "stone",
+   "wall": "#ddd0b0",
+   "trim": "#4a6a5a",
+   "windows": [
+    {
+     "storey": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "features": [
+    "glass marquee canopy",
+    "roofline brackets",
+    "entrance stairs with rails",
+    "glass-block windows on side",
+    "oculus"
+   ],
+   "notes": "Avon Theatre. Downie Street front: cream stone-slab cladding with deep-set windows, a row of small metal brackets under the roofline, a green-tinted glass and metal marquee canopy over the entrance with flanking stairs and steel rails. George Street side: red brick Studio Theatre volume on a concrete base with a band of glass-block windows, a round oculus window, a glass-block stair tower and ribbon windows; behind, a tall plain grey/beige stage house with fire escapes and a black-clad fly tower.",
+   "photos": [
+    "586764532298004",
+    "509293346892936",
+    "540254503631814",
+    "2815579505426030",
+    "291639989306574"
+   ],
+   "confidence": 0.65
+  },
+  "w305460358": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4434",
+   "trim": "#e8e2d0",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 3,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#24483a"
+    }
+   ],
+   "features": [
+    "hanging baskets",
+    "bench"
+   ],
+   "notes": "Two-storey red brick corner front with round-arched ground-floor windows and door, a dark green sign band with a round green sign, and white-framed upper windows.",
+   "photos": [
+    "788019568517672",
+    "2161915030611288"
+   ],
+   "confidence": 0.5
+  },
+  "w313830903": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#eeeeea",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#9a3a32",
+   "notes": "White-sided house with a red roof, largely hidden by a large tree. town.json says brick_buff.",
+   "photos": [
+    "1023846061775045"
+   ],
+   "confidence": 0.25
+  },
+  "w313830911": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#d8d8d0",
+   "trim": "#ffffff",
+   "features": [
+    "full-width porch",
+    "enclosed porch"
+   ],
+   "notes": "Two-storey house in pale grey siding with a front porch, seen obliquely and at a distance. town.json says brick_red.",
+   "photos": [
+    "478798803205559",
+    "650392915810035"
+   ],
+   "confidence": 0.3
+  },
+  "w313830914": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#ece8dc",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#5a5a5c",
+   "features": [
+    "gable front",
+    "entry porch"
+   ],
+   "notes": "Two-and-a-half-storey house in cream siding with its gable to the street and an entry porch with steps, seen at an angle.",
+   "photos": [
+    "467299251048701"
+   ],
+   "confidence": 0.35
+  },
+  "w337017753": {
+   "storeys": 1,
+   "material": "siding",
+   "wall": "#ece4c4",
+   "trim": "#3e9a8e",
+   "roof": "hipped",
+   "roof_colour": "#6a4e3e",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "storefronts": [
+    {
+     "colour": "#2a2a2a"
+    }
+   ],
+   "features": [
+    "teal base band",
+    "bottle-filling station",
+    "railing"
+   ],
+   "notes": "Single-storey boathouse kiosk by the river: cream vertical board siding, a teal-green base band and gutters, brown shingled hipped roof, dark aluminium glazed doors; railings and an interpretive plaque in front. town.json gives 2.5 levels / clapboard.",
+   "photos": [
+    "685127734659347",
+    "654261850954244",
+    "1170693684607557"
+   ],
+   "confidence": 0.7
+  },
+  "w345580583": {
+   "storeys": 3,
+   "material": "stucco",
+   "wall": "#c2a37c",
+   "trim": "#ffffff",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 3,
+     "head": "flat"
+    }
+   ],
+   "notes": "Three-storey tan/ochre rendered (or tan brick) building with white-framed windows, partly behind a tree; red brick block with a white sign plaque adjoins. town.json gives 1 level / 3.5 m.",
+   "photos": [
+    "1341844396200667"
+   ],
+   "confidence": 0.3
+  },
+  "w345580584": {
+   "storeys": 3,
+   "material": "brick_red",
+   "wall": "#9a4a36",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#3a3a3c",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 2,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "townhouses",
+    "front gables"
+   ],
+   "notes": "Three-storey red brick townhouses with white-framed windows and gables, continuing the dark brick row. town.json gives 2 levels.",
+   "photos": [
+    "412135269953407",
+    "1306029353126941"
+   ],
+   "confidence": 0.4
+  },
+  "w345729070": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4434",
+   "trim": "#e8e2d0",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#24483a"
+    },
+    {
+     "colour": "#5a6a5a"
+    }
+   ],
+   "features": [
+    "gooseneck lamps"
+   ],
+   "notes": "Two-storey red brick front with white-framed upper windows and a dark green sign band, next to a pale grey-green rendered shop with gooseneck lamps over its sign.",
+   "photos": [
+    "296758138598242",
+    "412135269953407"
+   ],
+   "confidence": 0.4
+  },
+  "w347960916": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a4a36",
+   "trim": "#5a4a40",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 5,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "corner_entrance": true,
+   "features": [
+    "tall slot windows",
+    "flat roof overhang"
+   ],
+   "notes": "Modern bank building: red-brown brick with tall narrow full-height windows in recessed bays and a deep flat brown fascia/roof overhang; corner entrance.",
+   "photos": [
+    "306420614270011",
+    "242381677644527"
+   ],
+   "confidence": 0.55
+  },
+  "w347960917": {
+   "storefronts": [
+    {
+     "colour": "#24324f"
+    }
+   ],
+   "notes": "Small front seen only obliquely: a dark navy painted storefront beside the round-arched brick block next door; the large ghost-sign wall in the first frame belongs to the neighbouring building's side.",
+   "photos": [
+    "591920698404080",
+    "795403731361796"
+   ],
+   "confidence": 0.2
+  },
+  "w351986015": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#c9a98a",
+   "trim": "#3e4a5a",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "flat"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "flat"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#3e4a5a",
+     "awning": {
+      "colour": "#2f5d9a"
+     }
+    }
+   ],
+   "features": [
+    "patio",
+    "iron balcony",
+    "arched door",
+    "lamps"
+   ],
+   "notes": "Inn: pinkish-buff brick with a dark slate-blue painted wooden storefront (arched door, carved pilasters, globe lamps), blue shed awnings and a glass-screened sidewalk patio; a small iron balcony on the upper floor. town.json gives 1 level / 3.5 m, far too low.",
+   "photos": [
+    "500578357790121",
+    "914959849071908",
+    "466255344662143"
+   ],
+   "confidence": 0.55
+  },
+  "w369911352": {
+   "storeys": 1,
+   "material": "brick_red",
+   "wall": "#a8482e",
+   "trim": "#1e1e1e",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 7,
+     "head": "round"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "features": [
+    "arcade of round arches",
+    "black window awnings",
+    "shrubs"
+   ],
+   "notes": "Long single-storey orange-red brick building with a row of round-arched openings, each with a black fabric awning, flat parapet, clipped shrubs along the front.",
+   "photos": [
+    "588496955365635",
+    "1422844344729355"
+   ],
+   "confidence": 0.65
+  },
+  "w369911353": {
+   "storeys": 4,
+   "material": "brick_buff",
+   "wall": "#c6b088",
+   "trim": "#5a4a3a",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "round"
+    },
+    {
+     "storey": 2,
+     "count": 4,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 4,
+     "head": "segmental"
+    },
+    {
+     "storey": 4,
+     "count": 4,
+     "head": "segmental"
+    }
+   ],
+   "cornice": "corbelled_brick",
+   "features": [
+    "flagpole",
+    "round-arched entrance",
+    "ramp with rails"
+   ],
+   "notes": "Four-storey buff brick former factory block now civic offices: segmental-headed windows, a large round-arched ground-floor opening and entrance, corbelled brick eaves, a flagpole, ramp and planting along Erie Street. town.json says stone; it is buff brick.",
+   "photos": [
+    "170413095007381",
+    "469251720854911"
+   ],
+   "confidence": 0.65
+  },
+  "w369911354": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8a3a2c",
+   "trim": "#3a3a3a",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "flat"
+    }
+   ],
+   "cornice": "parapet_plain",
+   "notes": "Modern two-storey red brick office with long horizontal ribbon windows in dark frames, plain parapet, a lavender-planted strip in front.",
+   "photos": [
+    "510157387084009",
+    "861310501265312"
+   ],
+   "confidence": 0.5
+  },
+  "w369911355": {
+   "storeys": 2,
+   "material": "stucco",
+   "wall": "#7a7470",
+   "trim": "#e8e4dc",
+   "cornice": "parapet_plain",
+   "storefronts": [
+    {
+     "colour": "#c02a2a"
+    }
+   ],
+   "features": [
+    "gabled parapet pediment",
+    "red sign panels"
+   ],
+   "notes": "Two-storey commercial building in grey-brown panels with a small gabled pediment on the parapet and red sign panels over the entrance; set back with parking. town.json says brick_buff.",
+   "photos": [
+    "219339626346252",
+    "1687353228123735"
+   ],
+   "confidence": 0.55
+  },
+  "w455529163": {
+   "storeys": 1,
+   "material": "metal",
+   "wall": "#f0f0ee",
+   "trim": "#d8262c",
+   "features": [
+    "fuel canopy"
+   ],
+   "notes": "Fuel station: the frames show the white canopy with a red fascia over the pumps; the small kiosk building behind is not clearly visible.",
+   "photos": [
+    "921836858566582"
+   ],
+   "confidence": 0.3
+  },
+  "w541474232": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8e4232",
+   "trim": "#ffffff",
+   "roof": "gable_front",
+   "roof_colour": "#3e3e42",
+   "bay": true,
+   "features": [
+    "bay",
+    "enclosed porch",
+    "siding in gable",
+    "gable front"
+   ],
+   "notes": "Red brick two-and-a-half-storey house with a white-sided front gable, a white box bay / sunroom with many panes on the ground floor and a small balcony over it.",
+   "photos": [
+    "962678827811907"
+   ],
+   "confidence": 0.4
+  },
+  "w541474233": {
+   "storeys": 2,
+   "material": "siding",
+   "wall": "#e2d8a8",
+   "trim": "#ffffff",
+   "features": [
+    "entry porch"
+   ],
+   "notes": "Two-storey house in pale yellow siding with a white porch, mostly hidden behind a large tree.",
+   "photos": [
+    "465960017965018"
+   ],
+   "confidence": 0.25
+  },
+  "w598151141": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#8e4a36",
+   "trim": "#e8e2d2",
+   "roof": "hipped",
+   "roof_colour": "#5a4438",
+   "features": [
+    "ivy-covered",
+    "entry porch"
+   ],
+   "notes": "Former house, now offices: red brick largely covered in ivy, brown hipped roof with a gabled projection; set back on a lawn. town.json says brick_buff/gabled.",
+   "photos": [
+    "1003571373509492",
+    "203517951614624"
+   ],
+   "confidence": 0.5
+  },
+  "w598408646": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#c2ad85",
+   "trim": "#3a3a3a",
+   "windows": [
+    {
+     "storey": 2,
+     "count": 6,
+     "head": "flat",
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "count": 6,
+     "head": "flat",
+     "hood": "stone"
+    }
+   ],
+   "cornice": "bracketed",
+   "storefronts": [
+    {
+     "colour": "#2e2e2e",
+     "awning": {
+      "colour": "#5a5a5a",
+      "stripes": "#ecebe6"
+     }
+    }
+   ],
+   "features": [
+    "striped awnings",
+    "patio",
+    "window awnings"
+   ],
+   "notes": "Three-storey buff brick Edwardian corner block with stone-lintelled windows (some with small striped window awnings), a modest cornice, and grey-and-white striped storefront awnings over a fenced patio. town.json says brick_red.",
+   "photos": [
+    "205269544538651",
+    "259279739309513"
+   ],
+   "confidence": 0.6
+  },
+  "w626244107": {
+   "storeys": 2,
+   "material": "brick_buff",
+   "wall": "#d8c48e",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#4e4c4c",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 2,
+     "count": 3,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "round"
+    }
+   ],
+   "features": [
+    "verandah",
+    "gingerbread",
+    "shutters",
+    "gable front",
+    "bracketed eaves"
+   ],
+   "notes": "Two-storey buff brick Italianate house: front gable with a round-headed attic window under bracketed white eaves, dark green shutters, segmental-headed windows, and a white gingerbread verandah with turned posts and a pedimented entry. town.json gives 1.5 levels / clapboard.",
+   "photos": [
+    "2490086897803275",
+    "857675204856853"
+   ],
+   "confidence": 0.75
+  },
+  "w68829327": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a4a36",
+   "trim": "#e4dccb",
+   "roof": "gable_front",
+   "roof_colour": "#5a4a44",
+   "cornice": "none",
+   "features": [
+    "ribbed cream concrete facade",
+    "columned portico",
+    "gable front"
+   ],
+   "notes": "Mid-century church: a long wall of cream vertically ribbed precast panels along the street with a portico of slim columns at the entrance, and a red brick gabled block behind. town.json says stone and flat roof.",
+   "photos": [
+    "287006633096962"
+   ],
+   "confidence": 0.5
+  },
+  "w68829362": {
+   "storeys": 3,
+   "material": "brick_buff",
+   "wall": "#d4bf8a",
+   "trim": "#7a3a2a",
+   "windows": [
+    {
+     "storey": 2,
+     "head": "round",
+     "paired": true,
+     "hood": "stone"
+    },
+    {
+     "storey": 3,
+     "head": "round",
+     "hood": "brick"
+    }
+   ],
+   "cornice": "bracketed",
+   "features": [
+    "tower",
+    "spire",
+    "dormers",
+    "red sandstone bands",
+    "rock-faced stone base"
+   ],
+   "notes": "Perth County Courthouse: cream-buff brick with dark red-brown sandstone/terracotta bands, window surrounds and a bracketed red-brown cornice; round-arched paired windows; a tall corner tower with a steep dark slate spire. town.json says brick_red; photos confirm buff.",
+   "photos": [
+    "223244135885341",
+    "1374451137415924",
+    "1267411292097463",
+    "1667045480352568"
+   ],
+   "confidence": 0.7
+  },
+  "w713439257": {
+   "storeys": 2,
+   "material": "brick_red",
+   "wall": "#9a3e2e",
+   "trim": "#ffffff",
+   "roof": "cross_gable",
+   "roof_colour": "#4a4442",
+   "windows": [
+    {
+     "storey": 1,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 2,
+     "count": 2,
+     "head": "segmental"
+    },
+    {
+     "storey": 3,
+     "count": 1,
+     "head": "flat"
+    }
+   ],
+   "features": [
+    "gable front",
+    "full-width porch",
+    "brick porch piers"
+   ],
+   "notes": "Two-and-a-half-storey red brick house with a front gable (attic window), white trim and a full-width porch on brick piers with a white railing.",
+   "photos": [
+    "503837220985489",
+    "489760515567445"
+   ],
+   "confidence": 0.55
+  }
+ },
+ "square": {
+  "notes": "Market Square as photographed in 2017-2021 after the 2017 rebuild: a broad, flat plaza of pale grey concrete in large scored panels, edged by bands of dark charcoal-grey brick pavers; the parking lane along Market Place is in red-brown/grey pavers, with angle parking and a row of short black bollards separating cars from the plaza. Tall black cast-style lamp posts with hanging flower baskets, a few young trees in pits, large plain concrete block seats/planters, cafe tables near City Hall and red-and-white bunting on City Hall on event days. No fountain was seen in these frames. Frames from 2017 show the paving freshly finished and construction fencing at the south end.",
+  "photos": [
+   "771234923537907",
+   "845092679423287",
+   "491780848836859",
+   "745559599464772",
+   "1101892473629459"
+  ]
+ },
+ "landmarks": {
+  "city-hall": {
+   "notes": "Deep red brick throughout over a tall rock-faced grey limestone basement that reads as about one full storey (taller than the 2.2 m plinth in the current model, roughly 3-3.5 m on the Wellington Street side). The ends of the building are full-height rounded/polygonal bays (three storeys of brick) capped by conical slate roofs with finials, not small turrets standing at the corners. Main front: a wide flight of steps rising to a round-arched entrance under a balcony, rows of stepped/shaped gables and dormers with white-painted copings and finials, white window trim. The clock tower rises from the middle of the front with a tall dark slate spire, small corner pinnacles and a flagpole. Roofs dark grey slate. Frames on Wellington Street show hanging baskets and black lamp posts along the sidewalk, red-and-white bunting under the windows on event days.",
+   "photos": [
+    "695435121263203",
+    "151844446951746",
+    "330106205163332",
+    "154461890012400",
+    "1035240723670174",
+    "969792703756661"
+   ]
+  },
+  "courthouse": {
+   "notes": "Buff (cream-yellow) brick confirmed, with dark red-brown sandstone bands, window surrounds and cornice; round-arched windows in pairs; tower at the front corner with a tall, steep dark spire and a pointed finial; front gable with a row of arched windows; set back behind lawn, large spruces and deciduous trees that hide much of it in summer. The model's buff walls and corner tower match; the photos show more red-brown banding and darker trim than plain buff.",
+   "photos": [
+    "223244135885341",
+    "1374451137415924",
+    "1267411292097463",
+    "316051570073652"
+   ]
+  },
+  "avon-theatre": {
+   "notes": "The Downie Street front is a three-storey cream stone-slab facade with deep-set windows, a row of small roofline brackets and a green-tinted glass-and-metal marquee canopy with stairs and steel rails each side; the current model only adds a marquee box and a blade sign to a generic front. Along George Street the building is red brick (Studio Theatre) with glass-block windows on a concrete base and a round oculus; behind rises a tall plain stage house in grey/beige render with exterior fire escapes and a black-clad fly tower carrying a large poster frame.",
+   "photos": [
+    "586764532298004",
+    "509293346892936",
+    "540254503631814",
+    "2815579505426030",
+    "1180864132415123",
+    "483217726436484"
+   ]
+  },
+  "market-square": {
+   "notes": "See 'square'. Bounded by continuous two- and three-storey commercial fronts: red brick blocks with round-arched windows and gabled dormers, a white-painted block, an olive-green painted block with oriel bays and an ornate gable, buff brick blocks; dark storefront fascias and awnings.",
+   "photos": [
+    "771234923537907",
+    "845092679423287",
+    "491780848836859"
+   ]
+  }
+ }
+}
