@@ -349,7 +349,7 @@ export const FLAG = { store: 1, arched: 2, front: 4, church: 8, house: 16, theat
 export function buildingMaterial(shared, assets, detail) {
   const slots = ['brick_red', 'brick_buff', 'stone', 'clapboard', 'shingles', 'slate', 'roof_metal'];
   const td = texDefines(assets, slots);
-  const uniforms = { ...td.uniforms, tDetail: { value: detail.flags }, uFocus: detail.focus, uFacR: detail.radius };
+  const uniforms = { ...td.uniforms, tDetail: { value: detail.flags }, uFocus: detail.focus, uFacR: detail.radius, tSurvey: { value: detail.survey } };
   const defines = { ...td.defines };
   for (const slot of Object.keys(KIT)) {
     const t = assets && assets.tex[slot]; if (!t) continue;
@@ -364,7 +364,7 @@ export function buildingMaterial(shared, assets, detail) {
     vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; attribute float aBid; attribute vec2 aCen; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;',
     vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac; vBid = aBid; vCen = aCen;',
     fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;
-uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR; uniform vec4 uKitRect[48];
+uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR; uniform vec4 uKitRect[48]; uniform highp sampler2D tSurvey;
 ${texDecl(slots)}
 ${kitDecl}
 // a facade-kit item: sheet (0 windows, 1 shopfronts, 2 doors, 3 cornices, 4 trim, 5 awnings), cell, uv over its bounds
@@ -426,7 +426,7 @@ vec3 paintColor(float s) {
   return h < 0.3 ? vec3(0.90, 0.88, 0.82) : h < 0.45 ? vec3(0.88, 0.81, 0.62) : h < 0.58 ? vec3(0.85, 0.77, 0.50)
        : h < 0.7 ? vec3(0.60, 0.67, 0.54) : h < 0.82 ? vec3(0.57, 0.63, 0.70) : h < 0.92 ? vec3(0.66, 0.60, 0.52) : vec3(0.55, 0.22, 0.17);
 }
-vec3 wallMat(float mat, float s, vec2 uv, float px) {
+vec3 wallMat0(float mat, float s, vec2 uv, float px) {
   vec3 c;
   if (mat < 0.5 || (mat > 0.5 && mat < 1.5)) {
     bool red = mat < 0.5;
@@ -475,6 +475,28 @@ vec3 wallMat(float mat, float s, vec2 uv, float px) {
   }
   return c;
 }
+
+// ---- the street-photo survey (facades.json), per building in tSurvey: 16 texels each
+// 0 wall (rgb, mode: 0 none, 1 tint the texture, 2 flat paint), 1 trim, 2 roof (rgb, has),
+// 4..7 storefront colours, 8..11 awnings (rgb, 1 plain / 2 striped), 12..15 their stripes; shop parts carry -(unit + 1) in aF0.w
+vec4 survey(float k) {
+  int i = int(vBid + 0.5) * 16 + int(k + 0.5);
+  return texelFetch(tSurvey, ivec2(i % 256, i / 256), 0);
+}
+float lum3(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
+vec3 wallMat(float mat, float s, vec2 uv, float px) {
+  vec3 c = wallMat0(mat, s, uv, px);
+  if (mat > 4.5) return c;
+  vec4 w = survey(0.0);
+  if (w.a > 1.5) return w.rgb * (0.94 + 0.08 * tnoise(uv * 1.7 + s) + 0.04 * tnoise(uv * 9.0));       // painted
+  if (w.a > 0.5) {
+    // keep the texture's light and shade, take the photographed colour
+    float avg = mat < 0.5 ? 0.13 : mat < 1.5 ? 0.38 : mat < 2.5 ? 0.42 : mat < 3.5 ? 0.66 : 0.58;
+    return w.rgb * clamp(lum3(c) / avg, 0.45, 1.6);
+  }
+  return c;
+}
+vec3 trimOf(float s) { vec4 t = survey(1.0); return t.a > 0.5 ? t.rgb : trimColor(s); }
 
 // Signed-distance-ish window shape: kind 0 rectangle, 1 round arch, 2 pointed arch.
 float winSD(vec2 q, float ww, float wh, float kind) {
@@ -546,7 +568,7 @@ vec3 windowUnit(vec2 uv, float w, float h, float style, float mat, float seed, o
   float d = winSD(q, w, h, kind);
   if (style > 1.5 && style < 2.5) d = max(d, q.y - (h - 0.12 * (1.0 - pow(2.0 * abs(q.x) / w, 2.0))));
   if (d > 0.0) return wallMat(mat, seed, q + vec2(seed * 10.0, 0.0), px) * 0.9;     // tympanum
-  vec3 fr = mat > 2.5 && mat < 3.5 ? vec3(0.92, 0.91, 0.86) : trimColor(seed + 0.21);
+  vec3 fr = survey(1.0).a > 0.5 ? survey(1.0).rgb : mat > 2.5 && mat < 3.5 ? vec3(0.92, 0.91, 0.86) : trimColor(seed + 0.21);
   float lit; vec3 g = glassColor(q, h, fract(seed * 17.0), lit);
   float frame = smoothstep(-0.085 - px, -0.085 + px, d);
   float rail = 1.0 - smoothstep(0.025, 0.025 + px, abs(q.y - h * 0.47));
@@ -564,7 +586,7 @@ vec3 buildingColor(out float glow) {
   float mat = vF1.x, flags = vF1.y, seed = vF1.z, gfh = vF1.w;
   vec2 uv = vUv2;
   float px = max(length(fwidth(uv)), 1e-4);
-  vec3 trim = trimColor(seed);
+  vec3 trim = trimOf(seed);
 
   if (part == 13.0) return windowUnit(uv, vF0.y, vF0.z, vF0.w, mat, seed, glow);
   if (part == 18.0) {                      // a facade-kit panel (uv over the item, crop in the uv)
@@ -593,6 +615,7 @@ vec3 buildingColor(out float glow) {
   if (part == 15.0) {                      // a blank sign band in a moulded frame
     float L = vF0.y, h = vF0.z;
     vec3 sc = signColor(fract(seed * 5.7));
+    if (vF0.w < -0.5) { vec4 u = survey(4.0 + min(3.0, -vF0.w - 1.0)); if (u.a > 0.5) sc = u.rgb; }
 #ifdef KIT_TRIM
     { float n = max(1.0, floor(L / (h * kitAspect(4.0, 6.0)) + 0.5));
       vec4 k = kitTex(4.0, 6.0, vec2(fract(uv.x / (L / n)), uv.y / h));
@@ -610,6 +633,11 @@ vec3 buildingColor(out float glow) {
     glow = 0.9;
     return g;
   }
+  if (part == 17.0 && vF0.w < -0.5 && survey(4.0 + min(3.0, -vF0.w - 1.0)).a > 0.5) {   // the shop's photographed colour
+    vec3 tc = survey(4.0 + min(3.0, -vF0.w - 1.0)).rgb;
+    float inset = sbox(vec2(fract(uv.x / 1.1), uv.y), vec2(0.07, 0.09), vec2(0.93, vF0.z - 0.09), px / 1.1);
+    return tc * (0.75 + 0.25 * inset);
+  }
   if (part == 17.0) {                      // panelled base under a shop window
 #ifdef KIT_SHOPFRONTS
     { vec4 k = kitTex(1.0, floor(fract(seed * 4.7) * 4.0), vec2(mix(0.07, 0.36, fract(uv.x / 1.3)), mix(0.03, 0.15, clamp(uv.y / max(0.2, vF0.z), 0.0, 1.0))));
@@ -623,7 +651,7 @@ vec3 buildingColor(out float glow) {
 #ifdef KIT_CORNICES
     // modelled cornices: the strip that suits the wall, mirror-tiled so its ends always meet
     if (vFac > 1.5 && abs(vWN.y) < 0.5) {
-      float strip = mat < 0.5 ? (fract(seed * 3.3) < 0.5 ? 2.0 : 1.0) : mat < 1.5 ? 0.0 : mat < 2.5 ? 3.0 : (fract(seed * 3.3) < 0.5 ? 0.0 : 1.0);
+      float strip = vF0.w > 0.5 ? vF0.w - 1.0 : mat < 0.5 ? (fract(seed * 3.3) < 0.5 ? 2.0 : 1.0) : mat < 1.5 ? 0.0 : mat < 2.5 ? 3.0 : (fract(seed * 3.3) < 0.5 ? 0.0 : 1.0);
       float h = max(0.3, vF0.z);
       vec4 k = kitTex(3.0, strip, vec2(mirrorTile(uv.x / (h * kitAspect(3.0, strip))), clamp(uv.y / h, 0.0, 1.0)));
       if (k.a > 0.3) return k.rgb;
@@ -635,6 +663,8 @@ vec3 buildingColor(out float glow) {
     float h = fract(seed * 11.3);
     vec3 rc = h < 0.3 ? vec3(0.24, 0.23, 0.23) : h < 0.55 ? vec3(0.33, 0.28, 0.25) : h < 0.7 ? vec3(0.40, 0.23, 0.18)
             : h < 0.88 ? vec3(0.29, 0.32, 0.37) : vec3(0.31, 0.43, 0.37);
+    vec4 sr = survey(2.0);
+    if (sr.a > 0.5) { rc = sr.rgb; h = 0.5; }                 // the photographed roof colour (shingles)
     vec3 c;
     if (h >= 0.88) {
 #ifdef TEX_ROOF_METAL
@@ -672,6 +702,11 @@ vec3 buildingColor(out float glow) {
     vec3 c = trim * (0.85 + 0.15 * smoothstep(0.0, 0.3, fract(uv.y)));
     return c * (1.0 - 0.18 * br) * (1.0 - 0.08 * dent);
   }
+  if (part == 4.0 && vF0.w < -0.5 && survey(8.0 + min(3.0, -vF0.w - 1.0)).a > 0.5) {   // the photographed awning
+    vec4 a = survey(8.0 + min(3.0, -vF0.w - 1.0));
+    float stripe = a.a > 1.5 ? step(0.5, fract(uv.x / 0.32)) : 0.0;
+    return mix(a.rgb, survey(12.0 + min(3.0, -vF0.w - 1.0)).rgb, stripe) * (0.9 + 0.1 * tnoise(uv * 3.0));
+  }
   if (part == 4.0) {                       // awning stripes
 #ifdef KIT_AWNINGS
     { vec4 k = kitTex(5.0, floor(fract(seed * 3.3) * 4.0), vec2(mirrorTile(uv.x / 1.6), 1.0 - clamp(uv.y / 1.3, 0.0, 1.0)));
@@ -702,7 +737,10 @@ vec3 buildingColor(out float glow) {
     float rowh = 0.25, fy = fract(uv.y / rowh);
     return c * (0.85 + 0.2 * fy * aafade(4.0, px)) * (0.9 + 0.15 * tnoise(uv * vec2(3.0, 0.3)));
   }
-  if (part == 9.0) return vec3(0.11, 0.12, 0.12) * (0.9 + 0.2 * tnoise(uv * 4.0));
+  if (part == 9.0) {
+    if (vF0.w < -0.5) { vec4 u = survey(4.0 + min(3.0, -vF0.w - 1.0)); if (u.a > 0.5) return u.rgb * (0.9 + 0.2 * tnoise(uv * 4.0)); }
+    return vec3(0.11, 0.12, 0.12) * (0.9 + 0.2 * tnoise(uv * 4.0));
+  }
   if (part == 10.0) return trimColor(seed + 0.37) * (0.9 + 0.1 * smoothstep(0.0, 0.1, fract(uv.x / 0.14)));
   if (part == 11.0) return wallMat(2.0, seed, uv, px);
   if (part == 12.0) {                      // theatre marquee / blade sign

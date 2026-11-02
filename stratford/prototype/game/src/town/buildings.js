@@ -9,6 +9,9 @@ import { landmarkParts } from './landmarks.js';
 import { FAC } from './assets.js';
 import * as THREE from 'three';
 
+// cornice types (facades.json) -> facade-kit strip (0 cream bracketed, 1 green pressed metal, 2 corbelled brick, 3 stone);
+// 'parapet_plain' and 'none' have no projecting cornice
+export const CORNICE_STRIP = { bracketed: 0, pressed_metal: 1, corbelled_brick: 2, stone: 3 };
 export const BUILDING_ATTRS = { aF0: 4, aF1: 4, aFac: 1, aBid: 1, aCen: 2 };
 
 const WALL_SURF = [SURFACE.wall_brick, SURFACE.wall_brick, SURFACE.wall_stone, SURFACE.wall_wood, SURFACE.wall_smooth, SURFACE.wall_smooth, SURFACE.wall_smooth];
@@ -31,7 +34,8 @@ export function buildingParams(ctx, b) {
   let gfh = storeys > 1 ? (commercial ? Math.min(4.6, b.height * 0.42) : b.height / storeys) : b.height;
   let flags = 0;
   const brick = mat === MAT.brick_red || mat === MAT.brick_buff;
-  if (commercial && storeys <= 5) flags |= FLAG.store;
+  const sv = b.survey && b.survey.full ? b.survey : null;
+  if ((commercial && storeys <= 5 && !(sv && Array.isArray(sv.storefronts) && !sv.storefronts.length)) || (sv && sv.storefronts && sv.storefronts.length)) flags |= FLAG.store;
   if ((commercial && brick && seed < 0.8) || (civic && brick) || (house && brick && seed < 0.45)) flags |= FLAG.arched;
   if (church) flags |= FLAG.church;
   if (house) flags |= FLAG.house;
@@ -137,11 +141,24 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   const base = P.base;
   const y0 = base - 0.8;                                  // sink into sloping ground
   let eaves = base + b.height;
-  let roof = b.roof, rh = b.roofHeight;
+  let roof = b.roof, rh = b.roofHeight, ridgeAlong = null;
   if (special && special.roof) ({ roof, rh } = special.roof(b, rh) || { roof, rh });
   if (P.church && rh < 4) rh = Math.max(rh, 5);
-  // flat roofs on commercial blocks get a parapet
-  const parapet = roof === 'flat' && (P.commercial || P.civic) ? 0.85 : roof === 'flat' ? 0.3 : 0;
+  // the photographed roof (houses): its shape, and which way its gable faces the street
+  const sv = b.survey && b.survey.full ? b.survey : null;
+  if (sv && sv.roof && !special) {
+    roof = { gable_front: 'gabled', gable_side: 'gabled', cross_gable: 'gabled', hipped: 'hipped', mansard: 'mansard' }[sv.roof] || roof;
+    const ob = obb(b.outer);
+    if (ob && rh < 1.5) rh = Math.max(rh, Math.min(4.5, Math.min(ob.hu, ob.hv) * 0.85));
+    if (b.front >= 0) {
+      const a = b.outer[b.front], c = b.outer[(b.front + 1) % b.outer.length], L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+      const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
+      ridgeAlong = sv.roof === 'gable_side' ? [dx, dz] : sv.roof === 'gable_front' || sv.roof === 'cross_gable' ? [dz, -dx] : null;
+    }
+  }
+  // flat roofs on commercial blocks get a parapet; the survey says what crowns a front
+  const parapet = roof === 'flat' && (P.commercial || P.civic) ? (sv && sv.cornice === 'none' ? 0.3 : 0.85) : roof === 'flat' ? 0.3 : 0;
+  P.cornice = sv && sv.cornice ? sv.cornice : parapet > 0.5 ? 'bracketed' : 'none';
   const top = eaves + parapet;
   const area = polyArea(b.outer);
   const S = (part, extraFlags = 0, mat = P.mat) => {
@@ -149,7 +166,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   };
   const rel = (p, y) => [p[0] - ox, y, p[1] - oz];
   const rings = [b.outer, ...b.holes.map((h) => (signedArea(h) > 0 ? h.slice().reverse() : h))];
-  const R = special && special.replacesRoof ? null : roofFrame(b, rings, eaves, rh, roof, P);
+  const R = special && special.replacesRoof ? null : roofFrame(b, rings, eaves, rh, roof, P, ridgeAlong);
   // ---- walls
   rings.forEach((ring, ri) => {
     const n = ring.length;
@@ -159,7 +176,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
       const isFront = ri === 0 && fronts.has(i);
       const swap = ri === 0 ? modelledFront(ctx, P, b, isFront, L) : 0;
-      const setW = (fac) => vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
+      const wmat = (special && special.wallMat && ri === 0 ? special.wallMat(b, i) : null) ?? P.mat;
+      const setW = (fac) => vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [wmat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
       // stations along the wall: the ends, and where its top meets a roof ridge or hip
       const us = wallStations(R, a, c, L);
       const wq = (u0, y0a, y0b, u1, y1a, y1b) => {
@@ -176,11 +194,11 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
         // the storeys (swapped for a modelled front near the focus), then the gable or the wall up to the roof
         setW(swap); wq(u0, y0, y0, u1, top, top);
         if (ta > top + 1e-3 || tc > top + 1e-3) { setW(0); wq(u0, top, top, u1, ta - 0.003, tc - 0.003); }
-        cb.quad(rel(pc, y0), rel(pa, y0), rel(pa, ta + 0.02), rel(pc, tc + 0.02), WALL_SURF[P.mat]);   // wound to face out; into the roof
+        cb.quad(rel(pc, y0), rel(pa, y0), rel(pa, ta + 0.02), rel(pc, tc + 0.02), WALL_SURF[wmat]);   // wound to face out; into the roof
       }
       // storefront awnings and cornices on street fronts
       if (isFront && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, swap ? null : cb, a, c, L, nx, nz, base, P, ox, oz, i, swap);
-      if (isFront && parapet > 0.5 && L > 2) cornice(vb, swap ? null : cb, a, c, L, nx, nz, top, P, ox, oz, swap);
+      if (isFront && parapet > 0.5 && L > 2 && CORNICE_STRIP[P.cornice] !== undefined) cornice(vb, swap ? null : cb, a, c, L, nx, nz, top, P, ox, oz, swap);
     }
   });
   // ---- roof
@@ -207,7 +225,9 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
     }
   }
   // porches on house fronts
-  if (P.house && b.front >= 0 && area > 45 && P.seed < 0.7) porch(vb, cb, b, base, P, ox, oz);
+  const porchKind = sv && sv.features ? (sv.features.some((f) => /full-width porch|verandah|two-storey porch|wrap/.test(f)) ? 'full' : sv.features.some((f) => /porch/.test(f)) ? 'entry' : null)
+    : (P.seed < 0.35 ? 'full' : P.seed < 0.7 ? 'entry' : null);
+  if (P.house && b.front >= 0 && area > 45 && porchKind) porch(vb, cb, b, base, P, ox, oz, porchKind, sv && sv.features.some((f) => /white columns/.test(f)));
 }
 
 // ---------------------------------------------------------------- parts
@@ -250,7 +270,7 @@ export function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, swap = 0) {
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
   const A = [a[0] - dx * 0.1, a[1] - dz * 0.1], C = [c[0] + dx * 0.1, c[1] + dz * 0.1];
   const Ao = [A[0] + nx * d, A[1] + nz * d], Co = [C[0] + nx * d, C[1] + nz * d];
-  vb.set('aF0', [PART.trim, L, h, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [swap]);
+  vb.set('aF0', [PART.trim, L, h, (CORNICE_STRIP[P.cornice] ?? -1) + 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [swap]);
   const v = (p, y, n, u, w) => vb.v(p[0] - ox, y, p[1] - oz, n[0], n[1], n[2], u, w);
   const N = [nx, 0, nz];
   // front face (slightly sloped forward at the top), underside, top
@@ -273,16 +293,17 @@ export function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, swap = 0) {
   cb.quad(r(A, yt), r(C, yt), r(Co, yt), r(Ao, yt), SURFACE.roof);
 }
 
-export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0) {
-  const units = Math.max(1, Math.floor(L / 7 + 0.4)), uw = L / units;
+export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0, plan = null) {
+  const units = plan ? plan.length : Math.max(1, Math.floor(L / 7 + 0.4)), uw = L / units;
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
   for (let u = 0; u < units; u++) {
     const h = hash1(Math.floor(P.seed * 1e6) + u * 7919 + edge * 104729);
-    if (h > 0.5) continue;
-    const s0 = u * uw + 0.45, s1 = (u + 1) * uw - 0.45; if (s1 - s0 < 1.5) continue;
+    if (plan ? !plan[u] : h > 0.5) continue;
+    const s0 = (plan ? plan[u].u0 : u * uw) + 0.45, s1 = (plan ? plan[u].u1 : (u + 1) * uw) - 0.45; if (s1 - s0 < 1.5) continue;
+    const unitW = plan ? -(plan[u].unit + 1) : 1;
     const yTop = base + P.gfh - 0.98, out = 1.25, drop = 0.7, val = 0.28;
     const p = (s, o) => [a[0] + dx * s + nx * o, a[1] + dz * s + nz * o];
-    vb.set('aF0', [PART.awning, s1 - s0, 0, 1]).set('aF1', [P.mat, 0, P.seed + h * 3.1, 3]).set('aFac', [swap]);
+    vb.set('aF0', [PART.awning, s1 - s0, 0, unitW]).set('aF1', [P.mat, 0, P.seed + h * 3.1, 3]).set('aFac', [swap]);
     const slope = Math.atan2(drop, out); const sn = [nx * Math.sin(slope), Math.cos(slope), nz * Math.sin(slope)];
     const V = (q, y, n, uu, w) => vb.v(q[0] - ox, y, q[1] - oz, n[0], n[1], n[2], uu, w);
     let q = [V(p(s0, 0.02), yTop, sn, s0, 0), V(p(s1, 0.02), yTop, sn, s1, 0), V(p(s1, out), yTop - drop, sn, s1, 1), V(p(s0, out), yTop - drop, sn, s0, 1)];
@@ -305,12 +326,15 @@ export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0
 // A pitched roof fitted to the footprint's oriented rectangle (when the
 // footprint is close to one), or null. Shared by the roof and the walls: the
 // walls rise to the roof's underside so no slot opens between them.
-export function roofFrame(b, rings, eaves, rh, roof, P) {
+export function roofFrame(b, rings, eaves, rh, roof, P, ridgeAlong = null) {
   if (roof === 'flat' || rh < 0.4 || polyArea(b.outer) < 6 || roof === 'dome' || roof === 'mansard') return null;
   const o = obb(b.outer);
   if (!o || polyArea(b.outer) / o.area <= 0.86 || rings.length !== 1) return null;
   let ux = o.ux, uz = o.uz, hl = o.hu, hs = o.hv;
-  if (hs > hl) { ux = -o.uz; uz = o.ux; hl = o.hv; hs = o.hu; }
+  // the ridge runs along the long axis, or along the photographed direction
+  const swapAxes = ridgeAlong ? Math.abs(o.ux * ridgeAlong[0] + o.uz * ridgeAlong[1]) < 0.7071 : hs > hl;
+  if (swapAxes) { ux = -o.uz; uz = o.ux; hl = o.hv; hs = o.hu; }
+  if (ridgeAlong && roof !== 'gabled' && hs > hl) { ux = o.ux; uz = o.uz; hl = o.hu; hs = o.hv; }
   const e = P.house ? 0.4 : 0.25;
   hl += e; hs += e;
   const slopeDrop = e * (rh / Math.max(0.5, hs - e));
@@ -458,11 +482,13 @@ function steeple(vb, cb, b, eaves, rh, P, ox, oz, fronts) {
   KIT.tower(vb, cb, P, tx - ox, base, tz - oz, tw, shaftTop, yaw, { belfry: 3.4, clock: P.seed > 0.5, spire: tw * 2.6 + 8 + P.seed * 6, spirePart: PART.copper });
 }
 
-function porch(vb, cb, b, base, P, ox, oz) {
+function porch(vb, cb, b, base, P, ox, oz, kind = 'entry', whitePosts = false) {
   const n = b.outer.length, a = b.outer[b.front], c = b.outer[(b.front + 1) % n];
   const L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 5) return;
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L, nx = dz, nz = -dx;
-  const w = Math.min(L - 1, P.seed < 0.35 ? L - 1 : 4.2), s0 = (L - w) / 2 + (P.seed < 0.35 ? 0 : (P.seed - 0.5) * (L - w) * 0.8);
+  const full = kind === 'full';
+  const w = Math.min(L - 1, full ? L - 1 : 4.2), s0 = (L - w) / 2 + (full ? 0 : (P.seed - 0.5) * (L - w) * 0.8);
+  void whitePosts;
   const depth = 2.2, deck = base + 0.55, roofY = base + Math.min(3.2, P.gfh * 0.95);
   const p = (s, o) => [a[0] + dx * s + nx * o, a[1] + dz * s + nz * o];
   const yaw = Math.atan2(-dz, dx);

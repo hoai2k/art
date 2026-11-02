@@ -31,7 +31,45 @@ export async function loadTown(dataUrl) {
     } catch { /* flat ground */ }
   }
   data.height = makeHeightfield(data, terrainBuf);
+  // the street-photo survey of building fronts (optional; game/data/facades.json)
+  // (it belongs to the real data: a fixture or other town file has none)
+  if (url === DATA_URL) {
+    try {
+      const r = await fetch(new URL('facades.json', url));
+      if (r.ok) applySurvey(data, await r.json());
+    } catch { /* no survey: procedural fronts */ }
+  }
   return data;
+}
+
+export const IMAGERY_CREDIT = 'Street-level reference \u00a9 Mapillary contributors (CC BY-SA 4.0)';
+const SURVEY_MATERIAL = { brick_red: 'brick_red', brick_buff: 'brick_buff', stone: 'stone', siding: 'clapboard', clapboard: 'clapboard', stucco: 'stucco', brick_painted: 'stucco', metal: 'metal', glass: 'glass' };
+
+// Attach each surveyed front to its building (b.survey). Entries below 0.3
+// confidence give only material and colours. Where the surveyed storeys need
+// more height than town.json has (a LiDAR height taken from a low rear part),
+// the building is raised to storeys x 3.8 m (shops) or 3.2 m (houses).
+export function applySurvey(data, survey) {
+  const S = (survey && survey.buildings) || {};
+  data.survey = { landmarks: (survey && survey.landmarks) || {}, count: 0 };
+  data.attribution = [data.attribution, IMAGERY_CREDIT].filter(Boolean).join('; ');
+  for (const b of data.buildings) {
+    const e = S[b.id]; if (!e) continue;
+    const full = (e.confidence ?? 0) >= 0.3;
+    const sv = { full, confidence: e.confidence ?? 0, material: SURVEY_MATERIAL[e.material] || null, painted: e.material === 'brick_painted' || e.material === 'stucco', wall: e.wall || null, trim: e.trim || null, photos: e.photos || [] };
+    if (full) {
+      Object.assign(sv, { storeys: e.storeys || null, windows: e.windows || [], cornice: e.cornice || null, storefronts: e.storefronts || null, bay: !!e.bay,
+        corner: !!e.corner_entrance, features: e.features || [], roof: e.roof || null, roofColour: e.roof_colour || null });
+      if (sv.storeys) {
+        const house = b.use === 'residential' || !!e.roof;
+        const need = sv.storeys * (house ? 3.2 : 3.8);
+        if (b.height < need - 0.5) { b.surveyRaised = { from: b.height, to: need }; b.height = need; }
+        b.levels = sv.storeys;
+      }
+    }
+    if (sv.material) b.material = sv.material;
+    b.survey = sv; data.survey.count++;
+  }
 }
 
 const num = (v, d) => (typeof v === 'number' && Number.isFinite(v) ? v : d);

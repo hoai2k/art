@@ -586,7 +586,9 @@ async function boot() {
     getPlayer: () => ({ x: creature.position.x, z: creature.position.z, heading: state.heading }),
   });
   map.setTown(townData);
-  $('#credits-attr').textContent = townData?.attribution || '';
+  // the town's credits (OpenStreetMap, Ontario open data, and the Mapillary street-level reference)
+  const credit = world?.attribution || townData?.attribution || '';
+  $('#credits-attr').textContent = credit; if (credit) $('#map-attr').textContent = credit;
   const logoUrl = await deliveredUrl('ui/logo.png');
   if (logoUrl) {
     const img = $('#logo-img'); img.src = logoUrl; img.alt = 'Stratford Squirrel';

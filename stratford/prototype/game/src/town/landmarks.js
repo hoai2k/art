@@ -6,6 +6,26 @@ import { PART, MAT, FLAG } from './materials.js';
 import { centroid, obb, polyArea } from './util.js';
 import { insetRing } from './buildings.js';
 
+// the Avon's George Street side: the longest edge next to the front
+function sideEdge(b) {
+  const n = b.outer.length, k = b.front >= 0 ? b.front : 0;
+  const len = (i) => { const a = b.outer[i], c = b.outer[(i + 1) % n]; return Math.hypot(c[0] - a[0], c[1] - a[1]); };
+  const l = (k + n - 1) % n, r = (k + 1) % n;
+  return len(l) >= len(r) ? l : r;
+}
+
+// a band course round a footprint at height y (proud of the walls)
+function belt(vb, cb, P, ring, y, h, ox, oz, kit) {
+  kit.setPart(vb, P, PART.trim);
+  const n = ring.length;
+  for (let i = 0; i < n; i++) {
+    const a = ring[i], c = ring[(i + 1) % n], L = Math.hypot(c[0] - a[0], c[1] - a[1]); if (L < 0.3) continue;
+    const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L, nx = dz, nz = -dx;
+    kit.box(vb, null, (a[0] + c[0]) / 2 + nx * 0.03 - ox, y + h / 2, (a[1] + c[1]) / 2 + nz * 0.03 - oz, L / 2 + 0.03, h / 2, 0.05, Math.atan2(-dz, dx), 0);
+  }
+  void cb;
+}
+
 // A rusticated stone plinth: the footprint stepped out a little, from below
 // the ground to h above the base.
 function plinth(vb, cb, P, b, base, h, ox, oz, kit) {
@@ -107,7 +127,7 @@ export const landmarkParts = {
           if (score > best) { best = score; edge = i; }
         }
       }
-      plinth(vb, cb, P, b, base, 2.2, ox, oz, kit);                   // rusticated pale grey stone basement
+      plinth(vb, cb, P, b, base, 3.3, ox, oz, kit);                   // rock-faced grey limestone basement: a full storey (photos)
       const w = 5.0, t = frontTower(b, w, 'centre', edge);
       const top = eaves + 3.2;                                        // spire tip about 35 m
       kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, top, t.yaw, { belfry: 4.6, clock: true, clockBlue: true, pyramid: 12.5, roofPart: PART.roof, band: PART.trim, pinnacles: 2.6, pinnaclePart: PART.trim, mat: MAT.brick_red });
@@ -123,17 +143,23 @@ export const landmarkParts = {
       // white spirelets at the corners of the roof and the two front gables
       const o = obb(b.outer);
       if (o) {
-        // the two ends: polygonal turrets under witch-hat slate roofs with ball finials (notes, photos)
+        // the two ends: full-height rounded bays of red brick (three storeys over the stone
+        // basement) under conical slate roofs with finials (photos), not turrets at the corners
         for (const su of [-1, 1]) {
-          const px = o.cx + o.ux * o.hu * su * 0.86, pz = o.cz + o.uz * o.hu * su * 0.86, r = Math.min(4.2, o.hv * 0.55);
-          kit.setPart(vb, P, PART.wall, MAT.brick_red, FLAG.front | FLAG.arched, 2 * Math.PI * r / 12 * 1.0, eaves - base + 2, 3);
-          kit.frustum(vb, cb, px - ox, base - 0.5, pz - oz, r, eaves + 2.2, r, 12, 0, SURFACE.wall_brick);
+          const r = Math.min(6.5, o.hv * 0.92), off = o.hu - r * 0.55;
+          const px = o.cx + o.ux * off * su, pz = o.cz + o.uz * off * su;
+          kit.setPart(vb, P, PART.stone);
+          kit.frustum(vb, cb, px - ox, base - 0.8, pz - oz, r + 0.12, base + 3.3, r + 0.12, 16, 0, SURFACE.wall_stone);
+          kit.setPart(vb, P, PART.wall, MAT.brick_red, FLAG.front | FLAG.arched, 2 * Math.PI * r / 16, eaves - base - 3.3, 3);
+          kit.frustum(vb, cb, px - ox, base + 3.3, pz - oz, r, eaves + 0.3, r, 16, 0, SURFACE.wall_brick);
           kit.setPart(vb, P, PART.trim);
-          kit.frustum(vb, cb, px - ox, eaves + 2.2, pz - oz, r + 0.25, eaves + 2.6, r + 0.25, 12, 0, SURFACE.roof);
+          kit.frustum(vb, cb, px - ox, eaves + 0.3, pz - oz, r + 0.3, eaves + 0.75, r + 0.3, 16, 0, SURFACE.roof);
           kit.setPart(vb, P, PART.roof);
-          kit.frustum(vb, cb, px - ox, eaves + 2.6, pz - oz, r + 0.3, eaves + 2.6 + r * 1.7, 0.05, 12, 0, SURFACE.roof);
+          kit.frustum(vb, cb, px - ox, eaves + 0.75, pz - oz, r + 0.35, eaves + 0.75 + r * 1.35, 0.05, 16, 0, SURFACE.roof);
           kit.setPart(vb, P, PART.trim);
-          kit.frustum(vb, null, px - ox, eaves + 2.5 + r * 1.7, pz - oz, 0.22, eaves + 2.9 + r * 1.7, 0.22, 6, 0, SURFACE.roof, true);
+          kit.frustum(vb, null, px - ox, eaves + 0.65 + r * 1.35, pz - oz, 0.25, eaves + 1.1 + r * 1.35, 0.25, 6, 0, SURFACE.roof, true);
+          kit.setPart(vb, P, PART.dark);
+          kit.frustum(vb, null, px - ox, eaves + 1.1 + r * 1.35, pz - oz, 0.05, eaves + 2.6 + r * 1.35, 0.02, 4, 0, SURFACE.prop);
         }
         // front gables either side of the tower: white-edged triangles over the eaves
         for (const sgn of [-1, 1]) {
@@ -151,6 +177,9 @@ export const landmarkParts = {
     params: () => ({ mat: MAT.brick_buff, seed: 0.108 }),
     build({ b, P, vb, cb, ox, oz, base, eaves, rh, kit }) {
       plinth(vb, cb, P, b, base, 2.0, ox, oz, kit);
+      // strong dark red-brown sandstone bands on the buff brick (photos): each floor line and under the eaves
+      const band = { ...P, seed: 0.07 };                              // oxblood trim
+      for (const y of [base + 2.0, base + 2.0 + (eaves - base - 2.0) / 3, base + 2.0 + 2 * (eaves - base - 2.0) / 3, eaves - 0.35]) belt(vb, cb, band, b.outer, y, y === eaves - 0.35 ? 0.35 : 0.22, ox, oz, kit);
       const w = 4.8, t = frontTower(b, w, 'left');
       kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, base + 20.5, t.yaw, { belfry: 3.6, clock: true, pyramid: 10.5, roofPart: PART.roof, pinnacles: 1.6, mat: MAT.brick_buff });
       // a projecting entrance bay with its gable in the middle of the front
@@ -275,18 +304,73 @@ export const landmarkParts = {
   },
   // Avon Theatre (1901): a marquee over the Downie Street doors.
   'avon-theatre': {
-    build({ b, P, vb, cb, ox, oz, base, kit }) {
+    // from the street-photo survey: the Downie Street front is cream stone-slab cladding with
+    // deep-set windows, roofline brackets and a green glass-and-metal canopy with stairs and rails
+    // each side; the George Street side is red brick with glass-block windows; a tall plain stage
+    // house with fire escapes and a black fly tower rises behind
+    params: () => ({ mat: MAT.stone, seed: 0.241 }),
+    wallMat: (b, i) => (i === sideEdge(b) ? MAT.brick_red : null),
+    build({ ctx, b, P, vb, cb, ox, oz, base, eaves, kit }) {
       const k = b.front >= 0 ? b.front : 0;
       const m = edgeMid(b, k), L = Math.hypot(m.dx, m.dz) || 1;
-      const nx = m.dz / L, nz = -m.dx / L, yaw = Math.atan2(-m.dz, m.dx);
-      const w = Math.min(L * 0.8, 12);
-      kit.setPart(vb, P, PART.sign);
-      kit.box(vb, cb, m.x + nx * 1.6 - ox, base + 4.2, m.z + nz * 1.6 - oz, w / 2, 0.45, 1.6, yaw, SURFACE.prop);
+      const dx = m.dx / L, dz = m.dz / L, nx = dz, nz = -dx, yaw = Math.atan2(-dz, dx);
+      const at = (u, out) => [m.x + dx * u + nx * out - ox, m.z + dz * u + nz * out - oz];
+      // the canopy: green-tinted glass on a dark steel frame over the entrance
+      const cw = Math.min(L * 0.7, 14), cd = 3.2, cy = base + 3.9;
+      kit.setPart(vb, { ...P, seed: 0.05 }, PART.copper);
+      let p = at(0, cd / 2); kit.box(vb, cb, p[0], cy, p[1], cw / 2, 0.08, cd / 2, yaw, SURFACE.prop);
       kit.setPart(vb, P, PART.dark);
-      kit.box(vb, null, m.x + nx * 1.6 - ox, base + 3.68, m.z + nz * 1.6 - oz, w / 2 - 0.05, 0.07, 1.55, yaw, SURFACE.prop);
-      // vertical blade sign (no lettering)
-      kit.setPart(vb, P, PART.sign);
-      kit.box(vb, cb, m.x + nx * 0.9 - ox, base + 8, m.z + nz * 0.9 - oz, 0.15, 2.8, 0.7, yaw + Math.PI / 2, SURFACE.prop);
+      p = at(0, cd); kit.box(vb, null, p[0], cy - 0.12, p[1], cw / 2 + 0.05, 0.12, 0.06, yaw, SURFACE.prop);
+      for (const u of [-cw / 2 + 0.2, cw / 2 - 0.2]) { p = at(u, cd - 0.1); kit.box(vb, cb, p[0], (base + cy) / 2, p[1], 0.06, (cy - base) / 2, 0.06, yaw, SURFACE.fence); }
+      // a landing under the canopy and flights of stairs up to it from each side, with rails
+      const land = base + 1.1;
+      kit.setPart(vb, P, PART.stone);
+      p = at(0, 1.4); kit.box(vb, cb, p[0], (base + land) / 2 - 0.2, p[1], cw / 2 - 2.2, (land - base) / 2 + 0.2, 1.4, yaw, SURFACE.sidewalk);
+      for (const sg of [-1, 1]) for (let st = 0; st < 6; st++) {
+        const top = base + land * ((st + 1) / 6) - base * ((st + 1) / 6) + 0, h = (land - base) * ((st + 1) / 6);
+        p = at(sg * (cw / 2 - 2.2 + 0.3 * (6 - st) - 0.15), 1.4);
+        kit.box(vb, cb, p[0], base + h / 2 - 0.1, p[1], 0.15, h / 2 + 0.1, 1.2, yaw, SURFACE.sidewalk);
+        void top;
+      }
+      kit.setPart(vb, P, PART.dark);
+      for (const sg of [-1, 1]) for (const o of [0.25, 2.55]) {
+        const a0 = at(sg * (cw / 2 - 0.4), o), a1 = at(sg * (cw / 2 - 2.2), o);
+        const mx = (a0[0] + a1[0]) / 2, mz = (a0[1] + a1[1]) / 2;
+        kit.box(vb, null, mx, base + (land - base) / 2 + 0.95, mz, 0.9, 0.03, 0.03, yaw, SURFACE.fence);
+      }
+      // a row of small roofline brackets
+      kit.setPart(vb, P, PART.trim);
+      for (let u = -L / 2 + 0.4; u < L / 2 - 0.3; u += 0.8) { p = at(u, 0.12); kit.box(vb, cb, p[0], eaves - 0.25, p[1], 0.05, 0.18, 0.12, yaw, SURFACE.prop); }
+      // the George Street side: a band of glass-block windows on the red brick
+      const se = sideEdge(b), n = b.outer.length;
+      if (se >= 0) {
+        const A = b.outer[se], C = b.outer[(se + 1) % n], Ls = Math.hypot(C[0] - A[0], C[1] - A[1]);
+        const sx = (C[0] - A[0]) / Ls, sz = (C[1] - A[1]) / Ls, snx = sz, snz = -sx;
+        kit.setPart(vb, P, PART.glass, MAT.glass, 0, Ls * 0.6, 200, 1);
+        kit.box(vb, null, (A[0] + C[0]) / 2 + snx * 0.03 - ox, base + 4.2, (A[1] + C[1]) / 2 + snz * 0.03 - oz, Ls * 0.3, 0.7, 0.04, Math.atan2(-sz, sx), SURFACE.wall_smooth);
+      }
+      // the stage house: over the back of the footprint, plain grey-beige render, fire escapes, a black fly tower
+      const o = obb(b.outer); if (!o) return;
+      let ax = o.ux, az = o.uz, ha = o.hu, hb = o.hv;
+      if (Math.abs(ax * nx + az * nz) < 0.7071) { ax = -o.uz; az = o.ux; ha = o.hv; hb = o.hu; }
+      const back = (ax * nx + az * nz) > 0 ? -1 : 1;              // away from the front
+      const sdx = o.cx + ax * back * ha * 0.55, sdz = o.cz + az * back * ha * 0.55;
+      const sh = eaves + 8, sw = ha * 0.42, sl = hb * 0.85, syaw = Math.atan2(-az, ax);
+      kit.setPart(vb, { ...P, seed: 0.62 }, PART.wall, MAT.stucco, FLAG.noWindows, 2 * sl, sh - base, 1);
+      kit.box(vb, cb, sdx - ox, (base + sh) / 2 - 0.4, sdz - oz, sw, (sh - base) / 2 + 0.4, sl, syaw, SURFACE.wall_smooth);
+      kit.setPart(vb, P, PART.flat);
+      kit.box(vb, cb, sdx - ox, sh + 0.05, sdz - oz, sw, 0.05, sl, syaw, SURFACE.roof);
+      kit.setPart(vb, P, PART.dark);
+      kit.box(vb, cb, sdx - ox, sh + 3, sdz - oz, sw * 0.8, 3, sl * 0.55, syaw, SURFACE.wall_smooth);
+      // fire escapes: landings and stair flights on both long sides
+      for (const sg of [-1, 1]) {
+        const fx = sdx + (-az) * sg * (sl + 0.45), fz = sdz + ax * sg * (sl + 0.45);
+        for (let y = base + 4; y < sh - 1; y += 3.2) {
+          kit.box(vb, cb, fx - ox, y, fz - oz, sw * 0.5, 0.04, 0.45, syaw, SURFACE.fence);
+          kit.box(vb, null, fx - ox, y + 1.0, fz - oz + 0, sw * 0.5, 0.02, 0.02, syaw, SURFACE.fence);
+          kit.box(vb, null, fx - ox, y + 1.6, fz - oz, 0.04, 1.6, 0.35, syaw + 0.5, SURFACE.fence);
+        }
+      }
     },
   },
   // Stratford Normal School (1908): a cupola on the hipped roof.

@@ -15,7 +15,16 @@ import * as THREE from 'three';
 import { MeshBVH } from 'three-mesh-bvh';
 import { SURFACE } from '../surface.js';
 import { PART, MAT, FLAG } from './materials.js';
-import { buildingParams, frontEdges, modelledFront, awnings, cornice, BUILDING_ATTRS, KIT } from './buildings.js';
+import { buildingParams, frontEdges, modelledFront, awnings, cornice, BUILDING_ATTRS, KIT, CORNICE_STRIP } from './buildings.js';
+
+// the facade kit's four shopfronts: green, oxblood, navy, black
+const SHOP_CELLS = [[0x1f, 0x3d, 0x2c], [0x6e, 0x1c, 0x1e], [0x1f, 0x2b, 0x4f], [0x1a, 0x1a, 0x1c]];
+function nearestShopCell(hex) {
+  const v = parseInt(String(hex).slice(1), 16), r = v >> 16, g = (v >> 8) & 255, b = v & 255;
+  let best = 0, bd = Infinity;
+  SHOP_CELLS.forEach(([R, G, B], i) => { const d = (R - r) ** 2 + (G - g) ** 2 + (B - b) ** 2; if (d < bd) { bd = d; best = i; } });
+  return best;
+}
 import { Builder, ColliderBuilder, centroid, hash1, polyArea } from './util.js';
 
 const WALL_SURF = [SURFACE.wall_brick, SURFACE.wall_brick, SURFACE.wall_stone, SURFACE.wall_wood, SURFACE.wall_smooth, SURFACE.wall_smooth, SURFACE.wall_smooth];
@@ -80,24 +89,40 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   const openings = [];
   const signB = base + gfh - 0.95;
   const shopRow = store && gfh >= 3.2 && signB - base >= 2.3;
+  // the photographed front (facades.json), when there is one
+  const sv = b.survey && b.survey.full ? b.survey : null;
+  const svShops = sv && sv.storefronts && sv.storefronts.length ? sv.storefronts : null;
+  // a corner entrance: the shop door goes to the end of the front that turns the corner
+  const fr = frontEdges(ctx, b, P), nE = b.outer.length;
+  const cornerEnd = sv && sv.corner ? (fr.has((edge + 1) % nE) ? 'right' : fr.has((edge + nE - 1) % nE) ? 'left' : null) : null;
   if (shopRow) {
-    const units = Math.max(1, Math.floor(L / 7 + 0.4)), uw = L / units;
+    const units = svShops ? Math.min(svShops.length, Math.max(1, Math.floor(L / 2.6))) : Math.max(1, Math.floor(L / 7 + 0.4)), uw = L / units;
     for (let k = 0; k < units; k++) {
       const u0 = k * uw + 0.38, u1 = (k + 1) * uw - 0.38;
       if (u1 - u0 < 2) continue;
       const h = hash1(Math.floor(seed * 1e6) + k * 7919);
-      openings.push({ kind: 'shop', u0, u1, v0: base, v1: signB, k, uw, doorLeft: h < 0.5, h });
+      let doorLeft = h < 0.5;
+      if (cornerEnd && k === 0 && cornerEnd === 'left') doorLeft = true;
+      if (cornerEnd && k === units - 1 && cornerEnd === 'right') doorLeft = false;
+      const shop = svShops ? svShops[k] : null;
+      openings.push({ kind: 'shop', u0, u1, v0: base, v1: signB, k, uw, doorLeft, h, unit: svShops ? Math.min(3, k) : -1, colour: shop && shop.colour, awning: svShops ? !!(shop && shop.awning) : null });
     }
   }
   const bay = house ? 3.1 : 2.7;
   const nb = L < 1.6 ? 0 : Math.max(1, Math.floor(L / bay + 0.35)), bw = L / Math.max(1, nb);
-  const porchHere = house && b.front === edge && polyArea(b.outer) > 45 && P.seed < 0.7;
+  const porchHere = house && b.front === edge && polyArea(b.outer) > 45 && (sv ? (sv.features || []).some((f) => /porch|verandah/.test(f)) : P.seed < 0.7);
   for (let st = 0; st < storeys; st++) {
     if (st === 0 && shopRow) continue;
     const sb = st === 0 ? base : base + gfh + (st - 1) * upperH, sh = storeys < 2 ? hgt : st === 0 ? gfh : upperH;
-    for (let k = 0; k < nb; k++) {
-      const uc = (k + 0.5) * bw;
-      if (house && st === 0 && k === Math.floor(nb / 2)) {
+    // this storey's photographed windows: count, head, hood, pairs
+    const sw = sv && sv.windows ? sv.windows.find((w) => w.storey === st + 1) : null;
+    // (a house's ground floor: the photographed windows plus the door's bay in the middle)
+    const doorBay = house && st === 0 && sw ? 1 : 0;
+    const nS = sw && sw.count ? Math.max(1, Math.min(sw.count + doorBay, Math.floor(L / 0.9))) : nb, bwS = L / Math.max(1, nS);
+    const styleS = sw && sw.head ? ({ flat: 0, round: 1, segmental: 2, pointed: 3 })[sw.head] ?? style : style;
+    for (let k = 0; k < nS; k++) {
+      const uc = (k + 0.5) * bwS, bw = bwS;
+      if (house && st === 0 && k === Math.floor(nS / 2)) {
         // the front door: raised a step, with a transom
         const v0 = base + 0.32, v1 = Math.min(v0 + 2.55, sb + sh - 0.2);
         if (v1 - v0 > 2) openings.push({ kind: 'door', u0: uc - 0.52, u1: uc + 0.52, v0, v1, steps: !porchHere });
@@ -107,7 +132,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
       const wh = Math.min(sh * (house ? 0.55 : 0.58), 2.3);
       const v0 = sb + (st === 0 ? Math.max(0.85, sh * 0.3) : sh * 0.25), v1 = v0 + wh;
       if (ww < 0.45 || wh < 0.7 || v1 > eaves - 0.2) continue;
-      openings.push({ kind: 'window', u0: uc - ww / 2, u1: uc + ww / 2, v0, v1, style });
+      openings.push({ kind: 'window', u0: uc - ww / 2, u1: uc + ww / 2, v0, v1, style: styleS, hood: sw && sw.hood ? sw.hood : null, paired: !!(sw && sw.paired) });
     }
   }
 
@@ -130,7 +155,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     reveal(vb, W, o, REVEAL, P, set, [nx, nz], [dx, dz], base);
     if (has('kit_windows')) {
       // the painted sash unit, cropped inside its own surround (the sill and head are modelled)
-      kitPanel(0, o.style === 1 ? 0 : o.style === 2 ? 1 : 2, 1, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [0.13, 0.12, 0.87, 0.9]);
+      kitPanel(0, o.style === 3 ? 6 : o.paired && o.style === 1 ? 3 : o.style === 1 ? 0 : o.style === 2 ? 1 : 2, 1, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [0.13, 0.12, 0.87, 0.9]);
     } else {
       set(PART.window, [ww, wh, o.style]);
       face(vb, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
@@ -145,8 +170,8 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     set(trimPart, [ww + 0.3, 0.2, 1]);
     if (has('kit_trim')) {
       const r0 = ww / 2 + 0.01;
-      if (o.style === 1) kitPanel(4, 0, 0, W(uc - r0 - 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 + 0.3, -0.05), W(uc - r0 - 0.22, o.v1 + 0.3, -0.05));
-      else if (o.style === 2) kitPanel(4, 1, 0, W(uc - ww / 2 - 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 + 0.34, -0.05), W(uc - ww / 2 - 0.22, o.v1 + 0.34, -0.05));
+      if (o.style === 1 || o.style === 3) kitPanel(4, o.hood === 'brick' ? 1 : 0, 0, W(uc - r0 - 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 + 0.3, -0.05), W(uc - r0 - 0.22, o.v1 + 0.3, -0.05));
+      else if (o.style === 2) kitPanel(4, o.hood === 'stone' ? 0 : 1, 0, W(uc - ww / 2 - 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 + 0.34, -0.05), W(uc - ww / 2 - 0.22, o.v1 + 0.34, -0.05));
       else kitPanel(4, 2, 0, W(uc - ww / 2 - 0.16, o.v1, -0.05), W(uc + ww / 2 + 0.16, o.v1, -0.05), W(uc + ww / 2 + 0.16, o.v1 + 0.22, -0.05), W(uc - ww / 2 - 0.16, o.v1 + 0.22, -0.05));
       cbox(uc, ww / 2 + 0.15, o.v1 + 0.1, 0.15, -0.07, WALL_SURF[P.mat]);
     } else if (o.style === 1) {
@@ -180,12 +205,12 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     // glass, panelled base and transom either side of the door bay
     const spans = [[o.u0, du0], [du1, o.u1]].filter(([p, q]) => q - p > 0.2);
     for (const [p, q] of spans) {
-      set(PART.kick, [q - p, kick, 1], 0, P.mat, seed + o.h);
+      set(PART.kick, [q - p, kick, o.unit >= 0 ? -(o.unit + 1) : 1], 0, P.mat, seed + o.h);
       const kb = W((p + q) / 2, o.v0 + kick / 2, (0.12 + SHOP_DEPTH) / 2);
       KIT.box(vb, null, kb[0], kb[1], kb[2], (q - p) / 2, kick / 2, (SHOP_DEPTH - 0.12) / 2, yaw, 0);
       if (has('kit_shopfronts')) {
         // the painted display windows (lit shop interiors), one per bay between the columns
-        const cell = Math.floor((((seed + o.h) * 4.7) % 1) * 4), nb2 = Math.max(1, Math.round((q - p) / 1.6));
+        const cell = o.colour ? nearestShopCell(o.colour) : Math.floor((((seed + o.h) * 4.7) % 1) * 4), nb2 = Math.max(1, Math.round((q - p) / 1.6));
         for (let m = 0; m < nb2; m++) {
           const a0 = p + ((q - p) * m) / nb2, a1 = p + ((q - p) * (m + 1)) / nb2;
           kitPanel(1, cell, 2, W(a0, o.v0 + kick, SHOP_DEPTH), W(a1, o.v0 + kick, SHOP_DEPTH), W(a1, transomB, SHOP_DEPTH), W(a0, transomB, SHOP_DEPTH), [0.09, 0.3, 0.37, 0.8], seed + o.h);
@@ -197,7 +222,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
         face(vb, W(p, transomB + 0.06, SHOP_DEPTH), W(q, transomB + 0.06, SHOP_DEPTH), W(q, o.v1, SHOP_DEPTH), W(p, o.v1, SHOP_DEPTH), [nx, 0, nz], [[0, 1.6], [q - p, 1.6], [q - p, 2.0], [0, 2.0]]);
       }
       // slim cast-iron columns and the transom bar
-      set(PART.dark, [0.1, 3, 1]);
+      set(PART.dark, [0.1, 3, o.unit >= 0 ? -(o.unit + 1) : 1]);
       const nCol = Math.max(1, Math.round((q - p) / 1.6));
       for (let m = 0; m <= nCol; m++) {
         const u = p + ((q - p) * m) / nCol, cp = W(u, (o.v0 + kick + o.v1) / 2, SHOP_DEPTH - 0.06);
@@ -224,7 +249,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     face(vb, W(du0, o.v0 + 2.3, DOOR_DEPTH), W(du1, o.v0 + 2.3, DOOR_DEPTH), W(du1, o.v0 + 2.4, DOOR_DEPTH), W(du0, o.v0 + 2.4, DOOR_DEPTH), [nx, 0, nz], [[0, 2.2], [doorW, 2.2], [doorW, 2.3], [0, 2.3]]);
     // sign band and the storefront cornice over the whole unit, with brackets at the piers
     const s0 = o.u0 - 0.3, s1 = o.u1 + 0.3, sh = Math.min(0.7, base + gfh - 0.25 - o.v1);
-    set(PART.signband, [s1 - s0, sh, 0], 0, P.mat, seed + o.h);
+    set(PART.signband, [s1 - s0, sh, o.unit >= 0 ? -(o.unit + 1) : 0], 0, P.mat, seed + o.h);
     const sbm = W((s0 + s1) / 2, o.v1 + sh / 2, -0.05);
     KIT.box(vb, null, sbm[0], sbm[1], sbm[2], (s1 - s0) / 2, sh / 2, 0.05, yaw, 0);
     cbox((s0 + s1) / 2, (s1 - s0) / 2, o.v1 + sh / 2, sh / 2, -0.1, SURFACE.prop);
@@ -235,7 +260,12 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     set(PART.stone);
     for (const u of [o.u0 - 0.19, o.u1 + 0.19]) { const br = W(u, o.v1 + sh * 0.5, -0.09); KIT.box(vb, null, br[0], br[1], br[2], 0.09, sh * 0.5, 0.09, yaw, 0); cbox(u, 0.09, o.v1 + sh * 0.5, sh * 0.5, -0.18, SURFACE.prop); }
   }
-  if (shopRow) awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, 2);
+  if (shopRow) {
+    // awnings where the photos show them (with their colours), else here and there
+    const shops = openings.filter((o) => o.kind === 'shop');
+    const plan = svShops ? shops.map((o) => (o.awning ? { u0: o.u0 - 0.38, u1: o.u1 + 0.38, unit: o.unit } : null)) : null;
+    awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, 2, plan);
+  }
 
   // ---- house doors: surround, a little cornice, steps
   for (const o of openings.filter((p) => p.kind === 'door')) {
@@ -260,6 +290,21 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     }
   }
 
+  // ---- a photographed bay: an oriel rising through the upper storeys in the middle of the front
+  if (sv && sv.bay && storeys >= 2 && L > 4.5) {
+    const bwid = Math.min(2.8, L * 0.4), y0b = base + gfh + 0.3, y1b = eaves - 0.35, dep = 0.6;
+    set(PART.plain);
+    const m = W(L / 2, (y0b + y1b) / 2, -dep / 2);
+    KIT.box(vb, null, m[0], m[1], m[2], bwid / 2, (y1b - y0b) / 2, dep / 2, yaw, 0);
+    cbox(L / 2, bwid / 2, (y0b + y1b) / 2, (y1b - y0b) / 2, -dep, WALL_SURF[P.mat]);
+    for (let st = 1; st < storeys; st++) {
+      const sb = base + gfh + (st - 1) * upperH, wv0 = sb + upperH * 0.25, wv1 = Math.min(wv0 + Math.min(upperH * 0.6, 2.2), y1b - 0.1);
+      if (wv1 - wv0 < 0.7 || wv0 < y0b) continue;
+      if (has('kit_windows')) kitPanel(0, 4, 1, W(L / 2 - bwid * 0.4, wv0, -dep - 0.005), W(L / 2 + bwid * 0.4, wv0, -dep - 0.005), W(L / 2 + bwid * 0.4, wv1, -dep - 0.005), W(L / 2 - bwid * 0.4, wv1, -dep - 0.005), [0.05, 0.05, 0.95, 0.95]);
+      else { set(PART.window, [bwid * 0.8, wv1 - wv0, 0]); face(vb, W(L / 2 - bwid * 0.4, wv0, -dep - 0.005), W(L / 2 + bwid * 0.4, wv0, -dep - 0.005), W(L / 2 + bwid * 0.4, wv1, -dep - 0.005), W(L / 2 - bwid * 0.4, wv1, -dep - 0.005), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]); }
+    }
+  }
+
   // ---- string courses between storeys on commercial and civic brick, and the bracketed cornice
   if (!house && brick && storeys > 1) {
     set(PART.stone, [L, 0.12, 1]);
@@ -270,11 +315,11 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
       cbox(L / 2, L / 2, y + 0.06, 0.06, -0.07, SURFACE.wall_stone);
     }
   }
-  if (parapet > 0.5) {
+  if (parapet > 0.5 && CORNICE_STRIP[P.cornice] !== undefined) {
     cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, 2);
     set(PART.trim, [0.1, 0.42, 1]);
     const yb = top - 0.6 - 0.21;
-    for (let u = 0.45; u < L - 0.3; u += 0.9) {
+    for (let u = 0.45; P.cornice === 'bracketed' && u < L - 0.3; u += 0.9) {
       const br = W(u, yb, -0.17); KIT.box(vb, null, br[0], br[1], br[2], 0.055, 0.21, 0.17, yaw, 0);
       cbox(u, 0.055, yb, 0.21, -0.34, SURFACE.prop);
       if (has('kit_trim')) { kitPanel(4, 5, 0, W(u - 0.11, yb - 0.21, -0.345), W(u + 0.11, yb - 0.21, -0.345), W(u + 0.11, yb + 0.21, -0.345), W(u - 0.11, yb + 0.21, -0.345), [0.0, 0.0, 0.5, 1.0]); set(PART.trim, [0.1, 0.42, 1]); }

@@ -101,7 +101,23 @@ export async function createTown(opts = {}) {
   const flagRows = Math.max(1, Math.ceil(data.buildings.length / 256));
   const detailFlags = new THREE.DataTexture(new Uint8Array(256 * flagRows), 256, flagRows, THREE.RedFormat, THREE.UnsignedByteType);
   detailFlags.needsUpdate = true;
-  const facadeUniforms = { flags: detailFlags, focus: { value: new THREE.Vector3() }, radius: { value: FACADE_SHOW_RADIUS } };
+  // the street-photo survey's colours, 16 texels per building (see materials.js survey())
+  const svRows = Math.max(1, Math.ceil((data.buildings.length * 16) / 256));
+  const svData = new Float32Array(256 * svRows * 4);
+  const col = new THREE.Color();
+  const put = (bi, k, hex, a) => { if (!hex) return; col.set(hex); const o = (bi * 16 + k) * 4; svData[o] = col.r; svData[o + 1] = col.g; svData[o + 2] = col.b; svData[o + 3] = a; };
+  data.buildings.forEach((b, bi) => {
+    const sv = b.survey; if (!sv) return;
+    put(bi, 0, sv.wall, sv.painted ? 2 : 1);
+    put(bi, 1, sv.trim, 1);
+    if (sv.full) {
+      put(bi, 2, sv.roofColour, 1);
+      (sv.storefronts || []).slice(0, 4).forEach((f, u) => { put(bi, 4 + u, f.colour, 1); if (f.awning) { put(bi, 8 + u, f.awning.colour, f.awning.stripes ? 2 : 1); put(bi, 12 + u, f.awning.stripes, 1); } });
+    }
+  });
+  const surveyTex = new THREE.DataTexture(svData, 256, svRows, THREE.RGBAFormat, THREE.FloatType);
+  surveyTex.needsUpdate = true;
+  const facadeUniforms = { flags: detailFlags, survey: surveyTex, focus: { value: new THREE.Vector3() }, radius: { value: FACADE_SHOW_RADIUS } };
   const mats = {
     ground: groundMaterial(shared, ground, assets, minWater),
     street: streetMaterial(shared, assets),
@@ -483,6 +499,8 @@ export async function createTown(opts = {}) {
 
   const world = {
     scene, stats, quality,
+    // credits for the map and the instructions (OpenStreetMap, Ontario open data, Mapillary)
+    get attribution() { return data.attribution; },
     get scale() { return scale; },
     get collider() { const c = chunks.get(keyOf(focus.x, focus.z)); return c && c.colliders[0] || null; },
     groundAt: (x, z) => hf.at(x, z),
@@ -561,7 +579,7 @@ export async function createTown(opts = {}) {
       trees.dispose(); props.dispose(); sky.dispose();
       if (water) { water.geometry.dispose(); }
       for (const k in mats) mats[k].dispose();
-      ground.texA.dispose(); ground.texB.dispose(); detailFlags.dispose();
+      ground.texA.dispose(); ground.texB.dispose(); detailFlags.dispose(); surveyTex.dispose();
       for (const t of Object.values(assets.tex)) t.texture.dispose();
       assets.sky?.texture.dispose(); for (const t of Object.values(assets.sprites)) t.dispose?.();
       assets.facadeArray?.dispose();
