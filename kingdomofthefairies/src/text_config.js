@@ -681,6 +681,8 @@ export const TEXT = {
       theMusicVideoThatInspired: 'The music video that inspired the game',
       directedAndEditedByNam: 'Directed and edited by Nam Nguyen',
       afterTheFilm: 'After the film',
+      // (the dialog's own wording; the end roll's is credits.songRole)
+      songRole: 'Inspired by the song',
       leRoyaumeDesFEs: '<em>Le Royaume des fées</em> (1903), Georges Méliès',
     },
     settings: {

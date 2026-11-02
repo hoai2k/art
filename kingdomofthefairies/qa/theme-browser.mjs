@@ -29,7 +29,7 @@ try {
     // the main theme and the music video are Widow's Bay's alone.
     assert.equal(/music video|Main theme/i.test(credits), legacy);
     assert.ok(/Widow[’']s Bay/.test(credits) && /Langan/.test(credits), 'both editions credit the song');
-    assert.ok(/Thank you for playing/.test(credits), 'the dialog ends as the roll does');
+    assert.ok(!/Thank you for playing|Video game/.test(credits), 'the dialog keeps its own shorter wording');
     await page.screenshot({ path: new URL(legacy ? 'legacy-title.png' : 'fairies-title.png', out).pathname });
     await page.locator('#start').click();
     await page.waitForFunction(() => window.__kingdomOfTheFairies?.audio.nowPlaying(), { timeout: 30000 });
