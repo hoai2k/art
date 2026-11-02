@@ -93,6 +93,8 @@ function readControls(dt) {
   mouse = [0, 0];
   jump ||= k('Space'); sit ||= k('KeyE'); dig ||= k('KeyF'); rec ||= k('KeyC');
   if (k('ShiftLeft') || k('ShiftRight')) sprint = 1;
+  // Same direction as the game's default (src/input.js): stick, arrow or mouse up looks up.
+  ly = -ly;
   const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec };
   prev.jump = jump; prev.sit = sit; prev.dig = dig; prev.rec = rec;
   return c;
