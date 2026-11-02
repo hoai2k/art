@@ -204,6 +204,14 @@ export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(
 // Walking left leads back out to the wedding guests as soon as Azurine,
 // following him, is hidden behind the left curtain (her centre at `offAz`);
 // he can walk on to `off`, offstage.
+// What the voyage earned, laid out at the right of the final tableau: every
+// pearl taken in every act (the carried total and this act's), Aurora's
+// stars, the sword, Neptune's seal and Aurora's lamp.
+export const TREASURE = { x: 1032, y: 632, max: 36 };
+export const treasures = st => ({
+  pearls: (st.carry?.pearls || 0) + (st.pearls || 0), stars: Math.min(3, st.carry?.tea || 0),
+  sword: !!st.carry?.guitar, seal: !!st.carry?.pearl, lamp: !!st.carry?.stone,
+});
 export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: 80 };
 // After the credits: [X] fades out to the title screen over `fade` seconds;
 // so does the end of the wedding piece if the player has been idle `idle` s.
@@ -316,7 +324,8 @@ function stepClimb(st, dt, input) {
 export const actTower = {
   id: 5, key: 'tower', kicker: 'Act V', title: 'The Enchanted Tower', size: 116, page: 5,
   sub: 'Climb the cliff and dive for the witch’s tower.\nSwim the sea gap, then climb the tower to her window.',
-  intertitle: 'Climb anywhere on the rock:\nfastest up the ivy and the cracks,\nslowest over the wet cleft.\n\nPush up into a ledge to haul yourself onto it.\nDust above means a stone is about to fall.',
+  // (no second card: the act card and the cliff's own prompts say it)
+  intertitle: null,
   action: 'A: leap',
   scenes: TOWER_SCENES,
   mood: (st) => (st.phase === 'swim' ? 'storm' : st.phase === 'dive' || st.phase === 'window' ? 'tender' : 'storm'),

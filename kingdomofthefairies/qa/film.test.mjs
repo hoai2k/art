@@ -9,7 +9,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, treasures, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -40,6 +40,13 @@ test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse 
   st.board.progress = 0.9999; let arrivedAt = null;
   for (let t = 0; t < 6 && st.phase !== 'party'; t += DT) { act1.step(st, DT, { beat: 0 }); if (arrivedAt == null && st.board.phase === 'arrive') arrivedAt = t; }
   assert.equal(st.phase, 'party');
+});
+
+test('The final tableau lays out every pearl and keepsake of the voyage', () => {
+  const st = actBurning.create({ carry: { pearls: 31, tea: 3, guitar: true, pearl: true, stone: false }, from: { scene: 4 } });
+  st.pearls = 6;
+  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, sword: true, seal: true, lamp: false });
+  assert.equal(actTower.intertitle, null, 'the Cliff Foot has no second card');
 });
 
 test('Act II scene names follow the film', () => {
