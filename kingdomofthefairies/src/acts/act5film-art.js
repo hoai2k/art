@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, pileCount } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -245,7 +245,7 @@ export function drawBurning(k, st, t) {
 export function drawOverBurning(k, st) {
   if (st.creditsT != null) rollingCredits(k, st.creditsT);
   // the credits over and the stage lit again: the way back to the title
-  if (creditsDone(st) && st.leaveT == null) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
+  if (creditsDone(st) && st.leaveT == null && !nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
   if (st.defeatT != null) k.wash('#2a1424', 0.55 * clamp(st.defeatT / FILM_T.defeat, 0, 1));
   if (st.phase === 'iris') k.iris(640, 300, 760 * (1 - easeInOut(st.phaseT / FILM_T.iris)));
   if (st.status === 'won') k.iris(640, 300, 0);
@@ -822,7 +822,8 @@ function apotheosis(k, st, t) {
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
+  if (nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Gift to accept the gift' : '[X] Accept the gift');
+  else if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
   // "The end" fades in as they rise and stays through the celebration,
   // giving way as the credits begin to roll
@@ -830,40 +831,34 @@ function apotheosis(k, st, t) {
   if (endCard > 0) card(k, 'The Kingdom of the Fairies', 'The end', endCard);
 }
 
-// The voyage's treasures at stage right: a heap of the pearls (one painted
-// pearl each, up to TREASURE.max, its count on a plaque), the sword laid
-// behind it, the seal and the lamp at its foot, Aurora's stars above.
+// The voyage's treasures on the top step at the right: a heap of the pearls
+// and of the Water Fairy's gifts (pileSlot, growing up off the stage), the
+// sword standing in it, the lamp and the seal at its foot, Aurora's stars
+// over its top; and the gifts still flying up to it.
 function treasurePile(k, st, t) {
-  const c = k.c, T = treasures(st), { x, y } = TREASURE;
-  if (!T.pearls && !T.stars && !T.sword && !T.seal && !T.lamp) return;
+  const c = k.c, T = treasures(st), { x, y } = TREASURE, kinds = st.giftKinds || [];
+  const n = pileCount(st), pearls = n - kinds.length;
   c.save();
-  const n = Math.min(T.pearls, TREASURE.max);
-  for (let i = 0, row = 0, left = n; left > 0; row++) {
-    const inRow = Math.min(left, 8 - row);
-    for (let j = 0; j < inRow; j++, i++) {
-      const px = x + (j - (inRow - 1) / 2) * 14 + ((i * 7) % 5) - 2, py = y - row * 11;
-      k.asset('pearl', px, py, 18, 18);
-    }
-    left -= inRow;
+  for (let i = 0; i < n; i++) {
+    const p = pileSlot(i); if (p.y < -30) break;
+    k.asset(i < pearls ? 'pearl' : kinds[i - pearls], p.x, p.y + 8, 17, 17);
   }
-  // the sword stands point-down in the heap's right flank (its art lies on the diagonal)
-  if (T.sword) { c.save(); c.translate(x + 40, y - 30); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 50, 100, 100); c.restore(); }
-  if (T.seal) k.asset('keepsake-seal', x + 76, y + 4, 54, 54);
-  if (T.lamp) k.asset('keepsake-lamp', x - 80, y + 4, 62, 62);
+  if (T.sword) { c.save(); c.translate(x + 26, y - 12); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 32, 64, 64); c.restore(); }
+  if (T.lamp) k.asset('keepsake-lamp', x - 68, y + 8, 44, 44);
+  if (T.seal) k.asset('keepsake-seal', x + 60, y + 8, 40, 40);
   if (T.stars) {
+    const top = n ? pileSlot(n - 1).y : y;
     c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 8;
     for (let i = 0; i < T.stars; i++) {
-      const sx = x + (i - (T.stars - 1) / 2) * 44, sy = y - 112 + Math.sin(t * 1.6 + i) * 5;
-      if (!k.asset('aurora-star', sx, sy, 40, 40)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 15, 12); }
+      const sx = x + (i - (T.stars - 1) / 2) * 34, sy = top - 26 + Math.sin(t * 1.6 + i) * 4;
+      if (sy > -20 && !k.asset('aurora-star', sx, sy, 28, 28)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 14, 10); }
     }
     c.restore();
   }
-  if (T.pearls) {
-    const label = `${T.pearls} pearl${T.pearls === 1 ? '' : 's'}`;
-    c.font = '700 14px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-    const lw = c.measureText(label).width + 24;
-    c.globalAlpha = 0.8; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - lw / 2, y - 172, lw, 22, 11); c.fill();
-    c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc'); c.fillText(label, x, y - 156);
+  for (const g of st.giftsFlying || []) {
+    const u = clamp(g.t / GIFTING.flight, 0, 1), e = easeInOut(u), to = pileSlot(g.slot);
+    const gx = lerp(GIFTING.hand.x, to.x, e), gy = lerp(GIFTING.hand.y, to.y + 8, e) - Math.sin(Math.PI * u) * 70;
+    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 10; k.asset(g.kind, gx, gy, 22 - 5 * u, 22 - 5 * u); c.restore();
   }
   c.restore();
 }

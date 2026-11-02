@@ -205,10 +205,26 @@ export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(
 // Walking left leads back out to the wedding guests as soon as Azurine,
 // following him, is hidden behind the left curtain (her centre at `offAz`);
 // he can walk on to `off`, offstage.
-// What the voyage earned, laid out at the right of the final tableau: every
-// pearl taken in every act (the carried total and this act's), Aurora's
-// stars, the sword, Neptune's seal and Aurora's lamp.
-export const TREASURE = { x: 1032, y: 632, max: 36 };
+// What the voyage earned, heaped on the top step of the right-hand stairs of
+// the final tableau: every pearl taken in every act (the carried total and
+// this act's), Aurora's stars, the sword, Neptune's seal and Aurora's lamp,
+// and every gift the Water Fairy below it has given.
+export const TREASURE = { x: 980, y: 348 };
+// The heap's slots, bottom up: a broad base narrowing to a column of five
+// and six laid like bricks, so it climbs (slowly) off the top of the stage.
+export function pileSlot(i) {
+  for (let r = 0, n = 0; ; r++) {
+    const w = r < 3 ? 9 - r : r % 2 ? 5 : 6;
+    if (i < n + w) { const c = i - n; return { x: TREASURE.x + (c - (w - 1) / 2) * 14 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 10.5 }; }
+    n += w;
+  }
+}
+// An easter egg: beside the Water Fairy (the far-right figure) X takes one
+// gift after another from her; each flies up onto the heap.
+export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 },
+  kinds: ['pearl', 'keepsake-shell', 'aurora-star', 'keepsake-pearl', 'pearl', 'keepsake-star', 'keepsake-rose', 'pearl'] };
+export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
+export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
 export const treasures = st => ({
   pearls: (st.carry?.pearls || 0) + (st.pearls || 0), stars: Math.min(3, st.carry?.tea || 0),
   sword: !!st.carry?.guitar, seal: !!st.carry?.pearl, lamp: !!st.carry?.stone,
@@ -453,7 +469,7 @@ export const actBurning = {
   mood: (st) => (['wedding', 'apotheosis', 'finale', 'iris'].includes(st.phase) ? 'wedding' : 'storm'),
   touchLive: (st) => !st.battleIntro && (['house', 'quay', 'apotheosis', 'finale'].includes(st.phase) || (st.phase === 'wedding' && (st.weddingIntro === false || st.phaseT >= FILM_T.weddingLead)) || (st.phase === 'barrel' && st.barrel?.fallT == null)),
   // the second button swings the sword in the witch's last stand
-  touchVerbB: (st) => (creditsDone(st) && st.leaveT == null ? 'Title' : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
+  touchVerbB: (st) => (nearGiftFairy(st) ? 'Gift' : creditsDone(st) && st.leaveT == null ? 'Title' : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
   touchVerb: (st) => (st.phase === 'barrel' && st.duel ? 'Leap' : st.phase === 'barrel' ? '' : st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? 'Action' : 'Leap'),
   fade: st => st?.leaveT != null ? clamp(st.leaveT / ENDING.fade, 0, 1) : st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
   touchHint: 'drag to walk and climb, A to leap',
@@ -484,7 +500,7 @@ export const actBurning = {
     if (st.creditsT != null) {
       const active = movingDirection(input) || input.a || input.x;
       st.idleT = active ? 0 : (st.idleT || 0) + dt;
-      if (st.leaveT == null && creditsDone(st) && (input.x
+      if (st.leaveT == null && creditsDone(st) && ((input.x && !nearGiftFairy(st))
         || (input.songLeft != null && input.songLeft <= ENDING.fade && st.idleT >= ENDING.idle))) {
         st.leaveT = 0; st.events.push({ type: 'leaveToTitle' });
       }
@@ -545,6 +561,7 @@ export const actBurning = {
     if (e.type === 'ascend') return 'The Kingdom of the Fairies.';
     if (e.type === 'floatDown') return 'You float gently down.';
     if (e.type === 'leaveToTitle') return 'Returning to the title screen.';
+    if (e.type === 'giftGiven') return e.n === 1 ? 'The Water Fairy gives you a gift.' : `Gift ${e.n}.`;
     if (e.type === 'finale') return 'The end. Credits: principal game designer Hoai Nguyen; after Le Royaume des fées by Georges Méliès. Thank you for playing.';
     return null;
   },
@@ -823,6 +840,13 @@ export const creditsDone = st => st?.creditsT != null && st.creditsT >= FINALE_E
 const movingDirection=input=>Math.abs(input.moveX||0)>.15||Math.abs(input.moveY||0)>.15||input.up||input.down||input.left||input.right;
 function stepApotheosis(st,dt,input){
   const w=st.w;
+  // the Water Fairy's gifts in flight to the heap
+  st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
+  if(input.x&&nearGiftFairy(st)){
+    const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[(n-1)%GIFTING.kinds.length];
+    st.giftsFlying.push({kind,t:0,slot:pileCount(st)+st.giftsFlying.length});
+    st.events.push({type:'giftGiven',n,kind});
+  }
   if(st.flight){
     if(st.flight==='rise'){
       st.riseT=Math.min(FILM_T.rise,st.riseT+dt);

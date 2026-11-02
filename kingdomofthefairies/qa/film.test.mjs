@@ -9,7 +9,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, treasures, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -57,6 +57,20 @@ test('Losing the last stand: engulfed in flames, with its own words', () => {
   assert.equal(st.lostTitle, 'Engulfed\nin Flames');
   assert.equal(st.lostSub, 'The witch engulfed you in flames. Try again.');
   assert.equal(actTower.scenes.at(-1).name, 'Top of the Tower');
+});
+
+test('The Water Fairy gives gift after gift, each flying up onto the heap; X beside her never leaves for the title', () => {
+  const st = actBurning.create({ carry: { pearls: 10 }, from: { scene: 4 } });st.phaseT = 5; st.weddingIntro = false;
+  run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
+  st.w.x = GIFTING.x; st.w.vx = 0;
+  assert.ok(nearGiftFairy(st)); assert.equal(actBurning.touchVerbB(st), 'Gift');
+  for (let i = 0; i < 5; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
+  assert.equal(st.giftsFlying.length, 5); assert.equal(pileCount(st), 10);
+  run(actBurning, st, GIFTING.flight + 0.1);
+  assert.equal(st.giftsLanded, 5); assert.equal(pileCount(st), 15); assert.equal(st.giftKinds.length, 5);
+  st.creditsT = 40; actBurning.step(st, DT, { x: true });
+  assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
+  st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
 });
 
 test('Act II scene names follow the film', () => {
