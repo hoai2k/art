@@ -1,7 +1,9 @@
 import { LEGACY, EDITION, LOOK_PARAM, FILM as FILM_ED, TITLE, STORAGE_PREFIX, applyDocumentTheme } from './theme.js';
+import { TEXT } from './text_config.js';
 applyDocumentTheme();
 // Shell: title, act cards, play, pause, dialogs, settings, fullscreen.
 import { ACTS } from './acts/index.js';
+import { ACT_ART } from './act-art.js';
 import { loadSave, writeSave, carryInto, recordResult } from './save.js';
 import { editorWanted, openEditor } from './editor.js';
 import { createRenderer, loadAssets, richText, setTouchNames } from './art.js';
@@ -43,18 +45,18 @@ if (LOOK_PARAM === 'tinted' || LOOK_PARAM === 'original') settings.cast = LOOK_P
 if (settings.cast !== 'original') settings.cast = 'tinted';
 if (!LEGACY) { settings.period = true; document.querySelector('[data-key="period"]').hidden = true; }
 const saveSettings = () => { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); } catch { /* ignore */ } };
-const FILM = { full: 'Full', gentle: 'Gentle', off: 'Off' };
+const FILM = TEXT.shell.settings.film;
 function syncSettingsUI() {
   for (const el of document.querySelectorAll('#settings [data-key]')) {
     const k = el.dataset.key;
     if (el.type === 'range') el.value = settings[k];
     else if (k === 'film') el.querySelector('span').textContent = FILM[settings.film];
-    else if (k === 'vibration') el.querySelector('span').textContent = settings.vibration ? 'On' : 'Off';
-    else if (k === 'sound') el.querySelector('span').textContent = settings.sound ? 'On' : 'Off';
-    else if (k === 'period') el.querySelector('span').textContent = settings.period ? 'On' : 'Off';
-    else if (k === 'extraAnimations') el.querySelector('span').textContent = settings.extraAnimations ? 'On' : 'Off';
-    else if (k === 'mobileCamera') el.querySelector('span').textContent = settings.mobileCamera ? 'Follow' : 'Whole stage';
-    else if (k === 'castLook') el.querySelector('span').textContent = settings.cast === 'tinted' ? 'Tinted' : 'Original';
+    else if (k === 'vibration') el.querySelector('span').textContent = settings.vibration ? TEXT.shell.settings.on : TEXT.shell.settings.off;
+    else if (k === 'sound') el.querySelector('span').textContent = settings.sound ? TEXT.shell.settings.on : TEXT.shell.settings.off;
+    else if (k === 'period') el.querySelector('span').textContent = settings.period ? TEXT.shell.settings.on : TEXT.shell.settings.off;
+    else if (k === 'extraAnimations') el.querySelector('span').textContent = settings.extraAnimations ? TEXT.shell.settings.on : TEXT.shell.settings.off;
+    else if (k === 'mobileCamera') el.querySelector('span').textContent = settings.mobileCamera ? TEXT.shell.settings.follow : TEXT.shell.settings.wholeStage;
+    else if (k === 'castLook') el.querySelector('span').textContent = settings.cast === 'tinted' ? TEXT.shell.settings.tinted : TEXT.shell.settings.original;
   }
   audio.setVolumes(settings.music / 10, settings.sfx / 10);
   audio.setSound(settings.sound !== false);
@@ -68,7 +70,7 @@ function syncSoundButton() {
   const b = document.getElementById('btn-sound');
   if (!b) return;
   const on = settings.sound !== false;
-  const label = on ? 'Sound on' : 'Sound off';
+  const label = on ? TEXT.shell.sound.on : TEXT.shell.sound.off;
   b.setAttribute('aria-pressed', String(on));
   b.setAttribute('aria-label', label);
   b.dataset.tip = label;
@@ -98,6 +100,24 @@ let assetsLoaded = false;
 // scene never opens on its stand-ins (an image that fails still counts as
 // arrived, so the wait always ends).
 let artLoaded = 0, artTotal = 0, artAll = false;
+// Each act's own art (src/act-art.js, by edition and cast look) loads ahead
+// of the rest: the act most likely to be opened next while the title and
+// playbill wait, the chosen act during its card, then the act after it. The
+// card waits only for its own act's art, and only once A is pressed.
+const tintedLook = () => FILM_ED && settings.cast === 'tinted';
+const actArt = (i) => ACT_ART[EDITION]?.[ACTS[i]?.key || String(ACTS[i]?.id)]?.[tintedLook() ? 'tinted' : 'original'] || [];
+let wantedAct = null;
+function wantAct(i) {
+  if (!assets?.want || i == null || i < 0 || i >= ACTS.length) return;
+  const key = `${i}|${tintedLook()}`;
+  if (wantedAct === key) return;
+  wantedAct = key;
+  assets.want(actArt(i)).then(() => { if (wantedAct === key && i + 1 < ACTS.length) assets.want(actArt(i + 1)); });
+}
+const actArtProgress = (i) => (assets?.progress ? assets.progress(actArt(i)) : { done: 0, total: 1 });
+const actArtReady = (i) => { const p = actArtProgress(i); return p.done >= p.total; };
+// The act the title's Start (or the playbill's selection) would most likely open.
+const predictedAct = () => (S.mode === 'playbill' ? S.pb : save.unlocked > 1 ? Math.min(save.unlocked, ACTS.length) - 1 : 0);
 // The title waits behind a spinner for its own art (the first wave and the
 // painted title), so it never shows the drawn stand-ins first.
 let firstArt = false, booted = false;
@@ -150,7 +170,7 @@ loadAssets('assets/', { first: FIRST_ART, onImage: (id, im) => {
   assets = a;
   artTotal = Object.values(a.slots).filter((sl) => sl.status === 'delivered' && sl.file).length;
   a.all.then(() => { artAll = a.failed.length === 0; });
-  a.ready.then(() => { firstArt = true; });
+  a.ready.then(() => { firstArt = true; wantAct(predictedAct()); });
   const song = a.audio?.song;
   if (song?.status === 'delivered' && song.file) audio.setTrack('assets/' + song.file, song.loopStart, song.loopEnd);
   const sfx = Object.fromEntries(Object.entries(a.sfx || {})
@@ -178,7 +198,7 @@ const CRACKLE = params.get('crackle') === 'on';
 if (editorWanted()) {
   const reload = (id) => { if (id === EDITION) { const s = loadSave(); for (const k of Object.keys(save)) delete save[k]; Object.assign(save, s); } };
   const b = document.createElement('button');
-  b.className = 'icon unlock-btn'; b.textContent = 'Unlocks'; b.setAttribute('aria-label', 'Unlocked acts'); b.dataset.focus = '';
+  b.className = 'icon unlock-btn'; b.textContent = TEXT.editor.unlocksButton; b.setAttribute('aria-label', TEXT.editor.unlocksLabel); b.dataset.focus = '';
   b.addEventListener('click', () => openEditor(reload));
   document.querySelector('#icons .corner-left')?.prepend(b);
   addEventListener('load', () => openEditor(reload), { once: true });
@@ -214,6 +234,7 @@ function carryFor(i) {
 function beginAct(i, from = null) {
   renderer.clearFx(); camera.reset();
   S.actIndex = i; S.act = ACTS[i];
+  wantAct(i);
   S.state = S.act.create({ seed: (Math.random() * 2 ** 31) | 0, carry: carryFor(i), from: from ? { ...from } : null });
   S.checkpoint = S.state.checkpoint ? JSON.parse(JSON.stringify(S.state.checkpoint)) : null;
   S.cpRef = S.state.checkpoint;
@@ -221,11 +242,11 @@ function beginAct(i, from = null) {
   S.curtain = 0; S.curtainTarget = 0;
   const scene = from && S.act.scenes?.[from.scene | 0];
   S.card = { kicker: S.act.kicker, title: S.act.title, size: S.act.size || 120,
-    sub: scene && (from.scene | 0) > 0 ? `${from.retry ? 'Carrying on from' : 'Scene'}: ${scene.name}` : S.act.sub,
-    prompts: { touch: `Tap to begin · ${touchVerbHint(S.act)}`, other: 'Press [A] to begin' }, alpha: 0 };
+    sub: scene && (from.scene | 0) > 0 ? TEXT.shell.card.sceneSub(!!from.retry, scene.name) : S.act.sub,
+    prompts: { touch: TEXT.shell.card.tapToBeginWith(touchVerbHint(S.act)), other: TEXT.shell.card.pressToBegin }, alpha: 0 };
   S.readyT = 0;
   S.skipIntertitle = !!from?.retry;
-  announce(`${S.act.kicker}, ${S.act.title}.${scene && from.scene > 0 ? ' ' + scene.name + '.' : ''}`);
+  announce(TEXT.shell.card.announceAct(S.act.kicker, S.act.title, scene && from.scene > 0 ? scene.name : null));
 }
 
 // The act sets state.checkpoint as the player passes a point worth resuming
@@ -245,7 +266,7 @@ function showPlaybill() {
   S.mode = 'playbill'; S.modeT = 0; S.act = null; S.state = null; S.card = null;
   S.curtainTarget = 1; // the playbill hangs on the stage, so open the curtains on it
   S.pb = Math.min(save.unlocked, ACTS.length) - 1;
-  announce('The playbill. Choose an act.');
+  announce(TEXT.shell.playbill.announce);
 }
 
 function toTitle() {
@@ -332,8 +353,8 @@ function openScenes() {
     (a.scenes || [{ name: a.title }]).forEach((sc, k) => {
       const b = document.createElement('button');
       const open = k <= reached;
-      b.innerHTML = `<small>SCENE ${k + 1}</small>`;
-      b.append(open ? sc.name : '· · ·');
+      b.innerHTML = `<small>${TEXT.shell.scenes.label(k + 1)}</small>`;
+      b.append(open ? sc.name : TEXT.shell.playbill.locked);
       if (open) {
         b.dataset.focus = '';
         b.addEventListener('click', () => { audio.play('ui'); playScene(i, k); });
@@ -343,7 +364,7 @@ function openScenes() {
     });
     list.append(h, grid);
   });
-  $('#scene-note').textContent = save.unlocked < ACTS.length ? 'Play on to open more scenes.' : '';
+  $('#scene-note').textContent = save.unlocked < ACTS.length ? TEXT.shell.scenes.note : '';
   openDialog($('#scenes'), focus);
 }
 function playScene(i, k) {
@@ -505,9 +526,9 @@ document.addEventListener('visibilitychange', syncAway);
 addEventListener('blur', syncAway);
 addEventListener('focus', syncAway);
 input.on('disconnect', (pad, wasOwner) => {
-  if (wasOwner && S.mode === 'play') pause('Controller disconnected — reconnect it, or carry on with keys or touch.');
+  if (wasOwner && S.mode === 'play') pause(TEXT.shell.pause.controllerLost);
 });
-input.on('connect', () => announce('Controller connected.'));
+input.on('connect', () => announce(TEXT.shell.controllerConnected));
 
 function announce(msg) { live.textContent = msg; }
 
@@ -583,7 +604,7 @@ function updateLoadbar() {
   $('#loadbar-fill').style.width = pct + '%';
   $('#loadbar').setAttribute('aria-valuenow', pct);
   $('#loadbar').classList.toggle('done', done && st.state !== 'failed');
-  $('#loadbar-label').textContent = st.state === 'failed' ? 'The music could not be loaded' : done ? 'Ready' : `${LEGACY ? "Tuning up the band" : "Tuning the orchestra"}… ${pct}%`;
+  $('#loadbar-label').textContent = st.state === 'failed' ? TEXT.shell.loading.musicFailed : done ? TEXT.shell.loading.ready : TEXT.shell.loading.tuning(LEGACY ? TEXT.shell.loading.band : TEXT.shell.loading.orchestra, pct);
 }
 
 // The scene’s period-music mood. Only the query edition reprises its song.
@@ -617,6 +638,9 @@ function trackInputMode(i) {
 
 function update(dt, i) {
   trackInputMode(i);
+  // what to load first: the act on stage, or the one the menus point to
+  // (re-asked when the playbill selection or the cast look changes)
+  if (firstArt) wantAct(S.act ? S.actIndex : ['title', 'playbill'].includes(S.mode) ? predictedAct() : null);
   if (S.mode === 'title') updateLoadbar();
   const mood = musicMood();
   if (mood === 'song') audio.returnToSong(); else audio.setMood(mood);
@@ -679,21 +703,33 @@ function update(dt, i) {
     // Hold the card until the song can play and the art has arrived,
     // showing their progress.
     if (!songSettled()) { S.card.loading = songStatus().progress; S.readyT = 0; if (i.pause) pause(); return; }
-    if (!artAll) {
-      S.card.error = assets?.failed?.length ? 'The scenery could not load. Please reload.' : null;
-      S.card.loading = S.card.error ? null : artTotal ? Math.min(0.99, artLoaded / artTotal) : 0;
-      S.readyT = 0;
+    // The card shows its prompt at once while the act's art loads behind it.
+    // Pressed (or timed out) before the art is in, the prompt becomes a
+    // loading bar, and the act begins as soon as the bar fills.
+    const artIn = actArtReady(S.actIndex);
+    // An act's own art that failed to load stops at its card: never the stand-ins.
+    if (artIn && assets?.failed?.length && actArt(S.actIndex).some((id) => assets.failed.includes(id))) {
+      S.card.error = TEXT.shell.loading.sceneryFailed; S.card.loading = null; S.readyT = 0;
       if (i.pause) pause();
       return;
     }
-    if (S.card.loading != null) { S.card.loading = null; announce('Ready.'); }
+    if (S.card.loading != null && artIn) { S.card.loading = null; S.card.loadingText = null; announce(TEXT.shell.loading.announceReady); }
     S.readyT = (S.readyT || 0) + dt;
-    if ((go && S.readyT > 0.4) || S.readyT > (S.card.body ? 12 : 6)) {
+    const wants = (go && S.readyT > 0.4) || S.readyT > (S.card.body ? 12 : 6) || S.card.waiting;
+    if (wants && !artIn) {
+      const p = actArtProgress(S.actIndex);
+      if (!S.card.waiting) announce(TEXT.shell.loading.announceStage);
+      S.card.waiting = true; S.card.loadingText = TEXT.shell.loading.stage;
+      S.card.loading = p.total ? Math.min(0.99, p.done / p.total) : 0;
+      if (i.pause) pause();
+      return;
+    }
+    if (wants) {
       // Some acts follow their card with a silent-film intertitle that
       // introduces how they play (not on a retry).
       if (S.act.intertitle && !S.card.body && !S.skipIntertitle) {
         S.card = { body: S.act.intertitle, size: 56, alpha: 0,
-          prompts: { touch: 'Tap to begin', other: 'Press [A] to begin' } };
+          prompts: { touch: TEXT.shell.card.tapToBegin, other: TEXT.shell.card.pressToBegin } };
         S.modeT = 0; S.readyT = 0;
         announce(S.act.intertitle.replace(/\[A\]/g, 'A').replace(/\n+/g, ' '));
         return;
@@ -720,12 +756,12 @@ function update(dt, i) {
     S.state.events.length = 0;
     if (S.state.status === 'lost' && S.state.statusT > 0.2) {
       S.mode = 'over'; S.modeT = 0;
-      S.card = { bg: 'magenta', kicker: S.act.kicker, title: S.state.lostTitle || 'The Sea Keeps\nHer Own', size: 110,
+      S.card = { bg: 'magenta', kicker: S.act.kicker, title: S.state.lostTitle || TEXT.shell.lost.title, size: 110,
         sub: S.state.lostSub || '', alpha: 0 };
       const at = S.checkpoint && (S.checkpoint.scene | 0) > 0 ? S.act.scenes?.[S.checkpoint.scene | 0]?.name : null;
-      const again = at ? `try again from ${at}` : 'try again';
-      S.card.prompts = { touch: `Tap right to ${again} · tap left for the playbill`, other: `[A] ${again[0].toUpperCase() + again.slice(1)} · [B] The playbill` };
-      announce(`The act is lost. Press A to ${again}.`);
+      const again = at ? TEXT.shell.lost.tryAgainFrom(at) : TEXT.shell.lost.tryAgain;
+      S.card.prompts = { touch: TEXT.shell.lost.promptTouch(again), other: TEXT.shell.lost.promptOther(again) };
+      announce(TEXT.shell.lost.announce(again));
     }
     if (S.state.status === 'won' && S.state.statusT > 0.15) actWon();
     // the act asked to leave for the title screen (after the film's credits)
@@ -768,7 +804,7 @@ function actWon() {
   // The whole play is done: curtain call, then the playbill.
   S.mode = 'curtaincall'; S.modeT = 0; S.act = null; S.state = null; S.curtainTarget = 1;
   audio.play('done');
-  announce('Curtain call.');
+  announce(TEXT.shell.curtainCall);
 }
 
 function handleEvent(e) {
@@ -809,11 +845,12 @@ function touchVerb() {
   const st = S.state, id = S.act?.id;
   if (!st) return '';
   if (S.act.touchVerb) return S.act.touchVerb(st);
-  if (id === 1) return st.phase === 'voyage' && !FILM_ED ? 'Leap' : st.phase === 'party' && !FILM_ED ? 'Light' : '';
-  if (id === 2) return st.phase === 'offer' ? (FILM_ED ? '' : 'Take') : st.phase === 'ride' ? 'Leap' : 'Swim';
-  if (id === 3) return st.tf ? 'Leap' : S.state?.canTake ? 'Take' : 'Hide';
-  if (id === 4) return 'Leap';
-  if (id === 5) return st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? 'Action' : 'Leap';
+  const V = TEXT.touch.verb;
+  if (id === 1) return st.phase === 'voyage' && !FILM_ED ? V.leap : st.phase === 'party' && !FILM_ED ? V.light : '';
+  if (id === 2) return st.phase === 'offer' ? (FILM_ED ? '' : V.take) : st.phase === 'ride' ? V.leap : V.swim;
+  if (id === 3) return st.tf ? V.leap : S.state?.canTake ? V.take : V.hide;
+  if (id === 4) return V.leap;
+  if (id === 5) return st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? V.action : V.leap;
   return '';
 }
 // The second button (pad X, the X key), where a scene uses it.
@@ -823,26 +860,27 @@ function touchVerbB() {
   if (S.act.touchVerbB) return S.act.touchVerbB(st);
   const needB = S.act?.needB ? S.act.needB(st) : S.act?.id === 2 && st.phase === 'offer';
   if (!needB) return '';
-  if (S.act.id === 2 && st.phase === 'offer') return 'Refuse';
-  if (S.act.id === 2) return st.reach?.kind === 'pearl' ? 'Take' : st.reach?.kind === 'sleeper' ? 'Wake' : 'Action';
-  if (S.act.id === 3) return 'Bow';
-  return 'Action';
+  const V = TEXT.touch.verb;
+  if (S.act.id === 2 && st.phase === 'offer') return V.refuse;
+  if (S.act.id === 2) return st.reach?.kind === 'pearl' ? V.take : st.reach?.kind === 'sleeper' ? V.wake : V.action;
+  if (S.act.id === 3) return V.bow;
+  return V.action;
 }
 function touchVerbHint(act) {
   if (act.touchHint) return act.touchHint;
-  return { 1: 'drag to sail, swipe to change row, tap to leap', 2: 'drag to swim, A to kick; on the moon boat, drag to sail, swipe to change row, tap to leap', 3: 'drag to walk, swipe to change groove, tap to hide',
-    4: 'drag to walk, swipe up or tap to leap', 5: 'drag to climb, A to leap' }[act.id] || 'drag to move';
+  return TEXT.touch.actHint[act.id] || TEXT.touch.actHintDefault;
 }
 // Which touch scheme a scene uses: swipes for rows and floors, the stick for
 // free movement (swimming, climbing).
 function touchScheme() {
   const id = S.act?.id, ph = S.state?.phase;
   if (S.act?.touchScheme) return S.act.touchScheme(S.state || {});
-  if (id === 1) return { mode: 'swipe', hint: ph === 'party' ? 'Tap on the beat' : FILM_ED ? 'Drag ↔ to sail · swipe ↕ to change row' : 'Drag ↔ to sail · swipe ↕ to change row · tap to leap' };
-  if (id === 2) return ph === 'ride' ? { mode: 'swipe', hint: 'Drag ↔ to sail · swipe ↕ to change row · tap to leap' } : { mode: 'stick', hint: 'Drag to swim' };
-  if (id === 3) return { mode: 'swipe', hint: S.state?.tf ? 'Drag ↔ to walk · tap to leap' : 'Drag ↔ to walk · swipe ↕ to change groove · tap to hide' };
-  if (id === 4) return { mode: 'swipe', hint: 'Drag ↔ to walk · swipe up or tap to leap', flickUpIsA: true };
-  return { mode: 'stick', hint: 'Drag to climb' };
+  const H = TEXT.touch.scheme;
+  if (id === 1) return { mode: 'swipe', hint: ph === 'party' ? H.tapOnBeat : FILM_ED ? H.sailFilm : H.sail };
+  if (id === 2) return ph === 'ride' ? { mode: 'swipe', hint: H.sail } : { mode: 'stick', hint: H.swim };
+  if (id === 3) return { mode: 'swipe', hint: S.state?.tf ? H.walkLeap : H.walkGroove };
+  if (id === 4) return { mode: 'swipe', hint: H.walkSwipeUp, flickUpIsA: true };
+  return { mode: 'stick', hint: H.climb };
 }
 // The option buttons (#icons): the guide buttons at the left on the title and
 // playbill; settings, sound and fullscreen at the right throughout. In play on
@@ -872,7 +910,7 @@ function updateTouch() {
   if (portrait !== lastPortrait) {
     lastPortrait = portrait;
     $('#rotate').hidden = !portrait;
-    if (portrait && S.mode === 'play') pause('Turn the device sideways to carry on.');
+    if (portrait && S.mode === 'play') pause(TEXT.shell.pause.rotate);
   }
   const playing = S.mode === 'play' && !S.paused && !portrait;
   // on the playbill only the pause button shows
@@ -939,16 +977,15 @@ function drawPlaybill(k, t) {
   const rows = playbillRows();
   c.textAlign = 'center';
   const mode = S.inputMode;
-  const hint = mode === 'touch' ? 'Tap an act to begin · tap outside for the title'
-    : mode === 'pad' ? '[LS] Choose · [A] Begin · [B] The title' : '↑ ↓ to choose · [A] to begin · [B] for the title';
+  const hint = TEXT.shell.playbill.hint[mode] || TEXT.shell.playbill.hint.key;
   // The bill waits for its art (the title holds behind the spinner until it
   // is in): never the drawn stand-in, which is wider, then swapped.
-  if (!rows.art && !artAll) { spinner(k, t); return; }
+  if (!rows.art && !assets?.settled?.(FILM_ED ? 'playbill-film' : 'playbill')) { spinner(k, t); return; }
   if (rows.art && k.asset('playbill', PB.cx, PB.cy + PB.h / 2, PB.w, PB.h)) {
     const s = rows.s, ink = k.col('#2a1424');
     c.fillStyle = ink; c.textAlign = 'center';
     c.font = `${PB.titlePx}px Yesteryear, cursive`; c.fillText(TITLE, 640, rows.top + PB.titleY * s + 8);
-    c.font = '700 9px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? 'A TOY THEATRE IN A PROLOGUE AND SIX ACTS' : 'A TOY THEATRE IN FIVE ACTS'), 640, rows.top + PB.subY * s);
+    c.font = '700 9px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? TEXT.shell.playbill.subtitleFilm : TEXT.shell.playbill.subtitle), 640, rows.top + PB.subY * s);
     const pw = (rows.x1 - rows.x0) - 28;
     ACTS.forEach((a, n) => {
       const y = rows.ys[n], open = n < save.unlocked, sel = n === S.pb;
@@ -956,9 +993,9 @@ function drawPlaybill(k, t) {
       c.fillStyle = k.col(open ? '#2a1424' : '#a99a86');
       c.textAlign = 'left'; c.font = `700 ${PB.kick[0]}px "Josefin Sans", sans-serif`; c.fillText(a.kicker.toUpperCase(), rows.x0 + 14, y + PB.kick[1]);
       const best = save.best[n + 1];
-      if (open && best != null) { c.textAlign = 'right'; c.font = `${PB.kick[0]}px "Josefin Sans", sans-serif`; c.fillText('best ' + best, rows.x1 - 14, y + PB.kick[1]); }
+      if (open && best != null) { c.textAlign = 'right'; c.font = `${PB.kick[0]}px "Josefin Sans", sans-serif`; c.fillText(TEXT.shell.playbill.best(best), rows.x1 - 14, y + PB.kick[1]); }
       let px = PB.name[0]; c.font = `${px}px Yesteryear, cursive`;
-      const label = open ? a.title : '· · ·';
+      const label = open ? a.title : TEXT.shell.playbill.locked;
       const w = c.measureText(label).width;
       if (w > pw) { px = Math.floor(px * pw / w); c.font = `${px}px Yesteryear, cursive`; }
       c.textAlign = 'center'; c.fillText(label, (rows.x0 + rows.x1) / 2, y + PB.name[1]);
@@ -975,16 +1012,16 @@ function drawPlaybill(k, t) {
   c.strokeStyle = k.col('#2a1424'); c.lineWidth = 3; c.strokeRect(344, 84, 592, 552); c.lineWidth = 1; c.strokeRect(352, 92, 576, 536);
   c.textAlign = 'center'; c.fillStyle = k.col('#2a1424');
   c.font = '54px Yesteryear, cursive'; c.fillText(TITLE, 640, 160);
-  c.font = '700 15px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? 'A TOY THEATRE IN A PROLOGUE AND SIX ACTS' : 'A TOY THEATRE IN FIVE ACTS'), 640, 188);
+  c.font = '700 15px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? TEXT.shell.playbill.subtitleFilm : TEXT.shell.playbill.subtitle), 640, 188);
   ACTS.forEach((a, n) => {
     const y = rows.ys[n] + 6, open = n < save.unlocked, sel = n === S.pb, tight = ACTS.length > 5;
     if (sel) { c.fillStyle = k.col('#e0127a'); c.globalAlpha = 0.18; c.fillRect(372, y - (tight ? 30 : 34), 536, tight ? 52 : 60); c.globalAlpha = 1; }
     c.fillStyle = k.col(open ? '#2a1424' : '#a99a86');
     c.font = '700 16px "Josefin Sans", sans-serif'; c.textAlign = 'left'; c.fillText(a.kicker.toUpperCase(), 392, y - 6);
-    c.font = `${tight ? 30 : 34}px Yesteryear, cursive`; c.fillText(open ? a.title : '· · ·', tight ? 500 : 470, y + 2);
+    c.font = `${tight ? 30 : 34}px Yesteryear, cursive`; c.fillText(open ? a.title : TEXT.shell.playbill.locked, tight ? 500 : 470, y + 2);
     c.textAlign = 'right'; c.font = '15px "Josefin Sans", sans-serif';
     const best = save.best[n + 1];
-    if (open && best != null) c.fillText('best ' + best, 888, y - 6);
+    if (open && best != null) c.fillText(TEXT.shell.playbill.best(best), 888, y - 6);
   });
   c.textAlign = 'center'; c.font = '18px "Josefin Sans", sans-serif'; c.fillStyle = k.col('#2a1424');
   richText(c, hint, 640, 612, { px: 18, mode, col: k.col });
@@ -996,12 +1033,12 @@ function drawCurtainCall(k, t) {
 }
 
 // The title's hint, in the buttons of the input in use (Xbox glyphs on a pad).
-const glyph = (b) => `<span class="xb xb-${b.toLowerCase()}" aria-label="${b === 'LS' ? 'left stick' : b}">${b === 'MENU' ? '<i></i><i></i><i></i>' : b}</span>`;
+const glyph = (b) => `<span class="xb xb-${b.toLowerCase()}" aria-label="${b === 'LS' ? TEXT.shell.title.leftStick : b}">${b === 'MENU' ? '<i></i><i></i><i></i>' : b}</span>`;
 function syncTitleHint() {
   const h = $('#title-hint');
-  if (S.inputMode === 'touch' || (TOUCH && S.inputMode !== 'pad')) { h.textContent = chrome.scrollTrick ? '' : 'Tip: Add to Home Screen to play full screen'; return; }
-  if (S.inputMode === 'pad') h.innerHTML = S.titleNav ? `${glyph('A')} Select · ${glyph('MENU')} Start` : `Move ${glyph('LS')} for options · ${glyph('A')} Start`;
-  else h.textContent = 'Press Enter to start · Tab for options';
+  if (S.inputMode === 'touch' || (TOUCH && S.inputMode !== 'pad')) { h.textContent = chrome.scrollTrick ? '' : TEXT.shell.title.hintTouch; return; }
+  if (S.inputMode === 'pad') h.innerHTML = S.titleNav ? TEXT.shell.title.hintPadNav(glyph) : TEXT.shell.title.hintPad(glyph);
+  else h.textContent = TEXT.shell.title.hintKey;
 }
 S.inputMode = TOUCH ? 'touch' : 'key';
 syncTitleHint();

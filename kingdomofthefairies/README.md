@@ -115,6 +115,12 @@ character identities, start with [the film reference](design/film-story.md).
 
 This is a static canvas 2D / Web Audio page, with no build step.
 
+- All displayed text (on-stage words, act cards, touch labels, screen-reader
+  announcements, shell messages and the text of `index.html`) lives in
+  `src/text_config.js`, one place to edit the wording or translate it.
+  `index.html` elements carry `data-text="html.…"` and are filled from it by
+  `fillText` in `src/theme.js`.
+
 - `src/theme.js` selects the edition, filters legacy image/animation slots and
   the song before loading, and applies the document title and install metadata.
 - `src/board.js` and `src/acts/` hold the seeded gameplay rules.
@@ -189,7 +195,8 @@ From the repository root:
 
 ```sh
 for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs; done
-for t in animation sailor-motion walking theme assets-loader; do node kingdomofthefairies/qa/$t.test.mjs; done
+for t in animation sailor-motion walking theme assets-loader surface-swim; do node kingdomofthefairies/qa/$t.test.mjs; done
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/surface-swim-browser.mjs
 KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
 for g in build_act_requests build_film_requests build_film_assets; do python3 kingdomofthefairies/design/source/$g.py --check; done
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/theme-browser.mjs
@@ -198,8 +205,19 @@ CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/movement-browser.mjs
 python3 kingdomofthefairies/design/source/audit_sprites.py --check   # after any art delivery; needs Pillow, numpy, OpenCV
 python3 kingdomofthefairies/design/source/build_climb_map.py --check  # after a climbing cloth changes; needs Pillow
 python3 kingdomofthefairies/design/source/person_sizes.py --check    # after any cast delivery (Azurine, Aurora, the witch, demons, fairies...); rerun without --check to re-measure
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/build-act-art.mjs --check   # after adding art or changing what a scene draws; rerun without --check to rewrite src/act-art.js
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/loading-browser.mjs
 kingdomofthefairies/publish.sh local/pages/kingdomofthefairies
 ```
+
+**Loading.** The art loads through a queue, a few images at a time, with each
+act's own images (`src/act-art.js`, recorded per edition and cast look by
+`qa/build-act-art.mjs`) moved to the front: the act the title or playbill
+points to while they wait, the chosen act during its card, then the act after
+it, and the rest of the game behind. An act's card waits only for its own art,
+and only once A is pressed: pressed early, its prompt becomes a "Setting the
+stage" loading bar and the act begins when it fills. Art still requested is
+not loaded (its stand-in draws).
 
 `?qa` exposes the shell as `window.__kingdomOfTheFairies` (and the compatible
 `window.__widowsBay` alias). GitHub Pages publishes the renamed directory;

@@ -6,26 +6,27 @@
 // unlocked" (every act and every scene in the scene select). Nothing here
 // leaves this browser.
 import { STORAGE_PREFIXES, EDITION, WIDOWSBAY_DEPLOYED } from './theme.js';
+import { TEXT } from './text_config.js';
 
 const EDITIONS_ALL = [
-  { id: 'film', name: 'The film edition (default)', query: '', acts: ['Prologue · The Betrothal', 'Act I · The Royal Crossing', 'Act II · The Water Fairy', "Act III · Neptune's Court", "Act IV · The Whale's Passage", 'Act V · The Enchanted Tower', 'Act VI · The Burning Tower'] },
-  { id: 'widowsbay', name: "Widow's Bay", query: '?widowsbay=on', acts: ['Act I · The Crossing', "Act II · The Sleepers' Grotto", "Act III · The Sea King's Court", "Act IV · The Whale's Road", "Act V · Widow's Bay"] },
+  { id: 'film', name: TEXT.editor.filmName, query: '', acts: TEXT.editor.filmActs },
+  { id: 'widowsbay', name: TEXT.editor.widowsbayName, query: '?widowsbay=on', acts: TEXT.editor.widowsbayActs },
 ];
 // (Widow's Bay only where the deploy kept it: publish.sh)
 const EDITIONS = EDITIONS_ALL.filter((ed) => ed.id !== 'widowsbay' || WIDOWSBAY_DEPLOYED);
 // The dropdown's levels for an edition: value = how many acts are open
 // (1 = nothing unlocked), plus 'all' for every act and every scene.
 const levels = (ed) => [
-  { value: '1', label: `Nothing unlocked (only ${ed.acts[0]})` },
-  ...ed.acts.slice(1).map((a, i) => ({ value: String(i + 2), label: `Up to ${a}` })),
-  { value: 'all', label: 'Everything unlocked (every act and every scene)' },
+  { value: '1', label: TEXT.editor.nothing(ed.acts[0]) },
+  ...ed.acts.slice(1).map((a, i) => ({ value: String(i + 2), label: TEXT.editor.upTo(a) })),
+  { value: 'all', label: TEXT.editor.everything },
 ];
 function describe(ed, v) {
   const n = ed.acts.length;
-  if (v === 'all') return `All ${n} acts can be chosen on the playbill, and every scene of each in the scene select.`;
+  if (v === 'all') return TEXT.editor.describeAll(n);
   const k = +v;
-  if (k === 1) return `Only ${ed.acts[0]} can be played; the others open as each is finished. Scenes open as they are reached.`;
-  return `${ed.acts[0]} to ${ed.acts[k - 1]} can be chosen on the playbill (${k} of ${n}); the rest stay locked. Scenes open as they are reached.`;
+  if (k === 1) return TEXT.editor.describeOne(ed.acts[0]);
+  return TEXT.editor.describeSome(ed.acts[0], ed.acts[k - 1], k, n);
 }
 const ALL_SCENES = 99;   // more than any act has
 
@@ -46,10 +47,10 @@ export function openEditor(onChange = () => {}) {
   dlg.id = 'unlock-editor';
   dlg.className = 'unlock-editor';
   dlg.setAttribute('aria-labelledby', 'unlock-h');
-  dlg.innerHTML = `<button type="button" class="card-x" aria-label="Close">×</button><h2 id="unlock-h">Unlocked acts on this machine</h2>
-    <p class="unlock-note">Each version of the game keeps its own progress. Choose how far each one is open; it is saved in this browser only.</p>
+  dlg.innerHTML = `<button type="button" class="card-x" aria-label="${TEXT.editor.close}">×</button><h2 id="unlock-h">${TEXT.editor.heading}</h2>
+    <p class="unlock-note">${TEXT.editor.note}</p>
     <div class="unlock-list"></div>
-    <div class="unlock-row"><button type="button" data-close data-focus>Done</button></div>`;
+    <div class="unlock-row"><button type="button" data-close data-focus>${TEXT.editor.done}</button></div>`;
   const list = dlg.querySelector('.unlock-list');
   for (const ed of EDITIONS) {
     const save = read(ed.id), n = ed.acts.length;
@@ -57,16 +58,16 @@ export function openEditor(onChange = () => {}) {
     const box = document.createElement('section');
     box.className = 'unlock-edition' + (ed.id === EDITION ? ' current' : '');
     const opts = levels(ed).map((o) => `<option value="${o.value}"${o.value === now ? ' selected' : ''}>${o.label}</option>`).join('');
-    box.innerHTML = `<h3>${ed.name}${ed.id === EDITION ? ' <small>(this page)</small>' : ''}</h3>
-      <p class="unlock-q"><a href="./${ed.query ? ed.query + '&' : '?'}edit=local">${ed.query || 'no parameter'}</a></p>
-      <label>Unlocked <select data-ed="${ed.id}">${opts}</select></label>
+    box.innerHTML = `<h3>${ed.name}${ed.id === EDITION ? ' <small>' + TEXT.editor.thisPage + '</small>' : ''}</h3>
+      <p class="unlock-q"><a href="./${ed.query ? ed.query + '&' : '?'}edit=local">${ed.query || TEXT.editor.noParameter}</a></p>
+      <label>${TEXT.editor.unlocked} <select data-ed="${ed.id}">${opts}</select></label>
       <p class="unlock-what" aria-live="polite"></p>
       <ol>${ed.acts.map((a, i) => `<li data-i="${i}">${a}</li>`).join('')}</ol>`;
     list.append(box);
     const sel = box.querySelector('select'), what = box.querySelector('.unlock-what');
     const paint = () => {
       const k = sel.value === 'all' ? n : +sel.value;
-      box.querySelectorAll('li').forEach((li) => { const open = +li.dataset.i < k; li.classList.toggle('open', open); li.title = open ? 'open' : 'locked'; });
+      box.querySelectorAll('li').forEach((li) => { const open = +li.dataset.i < k; li.classList.toggle('open', open); li.title = open ? TEXT.editor.open : TEXT.editor.locked; });
       what.textContent = describe(ed, sel.value);
     };
     sel.addEventListener('change', () => {

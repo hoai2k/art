@@ -19,12 +19,13 @@ export const LEGACY = EDITION === 'widowsbay';
 export const FILM = EDITION === 'film';
 // CLASSIC: the original five acts (Widow's Bay).
 export const CLASSIC = !FILM;
-export const TITLE = LEGACY ? "Widow's Bay" : 'Kingdom of the Fairies';
-export const BAY_TITLE = LEGACY ? "Widow's Bay" : 'The Enchanted Tower';
+export const TITLE = LEGACY ? TEXT.titles.widowsbay : TEXT.titles.film;
+export const BAY_TITLE = LEGACY ? TEXT.titles.widowsbay : TEXT.titles.tower;
 // Each edition's saves and settings (src/editor.js lists them for ?edit=local).
 export const STORAGE_PREFIXES = { widowsbay: 'widowsbay', film: 'kingdomofthefairies' };
 export const STORAGE_PREFIX = LEGACY ? 'widowsbay' : 'kingdomofthefairies';
 import { WALK_FIT, POSE_FIT } from './sprite-fit.js';
+import { TEXT } from './text_config.js';
 
 export function themeManifest(manifest, edition = EDITION) {
   // The film edition's slots never load in the music-video edition.
@@ -37,8 +38,27 @@ export function themeManifest(manifest, edition = EDITION) {
   return { ...manifest, slots, anims, audio };
 }
 
+// The page's own wording (index.html): each [data-text="html.…"] element takes
+// the HTML string at that path in TEXT (src/text_config.js); the text written
+// in the page stays as its fallback. [data-text-node] replaces only the
+// element's first text node (a button's label before its <span>, an input's
+// label), keeping the whitespace around it.
+const textAt = (key) => String(key).split('.').reduce((o, k) => (o == null ? o : o[k]), TEXT);
+export function fillText(root = document) {
+  for (const el of root.querySelectorAll('[data-text]')) {
+    const v = textAt(el.dataset.text);
+    if (typeof v === 'string') el.innerHTML = v;
+  }
+  for (const el of root.querySelectorAll('[data-text-node]')) {
+    const v = textAt(el.dataset.textNode);
+    const node = [...el.childNodes].find((n) => n.nodeType === 3 && n.nodeValue.trim());
+    if (typeof v === 'string' && node) node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), () => v);
+  }
+}
+
 export function applyDocumentTheme() {
   document.title = TITLE + (location.pathname.includes('/workbench/') ? ' · Workbench' : '');
+  fillText();
   // Each edition's instructions pages and tabs; the other edition's are
   // marked ed-off so the shell never shows them.
   // data-classic-only: the original acts' pages (Widow's Bay);
@@ -47,8 +67,9 @@ export function applyDocumentTheme() {
   if (FILM) filmWords(document.querySelector('#instructions'));
   if (!LEGACY) return;
   for (const el of document.querySelectorAll('[data-widowsbay]')) el.textContent = el.dataset.widowsbay;
+  for (const el of document.querySelectorAll('[data-text-widowsbay]')) { const v = textAt(el.dataset.textWidowsbay); if (typeof v === 'string') el.textContent = v; }
   for (const el of document.querySelectorAll('[data-legacy-only]:not(.ins-page)')) el.hidden = false;
-  const stage = document.querySelector('#stage'); if (stage) stage.setAttribute('aria-label', TITLE + ' stage');
+  const stage = document.querySelector('#stage'); if (stage) stage.setAttribute('aria-label', TEXT.titles.stageLabel(TITLE));
   const meta = document.querySelector('meta[name="apple-mobile-web-app-title"]'); if (meta) meta.content = TITLE;
   const manifest = document.querySelector('link[rel="manifest"]'); if (manifest) manifest.href = 'manifest-widowsbay.webmanifest';
   for (const el of document.querySelectorAll('link[data-legacy-icon]')) el.href = el.dataset.legacyIcon;

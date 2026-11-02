@@ -1,8 +1,9 @@
 // A placeholder act: an empty stage with a card-style notice. Each act file
 // starts as one of these until it is built (see src/acts/CONTRACT.md).
+import { TEXT } from '../text_config.js';
 export function rehearsal({ id, kicker, title, sub, result = {} }) {
   return {
-    id, kicker, title, sub, size: 120, action: 'A: continue',
+    id, kicker, title, sub, size: 120, action: TEXT.rehearsal.action,
     create() { return { status: 'play', statusT: 0, events: [], result: null, t: 0 }; },
     step(st, dt, input) {
       st.statusT += dt; st.t += dt;
@@ -16,8 +17,8 @@ export function rehearsal({ id, kicker, title, sub, result = {} }) {
       c.strokeStyle = k.col('#c79ab7'); c.lineWidth = 2; c.strokeRect(310, 240, 660, 240);
       c.textAlign = 'center'; c.fillStyle = k.col('#f3c6dc');
       c.font = '60px Yesteryear, cursive'; c.fillText(title, 640, 330);
-      c.font = '700 22px "Josefin Sans", sans-serif'; c.fillText('IN REHEARSAL', 640, 380);
-      c.font = '20px "Josefin Sans", sans-serif'; c.fillText('Press A to continue the story', 640, 440);
+      c.font = '700 22px "Josefin Sans", sans-serif'; c.fillText(TEXT.rehearsal.banner, 640, 380);
+      c.font = '20px "Josefin Sans", sans-serif'; c.fillText(TEXT.rehearsal.continue, 640, 440);
     },
   };
 }

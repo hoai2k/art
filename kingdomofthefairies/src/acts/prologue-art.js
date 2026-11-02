@@ -4,6 +4,7 @@ import { walkPose } from '../walking.js';
 // state and t.
 import { FLOOR, ARM_FLOOR, FAIRIES, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
 import { card } from './tableau.js';
+import { TEXT } from '../text_config.js';
 import { clamp, easeOut, easeInOut, lerp } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 import { REST_GAP } from '../sprite-fit.js';
@@ -29,16 +30,16 @@ const OPEN = { x0: 170, x1: 1100 };
 const BADGE = { size: 50, gap: 66, up: 262, r: 31 };
 const shown = [];                         // { st, kind: 'gift'|'arm', id, x, by, size, t0, slot }
 const giftAt = {};                        // where each held gift was last drawn, stage px
-const LABELS = { gold: 'Gold!', flower: 'The flower!', ring: 'The ring!', crown: 'The crown!', helmet: 'The helmet!', shield: 'The shield!', sword: 'The enchanted sword!' };        // the prince (220 x 360 art)
+const LABELS = { gold: TEXT.prologue.gift.gold.burst, flower: TEXT.prologue.gift.flower.burst, ring: TEXT.prologue.gift.ring.burst, crown: TEXT.prologue.gift.crown.burst, helmet: TEXT.prologue.arm.helmet.burst, shield: TEXT.prologue.arm.shield.burst, sword: TEXT.prologue.arm.sword.burst };        // the prince (220 x 360 art)
 const camX = (st) => (sceneOf(st.phase) === 1 ? clamp(st.p.x - 420, 0, RAMPART.w - 1280) : 0);
 const CAPTIONS = {
-  court: ['The Betrothal', 'Receive the fairies’ gifts for Princess Azurine'],
-  curse: ['The Uninvited', 'The witch curses the betrothal and carries Azurine off'],
-  rampart: ['The Abduction', 'Her demons carry Azurine off · run after the chariot'],
-  escape: ['The Abduction', 'The chariot is gone into the night'],
-  bind: ['The Armoury', 'The witch binds the prince'],
-  free: ['The Arming', 'Aurora breaks the spell'],
-  armoury: ['The Arming', 'Take up the helmet, shield and enchanted sword she gives you'],
+  court: TEXT.prologue.captions.court,
+  curse: TEXT.prologue.captions.curse,
+  rampart: TEXT.prologue.captions.rampart,
+  escape: TEXT.prologue.captions.escape,
+  bind: TEXT.prologue.captions.bind,
+  free: TEXT.prologue.captions.free,
+  armoury: TEXT.prologue.captions.armoury,
 };
 
 // The mobile camera's focus (src/camera.js): the player's middle, stage px.
@@ -53,7 +54,7 @@ export function draw(k, st, t) {
   const cap = CAPTIONS[st.phase];
   if (cap) card(k, cap[0], cap[1], Math.min(1, clamp((st.phaseT - 0.3) / 0.5, 0, 1), ['court', 'rampart', 'armoury', 'bind'].includes(st.phase) ? clamp((4.5 - st.phaseT) / 0.6, 0, 1) : st.phase === 'curse' ? clamp((ABDUCT.swoon - st.phaseT) / 0.4, 0, 1) : 1));
   // armed, and Aurora gone: now to the ship
-  if (st.phase === 'knighted' && st.phaseT >= T.risen) card(k, 'The Arming', 'Now to your ship', Math.min(1, clamp((st.phaseT - T.risen) / 0.5, 0, 1), clamp((T.risen + 4 - st.phaseT) / 0.6, 0, 1)));
+  if (st.phase === 'knighted' && st.phaseT >= T.risen) card(k, TEXT.prologue.captions.toShip[0], TEXT.prologue.captions.toShip[1], Math.min(1, clamp((st.phaseT - T.risen) / 0.5, 0, 1), clamp((T.risen + 4 - st.phaseT) / 0.6, 0, 1)));
   k.flat ? k.flat(() => skipHint(k, st)) : skipHint(k, st);
   if (st.fade > 0) k.wash('#000000', st.fade);
 }
@@ -638,7 +639,7 @@ function skipHint(k, st) {
   c.save(); c.globalAlpha = 0.7; c.textAlign = 'right'; c.fillStyle = k.col('#f3c6dc');
   c.font = '700 13px "Josefin Sans", sans-serif';
   // keys: Backspace (the X key takes)
-  if (k.inputMode === 'key') c.fillText('BACKSPACE · SKIP SCENE', 1150, 92);
-  else richText(c, '[B] SKIP SCENE', 1150, 92, { px: 13, mode: k.inputMode || 'key', col: k.col });
+  if (k.inputMode === 'key') c.fillText(TEXT.prologue.skipKey, 1150, 92);
+  else richText(c, TEXT.prologue.skipPad, 1150, 92, { px: 13, mode: k.inputMode || 'key', col: k.col });
   c.restore();
 }

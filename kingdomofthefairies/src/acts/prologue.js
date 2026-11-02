@@ -17,6 +17,7 @@
 // lanterns of health; at none the chase starts again. B skips a scene.
 // Headless: drawing is in prologue-art.js.
 import { clamp } from './shared.js';
+import { TEXT } from '../text_config.js';
 import * as art from './prologue-art.js';
 
 export const BEAT_S = 60 / 76.5;
@@ -28,10 +29,10 @@ export const REACH = 70;                        // how near he must stand to tak
 export const GIFTS = ['flower', 'ring', 'crown', 'gold'];
 // `hand`: where she holds her gift out, stage px from her centre (toward him).
 export const FAIRIES = [
-  { gift: 'flower', id: 'aurora-stand', x: 300, hand: -34, name: 'Aurora' },
-  { gift: 'ring', id: 'fairy-ring', x: 450, hand: -50, name: 'the fairy of the ring' },
-  { gift: 'crown', id: 'fairy-crown', x: 600, hand: -38, name: 'the fairy of the crown' },
-  { gift: 'gold', id: 'fairy-gold', x: 750, hand: -46, name: 'the fairy of gold' },
+  { gift: 'flower', id: 'aurora-stand', x: 300, hand: -34, name: TEXT.prologue.fairies.flower },
+  { gift: 'ring', id: 'fairy-ring', x: 450, hand: -50, name: TEXT.prologue.fairies.ring },
+  { gift: 'crown', id: 'fairy-crown', x: 600, hand: -38, name: TEXT.prologue.fairies.crown },
+  { gift: 'gold', id: 'fairy-gold', x: 750, hand: -46, name: TEXT.prologue.fairies.gold },
 ];
 // He takes a gift with either hand, within GRASP of where she holds it: the
 // outstretched one (prince-court's right hand, HAND ahead of his centre) or
@@ -71,22 +72,22 @@ const ORDER = ['court', 'curse', 'rampart', 'escape', 'bind', 'free', 'armoury',
 // witch takes flight and her demons run on, they seize the princess and fly
 // off with her into the night.
 export const ABDUCT = { swoon: 2.4, swoop: 2.8, seize: 3.8, off: 4.4, gone: 6.0 };
-export const SCENES = [{ name: 'The Betrothal' }, { name: 'The Abduction' }, { name: 'The Arming' }];
+export const SCENES = TEXT.prologue.scenes.map((name) => ({ name }));
 const SCENE_PHASE = ['court', 'rampart', 'bind'];
 export const sceneOf = (phase) => (['court', 'curse'].includes(phase) ? 0 : ['rampart', 'escape'].includes(phase) ? 1 : 2);
 
 export default {
-  id: 0, key: 'prologue', kicker: 'Prologue', title: 'The Betrothal', size: 120, page: 6, intro: true,
-  sub: 'Receive the fairies’ gifts for your bride.',
-  action: 'X: take, give · A: leap',
+  id: 0, key: 'prologue', kicker: TEXT.prologue.kicker, title: TEXT.prologue.title, size: 120, page: 6, intro: true,
+  sub: TEXT.prologue.sub,
+  action: TEXT.prologue.action,
   scenes: SCENES,
   mood: (st) => (['curse', 'rampart', 'escape', 'bind'].includes(st.phase) ? 'storm' : ['free', 'armoury', 'knighted', 'iris'].includes(st.phase) ? 'tender' : 'revel'),
   // the second button takes what he stands beside, else skips the scene
-  touchVerbB: (st) => (st.status === 'play' && st.phase !== 'iris' ? (st.near ? st.near.verb : 'Skip') : ''),
+  touchVerbB: (st) => (st.status === 'play' && st.phase !== 'iris' ? (st.near ? st.near.verb : TEXT.touch.verb.skip) : ''),
   touchLive: (st) => ['court', 'rampart', 'armoury'].includes(st.phase) || (st.phase === 'knighted' && st.phaseT >= T.risen),
-  touchVerb: (st) => (['court', 'curse', 'rampart', 'armoury', 'knighted'].includes(st.phase) ? 'Leap' : ''),
-  touchHint: 'drag to walk, tap to leap',
-  touchScheme: () => ({ mode: 'swipe', hint: 'Drag ↔ to walk · tap to leap' }),
+  touchVerb: (st) => (['court', 'curse', 'rampart', 'armoury', 'knighted'].includes(st.phase) ? TEXT.touch.verb.leap : ''),
+  touchHint: TEXT.prologue.touchHint,
+  touchScheme: () => ({ mode: 'swipe', hint: TEXT.touch.scheme.walkLeap }),
 
   create({ from = null } = {}) {
     const st = {
@@ -155,22 +156,16 @@ export default {
     ? { lanterns: st.lanterns, maxLanterns: LANTERNS, pearls: 0, progress: clamp(st.p.x / RAMPART.end, 0, 1), keepsakes: null } : null),
 
   announce(e) {
-    if (e.type === 'scene') return {
-      court: 'The betrothal court. Walk to each fairy and press A to receive her gift for Princess Azurine.',
-      curse: 'The witch, uninvited, curses the betrothal.',
-      rampart: "Her demons bear Azurine away in a chariot of fire. Run after it along the rampart; leap the fire it drops.",
-      bind: 'In the armoury the witch binds the prince, and laughs at him.',
-      free: 'Aurora comes; the witch flees, and Aurora breaks the spell.',
-      armoury: 'Take up the helmet, the shield and the enchanted sword Aurora gives you.',
-    }[e.phase] || null;
-    if (e.type === 'gift') return `${e.from} gives ${e.gift === 'gold' ? 'gold' : 'the ' + e.gift}.`;
-    if (e.type === 'betrothed') return 'The prince takes Azurine’s hand.';
-    if (e.type === 'witchFlees') return 'The witch flees from Aurora.';
-    if (e.type === 'seized') return 'The witch and her demons seize the princess.';
-    if (e.type === 'carriedOff') return 'They carry Azurine away.';
-    if (e.type === 'arm') return `The ${e.arm}.`;
-    if (e.type === 'armed') return 'Armed for the rescue.';
-    if (e.type === 'toShip') return 'Go to your ship.';
+    const A = TEXT.prologue.announce;
+    if (e.type === 'scene') return A.scene[e.phase] || null;
+    if (e.type === 'gift') return A.gift(e.from, TEXT.prologue.gift[e.gift].gives);
+    if (e.type === 'betrothed') return A.betrothed;
+    if (e.type === 'witchFlees') return A.witchFlees;
+    if (e.type === 'seized') return A.seized;
+    if (e.type === 'carriedOff') return A.carriedOff;
+    if (e.type === 'arm') return TEXT.prologue.arm[e.arm].announce;
+    if (e.type === 'armed') return A.armed;
+    if (e.type === 'toShip') return A.toShip;
     return null;
   },
 
@@ -201,8 +196,8 @@ function court(st, dt, input) {
   // who he is beside, and what X does there (A leaps)
   const f = FAIRIES.find((q) => !st.gifts.includes(q.gift) && handsX(p).some((hx) => Math.abs(q.x + q.hand - hx) < GRASP));
   const done = st.gifts.length === GIFTS.length;
-  st.near = f ? { verb: 'Receive', at: f.x, label: `Receive ${f.gift === 'gold' ? 'the gold' : 'the ' + f.gift}` }
-    : done && Math.abs(AZURINE_X - 60 - p.x) < REACH ? { verb: 'Take her hand', at: AZURINE_X, label: 'Take her hand' }
+  st.near = f ? { verb: TEXT.prologue.receive, at: f.x, label: TEXT.prologue.gift[f.gift].receive }
+    : done && Math.abs(AZURINE_X - 60 - p.x) < REACH ? { verb: TEXT.prologue.takeHand, at: AZURINE_X, label: TEXT.prologue.takeHand }
       : null;
   if (!input.x || !st.near) return;
   if (f) {
@@ -232,7 +227,7 @@ function rampart(st, dt, input) {
       st.events.push({ type: 'scorched', x: p.x }, { type: 'hit' });
       if (st.lanterns <= 0) {
         st.defeatT = 0;
-        st.lostTitle = 'The Chariot\nGets Away'; st.lostSub = 'Leap the fire it drops: touching it costs a lantern.';
+        st.lostTitle = TEXT.prologue.lostTitle; st.lostSub = TEXT.prologue.lostSub;
       }
     }
   }
@@ -276,7 +271,7 @@ function laugh(st) {
 function armoury(st, dt, input) {
   walk(st, dt, input.moveX || 0, input, { leap: true, floor: ARM_FLOOR, x1: 1200 });
   const p = st.p, a = ARMS.find((q) => !st.arms.includes(q.id) && Math.abs(q.x - p.x) < REACH);
-  st.near = a ? { verb: 'Take', at: a.x, label: `Take the ${a.id}` } : null;
+  st.near = a ? { verb: TEXT.touch.verb.take, at: a.x, label: TEXT.prologue.arm[a.id].take } : null;
   if (input.x && a) {
     st.arms.push(a.id); st.score += 50;
     st.events.push({ type: 'arm', arm: a.id, x: a.x, n: st.arms.length, t: st.t });
