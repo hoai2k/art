@@ -83,8 +83,9 @@ export const SCENES = [
   { name: 'Into the Grotto', vent: 0 },
   { name: 'The Deep Caves', vent: 2 },
   { name: "The Dragon's Floor", vent: 3 },
-  { name: "The Witch's Offer" },
-  { name: 'The Moon-Boat Ride' },
+  // the film edition's Water Fairy and her procession in the witch's offer and the moon boat's place
+  { name: FILM ? 'The Water Fairy' : "The Witch's Offer" },
+  { name: FILM ? 'The Marine Procession' : 'The Moon-Boat Ride' },
 ];
 // The descent scene a depth belongs to (0..3), by vent boundaries.
 const SCENE_Y = [0, 800, 2400, 3150]; // just above each scene's vent spot
@@ -162,7 +163,7 @@ export const ridePearlX = (p, rideT) => 1250 - (rideT - p.at) * RIDE.speed;
 // ---------------------------------------------------------------- module
 export default {
   id: 2, key: 'grotto', kicker: 'Act II', title: FILM ? 'The Water Fairy' : "The Sleepers' Grotto", size: 110,
-  sub: FILM ? 'Follow the sinking sword down.\nX takes a pearl from an open clam, or wakes a sleeping crewman.'
+  sub: FILM ? 'Follow the sinking sword down.\nGrab pearls with X and get air from the bubbles.'
     : words('Follow the sinking guitar down.\nSound the conch horns to wake the drowned.'),
   // The film edition: the Water Fairy in the witch's place, and the marine
   // procession's dolphin carriage for the moon boat.
@@ -262,7 +263,7 @@ export default {
     if (FILM) {
       const film = {
         sailorWake: 'The Water Fairy breathes life into the prince. He wakes among his drowned crew.',
-        swimStart: 'Swim down after the sword. Press A to kick. Press X beside an open clam to take its pearl, or beside a sleeping crewman to wake him.',
+        swimStart: 'Follow the sword down. Grab pearls with X and get air from the bubbles.',
         conchBlow: 'The conch sings. Swim close to your crew to wake them.',
         guitarCatch: 'You catch the enchanted sword.',
         witchOffer: 'The Water Fairy waits by the wreck. Swim to her for her blessing.',

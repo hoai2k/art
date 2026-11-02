@@ -78,14 +78,15 @@ export const sceneOf = (phase) => (['court', 'curse'].includes(phase) ? 0 : ['ra
 export default {
   id: 0, key: 'prologue', kicker: 'Prologue', title: 'The Betrothal', size: 120, page: 6, intro: true,
   sub: 'Receive the fairies’ gifts for your bride.',
-  action: 'A: take, give, leap',
+  action: 'X: take, give · A: leap',
   scenes: SCENES,
   mood: (st) => (['curse', 'rampart', 'escape', 'bind'].includes(st.phase) ? 'storm' : ['free', 'armoury', 'knighted', 'iris'].includes(st.phase) ? 'tender' : 'revel'),
-  touchVerbB: (st) => (st.status === 'play' && st.phase !== 'iris' ? 'Skip' : ''),
+  // the second button takes what he stands beside, else skips the scene
+  touchVerbB: (st) => (st.status === 'play' && st.phase !== 'iris' ? (st.near ? st.near.verb : 'Skip') : ''),
   touchLive: (st) => ['court', 'rampart', 'armoury'].includes(st.phase) || (st.phase === 'knighted' && st.phaseT >= T.risen),
-  touchVerb: (st) => (st.phase === 'rampart' ? 'Leap' : st.near ? st.near.verb : ''),
-  touchHint: 'drag to walk, tap to take or leap',
-  touchScheme: () => ({ mode: 'swipe', hint: 'Drag ↔ to walk · tap to take, give or leap' }),
+  touchVerb: (st) => (['court', 'curse', 'rampart', 'armoury', 'knighted'].includes(st.phase) ? 'Leap' : ''),
+  touchHint: 'drag to walk, tap to leap',
+  touchScheme: () => ({ mode: 'swipe', hint: 'Drag ↔ to walk · tap to leap' }),
 
   create({ from = null } = {}) {
     const st = {
@@ -108,17 +109,19 @@ export default {
     st.phaseT += dt;
     st.fade = Math.max(0, st.fade - dt / T.fade);
     const ph = st.phase;
-    // B skips to the next scene (or out of the prologue from the last).
+    // B skips to the next scene (or out of the prologue from the last): pad
+    // B or Backspace, never the X key, which takes; on touch the second
+    // button takes when he stands beside something, else skips.
     if (st.defeatT != null) {
       // out of lanterns: he falls, then the retry card (the chase again)
       st.defeatT += dt;
       if (st.defeatT >= T.defeat) { st.status = 'lost'; st.statusT = 0; }
       return;
     }
-    if (input.b && st.phaseT > 0.3) return skip(st);
+    if (input.b && !input.xKey && !(input.x && st.near) && st.phaseT > 0.3) return skip(st);
     if (ph === 'court') court(st, dt, input);
     else if (ph === 'curse') {
-      walk(st, dt, input.moveX || 0, input, { x1: AZURINE_X - 50 });
+      walk(st, dt, input.moveX || 0, input, { leap: true, x1: AZURINE_X - 50 });
       const was = st.phaseT - dt, at = (q) => was < q && st.phaseT >= q;
       if (at(ABDUCT.swoop)) st.events.push({ type: 'witchSwoop', sound: 'witchBreath', gain: 0.7 });
       if (at(ABDUCT.seize)) st.events.push({ type: 'seized', sound: 'fireRoar', gain: 0.5 });
@@ -193,15 +196,15 @@ function walk(st, dt, mx, input = {}, { leap = false, floor = FLOOR, x0 = 40, x1
 }
 
 function court(st, dt, input) {
-  walk(st, dt, input.moveX || 0, input, { x1: AZURINE_X - 50 });
+  walk(st, dt, input.moveX || 0, input, { leap: true, x1: AZURINE_X - 50 });
   const p = st.p;
-  // who he is beside, and what A does there
+  // who he is beside, and what X does there (A leaps)
   const f = FAIRIES.find((q) => !st.gifts.includes(q.gift) && handsX(p).some((hx) => Math.abs(q.x + q.hand - hx) < GRASP));
   const done = st.gifts.length === GIFTS.length;
   st.near = f ? { verb: 'Receive', at: f.x, label: `Receive ${f.gift === 'gold' ? 'the gold' : 'the ' + f.gift}` }
     : done && Math.abs(AZURINE_X - 60 - p.x) < REACH ? { verb: 'Take her hand', at: AZURINE_X, label: 'Take her hand' }
       : null;
-  if (!input.a || !st.near) return;
+  if (!input.x || !st.near) return;
   if (f) {
     st.gifts.push(f.gift); st.score += 50;
     st.events.push({ type: 'gift', gift: f.gift, from: f.name, x: f.x, n: st.gifts.length, t: st.t });
@@ -271,10 +274,10 @@ function laugh(st) {
 }
 
 function armoury(st, dt, input) {
-  walk(st, dt, input.moveX || 0, input, { floor: ARM_FLOOR, x1: 1200 });
+  walk(st, dt, input.moveX || 0, input, { leap: true, floor: ARM_FLOOR, x1: 1200 });
   const p = st.p, a = ARMS.find((q) => !st.arms.includes(q.id) && Math.abs(q.x - p.x) < REACH);
   st.near = a ? { verb: 'Take', at: a.x, label: `Take the ${a.id}` } : null;
-  if (input.a && a) {
+  if (input.x && a) {
     st.arms.push(a.id); st.score += 50;
     st.events.push({ type: 'arm', arm: a.id, x: a.x, n: st.arms.length, t: st.t });
     if (st.arms.length === ARMS.length) { st.events.push({ type: 'knighted' }); next(st); }
@@ -289,7 +292,7 @@ function knighted(st, dt, input) {
   if (was < T.armed && st.phaseT >= T.armed) { st.armed = true; st.events.push({ type: 'armed', x: st.p.x, sound: 'lampLit' }); }
   if (was < T.risen && st.phaseT >= T.risen) st.events.push({ type: 'toShip' });
   if (st.phaseT < T.risen) { st.p.vx = 0; return; }
-  walk(st, dt, input.moveX || 0, input, { floor: ARM_FLOOR, x0: -100, x1: 1400 });
+  walk(st, dt, input.moveX || 0, input, { leap: true, floor: ARM_FLOOR, x0: -100, x1: 1400 });
   if (st.p.x <= EXIT_X[0] || st.p.x >= EXIT_X[1]) { st.exitSide = st.p.x <= EXIT_X[0] ? -1 : 1; next(st); }
 }
 

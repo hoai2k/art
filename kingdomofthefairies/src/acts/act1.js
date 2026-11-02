@@ -8,7 +8,7 @@ import * as art from './act1-art.js';
 
 // Ending timeline, seconds per phase. Each scene shows its moment and moves
 // on: the deck rises as soon as the ship's bell has rung.
-export const ENDING = { landho: 1.7, party: 6, turn: 4.4, wreck: 4.6, sink: 5.0, iris: 1.2 };
+export const ENDING = { landho: 0.5, party: 6, turn: 4.4, wreck: 4.6, sink: 5.0, iris: 1.2 };
 export const LANTERNS = 4; // paper lanterns lit on the beat during the party
 // Cues within the turn and the wreck (seconds into the phase).
 export const CUES = { strike: 1.2, shipBreak: 2.0, splash: 3.2 };
@@ -49,7 +49,7 @@ export default {
     : 'The witch will turn the wind.\nGather the three tea leaves for the reading.',
   // In the film edition the witch rides her storm cloud, not a moon boat.
   cast: FILM ? { 'witch-moonboat': 'witch-storm' } : undefined,
-  action: 'A: leap',
+  action: FILM ? 'change row to dodge' : 'A: leap',
   scenes: SCENES,
 
   // `from` (optional): { scene } to start at a scene, plus the fields of a
@@ -91,7 +91,8 @@ export default {
     const b = st.board;
 
     if (st.phase === 'voyage') {
-      stepBoard(b, dt, { moveX: input.moveX, rowUp: input.up, rowDown: input.down, leap: input.a });
+      // The film edition's ship has no leap: change row to dodge the rocks.
+      stepBoard(b, dt, { moveX: input.moveX, rowUp: input.up, rowDown: input.down, leap: !FILM && input.a });
       // Each tea leaf gathered is a checkpoint: a retry starts just past it.
       if (b.events.some((e) => e.type === 'keepsake')) {
         st.checkpoint = { scene: Math.min(3, b.keepsakesSpawned), progress: b.progress, leaves: b.leaves, spawned: b.keepsakesSpawned, score: b.score, pearls: b.pearls };

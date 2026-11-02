@@ -58,9 +58,10 @@ export function draw(k, st, t) {
 // then the sea flora, dissolving into Neptune's court.
 const TSETS = ['lobster-palace'];
 const TNAMES = ['The Lobster Palace'];
-const TSUBS = ['Hold [X] to bow and let each guard pass · leap with [A]'];
+// (leaping is said where it is needed: at the pearls)
+const TSUBS = ['Hold [X] to bow and let each guard pass'];
 // on touch a tap leaps (there is no Leap button there), so it says tap
-const TSUBS_TOUCH = ['Hold [X] to bow and let each guard pass · tap to leap'];
+const TSUBS_TOUCH = ['Hold [X] to bow and let each guard pass'];
 const tsub = (k, i) => (k.inputMode === 'touch' ? TSUBS_TOUCH : TSUBS)[i];
 const BOW_H = 160 * 300 / 360;   // prince-crouch (240 x 300) at the standing pose's scale
 function transformation(k, st, t) {
@@ -124,7 +125,12 @@ function prompt(k, text, x, y, col = '#f3c6dc') {
   c.restore();
 }
 
+// On entering Neptune's court, for its first seconds: how to hide.
+export const COURT_PROMPT = 8;
 export function drawOver(k, st) {
+  if (FILM && st.transform == null && st.courtAt != null && st.status === 'play' && st.t - st.courtAt < COURT_PROMPT) {
+    prompt(k, (k.inputMode === 'touch' ? 'Hold Hide' : 'Hold [X]') + ' to hide behind a courtier from guards and from the witch’s eye', 640, 150);
+  }
   if (st.phase === 'iris') k.iris(640, 400, 780 * (1 - easeInOut(st.phaseT / OUTRO.iris)));
   if (st.status === 'won') k.iris(640, 400, 0);
 }
@@ -144,7 +150,7 @@ export function onEvent(k, e, st) {
   if (e.type === 'unseen') { k.text('Unseen +25', e.x, e.y - 190); }
   if (e.type === 'whalePass') { k.shake(0.25); }
   // as it comes between the eye and the hall, say what it is for
-  if (e.type === 'whaleMask') k.text(FILM ? 'The whale hides you from the eye: go!' : 'The whale hides you: go!', 640, 520, true);
+  if (e.type === 'whaleMask' && !FILM) k.text('The whale hides you: go!', 640, 520, true);
   if (e.type === 'pearlTaken') { const px = PEDESTAL.x - st.cam, py = pearlY(k, ROWY[0] - 10); k.burst(px, py, '#eef3ea', 22, 'sparkle'); k.burst(px, py, '#f3c6dc', 14, 'sparkle'); k.text('Her pearl', px - 60, 200, true); }
   if (e.type === 'whaleTurn') k.shake(0.4);
   if (e.type === 'swallow') { k.shake(0.9); k.flash(0.4); }

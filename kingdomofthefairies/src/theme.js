@@ -1,30 +1,29 @@
-// Three editions, chosen by the query (headless tests: KOTF_EDITION, the same
+// Two editions, chosen by the query (headless tests: KOTF_EDITION, the same
 // names; unset means the default):
-// - the default (no ?widowsbay, ?widowsbay=off, or any value but on and
-//   partial): the film edition, following Méliès's 1903 film
-//   (design/film-adaptation.md), with a prologue and six acts;
-// - ?widowsbay=partial: the original five acts under the new title, with no
-//   band, song or guitar (new art fills their places, PARTIAL_CAST);
-// - ?widowsbay=on: the preserved music-video edition.
+// - the default (no ?widowsbay, ?widowsbay=off, or any value but on): the
+//   film edition, following Méliès's 1903 film (design/film-adaptation.md),
+//   with a prologue and six acts;
+// - ?widowsbay=on: the preserved music-video edition, unless the deploy left
+//   it out (<meta name="kotf-widowsbay" content="off">, written by publish.sh).
 const query = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('widowsbay') : null;
 const env = typeof process !== 'undefined' ? process.env?.KOTF_EDITION : undefined;
-export const editionOf = (q) => ({ on: 'widowsbay', partial: 'partial', classic: 'partial' }[String(q ?? '').toLowerCase()] || 'film');
-export const EDITION = env ? (['widowsbay', 'partial', 'film'].includes(env) ? env : 'film') : editionOf(query);
+export const WIDOWSBAY_DEPLOYED = typeof document === 'undefined' || document.querySelector?.('meta[name="kotf-widowsbay"]')?.content !== 'off';
+export const editionOf = (q, deployed = WIDOWSBAY_DEPLOYED) => (deployed && String(q ?? '').toLowerCase() === 'on' ? 'widowsbay' : 'film');
+export const EDITION = env ? (env === 'widowsbay' ? 'widowsbay' : 'film') : editionOf(query);
 // The film edition's cast look: the hand-tinted alternates (design/
 // character-audit.md, image requests F8) by default, or ?look=original for
 // the first, cleaner art. Settings › Cast look changes it too.
 export const LOOK_PARAM = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('look') : null;
 // LEGACY: the band, the song and the Widow's Bay title.
 export const LEGACY = EDITION === 'widowsbay';
-export const PARTIAL = EDITION === 'partial';
 export const FILM = EDITION === 'film';
-// CLASSIC: the original five acts (the query editions).
+// CLASSIC: the original five acts (Widow's Bay).
 export const CLASSIC = !FILM;
 export const TITLE = LEGACY ? "Widow's Bay" : 'Kingdom of the Fairies';
 export const BAY_TITLE = LEGACY ? "Widow's Bay" : 'The Enchanted Tower';
 // Each edition's saves and settings (src/editor.js lists them for ?edit=local).
-export const STORAGE_PREFIXES = { widowsbay: 'widowsbay', partial: 'kingdomofthefairies.partial', film: 'kingdomofthefairies' };
-export const STORAGE_PREFIX = LEGACY ? 'widowsbay' : PARTIAL ? 'kingdomofthefairies.partial' : 'kingdomofthefairies';
+export const STORAGE_PREFIXES = { widowsbay: 'widowsbay', film: 'kingdomofthefairies' };
+export const STORAGE_PREFIX = LEGACY ? 'widowsbay' : 'kingdomofthefairies';
 import { WALK_FIT, POSE_FIT } from './sprite-fit.js';
 
 export function themeManifest(manifest, edition = EDITION) {
@@ -46,10 +45,10 @@ export function applyDocumentTheme() {
   document.title = TITLE + (location.pathname.includes('/workbench/') ? ' · Workbench' : '');
   // Each edition's instructions pages and tabs; the other edition's are
   // marked ed-off so the shell never shows them.
-  // data-classic-only: the original acts' pages (both query editions);
+  // data-classic-only: the original acts' pages (Widow's Bay);
   // data-legacy-only: the band and the song (?widowsbay alone).
   for (const el of document.querySelectorAll(FILM ? '[data-classic-only]' : '[data-film-only]')) { el.classList.add('ed-off'); el.hidden = true; }
-  if (PARTIAL || FILM) partialWords(document.querySelector('#instructions'));
+  if (FILM) filmWords(document.querySelector('#instructions'));
   if (!LEGACY) return;
   for (const el of document.querySelectorAll('[data-widowsbay]')) el.textContent = el.dataset.widowsbay;
   for (const el of document.querySelectorAll('[data-legacy-only]:not(.ins-page)')) el.hidden = false;
@@ -59,16 +58,9 @@ export function applyDocumentTheme() {
   for (const el of document.querySelectorAll('link[data-legacy-icon]')) el.href = el.dataset.legacyIcon;
 }
 
-// The partial edition's swaps: the guitar becomes a sword, in its art and in
-// its words. Strict: a legacy id here never draws itself, so until the new
-// art loads the code's own fallback is used (the sailor stands in the moon
-// boat instead of sitting with his guitar).
-export const PARTIAL_CAST = {
-  'guitar-sinking': 'sword-sinking', 'keepsake-guitar': 'keepsake-sword', 'sailor-seated': 'sailor-seated-plain',
-};
-// The partial and film editions have no guitar: the enchanted sword in its place.
-export const words = (s) => (PARTIAL || FILM ? String(s).replace(/its music wakes/g, 'its glow wakes').replace(/guitar/g, 'sword').replace(/Guitar/g, 'Sword') : s);
-function partialWords(root) {
+// The film edition has no guitar: the enchanted sword in its place.
+export const words = (s) => (FILM ? String(s).replace(/its music wakes/g, 'its glow wakes').replace(/guitar/g, 'sword').replace(/Guitar/g, 'Sword') : s);
+function filmWords(root) {
   if (!root) return;
   const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   for (let n = walk.nextNode(); n; n = walk.nextNode()) if (/guitar|music wakes/i.test(n.nodeValue)) n.nodeValue = words(n.nodeValue);

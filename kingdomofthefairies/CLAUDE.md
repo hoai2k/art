@@ -5,12 +5,12 @@
   Aurora, the water fairy and the hostile witch are distinct characters.
 - Preserve gameplay unless a requested update explicitly changes it. Existing
   adaptation mechanics must not be described as canonical film events.
-- Three editions (README.md): the default (the film edition, also
-  `?widowsbay=off`), `?widowsbay=partial` (the original five acts with no
-  band, song or guitar) and
-  `?widowsbay=on` (the preserved original). Run the original acts' suites under
-  `KOTF_EDITION=widowsbay` and `KOTF_EDITION=partial`, and the film suite under
-  `KOTF_EDITION=film`. `?edit=local` sets each edition's unlocks in the browser.
+- Two editions (README.md): the default (the film edition, also
+  `?widowsbay=off`; the partial edition was removed and its address plays
+  this one) and `?widowsbay=on` (the preserved original), which a deploy can
+  leave out (`deploy_config.json` `includeWidowsBay`, applied by
+  `publish.sh`). Run the original acts' suites under
+  `KOTF_EDITION=widowsbay`, and the film suite under `KOTF_EDITION=film`. `?edit=local` sets each edition's unlocks in the browser.
 - Only delivered period music plays by default. The modern song and band art
   are reserved for `?widowsbay=on`; preserve that edition and its source assets.
 - Generate new sound effects through `design/source/build_sfx.py` in the same

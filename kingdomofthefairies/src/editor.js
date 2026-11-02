@@ -1,17 +1,18 @@
 // ?edit=local: a panel for setting how far each edition is unlocked on this
 // machine. Each edition keeps its own save (STORAGE_PREFIXES); the panel
-// reads and writes all three, so they can be set independently. The choice
+// reads and writes both, so they can be set independently. The choice
 // runs from "nothing unlocked" (only the first act can be played) through
 // each act by name (it and every act before it open) to "everything
 // unlocked" (every act and every scene in the scene select). Nothing here
 // leaves this browser.
-import { STORAGE_PREFIXES, EDITION } from './theme.js';
+import { STORAGE_PREFIXES, EDITION, WIDOWSBAY_DEPLOYED } from './theme.js';
 
-const EDITIONS = [
+const EDITIONS_ALL = [
   { id: 'film', name: 'The film edition (default)', query: '', acts: ['Prologue · The Betrothal', 'Act I · The Royal Crossing', 'Act II · The Water Fairy', "Act III · Neptune's Court", "Act IV · The Whale's Passage", 'Act V · The Enchanted Tower', 'Act VI · The Burning Tower'] },
-  { id: 'partial', name: 'Kingdom of the Fairies, classic', query: '?widowsbay=partial', acts: ['Act I · The Crossing', "Act II · The Sleepers' Grotto", "Act III · The Sea King's Court", "Act IV · The Whale's Road", 'Act V · The Enchanted Tower'] },
   { id: 'widowsbay', name: "Widow's Bay", query: '?widowsbay=on', acts: ['Act I · The Crossing', "Act II · The Sleepers' Grotto", "Act III · The Sea King's Court", "Act IV · The Whale's Road", "Act V · Widow's Bay"] },
 ];
+// (Widow's Bay only where the deploy kept it: publish.sh)
+const EDITIONS = EDITIONS_ALL.filter((ed) => ed.id !== 'widowsbay' || WIDOWSBAY_DEPLOYED);
 // The dropdown's levels for an edition: value = how many acts are open
 // (1 = nothing unlocked), plus 'all' for every act and every scene.
 const levels = (ed) => [

@@ -620,7 +620,7 @@ function flame(k, x, by, s, t) {
   }
 }
 
-// "[A] Receive the ring" over what he stands beside.
+// "[X] Receive the ring" over what he stands beside.
 function prompt(k, st, near) {
   const c = k.c, x = near.at - camX(st), y = FLOOR - 290;
   c.save(); c.font = '700 15px "Josefin Sans", sans-serif'; c.textAlign = 'center';
@@ -628,7 +628,7 @@ function prompt(k, st, near) {
   c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 20, w, 30, 15); c.fill();
   c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');
   // on touch the button itself is named for it, so the label alone
-  richText(c, (k.inputMode === 'touch' ? '' : '[A] ') + near.label.toUpperCase(), x, y + 1, { px: 15, mode: k.inputMode || 'key', col: k.col });
+  richText(c, (k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase(), x, y + 1, { px: 15, mode: k.inputMode || 'key', col: k.col });
   c.restore();
 }
 
@@ -637,6 +637,8 @@ function skipHint(k, st) {
   if (k.inputMode === 'touch') return;   // the Skip button says it
   c.save(); c.globalAlpha = 0.7; c.textAlign = 'right'; c.fillStyle = k.col('#f3c6dc');
   c.font = '700 13px "Josefin Sans", sans-serif';
-  richText(c, '[B] SKIP SCENE', 1150, 92, { px: 13, mode: k.inputMode || 'key', col: k.col });
+  // keys: Backspace (the X key takes)
+  if (k.inputMode === 'key') c.fillText('BACKSPACE · SKIP SCENE', 1150, 92);
+  else richText(c, '[B] SKIP SCENE', 1150, 92, { px: 13, mode: k.inputMode || 'key', col: k.col });
   c.restore();
 }

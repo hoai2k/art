@@ -9,7 +9,7 @@ const { chromium } = await playwright();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 const evidence = [];
 try {
- for (const edition of ['off', 'partial', 'on']) {
+ for (const edition of ['off', 'on']) {
   const page = await browser.newPage({viewport:{width:1280,height:720}}), errors=[];
   page.on('pageerror', e=>errors.push(e.message));
   await page.goto(`${server.url}/?qa&edit=local&widowsbay=${edition}`);
@@ -85,5 +85,5 @@ try {
   evidence.push({edition,size,mobile});await page.close();
  }
  await writeFile(`${output}/review.json`,JSON.stringify(evidence,null,2));
- console.log('Credits fit without scrolling at 6 viewport sizes in all 3 editions plus 4 phone configurations; themed scrollbars, focus cues, keyboard scrolling and dialog navigation pass');
+ console.log('Credits fit without scrolling at 6 viewport sizes in both editions plus 4 phone configurations; themed scrollbars, focus cues, keyboard scrolling and dialog navigation pass');
 } finally {await browser.close();await server.close();}

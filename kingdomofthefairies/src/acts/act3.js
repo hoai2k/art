@@ -182,7 +182,8 @@ export default {
   sub: FILM ? "Cross Neptune's hall to his seal of passage.\nThe witch is watching through her scrying eye."
     : "Cross the Sea King's hall to the treasury\nand take her pearl from its pedestal.",
   // Shown as a silent-film intertitle after the act card.
-  intertitle: FILM ? "Hold X to bow: lobsters will pass.\nHide beside a courtier from human guards\nand the witch's eye. A jumps up a level.\n\nNeptune grants you passage:\nwalk up to his seal at the far end of the hall."
+  // (the film edition's card and the hall's own prompts say it all)
+  intertitle: FILM ? null
     : "Hide beside a courtier\nfrom the Sea King's lantern.\n\nTake her pearl from the pedestal\nat the far end of the hall.",
   action: FILM ? 'X: hide · A: jump' : 'A: hide',
   ...(FILM ? {
@@ -236,6 +237,7 @@ export default {
     Object.assign(st.stats, from.stats || {});
     st.gaze.dur = TUNE.firstDark + 1;                 // the lantern stays dark a while first
     st.whale.next = 14; st.fish.next = 26;
+    st.courtAt = st.t;   // resumed in the court: its prompt shows again
     st.checkpoint = { ...from, scene: k };
     return st;
   },
@@ -299,7 +301,7 @@ export default {
     if (e.type === 'spotted') return FILM ? "Spotted by the witch's eye!" : 'Spotted by the gaze lantern!';
     if (e.type === 'gazeTurn') return `${FILM ? "The witch's eye sweeps" : "The Sea King's lantern turns"} ${e.dir > 0 ? 'from the left' : 'from the right'}. Hide beside a courtier!`;
     if (e.type === 'whaleNear') return FILM ? "Neptune's whale is coming." : 'The whale is coming.';
-    if (e.type === 'whalePass') return FILM ? "The whale masks the hall: the witch's eye cannot see you." : 'The whale masks the hall: the lantern cannot see you.';
+    if (e.type === 'whalePass') return FILM ? "Neptune's whale passes." : 'The whale masks the hall: the lantern cannot see you.';
     if (e.type === 'pearlTaken') return FILM ? "Neptune's seal: he grants you passage on his whale." : 'You take her pearl.';
     if (e.type === 'swallow') return FILM ? 'The whale takes you aboard.' : 'The whale swallows the court.';
     return null;
@@ -537,7 +539,7 @@ function stepPassage(st, dt, input) {
     f.fade += dt;
     if (f.fade >= P.fade) {
       f.fade = 0;
-      if (f.set >= PASSAGE_SETS - 1) { st.transform = null; st.tf = null; st.events.push({ type: 'courtOpens' }); return; }
+      if (f.set >= PASSAGE_SETS - 1) { st.transform = null; st.tf = null; st.courtAt = st.t; st.events.push({ type: 'courtOpens' }); return; }
       f.set++; f.x = P.x0 + 40; f.vx = 0; f.bow = false;
       st.events.push({ type: 'passageSet', set: f.set });
     }
