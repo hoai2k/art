@@ -9,7 +9,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -71,6 +71,20 @@ test('The Water Fairy gives gift after gift, each flying up onto the heap; X bes
   st.creditsT = 40; actBurning.step(st, DT, { x: true });
   assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
   st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
+});
+
+test('Inside the tower: the left fires are lit by a demon once he moves; a second ladder unfolds when the floor breaks', () => {
+  const st = actBurning.create({ from: { scene: 0 } });
+  assert.equal(st.phase, 'house'); assert.equal(towerLeftFire(st), 0);
+  actBurning.step(st, DT, {}); assert.equal(st.leftFireT, null, 'nothing until he moves');
+  actBurning.step(st, DT, { moveX: 1 }); assert.equal(st.leftFireT, 0);
+  run(actBurning, st, TOWER_FIRE.run + TOWER_FIRE.light + 0.1); assert.equal(towerLeftFire(st), 1);
+  const idle = actBurning.create({ from: { scene: 0 } }); run(actBurning, idle, TOWER_FIRE.wait + 0.05); assert.ok(idle.leftFireT != null, 'or after a moment');
+  const l2 = st.conns.find((c) => c.id === 'ladderDown2');
+  assert.ok(l2 && !l2.on);
+  const carried = actBurning.create({ from: { scene: 1 } });
+  assert.ok(carried.conns.find((c) => c.id === 'ladderDown2').on, 'the carry finds both ladders down');
+  assert.equal(towerLeftFire(carried), 1);
 });
 
 test('Act II scene names follow the film', () => {

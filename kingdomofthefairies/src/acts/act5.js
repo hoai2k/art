@@ -668,7 +668,7 @@ function breakAway(st) {
   st.broke = true;
   for (const c of st.conns) {
     if (c.id === 'stairs' || c.id === 'ladderUp' || c.id === 'ivy') c.on = false;
-    if (c.id === 'ladderDown' || c.id === 'slope') c.on = true;
+    if (c.id === 'ladderDown' || c.id === 'ladderDown2' || c.id === 'slope') c.on = true;
   }
   st.spans[1] = [[380, 580], [650, 800]];
   st.ladderDropT = 0;

@@ -147,6 +147,10 @@ export function swimPosition(sw) {
 }
 // The rescue opens a clear route on the right. Time and descent both
 // extinguish it, so waiting works and reaching the ground always clears it.
+// The left-hand demon runs in (`run` s) and lights the fires behind him
+// (over `light` s) once he has moved or `wait` s have passed.
+export const TOWER_FIRE = { wait: 1.5, run: 0.9, light: 0.9 };
+export const towerLeftFire = st => st.leftFireT == null ? 0 : clamp((st.leftFireT - TOWER_FIRE.run) / TOWER_FIRE.light, 0, 1);
 export const TOWER_ESCAPE = { x: HOUSE.wallR, fireSeconds: 8 };
 export function towerEscapeFire(st) {
   if (!st.p?.carry) return 1;
@@ -481,6 +485,15 @@ export const actBurning = {
     const st = act5.create({ seed, carry, from: { ...(from || {}), scene: lk } });
     st.part = 'burning';
     st.houseExit = { side: 'right', x: TOWER_ESCAPE.x };
+    // A second ladder from the middle floor to the ground, unfolding just
+    // after the first when the floor breaks, so the way down reads clearly.
+    if (!st.conns.some((c) => c.id === 'ladderDown2')) {
+      const saved = from?.conns?.find((c) => c.id === 'ladderDown2');
+      st.conns.push({ id: 'ladderDown2', kind: 'ladder', a: { x: 772, f: 0 }, b: { x: 772, f: 1 }, on: saved ? !!saved.on : !!st.broke });
+    }
+    // The left-hand demon and its fires arrive once he is inside (TOWER_FIRE);
+    // a resume into the carry finds them already lit.
+    st.leftFireT = st.p.carry || (from?.scene | 0) > 1 ? 99 : null;
     st.escapeT = st.p.carry ? Math.max(0, from?.escapeT || 0) : null;
     st.escapeFire = st.p.carry ? (from?.escapeFire ?? 1) : 1;
     st.carry = { ...CARRY_DEFAULT, ...carry };
@@ -511,6 +524,9 @@ export const actBurning = {
     if (st.phase === 'house') {
       const carrying = st.p.carry;
       if (carrying) { st.escapeT = (st.escapeT || 0) + dt; st.escapeFire = towerEscapeFire(st); }
+      // the demon comes as soon as he moves (or after a moment) and lights the fires behind him
+      if (st.leftFireT == null && (Math.abs(input.moveX || 0) > 0.15 || input.up || input.a || st.phaseT >= TOWER_FIRE.wait)) { st.leftFireT = 0; st.events.push({ type: 'demonArrives' }); }
+      else if (st.leftFireT != null) st.leftFireT += dt;
       stepHouse(st, dt, input);
       if (!carrying && st.p.carry) { st.escapeT = 0; st.escapeFire = 1; }
       if (st.phase === 'house' && st.p.carry) st.escapeFire = towerEscapeFire(st);
@@ -560,6 +576,7 @@ export const actBurning = {
     if (e.type === 'apotheosis') return 'Jump into the light beneath Aurora when you are ready.';
     if (e.type === 'ascend') return 'The Kingdom of the Fairies.';
     if (e.type === 'floatDown') return 'You float gently down.';
+    if (e.type === 'demonArrives') return 'A demon runs in behind you and sets the doorway alight.';
     if (e.type === 'leaveToTitle') return 'Returning to the title screen.';
     if (e.type === 'giftGiven') return e.n === 1 ? 'The Water Fairy gives you a gift.' : `Gift ${e.n}.`;
     if (e.type === 'finale') return 'The end. Credits: principal game designer Hoai Nguyen; after Le Royaume des fées by Georges Méliès. Thank you for playing.';
