@@ -10,8 +10,8 @@ export const TEXTURE_SLOTS = {
   brick_red: ['textures/brick_red.png', 2], brick_buff: ['textures/brick_buff.png', 2],
   stone: ['textures/stone_ashlar.png', 2], clapboard: ['textures/clapboard.png', 2],
   shingles: ['textures/roof_shingles.png', 3], roof_metal: ['textures/roof_metal.png', 3], slate: ['textures/roof_slate.png', 3],
-  asphalt: ['textures/asphalt.png', 4], sidewalk: ['textures/sidewalk.png', 3], grass: ['textures/grass_autumn.png', 4],
-  leaves: ['textures/leaf_litter.png', 3], bark: ['textures/bark_maple.png', 1], bark_willow: ['textures/bark_willow.png', 1],
+  asphalt: ['textures/asphalt.png', 4], sidewalk: ['textures/sidewalk.png', 3], grass: ['textures/grass_autumn.png', 2.4],
+  leaves: ['textures/leaf_litter.png', 1.0], bark: ['textures/bark_maple.png', 1], bark_willow: ['textures/bark_willow.png', 1],
   gravel: ['textures/gravel_path.png', 3], water: ['textures/water_avon.png', 8],
   // close-ups, blended in near the camera when the creature is small
   soil_cu: ['textures/soil_closeup.png', 0.2], grass_cu: ['textures/grass_roots_closeup.png', 0.2], moss: ['textures/moss.png', 0.3],
@@ -19,6 +19,10 @@ export const TEXTURE_SLOTS = {
   // the facade kit (round 8): sheets of parts for the modelled fronts (see materials.js KIT)
   kit_windows: ['kit/windows_victorian.png', 1], kit_shopfronts: ['kit/shopfronts.png', 1], kit_doors: ['kit/doors.png', 1],
   kit_cornices: ['kit/cornices.png', 1], kit_trim: ['kit/trim.png', 1], kit_awnings: ['kit/awnings.png', 1],
+  // the town ground (round 10/11): packed into one texture array by materials.js groundArray()
+  slab: ['textures/sidewalk_slab_hd.png', 1.5], curb_face: ['textures/curb_face.png', 1.2], gutter: ['textures/gutter.png', 1.6],
+  pavers: ['textures/pavers_square.png', 1.8], tactile: ['textures/tactile_paving.png', 0.6], mulch: ['textures/mulch_bed.png', 1.2],
+  asphalt_patched: ['textures/asphalt_patched.png', 6], leaf_scatter: ['textures/leaf_scatter.png', 0.8], leaf_drift: ['textures/leaf_drift_edge.png', 1.4],
 };
 // Facade elevations, in the order of the shader's candidates (aFac). The
 // delivered pictures are not edge to edge (sky, bushes, margins), so each has
@@ -45,7 +49,11 @@ export const FACADES = [
 ];
 export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 5, italianate: 6, cottage: 7, clapboard: 8, queenAnne: 9, side: 10, back: 11, church: 12, buff3: 13, modern: 14, buffCottage: 15, garage: 16 };
 export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png',
-  blades: 'sprites/grass_blades.png', pebbles: 'sprites/pebbles.png', litter: 'sprites/litter_bits.png' };
+  blades: 'sprites/grass_blades.png', pebbles: 'sprites/pebbles.png', litter: 'sprites/litter_bits.png',
+  // ground detail (round 10/11, delivered with real alpha: not keyed): packed into the atlas in ground.js
+  leavesHd: 'sprites/leaves_single_hd.png', piles: 'sprites/leaf_piles.png', items: 'sprites/street_ground_items.png',
+  plants: 'sprites/ground_plants.png', debris: 'sprites/ground_debris.png' };
+const ALPHA_SPRITES = new Set(['leavesHd', 'piles', 'items', 'plants', 'debris']);
 export const SKY = 'ui/sky_autumn.png';
 // facade kit sheets in shader order: [slot, columns, rows]
 export const KIT_GRIDS = [['kit_windows', 4, 2], ['kit_shopfronts', 4, 1], ['kit_doors', 3, 2], ['kit_cornices', 1, 4], ['kit_trim', 4, 2], ['kit_awnings', 4, 1]];
@@ -72,12 +80,12 @@ export async function loadAssets(manifestUrl, opts = {}) {
     if (!listed.has(file)) continue;
     jobs.push(load(file).then((img) => {
       const t = new THREE.Texture(img); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace;
-      t.anisotropy = 4; t.needsUpdate = true; tex[slot] = { texture: t, size };
+      t.anisotropy = 8; t.needsUpdate = true; tex[slot] = { texture: t, size };
     }).catch((e) => console.warn('[town] texture failed', file, e)));
   }
   for (const [slot, file] of Object.entries(SPRITES)) {
     if (!listed.has(file)) continue;
-    jobs.push(load(file).then((img) => { sprites[slot] = keyMagenta(img); }).catch((e) => console.warn('[town] sprite failed', file, e)));
+    jobs.push(load(file).then((img) => { sprites[slot] = ALPHA_SPRITES.has(slot) ? { image: img } : keyMagenta(img); }).catch((e) => console.warn('[town] sprite failed', file, e)));
   }
   // the painted sky dome (scaled down: it is seen blurred through haze anyway)
   let sky = null;

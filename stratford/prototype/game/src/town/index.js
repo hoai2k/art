@@ -9,14 +9,15 @@ import { MeshBVH, CENTER } from 'three-mesh-bvh';
 import { SURFACE } from '../surface.js';
 import { loadTown } from './data.js';
 import { loadAssets } from './assets.js';
-import { Builder, ColliderBuilder, PointGrid, pointInPoly, bbox, centroid, disposeObject, rng } from './util.js';
-import { sharedUniforms, groundMaterial, streetMaterial, buildingMaterial, waterMaterial } from './materials.js';
+import { Builder, ColliderBuilder, PointGrid, pointInPoly, bbox, centroid, disposeObject, rng, polyArea } from './util.js';
+import { sharedUniforms, groundMaterial, streetMaterial, buildingMaterial, waterMaterial, groundArray } from './materials.js';
 import { prepareStreets, buildGroundMap, buildChunkStreets, binStreetParts, ROAD_SINK, BAND_SINK } from './streets.js';
 import { addBuilding, BUILDING_ATTRS } from './buildings.js';
-import { createTrees, prepareTrees } from './trees.js';
+import { createTrees, prepareTrees, addStreetTrees } from './trees.js';
 import { placeProps, createProps } from './props.js';
 import { createSky } from './sky.js';
-import { leavesLayer, grassLayer, cellSeed } from './detail.js';
+import { grassLayer, cellSeed } from './detail.js';
+import { buildAtlas, nearLayer, midLayer, fixturesLayer, createView } from './ground.js';
 import { facadeLayer, FACADE_SHOW_RADIUS } from './facade3d.js';
 
 export const CHUNK = 200;
@@ -78,6 +79,7 @@ export async function createTown(opts = {}) {
   ctx.inPark = (x, z) => parkAreas.some((a) => x >= a.bb.minX && x <= a.bb.maxX && z >= a.bb.minZ && z <= a.bb.maxZ && pointInPoly(x, z, a.outer));
   ctx.markingGrid = new PointGrid(20);
   for (const m of ctx.markings) ctx.markingGrid.add(m.cx, m.cz, m);
+  stats.streetTrees = addStreetTrees(ctx);
 
   // chunk grid aligned with the terrain grid
   const X0 = hf.x0, Z0 = hf.z0;
@@ -118,10 +120,14 @@ export async function createTown(opts = {}) {
   const surveyTex = new THREE.DataTexture(svData, 256, svRows, THREE.RGBAFormat, THREE.FloatType);
   surveyTex.needsUpdate = true;
   const facadeUniforms = { flags: detailFlags, survey: surveyTex, focus: { value: new THREE.Vector3() }, radius: { value: FACADE_SHOW_RADIUS } };
+  // the paving and leaf textures in one array; the plazas (Market Square) paved
+  const gdTex = groundArray(assets);
+  const plazas = Array.from({ length: 6 }, () => new THREE.Vector4());
+  data.areas.filter((a) => a.kind === 'plaza').sort((a, b) => polyArea(b.outer) - polyArea(a.outer)).slice(0, 6).forEach((a, i) => { const bb = bbox(a.outer); plazas[i].set(bb.minX, bb.minZ, bb.maxX, bb.maxZ); });
   const mats = {
-    ground: groundMaterial(shared, ground, assets, minWater),
-    street: streetMaterial(shared, assets),
-    markings: streetMaterial(shared, assets, { polygonOffsetFactor: -2, polygonOffsetUnits: -8 }),
+    ground: groundMaterial(shared, ground, assets, minWater, gdTex, plazas),
+    street: streetMaterial(shared, assets, {}, ground, gdTex, plazas),
+    markings: streetMaterial(shared, assets, { polygonOffsetFactor: -2, polygonOffsetUnits: -8 }, ground, gdTex, plazas),
     building: buildingMaterial(shared, assets, facadeUniforms),
     water: waterMaterial(shared, assets),
   };
@@ -480,7 +486,23 @@ export async function createTown(opts = {}) {
     },
   });
   // built-in layers proving the scale system
-  details.add(leavesLayer(details.env));
+  // ground detail in tiers (ground.js): near 3D leaves and debris, mid cards and pebbles, street fixtures
+  const view = createView();
+  const atlas = buildAtlas(assets);
+  const centreL = data.landmarks.find((l) => l.id === 'city-hall') || { x: 0, z: 0 };
+  Object.assign(details.env, {
+    groundClass,
+    streetInfo: (x, z) => {
+      const q = ctx.streets.grid.nearest(x, z, 30); if (!q) return null;
+      const st = q.seg.data; let dx = q.seg.bx - q.seg.ax, dz = q.seg.bz - q.seg.az; const l = Math.hypot(dx, dz) || 1;
+      return { d: q.d - st.hw, hw: st.hw, band: st.band, blv: st.blv, downtown: st.downtown, dx: dx / l, dz: dz / l };
+    },
+    roadsIn: (x0, z0, size) => { const set = new Set(); ctx.streets.grid.query(x0 + size / 2, z0 + size / 2, size * 0.75, (sg) => set.add(sg.data)); return [...set].filter((st) => !st.road.bridge).map((st) => ({ points: st.road.points, hw: st.hw, id: st.id })); },
+    downtownAt: (x, z) => { const q = ctx.streets.grid.nearest(x, z, 40); return (q && q.seg.data.downtown) || Math.hypot(x - centreL.x, z - centreL.z) < 120; },
+  });
+  details.add(nearLayer(details.env, view.U, atlas.texture, view));
+  details.add(midLayer(details.env, view.U, atlas.texture, view));
+  details.add(fixturesLayer(details.env, view.U, atlas.texture, shared));
   details.add(grassLayer(details.env));
   // modelled street fronts near the focus
   const bByCell = new Map();
@@ -541,6 +563,8 @@ export async function createTown(opts = {}) {
       else if (camera) focus.copy(camera.position);
       sky.update(camera, f || (camera && camera.position));
       facadeUniforms.focus.value.copy(focus);
+      view.update(dt || 0, focus, camera, scale);
+      details.tick(dt || 0, view);
       trees.update(focus, Q.treeNear * Math.max(0.6, Math.min(1.5, scale / 0.25)), farR * 0.9);
       props.update(focus, Q.propR);
       details.update(focus, scale);
@@ -570,7 +594,7 @@ export async function createTown(opts = {}) {
       const seen = new Set(); root.traverse((o) => { if (o.geometry) seen.add(o.geometry); });
       let cols = 0; for (const c of chunks.values()) cols += c.colliders.length;
       const box = new THREE.Box3(new THREE.Vector3(-1e9, -1e9, -1e9), new THREE.Vector3(1e9, 1e9, 1e9)); const dc = []; details.collidersNear(box, dc);
-      return { geometries: seen.size + cols + dc.length, chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale };
+      return { geometries: seen.size + cols + dc.length, chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale, zoom: +view.zoom.toFixed(2), groundNearR: +view.rNear.toFixed(2) };
     },
     dispose() {
       disposed = true;
@@ -579,7 +603,7 @@ export async function createTown(opts = {}) {
       trees.dispose(); props.dispose(); sky.dispose();
       if (water) { water.geometry.dispose(); }
       for (const k in mats) mats[k].dispose();
-      ground.texA.dispose(); ground.texB.dispose(); detailFlags.dispose(); surveyTex.dispose();
+      ground.texA.dispose(); ground.texB.dispose(); detailFlags.dispose(); surveyTex.dispose(); gdTex.dispose(); atlas.texture.dispose();
       for (const t of Object.values(assets.tex)) t.texture.dispose();
       assets.sky?.texture.dispose(); for (const t of Object.values(assets.sprites)) t.dispose?.();
       assets.facadeArray?.dispose();
@@ -733,6 +757,8 @@ function createDetails({ scene, chunkReady, chunkKeyOf, env }) {
       for (const L of layers.values()) for (const e of L.cells.values()) for (const m of e.colliders) if (m.userData.box.intersectsBox(box)) out.push(m);
     },
     count() { let n = 0; for (const L of layers.values()) n += L.cells.size; return n; },
+    // per-frame behaviour of the built cells (leaves kicked up, piles burst)
+    tick(dt, view) { for (const L of layers.values()) if (L.layer.tick && active(L)) { try { L.layer.tick(dt, view); } catch (e) { console.warn('[town] detail layer', L.layer.id, e); } } },
     dispose() { for (const id of [...layers.keys()]) api.remove(id); },
   };
   return api;

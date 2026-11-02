@@ -146,10 +146,33 @@
   "sfx/surface-2.mp3",
   "sfx/surface-3.mp3"
  ],
+ "underwater": [
+  "sfx/underwater-1.mp3"
+ ],
  "nut_pickup": [
   "sfx/nut_pickup-1.mp3",
   "sfx/nut_pickup-2.mp3",
   "sfx/nut_pickup-3.mp3"
+ ],
+ "amb_downtown": [
+  "sfx/amb_downtown-1.mp3",
+  "sfx/amb_downtown-2.mp3"
+ ],
+ "amb_park_trees": [
+  "sfx/amb_park_trees-1.mp3",
+  "sfx/amb_park_trees-2.mp3"
+ ],
+ "amb_waterfowl_busy": [
+  "sfx/amb_waterfowl_busy-1.mp3"
+ ],
+ "amb_pond_waterfowl": [
+  "sfx/amb_pond_waterfowl-1.mp3"
+ ],
+ "amb_weir": [
+  "sfx/amb_weir-1.mp3"
+ ],
+ "amb_residential": [
+  "sfx/amb_residential-1.mp3"
  ],
  "city_hall_bell": [
   "sfx/city_hall_bell-1.mp3",
@@ -237,7 +260,14 @@
   "swim_paddle": 0.5,
   "dive": 0.7,
   "surface": 0.6,
+  "underwater": 0.5,
   "nut_pickup": 0.5,
+  "amb_downtown": 0.5,
+  "amb_park_trees": 0.5,
+  "amb_waterfowl_busy": 0.5,
+  "amb_pond_waterfowl": 0.5,
+  "amb_weir": 0.5,
+  "amb_residential": 0.5,
   "city_hall_bell": 0.9,
   "wind_gust": 0.5,
   "car_pass": 0.6,
@@ -252,5 +282,13 @@
   "map_open": 0.5,
   "creature_switch": 0.5
  },
- "_loops": []
+ "_loops": [
+  "underwater",
+  "amb_downtown",
+  "amb_park_trees",
+  "amb_waterfowl_busy",
+  "amb_pond_waterfowl",
+  "amb_weir",
+  "amb_residential"
+ ]
 }

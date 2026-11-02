@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SURFACE } from '../src/surface.js';
+import { buildZones, bedGains, findWeirs, BEDS } from '../src/ambience-zones.js';
 import { stepSound, squirrelStep, climbSound, landSound, splashSound, actionSound, createGrid, leafyAt, mainStreetPoints, distanceGain } from '../src/sfx-map.js';
 
 const game = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -120,4 +121,51 @@ test('positional helpers: tree grid, leafy ground, main streets, distance fallof
   const pts = mainStreetPoints([{ kind: 'primary', points: [[0, 0], [100, 0]] }, { kind: 'footway', points: [[0, 0], [10, 0]] }]);
   assert.ok(pts.length >= 6 && pts.every((p) => p.z === 0 && p.x < 100));
   assert.ok(distanceGain(5) === 1 && distanceGain(100) < distanceGain(50) && distanceGain(400) < 0.2);
+});
+
+// ---- ambient beds by area ---------------------------------------------------------------
+const town = JSON.parse(readFileSync(join(game, 'data', 'town.json'), 'utf8'));
+const zones = buildZones(town);
+const top = (x, z, opts) => { const g = bedGains(zones.weights(x, z), opts); return Object.entries(g).sort((a, b) => b[1] - a[1])[0]?.[0]; };
+const lm = (id) => town.landmarks.find((l) => l.id === id);
+
+test('beds: the approved loops are in the index, the river flow is held', () => {
+  for (const k of ['downtown', 'residential', 'park', 'busy', 'pond', 'weir', 'underwater']) assert.ok(names.includes(BEDS[k]), BEDS[k]);
+  assert.ok(index.amb_downtown.length === 2 && index.amb_park_trees.length === 2, 'both takes kept as variants');
+  assert.ok(!names.includes(BEDS.river), 'amb_river_flow waits for the owner');
+  assert.ok(index._loops.includes('amb_weir'));
+});
+
+test('beds: zone lookup for known points', () => {
+  const ms = lm('market-square'); const ch = lm('city-hall');
+  assert.equal(top(ms.x, ms.z), 'downtown');
+  assert.equal(top(ch.x, ch.z), 'downtown');
+  assert.equal(top(380, -540), 'busy');            // Lake Victoria by Lakeside Drive, between the bridges
+  assert.equal(top(1100, -700), 'busy');           // by the Festival Theatre lawns' shoreline
+  assert.ok(zones.weights(882, -661).busy > 0.5);  // around Tom Patterson Island
+  assert.equal(top(-30, -300), 'pond');            // the calmer lake near the dam
+  const dam = findWeirs(town.water.polygons).filter((w) => w.strength > 0.9)[0];
+  assert.ok(dam, 'the dam is found from the water levels');
+  assert.ok(Math.abs(dam.a[0] + 112) < 2);
+  assert.equal(top(-112, -305), 'weir');            // the Thomas Orr dam
+  assert.ok(zones.weights(-112, -305).weir > 0.9 && zones.weights(0, 0).weir === 0);
+  const res = town.buildings.filter((b) => b.use === 'residential').slice(0, 300)
+    .filter((b) => { const w = zones.weights(b.outer[0][0], b.outer[0][1]); return w.residential > 0.4 && w.downtown < 0.3; });
+  assert.ok(res.length > 100, 'residential streets are residential');
+  const b0 = res[0]; assert.ok(['residential', 'park'].includes(top(b0.outer[0][0], b0.outer[0][1])));
+  const sh = lm('shakespearean-gardens'); assert.ok(zones.weights(sh.x, sh.z).park > 0.4);
+});
+
+test('beds: at most three audible, under water only the underwater bed, zoom quietens, river uses the pond bed', () => {
+  for (const [x, z] of [[0, 0], [380, -540], [-112, -305], [882, -661], [-300, 300]]) {
+    const g = bedGains(zones.weights(x, z));
+    assert.ok(Object.keys(g).length <= 3);
+    assert.ok(Object.values(g).reduce((s, v) => s + v, 0) <= 1.0001);
+  }
+  assert.deepEqual(Object.keys(bedGains(zones.weights(0, 0), { underwater: true })), ['underwater']);
+  const near = bedGains(zones.weights(0, 0), { zoom: 0 }).downtown; const far = bedGains(zones.weights(0, 0), { zoom: 1 }).downtown;
+  assert.ok(far < near && far > 0.6 * near);
+  const riv = { downtown: 0, residential: 0, park: 0, busy: 0, pond: 0, river: 1, weir: 0 };
+  assert.ok(Math.abs(bedGains(riv).pond - 0.35) < 1e-9 && !('river' in bedGains(riv)));
+  assert.ok('river' in bedGains(riv, { hasRiverFlow: true }));
 });

@@ -488,7 +488,7 @@ function playFrame(dt) {
     creature.update(dt, controls, world, camera);
     camCtl.update(dt, controls);
     camera.getWorldDirection(lookDir);
-    audio.listen(camera.position.x, camera.position.y, camera.position.z, lookDir.x, lookDir.z);
+    audio.listen(camera.position.x, camera.position.y, camera.position.z, lookDir.x, lookDir.z, Number.isFinite(camCtl.zoom) ? camCtl.zoom : settings.zoom);
     // the follow camera's zoom is a setting: keep it, written once the player stops zooming
     if (Number.isFinite(camCtl.zoom) && Math.abs(camCtl.zoom - settings.zoom) > 1e-4) {
       settings.zoom = camCtl.zoom; state.zoomSave = 0.6;
@@ -659,7 +659,7 @@ async function boot() {
   // Exploration: landmarks from the world (or the data), nuts placed on the trees.
   const landmarks = world.landmarks?.length ? world.landmarks : townData?.landmarks || [];
   treeGrid = createGrid(world.trees || townData?.trees || []);
-  audio.setWorld({ trees: world.trees || townData?.trees, roads: townData?.roads, cityHall: landmarks.find((l) => l.id === 'city-hall') });
+  audio.setWorld({ trees: world.trees || townData?.trees, roads: townData?.roads, cityHall: landmarks.find((l) => l.id === 'city-hall'), town: townData, waterAt: (x, z) => world.waterAt?.(x, z) });
   const nuts = placeNuts({ trees: world.trees || [], buildings: townData?.buildings || [], probe, assumeRoofs: true });
   exploration = createExploration({ landmarks, nuts });
   exploration.on('discover', ({ landmark }) => { hud.showDiscovery(landmark); audio.play('chime'); input.rumble(0.3, 220); nutDirty(); });

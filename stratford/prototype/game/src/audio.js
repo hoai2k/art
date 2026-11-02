@@ -6,6 +6,7 @@
 // and (playAt) from a place in the town. Held ambient loops are not in the index until the
 // owner approves them. Starts on the first user gesture.
 import { createGrid, distanceGain, distanceCutoff, mainStreetPoints } from './sfx-map.js';
+import { buildZones, bedGains, BEDS } from './ambience-zones.js';
 
 const hz = (m) => 440 * 2 ** ((m - 69) / 12);
 
@@ -33,7 +34,7 @@ export function createAudio() {
   const voices = new Map(); const lastStart = new Map();
   let windBus = null;
   const listener = { x: 0, y: 0, z: 0, rx: 1, rz: 0 };
-  const sources = { trees: null, streets: [], cityHall: null };
+  const sources = { trees: null, streets: [], cityHall: null, waterAt: null };
 
   const AC = () => globalThis.AudioContext || globalThis.webkitAudioContext;
 
@@ -262,20 +263,47 @@ export function createAudio() {
     return true;
   }
 
-  // Approved ambient loops (index._loops) run as beds under the synth ambience; a park bed replaces the synth wind.
-  const beds = [];
-  function startBeds() {
-    if (!ctx || !index || beds.length) return;
-    for (const name of index._loops || []) {
-      if (name === 'underwater' || !hasSample(name)) continue;
-      const c = samples(name);
-      if (!c) { setTimeout(startBeds, 1500); return; }
-      const src = ctx.createBufferSource(); src.buffer = c.buffers[0]; src.loop = true;
-      const g = ctx.createGain(); g.gain.value = index._levels?.[name] ?? 0.5;
-      src.connect(g).connect(ambBus); src.start(); beds.push(src);
-      if (name === 'amb_park_trees' && windBus) windBus.gain.value = 0.15;
+  // Ambient beds: approved loops placed by area (ambience-zones.js), crossfading slowly as the listener
+  // moves. A bed's source runs only while it is audible. The synth wind stays under everything as the
+  // base bed, so there is never silence between zones.
+  const beds = new Map();   // name -> { src, g, target, quiet }
+  let zones = null; let zoomNow = 0; let underwaterNow = false;
+  function bedTargets() {
+    if (!zones) return {};
+    const w = zones.weights(listener.x, listener.z);
+    const gains = bedGains(w, { underwater: underwaterNow, zoom: zoomNow, hasRiverFlow: hasSample(BEDS.river) });
+    const out = {};
+    for (const [k, v] of Object.entries(gains)) out[BEDS[k]] = v * (k === 'underwater' ? 1 : 1) * (index?._levels?.[BEDS[k]] ?? 0.5);
+    return out;
+  }
+  function tickBeds() {
+    if (!ctx || !index || !zones) return;
+    const want = live() && wantAmbience ? bedTargets() : {};
+    const names = new Set([...Object.keys(want), ...beds.keys()]);
+    for (const name of names) {
+      const t = want[name] || 0;
+      let bed = beds.get(name);
+      if (!bed) {
+        if (t <= 0.003 || !hasSample(name)) continue;
+        const c = samples(name);
+        if (!c) continue;    // still decoding: next tick
+        const src = ctx.createBufferSource(); src.buffer = c.buffers[Math.floor(Math.random() * c.buffers.length)]; src.loop = true;
+        const g = ctx.createGain(); g.gain.value = 0;
+        src.connect(g).connect(ambBus); src.start(0, Math.random() * src.buffer.duration);
+        bed = { src, g, quiet: 0 }; beds.set(name, bed);
+      }
+      // slow fades: about 3 s to follow a change (under water: quicker)
+      bed.g.gain.setTargetAtTime(t, ctx.currentTime, name === 'underwater' ? 0.4 : 1.4);
+      bed.quiet = t <= 0.003 ? bed.quiet + 0.4 : 0;
+      if (bed.quiet > 12) { try { bed.src.stop(); bed.g.disconnect(); } catch { /* gone */ } beds.delete(name); }
     }
   }
+  function startBeds() {
+    if (bedTimer || !ctx) return;
+    bedTimer = setInterval(tickBeds, 400);
+    timers.push(bedTimer);
+  }
+  let bedTimer = null;
 
   const rnd = (a, b) => a + Math.random() * (b - a);
   const treeNear = (r) => { const l = sources.trees?.near(listener.x, listener.z, r); return l?.length ? l[Math.floor(Math.random() * l.length)] : null; };
@@ -341,19 +369,24 @@ export function createAudio() {
       try { return sample(name, { ...opts, pos }); } catch { return false; }
     },
     // The listener (the camera): position and the horizontal direction it looks along.
-    listen(x, y, z, fx, fz) {
+    listen(x, y, z, fx, fz, zoom = 0) {
+      zoomNow = zoom;
+      const w = sources.waterAt?.(x, z);
+      underwaterNow = w != null && y < w;
       const l = Math.hypot(fx, fz) || 1;
       listener.x = x; listener.y = y; listener.z = z; listener.rx = -fz / l; listener.rz = fx / l;
     },
     // Where positional sounds come from: tree list, road list, and City Hall's {x, z}.
-    setWorld({ trees, roads, cityHall } = {}) {
+    setWorld({ trees, roads, cityHall, town, waterAt } = {}) {
+      sources.waterAt = waterAt || null;
+      if (town) { try { zones = buildZones(town); } catch (e) { zones = null; console.warn('[audio] no ambience zones:', e?.message || e); } }
       sources.trees = trees ? createGrid(trees) : null;
       sources.streets = mainStreetPoints(roads);
       sources.cityHall = cityHall ? { x: cityHall.x, y: 30, z: cityHall.z } : null;
     },
     has: hasSample,
     preload,
-    dispose() { timers.forEach(clearTimeout); timers = []; ctx?.close?.(); ctx = null; cache.clear(); voices.clear(); },
+    dispose() { timers.forEach(clearTimeout); clearInterval(bedTimer); beds.clear(); timers = []; ctx?.close?.(); ctx = null; cache.clear(); voices.clear(); },
   };
   return api;
 }

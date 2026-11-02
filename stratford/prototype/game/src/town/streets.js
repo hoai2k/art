@@ -29,17 +29,21 @@ export function prepareStreets(ctx) {
   }
   const roads = [];
   const grid = new SegGrid(30);
+  const ch = data.landmarks.find((l) => l.id === 'city-hall'), centre = ch ? [ch.x, ch.z] : null;
   for (const r of data.roads) {
     if (!CURBED.has(r.kind) || r.tunnel) continue;
     const hw = r.width / 2;
     let n = 0, hit = 0;
     walk(r.points, 8, (x, z) => { n++; if (shops.any(x, z, hw + 13)) hit++; });
-    const downtown = n > 0 && hit / n > 0.4;
+    // downtown: mostly shopfronts, or (near the centre, where the street photos show paving
+    // to the curb) a fair share of them
+    let cd = Infinity; if (centre) walk(r.points, 8, (x, z) => { cd = Math.min(cd, Math.hypot(x - centre[0], z - centre[1])); });
+    const downtown = n > 0 && (hit / n > 0.4 || (hit / n > 0.15 && cd < 420));
     const major = r.kind === 'primary' || r.kind === 'secondary' || r.kind === 'trunk';
     const s = {
-      road: r, hw, downtown,
+      road: r, hw, downtown, id: roads.length,
       band: downtown ? 4.4 : major ? 4.6 : 4.0,             // curb to the back of the sidewalk
-      blv: downtown ? 0 : major ? 2.4 : 2.1,                // grass boulevard by the curb
+      blv: downtown ? -1.3 : major ? 2.4 : 2.1,             // grass boulevard by the curb (< 0: a paved strip downtown)
       len: polylineLength(r.points),
     };
     roads.push(s);
@@ -289,9 +293,9 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
     // nearest curbed road: distance from the curb and the street's direction
     const info = (x, z) => {
       const q = streets.grid.nearest(x, z, 40);
-      if (!q) return { d: 9, blv: 0, dx: 1, dz: 0 };
+      if (!q) return { d: 9, din: 9, blv: 0, band: 0, dx: 1, dz: 0 };
       const s = q.seg.data; let dx = q.seg.bx - q.seg.ax, dz = q.seg.bz - q.seg.az; const l = Math.hypot(dx, dz) || 1;
-      return { d: Math.max(0, q.d - s.hw), blv: s.blv, dx: dx / l, dz: dz / l };
+      return { d: Math.max(0, q.d - s.hw), din: Math.max(0, s.hw - q.d), blv: s.blv, band: s.band, dx: dx / l, dz: dz / l };
     };
     // carriageway, traced and triangulated in 4 m tiles so its surface follows the ground
     // (one outline per chunk gives long triangles whose flat faces dip into crowned roads)
@@ -307,7 +311,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
           triangulate(P, (pts) => pts.map((p) => {
             const i = info(p[0], p[1]);
             const y = H(p[0], p[1]) + ROAD_Y; ry.set(p, y);
-            vb.set('aSt', [STREET.road, 0, 0, 0]).set('aDir', [i.dx, i.dz]);
+            vb.set('aSt', [STREET.road, i.din, 1, 0]).set('aDir', [i.dx, i.dz]);      // distance in from the curb (the gutter)
             return vb.v(p[0] - ox, y, p[1] - oz, 0, 1, 0);
           }), vb, (a, b, c) => cb.tri([a[0] - ox, ry.get(a), a[1] - oz], [b[0] - ox, ry.get(b), b[1] - oz], [c[0] - ox, ry.get(c), c[1] - oz], SURFACE.road));
         }
@@ -331,7 +335,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
       }
       triangulate(P, (pts) => pts.map((p) => {
         const m = meta.get(p);
-        vb.set('aSt', [STREET.plate, m.d, m.i.blv, 0]).set('aDir', [m.i.dx, m.i.dz]);
+        vb.set('aSt', [STREET.plate, m.d, m.i.blv, m.i.band]).set('aDir', [m.i.dx, m.i.dz]);
         return vb.v(p[0] - ox, m.y, p[1] - oz, 0, 1, 0);
       }), vb, (a, b, c) => {
         const ma = meta.get(a), mb = meta.get(b), mc = meta.get(c);
@@ -353,9 +357,11 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
           const bot = (p) => { const h = H(p[0], p[1]), g = ctx.hf.at(p[0], p[1]), d = h - (isCurb ? ROAD_SINK + 0.05 : BAND_SINK + 0.25);
             return ctx.hf.waterAt(p[0], p[1]) !== null ? d : Math.max(h - 2.5, Math.min(d, g - ROAD_SINK - 0.05)); };
           const ya = bot(a), yb = bot(b);
-          vb.set('aSt', [STREET.curb, 0, 0, 0]).set('aDir', [-nz, nx]);
-          const i0 = vb.v(a[0] - ox, ya, a[1] - oz, nx, 0, nz), i1 = vb.v(b[0] - ox, yb, b[1] - oz, nx, 0, nz);
-          const i2 = vb.v(b[0] - ox, mb.y, b[1] - oz, nx, 0, nz), i3 = vb.v(a[0] - ox, ma.y, a[1] - oz, nx, 0, nz);
+          // aSt.y: the top of the face at this end (the curb texture hangs from it)
+          vb.set('aSt', [STREET.curb, ma.y, 0, 0]).set('aDir', [-nz, nx]);
+          const i0 = vb.v(a[0] - ox, ya, a[1] - oz, nx, 0, nz), i3 = vb.v(a[0] - ox, ma.y, a[1] - oz, nx, 0, nz);
+          vb.set('aSt', [STREET.curb, mb.y, 0, 0]);
+          const i1 = vb.v(b[0] - ox, yb, b[1] - oz, nx, 0, nz), i2 = vb.v(b[0] - ox, mb.y, b[1] - oz, nx, 0, nz);
           vb.quad(i1, i0, i3, i2);
           cb.quad([b[0] - ox, yb, b[1] - oz], [a[0] - ox, ya, a[1] - oz], [a[0] - ox, ma.y, a[1] - oz], [b[0] - ox, mb.y, b[1] - oz], isCurb ? SURFACE.sidewalk : SURFACE.ground);   // faces out
         }

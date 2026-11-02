@@ -212,8 +212,7 @@
    "dur": 20,
    "level": 0.5,
    "prompt": "Muffled underwater ambience in a slow river, low rumble and faint bubbles, seamless loop, 20 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
    "name": "nut_pickup",
@@ -230,8 +229,7 @@
    "dur": 30,
    "level": 0.5,
    "prompt": "A quiet small-town main street in autumn afternoon: occasional distant cars passing slowly, far-off footsteps and murmur with no clear words, birds, a light breeze in trees; no horns, sirens or music; seamless loop, 30 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
    "name": "amb_park_trees",
@@ -240,16 +238,33 @@
    "dur": 30,
    "level": 0.5,
    "prompt": "A park on a calm October afternoon: wind gently moving through maple trees with dry leaves rustling, chickadees and a blue jay in the distance, seamless loop, 30 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
-   "name": "amb_river",
+   "name": "amb_waterfowl_busy",
+   "round": "S2",
+   "n": 1,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "A river lake shore busy with waterfowl: a great many ducks and geese quacking and honking close by, water lapping, wings splashing, seamless loop, 30 seconds",
+   "loop": true
+  },
+  {
+   "name": "amb_pond_waterfowl",
+   "round": "S2",
+   "n": 1,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "A quiet pond or calm lake with a few waterfowl on it: occasional soft duck quacks and geese far off, gentle lapping at the bank, seamless loop, 30 seconds",
+   "loop": true
+  },
+  {
+   "name": "amb_river_flow",
    "round": "S2",
    "n": 2,
    "dur": 30,
    "level": 0.5,
-   "prompt": "Beside a slow river in a town park: gentle lapping at the bank, ducks and geese far off, wind in willows, seamless loop, 30 seconds",
+   "prompt": "A slow small river flowing past grassy banks under willows: gentle continuous water movement and soft gurgles over stones, no birds, no ducks, no voices, seamless loop, 30 seconds",
    "loop": true,
    "hold": true
   },
@@ -260,8 +275,7 @@
    "dur": 20,
    "level": 0.5,
    "prompt": "A small river dam with water spilling over a low weir, a steady soft roar and splash, seamless loop, 20 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
    "name": "amb_residential",
@@ -270,8 +284,7 @@
    "dur": 30,
    "level": 0.5,
    "prompt": "A quiet residential street in autumn: wind in the trees, a dog barking once far away, a screen door, birds; seamless loop, 30 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
    "name": "city_hall_bell",

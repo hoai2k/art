@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import { SURFACE } from '../surface.js';
 import { painted } from './materials.js';
-import { rng, hash2, Builder } from './util.js';
+import { rng, hash2, Builder, walk } from './util.js';
 
 // Reference trees (metres) per kind. Instances scale them uniformly by
 // height and stretch the crown horizontally to the data's crown radius.
@@ -356,4 +356,30 @@ export function prepareTrees(data, hf) {
     t.y = hf.at(t.x, t.z);
   }
   return trees;
+}
+
+// Downtown street trees (the street photos show small trees in grates along the
+// shopfronts; the map has few): one between each pair of lamps (props.js puts the
+// lamps every 21 m, 0.65 m in from the curb), in the paved strip by the curb.
+export function addStreetTrees(ctx) {
+  const { streets, hf } = ctx, out = [];
+  const near = (x, z, r) => ctx.trees.some((t) => Math.abs(t.x - x) < r && Math.abs(t.z - z) < r && Math.hypot(t.x - x, t.z - z) < r) || out.some((t) => Math.hypot(t.x - x, t.z - z) < r);
+  for (const s of streets.roads) {
+    if (!s.downtown || s.road.bridge) continue;
+    const hw = s.hw;
+    for (const side of [-1, 1]) {
+      walk(s.road.points, 21, (x, z, dx, dz) => {
+        const nx = -dz * side, nz = dx * side, px = x + nx * (hw + 0.85), pz = z + nz * (hw + 0.85);
+        if (hash2(px, pz) < 0.3) return;
+        if (streets.jgrid.any(x, z, 40, (J) => Math.hypot(J.p[0] - x, J.p[1] - z) < J.r + 6)) return;
+        if (ctx.markingGrid.any(px, pz, 4)) return;
+        for (const o of [[0, 0], [nx * 1.6, nz * 1.6], [nx * 3, nz * 3]]) if (ctx.buildingAt(px + o[0], pz + o[1])) return;
+        if (near(px, pz, 6)) return;
+        const h = hash2(pz, px);
+        out.push({ x: px, z: pz, kind: h < 0.6 ? 'linden' : 'maple', height: 6.5 + h * 3, crown: 2.4 + h * 1.1, y: hf.at(px, pz), grate: true });
+      }, side > 0 ? 16.5 : 26.5);
+    }
+  }
+  ctx.trees.push(...out);
+  return out.length;
 }

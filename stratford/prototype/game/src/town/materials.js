@@ -105,14 +105,87 @@ vec4 fallenLeaves(vec2 p, float density, float px) {
 }
 `;
 
+// ---------------------------------------------------------------- the town ground's texture array
+// One sampler for the paving and leaf textures (texture units are few): each
+// delivered texture becomes a 1024 x 1024 layer (repeat-wrapped, mipmapped);
+// a texture not delivered yet gets a procedural stand-in layer.
+export const GD = { slab: 0, pavers: 1, gutter: 2, curb_face: 3, leaf_drift: 4, leaf_scatter: 5, asphalt_patched: 6, tactile: 7 };
+export function groundArray(assets) {
+  const S = 1024, names = Object.keys(GD), n = names.length;
+  const data = new Uint8Array(S * S * 4 * n);
+  const cv = document.createElement('canvas'); cv.width = cv.height = S;
+  const g = cv.getContext('2d', { willReadFrequently: true });
+  const delivered = {};
+  names.forEach((name, layer) => {
+    const t = assets && assets.tex[name], img = t && t.texture.image;
+    g.clearRect(0, 0, S, S);
+    if (img) { g.drawImage(img, 0, 0, S, S); delivered[name] = true; } else GD_STANDIN[name](g, S);
+    const d = g.getImageData(0, 0, S, S).data;
+    // rows flipped: v = 0 at the image's bottom, as for the other textures
+    for (let y = 0; y < S; y++) data.set(d.subarray((S - 1 - y) * S * 4, (S - y) * S * 4), layer * S * S * 4 + y * S * 4);
+  });
+  const tex = new THREE.DataArrayTexture(data, S, S, n);
+  tex.colorSpace = THREE.SRGBColorSpace; tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.generateMipmaps = true; tex.minFilter = THREE.LinearMipmapLinearFilter; tex.magFilter = THREE.LinearFilter; tex.anisotropy = 8;
+  tex.needsUpdate = true;
+  tex.userData.delivered = delivered;
+  return tex;
+}
+const GD_STANDIN = {
+  slab(g, S) { g.fillStyle = '#a9a49a'; g.fillRect(0, 0, S, S); for (let k = 0; k < 3000; k++) { const v = 150 + (k * 37) % 40; g.fillStyle = `rgba(${v},${v - 3},${v - 8},0.25)`; g.fillRect((k * 397) % S, (k * 211) % S, 3, 3); } g.strokeStyle = '#6e6a62'; g.lineWidth = 10; g.strokeRect(5, 5, S - 10, S - 10); },
+  pavers(g, S) { g.fillStyle = '#5e5a55'; g.fillRect(0, 0, S, S); g.fillStyle = '#b8b2a8'; const c = S / 3; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) g.fillRect(i * c + 18, j * c + 18, c - 36, c - 36); },
+  gutter(g, S) { g.fillStyle = '#9a958c'; g.fillRect(0, 0, S, S * 0.16); g.fillStyle = '#8a857c'; g.fillRect(0, S * 0.16, S, S * 0.64); g.fillStyle = '#3c3c3e'; g.fillRect(0, S * 0.8, S, S * 0.2); },
+  curb_face(g, S) { g.fillStyle = '#9c978e'; g.fillRect(0, 0, S, S); g.fillStyle = '#b4afa6'; g.fillRect(0, 0, S, S * 0.12); for (let k = 0; k < 2000; k++) { g.fillStyle = 'rgba(80,76,70,0.2)'; g.fillRect((k * 397) % S, (k * 211) % S, 2, 2); } },
+  leaf_drift(g, S) { const cols = ['#b83a1a', '#d8701e', '#e0a428', '#9a5a2a']; for (let k = 0; k < 1400; k++) { const y = S * Math.pow((k * 0.618) % 1, 2.2) * 0.9, x = (k * 397) % S; g.fillStyle = cols[k % 4]; g.beginPath(); g.ellipse(x, y, 22, 13, k, 0, Math.PI * 2); g.fill(); } },
+  leaf_scatter(g, S) { const cols = ['#b83a1a', '#d8701e', '#e0a428', '#9a5a2a', '#c8b030']; for (let k = 0; k < 160; k++) { const x = (k * 397) % S, y = (k * 613) % S; g.fillStyle = cols[k % 5]; g.beginPath(); g.ellipse(x, y, 40, 26, k, 0, Math.PI * 2); g.fill(); } },
+  asphalt_patched(g, S) { g.fillStyle = '#3e3e40'; g.fillRect(0, 0, S, S); g.fillStyle = '#2e2e30'; g.fillRect(S * 0.1, S * 0.2, S * 0.3, S * 0.15); g.fillRect(S * 0.55, S * 0.6, S * 0.35, S * 0.2); },
+  tactile(g, S) { g.fillStyle = '#d8a020'; g.fillRect(0, 0, S, S); g.fillStyle = '#c08a18'; for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) { g.beginPath(); g.arc((i + 0.5) * S / 8, (j + 0.5) * S / 8, S / 40, 0, Math.PI * 2); g.fill(); } },
+};
+// GLSL for the array, the litter map, plazas, drifts and scattered leaves
+const GLSL_GD = /* glsl */`
+uniform sampler2DArray tGd; uniform vec4 uPlaza[6];
+vec4 gd(float layer, vec2 uv) { return texture(tGd, vec3(uv, layer)); }
+// two lookups rotated and offset, blended by low-frequency noise: no visible repeats
+vec4 gdAT(float layer, vec2 uv) {
+  vec4 a = gd(layer, uv), b = gd(layer, mat2(0.8, -0.6, 0.6, 0.8) * uv * 0.83 + vec2(0.31, 0.57));
+  return mix(a, b, smoothstep(0.3, 0.7, tnoise(uv * 0.41 + 1.3)));
+}
+float litterAt(vec2 p) { return texture2D(tGB, (p - uGR.xy) * uGR.zw).r; }
+bool inPlaza(vec2 p) {
+  for (int i = 0; i < 6; i++) { vec4 r = uPlaza[i]; if (r.z > r.x && p.x > r.x && p.x < r.z && p.y > r.y && p.y < r.w) return true; }
+  return false;
+}
+vec3 paversCol(vec2 q) { vec3 c = gdAT(1.0, q / 1.8).rgb; return c * (0.94 + 0.1 * tnoise(q * 0.3)); }
+// damp, darker ground under thick litter
+vec3 damp(vec3 c, vec2 p, float lit) { return c * (1.0 - 0.3 * clamp(lit, 0.0, 1.0) * smoothstep(0.45, 0.75, tnoise(p * 0.33 + 3.7))); }
+// leaves blown against an edge: dist (m) from the edge, thick at the edge
+vec3 drift(vec3 c, float along, float dist, float amt) {
+  if (amt <= 0.0 || dist > 0.66 || dist < 0.0) return c;
+  vec4 d = gd(4.0, vec2(along / 1.4, max(0.004, 1.0 - dist / 0.66)));
+  return mix(c, d.rgb, d.a * amt);
+}
+float driftAmt(float along, float lit) {
+  return clamp(0.25 + lit * 1.5, 0.0, 1.0) * (0.35 + 0.65 * smoothstep(0.3, 0.7, tnoise(vec2(along * 0.13, 1.7))));
+}
+// scattered leaves: the leaf sheet in two layers, leaf-sized patches shown by density
+vec3 leafScatter(vec3 c, vec2 p, float dens) {
+  if (dens <= 0.01) return c;
+  vec4 l1 = gd(5.0, p / 0.8), l2 = gd(5.0, mat2(0.6, -0.8, 0.8, 0.6) * p / 0.93 + vec2(0.37, 0.11));
+  float a2 = l2.a * smoothstep(1.0 - dens * 0.8 - 0.1, 1.0 - dens * 0.8 + 0.1, tnoise(p * 3.3 + 7.0));
+  float a1 = l1.a * smoothstep(1.0 - dens - 0.1, 1.0 - dens + 0.1, tnoise(p * 4.1));
+  c = mix(c, l2.rgb * 0.92, a2);
+  return mix(c, l1.rgb, a1);
+}
+`;
+
 // ---------------------------------------------------------------- ground (terrain)
-export function groundMaterial(shared, ground, assets, waterLevel) {
+export function groundMaterial(shared, ground, assets, waterLevel, gdTex, plazas) {
   const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'leaves', 'soil_cu', 'grass_cu', 'concrete_cu', 'asphalt_cu'];
   const td = texDefines(assets, slots);
   return painted({ color: 0xffffff }, {
     shared, key: 'town-ground', defines: td.defines,
-    uniforms: { tGA: { value: ground.texA }, tGB: { value: ground.texB }, uGR: { value: ground.rect }, uWL: { value: waterLevel }, ...td.uniforms },
-    fragHead: `uniform sampler2D tGA; uniform sampler2D tGB; uniform vec4 uGR; uniform float uWL;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GROUND}`,
+    uniforms: { tGA: { value: ground.texA }, tGB: { value: ground.texB }, uGR: { value: ground.rect }, uWL: { value: waterLevel }, tGd: { value: gdTex }, uPlaza: { value: plazas }, ...td.uniforms },
+    fragHead: `uniform sampler2D tGA; uniform sampler2D tGB; uniform vec4 uGR; uniform float uWL;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GD}\n${GLSL_GROUND}`,
     color: 'diffuseColor.rgb = groundColor(vWP);',
   });
 }
@@ -190,13 +263,13 @@ vec3 groundColor(vec3 wp) {
   float dirt = smoothstep(0.3, 0.7, B.b + n * 0.4);
   vec3 c = grassCol(p, lush, px);
   c = mix(c, mix(vec3(0.40, 0.31, 0.20), vec3(0.50, 0.40, 0.27), tnoise(p * 0.7)), dirt);
+  c = damp(c, p, B.r);
   c = mix(c, litterCol(p, px), lit * 0.92);
   c = mix(c, gravelCol(p, px), grav);
-  c = mix(c, concreteCol(p, px), conc);
+  c = mix(c, inPlaza(p) ? paversCol(p) : concreteCol(p, px), conc);
   c = mix(c, asphaltCol(p, px, 0.0), asph);
-  // scattered fallen leaves on lawns and paving
-  vec4 fl = fallenLeaves(p + 11.0, mix(0.12, 0.05, asph), px);
-  c = mix(c, fl.rgb, fl.a * (1.0 - lit));
+  // scattered fallen leaves: thick under the crowns (the litter map), a few everywhere
+  c = leafScatter(c, p, mix(0.07, 0.55, B.r) * (1.0 - asph * 0.6));
 #if defined(TEX_GRASS_CU) && defined(TEX_SOIL_CU) && defined(TEX_CONCRETE_CU) && defined(TEX_ASPHALT_CU)
   { float w = closeW(0.25, px);
     if (w > 0.002) {
@@ -216,14 +289,15 @@ vec3 groundColor(vec3 wp) {
 // ---------------------------------------------------------------- streets
 // aSt: x kind, y distance from curb (m), z boulevard width, w seed; aDir: street direction
 export const STREET = { road: 0, plate: 1, curb: 2, footway: 3, path: 4, service: 5, white: 6, yellow: 7, stone: 8, railing: 9, deck: 10, pavers: 11 };
-export function streetMaterial(shared, assets, offset = {}) {
+export function streetMaterial(shared, assets, offset = {}, ground = null, gdTex = null, plazas = null) {
   const slots = ['grass', 'asphalt', 'sidewalk', 'gravel', 'stone', 'soil_cu', 'grass_cu', 'concrete_cu', 'asphalt_cu'];
   const td = texDefines(assets, slots);
   return painted({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2, ...offset }, {
-    shared, key: 'town-street', defines: td.defines, uniforms: td.uniforms,
+    shared, key: 'town-street', defines: td.defines,
+    uniforms: { ...td.uniforms, tGB: { value: ground && ground.texB }, uGR: { value: ground ? ground.rect : new THREE.Vector4() }, tGd: { value: gdTex }, uPlaza: { value: plazas || Array.from({ length: 6 }, () => new THREE.Vector4()) } },
     vertHead: 'attribute vec4 aSt; attribute vec2 aDir; varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;',
     vertMain: 'vSt = aSt; vDir = aDir; vBlv = aSt.z;',
-    fragHead: `varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GROUND.replace(/vec3 groundColor[\s\S]*$/, '')}\n${GLSL_STREET}`,
+    fragHead: `varying vec4 vSt; varying vec2 vDir; flat varying float vBlv;\nuniform sampler2D tGB; uniform vec4 uGR;\n${texDecl(slots)}\n${GLSL_COMMON}\n${GLSL_GD}\n${GLSL_GROUND.replace(/vec3 groundColor[\s\S]*$/, '')}\n${GLSL_STREET}`,
     color: 'diffuseColor.rgb = streetColor(vWP);',
   });
 }
@@ -256,47 +330,70 @@ vec3 streetBase(vec3 wp) {
   float kind = floor(vSt.x + 0.5);
   vec2 dir = length(vDir) > 0.01 ? normalize(vDir) : vec2(1.0, 0.0);
   float along = dot(p, dir), across = dot(p, vec2(-dir.y, dir.x));
+  float lit = litterAt(p);
   if (kind == 0.0 || kind == 5.0) {
     vec3 c = asphaltCol(p, px, kind == 5.0 ? 1.0 : 0.0);
+    // patched and repaired asphalt in blotches (the patches never repeat in a row)
+    vec3 pa = gdAT(6.0, p / 6.0).rgb;
+    float pm = smoothstep(0.52, 0.6, tnoise(p * 0.035 + 2.0));
+    c = mix(c, mix(pa, pa * dot(c, vec3(0.333)) / max(0.05, dot(pa, vec3(0.333))), 0.35), pm);
     // grit, for eyes a few centimetres above the road
     c *= 0.9 + 0.2 * th(floor(p * 160.0)) * aafade(160.0, px);
-    vec4 fl = fallenLeaves(p + 3.0, 0.05, px);
-    return mix(c, fl.rgb, fl.a);
+    c = damp(c, p, lit);
+    if (kind == 0.0 && vSt.z > 0.5) {
+      // the gutter pan along the curb (vSt.y: distance from the curb), and leaves blown into it
+      float d = vSt.y;
+      if (d < 0.62) {
+        vec4 gu = gdAT(2.0, vec2(along / 1.6, 0.84 - d / 0.56 * 0.74));
+        c = mix(c, gu.rgb, 1.0 - smoothstep(0.4, 0.58, d));
+      }
+      c = drift(c, along, d, driftAmt(along, lit));
+    }
+    return leafScatter(c, p, 0.02 + lit * 0.22);
   }
-  if (kind == 1.0) {               // sidewalk plate: curb stone, boulevard grass, slabs
-    float d = vSt.y, blv = vBlv;
-    vec3 conc = concreteCol(vec2(along, across), px);
-    // control joints every 1.5 m along, and a line where the slab meets the boulevard
-    float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
-    float joint = (1.0 - smoothstep(0.004, 0.004 + px, j)) * aafade(4.0, px);
-#ifndef TEX_SIDEWALK
-    conc *= 1.0 - 0.28 * joint;
-#endif
-    vec3 c = conc;
+  if (kind == 1.0) {               // sidewalk plate: curb stone, boulevard (grass or pavers), slabs
+    float d = vSt.y, blv = vBlv, band = vSt.w;
+    // slabs 1.5 m square, laid along the street from the curb: each slab flipped and tinted on its own
+    vec2 sl = vec2(along / 1.5, (d - 0.2) / 1.5), id = floor(sl), f = fract(sl);
+    float h = th(id + 0.37);
+    if (h < 0.5) f.x = 1.0 - f.x;
+    if (fract(h * 7.3) < 0.5) f.y = 1.0 - f.y;
+    vec3 c = gd(0.0, id + f).rgb * (0.93 + 0.12 * th(id + 3.1)) * (0.92 + 0.12 * tfbm(p * 0.21));
+    float edge = 0.0;
     if (blv > 0.05 && d > 0.2 && d < blv) {
       c = grassCol(p, 0.3, px);
-      vec4 fl = fallenLeaves(p + 7.0, 0.25, px);
-      c = mix(c, fl.rgb, fl.a);
-    } else {
-      vec4 fl = fallenLeaves(p + 7.0, 0.07, px);
-      c = mix(c, fl.rgb, fl.a);
+      edge = 1.0;
+    } else if (blv < -0.05 && d > 0.2 && d < 0.2 - blv) {
+      c = paversCol(vec2(along, d - 0.2));            // downtown: a paved strip for the trees, lamps and benches
     }
     if (d < 0.2) c = concreteCol(p, px) * 1.08;        // the curb's top
+    c = damp(c, p, lit);
+    c = leafScatter(c, p, mix(0.05, 0.5, lit) * (edge > 0.5 ? 1.3 : 1.0));
+    // leaves piled at the back of the walk, against walls, hedges and fences
+    if (band > 0.5) c = drift(c, along, band - d, driftAmt(along + 17.0, lit) * 0.85);
     return c;
   }
-  if (kind == 2.0) return concreteCol(vec2(along, wp.y * 3.0), px) * 0.92;
-  if (kind == 3.0) {
-    vec3 c = concreteCol(vec2(along, across), px) * 0.97;
-    float j = min(fract(along / 1.5), 1.0 - fract(along / 1.5)) * 1.5;
-    c *= 1.0 - 0.25 * (1.0 - smoothstep(0.004, 0.004 + px, j)) * aafade(4.0, px);
-    vec4 fl = fallenLeaves(p + 1.0, 0.1, px); return mix(c, fl.rgb, fl.a);
+  if (kind == 2.0) {               // curb face (vSt.y: the top of the curb)
+    vec3 c = gdAT(3.0, vec2(along / 1.2, 1.0 - clamp((vSt.y - wp.y) / 0.3, 0.0, 0.98))).rgb;
+    return c * (1.0 - 0.35 * smoothstep(0.16, 0.3, vSt.y - wp.y));
   }
-  if (kind == 4.0) { vec3 c = gravelCol(p, px); vec4 fl = fallenLeaves(p + 2.0, 0.12, px); return mix(c, fl.rgb, fl.a); }
+  if (kind == 3.0) {
+    vec3 c;
+    if (inPlaza(p)) c = paversCol(p);
+    else {
+      vec2 sl = vec2(along, across) / 1.5, id = floor(sl), f = fract(sl);
+      if (th(id) < 0.5) f.x = 1.0 - f.x;
+      c = gd(0.0, id + f).rgb * (0.93 + 0.12 * th(id + 3.1)) * 0.97;
+    }
+    c = damp(c, p, lit);
+    return leafScatter(c, p, mix(0.05, 0.5, lit));
+  }
+  if (kind == 4.0) { vec3 c = damp(gravelCol(p, px), p, lit); return leafScatter(c, p, mix(0.08, 0.55, lit)); }
   if (kind == 6.0 || kind == 7.0) {
     // paint on the asphalt: the surface shows through where it is worn
     vec3 paint = kind == 6.0 ? vec3(0.86, 0.85, 0.80) : vec3(0.90, 0.70, 0.18);
     vec3 road = asphaltCol(p, px, 0.0);
-    float wear = smoothstep(0.35, 0.8, tnoise(p * 2.3)) * 0.55 + th(floor(p * 30.0)) * 0.2 * aafade(30.0, px);
+    float wear = smoothstep(0.35, 0.8, tnoise(p * 2.3)) * 0.6 + th(floor(p * 30.0)) * 0.22 * aafade(30.0, px) + smoothstep(0.55, 0.75, tnoise(vec2(across * 1.1, along * 0.08))) * 0.35;
     return mix(road, paint * (0.8 + 0.3 * dot(road, vec3(0.33))), 0.82 * (1.0 - wear * 0.7));
   }
   if (kind == 8.0) {               // dressed stone (bridges, walls)
