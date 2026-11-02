@@ -283,43 +283,43 @@ studio light, no text, no ground shadows touching other views, the same animal
 at the same scale in every view. Painted storybook realism with accurate adult
 anatomy; not cute, not chibi, no smiles.
 
-### R9.1 North American beaver turnaround — `open`
+### R9.1 North American beaver turnaround — `delivered`
 - **File:** `beaver_turnaround.png` → `reference/sheets/beaver_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult North American beaver (Castor canadensis), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Standing on all fours on land in a neutral walking pose, all four feet visible. Heavy rounded body about 80 cm long, short legs, large webbed hind feet, small clawed fore paws, the broad flat scaly paddle tail held flat behind (fully visible in the top view), small round ears, small dark eyes, orange-brown incisors just showing. Coat glossy rich chestnut brown, darker on the back, the tail dark grey-black with a scale pattern.
 
-### R9.2 Beaver pose sheet — `open`
+### R9.2 Beaver pose sheet — `delivered`
 - **File:** `beaver_poses.png` → `reference/sheets/beaver_poses.png`
 - **Prompt:** A model sheet of one North American beaver in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) waddling walk on land, (2) sitting up on its haunches gnawing a stick held in its fore paws, tail flat on the ground in front, (3) swimming at the surface, only head, back and a little tail above a faint flat waterline, (4) diving, body angled down under a faint waterline, hind feet kicking, (5) slapping its tail on the water, tail raised high, (6) standing upright on its hind feet and tail, sniffing the air.
 
-### R9.3 Eastern cottontail rabbit turnaround — `open`
+### R9.3 Eastern cottontail rabbit turnaround — `delivered`
 - **File:** `rabbit_turnaround.png` → `reference/sheets/rabbit_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult eastern cottontail rabbit (Sylvilagus floridanus), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Neutral crouched sitting pose with all four feet visible, long ears upright, large dark eyes, the white cottontail visible. Grizzled brown-grey coat, a rusty patch on the nape, pale belly, white tail underside. Body about 40 cm long.
 
-### R9.4 Rabbit pose sheet — `open`
+### R9.4 Rabbit pose sheet — `delivered`
 - **File:** `rabbit_poses.png` → `reference/sheets/rabbit_poses.png`
 - **Prompt:** A model sheet of one eastern cottontail in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) slow hop, gathered, hind feet planted ahead of the fore feet, (2) slow hop, extended, (3) full-speed bound in mid-air, body stretched long, ears laid back, (4) sitting up tall on its hind legs, ears up, alert, (5) grooming its face with its fore paws, (6) flattened low in the grass, freezing, ears down.
 
-### R9.5 Mute swan pose sheet — `open`
+### R9.5 Mute swan pose sheet — `delivered`
 - **File:** `swan_poses.png` → `reference/sheets/swan_poses.png`
 - **Prompt:** A model sheet of one adult mute swan in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping (the swimming turnaround already exists, R1.5): (1) walking on land, upright stance, black webbed feet, (2) standing preening, neck curved back to its wing, (3) take-off running across water, wings raised, feet slapping a faint flat waterline, (4) flying, neck stretched straight forward, wings at the top of the downstroke, (5) flying, wings at the bottom of the downstroke, (6) landing on water, wings spread back, feet forward skiing on a faint waterline. Pure white plumage, orange bill with a black knob.
 
-### R9.6 Mute swan flying, top view — `open`
+### R9.6 Mute swan flying, top view — `delivered`
 - **File:** `swan_flying_top.png` → `reference/sheets/swan_flying_top.png`
 - **Prompt:** Three views of one mute swan in flight at the same scale, side by side: exact top view head right with wings fully spread, exact underside view head right with wings fully spread, exact front view with wings spread level. Neck stretched straight, feet tucked back under the tail. Pure white plumage, orange bill with black knob.
 
-### R9.7 Great blue heron turnaround — `open`
+### R9.7 Great blue heron turnaround — `delivered`
 - **File:** `heron_turnaround.png` → `reference/sheets/heron_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult great blue heron (Ardea herodias), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Standing in a neutral walking pose, neck in its relaxed S-curve, long yellow-orange dagger bill, long dark legs with long toes. Blue-grey body and wings, white face with a black stripe above the eye extending into black plumes, rusty thighs, streaked white and black foreneck plumes. About 1.1 m tall.
 
-### R9.8 Great blue heron pose sheet — `open`
+### R9.8 Great blue heron pose sheet — `delivered`
 - **File:** `heron_poses.png` → `reference/sheets/heron_poses.png`
 - **Prompt:** A model sheet of one great blue heron in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) slow wading walk, one leg raised, a faint flat waterline at its shins, (2) hunched, neck folded, stalking, (3) striking, neck shot forward, bill at a faint waterline, (4) take-off, wings raised high, legs pushing off, (5) flying, neck folded back into an S, legs trailing straight behind, wings at the top of the downstroke, (6) flying, wings at the bottom of the downstroke.
 
-### R9.9 Great blue heron flying, top view — `open`
+### R9.9 Great blue heron flying, top view — `delivered`
 - **File:** `heron_flying_top.png` → `reference/sheets/heron_flying_top.png`
 - **Prompt:** Three views of one great blue heron in flight at the same scale, side by side: exact top view head right with wings fully spread, exact underside view head right with wings fully spread, exact front view with wings spread level. Neck folded back into an S, legs trailing straight behind. Blue-grey plumage with darker flight feathers.
 
-### R9.10 Creature portraits for the creature select — `open`
+### R9.10 Creature portraits for the creature select — `delivered`
 - **File:** `ui/creatures.png` → `game/assets/ui/creatures.png`
 - **Size:** 2560 × 512, on transparent background
 - **Prompt:** Five round portrait medallions side by side, evenly spaced, each a painted head-and-shoulders portrait of an animal facing slightly right inside a thin cream ring on a warm autumn-coloured disc: a black squirrel, a North American beaver, an eastern cottontail rabbit, a mute swan, a great blue heron. Painted storybook realism, consistent style and lighting across all five, no text, transparent background around the discs.
@@ -337,17 +337,24 @@ request says otherwise, each item whole and not touching the others.
 
 | # | File | Size / real size | Prompt |
 |---|---|---|---|
-| G10.1 | `textures/leaf_drift_edge.png` | 1024 × 1024, 1 m × 1 m | Seamless (left–right only) top-down texture of fallen autumn leaves piled in a drift along a curb: thick overlapping maple, oak and linden leaves at the top edge thinning to scattered single leaves at the bottom edge, transparent where there are no leaves. Reds, oranges, golds, browns, some curled and some flat. Status: `open` |
-| G10.2 | `textures/leaf_scatter.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of scattered fallen leaves on a transparent background, about 25% coverage, mixed maple, oak, linden and elm, some overlapping in small clusters, a few curled up at the edges with soft contact shadows under them. Status: `open` |
-| G10.3 | `sprites/leaf_piles.png` | 2048 × 1024 | Six separate small heaps of raked or wind-blown autumn leaves seen at a three-quarter angle from slightly above, each about the size a squirrel could dive into, from a low scatter to a deep mound, in red, orange, gold and brown, transparent background. Status: `open` |
-| G10.4 | `sprites/leaves_single_hd.png` | 2048 × 2048 | Twenty-four single fallen leaves seen from above in a 6 × 4 grid, large and detailed with veins and stems: sugar maple (red, orange, yellow), red maple, silver maple, red oak, white oak, linden, elm, horse chestnut, Manitoba maple keys, birch; some flat, some curled, some half-decayed with holes; transparent background. Status: `open` |
-| G10.5 | `textures/sidewalk_slab_hd.png` | 1024 × 1024, 1.5 m × 1.5 m | Seamless top-down texture of one square of weathered broom-finished concrete sidewalk with a tooled border, a hairline crack, a few gum spots and a dark rain stain; painted. Status: `open` |
-| G10.6 | `textures/curb_face.png` | 1024 × 256, 2 m × 0.25 m | Seamless (left–right) front view of the vertical face and rounded top edge of an old concrete curb, chipped in places, grimy at the bottom where it meets the gutter; painted. Status: `open` |
-| G10.7 | `textures/gutter.png` | 1024 × 512, 2 m × 1 m | Seamless (left–right) top-down texture of the concrete gutter strip between a curb (top edge) and asphalt (bottom edge), with grit, a few wet leaves, a bottle cap and a faint damp line; painted. Status: `open` |
-| G10.8 | `textures/pavers_square.png` | 1024 × 1024, 3 m × 3 m | Seamless top-down texture of a modern civic plaza: pale grey concrete panels in a large grid with bands of small charcoal-grey pavers between them, a few leaves; painted. Status: `open` |
-| G10.9 | `textures/tactile_paving.png` | 512 × 512, 0.6 m × 0.6 m | Seamless top-down texture of a yellow tactile warning pad of raised truncated domes at a crosswalk ramp, slightly worn; painted. Status: `open` |
-| G10.10 | `textures/mulch_bed.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of a cedar mulch flower bed with a few fallen leaves and the base of dried perennials; painted. Status: `open` |
-| G10.11 | `textures/asphalt_patched.png` | 1024 × 1024, 4 m × 4 m | Seamless top-down texture of worn downtown asphalt with darker patched rectangles, sealed cracks in black tar lines, faded road paint fragments and a few leaves; painted. Status: `open` |
-| G10.12 | `sprites/street_ground_items.png` | 2048 × 1024 | Eight separate street-level fixtures seen exactly from above, on transparent background: a round cast-iron manhole cover with a grid pattern, a rectangular storm drain grate with leaves caught in it, a square cast-iron tree grate around a trunk opening, a water valve cap, a utility access plate, a small puddle with a sky reflection, a crack in concrete with a weed growing out, a round metal survey marker. Painted, no text on the covers. Status: `open` |
-| G10.13 | `sprites/ground_plants.png` | 2048 × 1024 | Twelve separate low plants and ground growth seen from the side at squirrel eye level, transparent background: a dandelion with a seed head, a clump of clover, plantain leaves, a tuft of crabgrass from a sidewalk crack, moss in a crack, a small cluster of mushrooms, a fern, a dried goldenrod stalk, chicory, a patch of creeping thyme, an ivy runner, a fallen twig with lichen. Painted. Status: `open` |
-| G10.14 | `sprites/ground_debris.png` | 2048 × 1024 | Twelve separate small things on the ground seen from slightly above at squirrel eye level, transparent background: a pine cone, a broken branch about 40 cm long, a bundle of twigs, a crushed paper coffee cup with no logo, a bottle cap, an acorn with cap, a half-eaten apple core, a horse chestnut in its spiky husk, a feather, a smooth river stone, a cluster of maple keys, a small heap of sunflower seed shells. Painted, no logos or text. Status: `open` |
+| G10.1 | `textures/leaf_drift_edge.png` | 1024 × 1024, 1 m × 1 m | Seamless (left–right only) top-down texture of fallen autumn leaves piled in a drift along a curb: thick overlapping maple, oak and linden leaves at the top edge thinning to scattered single leaves at the bottom edge, transparent where there are no leaves. Reds, oranges, golds, browns, some curled and some flat. Status: `delivered` |
+| G10.2 | `textures/leaf_scatter.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of scattered fallen leaves on a transparent background, about 25% coverage, mixed maple, oak, linden and elm, some overlapping in small clusters, a few curled up at the edges with soft contact shadows under them. Status: `delivered` |
+| G10.3 | `sprites/leaf_piles.png` | 2048 × 1024 | Six separate small heaps of raked or wind-blown autumn leaves seen at a three-quarter angle from slightly above, each about the size a squirrel could dive into, from a low scatter to a deep mound, in red, orange, gold and brown, transparent background. Status: `delivered` |
+| G10.4 | `sprites/leaves_single_hd.png` | 2048 × 2048 | Twenty-four single fallen leaves seen from above in a 6 × 4 grid, large and detailed with veins and stems: sugar maple (red, orange, yellow), red maple, silver maple, red oak, white oak, linden, elm, horse chestnut, Manitoba maple keys, birch; some flat, some curled, some half-decayed with holes; transparent background. Status: `delivered` |
+| G10.5 | `textures/sidewalk_slab_hd.png` | 1024 × 1024, 1.5 m × 1.5 m | Seamless top-down texture of one square of weathered broom-finished concrete sidewalk with a tooled border, a hairline crack, a few gum spots and a dark rain stain; painted. Status: `delivered` |
+| G10.6 | `textures/curb_face.png` | 1024 × 256, 2 m × 0.25 m | Seamless (left–right) front view of the vertical face and rounded top edge of an old concrete curb, chipped in places, grimy at the bottom where it meets the gutter; painted. Status: `delivered` |
+| G10.7 | `textures/gutter.png` | 1024 × 512, 2 m × 1 m | Seamless (left–right) top-down texture of the concrete gutter strip between a curb (top edge) and asphalt (bottom edge), with grit, a few wet leaves, a bottle cap and a faint damp line; painted. Status: `delivered` |
+| G10.8 | `textures/pavers_square.png` | 1024 × 1024, 3 m × 3 m | Seamless top-down texture of a modern civic plaza: pale grey concrete panels in a large grid with bands of small charcoal-grey pavers between them, a few leaves; painted. Status: `delivered` |
+| G10.9 | `textures/tactile_paving.png` | 512 × 512, 0.6 m × 0.6 m | Seamless top-down texture of a yellow tactile warning pad of raised truncated domes at a crosswalk ramp, slightly worn; painted. Status: `delivered` |
+| G10.10 | `textures/mulch_bed.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of a cedar mulch flower bed with a few fallen leaves and the base of dried perennials; painted. Status: `delivered` |
+| G10.11 | `textures/asphalt_patched.png` | 1024 × 1024, 4 m × 4 m | Seamless top-down texture of worn downtown asphalt with darker patched rectangles, sealed cracks in black tar lines, faded road paint fragments and a few leaves; painted. Status: `delivered` |
+| G10.12 | `sprites/street_ground_items.png` | 2048 × 1024 | Eight separate street-level fixtures seen exactly from above, on transparent background: a round cast-iron manhole cover with a grid pattern, a rectangular storm drain grate with leaves caught in it, a square cast-iron tree grate around a trunk opening, a water valve cap, a utility access plate, a small puddle with a sky reflection, a crack in concrete with a weed growing out, a round metal survey marker. Painted, no text on the covers. Status: `delivered` |
+| G10.13 | `sprites/ground_plants.png` | 2048 × 1024 | Twelve separate low plants and ground growth seen from the side at squirrel eye level, transparent background: a dandelion with a seed head, a clump of clover, plantain leaves, a tuft of crabgrass from a sidewalk crack, moss in a crack, a small cluster of mushrooms, a fern, a dried goldenrod stalk, chicory, a patch of creeping thyme, an ivy runner, a fallen twig with lichen. Painted. Status: `delivered` |
+| G10.14 | `sprites/ground_debris.png` | 2048 × 1024 | Twelve separate small things on the ground seen from slightly above at squirrel eye level, transparent background: a pine cone, a broken branch about 40 cm long, a bundle of twigs, a crushed paper coffee cup with no logo, a bottle cap, an acorn with cap, a half-eaten apple core, a horse chestnut in its spiky husk, a feather, a smooth river stone, a cluster of maple keys, a small heap of sunflower seed shells. Painted, no logos or text. Status: `delivered` |
+## Round 9 delivery — 2026-11-02
+
+Nine animal reference sheets and the transparent creature portrait strip delivered to the listed paths with built-in image_gen. Prompts recorded in `generation-prompts-round-9.json`. PNG decoding and delivery sizes checked, portrait alpha verified, full set visually reviewed, with beaver layout and heron flight corrections generated. Portrait web copy and manifest updated; no deployment.
+
+## Round 10 delivery — 2026-11-02
+
+All 14 ground-detail images generated with built-in image_gen, saved at listed asset paths with web copies and manifest entries. Prompts in `generation-prompts-round-10.json`. PNG decoding, dimensions and requested alpha channels checked; contact sheet visually reviewed. Two sheets have near-transparent minimum alpha of 1/255. Texture seams remain subject to in-game review. 23 shell/town-data tests passed. No deployment.
