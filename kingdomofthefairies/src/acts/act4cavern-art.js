@@ -1,4 +1,5 @@
 import { walkPose } from '../walking.js';
+import { TEXT } from '../text_config.js';
 // Drawing for Act IV's cavern route (film edition; rules in act4cavern.js).
 // The painted cavern cloth behind, rock floors and black pools, the delivered
 // cavern-ledge cut-outs, stalactites, and the dark: only a pool of light
@@ -56,7 +57,7 @@ export function cavernEvent(k, e, st) {
   if (e.type === 'poolSplash') k.burst(x(e.x), e.y, '#9fb8c0', 22, 'drop');
   if (e.type === 'dropShake') k.burst(x(e.x), CEIL_Y + 6, '#b9a4a8', 6, 'chip');
   if (e.type === 'dropShatter') { k.shake(0.25); k.burst(x(e.x), e.y, '#d7c4c8', 16, 'chip'); }
-  if (e.type === 'caveEnter') k.text(e.lamp ? "Aurora's lamp lights the way" : 'Into the dark', 640, 220, true);
+  if (e.type === 'caveEnter') k.text(e.lamp ? TEXT.whale.burst.caveLamp : TEXT.whale.burst.caveDark, 640, 220, true);
   if (e.type === 'caveExit') k.flash(0.3);
 }
 
@@ -187,7 +188,7 @@ function dark(k, st, t) {
 }
 
 function caption(k, st, ct) {
-  const c = k.c, a = Math.min(1, ct / 0.5, (6 - ct) / 0.6), msg = 'Through the cavern to the sea · leap the black pools · run from a shaking stalactite';
+  const c = k.c, a = Math.min(1, ct / 0.5, (6 - ct) / 0.6), msg = TEXT.whale.caveCaption;
   c.save(); c.globalAlpha = a; c.textAlign = 'center'; c.font = '700 18px "Josefin Sans", sans-serif';
   const w = c.measureText(msg).width + 48;
   c.globalAlpha = 0.85 * a; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(640 - w / 2, 126, w, 34, 17); c.fill();

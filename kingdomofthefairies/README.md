@@ -113,6 +113,12 @@ character identities, start with [the film reference](design/film-story.md).
 
 This is a static canvas 2D / Web Audio page, with no build step.
 
+- All displayed text (on-stage words, act cards, touch labels, screen-reader
+  announcements, shell messages and the text of `index.html`) lives in
+  `src/text_config.js`, one place to edit the wording or translate it.
+  `index.html` elements carry `data-text="html.…"` and are filled from it by
+  `fillText` in `src/theme.js`.
+
 - `src/theme.js` selects the edition, filters legacy image/animation slots and
   the song before loading, and applies the document title and install metadata.
 - `src/board.js` and `src/acts/` hold the seeded gameplay rules.

@@ -17,6 +17,7 @@ import { tableau, card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 import { drawPose, drawPerson, personPx, personScale } from '../pose.js';
+import { TEXT } from '../text_config.js';
 
 // ================================================================= Act V
 export function drawTower(k, st, t) {
@@ -29,7 +30,7 @@ export function drawTower(k, st, t) {
   // Her window at the top of the wall (she has been at it all the climb), the
   // prince beside her.
   towerScene(k, st, t);
-  card(k, 'Her Window', 'Azurine is held inside', cardAlpha(pt, FILM_T.window + 9));
+  card(k, TEXT.tower.window.title, TEXT.tower.window.sub, cardAlpha(pt, FILM_T.window + 9));
 }
 
 // The mobile camera's focus (src/camera.js): the player's middle, stage px.
@@ -74,9 +75,9 @@ export function onEventTower(k, e, st) {
     const {x:px} = swimPosition(st.sw), py = swimY(st);
     if (e.type === 'dive') k.burst(px, py - 10, '#eef3ea', 12, 'drop');
     if (e.type === 'surface') k.burst(px, py - 10, '#eef3ea', 6, 'drop');
-    if (e.type === 'witchMiss') { k.burst(swoopScreenX(st), 470, '#eef3ea', 18, 'drop'); k.text('Missed!', swoopScreenX(st), 380); }
+    if (e.type === 'witchMiss') { k.burst(swoopScreenX(st), 470, '#eef3ea', 18, 'drop'); k.text(TEXT.tower.burst.missed, swoopScreenX(st), 380); }
     if (e.type === 'hit') { k.shake(0.4); k.burst(px, py - 30, '#c8321e', 14, 'streak'); }
-    if (e.type === 'auroraLight') { k.flash(0.6); k.burst(220, 140, '#fff2b0', 40, 'sparkle'); k.text("Aurora's light!", 640, 230, true); }
+    if (e.type === 'auroraLight') { k.flash(0.6); k.burst(220, 140, '#fff2b0', 40, 'sparkle'); k.text(TEXT.tower.burst.auroraLight, 640, 230, true); }
     return;
   }
   act5Event(k, e, st);
@@ -160,7 +161,7 @@ function swimScene(k, st, t) {
   if (st.phaseT < 6) {
     c.save(); c.globalAlpha = clamp(1 - (st.phaseT - 4.5) / 1.5, 0, 1); c.textAlign = 'center';
     c.font = '700 18px "Josefin Sans", sans-serif'; c.fillStyle = k.col('#f1e3c8');
-    richText(c, 'Swim right for the tower · [A] dives under her swoop', 640, 150, { px: 18, mode: k.inputMode || 'key', col: k.col });
+    richText(c, TEXT.tower.swimHint, 640, 150, { px: 18, mode: k.inputMode || 'key', col: k.col });
     c.restore();
   }
   });
@@ -256,7 +257,7 @@ export function drawBurning(k, st, t) {
 export function drawOverBurning(k, st) {
   if (st.creditsT != null) rollingCredits(k, st.creditsT);
   // the credits over and the stage lit again: the way back to the title
-  if (creditsDone(st) && st.leaveT == null && !nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
+  if (creditsDone(st) && st.leaveT == null && !nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? TEXT.burning.returnTouch : TEXT.burning.returnKey);
   if (st.defeatT != null) k.wash('#2a1424', 0.55 * clamp(st.defeatT / FILM_T.defeat, 0, 1));
   if (st.phase === 'iris') k.iris(640, 300, 760 * (1 - easeInOut(st.phaseT / FILM_T.iris)));
   if (st.status === 'won') k.iris(640, 300, 0);
@@ -264,22 +265,22 @@ export function drawOverBurning(k, st) {
 
 export function onEventBurning(k, e, st) {
   if (e.type === 'auroraQuenches') { k.burst(e.x, e.y, '#fff2b0', 8, 'sparkle'); return; }
-  if (e.type === 'witchStruck') { k.flash(0.3); k.shake(0.25); k.burst(e.x - 20, BARREL.y - 110, '#fff2b0', 22, 'sparkle'); if (e.hp > 0) k.text(e.hp === 1 ? 'Once more!' : 'A hit!', e.x, BARREL.y - 220); return; }
+  if (e.type === 'witchStruck') { k.flash(0.3); k.shake(0.25); k.burst(e.x - 20, BARREL.y - 110, '#fff2b0', 22, 'sparkle'); if (e.hp > 0) k.text(e.hp === 1 ? TEXT.burning.burst.onceMore : TEXT.burning.burst.hit, e.x, BARREL.y - 220); return; }
   if (e.type === 'witchWinds') { k.burst(e.x, BARREL.y - 150, '#b06ad0', 8, 'sparkle'); return; }
   if (e.type === 'witchBolt') { k.burst(e.x - 40, BARREL.y - 20, '#e9a46a', 10, 'streak'); return; }
   // her push after his blow is a gust, not a hit: no shake or flash
   if (e.type === 'witchBlast' && e.repel) { k.burst(e.x + 30, BARREL.y - 70, '#b06ad0', 10, 'streak'); return; }
   if (e.type === 'witchBlast') { k.shake(0.4); k.flash(0.25); k.burst(e.x + 20, BARREL.y - 80, '#b06ad0', 18, 'streak'); return; }
-  if (e.type === 'witchBeaten') { k.flash(0.4); k.text('Beaten!', e.x, BARREL.y - 230, true); return; }
+  if (e.type === 'witchBeaten') { k.flash(0.4); k.text(TEXT.burning.burst.beaten, e.x, BARREL.y - 230, true); return; }
   if (e.type === 'auroraCasts') { k.burst(268, BARREL.y - 190, '#fff2b0', 24, 'sparkle'); return; }
   if (e.type === 'barrelDrop') { k.shake(0.5); k.burst(e.x, BARREL.y - 10, '#d8c8a8', 26, 'smoke'); k.burst(e.x, BARREL.y - 60, '#fff2b0', 16, 'sparkle'); return; }
   if (e.type === 'swordSwing') return;
-  if (e.type === 'barrelFall') { k.flash(0.5); k.shake(0.6); k.burst(1000, 610, '#eef3ea', 40, 'drop'); k.text('Into the whirlpool!', 640, 240, true); return; }
+  if (e.type === 'barrelFall') { k.flash(0.5); k.shake(0.6); k.burst(1000, 610, '#eef3ea', 40, 'drop'); k.text(TEXT.burning.burst.whirlpool, 640, 240, true); return; }
   if (e.type === 'petal') { k.burst(e.x, e.y, '#f3c6dc', 8, 'sparkle'); return; }
   if (e.type === 'ascend') { k.flash(0.6); k.burst(640, 480, '#fff2b0', 120, 'sparkle'); return; }
   if (e.type === 'witchReturns') { k.flash(0.4); return; }
-  if (e.type === 'shutterSmash') { k.burst(HOUSE.shutterX, HOUSE.shutterY, '#fff2b0', 22, 'sparkle'); k.text("Aurora's lamp!", HOUSE.shutterX, HOUSE.shutterY - 90, true); return; }
-  if (e.type === 'stoneThrow') { k.text("Aurora's lamp!", st.p.x, st.p.y - 130); return; }
+  if (e.type === 'shutterSmash') { k.burst(HOUSE.shutterX, HOUSE.shutterY, '#fff2b0', 22, 'sparkle'); k.text(TEXT.burning.burst.lamp, HOUSE.shutterX, HOUSE.shutterY - 90, true); return; }
+  if (e.type === 'stoneThrow') { k.text(TEXT.burning.burst.lamp, st.p.x, st.p.y - 130); return; }
   act5Event(k, e, st);
 }
 
@@ -363,14 +364,14 @@ function towerInterior(k, st, t) {
   // Azurine in front of the smoke, so she can always be seen
   if (!st.p.carry) beloved(k, H.beloved, H.floors[2], 0.6, -1, Math.sin(t * 5) > 0.3 ? 'reach' : 'down');
   // where he is going: to her at the top, then out of the door with her
-  const [gx, gy, label] = st.p.carry ? [TOWER_ESCAPE.x, H.floors[0], 'Out to the right'] : [H.beloved, H.floors[2], 'To her'];
+  const [gx, gy, label] = st.p.carry ? [TOWER_ESCAPE.x, H.floors[0], TEXT.burning.waypointOut] : [H.beloved, H.floors[2], TEXT.burning.waypointHer];
   const bob = Math.sin(t * 4) * 6, ty = gy - (st.p.carry ? 170 : 150) + bob;
   c.save(); c.globalAlpha = 0.85; c.fillStyle = k.col('#fff2b0');
   c.beginPath(); c.moveTo(gx - 14, ty); c.lineTo(gx + 14, ty); c.lineTo(gx, ty + 18); c.closePath(); c.fill();
   c.font = '700 15px "Josefin Sans", sans-serif'; c.textAlign = 'center';
   c.fillStyle = k.col('#2a1424'); c.fillText(label, gx + 1, ty - 7); c.fillStyle = k.col('#fff2b0'); c.fillText(label, gx, ty - 8);
   c.restore();
-  if (st.phaseT < 7 && !st.p.carry) hint(k, 'Climb the stairs and ladders to Azurine · [A] leaps the burnt gaps');
+  if (st.phaseT < 7 && !st.p.carry) hint(k, TEXT.burning.climbHint);
 }
 
 // Out across the clifftop with her, the tower falling behind.
@@ -575,7 +576,7 @@ function duel(k, st, t, entrance = false) {
   // her strength left, as three marks over her
   if (!trap) for (let i = 0; i < DUEL.hp; i++) { c.fillStyle = k.col(i < d.hp ? '#b06ad0' : '#3a2a40'); k.circle(d.x - 24 + i * 24, BARREL.y - DUEL.witchHeight - 40, 7); }
   // on touch the buttons are named Leap and Strike, so they need no line
-  if (st.phaseT < 7 && !trap && k.inputMode !== 'touch') hint(k, '[A] leaps her fire · [X] strikes with the sword');
+  if (st.phaseT < 7 && !trap && k.inputMode !== 'touch') hint(k, TEXT.burning.duelHint);
 }
 
 // Flames wrapping the prince where he stands, in the layered style of her
@@ -739,7 +740,7 @@ function barrelScene(k, st, t) {
     k.asset('prince-push', 0, 0, 140, 172); c.restore();
   } else princeOnFoot(k, w, 140);
   if (fallK > 0) { c.save(); c.globalAlpha = 0.5 * Math.sin(Math.PI * fallK); c.fillStyle = k.col('#eef3ea'); c.fillRect(0, 0, 1280, 720); c.restore(); }
-  if (fallK === 0) hint(k, 'She still threatens you! Push her barrel over the edge');
+  if (fallK === 0) hint(k, TEXT.burning.barrelHint);
 }
 
 // The prince arrives carrying Azurine, kneels to set her down, then steps
@@ -763,12 +764,12 @@ function battleEntrance(k,st,t) {
     princeOnFoot(k,w,BATTLE_INTRO.height);
   }
   const captions = {
-    faceoff: 'Aurora holds the witch at bay',
-    arrival: 'You bring Azurine to Aurora’s protection',
-    setdown: 'You set Azurine gently down behind Aurora',
-    rise: 'Azurine is safe behind Aurora',
-    forward: 'Azurine is safe behind Aurora',
-    settle: 'Face the witch',
+    faceoff: TEXT.burning.battleCaptions.faceoff,
+    arrival: TEXT.burning.battleCaptions.arrival,
+    setdown: TEXT.burning.battleCaptions.setdown,
+    rise: TEXT.burning.battleCaptions.rise,
+    forward: TEXT.burning.battleCaptions.forward,
+    settle: TEXT.burning.battleCaptions.settle,
   };
   hint(k,captions[frame.stage]);
 }
@@ -801,7 +802,7 @@ function wedding(k,st,t){
   guests.filter(([[,x]])=>x>=WEDDING.stairs+40).forEach(([g,i])=>guest(g,i));
   couple(false);
   for(const p of st.petals)if(!p.got&&p.y>-20){c.fillStyle=k.col('#f3c6dc');c.save();c.translate(p.x,p.y);c.rotate(p.y*.05);c.beginPath();c.ellipse(0,0,8,4,0,0,Math.PI*2);c.fill();c.restore();}
-  if(st.phaseT<6&&st.weddingIntro!==false)hint(k,'Dance with the guests · walk up the stairs and through the door');
+  if(st.phaseT<6&&st.weddingIntro!==false)hint(k,TEXT.burning.weddingHint);
 }
 
 // The wall right of the doorway, repainted over whoever has walked on
@@ -835,13 +836,13 @@ function apotheosis(k, st, t) {
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Gift to accept the gift' : '[X] Accept the gift');
-  else if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
+  if (nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey);
+  else if (!st.flight && st.creditsT == null) hint(k, TEXT.burning.jumpHint);
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
   // "The end" fades in as they rise and stays through the celebration,
   // giving way as the credits begin to roll
   const endCard = st.creditsT == null ? (st.riseT == null ? 0 : clamp(st.riseT - 1, 0, 1)) : clamp((FINALE.celebrate - st.creditsT) / 0.6, 0, 1);
-  if (endCard > 0) card(k, 'The Kingdom of the Fairies', 'The end', endCard);
+  if (endCard > 0) card(k, TEXT.burning.endCard.title, TEXT.burning.endCard.sub, endCard);
 }
 
 // The voyage's treasures on the top step at the right: a heap of the pearls

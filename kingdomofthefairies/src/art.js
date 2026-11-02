@@ -1,4 +1,5 @@
 import { LEGACY, FILM, FILM_CAST, bodyScaleOf, themeManifest } from './theme.js';
+import { TEXT } from './text_config.js';
 // Toy-theatre renderer. Every frame is painted twice: a monochrome "print"
 // pass and a flat colour "stencil" pass. The stencil pass is laid over the
 // print with the `color` blend, slightly out of register, which is how
@@ -1273,9 +1274,7 @@ const WAVE_ART = [
   { id: 'waves-front', x0: 152, len: 1899 },
 ];
 
-const LABEL = FILM
-  ? { leaf: "Aurora's star", tea: "Aurora's stars", pearl: "Neptune's seal", rose: "The Water Fairy's blessing", guitar: 'The enchanted sword', stone: "Aurora's lamp" }
-  : { leaf: 'Tea leaf', tea: 'Tea leaves', pearl: 'Her pearl', rose: 'Sea rose', guitar: 'The guitar', stone: 'The stone' };
+const LABEL = FILM ? TEXT.hud.keepsakes : TEXT.hud.keepsakesClassic;
 
 function circle(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill(); }
 function star(c, x, y, r) {
@@ -1291,11 +1290,11 @@ function star(c, x, y, r) {
 // Prompt text may name buttons as [A], [B], [MENU] or [LS]. They are drawn
 // for the input in use (`mode`): Xbox controller buttons ('pad'), key caps
 // ('key') or the on-screen touch buttons ('touch').
-const GLYPH_KEYS = { A: 'Space', B: 'Esc', X: 'X', MENU: 'Esc', LS: '← →' };
+const GLYPH_KEYS = TEXT.glyphs.keys;
 const XBOX = { A: '#3fa535', B: '#d6262c', X: '#2a6fd6', Y: '#e8b320' };
 // On touch the buttons carry no letters, only what they do here, so a prompt
 // names them the same way (the shell keeps these current; setTouchNames).
-const TOUCH_NAMES = { A: 'Tap', X: 'Action', B: 'Back', MENU: '❚❚', LS: 'Drag' };
+const TOUCH_NAMES = TEXT.glyphs.touch;
 let touchNames = { ...TOUCH_NAMES };
 export function setTouchNames({ A, X } = {}) { touchNames = { ...TOUCH_NAMES, ...(A ? { A } : {}), ...(X ? { X } : {}) }; }
 const touchFont = (px) => `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`;
@@ -1391,7 +1390,7 @@ export function drawCard(c, card, t) {
     c.strokeRect(480, 586, 320, 12); c.strokeRect(476, 582, 328, 20);
     c.fillStyle = PAL.pink; c.fillRect(482, 588, 316 * card.loading, 8);
     c.font = '700 18px "Josefin Sans", sans-serif';
-    c.fillText(card.loadingText || (LEGACY ? 'TUNING UP THE BAND' : 'TUNING THE ORCHESTRA'), 640, 626);
+    c.fillText(card.loadingText || (LEGACY ? TEXT.shell.loading.cardBand : TEXT.shell.loading.cardOrchestra), 640, 626);
   } else if (card.prompt) {
     c.globalAlpha = a * (0.55 + 0.45 * Math.sin(t * 3));
     c.font = '30px Yesteryear, cursive';

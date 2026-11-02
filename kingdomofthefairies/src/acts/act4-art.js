@@ -10,6 +10,7 @@ import { FILM } from '../theme.js';
 import { drawPose, CREW_OF } from '../pose.js';
 import { drawMovement, whalePose } from './sailor-motion.js';
 import { walkPose } from '../walking.js';
+import { TEXT } from '../text_config.js';
 import { cavernScene, cavernOver, cavernEvent } from './act4cavern-art.js';
 import { camX as cavernCamX } from './act4cavern.js';
 
@@ -48,7 +49,7 @@ export function onEvent(k, e, st) {
   const at = (x, y) => toScreen(st, x, y);
   const s = st.s;
   if (e.type === 'pearl') { const p = at(e.x, e.y); k.burst(p.x, p.y, '#efe9f2', 8, 'sparkle'); }
-  if (e.type === 'stoneFound') { const p = at(e.x, e.y); k.burst(p.x, p.y, '#d9b34a', 18, 'sparkle'); k.text(FILM ? "Aurora's lamp!" : 'The stone!', p.x, p.y - 40, true); }
+  if (e.type === 'stoneFound') { const p = at(e.x, e.y); k.burst(p.x, p.y, '#d9b34a', 18, 'sparkle'); k.text(FILM ? TEXT.whale.burst.lampFound : TEXT.whale.burst.stoneFound, p.x, p.y - 40, true); }
   if (e.type === 'hit') { k.shake(0.45); k.flash(0.25); const p = at(s.x, s.y - 60); k.burst(p.x, p.y, '#c8321e', 12, 'streak'); }
   if (e.type === 'splash') { const p = at(e.x, e.y); k.burst(p.x, p.y, '#9fb8b0', 20, 'drop'); }
   if (e.type === 'acidSting') { const p = at(e.x, e.y); k.burst(p.x, p.y, '#e07a5a', 14, 'bubble'); }
@@ -570,7 +571,7 @@ function cueBoard(k, st, t) {
   c.fillStyle = k.col('#2a1424'); c.strokeStyle = k.col('#d9b34a'); c.lineWidth = 2;
   c.beginPath(); c.roundRect(x, y - 20, 186, 40, 8); c.fill(); c.stroke();
   c.fillStyle = k.col('#f3c6dc'); c.font = '700 13px "Josefin Sans", sans-serif'; c.textAlign = 'left'; c.textBaseline = 'middle';
-  c.fillText(ph === 'low' ? 'LOW TIDE' : ph === 'inhale' || ph === 'high' ? 'BREATHE' : 'BREATH', x + 12, y + 1);
+  c.fillText(ph === 'low' ? TEXT.whale.cue.low : ph === 'inhale' || ph === 'high' ? TEXT.whale.cue.inhale : TEXT.whale.cue.breath, x + 12, y + 1);
   for (let i = 0; i < 4; i++) {
     let col = '#4b3a45', glow = 0;
     if (ph === 'cue' && b - 12 >= i) { col = '#ffcf5c'; glow = 1 - ((b - 12) % 1) * (b - 12 < i + 1 ? 1 : 0) * 0.5; }
