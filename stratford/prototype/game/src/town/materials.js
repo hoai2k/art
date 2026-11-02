@@ -255,12 +255,14 @@ vec3 groundColor(vec3 wp) {
   vec2 guv = (p - uGR.xy) * uGR.zw;
   vec4 A = texture2D(tGA, guv), B = texture2D(tGB, guv);
   float n = tnoise(p * 0.45) - 0.5;
-  float asph = smoothstep(0.35, 0.65, A.r + n * 0.2);
-  float conc = smoothstep(0.35, 0.65, A.g + n * 0.25);
-  float grav = smoothstep(0.3, 0.7, A.b + n * 0.3);
+  // the walkable kinds (asphalt, concrete, gravel, dirt) change at the map's 0.5 line, as the
+  // collider's surface ids do (index.js drawnSurface); only a hint of noise on the edge
+  float asph = smoothstep(0.44, 0.56, A.r + n * 0.03);
+  float conc = smoothstep(0.44, 0.56, A.g + n * 0.03);
+  float grav = smoothstep(0.44, 0.56, A.b + n * 0.03);
   float lit = smoothstep(0.2, 0.8, B.r + n * 0.5);
   float lush = B.g;
-  float dirt = smoothstep(0.3, 0.7, B.b + n * 0.4);
+  float dirt = smoothstep(0.44, 0.56, B.b + n * 0.03);
   vec3 c = grassCol(p, lush, px);
   c = mix(c, mix(vec3(0.40, 0.31, 0.20), vec3(0.50, 0.40, 0.27), tnoise(p * 0.7)), dirt);
   c = damp(c, p, B.r);

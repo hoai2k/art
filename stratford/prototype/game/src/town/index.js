@@ -252,7 +252,7 @@ export async function createTown(opts = {}) {
 
   // terrain collider: the drawn triangles, two cells merged only where all four are exactly coplanar
   function terrainCollider(c, cb, T, slabs) {
-    const { y: Y, cols, i0, j0 } = T;
+    const { y: Y, cols, i0, j0, step = 1 } = T;
     // a cell wholly under a road or sidewalk slab is not a ground anyone can reach: leave it out
     // (every 0.5 m sample of it has a slab at or above the terrain)
     const covered = (ii, jj) => {
@@ -265,11 +265,48 @@ export async function createTown(opts = {}) {
       return true;
     };
     const P = (ii, jj) => [hf.x0 + (i0 + ii) * hf.cell - c.ox, Y[jj * cols + ii], hf.z0 + (j0 + jj) * hf.cell - c.oz];
+    // the drawn surface (groundClass.drawn) on a 1 m grid in each cell: one id per cell
+    // when it is the same all over, else -1 (the cell is cut into 1 m pieces)
+    const SUB = Math.max(1, Math.round(hf.cell * step));
+    const at = (x, z) => (hf.waterAt(x, z) !== null ? SURFACE.water_bed : groundClass.drawn(x, z));
+    const cellSurf = new Map();
     const surf = (ii, jj) => {
-      const x = hf.x0 + (i0 + ii + 0.5) * hf.cell, z = hf.z0 + (j0 + jj + 0.5) * hf.cell;
-      if (hf.waterAt(x, z) !== null) return SURFACE.water_bed;
-      const g = groundClass(x, z);
-      return g === 2 ? SURFACE.road : g === 3 ? SURFACE.sidewalk : g === 4 ? SURFACE.ground : SURFACE.grass;
+      const key = jj * cols + ii; if (cellSurf.has(key)) return cellSurf.get(key);
+      const cs = hf.cell * step, x0c = hf.x0 + (i0 + ii * step) * hf.cell, z0c = hf.z0 + (j0 + jj * step) * hf.cell;
+      let s0 = null;
+      for (let q = 0; q < SUB && s0 !== -1; q++) for (let p = 0; p < SUB; p++) { const sv = at(x0c + ((p + 0.5) / SUB) * cs, z0c + ((q + 0.5) / SUB) * cs); if (s0 === null) s0 = sv; else if (sv !== s0) { s0 = -1; break; } }
+      cellSurf.set(key, s0); return s0;
+    };
+    // a mixed cell: SUB x SUB pieces on the drawn triangles' planes (diagonal (0,0)-(1,1))
+    const mixed = (I, J) => {
+      const a = Y[J * cols + I], b = Y[J * cols + I + 1], c2 = Y[(J + 1) * cols + I + 1], d = Y[(J + 1) * cols + I];
+      const cs = hf.cell * step, x0c = hf.x0 + (i0 + I * step) * hf.cell - c.ox, z0c = hf.z0 + (j0 + J * step) * hf.cell - c.oz;
+      const Q = (u, v) => [x0c + u * cs, u >= v ? a + (b - a) * u + (c2 - b) * v : a + (c2 - d) * u + (d - a) * v, z0c + v * cs];
+      const S = (u, v) => at(x0c + c.ox + u * cs, z0c + c.oz + v * cs);
+      // a quadtree down to 1/8 of the cell (50 cm): squares split while the drawn surface
+      // differs across them (sampled on a 3 x 3 grid), each leaf one surface at its centre
+      // a square wholly under a slab (raster nodes round it all at or above the terrain) is
+      // left out like a covered cell: the paint's edges hidden under sidewalks cost nothing
+      const under = (u0, v0, w) => {
+        if (!slabs) return false;
+        const r = slabs.r, xa = x0c + u0 * cs, za = z0c + v0 * cs, xb = xa + w * cs, zb = za + w * cs;
+        for (let j = Math.floor(za / r); j <= Math.ceil(zb / r); j++) for (let i = Math.floor(xa / r); i <= Math.ceil(xb / r); i++) {
+          if (i < 0 || j < 0 || i >= slabs.n || j >= slabs.n) return false;
+          const u = Math.min(1, Math.max(0, (i * r - x0c) / cs)), v = Math.min(1, Math.max(0, (j * r - z0c) / cs));
+          if (!(slabs.top[j * slabs.n + i] >= Q(u, v)[1] - 0.005)) return false;
+        }
+        return true;
+      };
+      const quad = (u0, v0, w, depth) => {
+        if (under(u0, v0, w)) return;
+        const s0 = S(u0 + w / 2, v0 + w / 2);
+        let same = true;
+        if (depth < 3) for (let q = 0; q <= 2 && same; q++) for (let p = 0; p <= 2; p++) if (S(u0 + (p * 0.5 + (p === 1 ? 0 : p === 0 ? 0.05 : -0.05)) * w, v0 + (q * 0.5 + (q === 1 ? 0 : q === 0 ? 0.05 : -0.05)) * w) !== s0) { same = false; break; }
+        if (!same) { const h = w / 2; quad(u0, v0, h, depth + 1); quad(u0 + h, v0, h, depth + 1); quad(u0, v0 + h, h, depth + 1); quad(u0 + h, v0 + h, h, depth + 1); return; }
+        const u1 = u0 + w, v1 = v0 + w;
+        tri(Q(u0, v0), Q(u0, v1), Q(u1, v1), s0); tri(Q(u0, v0), Q(u1, v1), Q(u1, v0), s0);
+      };
+      quad(0, 0, 1, 0);
     };
     const tri = (A, B, C, s) => cb.tri(A, B, C, s);
     const n = cols - 1;
@@ -284,13 +321,14 @@ export async function createTown(opts = {}) {
       }
       const s00 = surf(ii, jj);
       const anyCovered = covered(ii, jj) || (ii + 1 < n && covered(ii + 1, jj)) || (jj + 1 < n && covered(ii, jj + 1)) || (ii + 1 < n && jj + 1 < n && covered(ii + 1, jj + 1));
-      if (flat && !anyCovered && s00 === surf(ii + 1, jj) && s00 === surf(ii, jj + 1) && s00 === surf(ii + 1, jj + 1)) {
+      if (flat && !anyCovered && s00 >= 0 && s00 === surf(ii + 1, jj) && s00 === surf(ii, jj + 1) && s00 === surf(ii + 1, jj + 1)) {
         tri(P(ii, jj), P(ii, jj + 2), P(ii + 2, jj + 2), s00); tri(P(ii, jj), P(ii + 2, jj + 2), P(ii + 2, jj), s00);
         continue;
       }
       for (let q = 0; q < 2; q++) for (let p = 0; p < 2; p++) {
         const I = ii + p, J = jj + q; if (I >= n || J >= n || covered(I, J)) continue;
         const s = surf(I, J);
+        if (s < 0) { mixed(I, J); continue; }
         tri(P(I, J), P(I, J + 1), P(I + 1, J + 1), s); tri(P(I, J), P(I + 1, J + 1), P(I + 1, J), s);
       }
     }
@@ -498,6 +536,9 @@ export async function createTown(opts = {}) {
       return { d: q.d - st.hw, hw: st.hw, band: st.band, blv: st.blv, downtown: st.downtown, dx: dx / l, dz: dz / l };
     },
     roadsIn: (x0, z0, size) => { const set = new Set(); ctx.streets.grid.query(x0 + size / 2, z0 + size / 2, size * 0.75, (sg) => set.add(sg.data)); return [...set].filter((st) => !st.road.bridge).map((st) => ({ points: st.road.points, hw: st.hw, id: st.id })); },
+    crossingsIn: (x0, z0, size) => (ctx.crosswalks || []).filter((c) => c.x > x0 - 15 && c.x < x0 + size + 15 && c.z > z0 - 15 && c.z < z0 + size + 15),
+    // on the sidewalk's slabs (not the curb top, a grass or paved boulevard strip, or a plaza)
+    onSlabs: (x, z, si) => !!si && si.d > 0.3 && si.d < si.band - 0.05 && (si.blv > 0.05 ? si.d > si.blv + 0.05 : si.blv < -0.05 ? si.d > 0.25 - si.blv : true) && !plazas.some((r) => r.z > r.x && x > r.x && x < r.z && z > r.y && z < r.w),
     downtownAt: (x, z) => { const q = ctx.streets.grid.nearest(x, z, 40); return (q && q.seg.data.downtown) || Math.hypot(x - centreL.x, z - centreL.z) < 120; },
   });
   const near = nearLayer(details.env, view.U, atlas.texture, view);
@@ -574,6 +615,9 @@ export async function createTown(opts = {}) {
     setTimeOfDay: (h) => sky.setTimeOfDay(h),
     get timeOfDay() { return sky.hours; },
     // for the bench: the leaf piles (ground.js) near (x, z)
+    // the surface id the terrain shader draws at (x, z) (its ground-map rule)
+    debugCrosswalks: (x, z, r = 60) => (ctx.crosswalks || []).filter((c) => Math.hypot(c.x - x, c.z - z) < r),
+    debugDrawnTerrain: (x, z) => (hf.waterAt(x, z) !== null ? SURFACE.water_bed : groundClass.drawn(x, z)),
     debugFixtures: (x, z, r = 40) => { const out = []; root.traverse((o) => { for (const f of o.userData.fixtures || []) if (Math.hypot(f.x - x, f.z - z) < r) out.push(f); }); return out; },
     debugPiles: (x, z, r = 30) => pilesOf(details.env, details.env.treesNear(x, z, r + 14), x - r, z - r, 2 * r).map((p) => ({ x: p.x, z: p.z, y: p.y, R: p.R, H: p.H })),
     // for tests and probes: the visible ground-level meshes of the chunks
@@ -666,15 +710,28 @@ function classMap(ground, hf) {
   const w = ca.width, h = ca.height;
   const A = ca.getContext('2d').getImageData(0, 0, w, h).data, B = cbv.getContext('2d').getImageData(0, 0, w, h).data;
   const cls = new Uint8Array(w * h);
+  // the channels the terrain shader decides walkable kinds by (asphalt, concrete, gravel, dirt)
+  const ch = [new Uint8Array(w * h), new Uint8Array(w * h), new Uint8Array(w * h), new Uint8Array(w * h)];
   for (let i = 0, k = 0; i < w * h; i++, k += 4) {
     cls[i] = A[k] > 127 ? 2 : A[k + 1] > 127 ? 3 : A[k + 2] > 127 ? 4 : B[k] > 140 ? 5 : B[k + 1] > 127 ? 1 : 0;
+    ch[0][i] = A[k]; ch[1][i] = A[k + 1]; ch[2][i] = A[k + 2]; ch[3][i] = B[k + 2];
   }
   const W = (hf.nx - 1) * hf.cell, D = (hf.nz - 1) * hf.cell;
-  return (x, z) => {
+  const fn = (x, z) => {
     const i = Math.floor(((x - hf.x0) / W) * w), j = Math.floor(((z - hf.z0) / D) * h);
     if (i < 0 || j < 0 || i >= w || j >= h) return 0;
     return cls[j * w + i];
   };
+  // The surface the terrain shader draws at (x, z): its texture lookup (bilinear between
+  // texel centres) of each channel against 0.5, asphalt over concrete over gravel over dirt.
+  const lin = (c, x, z) => {
+    const fx = ((x - hf.x0) / W) * w - 0.5, fz = ((z - hf.z0) / D) * h - 0.5;
+    const i = Math.max(0, Math.min(w - 2, Math.floor(fx))), j = Math.max(0, Math.min(h - 2, Math.floor(fz)));
+    const u = Math.max(0, Math.min(1, fx - i)), v = Math.max(0, Math.min(1, fz - j)), k = j * w + i;
+    return ((c[k] * (1 - u) + c[k + 1] * u) * (1 - v) + (c[k + w] * (1 - u) + c[k + w + 1] * u) * v) / 255;
+  };
+  fn.drawn = (x, z) => (lin(ch[0], x, z) > 0.5 ? SURFACE.road : lin(ch[1], x, z) > 0.5 ? SURFACE.sidewalk : lin(ch[2], x, z) > 0.5 || lin(ch[3], x, z) > 0.5 ? SURFACE.ground : SURFACE.grass);
+  return fn;
 }
 
 // ---------------------------------------------------------------- detail-layer manager

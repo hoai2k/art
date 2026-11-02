@@ -24,7 +24,7 @@ const AW = 2048;
 export const REGION = {
   leaves: [0, 0, 1024, 1024, 6, 4], debris: [1024, 0, 1024, 512, 4, 3], plants: [1024, 512, 1024, 512, 4, 3],
   items: [0, 1024, 1024, 512, 4, 2], piles: [1024, 1024, 1024, 512, 3, 2], pebbles: [0, 1536, 512, 512, 4, 4],
-  blob: [512, 1536, 256, 256, 1, 1], mulch: [768, 1536, 256, 256, 1, 1],
+  blob: [512, 1536, 256, 256, 1, 1], mulch: [768, 1536, 256, 256, 1, 1], tactile: [1536, 1536, 512, 512, 1, 1],
 };
 // leaf cells of the sheet by tree kind (sprites/leaves_single_hd.png, 6 x 4)
 const LEAVES = {
@@ -36,6 +36,8 @@ const DEBRIS = { cone: 0, branch: 1, twigs: 2, cup: 3, cap: 4, acorn: 5, core: 6
 const PLANT = { dandelion: 0, clover: 1, plantain: 2, crackGrass: 3, moss: 4, mushrooms: 5, fern: 6, goldenrod: 7, chicory: 8, thyme: 9, ivy: 10, lichen: 11 };
 const ITEM = { manhole: 0, storm: 1, treeGrate: 2, valve: 3, plate: 4, puddle: 5, crack: 6, marker: 7 };
 
+// (the tactile pad's rect, made once: fixtures are told apart by it)
+let TACTILE = null;
 // uv rect [u0, v0, du, dv] (v up) of cell i of a region, inset a little
 export function cellRect(region, i, inset = 0.012) {
   const [x, y, w, h, c, r] = REGION[region];
@@ -69,6 +71,9 @@ export function buildAtlas(assets) {
     if (m) g.drawImage(m, 0, 0, m.width / 2, m.height / 2, x, y, w, w); else { g.fillStyle = '#7a3c22'; g.fillRect(x, y, w, w); for (let k = 0; k < 400; k++) { g.fillStyle = `hsl(${15 + (k % 7) * 3},55%,${18 + (k % 5) * 6}%)`; g.fillRect(x + ((k * 37) % w), y + ((k * 61) % w), 6, 2); } }
     g.restore(); }
   bleedColours(cv);
+  // tactile warning pad (the paving texture, or a yellow stand-in with domes)
+  { const [x, y, w] = REGION.tactile, m = img(tex.tactile && tex.tactile.texture);
+    if (m) g.drawImage(m, x, y, w, w); else { g.fillStyle = '#d8a020'; g.fillRect(x, y, w, w); g.fillStyle = '#b8861a'; for (let i = 0; i < 10; i++) for (let j = 0; j < 10; j++) { g.beginPath(); g.arc(x + (i + 0.5) * w / 10, y + (j + 0.5) * w / 10, w / 50, 0, Math.PI * 2); g.fill(); } } }
   const t = new THREE.CanvasTexture(cv);
   t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter;
   return { texture: t, has };
@@ -411,7 +416,7 @@ export function nearLayer(env, U, atlas, view) {
         const x = x0 + rng() * size, z = z0 + rng() * size;
         const s = gnd(x, z); if (!s || s.normal.y < 0.85) continue;
         const lx = x - ox, lz = z - oz;
-        if (s.surface === SURFACE.grass || (s.surface === SURFACE.ground && [0, 1, 5].includes(env.groundClass(x, z)))) {
+        if (s.surface === SURFACE.grass) {                  // (the collider's ids agree with what is drawn: index.js, streets.js)
           const shade = treeCover(trees, x, z).dens > 20;
           const r = rng();
           const kind = shade ? (r < 0.06 ? PLANT.mushrooms : r < 0.4 ? PLANT.clover : r < 0.5 ? PLANT.plantain : -1)
@@ -421,10 +426,10 @@ export function nearLayer(env, U, atlas, view) {
           plants.push({ m: compose(lx, s.y - 0.004, lz, 0, rng() * Math.PI, 0, h * 1.5, h, h * 1.5), rect: cellRect('plants', kind), rnd: rng(), col: [1, 1, 1] });
         } else if (s.surface === SURFACE.sidewalk && k % 6 === 0) {
           // weeds where slabs meet: snapped to the 1.5 m joints along the street
-          const si = env.streetInfo(x, z); if (!si) continue;
+          const si = env.streetInfo(x, z); if (!si || !env.onSlabs(x, z, si)) continue;
           const al = x * si.dx + z * si.dz, snap = Math.round(al / 1.5) * 1.5 - al;
           const wx = x + si.dx * snap, wz = z + si.dz * snap;
-          const s2 = gnd(wx, wz); if (!s2 || s2.surface !== SURFACE.sidewalk || rng() > 0.25) continue;
+          const s2 = gnd(wx, wz); if (!s2 || s2.surface !== SURFACE.sidewalk || !env.onSlabs(wx, wz, env.streetInfo(wx, wz)) || rng() > 0.25) continue;
           const kind = rng() < 0.6 ? PLANT.crackGrass : rng() < 0.5 ? PLANT.moss : PLANT.dandelion, h = (kind === PLANT.moss ? 0.03 : 0.07) * (0.7 + rng() * 0.5) * sc;
           plants.push({ m: compose(wx - ox, s2.y - 0.003, wz - oz, 0, Math.atan2(si.dx, si.dz), 0, h * 1.6, h, h * 1.6), rect: cellRect('plants', kind), rnd: rng(), col: [1, 1, 1] });
         } else if (k % 40 === 0 && s.surface !== SURFACE.road) {
@@ -619,6 +624,7 @@ export function midLayer(env, U, atlas, view) {
 // round the downtown street trees, valve caps and utility plates in the
 // sidewalks, puddles in the gutters and on paths; flush with the ground
 export function fixturesLayer(env, U, atlas, shared) {
+  TACTILE = TACTILE || cellRect('tactile', 0, 0.01);
   const mat = cardMaterial(atlas, U, { mode: 0, side: THREE.FrontSide });
   mat.polygonOffset = true; mat.polygonOffsetFactor = -2; mat.polygonOffsetUnits = -6;
   const pmat = puddleMaterial(atlas, shared);
@@ -633,7 +639,7 @@ export function fixturesLayer(env, U, atlas, shared) {
       const place = (list, x, z, w, l, yaw, rect, lift, want) => {
         const s = env.surfaceAt(x, z); if (!s || s.normal.y < 0.97 || (want && !want.includes(s.surface))) return false;
         list.push({ m: compose(x - ox, s.y + lift, z - oz, 0, yaw, 0, w, 1, l), rect, rnd: rng(), col: [1, 1, 1] });
-        where.push({ x, z, kind: list === puddles ? 'puddle' : Object.keys(ITEM).find((k) => cellRect('items', ITEM[k], 0.04)[0] === rect[0] && cellRect('items', ITEM[k], 0.04)[1] === rect[1]) || 'mulch' });
+        where.push({ x, z, kind: list === puddles ? 'puddle' : rect === TACTILE ? 'tactile' : Object.keys(ITEM).find((k) => cellRect('items', ITEM[k], 0.04)[0] === rect[0] && cellRect('items', ITEM[k], 0.04)[1] === rect[1]) || 'mulch' });
         return true;
       };
       // along each curbed street: manholes in the lanes, storm grates at the curb
@@ -659,13 +665,21 @@ export function fixturesLayer(env, U, atlas, shared) {
           s0 += L;
         }
       }
+      // tactile warning pads where each crosswalk meets the sidewalk
+      for (const cw of env.crossingsIn(x0, z0, size)) {
+        const nx = -cw.rz, nz = cw.rx;
+        for (const sg of [-1, 1]) {
+          const x = cw.x + nx * sg * (cw.hw + 0.55), z = cw.z + nz * sg * (cw.hw + 0.55); if (!inCell(x, z)) continue;
+          place(items, x, z, 1.5, 0.6, Math.atan2(-cw.rz, cw.rx), TACTILE, 0.003, [SURFACE.sidewalk]);
+        }
+      }
       // trees: grates in the sidewalk, mulch beds in downtown lawns
       for (const t of env.treesNear(x0 + size / 2, z0 + size / 2, size * 0.72)) {
         if (!inCell(t.x, t.z) || t.kind === 'spruce') continue;
         const s = env.surfaceAt(t.x + 0.45, t.z + 0.1); if (!s) continue;
         const si = env.streetInfo(t.x, t.z);
         if (s.surface === SURFACE.sidewalk) place(items, t.x, t.z, 1.25, 1.25, si ? Math.atan2(-si.dz, si.dx) : 0, cellRect('items', ITEM.treeGrate, 0.04), 0.003);
-        else if ((s.surface === SURFACE.grass || s.surface === SURFACE.ground) && env.downtownAt(t.x, t.z)) place(items, t.x, t.z, 2.2 + rng() * 0.6, 2.2 + rng() * 0.6, rng() * 6.28, cellRect('mulch', 0, 0.01), 0.004);
+        else if (s.surface === SURFACE.grass && env.downtownAt(t.x, t.z)) place(items, t.x, t.z, 2.2 + rng() * 0.6, 2.2 + rng() * 0.6, rng() * 6.28, cellRect('mulch', 0, 0.01), 0.004);
       }
       // sidewalks: a valve cap or a utility plate now and then, a crack with a dandelion; puddles on paths and lots
       for (let k = 0; k < 18; k++) {

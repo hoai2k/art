@@ -135,6 +135,7 @@ function buildMarkings(ctx) {
   const { roads, junctions, jgrid, grid } = ctx.streets;
   const list = [];
   const quad = (cx, cz, dx, dz, hl, hw, kind) => list.push({ cx, cz, dx, dz, hl, hw, kind });
+  const zebras = ctx.crosswalks = [];             // (centre, road direction, half width) for the tactile pads
   // OSM crossings: footways that cross a carriageway become zebra crosswalks
   const crossings = new PointGrid(20);
   for (const r of data.roads) {
@@ -156,6 +157,7 @@ function buildMarkings(ctx) {
     }
   }
   function zebra(cx, cz, rx, rz, hw, depth) {
+    zebras.push({ x: cx, z: cz, rx, rz, hw });
     // bars parallel to traffic, spread across the carriageway
     const nx = -rz, nz = rx;
     for (let o = -hw + 0.7; o <= hw - 0.5; o += 1.1) quad(cx + nx * o, cz + nz * o, rx, rz, depth / 2, 0.28, STREET.white);
@@ -213,22 +215,24 @@ export function buildGroundMap(ctx, mPerPx) {
   A.globalCompositeOperation = 'lighten'; B.globalCompositeOperation = 'lighten';
   // concrete: sidewalk bands, plazas, footways
   A.strokeStyle = A.fillStyle = 'rgb(0,255,0)';
-  for (const s of streets.roads) line(A, s.road.points, s.road.width + 2 * s.band);
+  // (bands and ribbons a little narrower than their slabs: the edge of the paint lies hidden
+  // under the slab, not on the lawn beside it where it would be a second edge to walk across)
+  for (const s of streets.roads) line(A, s.road.points, s.road.width + 2 * s.band - 1.2);
   for (const a of data.areas) if (a.kind === 'plaza') poly(A, [a.outer, ...a.holes]);
-  for (const r of data.roads) if (r.kind === 'footway' || r.kind === 'pedestrian' || r.kind === 'steps') line(A, r.points, r.width);
+  for (const r of data.roads) if (r.kind === 'footway' || r.kind === 'pedestrian' || r.kind === 'steps') line(A, r.points, Math.max(0.4, r.width - 0.6));
   // boulevards back to grass
   A.globalCompositeOperation = 'multiply'; A.strokeStyle = 'rgb(255,0,255)';
   for (const s of streets.roads) if (s.blv > 0) line(A, s.road.points, s.road.width + 2 * s.blv);
   A.globalCompositeOperation = 'lighten';
   // gravel: paths, rail beds
   A.strokeStyle = A.fillStyle = 'rgb(0,0,255)';
-  for (const r of data.roads) if (r.kind === 'path' || r.kind === 'track' || r.kind === 'bridleway') line(A, r.points, r.width);
+  for (const r of data.roads) if (r.kind === 'path' || r.kind === 'track' || r.kind === 'bridleway') line(A, r.points, Math.max(0.4, r.width - 0.6));
   for (const r of data.railways) line(A, r.points, 3.2);
   for (const a of data.areas) if (a.kind === 'railway') poly(A, [a.outer, ...a.holes]);
   // asphalt
   A.strokeStyle = A.fillStyle = 'rgb(255,0,0)';
   for (const a of data.areas) if (a.kind === 'parking') poly(A, [a.outer, ...a.holes]);
-  for (const r of data.roads) if (r.kind === 'service' || CURBED.has(r.kind)) line(A, r.points, r.width);
+  for (const r of data.roads) if (r.kind === 'service' || CURBED.has(r.kind)) line(A, r.points, Math.max(0.4, r.width - 0.6));
   // B: lush grass in parks; leaf litter under trees and in woods; dirt on pitches' infields
   B.fillStyle = 'rgb(0,255,0)';
   for (const a of data.areas) if (a.kind === 'park' || a.kind === 'garden' || a.kind === 'pitch' || a.kind === 'cemetery' || a.kind === 'grass') poly(B, [a.outer, ...a.holes]);
@@ -240,7 +244,8 @@ export function buildGroundMap(ctx, mPerPx) {
     gr.addColorStop(0, 'rgba(255,0,0,0.95)'); gr.addColorStop(1, 'rgba(255,0,0,0)');
     B.fillStyle = gr; B.beginPath(); B.arc(t.x, t.z, r, 0, Math.PI * 2); B.fill();
   }
-  const tex = (c) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.NoColorSpace; t.anisotropy = 4; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; return t; };
+  // flipY off: row 0 of the canvas is z0, as the shader's uv (and classMap) read it
+  const tex = (c) => { const t = new THREE.CanvasTexture(c); t.flipY = false; t.colorSpace = THREE.NoColorSpace; t.anisotropy = 4; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; return t; };
   return { texA: tex(ca), texB: tex(cb), rect: new THREE.Vector4(x0, z0, 1 / W, 1 / D), canvases: [ca, cb] };
 }
 
@@ -336,16 +341,24 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
         const y = isCurb ? H(p[0], p[1]) + curb : Math.max(H(p[0], p[1]), terrainTri(ctx.hf, p[0], p[1])) + 0.04;
         meta.set(p, { isCurb, y, d: isCurb ? 0 : Math.max(i.d, 0.3), i });
       }
-      triangulate(P, (pts) => pts.map((p) => {
-        const m = meta.get(p);
-        vb.set('aSt', [STREET.plate, m.d, m.i.blv, m.i.band]).set('aDir', [m.i.dx, m.i.dz]);
-        return vb.v(p[0] - ox, m.y, p[1] - oz, 0, 1, 0);
-      }), vb, (a, b, c) => {
-        const ma = meta.get(a), mb = meta.get(b), mc = meta.get(c);
-        const d = (ma.d + mb.d + mc.d) / 3, blv = ma.i.blv;
-        const surf = blv > 0 && d > 0.25 && d < blv ? SURFACE.grass : SURFACE.sidewalk;
-        cb.tri([a[0] - ox, ma.y, a[1] - oz], [c[0] - ox, mc.y, c[1] - oz], [b[0] - ox, mb.y, b[1] - oz], surf);
-      });
+      // Each triangle is cut where the boulevard's grass starts and ends (d = 0.2 and d = blv,
+      // d interpolating linearly), so every drawn piece is all grass or all paving and its
+      // collider triangle carries the same surface (the shader decides grass by the same rule).
+      for (const [a, b, c] of upTriangles(P)) {
+        const ma = meta.get(a), mb = meta.get(b), mc = meta.get(c), blv = mc.i.blv, band = mc.i.band;
+        const V = [[a[0], ma.y, a[1], ma.d], [b[0], mb.y, b[1], mb.d], [c[0], mc.y, c[1], mc.d]];
+        const cuts = blv > 0.05 ? [0.2, blv] : [];
+        for (const piece of slicePoly(V, cuts)) {
+          const dm = piece.reduce((t, q) => t + q[3], 0) / piece.length;
+          const surf = blv > 0.05 && dm > 0.2 && dm < blv ? SURFACE.grass : SURFACE.sidewalk;
+          vb.set('aSt', [STREET.plate, 0, blv, band]).set('aDir', [mc.i.dx, mc.i.dz]);
+          const ids = piece.map((q) => { vb.state.aSt = [STREET.plate, q[3], blv, band]; return vb.v(q[0] - ox, q[1], q[2] - oz, 0, 1, 0); });
+          for (let k = 1; k + 1 < piece.length; k++) {
+            vb.tri(ids[0], ids[k], ids[k + 1]);
+            cb.tri([piece[0][0] - ox, piece[0][1], piece[0][2] - oz], [piece[k][0] - ox, piece[k][1], piece[k][2] - oz], [piece[k + 1][0] - ox, piece[k + 1][1], piece[k + 1][2] - oz], surf);
+          }
+        }
+      }
       // the slab's edges, all closed down to below the (sunken) terrain so nothing can get
       // under a sidewalk: curb faces on the road side, skirts on the outer side (inside is
       // on the left of each loop edge, the outside on the right); none along the chunk edge
@@ -406,6 +419,37 @@ export function terrainTri(hf, x, z) {
   const fx = (x - hf.x0) / hf.cell, fz = (z - hf.z0) / hf.cell, i = Math.floor(fx), j = Math.floor(fz), u = fx - i, v = fz - j;
   const a = hf.node(i, j), b = hf.node(i + 1, j), c = hf.node(i + 1, j + 1), d = hf.node(i, j + 1);
   return u >= v ? a + (b - a) * u + (c - b) * v : a + (c - d) * u + (d - a) * v;
+}
+
+// The polygon's triangles (earcut), each wound to face up (+y), as point triples.
+function upTriangles(P) {
+  const toV = (l) => l.map((p) => new THREE.Vector2(p[0], p[1]));
+  let faces; try { faces = THREE.ShapeUtils.triangulateShape(toV(P.outer), P.holes.map(toV)); } catch { return []; }
+  const all = P.outer.concat(...P.holes);
+  return faces.map((f) => {
+    const a = all[f[0]], b = all[f[1]], c = all[f[2]];
+    return (b[1] - a[1]) * (c[0] - a[0]) - (b[0] - a[0]) * (c[1] - a[1]) > 0 ? [a, b, c] : [a, c, b];
+  });
+}
+// Cut a convex polygon of [x, y, z, d] at the given values of d (linear across it): the
+// pieces between consecutive cuts, in order, each a convex polygon (wound as the input).
+function slicePoly(V, cuts) {
+  let rest = V; const out = [];
+  for (const t of cuts) {
+    const lo = [], hi = [];
+    for (let i = 0; i < rest.length; i++) {
+      const p = rest[i], q = rest[(i + 1) % rest.length];
+      if (p[3] < t) lo.push(p); else if (p[3] > t) hi.push(p); else { lo.push(p); hi.push(p); }
+      if ((p[3] < t && q[3] > t) || (p[3] > t && q[3] < t)) {
+        const u = (t - p[3]) / (q[3] - p[3]), m = [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u, p[2] + (q[2] - p[2]) * u, t];
+        lo.push(m); hi.push(m);
+      }
+    }
+    if (lo.length >= 3) out.push(lo);
+    rest = hi; if (rest.length < 3) return out;
+  }
+  out.push(rest);
+  return out;
 }
 
 // Earcut via three's ShapeUtils. emit(pts) -> vertex indices, in pts order.

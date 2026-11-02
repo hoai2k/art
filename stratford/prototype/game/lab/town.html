@@ -199,6 +199,23 @@ if (params.get('view')) await jumpTo(params.get('view'), params.get('mode') || '
 // colliders. diff = visible - collider (m): > +1 cm means the creature sinks into
 // what it sees. layers = how many distinct visible surfaces lie within 1.5 cm of the top
 // (two drawn grounds that close fight in the depth buffer).
+// The surface id of what is drawn at a hit: terrain by the ground map (the shader's rule,
+// world.debugDrawnTerrain), streets by the hit triangle's kind (aSt: x kind, y distance from
+// the curb, z boulevard width); null where there is no single answer (bridges, rails).
+const _tri = new THREE.Triangle(), _bc = new THREE.Vector3();
+function drawnClass(m, g, h, x, z) {
+  if (m.name === 'terrain') return world.debugDrawnTerrain(x, z);
+  if (m.name !== 'streets' || !g.attributes.aSt) return null;
+  const st = g.attributes.aSt, f = h.face, kind = Math.round(st.getX(f.a));
+  if (kind === 0 || kind === 5 || kind === 6 || kind === 7) return 0 + 1;          // road
+  if (kind === 2 || kind === 3 || kind === 11) return 2;                         // sidewalk
+  if (kind === 4) return 0;                                                       // ground (gravel path)
+  if (kind !== 1) return null;
+  const P = g.attributes.position;
+  _tri.setFromAttributeAndIndices(P, f.a, f.b, f.c); _tri.getBarycoord(h.point, _bc);
+  const d = st.getY(f.a) * _bc.x + st.getY(f.b) * _bc.y + st.getY(f.c) * _bc.z, blv = st.getZ(f.c);   // flat: the last vertex
+  return blv > 0.05 && d > 0.2 && d < blv ? 3 : 2;
+}
 async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
   const { MeshBVH } = await import('three-mesh-bvh');
   const w = world;
@@ -257,7 +274,7 @@ async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
           const p = h.point.clone().applyMatrix4(m.matrixWorld);
           const n = h.face.normal.clone().applyMatrix3(nm.getNormalMatrix(m.matrixWorld)).normalize();
           if (n.y < -0.3) continue;                             // undersides and ceilings face away from a creature above
-          hits.push({ y: p.y, name: m.userData.detailLayer || m.name });
+          hits.push({ y: p.y, name: m.userData.detailLayer || m.name, drawn: drawnClass(m, g, h, x, z) });
         }
       }
       // every walkable collider surface under the point (stacked slabs), and whether a
@@ -291,7 +308,10 @@ async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
       const vis = hits.find((h) => h.name !== 'buildings') || hits[0];
       if (vis.name === 'buildings') continue;
       const close = [...new Set(hits.filter((h) => vis.y - h.y < 0.015 && h.name !== 'buildings').map((h) => `${h.name}@${h.y.toFixed(3)}`))];
-      samples.push({ cat, x: +x.toFixed(2), z: +z.toFixed(2), diff: vis.y - col.point.y, vis: vis.name, surface: col.surface, layers: close.length, pair: close.map((c) => c.split('@')[0]).sort().join('+') });
+      // the surface the creature walks on (collider id) against the one drawn on top there
+      const g0 = hits.find((h) => h.name === 'terrain' || h.name === 'streets');
+      const surfOk = !g0 || g0.drawn == null || g0.y < vis.y - 0.015 || g0.drawn === col.surface;
+      samples.push({ cat, x: +x.toFixed(2), z: +z.toFixed(2), diff: vis.y - col.point.y, vis: vis.name, surface: col.surface, drawn: g0 && g0.drawn, surfOk, layers: close.length, pair: close.map((c) => c.split('@')[0]).sort().join('+') });
     }
   }
   const ghosts = samples.filter((p) => p.ghost);
@@ -309,6 +329,8 @@ async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
     multiLayer: ok.filter((p) => p.layers > 1).length,
     pairs: ok.filter((p) => p.layers > 1).reduce((a, p) => { a[p.pair] = (a[p.pair] || 0) + 1; return a; }, {}),
     pairSamples: ok.filter((p) => p.layers > 1 && p.pair !== 'streets+streets' && p.pair !== 'markings+streets').slice(0, 40).map((p) => [p.pair, p.x, p.z, p.cat]),
+    surfChecked: ok.filter((p) => p.drawn != null).length, surfMismatch: ok.filter((p) => !p.surfOk).length,
+    surfSamples: ok.filter((p) => !p.surfOk).slice(0, 12).map((p) => [p.cat, p.x, p.z, p.vis, 'drawn', p.drawn, 'collider', p.surface]),
     stacked: ghosts.length, leaks: ghosts.filter((p) => p.leak).length,
     stackedBy: ghosts.reduce((a, p) => { a[p.cat] = (a[p.cat] || 0) + 1; return a; }, {}),
     leakSamples: ghosts.filter((p) => p.leak).slice(0, 6).map((p) => [p.cat, p.x, p.z, p.gap]),

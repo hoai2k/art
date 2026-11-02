@@ -197,6 +197,9 @@ test('every visible ground matches the collider (ground probe)', { timeout: 9000
     assert.ok(r.n > 300, `enough probe points (${r.n})`);
     assert.ok(r.above1cm <= r.n * 0.001, `visible ground more than 1 cm above the collider at under 0.1% of points (${r.above1cm}): ${JSON.stringify(r.worst.slice(0, 3))}`);
     assert.ok(r.below1cm <= r.n * 0.01, `visible ground below the collider at under 1% of points (${r.below1cm})`);
+    console.log(`  surfaces: ${r.surfMismatch} of ${r.surfChecked} points drawn as one surface but walked as another ${JSON.stringify(r.surfSamples.slice(0, 4))}`);
+    assert.ok(r.surfChecked > r.n * 0.8, `the drawn surface is known at most points (${r.surfChecked})`);
+    assert.ok(r.surfMismatch <= r.n * 0.01, `the collider's surface id is the drawn one at over 99% of points (${r.surfMismatch} differ: ${JSON.stringify(r.surfSamples.slice(0, 4))})`);
     const fights = Object.entries(r.pairs).filter(([k]) => k !== 'markings+streets' && k !== 'streets+streets').reduce((a, [, v]) => a + v, 0);
     assert.ok(fights <= r.n * 0.01, `different ground layers drawn within 1.5 cm of each other at under 1% of points (${fights})`);
     assert.deepEqual(errors, [], 'no console errors');
