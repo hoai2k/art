@@ -5229,6 +5229,46 @@
       ],
       "anchor": "top centre",
       "edition": "film"
+    },
+    "prince-swim-surface-a": {
+      "status": "requested",
+      "file": "prince-swim-surface-a.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "waterline 40% down from the top, centred on his head",
+      "edition": "film"
+    },
+    "prince-swim-surface-a-tinted": {
+      "status": "requested",
+      "file": "prince-swim-surface-a-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "waterline 40% down from the top, centred on his head",
+      "edition": "film"
+    },
+    "prince-swim-surface-b": {
+      "status": "requested",
+      "file": "prince-swim-surface-b.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "waterline 40% down from the top, centred on his head",
+      "edition": "film"
+    },
+    "prince-swim-surface-b-tinted": {
+      "status": "requested",
+      "file": "prince-swim-surface-b-tinted.webp",
+      "size": [
+        360,
+        240
+      ],
+      "anchor": "waterline 40% down from the top, centred on his head",
+      "edition": "film"
     }
   },
   "audio": {
