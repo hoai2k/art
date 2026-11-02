@@ -597,6 +597,13 @@ GROUPS.append(("Rock faces beneath the cavern platforms", "Painted irregular cav
 ]))
 
 
+
+GROUPS.append(("The prince swims at the surface", "Requested 2 November 2026. In the sea gap only his head, his arm on each stroke and his kicking heels should break the surface; the game lays its painted water over the rest of him. Two alternating front-crawl frames in both looks, the same scale as prince-swim-a, with the waterline at a fixed height so the game can register it. (Ducking under the witch's swoop keeps prince-swim-under-a/b, shown lit beneath the surface.)", [
+    (f'prince-swim-surface-{frame}{t}', f'Swimming at the surface, stroke {frame.upper()}{" (tinted)" if t else ""}', 360, 240, 'waterline 40% down from the top, centred on his head', TINTED if t else SPRITE,
+     f'{PRINCE}, swimming front crawl at the surface of the sea, facing RIGHT, seen from the side, the same scale as prince-swim-a{t}.webp (attach it). A level waterline runs straight across the canvas 40% down from the top: above it only his helmeted head (turned a little toward us to breathe, plume wet and drooping), ' + ('his right arm reaching forward out of the water in a high recovery, gauntlet about to enter, and his heels kicking up a little at the far left' if frame == 'a' else 'his left arm reaching forward out of the water while the right is under, and his boot toes just breaking the surface at the far left') + '; below the line the rest of his body, cloak and shield are painted faintly and darker, as if seen through dark moonlit water, fading out toward the bottom. ' + ('Frame B is the other phase of frame A (attach it): the same head position, height and scale so the two alternate as a stroke. ' if frame == 'b' else '') + 'No water surface, spray, waves, foam or ripples drawn (the game paints its own water); nothing but the figure on genuine transparent alpha.', None)
+    for frame in ('a', 'b') for t in ('', '-tinted')
+]))
+
 def ids():
     return [a for _, _, items in GROUPS for a in items]
 
