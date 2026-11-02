@@ -85,7 +85,8 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     if (c.wish.lengthSq() > 1e-8) c.wish.normalize(); else c.wishMag = 0;
   }
 
-  const targetSpeed = () => c.wishMag * (T.runSpeed + c.sprint * (T.sprintSpeed - T.runSpeed));
+  // debug superspeed (controls.boost, LT / Q): up to T.boostMax (10) x the speeds and accelerations
+  const targetSpeed = () => c.wishMag * (T.runSpeed + c.sprint * (T.sprintSpeed - T.runSpeed)) * c.boostMul;
 
   function emit(name, data) { c.events.push([name, data]); }
 
@@ -112,7 +113,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       const cross = v1.crossVectors(c.fwd, c.wish).dot(c.up);
       const dot = THREE.MathUtils.clamp(c.fwd.dot(c.wish), -1, 1);
       const ang = Math.atan2(cross, dot);
-      const sp = Math.abs(c.speed);
+      const sp = Math.abs(c.speed) / c.boostMul;      // (turning as at the unboosted speed)
       // nearly reversing at speed: brake first, then pivot
       if (Math.abs(ang) > 2.2 && sp > T.runSpeed * 0.35) {
         c.speed = Math.max(0, c.speed - T.brake * dt);
@@ -128,7 +129,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     // speed along the heading (scaled by how well heading matches the wish)
     const align = c.wishMag > 0 ? Math.max(0, c.fwd.dot(c.wish)) : 0;
     const want = vmax * (0.3 + 0.7 * align * align);
-    const a = want > c.speed ? T.accel * (c.speed < T.runSpeed * 0.3 ? 1.3 : 1) : T.decel;
+    const a = (want > c.speed ? T.accel * (c.speed < T.runSpeed * 0.3 ? 1.3 : 1) : T.decel) * c.boostMul;
     c.speed += THREE.MathUtils.clamp(want - c.speed, -a * dt, a * dt);
     // keep heading tangent
     c.fwd.addScaledVector(c.up, -c.fwd.dot(c.up)).normalize();
@@ -367,7 +368,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
   function stepClimb(dt, controls, world, camera) {
     wishFromStick(controls, camera, 'wall');
     const n = c.up.clone();
-    const vmax = c.wishMag * (T.climbSpeed + c.sprint * (T.climbSprint - T.climbSpeed));
+    const vmax = c.wishMag * (T.climbSpeed + c.sprint * (T.climbSprint - T.climbSpeed)) * c.boostMul;
     // heading turns toward the wish quickly (squirrels turn on a trunk in a blink)
     if (c.wishMag > 0) {
       const cross = v1.crossVectors(c.fwd, c.wish).dot(n);
@@ -555,14 +556,14 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
   function stepSwim(dt, controls, world, camera) {
     wishFromStick(controls, camera, 'ground');
     const wl = world.waterAt?.(c.pos.x, c.pos.z);
-    const vmax = c.wishMag * T.swimSpeed * (1 + 0.3 * c.sprint);
+    const vmax = c.wishMag * T.swimSpeed * (1 + 0.3 * c.sprint) * c.boostMul;
     if (c.wishMag > 0) {
       const cross = v1.crossVectors(c.fwd, c.wish).y;
       const ang = Math.atan2(cross, c.fwd.dot(c.wish));
       c.fwd.applyAxisAngle(UP, THREE.MathUtils.clamp(ang, -4 * dt, 4 * dt));
     }
     c.fwd.y = 0; c.fwd.normalize();
-    c.speed += THREE.MathUtils.clamp(vmax * Math.max(0, c.fwd.dot(c.wish)) - c.speed, -4 * dt, 3 * dt);
+    c.speed += THREE.MathUtils.clamp(vmax * Math.max(0, c.fwd.dot(c.wish)) - c.speed, -4 * dt * c.boostMul, 3 * dt * c.boostMul);
     c.vel.copy(c.fwd).multiplyScalar(c.speed);
     c.pos.addScaledVector(c.vel, dt);
     collide(world, (n) => { const into = c.vel.dot(n); if (into < 0 && !isWalkable(n)) c.vel.addScaledVector(n, -into); });
@@ -589,7 +590,9 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
   }
 
   // ---------------------------------------------------------------- step
+  c.boostMul = 1;
   c.step = (dt, controls, world, camera) => {
+    c.boostMul = 1 + ((T.boostMax ?? 10) - 1) * Math.min(1, Math.max(0, controls.boost || 0));
     if (controls.jumpPressed) c.jumpBuffer = T.jumpBuffer;
     else c.jumpBuffer = Math.max(0, c.jumpBuffer - dt);
     c.jumpHeld = !!controls.jump;
@@ -636,8 +639,10 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     if (!(dt > 0)) return;
     // short enough steps that the body never moves more than ~half its radius at once (so it
     // can't cross a zero-thickness wall between two collision checks)
-    const sp = c.vel.length() + 1;
-    const n = Math.min(48, Math.max(1, Math.ceil(dt / T.maxStep), Math.ceil(sp * dt / (T.radius * 0.45))));
+    const mul = 1 + ((T.boostMax ?? 10) - 1) * Math.min(1, Math.max(0, controls.boost || 0));
+    const sp = Math.max(c.vel.length(), mul > 1 ? T.sprintSpeed * mul : 0) + 1;
+    // (with superspeed that can be a couple of hundred substeps: it's a debugging aid)
+    const n = Math.min(400, Math.max(1, Math.ceil(dt / T.maxStep), Math.ceil(sp * dt / (T.radius * 0.45))));
     const h = dt / n;
     for (let i = 0; i < n; i++) {
       c.step(h, i === 0 ? controls : { ...controls, jumpPressed: false, sitPressed: false, digPressed: false }, world, camera);

@@ -110,8 +110,10 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
     { const l = tmp.length(); const h = l > 1e-6 && raycastSolid(world, body, tmp.divideScalar(l), l + probe, IGNORE); if (h) target.copy(body).addScaledVector(tmp, Math.max(0, h.distance - probe)); }
     if (first) { focus.copy(target); focusV.set(0, 0, 0); prevTarget.copy(target); }
     // (a jump of the target, e.g. letting go of a wall, isn't a velocity: follow it as a step)
-    if (prevTarget.distanceTo(target) > (T.sprintSpeed || 8) * 2 * dt) prevTarget.copy(target);
-    springV(focus, focusV, prevTarget, target, T.camFollow ?? 11, dt, FF);
+    if (prevTarget.distanceTo(target) > (T.sprintSpeed || 8) * 2 * (c.boostMul || 1) * dt) prevTarget.copy(target);
+    // (superspeed: feed forward more, so the lag stays the same ~0.2 m at any speed)
+    const bm = c.boostMul || 1, ffk = 1 - (1 - FF.x) / bm;
+    springV(focus, focusV, prevTarget, target, T.camFollow ?? 11, dt, bm > 1 ? { x: ffk, y: 1 - (1 - FF.y) / bm, z: ffk } : FF);
     prevTarget.copy(target);
     // the lagging point must stay in open air (it may go round a roof edge as the creature does);
     // if it ever ends up touching something, ease it onto the target

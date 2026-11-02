@@ -33,13 +33,13 @@ export const KEYS = {
   forward: 'KeyW', back: 'KeyS', left: 'KeyA', right: 'KeyD',
   lookUp: 'ArrowUp', lookDown: 'ArrowDown', lookLeft: 'ArrowLeft', lookRight: 'ArrowRight',
   jump: 'Space', sprint: ['ShiftLeft', 'ShiftRight'], sit: 'KeyE', dig: 'KeyF', recenter: 'KeyC',
-  zoomOut: 'KeyZ', zoomIn: 'KeyX',
+  zoomOut: 'KeyZ', zoomIn: 'KeyX', boost: 'KeyQ',
   map: ['KeyM', 'Tab'], pause: ['Escape', 'KeyP'],
 };
 
 const zeroControls = () => ({
   move: [0, 0], look: [0, 0], jump: false, jumpPressed: false, sprint: 0,
-  sitPressed: false, digPressed: false, recenter: false, zoom: 0,
+  sitPressed: false, digPressed: false, recenter: false, zoom: 0, boost: 0,
 });
 export { zeroControls };
 
@@ -196,6 +196,7 @@ export function createInput(opts = {}) {
       const kn = Math.hypot(mx, my);
       if (kn > 1) { mx /= kn; my /= kn; }
       let sprint = anyKey(KEYS.sprint) ? 1 : 0;
+      let boost = keys.has(KEYS.boost) ? 1 : 0;     // debug superspeed (LT / Q)
       let jump = keys.has(KEYS.jump); let jumpPressed = pressed.has(KEYS.jump);
       let sit = pressed.has(KEYS.sit); let dig = pressed.has(KEYS.dig);
       let recenter = pressed.has(KEYS.recenter);
@@ -218,6 +219,8 @@ export function createInput(opts = {}) {
         lookY += shape(ry) * LOOK_RATE * dt * sens;
         const rt = p.held.has(BTN.RT) ? 0 : p.now[BTN.RT] || 0;
         sprint = Math.max(sprint, rt < 0.05 ? 0 : rt);
+        const lt = p.held.has(BTN.LT) ? 0 : p.now[BTN.LT] || 0;
+        boost = Math.max(boost, lt < 0.05 ? 0 : lt);
         if (padDown(p, BTN.A)) jump = true;
         if (padFresh(p, BTN.A)) jumpPressed = true;
         if (padFresh(p, BTN.X)) sit = true;
@@ -241,7 +244,7 @@ export function createInput(opts = {}) {
       c.move = [mx, my];
       c.look = [lookX, lookY];
       c.jump = jump; c.jumpPressed = jumpPressed; c.sprint = Math.min(1, sprint);
-      c.sitPressed = sit; c.digPressed = dig; c.recenter = recenter; c.zoom = zoom;
+      c.sitPressed = sit; c.digPressed = dig; c.recenter = recenter; c.zoom = zoom; c.boost = Math.min(1, boost);
       return c;
     },
 
