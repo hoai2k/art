@@ -688,7 +688,11 @@ export function rocksWorld(k, st, t) {
   for (const r of st.rocks) {
     if (r.y == null) continue;
     rockfallTrail(k,r,t);
-    c.save(); c.translate(r.x, -r.y); c.rotate(r.spin + t * 7);
+    // The film edition: one stone block from the debris painting (the whole
+    // cut-out is a collapsing wall in a dust cloud, which read as a pink
+    // blob whirling past), turning slowly as it falls.
+    c.save(); c.translate(r.x, -r.y); c.rotate(r.spin + t * (FILM ? 2.2 : 7));
+    if (FILM && k.img('debris-stones') && k.assetCrop('debris-stones', 200, 8, 56, 50, -17, -15, 34, 30)) { c.restore(); continue; }
     if (!k.asset('debris-stones', 0, 22, 60, 40)) {
       c.fillStyle = k.col('#8d8f91');
       c.beginPath(); c.moveTo(-18, -6); c.lineTo(-6, -18); c.lineTo(14, -14); c.lineTo(20, 4); c.lineTo(6, 18); c.lineTo(-14, 14); c.closePath(); c.fill();

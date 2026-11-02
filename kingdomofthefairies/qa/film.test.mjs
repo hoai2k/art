@@ -49,6 +49,16 @@ test('The final tableau lays out every pearl and keepsake of the voyage', () => 
   assert.equal(actTower.intertitle, null, 'the Cliff Foot has no second card');
 });
 
+test('Losing the last stand: engulfed in flames, with its own words', () => {
+  const st = actBurning.create({ from: { scene: 3, introDone: true } });
+  st.lanterns = 1; st.inv = 0; st.duel.next = 99; st.duel.bolts = [{ x: st.w.x + 20 }];
+  for (let i = 0; i < 30 && st.defeatT == null; i++) actBurning.step(st, DT, {});
+  run(actBurning, st, 0.2);
+  assert.equal(st.lostTitle, 'Engulfed\nin Flames');
+  assert.equal(st.lostSub, 'The witch engulfed you in flames. Try again.');
+  assert.equal(actTower.scenes.at(-1).name, 'Top of the Tower');
+});
+
 test('Act II scene names follow the film', () => {
   assert.deepEqual(ACT2_SCENES.slice(4).map((s) => s.name), ['The Water Fairy', 'The Marine Procession']);
 });

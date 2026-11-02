@@ -160,7 +160,7 @@ function azurineAtWindow(k, t) {
   const g = c.createRadialGradient(x, y, 6, x, y, 70);
   g.addColorStop(0, `rgba(255,214,140,${0.55 + 0.15 * Math.sin(t * 2.2)})`); g.addColorStop(1, 'rgba(255,214,140,0)');
   c.fillStyle = g; c.fillRect(x - 70, y - 70, 140, 140);
-  if (!k.asset('azurine-window', x, -TOWER_TOP - 4, 64, 80)) { c.fillStyle = k.col('#c9d8ee'); k.circle(x, -TOWER_TOP - 50, 14); }
+  if (!k.asset('azurine-window', x, -TOWER_TOP + 5, 64, 80)) { c.fillStyle = k.col('#c9d8ee'); k.circle(x, -TOWER_TOP - 50, 14); }
 }
 
 function towerScene(k, st, t) {
@@ -513,10 +513,42 @@ function duel(k, st, t, entrance = false) {
       c.beginPath(); c.arc(w.x + 30, w.y - 80, 70, -1.1, 0.5); c.stroke(); c.restore();
     }
   } else princeOnFoot(k, w, H);
+  // beaten: the witch's fire engulfs him, rising until the retry card
+  if (st.defeatT != null) engulfed(k, w, H, st.defeatT, t);
   // her strength left, as three marks over her
   if (!trap) for (let i = 0; i < DUEL.hp; i++) { c.fillStyle = k.col(i < d.hp ? '#b06ad0' : '#3a2a40'); k.circle(d.x - 24 + i * 24, BARREL.y - DUEL.witchHeight - 40, 7); }
   // on touch the buttons are named Leap and Strike, so they need no line
   if (st.phaseT < 7 && !trap && k.inputMode !== 'touch') hint(k, '[A] leaps her fire · [X] strikes with the sword');
+}
+
+// Flames wrapping the prince where he stands, in the layered style of her
+// running fire, growing from his feet to over his head.
+function engulfed(k, w, H, dt, t) {
+  const c = k.c, grow = clamp(dt / 0.7, 0, 1), top = H * (0.5 + 0.7 * grow);
+  c.save(); c.translate(w.x, w.y);
+  // the glow of the fire on him
+  const g = c.createRadialGradient(0, -top * 0.45, 4, 0, -top * 0.45, top * 0.75);
+  g.addColorStop(0, `rgba(255,190,90,${0.55 * grow})`); g.addColorStop(1, 'rgba(255,120,40,0)');
+  c.fillStyle = g; c.fillRect(-top, -top * 1.3, top * 2, top * 1.5);
+  // tongues of flame licking up round him, each its own height and sway
+  for (let i = 0; i < 11; i++) {
+    const n = Math.sin(i * 12.9898) * 43758.5453, r = n - Math.floor(n);
+    const x = (r - 0.5) * 70 + Math.sin(t * 7 + i * 2.3) * 5;
+    const h = top * (0.45 + 0.55 * r) * (0.75 + 0.25 * Math.sin(t * 14 + i * 1.9));
+    for (const [col, wd, f, a] of [['#b8281a', 15, 1, 0.7], ['#e9693a', 10, 0.78, 0.8], ['#ffd27a', 5, 0.5, 0.9]]) {
+      const sway = Math.sin(t * 19 + i * 3 + wd) * 7;
+      c.globalAlpha = a * (0.25 + 0.75 * grow); c.fillStyle = k.col(col); c.beginPath(); c.moveTo(x - wd, 6);
+      c.bezierCurveTo(x - wd * 1.1, -h * f * 0.4, x + sway - wd * 0.3, -h * f * 0.75, x + sway, -h * f);
+      c.bezierCurveTo(x + sway + wd * 0.3, -h * f * 0.75, x + wd * 1.1, -h * f * 0.4, x + wd, 6); c.closePath(); c.fill();
+    }
+  }
+  // embers rising off him
+  for (let i = 0; i < 14; i++) {
+    const life = ((t * (0.6 + (i % 5) * 0.12) + i * 0.37) % 1);
+    c.globalAlpha = (1 - life) * grow; c.fillStyle = k.col(i % 2 ? '#ffcf7a' : '#e9693a');
+    k.circle(Math.sin(i * 7.1 + t) * 30, -top * 0.4 - life * top * 0.9, 2.2);
+  }
+  c.restore();
 }
 
 // Until barrel-upturned (F26) is delivered: the barrel body of witch-barrel

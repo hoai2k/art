@@ -263,7 +263,7 @@ function winFilm(st, extra = {}) {
 // ================================================================= Act V
 export const TOWER_SCENES = [
   { name: 'The Cliff Foot' }, { name: 'Halfway Up the Cliff' }, { name: 'The Sea Gap' },
-  { name: 'The Tower Wall' }, { name: 'Halfway Up the Tower' },
+  { name: 'The Tower Wall' }, { name: 'Top of the Tower' },
 ];
 
 function startSwim(st) {
@@ -509,7 +509,8 @@ export const actBurning = {
       const film = LEGACY_SCENE.indexOf(st.checkpoint.scene);
       if (film >= 0) st.checkpoint = { ...st.checkpoint, scene: film };
     }
-    if (st.defeatT === 0) { st.lostTitle = 'The Fire Takes\nthe Tower'; st.lostSub = 'The ceiling shudders before it falls.'; }
+    // (the witch's own defeat keeps its words: duelHit)
+    if (st.defeatT === 0 && st.phase === 'house') { st.lostTitle = 'The Fire Takes\nthe Tower'; st.lostSub = 'The ceiling shudders before it falls.'; }
     st.lastBeat = st.beat;
   },
 
@@ -721,8 +722,8 @@ function stepDuel(st, dt, input) {
 export const duelReach = (st) => !!st.duel && st.duel.x - DUEL.hw - (st.w.x + PRINCE_HW) < DUEL.reach - DUEL.hw && !['trap', 'reel'].includes(st.duel.state);
 function duelHit(st) {
   if (hit(st, { cause: 'witch' }) && st.defeatT != null) {
-    st.lostTitle = 'The Witch\nHolds the Cliff';
-    st.lostSub = 'Leap her fire with A; strike her with the sword with X.';
+    st.lostTitle = 'Engulfed\nin Flames';
+    st.lostSub = 'The witch engulfed you in flames. Try again.';
   }
 }
 function stepBarrel(st, dt, input) {
