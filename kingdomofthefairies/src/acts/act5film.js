@@ -186,10 +186,12 @@ export function battleIntroFrame(st) {
 // The front flight climbs up and back into the arched doorway (centre ~x 900,
 // threshold ~y 516); the balustraded ramp to its right is scenery. The couple
 // climb at `climb` of their walking pace, shrink by up to `shrink` as they go
-// up and back, and fade into the dark doorway from `door` to `gate`.
-export const WEDDING = { y: 652, x0: 60, gate: 905, start: 330, follow: 96, petals: 14, stairs: 780, door: 872, returnAt: 830, climb: 0.45, shrink: 0.16 };
-// Feet follow the painted paving, the stair flight and the doorway's threshold.
-export const WEDDING_PATH = [[60,652],[760,652],[795,606],[880,524],[905,516]];
+// up and back, and walk on through the doorway, out of sight behind its
+// right jamb (`door`, the wall's edge: a feathered mask) by `gate`.
+export const WEDDING = { y: 652, x0: 60, gate: 1000, start: 330, follow: 96, petals: 14, stairs: 780, door: 944, returnAt: 830, climb: 0.45, shrink: 0.16 };
+// Feet follow the painted paving, the stair flight, the threshold and on
+// into the doorway.
+export const WEDDING_PATH = [[60,652],[760,652],[795,606],[880,524],[905,516],[1000,512]];
 export function weddingFloor(x) {
   for (let i=1;i<WEDDING_PATH.length;i++) {
     const [x1,y1]=WEDDING_PATH[i], [x0,y0]=WEDDING_PATH[i-1];
@@ -197,7 +199,6 @@ export function weddingFloor(x) {
   }
   return WEDDING_PATH.at(-1)[1];
 }
-export const weddingDoorAlpha = x => 1-clamp((x-WEDDING.door)/(WEDDING.gate-WEDDING.door),0,1);
 // Figures shrink slightly as the stairs carry them up and away from the audience.
 export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(x))/(WEDDING.y-WEDDING_PATH.at(-1)[1]),0,1);
 

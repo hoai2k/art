@@ -800,7 +800,7 @@ test('The way back out: walk left until Azurine, following, is behind the curtai
  let last=null;run(actBurning,again,3,()=>({moveX:-1}),s=>{if(s.phase==='apotheosis')last={w:s.w.x,az:s.az.x};return s.phase==='wedding';});
  assert.equal(again.phase,'wedding');assert.ok(last.az<=APOTH.offAz+5&&last.w>APOTH.off,'leaves as soon as she is hidden, not after walking right offstage');
  assert.equal(again.weddingIntro,false);
- run(actBurning,again,.8,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
+ run(actBurning,again,2,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
  assert.equal(again.weddingExit,false);assert.ok(again.w.x < WEDDING.door-40);
  run(actBurning,again,.2,()=>({moveX:1}));assert.equal(again.phase,'wedding');
  run(actBurning,again,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(again.phase,'apotheosis');

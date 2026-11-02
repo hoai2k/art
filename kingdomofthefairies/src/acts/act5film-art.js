@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -769,21 +769,38 @@ function wedding(k,st,t){
   const couple=stairs=>{
     for(const [actor,princess] of [[st.az,true],[w,false]]){
       if((actor.x>=WEDDING.stairs)!==stairs)continue;
-      c.save();c.globalAlpha=weddingDoorAlpha(actor.x);
       const h=160*weddingScale(actor.x);
       if(princess)azurineOnFoot(k,actor,WEDDING.y,h);else princeOnFoot(k,actor,h,true);
-      c.restore();
     }
   };
-  couple(true);
-  weddingForeground(k);
-  weddingGuests(st).forEach(([id,x],i)=>{
+  // The guests at the foot of the stairs stand behind the couple climbing
+  // them (no jump behind the fairy at the first step); those at the right,
+  // before the ramp, stay in front.
+  const guest=([id,x],i)=>{
     const hop=guestHop(st,id);c.save();c.translate(x,GUESTS_Y-hop);if(x>935)c.scale(-1,1);
     k.idle(id,t+i,0,0,82,150);c.restore();
-  });
+  };
+  const guests=weddingGuests(st).map((g,i)=>[g,i]);
+  guests.filter(([[,x]])=>x<WEDDING.stairs+40).forEach(([g,i])=>guest(g,i));
+  couple(true);
+  doorJamb(k);
+  weddingForeground(k);
+  guests.filter(([[,x]])=>x>=WEDDING.stairs+40).forEach(([g,i])=>guest(g,i));
   couple(false);
   for(const p of st.petals)if(!p.got&&p.y>-20){c.fillStyle=k.col('#f3c6dc');c.save();c.translate(p.x,p.y);c.rotate(p.y*.05);c.beginPath();c.ellipse(0,0,8,4,0,0,Math.PI*2);c.fill();c.restore();}
   if(st.phaseT<6&&st.weddingIntro!==false)hint(k,'Dance with the guests · walk up the stairs and through the door');
+}
+
+// The wall right of the doorway, repainted over whoever has walked on
+// through it: a soft (feathered) edge at the jamb, then solid wall.
+function doorJamb(k){
+  const c=k.c,x0=WEDDING.door,feather=10,top=300,bottom=626;
+  for(let i=0;i<feather;i+=2){
+    c.save();c.globalAlpha=(i+1)/feather;c.beginPath();c.rect(x0-feather/2+i,top,2,bottom-top);c.clip();
+    k.asset('wedding-street',640,720,1280,720);c.restore();
+  }
+  c.save();c.beginPath();c.rect(x0+feather/2,top,WEDDING.gate+60-(x0+feather/2),bottom-top);c.clip();
+  k.asset('wedding-street',640,720,1280,720);c.restore();
 }
 
 // The apotheosis: walk together into the light beneath Aurora, and rise.
