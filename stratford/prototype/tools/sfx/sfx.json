@@ -1,0 +1,807 @@
+{
+ "_doc": "Stratford Squirrel sound effects, made with the ElevenLabs sound-generation API (generate.py). name: sound id; n: takes; dur: requested seconds; level: playback gain (0..1); loop: seamless ambient loop; hold: generated but kept out of web/ and index.json until the owner approves (drop the key and rerun processing to enable); library: true: kept only as an original in game/assets/sfx/library/, never processed or loaded. round: S1-S4 of sound-requests.md. skip: take numbers kept as originals but left out of web/ (clearly broken takes).",
+ "style": "Natural, close-miked, clean recording, no music, no voices or speech. Autumn in a small Ontario town.",
+ "sounds": [
+  {
+   "name": "squirrel_step_pavement",
+   "round": "S1",
+   "n": 6,
+   "dur": 0.5,
+   "level": 0.5,
+   "prompt": "A single quick patter of a squirrel's four small feet landing on concrete pavement, light claw clicks, very short, close up"
+  },
+  {
+   "name": "squirrel_step_leaves",
+   "round": "S1",
+   "n": 6,
+   "dur": 0.6,
+   "level": 0.55,
+   "prompt": "A squirrel bounding once through dry fallen autumn leaves, a quick crisp rustle, very short, close up"
+  },
+  {
+   "name": "squirrel_step_grass",
+   "round": "S1",
+   "n": 4,
+   "dur": 0.5,
+   "level": 0.4,
+   "prompt": "A squirrel's light bound on short lawn grass, soft and quiet, very short"
+  },
+  {
+   "name": "squirrel_climb_bark",
+   "round": "S1",
+   "n": 6,
+   "dur": 0.8,
+   "level": 0.55,
+   "prompt": "Sharp little claws scrabbling up rough tree bark, a quick burst, close up"
+  },
+  {
+   "name": "squirrel_climb_brick",
+   "round": "S1",
+   "n": 4,
+   "dur": 0.7,
+   "level": 0.55,
+   "prompt": "Tiny claws scratching quickly on old brick, a short scrabble"
+  },
+  {
+   "name": "squirrel_land",
+   "round": "S1",
+   "n": 4,
+   "dur": 0.6,
+   "level": 0.6,
+   "prompt": "A small animal landing softly from a jump onto pavement, a light thump with a claw click"
+  },
+  {
+   "name": "squirrel_chatter",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.5,
+   "level": 0.7,
+   "prompt": "An eastern grey squirrel's scolding alarm call: rapid chattering \"kuk-kuk-kuk\" with a raspy ending, natural recording"
+  },
+  {
+   "name": "squirrel_eat",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.2,
+   "level": 0.5,
+   "prompt": "A squirrel gnawing quickly on an acorn shell, tiny crunching and scraping, close up"
+  },
+  {
+   "name": "squirrel_dig",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.0,
+   "level": 0.6,
+   "prompt": "Small paws digging quickly in soft soil and leaf litter, a short flurry"
+  },
+  {
+   "name": "leaf_pile_burst",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.5,
+   "level": 0.8,
+   "prompt": "Something small diving into a pile of dry autumn leaves, a big crisp whoosh and rustle settling down"
+  },
+  {
+   "name": "beaver_step",
+   "round": "S1",
+   "n": 4,
+   "dur": 0.6,
+   "level": 0.6,
+   "prompt": "A heavy-bodied beaver waddling one step on damp ground, a soft padded thud with a slight wet squelch"
+  },
+  {
+   "name": "beaver_tail_slap",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.9,
+   "prompt": "A beaver slapping its broad tail on the surface of a calm river, a loud flat smack and splash echoing across the water"
+  },
+  {
+   "name": "beaver_gnaw",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.2,
+   "level": 0.6,
+   "prompt": "A beaver gnawing wood with its big incisors, rapid rasping and chipping of wood fibres, close up"
+  },
+  {
+   "name": "rabbit_hop",
+   "round": "S1",
+   "n": 6,
+   "dur": 0.5,
+   "level": 0.45,
+   "prompt": "A rabbit's single soft hop landing on grass, a muffled double thump, very short",
+   "skip": [
+    2
+   ]
+  },
+  {
+   "name": "rabbit_thump",
+   "round": "S1",
+   "n": 3,
+   "dur": 0.5,
+   "level": 0.7,
+   "prompt": "A rabbit thumping its hind foot on the ground in warning, one sharp low thump"
+  },
+  {
+   "name": "swan_hiss",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.7,
+   "prompt": "A mute swan's angry hiss, a long breathy rasping hiss, natural recording"
+  },
+  {
+   "name": "swan_wingbeat",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.0,
+   "level": 0.7,
+   "prompt": "A single powerful wingbeat of a large swan in flight, the distinctive throbbing whistle of mute swan wings, close up"
+  },
+  {
+   "name": "swan_takeoff",
+   "round": "S1",
+   "n": 2,
+   "dur": 3.0,
+   "level": 0.8,
+   "prompt": "A large swan running across water to take off: feet slapping the water surface rhythmically while wings beat heavily, building up, about 3 seconds"
+  },
+  {
+   "name": "swan_land_water",
+   "round": "S1",
+   "n": 3,
+   "dur": 2.0,
+   "level": 0.8,
+   "prompt": "A large swan landing on a calm river, a long skiing splash that settles into small ripples"
+  },
+  {
+   "name": "heron_call",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.8,
+   "prompt": "A great blue heron's harsh croaking call, a deep hoarse \"frahnk\", natural recording"
+  },
+  {
+   "name": "heron_wingbeat",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.2,
+   "level": 0.7,
+   "prompt": "A single slow deep wingbeat of a large heron, a soft whoosh, close up"
+  },
+  {
+   "name": "heron_wade",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.2,
+   "level": 0.5,
+   "prompt": "A long-legged bird lifting a foot and stepping slowly in shallow water, a quiet drip and gentle slosh"
+  },
+  {
+   "name": "swim_paddle",
+   "round": "S1",
+   "n": 4,
+   "dur": 1.2,
+   "level": 0.5,
+   "prompt": "A small animal paddling at the surface of calm water, soft rhythmic little splashes"
+  },
+  {
+   "name": "dive",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.2,
+   "level": 0.7,
+   "prompt": "An animal diving under calm river water, a short plunge and bubbling"
+  },
+  {
+   "name": "surface",
+   "round": "S1",
+   "n": 3,
+   "dur": 1.2,
+   "level": 0.6,
+   "prompt": "An animal surfacing from under water, a gentle splash and a short exhale"
+  },
+  {
+   "name": "underwater",
+   "round": "S1",
+   "n": 1,
+   "dur": 20,
+   "level": 0.5,
+   "prompt": "Muffled underwater ambience in a slow river, low rumble and faint bubbles, seamless loop, 20 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "nut_pickup",
+   "round": "S1",
+   "n": 3,
+   "dur": 0.5,
+   "level": 0.5,
+   "prompt": "Picking up an acorn from leaves, a tiny rustle and a little click"
+  },
+  {
+   "name": "amb_downtown",
+   "round": "S2",
+   "n": 2,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "A quiet small-town main street in autumn afternoon: occasional distant cars passing slowly, far-off footsteps and murmur with no clear words, birds, a light breeze in trees; no horns, sirens or music; seamless loop, 30 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_park_trees",
+   "round": "S2",
+   "n": 2,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "A park on a calm October afternoon: wind gently moving through maple trees with dry leaves rustling, chickadees and a blue jay in the distance, seamless loop, 30 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_river",
+   "round": "S2",
+   "n": 2,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "Beside a slow river in a town park: gentle lapping at the bank, ducks and geese far off, wind in willows, seamless loop, 30 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_weir",
+   "round": "S2",
+   "n": 1,
+   "dur": 20,
+   "level": 0.5,
+   "prompt": "A small river dam with water spilling over a low weir, a steady soft roar and splash, seamless loop, 20 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_residential",
+   "round": "S2",
+   "n": 1,
+   "dur": 30,
+   "level": 0.5,
+   "prompt": "A quiet residential street in autumn: wind in the trees, a dog barking once far away, a screen door, birds; seamless loop, 30 seconds",
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "city_hall_bell",
+   "round": "S2",
+   "n": 2,
+   "dur": 6,
+   "level": 0.9,
+   "prompt": "A large tower clock bell striking the hour once, deep bronze tone with a long decay, heard from a little distance in a town square"
+  },
+  {
+   "name": "wind_gust",
+   "round": "S2",
+   "n": 4,
+   "dur": 3,
+   "level": 0.5,
+   "prompt": "A gust of autumn wind sweeping through trees and blowing dry leaves along a street"
+  },
+  {
+   "name": "car_pass",
+   "round": "S2",
+   "n": 4,
+   "dur": 4,
+   "level": 0.6,
+   "prompt": "A single car passing slowly along a town street at 30 km/h, heard from the sidewalk, tyres on asphalt, no horn"
+  },
+  {
+   "name": "geese_overhead",
+   "round": "S2",
+   "n": 2,
+   "dur": 4,
+   "level": 0.5,
+   "prompt": "A flock of Canada geese honking as they fly overhead and fade into the distance"
+  },
+  {
+   "name": "crow_call",
+   "round": "S2",
+   "n": 3,
+   "dur": 2,
+   "level": 0.5,
+   "prompt": "An American crow cawing two or three times from a tree"
+  },
+  {
+   "name": "bluejay_call",
+   "round": "S2",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.5,
+   "prompt": "A blue jay's loud \"jay jay\" call from a tree"
+  },
+  {
+   "name": "chickadee_call",
+   "round": "S2",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.5,
+   "prompt": "A black-capped chickadee singing \"chick-a-dee-dee-dee\" nearby"
+  },
+  {
+   "name": "discover",
+   "round": "S3",
+   "n": 3,
+   "dur": 1.5,
+   "level": 0.6,
+   "prompt": "A gentle warm two-note chime like a small hand bell and a soft wooden marimba together, pleasant and quiet, 1.5 seconds"
+  },
+  {
+   "name": "ui_move",
+   "round": "S3",
+   "n": 2,
+   "dur": 0.5,
+   "level": 0.35,
+   "prompt": "A very soft short wooden tick, like a pencil tapping paper, for moving through a menu"
+  },
+  {
+   "name": "ui_confirm",
+   "round": "S3",
+   "n": 2,
+   "dur": 0.5,
+   "level": 0.5,
+   "prompt": "A soft warm wooden click with a tiny bell tone, for confirming a menu choice"
+  },
+  {
+   "name": "ui_back",
+   "round": "S3",
+   "n": 2,
+   "dur": 0.5,
+   "level": 0.4,
+   "prompt": "A soft muted paper rustle, for closing a menu"
+  },
+  {
+   "name": "map_open",
+   "round": "S3",
+   "n": 2,
+   "dur": 1.0,
+   "level": 0.5,
+   "prompt": "A sheet of old parchment being unfolded, crisp paper sound, 1 second"
+  },
+  {
+   "name": "creature_switch",
+   "round": "S3",
+   "n": 2,
+   "dur": 1.5,
+   "level": 0.5,
+   "prompt": "A soft magical whoosh of autumn leaves swirling and settling, 1.5 seconds"
+  },
+  {
+   "name": "amb_cafe_interior",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Inside a busy small-town cafe: soft indistinct murmur of many people with no intelligible words, cups clinking on saucers, cutlery on plates, an espresso machine hissing now and then, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_cafe_patio",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "An outdoor cafe patio on a mild day: low murmur of a few people with no intelligible words, cutlery and cups, a distant street behind, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "amb_theatre_crowd",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "A festival theatre foyer before a show: a large crowd murmuring with no intelligible words, shuffling feet, an excited low hum, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "theatre_applause",
+   "round": "S4",
+   "n": 2,
+   "dur": 6,
+   "level": 0.6,
+   "prompt": "Applause of a seated audience heard from inside a theatre, swelling and fading, with a few distant cheers, no speech",
+   "library": true
+  },
+  {
+   "name": "theatre_chimes",
+   "round": "S4",
+   "n": 2,
+   "dur": 5,
+   "level": 0.6,
+   "prompt": "Soft theatre intermission chimes, three rising notes on a chime bar, in a hall with gentle reverb",
+   "library": true
+  },
+  {
+   "name": "amb_farmers_market",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "A farmers market on a morning: busy crowd murmur with no intelligible words, paper bags rustling, a cash box clink, outdoor air, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "busker_fiddle",
+   "round": "S4",
+   "n": 2,
+   "dur": 8,
+   "level": 0.6,
+   "prompt": "A street busker playing a lively folk fiddle far down a street, distant and thin, wandering notes with no recognisable tune",
+   "library": true
+  },
+  {
+   "name": "kids_park",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Children playing in a park at a distance: happy shrieks and laughter with no words, swings creaking, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "dog_bark",
+   "round": "S4",
+   "n": 2,
+   "dur": 2,
+   "level": 0.6,
+   "prompt": "A medium dog barking three times in a backyard, a little distant, natural recording",
+   "library": true
+  },
+  {
+   "name": "bicycle_bell",
+   "round": "S4",
+   "n": 2,
+   "dur": 1,
+   "level": 0.6,
+   "prompt": "A single bright ring of a bicycle bell, ding-ding, outdoors",
+   "library": true
+  },
+  {
+   "name": "footsteps_sidewalk",
+   "round": "S4",
+   "n": 2,
+   "dur": 4,
+   "level": 0.6,
+   "prompt": "Two or three passers-by walking on a concrete sidewalk, footsteps approaching and passing, shoes only, no voices",
+   "library": true
+  },
+  {
+   "name": "door_shop_bell",
+   "round": "S4",
+   "n": 2,
+   "dur": 2,
+   "level": 0.6,
+   "prompt": "A shop door opening with a small brass bell jingling above it, then closing",
+   "library": true
+  },
+  {
+   "name": "construction_far",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "A construction site far away: faint rhythmic hammering, a distant machine engine and a reversing beeper, muffled by distance, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "lawnmower_far",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "A petrol lawn mower running far away in a suburban yard, steady drone, muffled by distance, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "leaf_blower",
+   "round": "S4",
+   "n": 1,
+   "dur": 10,
+   "level": 0.6,
+   "prompt": "A leaf blower running at moderate distance, steady whine and roar, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "rain_leaves",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Gentle autumn rain falling on dry leaves and trees, steady patter, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "thunder_roll",
+   "round": "S4",
+   "n": 2,
+   "dur": 8,
+   "level": 0.6,
+   "prompt": "A long low rolling thunder in the distance, rumbling and fading, no rain",
+   "library": true
+  },
+  {
+   "name": "rain_gutter",
+   "round": "S4",
+   "n": 1,
+   "dur": 10,
+   "level": 0.6,
+   "prompt": "Rain running down a metal gutter and downspout, trickling and gurgling, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "wind_night",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Soft wind at night in bare trees, a lonely low breeze, a faint creak, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "crickets_dusk",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Field crickets chirping at dusk on a warm evening, steady and calm, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "frogs_river",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Frogs calling by a river at evening: green frogs plucking and spring peepers, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "owl_night",
+   "round": "S4",
+   "n": 2,
+   "dur": 5,
+   "level": 0.6,
+   "prompt": "A great horned owl hooting its low \"hoo hoo-hoo hoo hoo\" at night, natural recording",
+   "library": true
+  },
+  {
+   "name": "woodpecker_drum",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A downy woodpecker drumming rapidly on a dead tree trunk, echoing in the woods",
+   "library": true
+  },
+  {
+   "name": "robin_song",
+   "round": "S4",
+   "n": 2,
+   "dur": 6,
+   "level": 0.6,
+   "prompt": "An American robin singing its cheerful caroling song from a branch, natural recording",
+   "library": true
+  },
+  {
+   "name": "cardinal_song",
+   "round": "S4",
+   "n": 2,
+   "dur": 4,
+   "level": 0.6,
+   "prompt": "A northern cardinal singing bright clear whistles \"cheer cheer cheer\", natural recording",
+   "library": true
+  },
+  {
+   "name": "mourning_dove",
+   "round": "S4",
+   "n": 2,
+   "dur": 5,
+   "level": 0.6,
+   "prompt": "A mourning dove cooing its soft mournful \"coo-OO-oo, oo, oo\", natural recording",
+   "library": true
+  },
+  {
+   "name": "redwinged_blackbird",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A red-winged blackbird singing its \"conk-la-ree\" song from a reed, natural recording",
+   "library": true
+  },
+  {
+   "name": "mallard_quack",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "Mallard ducks quacking, a few hen quacks on a river, natural recording",
+   "library": true
+  },
+  {
+   "name": "kingfisher_rattle",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A belted kingfisher flying along a river giving its dry rattling call, natural recording",
+   "library": true
+  },
+  {
+   "name": "train_horn",
+   "round": "S4",
+   "n": 2,
+   "dur": 8,
+   "level": 0.6,
+   "prompt": "A distant freight train sounding its horn, two long blasts and a short and a long, heard from a mile away, rural Ontario",
+   "library": true
+  },
+  {
+   "name": "train_freight_pass",
+   "round": "S4",
+   "n": 2,
+   "dur": 15,
+   "level": 0.6,
+   "prompt": "A long freight train passing at a level crossing: steady rumble, rhythmic wheel clacks, couplings, no horn",
+   "library": true
+  },
+  {
+   "name": "church_carillon",
+   "round": "S4",
+   "n": 2,
+   "dur": 10,
+   "level": 0.6,
+   "prompt": "A church carillon of bronze bells ringing a slow hymn-like pattern with no recognisable tune, from across a town, long decay",
+   "library": true
+  },
+  {
+   "name": "bee_buzz",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A honey bee buzzing steadily close to the ear and flying past",
+   "library": true
+  },
+  {
+   "name": "bumblebee_buzz",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A big bumblebee buzzing low and loud, close up, hovering then flying away",
+   "library": true
+  },
+  {
+   "name": "fly_buzz",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A housefly buzzing erratically close up, circling and landing",
+   "library": true
+  },
+  {
+   "name": "mosquito_whine",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "A mosquito whining thin and high near the ear, close up",
+   "library": true
+  },
+  {
+   "name": "cicadas",
+   "round": "S4",
+   "n": 1,
+   "dur": 12,
+   "level": 0.6,
+   "prompt": "Cicadas droning in tall trees on a hot summer day, rising and falling pulsing drone, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  },
+  {
+   "name": "grasshopper_clicks",
+   "round": "S4",
+   "n": 2,
+   "dur": 4,
+   "level": 0.6,
+   "prompt": "Grasshoppers clicking and ticking in dry grass, a few close, natural recording",
+   "library": true
+  },
+  {
+   "name": "ant_world_steps",
+   "round": "S4",
+   "n": 2,
+   "dur": 3,
+   "level": 0.6,
+   "prompt": "Tiny scale: very small quick footsteps and scratching of an ant on dry leaves, ultra close macro recording",
+   "library": true
+  },
+  {
+   "name": "splash_small",
+   "round": "S4",
+   "n": 2,
+   "dur": 1.2,
+   "level": 0.6,
+   "prompt": "A small stone plopping into calm river water, one clean plop with ripples",
+   "library": true
+  },
+  {
+   "name": "splash_big",
+   "round": "S4",
+   "n": 2,
+   "dur": 2,
+   "level": 0.6,
+   "prompt": "A big heavy splash of something large dropping into a river, a loud deep splash and water falling back",
+   "library": true
+  },
+  {
+   "name": "fish_jump",
+   "round": "S4",
+   "n": 2,
+   "dur": 1.5,
+   "level": 0.6,
+   "prompt": "A fish leaping out of a river and splashing back, a quick flap and plop",
+   "library": true
+  },
+  {
+   "name": "oars_avon",
+   "round": "S4",
+   "n": 2,
+   "dur": 6,
+   "level": 0.6,
+   "prompt": "Wooden oars of a rowboat creaking in oarlocks and dipping into a calm river, slow rhythmic strokes, water dripping",
+   "library": true
+  },
+  {
+   "name": "pedal_boat",
+   "round": "S4",
+   "n": 1,
+   "dur": 10,
+   "level": 0.6,
+   "prompt": "A pedal boat on a lake: plastic paddle wheel churning water rhythmically, gentle slapping on the hull, seamless loop",
+   "library": true,
+   "loop": true,
+   "hold": true
+  }
+ ]
+}

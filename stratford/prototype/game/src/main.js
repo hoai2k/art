@@ -7,6 +7,7 @@
 import * as THREE from 'three';
 import { createInput, zeroControls } from './input.js';
 import { createAudio } from './audio.js';
+import { stepSound, landSound, splashSound, actionSound, climbSound, createGrid, leafyAt } from './sfx-map.js';
 import { createMenus } from './ui/menus.js';
 import { createHud } from './ui/hud.js';
 import { createMap } from './ui/map.js';
@@ -121,17 +122,34 @@ function attachCreature(c) {
   camCtl = c.__makeCam({ THREE, camera, creature: c, squirrel: c, world, zoom: settings.zoom });
   if ('zoom' in camCtl) camCtl.zoom = settings.zoom;
   const on = (e, fn) => { try { c.on?.(e, fn); } catch { /* optional */ } };
-  on('jump', () => audio.play('jump'));
+  const kind = () => c.kind || creatureKind;
+  on('jump', (e) => {
+    if (e?.takeoff && kind() === 'swan') audio.play('swan_takeoff');
+    else if (e?.takeoff) audio.play('heron_wingbeat');
+    else audio.play('jump');
+  });
   on('land', (e) => {
     const v = typeof e === 'number' ? e : e?.speed ?? e?.impact ?? e?.strength ?? 4;
     const a = Math.min(1, Math.abs(v) / 9);
-    audio.play('land', a);
+    const rec = landSound(kind(), c.surface, { impact: Math.abs(v), leafy: leafyUnder(), water: !!e?.water });
+    if (rec) audio.play(rec, a); else if (!e?.water && kind() !== 'swan' && kind() !== 'heron') audio.play('land', a);
     if (a > 0.45) input.rumble(0.25 + a * 0.5, 140);
   });
-  on('climb', () => audio.play('climb'));
-  on('dig', () => audio.play('dig'));
-  on('splash', () => { audio.play('splash'); input.rumble(0.2, 100); });
+  on('climb', (e) => audio.play(climbSound(e?.surface ?? c.surface)));
+  on('dig', () => { if (kind() !== 'squirrel' && kind() !== 'capsule') audio.play(actionSound(kind())); else audio.play('dig'); });
+  on('splash', (e) => {
+    const rec = splashSound(kind(), e?.speed, c.state);
+    if (rec) audio.play(rec);
+    // a beaver going under slaps its tail now and then
+    if (kind() === 'beaver' && e?.speed === 0.5 && Math.random() < 0.3) audio.play('beaver_tail_slap');
+    input.rumble(0.2, 100);
+  });
 }
+
+// Is there leaf litter under the creature: a tree crown over it (autumn)?
+const lookDir = new THREE.Vector3();
+let treeGrid = null;
+const leafyUnder = () => leafyAt(treeGrid, creature.position.x, creature.position.z);
 
 // ---- Collision probe for placing nuts ---------------------------------------------
 
@@ -241,6 +259,7 @@ function switchCreature(kind) {
     scene.remove(creature.object);
     try { creature.dispose?.(); } catch { /* fine */ }
     const c = await makeCreature(kind);
+    audio.play('creature_switch');
     creatureKind = kind;
     attachCreature(c);
     resetCreature(safeSpot(c, p.x, p.z, yaw));
@@ -468,6 +487,8 @@ function playFrame(dt) {
   if (!state.transitioning) {
     creature.update(dt, controls, world, camera);
     camCtl.update(dt, controls);
+    camera.getWorldDirection(lookDir);
+    audio.listen(camera.position.x, camera.position.y, camera.position.z, lookDir.x, lookDir.z);
     // the follow camera's zoom is a setting: keep it, written once the player stops zooming
     if (Number.isFinite(camCtl.zoom) && Math.abs(camCtl.zoom - settings.zoom) > 1e-4) {
       settings.zoom = camCtl.zoom; state.zoomSave = 0.6;
@@ -493,12 +514,25 @@ function playFrame(dt) {
     const sc = creature.scale / 0.25;
     if (creature.state === 'move') {
       state.stride += sp * dt;
-      if (state.stride > 0.5 * sc) { state.stride = 0; audio.play('step', Math.min(1, sp / 5)); }
+      if (state.stride > 0.5 * sc) {
+        state.stride = 0;
+        const px = creature.position.x; const pz = creature.position.z;
+        const wl = world.waterAt?.(px, pz);
+        const inWater = wl != null && wl - (world.groundAt?.(px, pz) ?? wl) > 0.02 * sc;
+        audio.play(stepSound(creature.kind, creature.surface, { leafy: leafyUnder(), inWater }), Math.min(1, sp / 5));
+      }
+    } else if (creature.state === 'swim') {
+      state.stride += sp * dt;
+      if (state.stride > 0.9 * sc) { state.stride = 0; audio.play('swim_paddle'); }
+    } else if (creature.state === 'fly' && creature.canFly) {
+      state.climbTick -= dt;
+      if (state.climbTick <= 0) { state.climbTick = creature.kind === 'swan' ? 0.7 : 0.95; audio.play(creature.kind === 'swan' ? 'swan_wingbeat' : 'heron_wingbeat'); }
     } else if (creature.state === 'climb') {
       state.climbTick -= dt;
-      if (Math.hypot(v.x, v.y, v.z) > 0.1 && state.climbTick <= 0) { state.climbTick = 0.17; audio.play('climb'); }
+      if (Math.hypot(v.x, v.y, v.z) > 0.1 && state.climbTick <= 0) { state.climbTick = 0.17; audio.play(climbSound(creature.surface)); }
     }
     state.idle = creature.state === 'idle' && !controls.digPressed ? state.idle + dt : 0;
+    if (state.idle > 18 && creature.kind === 'squirrel' && audio.has('squirrel_chatter') && Math.random() < dt * 0.04) audio.play('squirrel_chatter');
     if (sp > 0.4) state.heading = Math.atan2(v.x, -v.z);
   }
   hud.setContext(settings.hints ? contextHint() : '');
@@ -624,6 +658,8 @@ async function boot() {
 
   // Exploration: landmarks from the world (or the data), nuts placed on the trees.
   const landmarks = world.landmarks?.length ? world.landmarks : townData?.landmarks || [];
+  treeGrid = createGrid(world.trees || townData?.trees || []);
+  audio.setWorld({ trees: world.trees || townData?.trees, roads: townData?.roads, cityHall: landmarks.find((l) => l.id === 'city-hall') });
   const nuts = placeNuts({ trees: world.trees || [], buildings: townData?.buildings || [], probe, assumeRoofs: true });
   exploration = createExploration({ landmarks, nuts });
   exploration.on('discover', ({ landmark }) => { hud.showDiscovery(landmark); audio.play('chime'); input.rumble(0.3, 220); nutDirty(); });

@@ -14,6 +14,22 @@ function sideEdge(b) {
   return len(l) >= len(r) ? l : r;
 }
 
+const edgeLen = (b, i) => { const a = b.outer[i], c = b.outer[(i + 1) % b.outer.length]; return Math.hypot(c[0] - a[0], c[1] - a[1]); };
+// the edge whose midpoint is nearest (x, z)
+function edgeNear(b, x, z) {
+  let best = 0, bd = Infinity;
+  b.outer.forEach((a, i) => { const c = b.outer[(i + 1) % b.outer.length], d = Math.hypot((a[0] + c[0]) / 2 - x, (a[1] + c[1]) / 2 - z); if (d < bd) { bd = d; best = i; } });
+  return best;
+}
+// the Avon Theatre's George Street walls: the north-facing edges of the west (Studio Theatre) part
+function georgeSide(b) {
+  const out = [];
+  b.outer.forEach((a, i) => { const c = b.outer[(i + 1) % b.outer.length], L = edgeLen(b, i); if (L < 2) return;
+    const nz = -(c[0] - a[0]) / L;                                                    // outward normal's z
+    if (nz < -0.7 && (a[0] + c[0]) / 2 < 136) out.push(i); });
+  return out;
+}
+
 // a band course round a footprint at height y (proud of the walls)
 function belt(vb, cb, P, ring, y, h, ox, oz, kit) {
   kit.setPart(vb, P, PART.trim);
@@ -317,8 +333,11 @@ export const landmarkParts = {
     // deep-set windows, roofline brackets and a green glass-and-metal canopy with stairs and rails
     // each side; the George Street side is red brick with glass-block windows; a tall plain stage
     // house with fire escapes and a black fly tower rises behind
+    // the data's front edge is the long back wall; the photos put the entrance on Downie Street
+    // (the west edge) and the red brick Studio Theatre along George Street (the north edges)
+    override: (b) => ({ front: edgeNear(b, 72.4, 64.1) }),
     params: () => ({ mat: MAT.stone, seed: 0.241 }),
-    wallMat: (b, i) => (i === sideEdge(b) ? MAT.brick_red : null),
+    wallMat: (b, i) => (georgeSide(b).includes(i) ? MAT.brick_red : null),
     build({ ctx, b, P, vb, cb, ox, oz, base, eaves, kit }) {
       const k = b.front >= 0 ? b.front : 0;
       const m = edgeMid(b, k), L = Math.hypot(m.dx, m.dz) || 1;
@@ -351,7 +370,8 @@ export const landmarkParts = {
       kit.setPart(vb, P, PART.trim);
       for (let u = -L / 2 + 0.4; u < L / 2 - 0.3; u += 0.8) { p = at(u, 0.12); kit.box(vb, cb, p[0], eaves - 0.25, p[1], 0.05, 0.18, 0.12, yaw, SURFACE.prop); }
       // the George Street side: a band of glass-block windows on the red brick
-      const se = sideEdge(b), n = b.outer.length;
+      const gs = georgeSide(b), n = b.outer.length;
+      const se = gs.length ? gs.reduce((p, q) => (edgeLen(b, q) > edgeLen(b, p) ? q : p)) : -1;
       if (se >= 0) {
         const A = b.outer[se], C = b.outer[(se + 1) % n], Ls = Math.hypot(C[0] - A[0], C[1] - A[1]);
         const sx = (C[0] - A[0]) / Ls, sz = (C[1] - A[1]) / Ls, snx = sz, snz = -sx;

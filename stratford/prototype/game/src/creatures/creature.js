@@ -51,6 +51,7 @@ export async function makeCreature({ kind, tuning: T, climbs = new Set(), hangab
     get state() { return ctrl.state; },
     get coat() { return currentCoat; },
     get gait() { return ctrl.state; },
+    get surface() { return ctrl.surface; },   // SURFACE id under the feet (sound picks footsteps by it)
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter((f) => f !== fn); }; },
     reset(spawn) { ctrl.reset(spawn); if (anim) anim.state.first = true; },
     setCoat(name) { if (mdl?.coats.includes(name)) { currentCoat = name; mdl.setCoat(name); } },

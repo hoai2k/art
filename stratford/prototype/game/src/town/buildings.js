@@ -134,7 +134,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   const lm = ctx.landmarkByBuilding.get(b.id) || null;
   const special = lm ? landmarkParts[lm.id] || null : null;
   // landmark corrections from the reference notes and photos (heights, roofs)
-  if (special && special.override) b = { ...b, ...special.override };
+  if (special && special.override) b = { ...b, ...(typeof special.override === 'function' ? special.override(b) : special.override) };
   const P = buildingParams(ctx, b);
   if (special && special.params) Object.assign(P, special.params(P, b));
   const cen = centroid(b.outer);

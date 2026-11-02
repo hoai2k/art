@@ -1,10 +1,24 @@
-// All sound is made in the browser with Web Audio (no audio files yet):
-// a soft outdoor ambience (wind in the leaves, distant birds, now and then
-// the clock-tower bell from City Hall's side), the squirrel's small sounds
-// (pitter-patter, a scrabble of claws on bark, a splash, a thump of landing),
-// UI clicks and the discovery chime. Starts on the first user gesture.
+// Sound: recorded effects (web/sfx/index.json, made by tools/sfx/generate.py, decoded on
+// first use and cached) with a Web Audio synthesised stand-in for every sound that is not
+// delivered or not yet decoded: a soft outdoor ambience (wind, distant birds, the City Hall
+// bell), the creatures' small sounds, UI clicks and the discovery chime. Recorded ones
+// play a random variant with a little pitch and volume jitter, a voice limit per sound,
+// and (playAt) from a place in the town. Held ambient loops are not in the index until the
+// owner approves them. Starts on the first user gesture.
+import { createGrid, distanceGain, distanceCutoff, mainStreetPoints } from './sfx-map.js';
 
 const hz = (m) => 440 * 2 ** ((m - 69) / 12);
+
+// Logical names the game plays -> the recorded sound; a sound with no recording falls back to the synth.
+const ALIAS = { click: 'ui_confirm', move: 'ui_move', back: 'ui_back', open: 'map_open', chime: 'discover', nut: 'nut_pickup', eat: 'squirrel_eat', bury: 'squirrel_dig', dig: 'squirrel_dig' };
+const UI = new Set(['ui_move', 'ui_confirm', 'ui_back', 'map_open', 'discover', 'creature_switch', 'nut_pickup']);
+const SYNTH_FOR = { squirrel_land: 'land', leaf_pile_burst: 'land', beaver_step: 'step', rabbit_hop: 'step', swan_land_water: 'splash', dive: 'splash', surface: 'splash',
+  squirrel_step_pavement: 'step', squirrel_step_leaves: 'step', squirrel_step_grass: 'step', squirrel_climb_bark: 'climb', squirrel_climb_brick: 'climb' };
+// Voice limit and the shortest gap (s) between two starts of one sound, so rapid steps never stack.
+const VOICES = { default: [3, 0.04], squirrel_step_pavement: [2, 0.07], squirrel_step_leaves: [2, 0.07], squirrel_step_grass: [2, 0.07], beaver_step: [2, 0.1], rabbit_hop: [2, 0.1],
+  squirrel_climb_bark: [2, 0.08], squirrel_climb_brick: [2, 0.08], heron_wade: [2, 0.15], swim_paddle: [2, 0.2], city_hall_bell: [4, 1], car_pass: [2, 4], wind_gust: [2, 4] };
+const CORE = ['ui_move', 'ui_confirm', 'ui_back', 'map_open', 'discover', 'squirrel_step_pavement', 'squirrel_step_leaves', 'squirrel_step_grass', 'squirrel_climb_bark', 'squirrel_climb_brick', 'squirrel_land'];
+const BIRDS = ['crow_call', 'bluejay_call', 'chickadee_call'];
 
 export function createAudio() {
   let ctx = null;
@@ -13,6 +27,13 @@ export function createAudio() {
   let ambStarted = false;
   let timers = [];
   const state = { enabled: true, volume: 0.8, active: true };
+  // recorded sounds
+  let index = null; let indexLoading = false;
+  const cache = new Map();   // name -> { buffers: AudioBuffer[], last: number } once decoded, or null while loading
+  const voices = new Map(); const lastStart = new Map();
+  let windBus = null;
+  const listener = { x: 0, y: 0, z: 0, rx: 1, rz: 0 };
+  const sources = { trees: null, streets: [], cityHall: null };
 
   const AC = () => globalThis.AudioContext || globalThis.webkitAudioContext;
 
@@ -36,6 +57,7 @@ export function createAudio() {
     let last = 0;
     for (let i = 0; i < len; i++) { last = last * 0.6 + (Math.random() * 2 - 1) * 0.4; d[i] = last * 1.6; }
     apply();
+    loadIndex();
     if (wantAmbience) startAmbience();
     return true;
   }
@@ -93,6 +115,7 @@ export function createAudio() {
     if (!ctx || ambStarted) return;
     ambStarted = true;
     // Wind in the leaves: two bands of noise breathing slowly.
+    windBus = ctx.createGain(); windBus.connect(ambBus);
     for (const [freq, q, base, lfoHz] of [[420, 0.5, 0.05, 0.07], [3200, 0.7, 0.018, 0.13]]) {
       const src = noiseSrc(freq > 1000 ? 1.3 : 0.8);
       const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q;
@@ -102,11 +125,37 @@ export function createAudio() {
       lfo.connect(lg).connect(g.gain);
       const ff = ctx.createGain(); ff.gain.value = freq * 0.25;
       lfo.connect(ff).connect(f.frequency);
-      src.connect(f).connect(g).connect(ambBus);
+      src.connect(f).connect(g).connect(windBus);
       src.start(); lfo.start();
     }
     scheduleBirds();
     timers.push(setTimeout(scheduleBell, 18000 + Math.random() * 20000));
+    scheduleWorld();
+    startBeds();
+  }
+
+  // Recorded gusts of wind (by the trees) and a car now and then on a main street.
+  function scheduleWorld() {
+    const gust = () => {
+      if (live() && wantAmbience && hasSample('wind_gust')) {
+        const t = treeNear(45);
+        sample('wind_gust', { gain: 0.8, pos: t ? { x: t.x, y: (t.height || 8) * 0.7, z: t.z } : null, jitter: 0.08 });
+      }
+      timers.push(setTimeout(gust, rnd(22000, 50000)));
+    };
+    const car = () => {
+      if (live() && wantAmbience && hasSample('car_pass') && sources.streets.length) {
+        let best = null; let bd = 140;
+        for (let k = 0; k < 400; k++) {
+          const p = sources.streets[Math.floor(Math.random() * sources.streets.length)];
+          const d = Math.hypot(p.x - listener.x, p.z - listener.z);
+          if (d < bd && d > 12) { bd = d; best = p; }
+        }
+        if (best) sample('car_pass', { pos: { x: best.x, y: 0, z: best.z }, jitter: 0.06 });
+      }
+      timers.push(setTimeout(car, rnd(25000, 60000)));
+    };
+    timers.push(setTimeout(gust, rnd(8000, 20000)), setTimeout(car, rnd(15000, 35000)));
   }
 
   function chirp(t, freq, pan, gain = 0.05) {
@@ -117,7 +166,11 @@ export function createAudio() {
   }
   function scheduleBirds() {
     const next = () => {
-      if (live() && wantAmbience) {
+      const names = BIRDS.filter(hasSample);
+      if (live() && wantAmbience && names.length) {
+        const t = treeNear(50);   // birds sit in trees; none nearby, none heard
+        if (t) sample(names[Math.floor(Math.random() * names.length)], { pos: { x: t.x, y: (t.height || 8) * 0.8, z: t.z }, gain: 0.9, jitter: 0.07 });
+      } else if (live() && wantAmbience) {
         const pan = Math.random() * 1.6 - 0.8;
         const base = 2400 + Math.random() * 1800;
         chirp(0, base, pan, 0.03 + Math.random() * 0.03);
@@ -137,11 +190,95 @@ export function createAudio() {
   }
   function scheduleBell() {
     if (live() && wantAmbience) {
-      const n = 3 + Math.floor(Math.random() * 3);
-      for (let i = 0; i < n; i++) bellStroke(i * 2.4);
+      const n = 1 + Math.floor(Math.random() * 4);
+      // from City Hall when it is delivered (every stroke a recording), else the synth bell
+      for (let i = 0; i < n; i++) {
+        if (hasSample('city_hall_bell') && sources.cityHall) timers.push(setTimeout(() => { if (live()) sample('city_hall_bell', { pos: sources.cityHall, jitter: 0.01 }); }, i * 5200));
+        else bellStroke(i * 2.4);
+      }
     }
     timers.push(setTimeout(scheduleBell, 70000 + Math.random() * 60000));
   }
+
+  // ---- Recorded sounds -----------------------------------------------------------
+  function loadIndex() {
+    if (index || indexLoading || typeof fetch !== 'function') return;
+    indexLoading = true;
+    fetch(new URL('../web/sfx/index.json', import.meta.url))
+      .then((r) => (r.ok ? r.json() : null)).then((j) => { index = j || {}; preload(CORE); if (ambStarted) startBeds(); })
+      .catch(() => { index = {}; });
+  }
+  const hasSample = (name) => !!(index && Array.isArray(index[name]) && index[name].length);
+
+  // The decoded variants of `name`, or null while they load (the first play uses the synth).
+  function samples(name) {
+    if (!hasSample(name)) return null;
+    const c = cache.get(name);
+    if (c) return c;
+    if (c === undefined) {
+      cache.set(name, null);
+      Promise.all(index[name].map((p) => fetch(new URL('../web/' + p, import.meta.url)).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b))))
+        .then((buffers) => cache.set(name, { buffers, last: -1 }))
+        .catch(() => cache.delete(name));
+    }
+    return null;
+  }
+  const preload = (names) => { if (ctx) for (const n of names) samples(n); };
+
+  // Play a recorded sound. Returns false when it is not available (use the synth), true when played
+  // or deliberately skipped by the voice limit.
+  function sample(name, { gain = 1, rate = 1, jitter = 0.05, pos = null, bus = null, loop = false } = {}) {
+    const c = samples(name);
+    if (!c) return false;
+    const [maxV, gap] = VOICES[name] || VOICES.default;
+    const now = ctx.currentTime;
+    if ((voices.get(name) || 0) >= maxV || now - (lastStart.get(name) ?? -9) < gap) return true;
+    let i = Math.floor(Math.random() * c.buffers.length);
+    if (c.buffers.length > 1 && i === c.last) i = (i + 1) % c.buffers.length;
+    c.last = i;
+    const src = ctx.createBufferSource();
+    src.buffer = c.buffers[i]; src.loop = loop;
+    src.playbackRate.value = rate * (1 + (Math.random() * 2 - 1) * jitter);
+    const g = ctx.createGain();
+    g.gain.value = gain * (index._levels?.[name] ?? 1) * (1 + (Math.random() * 2 - 1) * 0.12);
+    let node = src;
+    let pan = 0;
+    if (pos) {
+      const dx = pos.x - listener.x; const dz = pos.z - listener.z;
+      const d = Math.hypot(dx, dz, (pos.y ?? listener.y) - listener.y);
+      if (d > 900) return true;
+      g.gain.value *= distanceGain(d);
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = distanceCutoff(d);
+      node = node.connect(lp);
+      pan = Math.max(-0.9, Math.min(0.9, d > 1 ? (dx * listener.rx + dz * listener.rz) / Math.hypot(dx, dz) : 0));
+    }
+    node.connect(g);
+    let out = g;
+    if (pan && ctx.createStereoPanner) { const p = ctx.createStereoPanner(); p.pan.value = pan; g.connect(p); out = p; }
+    out.connect(bus || (UI.has(name) ? uiBus : sfxBus));
+    voices.set(name, (voices.get(name) || 0) + 1); lastStart.set(name, now);
+    src.onended = () => { voices.set(name, Math.max(0, (voices.get(name) || 1) - 1)); try { out.disconnect(); } catch { /* gone */ } };
+    src.start();
+    return true;
+  }
+
+  // Approved ambient loops (index._loops) run as beds under the synth ambience; a park bed replaces the synth wind.
+  const beds = [];
+  function startBeds() {
+    if (!ctx || !index || beds.length) return;
+    for (const name of index._loops || []) {
+      if (name === 'underwater' || !hasSample(name)) continue;
+      const c = samples(name);
+      if (!c) { setTimeout(startBeds, 1500); return; }
+      const src = ctx.createBufferSource(); src.buffer = c.buffers[0]; src.loop = true;
+      const g = ctx.createGain(); g.gain.value = index._levels?.[name] ?? 0.5;
+      src.connect(g).connect(ambBus); src.start(); beds.push(src);
+      if (name === 'amb_park_trees' && windBus) windBus.gain.value = 0.15;
+    }
+  }
+
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const treeNear = (r) => { const l = sources.trees?.near(listener.x, listener.z, r); return l?.length ? l[Math.floor(Math.random() * l.length)] : null; };
 
   const SFX = {
     click() { tone({ freq: 900, slideTo: 1200, dur: 0.06, gain: 0.12, type: 'triangle' }); },
@@ -188,11 +325,35 @@ export function createAudio() {
       if (ctx) ambBus.gain.setTargetAtTime(on ? 0.55 : 0.0, ctx.currentTime, 0.6);
       if (on && ctx) startAmbience();
     },
+    // A recorded sound if there is one (`arg`, 0..1, scales steps and landings), else its synth stand-in.
     play(name, arg) {
       if (!live()) return;
-      try { SFX[name]?.(arg); } catch { /* sound is optional */ }
+      try {
+        const rec = ALIAS[name] || name;
+        const amp = typeof arg === 'number' ? 0.45 + 0.55 * Math.max(0, Math.min(1, arg)) : 1;
+        if (sample(rec, { gain: amp, jitter: UI.has(rec) ? 0.02 : 0.05 })) return;
+        SFX[SYNTH_FOR[name] || SYNTH_FOR[rec] || name]?.(arg);
+      } catch { /* sound is optional */ }
     },
-    dispose() { timers.forEach(clearTimeout); timers = []; ctx?.close?.(); ctx = null; },
+    // A recorded sound from a place in the town (no synth fallback).
+    playAt(name, pos, opts) {
+      if (!live()) return false;
+      try { return sample(name, { ...opts, pos }); } catch { return false; }
+    },
+    // The listener (the camera): position and the horizontal direction it looks along.
+    listen(x, y, z, fx, fz) {
+      const l = Math.hypot(fx, fz) || 1;
+      listener.x = x; listener.y = y; listener.z = z; listener.rx = -fz / l; listener.rz = fx / l;
+    },
+    // Where positional sounds come from: tree list, road list, and City Hall's {x, z}.
+    setWorld({ trees, roads, cityHall } = {}) {
+      sources.trees = trees ? createGrid(trees) : null;
+      sources.streets = mainStreetPoints(roads);
+      sources.cityHall = cityHall ? { x: cityHall.x, y: 30, z: cityHall.z } : null;
+    },
+    has: hasSample,
+    preload,
+    dispose() { timers.forEach(clearTimeout); timers = []; ctx?.close?.(); ctx = null; cache.clear(); voices.clear(); },
   };
   return api;
 }
