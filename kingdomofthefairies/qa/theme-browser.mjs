@@ -25,8 +25,11 @@ try {
       const el = document.querySelector('#credits'); el.hidden = false;
       const text = el.innerText; el.hidden = true; return text;
     });
-    assert.equal(/Langan|Frost|Wane|music video/.test(credits), legacy);
-    assert.equal(/Widow[’']s Bay/.test(credits), legacy);
+    // The film edition credits the song as its end roll does (TEXT.credits);
+    // the main theme and the music video are Widow's Bay's alone.
+    assert.equal(/music video|Main theme/i.test(credits), legacy);
+    assert.ok(/Widow[’']s Bay/.test(credits) && /Langan/.test(credits), 'both editions credit the song');
+    assert.ok(/Thank you for playing/.test(credits), 'the dialog ends as the roll does');
     await page.screenshot({ path: new URL(legacy ? 'legacy-title.png' : 'fairies-title.png', out).pathname });
     await page.locator('#start').click();
     await page.waitForFunction(() => window.__kingdomOfTheFairies?.audio.nowPlaying(), { timeout: 30000 });

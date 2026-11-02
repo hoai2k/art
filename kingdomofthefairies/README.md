@@ -144,8 +144,8 @@ This is a static canvas 2D / Web Audio page, with no build step.
   screen, `?camera=off` turns it off.
 
 Use arrows/WASD to move and Space/Z/J to act. Touch uses swipes for rows and a
-floating stick for swimming/climbing. The game includes per-act instructions,
-pause, scene select and checkpoints. Hull and pearl tuning is in
+floating stick for swimming/climbing. The game teaches its controls in play (each act's card and on-stage prompts), with a
+pause menu, scene select, credits and checkpoints. Hull and pearl tuning is in
 `src/game_config.js`.
 
 ## Art, sound and workbench

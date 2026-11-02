@@ -38,20 +38,13 @@ try {
    evidence.push({edition,size,credit});
   }
   await page.setViewportSize({width:800,height:360});
-  for (const [button,selector] of [['instructions','#ins-scroll'],['scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
+  for (const [button,selector] of [['scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
    if (button.startsWith('#')) await page.locator(button).click(); else await page.evaluate(b=>window.__kingdomOfTheFairies.open[b](),button);
    const styles=await page.locator(selector).evaluate(el=>{
     const c=getComputedStyle(el);return {color:c.scrollbarColor,width:c.scrollbarWidth,overflow:c.overflowY,canScroll:el.scrollHeight>el.clientHeight};
    });
    assert.equal(styles.color,'rgb(217, 179, 74) rgb(42, 20, 36)');assert.equal(styles.width,'thin');
    assert.equal(styles.overflow,'auto');
-   if(selector==='#ins-scroll') {
-    await page.keyboard.press('Tab'); await page.locator(selector).focus();
-    const cue=await page.locator(selector).evaluate(el=>{const c=getComputedStyle(el);return{outline:c.outlineStyle,shadow:c.boxShadow};});
-    assert.equal(cue.outline,'none');assert.ok(cue.shadow.includes('217, 179, 74'));
-    await page.keyboard.press('PageDown');
-    await page.waitForTimeout(150);assert.ok(await page.locator(selector).evaluate(el=>el.scrollTop>0),'instructions still scroll with the keyboard');
-   }
    // Inspect every visible outline in the active dialog. Magenta control
    // borders are intentional; large content-container outlines are not.
    const red=await page.evaluate(()=>[...document.querySelectorAll('.dialog:not([hidden]) *')].filter(e=>e.checkVisibility()).filter(e=>{

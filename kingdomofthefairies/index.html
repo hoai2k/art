@@ -69,7 +69,6 @@
         <h2 id="pause-h" data-text="html.pause.heading">Intermission</h2>
         <div class="stack">
           <button data-focus data-act="resume" data-text="html.pause.resume">Resume</button>
-          <button data-focus data-act="instructions" data-text="html.pause.instructions">Instructions</button>
           <button data-focus data-act="settings" data-text="html.pause.settings">Settings</button>
           <button data-focus data-act="credits" data-text="html.pause.credits">Credits</button>
           <button data-focus data-act="restart" data-text="html.pause.restart">Restart Act</button>
@@ -77,232 +76,6 @@
           <button data-focus data-act="title" data-text="html.pause.title">Return to Title</button>
         </div>
         <p class="note" id="pause-note"></p>
-      </div>
-    </section>
-
-    <!-- Instructions -->
-    <section id="instructions" class="layer dialog" role="dialog" aria-modal="true" aria-labelledby="ins-h" hidden>
-      <div class="card wide">
-        <button class="card-x" data-focus data-act="close" aria-label="Close">×</button>
-        <h2 id="ins-h" data-text="html.instructions.heading">How the Play Goes</h2>
-        <div class="tabs" role="tablist" aria-label="Instructions pages">
-          <button role="tab" data-focus data-page="0" data-text="html.instructions.tabs.play">The Play</button>
-          <button role="tab" data-focus data-page="6" data-film-only data-text="html.instructions.tabs.prologue">Prologue</button>
-          <button role="tab" data-focus data-page="1" data-text="html.instructions.tabs.crossing">Act I</button>
-          <button role="tab" data-focus data-page="2" data-text="html.instructions.tabs.grotto">Act II</button>
-          <button role="tab" data-focus data-page="3" data-text="html.instructions.tabs.court">Act III</button>
-          <button role="tab" data-focus data-page="4" data-text="html.instructions.tabs.whale">Act IV</button>
-          <button role="tab" data-focus data-page="5" data-text="html.instructions.tabs.tower">Act V</button>
-          <button role="tab" data-focus data-page="7" data-film-only data-text="html.instructions.tabs.burning">Act VI</button>
-        </div>
-        <div class="scroll" id="ins-scroll" tabindex="0" data-focus>
-          <div class="ins-page" data-page="0" role="tabpanel" data-classic-only hidden>
-            <p data-text="html.instructions.pages.classic.play.intro"><strong>A toy theatre in five acts:</strong> sail, swim, sneak and climb your way to your beloved in the enchanted tower; each hit costs one of your three lanterns, and losing them all sends you back to the last checkpoint.</p>
-            <svg class="pad" viewBox="-10 0 540 252" role="img" aria-labelledby="pad-t">
-              <title id="pad-t">Xbox controller: left stick or D-pad moves the ship, A leaps, Menu pauses, B goes back in menus.</title>
-              <path class="pad-body" d="M120 60 Q260 30 400 60 Q470 75 490 160 Q505 225 450 228 Q415 230 385 185 L135 185 Q105 230 70 228 Q15 225 30 160 Q50 75 120 60Z"/>
-              <circle class="pad-part" cx="160" cy="105" r="24"/><text x="160" y="110">LS</text>
-              <path class="pad-part" d="M196 146h14v-14h14v14h14v14h-14v14h-14v-14h-14z"/>
-              <circle class="pad-part" cx="320" cy="160" r="20"/><text x="320" y="165">RS</text>
-              <circle class="pad-a" cx="378" cy="132" r="13"/><text x="378" y="137">A</text>
-              <circle class="pad-part" cx="404" cy="106" r="13"/><text x="404" y="111">B</text>
-              <circle class="pad-part" cx="352" cy="106" r="13"/><text x="352" y="111">X</text>
-              <circle class="pad-part" cx="378" cy="80" r="13"/><text x="378" y="85">Y</text>
-              <rect class="pad-part" x="276" y="96" width="20" height="12" rx="6"/>
-              <rect class="pad-part" x="224" y="96" width="20" height="12" rx="6"/>
-              <g class="callout"><path d="M160 81 L120 18"/><text x="60" y="14" style="text-anchor:start" data-text="html.instructions.pad.leftStickSteerChangeRow">Left stick: steer &amp; change row</text></g>
-              <g class="callout"><path d="M217 175 L190 240"/><text x="60" y="246" style="text-anchor:start" data-text="html.instructions.pad.dPadSteerChangeRow">D-pad: steer &amp; change row</text></g>
-              <g class="callout"><path d="M390 140 L470 200"/><text x="515" y="214" style="text-anchor:end" data-text="html.instructions.pad.aLeapConfirm">A: leap / confirm</text></g>
-              <g class="callout"><path d="M416 100 L470 60"/><text x="515" y="56" style="text-anchor:end" data-text="html.instructions.pad.bBack">B: back</text></g>
-              <g class="callout"><path d="M286 96 L330 18"/><text x="515" y="14" style="text-anchor:end" data-text="html.instructions.pad.menuPause">Menu: pause</text></g>
-            </svg>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.move">Move</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.dragOrTheStickUnder">Drag, or the stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.actButtonLeapKickHide">Act button (leap, kick, hide…)</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButtonOrTap">A button or tap</td></tr>
-                <tr><td data-text="html.instructions.cell.action.backRefuse">Back / refuse</td><td><span class="xb xb-b">B</span></td><td data-text="html.instructions.cell.keyboard.xOrBackspace">X or Backspace</td><td data-text="html.instructions.cell.phone.bButtonWhenShown">B button (when shown)</td></tr>
-                <tr><td data-text="html.instructions.cell.action.pause">Pause</td><td><span class="xb xb-menu" aria-label="Menu"><i></i><i></i><i></i></span></td><td data-text="html.instructions.cell.keyboard.escOrP">Esc or P</td><td data-text="html.instructions.cell.phone.topRight">❚❚ top right</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="1" role="tabpanel" data-classic-only hidden>
-            <h3 data-text="html.instructions.pages.classic.crossing.heading">Act I — The Crossing</h3>
-            <p data-text="html.instructions.pages.classic.crossing.intro">Sail the painted sea to the enchanted tower, leaping the rocks and changing rows out of the witch’s lightning, then press A on the beat to light the party lanterns.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.sail">Sail</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.changeRow">Change row</td><td data-text="html.instructions.cell.controller.lsDPadUpDown"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> up, down</td><td data-text="html.instructions.cell.keyboard.orWS">↑ ↓ or W S</td><td data-text="html.instructions.cell.phone.swipeUpDown">Swipe up / down</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapLightALantern">Leap, light a lantern</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.tap">Tap</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="2" role="tabpanel" data-classic-only hidden>
-            <h3 data-text="html.instructions.pages.classic.grotto.heading">Act II — The Sleepers’ Grotto</h3>
-            <p data-text="html.instructions.pages.classic.grotto.intro">Swim down after the sinking guitar, waking the drowned revellers as you go, and catch it on the cave floor, where the witch offers you her sea rose.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.swim">Swim</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.theStickUnderYourThumb">The stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.kick">Kick</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButton">A button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.takeTheRoseRefuse">Take the rose / refuse</td><td><span class="xb xb-a">A</span> / <span class="xb xb-b">B</span></td><td data-text="html.instructions.cell.keyboard.spaceXOrBackspace">Space / X or Backspace</td><td data-text="html.instructions.cell.phone.aBButtons">A / B buttons</td></tr>
-                <tr><td data-text="html.instructions.cell.action.sailChangeRowLeapThe">Sail, change row, leap (the ride)</td><td data-text="html.instructions.cell.controller.lsDPadA"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span>, <span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.arrowsSpaceZOrJ">Arrows, Space, Z or J</td><td data-text="html.instructions.cell.phone.dragSwipeTap">Drag, swipe, tap</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="3" role="tabpanel" data-classic-only hidden>
-            <h3 data-text="html.instructions.pages.classic.court.heading">Act III — The Sea King’s Court</h3>
-            <p data-text="html.instructions.pages.classic.court.intro">Cross the Sea King’s hall and take her pearl from the pedestal at the far right, posing beside a courtier whenever his lantern sweeps the floor.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walk">Walk</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.changeGroove">Change groove</td><td data-text="html.instructions.cell.controller.lsDPadUpDown"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> up, down</td><td data-text="html.instructions.cell.keyboard.orWS">↑ ↓ or W S</td><td data-text="html.instructions.cell.phone.swipeUpDown">Swipe up / down</td></tr>
-                <tr><td data-text="html.instructions.cell.action.hideStrikeAPose">Hide (strike a pose)</td><td data-text="html.instructions.cell.controller.aMoveToStepOut"><span class="xb xb-a">A</span>; move to step out</td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButtonOrTap">A button or tap</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="4" role="tabpanel" data-classic-only hidden>
-            <h3 data-text="html.instructions.pages.classic.whale.heading">Act IV — The Whale’s Road</h3>
-            <p data-text="html.instructions.pages.classic.whale.intro">Climb across the wreckage and rib ledges inside the whale to the daylight in its throat, keeping out of the water as the whale breathes.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walk">Walk</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapHoldForHigher">Leap (hold for higher)</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.swipeUpTapOrThe">Swipe up, tap, or the A button</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="5" role="tabpanel" data-classic-only hidden>
-            <h3 data-text-widowsbay="html.instructions.pages.classic.tower.headingWidowsbay" data-text="html.instructions.pages.classic.tower.heading">Act V — The Enchanted Tower</h3>
-            <p data-text="html.instructions.pages.classic.tower.intro">Climb the cliff to the stone house, climb up through it as it burns to reach her, and carry her out across the quay before it falls.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.climbWalkTakeStairs">Climb, walk, take stairs</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.theStickUnderYourThumb">The stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapThrowTheStone">Leap, throw the stone</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButton">A button</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="0" role="tabpanel" data-film-only>
-            <p data-text="html.instructions.pages.film.play.intro"><strong>A toy theatre after Georges Méliès’s film <em>Le Royaume des fées</em> (1903):</strong> guide Prince Bel-Azor through a prologue and six acts to rescue Princess Azurine from the witch; each hit costs one of your three lanterns, and losing them all sends you back to the last checkpoint.</p>
-            <svg class="pad" viewBox="-10 0 540 252" role="img" aria-labelledby="pad-t2">
-              <title id="pad-t2">Xbox controller: left stick or D-pad moves, A leaps, Menu pauses, B goes back in menus.</title>
-              <path class="pad-body" d="M120 60 Q260 30 400 60 Q470 75 490 160 Q505 225 450 228 Q415 230 385 185 L135 185 Q105 230 70 228 Q15 225 30 160 Q50 75 120 60Z"/>
-              <circle class="pad-part" cx="160" cy="105" r="24"/><text x="160" y="110">LS</text>
-              <path class="pad-part" d="M196 146h14v-14h14v14h14v14h-14v14h-14v-14h-14z"/>
-              <circle class="pad-part" cx="320" cy="160" r="20"/><text x="320" y="165">RS</text>
-              <circle class="pad-a" cx="378" cy="132" r="13"/><text x="378" y="137">A</text>
-              <circle class="pad-part" cx="404" cy="106" r="13"/><text x="404" y="111">B</text>
-              <circle class="pad-part" cx="352" cy="106" r="13"/><text x="352" y="111">X</text>
-              <circle class="pad-part" cx="378" cy="80" r="13"/><text x="378" y="85">Y</text>
-              <rect class="pad-part" x="276" y="96" width="20" height="12" rx="6"/>
-              <rect class="pad-part" x="224" y="96" width="20" height="12" rx="6"/>
-              <g class="callout"><path d="M160 81 L120 18"/><text x="60" y="14" style="text-anchor:start" data-text="html.instructions.pad.leftStickSteerChangeRow">Left stick: steer &amp; change row</text></g>
-              <g class="callout"><path d="M217 175 L190 240"/><text x="60" y="246" style="text-anchor:start" data-text="html.instructions.pad.dPadSteerChangeRow">D-pad: steer &amp; change row</text></g>
-              <g class="callout"><path d="M390 140 L470 200"/><text x="515" y="214" style="text-anchor:end" data-text="html.instructions.pad.aLeapConfirm">A: leap / confirm</text></g>
-              <g class="callout"><path d="M416 100 L470 60"/><text x="515" y="56" style="text-anchor:end" data-text="html.instructions.pad.bBack">B: back</text></g>
-              <g class="callout"><path d="M286 96 L330 18"/><text x="515" y="14" style="text-anchor:end" data-text="html.instructions.pad.menuPause">Menu: pause</text></g>
-            </svg>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.move">Move</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.dragOrTheStickUnder">Drag, or the stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapAndAct">Leap and act</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButtonOrTap">A button or tap</td></tr>
-                <tr><td data-text="html.instructions.cell.action.secondActionBowWakeStrike">Second action (bow, wake, strike)</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.theSecondButtonWhenShown">The second button, when shown</td></tr>
-                <tr><td data-text="html.instructions.cell.action.skipASceneBack">Skip a scene / back</td><td><span class="xb xb-b">B</span></td><td data-text="html.instructions.cell.keyboard.xOrBackspace">X or Backspace</td><td data-text="html.instructions.cell.phone.skipButton">Skip button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.pause">Pause</td><td><span class="xb xb-menu" aria-label="Menu"><i></i><i></i><i></i></span></td><td data-text="html.instructions.cell.keyboard.escOrP">Esc or P</td><td data-text="html.instructions.cell.phone.topRight">❚❚ top right</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="6" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.prologue.heading">Prologue — The Betrothal</h3>
-            <p data-text="html.instructions.pages.film.prologue.intro">Receive the fairies’ gifts for your bride, chase the witch’s demons along the rampart, and take up the arms Aurora gives you.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walk">Walk</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.takeAGiftTakeHer">Take a gift, take her hand, take up your arms</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.theReceiveTakeButton">The Receive / Take button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leap">Leap</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.tapOrTheLeapButton">Tap or the Leap button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.struggleFree">Struggle free</td><td data-text="html.instructions.cell.controller.aXOrTheStick"><span class="xb xb-a">A</span>, <span class="xb xb-x">X</span> or the stick</td><td data-text="html.instructions.cell.keyboard.arrowsSpaceOrX">Arrows, Space or X</td><td data-text="html.instructions.cell.phone.tapOrDrag">Tap or drag</td></tr>
-                <tr><td data-text="html.instructions.cell.action.skipAScene">Skip a scene</td><td><span class="xb xb-b">B</span></td><td data-text="html.instructions.cell.keyboard.backspace">Backspace</td><td data-text="html.instructions.cell.phone.skip">Skip</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="1" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.crossing.heading">Act I — The Royal Crossing</h3>
-            <p data-text="html.instructions.pages.film.crossing.intro">Sail the royal ship toward the witch’s tower, changing rows around the rocks and out of her lightning.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.sail">Sail</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.changeRow">Change row</td><td data-text="html.instructions.cell.controller.lsDPadUpDown"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> up, down</td><td data-text="html.instructions.cell.keyboard.orWS">↑ ↓ or W S</td><td data-text="html.instructions.cell.phone.swipeUpDown">Swipe up / down</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="2" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.grotto.heading">Act II — The Water Fairy</h3>
-            <p data-text="html.instructions.pages.film.grotto.intro">Swim down after Aurora’s sinking sword, waking your crew on the way, and carry it to the Water Fairy on the cave floor.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.swim">Swim</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.theStickUnderYourThumb">The stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.kick">Kick</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButton">A button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.wakeACrewmanTakeA">Wake a crewman, take a pearl</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.wakeTakeButton">Wake / Take button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.sailChangeRowLeapThe2">Sail, change row, leap (the procession)</td><td data-text="html.instructions.cell.controller.lsDPadA"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span>, <span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.arrowsSpaceZOrJ">Arrows, Space, Z or J</td><td data-text="html.instructions.cell.phone.dragSwipeTap">Drag, swipe, tap</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="3" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.court.heading">Act III — Neptune’s Court</h3>
-            <p data-text="html.instructions.pages.film.court.intro">Bow to let the lobster guards pass, then cross Neptune’s hall to his seal at the far right, hiding beside a courtier when the witch’s eye sweeps the floor.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walk">Walk</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.changeGroove">Change groove</td><td data-text="html.instructions.cell.controller.lsDPadUpDown"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> up, down</td><td data-text="html.instructions.cell.keyboard.orWS">↑ ↓ or W S</td><td data-text="html.instructions.cell.phone.swipeUpDown">Swipe up / down</td></tr>
-                <tr><td data-text="html.instructions.cell.action.bowHideHold">Bow / hide (hold)</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.holdHide">Hold Hide</td></tr>
-                <tr><td data-text="html.instructions.cell.action.jumpUpAGroove">Jump up a groove</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.tapOrSwipeUp">Tap or swipe up</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="4" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.whale.heading">Act IV — The Whale’s Passage</h3>
-            <p data-text="html.instructions.pages.film.whale.intro">Climb through the whale’s belly to the daylight in its throat, then run the dark cavern beyond it to the night sea.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walk">Walk</td><td data-text="html.instructions.cell.controller.lsDPadLeftRight"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td data-text="html.instructions.cell.keyboard.orAD">← → or A D</td><td data-text="html.instructions.cell.phone.dragLeftRight">Drag left / right</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapHoldForHigher">Leap (hold for higher)</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.swipeUpTapOrThe">Swipe up, tap, or the A button</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="5" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.tower.heading">Act V — The Enchanted Tower</h3>
-            <p data-text="html.instructions.pages.film.tower.intro">Climb the cliff, dive into the sea gap and swim it beneath the witch’s swoops, then climb the tower wall to Azurine’s window.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.climbSwim">Climb, swim</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.theStickUnderYourThumb">The stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapDive">Leap, dive</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButton">A button</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ins-page" data-page="7" role="tabpanel" data-film-only hidden>
-            <h3 data-text="html.instructions.pages.film.burning.heading">Act VI — The Burning Tower</h3>
-            <p data-text="html.instructions.pages.film.burning.intro">Carry Azurine down out of the burning tower, beat the witch on the clifftop, and walk your bride to her wedding.</p>
-            <table class="map">
-              <thead><tr><th data-text="html.instructions.table.action">Action</th><th data-text="html.instructions.table.controller">Controller</th><th data-text="html.instructions.table.keyboard">Keyboard</th><th data-text="html.instructions.table.phoneTablet">Phone / tablet</th></tr></thead>
-              <tbody>
-                <tr><td data-text="html.instructions.cell.action.walkStairsLadders">Walk, stairs, ladders</td><td data-text="html.instructions.cell.controller.lsDPad"><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span></td><td data-text="html.instructions.cell.keyboard.arrowsOrWAS">Arrows or W A S D</td><td data-text="html.instructions.cell.phone.theStickUnderYourThumb">The stick under your thumb</td></tr>
-                <tr><td data-text="html.instructions.cell.action.leapAurorasLamp">Leap, Aurora’s lamp</td><td><span class="xb xb-a">A</span></td><td data-text="html.instructions.cell.keyboard.spaceZOrJ">Space, Z or J</td><td data-text="html.instructions.cell.phone.aButton">A button</td></tr>
-                <tr><td data-text="html.instructions.cell.action.strikeWithTheSword">Strike with the sword</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.strike">Strike</td></tr>
-                <tr><td data-text="html.instructions.cell.action.returnToTheTitleAfter">Return to the title (after the credits)</td><td><span class="xb xb-x">X</span></td><td>X</td><td data-text="html.instructions.cell.phone.title">Title</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -340,7 +113,13 @@
               <dt data-text="html.credits.afterTheFilm">After the film</dt>
               <dd data-text="html.credits.leRoyaumeDesFEs"><em>Le Royaume des fées</em> (1903), Georges Méliès</dd>
             </div>
+            <!-- as at the end of the film edition's credit roll (TEXT.credits); Widow's Bay credits the song above -->
+            <div class="cred-entry">
+              <dt data-film-only data-text="credits.songRole">Video game inspired by the song</dt>
+              <dd data-film-only><span data-text="credits.song">Widow's Bay</span><small class="cred-by" data-text="credits.songBy">by Langan, Frost, and Wane</small></dd>
+            </div>
           </dl>
+          <p class="cred-thanks" data-text="credits.thanks">Thank you for playing</p>
         </div>
       </div>
     </section>
@@ -364,12 +143,12 @@
       </div>
     </section>
 
-    <!-- The option buttons: instructions, scenes and credits at the left on
-         the title and playbill; settings, sound and fullscreen at the right
+    <!-- The option buttons: ?edit=local's Unlocks at the left on the title
+         and playbill; settings, sound and fullscreen at the right
          throughout (in play on a phone, revealed by a tap at the bottom right). -->
     <div id="icons" data-show="menu">
       <nav class="corner corner-left" aria-label="Guide">
-        <!-- (instructions, scene select and credits are in the pause menu; ?edit=local adds its Unlocks button here) -->
+        <!-- (scene select and credits are in the pause menu; ?edit=local adds its Unlocks button here) -->
       </nav>
       <nav class="corner corner-right" aria-label="Options">
         <button class="icon" id="btn-settings" data-focus aria-label="Settings" data-tip="Settings">

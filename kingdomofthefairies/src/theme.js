@@ -59,16 +59,14 @@ export function fillText(root = document) {
 export function applyDocumentTheme() {
   document.title = TITLE + (location.pathname.includes('/workbench/') ? ' · Workbench' : '');
   fillText();
-  // Each edition's instructions pages and tabs; the other edition's are
-  // marked ed-off so the shell never shows them.
-  // data-classic-only: the original acts' pages (Widow's Bay);
+  // Each edition's own elements; the other edition's are marked ed-off so
+  // the shell never shows them. data-classic-only: Widow's Bay's;
   // data-legacy-only: the band and the song (?widowsbay alone).
   for (const el of document.querySelectorAll(FILM ? '[data-classic-only]' : '[data-film-only]')) { el.classList.add('ed-off'); el.hidden = true; }
-  if (FILM) filmWords(document.querySelector('#instructions'));
   if (!LEGACY) return;
   for (const el of document.querySelectorAll('[data-widowsbay]')) el.textContent = el.dataset.widowsbay;
   for (const el of document.querySelectorAll('[data-text-widowsbay]')) { const v = textAt(el.dataset.textWidowsbay); if (typeof v === 'string') el.textContent = v; }
-  for (const el of document.querySelectorAll('[data-legacy-only]:not(.ins-page)')) el.hidden = false;
+  for (const el of document.querySelectorAll('[data-legacy-only]')) el.hidden = false;
   const stage = document.querySelector('#stage'); if (stage) stage.setAttribute('aria-label', TEXT.titles.stageLabel(TITLE));
   const meta = document.querySelector('meta[name="apple-mobile-web-app-title"]'); if (meta) meta.content = TITLE;
   const manifest = document.querySelector('link[rel="manifest"]'); if (manifest) manifest.href = 'manifest-widowsbay.webmanifest';
@@ -77,11 +75,6 @@ export function applyDocumentTheme() {
 
 // The film edition has no guitar: the enchanted sword in its place.
 export const words = (s) => (FILM ? String(s).replace(/its music wakes/g, 'its glow wakes').replace(/guitar/g, 'sword').replace(/Guitar/g, 'Sword') : s);
-function filmWords(root) {
-  if (!root) return;
-  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-  for (let n = walk.nextNode(); n; n = walk.nextNode()) if (/guitar|music wakes/i.test(n.nodeValue)) n.nodeValue = words(n.nodeValue);
-}
 
 // The film edition's cast: a legacy sprite id drawn as its film counterpart
 // whenever that art is loaded, else the

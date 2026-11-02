@@ -314,26 +314,6 @@ document.querySelectorAll('.layer.dialog').forEach((el) => {
   });
 });
 
-// ---------------------------------------------------------------- instructions
-// One page per act; the dialog opens on the act being played (or chosen on
-// the playbill, or the furthest reached from the title).
-const insTabs = [...document.querySelectorAll('#instructions [role=tab]')].filter((t) => !t.classList.contains('ed-off'));
-function showInsPage(n) {
-  for (const t of insTabs) t.setAttribute('aria-selected', String(+t.dataset.page === n));
-  for (const p of document.querySelectorAll('#instructions .ins-page')) p.hidden = +p.dataset.page !== n || p.classList.contains('ed-off');
-  $('#ins-scroll').scrollTop = 0;
-}
-function openInstructions() {
-  const pageOf = (a) => a.page ?? a.id;  // an act may name its instructions page
-  const n = S.act ? pageOf(S.act) : S.mode === 'playbill' ? pageOf(ACTS[S.pb]) : pageOf(ACTS[Math.max(0, Math.min(save.unlocked, ACTS.length) - 1)]);
-  showInsPage(n);
-  openDialog($('#instructions'), insTabs.find((t) => +t.dataset.page === n));
-}
-for (const t of insTabs) {
-  t.addEventListener('click', () => showInsPage(+t.dataset.page));
-  t.addEventListener('focus', () => showInsPage(+t.dataset.page));
-}
-
 // ---------------------------------------------------------------- scene select
 // Every scene of a finished act, and the scenes reached so far in the next.
 function scenesReached(a) {
@@ -389,7 +369,6 @@ document.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click
   audio.play('ui');
   if (a === 'close') { if (b.closest('#pause')) resume(); else closeDialog(); }
   if (a === 'resume') resume();
-  if (a === 'instructions') openInstructions();
   if (a === 'scenes') openScenes();
   if (a === 'settings') openDialog($('#settings'));
   if (a === 'credits') openDialog($('#credits'), $('#credits .card-x'));
@@ -472,25 +451,11 @@ function navActivate() {
 function navAdjust(dir) {
   const el = document.activeElement;
   if (el?.type === 'range') { el.value = +el.value + dir; el.dispatchEvent(new Event('input')); return true; }
-  if (el?.id === 'ins-scroll') return false;
   return false;
 }
 
 function menuInput(i) {
   const el = document.activeElement;
-  // Instructions tabs: left and right turn the page, down reads it.
-  if (el?.getAttribute('role') === 'tab') {
-    const n = insTabs.indexOf(el);
-    if (i.left || i.right) { focusEl(insTabs[(n + (i.left ? -1 : 1) + insTabs.length) % insTabs.length]); audio.play('ui'); return; }
-    if (i.down) { focusEl($('#ins-scroll')); return; }
-    if (i.up) return;
-  }
-  if (el?.id === 'ins-scroll' && i.up && el.scrollTop <= 0) { focusEl(insTabs.find((t) => t.getAttribute('aria-selected') === 'true')); return; }
-  if (el?.id === 'ins-scroll' && (i.left || i.right)) {
-    const n = insTabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
-    showInsPage(+insTabs[(n + (i.left ? -1 : 1) + insTabs.length) % insTabs.length].dataset.page); audio.play('ui'); return;
-  }
-  if (el?.id === 'ins-scroll' && (i.up || i.down)) { el.scrollBy({ top: i.up ? -80 : 80 }); if (!(i.up && el.scrollTop <= 0) && !(i.down && el.scrollTop + el.clientHeight >= el.scrollHeight - 2)) return; }
   if (i.up) navMove(-1, 'up');
   if (i.down) navMove(1, 'down');
   if (i.left && !navAdjust(-1)) navMove(-1, 'left');
@@ -1049,4 +1014,4 @@ requestAnimationFrame(frame);
 // QA hook: ?qa exposes the shell state to browser smoke tests.
 if (new URLSearchParams(location.search).has('qa')) window.__widowsBay = window.__kingdomOfTheFairies = { S, settings, audio, camera, get assets() { return assets; },
   // the dialogs the pause menu opens, for the browser checks
-  open: { instructions: () => openInstructions(), scenes: () => openScenes(), credits: () => openDialog($('#credits'), $('#credits .card-x')) } };
+  open: { scenes: () => openScenes(), credits: () => openDialog($('#credits'), $('#credits .card-x')) } };
