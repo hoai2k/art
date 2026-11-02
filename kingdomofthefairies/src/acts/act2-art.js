@@ -10,6 +10,7 @@ import {
 import { clamp, lerp, easeOut, easeInOut, beatPhase, SPENT } from './shared.js';
 import { FILM, words } from '../theme.js';
 import { REST_GAP } from '../sprite-fit.js';
+import { TEXT } from '../text_config.js';
 import { drawPose, CREW_OF } from '../pose.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 
@@ -54,26 +55,26 @@ export function onEvent(k, e, st) {
   const s = st.sailor, x = s.x, y = sy(st, s.y);
   switch (e.type) {
     case 'sailorWake': k.burst(x, y - 20, '#eef3ea', 14, 'bubble'); break;
-    case 'swimStart': k.text(words('Follow the guitar down'), 640, 200, true); break;
+    case 'swimStart': k.text(words(TEXT.grotto.burst.followGuitar), 640, 200, true); break;
     case 'tapMark': k.burst(e.x, sy(st, e.y), '#ffe27a', 10, 'sparkle'); break;
     case 'swimKick': k.burst(x - s.face * 70, y + 10, '#eef3ea', 6, 'bubble'); break;
-    case 'conchBlow': k.burst(e.x, sy(st, e.y) - 30, '#d9b34a', 22, 'sparkle'); k.text('The conch sings! Wake the sleepers', 640, 200, true); break;
-    case 'sleeperWake': k.burst(e.x, sy(st, e.y) - 20, '#d9b34a', 14, 'bubble'); k.burst(e.x, sy(st, e.y) - 20, '#d9b34a', 8, 'sparkle'); k.text(`Awake ${e.n}`, e.x, sy(st, e.y) - 60); break;
+    case 'conchBlow': k.burst(e.x, sy(st, e.y) - 30, '#d9b34a', 22, 'sparkle'); k.text(TEXT.grotto.burst.conch, 640, 200, true); break;
+    case 'sleeperWake': k.burst(e.x, sy(st, e.y) - 20, '#d9b34a', 14, 'bubble'); k.burst(e.x, sy(st, e.y) - 20, '#d9b34a', 8, 'sparkle'); k.text(TEXT.grotto.burst.awake(e.n), e.x, sy(st, e.y) - 60); break;
     case 'pearl': k.burst(e.x, sy(st, e.y), '#eef3ea', 10, 'sparkle'); k.text('+50', e.x, sy(st, e.y) - 40); break;
     case 'hit': k.shake(0.35); k.burst(x, y, '#c8321e', 12, 'streak'); k.burst(x, y, '#eef3ea', 8, 'bubble'); break;
-    case 'airOut': k.text('Out of air!', x, y - 80, true); break;
-    case 'airLow': k.text('Air low: find a vent', x, y - 80); break;
-    case 'airVent': k.burst(x, y - 30, '#eef3ea', 16, 'bubble'); k.text('Air!', x, y - 80); break;
-    case 'airFull': k.burst(x, y - 30, '#9fe0d0', 12, 'sparkle'); k.text('Air full', x, y - 80); break;
-    case 'guitarCatch': k.burst(x, y, '#d9b34a', 26, 'sparkle'); k.text(words('The guitar!'), x, y - 90, true); break;
+    case 'airOut': k.text(TEXT.grotto.burst.airOut, x, y - 80, true); break;
+    case 'airLow': k.text(TEXT.grotto.burst.airLow, x, y - 80); break;
+    case 'airVent': k.burst(x, y - 30, '#eef3ea', 16, 'bubble'); k.text(TEXT.grotto.burst.air, x, y - 80); break;
+    case 'airFull': k.burst(x, y - 30, '#9fe0d0', 12, 'sparkle'); k.text(TEXT.grotto.burst.airFull, x, y - 80); break;
+    case 'guitarCatch': k.burst(x, y, '#d9b34a', 26, 'sparkle'); k.text(words(TEXT.grotto.burst.guitar), x, y - 90, true); break;
     case 'witchOffer': k.burst(WITCH_X + WITCH_ROSE.x, sy(st, FLOOR) + 44 + WITCH_ROSE.y, '#f3c6dc', 16, 'sparkle'); break;
     // Taking the rose: the wand sparkles first, then the rose in her hand,
     // then him when it reaches his head (act2.js ROSE_CUES).
     case 'roseTake': k.burst(WITCH_X + WITCH_WAND.x, sy(st, FLOOR) + 44 + WITCH_WAND.y, '#fff2b0', 26, 'sparkle'); break;
     case 'roseFly': k.burst(WITCH_X + WITCH_ROSE.x, sy(st, FLOOR) + 44 + WITCH_ROSE.y, '#e0127a', 16, 'sparkle'); break;
     case 'roseArrive': { const h = sailorHead(st); k.flash(0.5); k.burst(h.x, h.y, '#e0127a', 18, 'sparkle'); k.burst(h.x, h.y, '#fff2b0', 10, 'sparkle'); break; }
-    case 'sleepersRise': k.text('Every sleeper wakes!', 640, 220, true); break;
-    case 'witchLaugh': k.shake(0.25); k.text('Her laugh rings through the grotto', 640, 220); break;
+    case 'sleepersRise': k.text(TEXT.grotto.burst.sleepersRise, 640, 220, true); break;
+    case 'witchLaugh': k.shake(0.25); k.text(TEXT.grotto.burst.witchLaugh, 640, 220); break;
     case 'drown': k.burst(x, y - 20, '#eef3ea', 20, 'bubble'); break;
     case 'rideStart': break;
     case 'ridePearl': k.burst(boatX(st) + 40, boatY(st) - 40, '#eef3ea', 10, 'sparkle'); k.text('+25', boatX(st) + 40, boatY(st) - 90); break;
@@ -670,8 +671,8 @@ function swimmer(k, st, t) {
   c.globalAlpha = 1;
   if (st.air < 0.25 && (ph === 'swim') && Math.floor(t * 3) % 2 === 0) {
     c.font = '700 20px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-    c.fillStyle = k.col('#2a1424'); c.fillText('AIR!', x + 2, y - 72);
-    c.fillStyle = k.col('#eef3ea'); c.fillText('AIR!', x, y - 74);
+    c.fillStyle = k.col('#2a1424'); c.fillText(TEXT.grotto.airWarning, x + 2, y - 72);
+    c.fillStyle = k.col('#eef3ea'); c.fillText(TEXT.grotto.airWarning, x, y - 74);
   }
 }
 
@@ -940,7 +941,7 @@ function captions(k, st, t) {
       c.globalAlpha = 0.7 * (1 - f); k.circle(x - 50 + ((i * 37) % 100) + Math.sin(t * 3 + i) * 6, y + 20 - f * 150, 3 + (i % 3) * 2);
     }
     c.restore();
-    label(k, 'Breathing in', x, y - 96, 18, '#9fe0d0');
+    label(k, TEXT.grotto.breathing, x, y - 96, 18, '#9fe0d0');
   }
   // X takes what is within reach (film edition)
   // On touch a tap does it (anywhere, or on the sleeper or pearl itself), so
@@ -950,7 +951,7 @@ function captions(k, st, t) {
   const since = st.reach && st.firstReach?.[st.reach.kind] != null ? (st.t ?? 0) - st.firstReach[st.reach.kind] : 0;
   if (ph === 'swim' && st.reach && (!touch || since < 3.5)) {
     const r = st.reach, y = sy(st, r.y);
-    const str = touch ? (r.kind === 'pearl' ? 'Tap to take the pearl' : 'Tap to wake him') : r.kind === 'pearl' ? '[X] Take the pearl' : '[X] Wake him';
+    const str = touch ? (r.kind === 'pearl' ? TEXT.grotto.reach.tapPearl : TEXT.grotto.reach.tapWake) : r.kind === 'pearl' ? TEXT.grotto.reach.takePearl : TEXT.grotto.reach.wake;
     const px = touch && k.compact ? 30 : 18, hh = px + 14;
     c.save(); c.font = `700 ${px}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
     if (touch) c.globalAlpha = clamp((3.5 - since) / 0.5, 0, 1);
@@ -961,21 +962,33 @@ function captions(k, st, t) {
     c.fillStyle = k.col('#ffe27a'); richText(c, str, lx, y, { px, mode: k.inputMode || 'key', col: k.col });
     c.restore();
   }
-  if (ph === 'swim' && !st.conches[0].used && pt < 14 && onScreen(st, SHELF_Y)) {
+  // After "Follow the sword down": the two things worth saying (film); the
+  // classic edition points out its first conch instead.
+  if (FILM && ph === 'swim' && pt >= 2 && pt < 14) {
+    const str = touch ? TEXT.grotto.dive.hintTouch : TEXT.grotto.dive.hint;
+    const px = touch && k.compact ? 26 : 18, hh = px + 14;
+    c.save(); c.font = `700 ${px}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
+    c.globalAlpha = clamp((14 - pt) / 0.6, 0, 1) * clamp((pt - 2) / 0.4, 0, 1);
+    const fade = c.globalAlpha, w = c.measureText(str.replace(/\[X\]/, 'XX')).width + 44;
+    c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.8 * fade;
+    c.beginPath(); c.roundRect(640 - w / 2, 250 - hh * 0.7, w, hh, hh / 2); c.fill(); c.globalAlpha = fade;
+    c.fillStyle = k.col('#ffe27a'); richText(c, str, 640, 250, { px, mode: k.inputMode || 'key', col: k.col });
+    c.restore();
+  } else if (!FILM && ph === 'swim' && !st.conches[0].used && pt < 14 && onScreen(st, SHELF_Y)) {
     const cn = st.conches[0];
-    label(k, 'Swim into the conch', cn.x, sy(st, cn.y) - 86, 18, '#ffe27a');
+    label(k, TEXT.grotto.swimIntoConch, cn.x, sy(st, cn.y) - 86, 18, '#ffe27a');
   }
   if (ph === 'swim' && st.guitar.settled && !st.guitar.held) {
     const g = st.guitar;
-    label(k, FILM ? 'Catch the sword' : words('Catch the guitar'), g.x, sy(st, g.y) - 90, 20, '#ffe27a');
+    label(k, FILM ? TEXT.grotto.catchSword : words(TEXT.grotto.catchGuitar), g.x, sy(st, g.y) - 90, 20, '#ffe27a');
   }
   if (ph === 'offer' && pt >= 1.6) {
     panel(k, 640, 128, 620, 104);
     c.font = '40px Yesteryear, cursive'; c.textAlign = 'center';
-    c.fillStyle = k.col('#f3c6dc'); c.fillText(FILM ? 'The Water Fairy offers her blessing' : 'She offers you the sea rose', 640, 122);
+    c.fillStyle = k.col('#f3c6dc'); c.fillText(FILM ? TEXT.grotto.offer.title : TEXT.grotto.offer.titleClassic, 640, 122);
     const on = pt >= 2.0;
     c.globalAlpha = on ? 1 : 0.5;
-    label(k, FILM ? 'Swim to her to receive it' : 'A  take it     ·     B  refuse, or swim away', 640, 160, 20, '#f1e3c8');
+    label(k, FILM ? TEXT.grotto.offer.hint : TEXT.grotto.offer.hintClassic, 640, 160, 20, '#f1e3c8');
     c.globalAlpha = 1;
   }
 }
@@ -1078,7 +1091,7 @@ function ride(k, st, t) {
     k.waves(row, scrolled);
   }
   k.wash('#2f5552', 0.38);
-  if (rt < 4) label(k, 'Sail, change row and leap to gather the pearls.', 640, 140, 22, '#f1e3c8');
+  if (rt < 4) label(k, TEXT.grotto.rideHint, 640, 140, 22, '#f1e3c8');
 }
 
 function boat(k, st, y, t) {

@@ -1,4 +1,5 @@
 import { LEGACY, FILM } from '../theme.js';
+import { TEXT } from '../text_config.js';
 import { drawPose, CREW_OF } from '../pose.js';
 // Act I drawing: the voyage (kit.voyage) and the ending scenes. Every piece
 // of new art has a procedural stand-in until its file is delivered (ids are
@@ -71,7 +72,7 @@ export function onEvent(k, e, st) {
     }
     k.text(FILM ? '✦' : '♪', lanternX(i), 140);
   }
-  if (e.type === 'revelry') { if (!FILM) k.text('Revelry!', 640, 260, true); for (const c of LANTERN_COLS) k.burst(640, 300, c, 20, 'confetti'); }
+  if (e.type === 'revelry') { if (!FILM) k.text(TEXT.crossing.revelryBurst, 640, 260, true); for (const c of LANTERN_COLS) k.burst(640, 300, c, 20, 'confetti'); }
   if (e.type === 'strike') { k.flash(1); k.shake(0.5); }
   // the keel breaks where the spout holds it up; each half splashes down where it fell
   const sx = st.board.ship.x;

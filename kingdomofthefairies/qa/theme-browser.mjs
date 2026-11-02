@@ -15,7 +15,7 @@ try {
     page.on('pageerror', e => errors.push(e.message));
     page.on('request', r => requests.push(r.url()));
     await page.addInitScript(() => {
-      for (const prefix of ['widowsbay', 'kingdomofthefairies', 'kingdomofthefairies.partial']) localStorage.setItem(prefix + '.settings.v1', JSON.stringify({ film: 'off', music: 0, sfx: 0, period: false, extraAnimations: true }));
+      for (const prefix of ['widowsbay', 'kingdomofthefairies']) localStorage.setItem(prefix + '.settings.v1', JSON.stringify({ film: 'off', music: 0, sfx: 0, period: false, extraAnimations: true }));
     });
     await page.goto(server.url + '/?qa' + (legacy ? '&widowsbay=on' : ''));
     await page.waitForFunction(() => document.querySelector('#logo-img').naturalWidth > 0);
@@ -25,8 +25,11 @@ try {
       const el = document.querySelector('#credits'); el.hidden = false;
       const text = el.innerText; el.hidden = true; return text;
     });
-    assert.equal(/Langan|Frost|Wane|music video/.test(credits), legacy);
-    assert.equal(/Widow[’']s Bay/.test(credits), legacy);
+    // The film edition credits the song as its end roll does (TEXT.credits);
+    // the main theme and the music video are Widow's Bay's alone.
+    assert.equal(/music video|Main theme/i.test(credits), legacy);
+    assert.ok(/Widow[’']s Bay/.test(credits) && /Langan/.test(credits), 'both editions credit the song');
+    assert.ok(!/Thank you for playing|Video game/.test(credits), 'the dialog keeps its own shorter wording');
     await page.screenshot({ path: new URL(legacy ? 'legacy-title.png' : 'fairies-title.png', out).pathname });
     await page.locator('#start').click();
     await page.waitForFunction(() => window.__kingdomOfTheFairies?.audio.nowPlaying(), { timeout: 30000 });

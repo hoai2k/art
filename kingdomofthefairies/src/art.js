@@ -1,4 +1,5 @@
-import { LEGACY, FILM, PARTIAL, FILM_CAST, PARTIAL_CAST, bodyScaleOf, themeManifest } from './theme.js';
+import { LEGACY, FILM, FILM_CAST, bodyScaleOf, themeManifest } from './theme.js';
+import { TEXT } from './text_config.js';
 // Toy-theatre renderer. Every frame is painted twice: a monochrome "print"
 // pass and a flat colour "stencil" pass. The stencil pass is laid over the
 // print with the `color` blend, slightly out of register, which is how
@@ -73,20 +74,48 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
     out.sfx = m.sfx || {};
     animationSlots = m.anims || {};
   } catch { out.failed.push('manifest'); return out; }
-  const load = (ids) => Promise.all(ids.map((id) => new Promise((done) => {
+  // Images load through a queue, a few at a time, so the art a scene needs
+  // can be moved to the front (out.want) instead of waiting behind the whole
+  // game's. Each id settles once: loaded, failed, or (still requested) skipped.
+  const settled = {}, waiters = {}, queue = [];
+  let inflight = 0;
+  const CONCURRENT = 6;
+  const settle = (id) => { settled[id] = true; for (const f of waiters[id] || []) f(); delete waiters[id]; inflight--; pump(); };
+  const start = (id) => {
     const s = out.slots[id];
-    if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return done(); }
-    if (!s || s.status !== 'delivered' || !s.file) { out.failed.push(id); return done(); }
+    inflight++;
+    if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return settle(id); }
+    // Art still requested is not a failure: its stand-in draws until it arrives.
+    if (s && s.status !== 'delivered') return settle(id);
+    if (!s || !s.file) { out.failed.push(id); return settle(id); }
     const img = new Image();
     // Film art keeps its proportions in its box (fitBox); a tinted alternate is
     // drawn the way its original is, so one of an older, stretched-to-box
     // sprite stays stretched rather than taking the film art's fitting.
     const originalSlot = id.endsWith('-tinted') ? out.slots[id.slice(0, -7)] : null;
     const fit = s.edition === 'film' && (!originalSlot || originalSlot.edition === 'film');
-    img.onload = () => { if (fit) { img.fitBox = true; img.bodyScale = bodyScaleOf(id); } out.images[id] = img; onImage?.(id, img); done(); };
-    img.onerror = () => { out.failed.push(id); done(); };
+    img.onload = () => { if (fit) { img.fitBox = true; img.bodyScale = bodyScaleOf(id); } out.images[id] = img; onImage?.(id, img); settle(id); };
+    img.onerror = () => { out.failed.push(id); settle(id); };
     img.src = base + s.file;
-  })));
+  };
+  const started = new Set();
+  function pump() {
+    while (inflight < CONCURRENT && queue.length) { const id = queue.shift(); if (started.has(id)) continue; started.add(id); start(id); }
+  }
+  const whenSettled = (id) => (settled[id] ? Promise.resolve() : new Promise((f) => (waiters[id] = waiters[id] || []).push(f)));
+  // Move ids (known slots only) to the front of the queue, in order; resolves
+  // once every one has settled.
+  out.want = (ids) => {
+    const known = [...new Set(ids)].filter((id) => out.slots[id]);
+    const fresh = known.filter((id) => !started.has(id));
+    for (const id of fresh) { const i = queue.indexOf(id); if (i >= 0) queue.splice(i, 1); }
+    queue.unshift(...fresh); pump();
+    return Promise.all(known.map(whenSettled));
+  };
+  // How many of ids have settled, of how many known slots.
+  out.progress = (ids) => { const known = [...new Set(ids)].filter((id) => out.slots[id]); return { done: known.filter((id) => settled[id]).length, total: known.length }; };
+  out.settled = (id) => !!settled[id];
+  const load = (ids) => { for (const id of ids) if (!started.has(id) && !queue.includes(id)) queue.push(id); pump(); return Promise.all(ids.filter((id) => out.slots[id]).map(whenSettled)); };
   const early = first.filter((id) => out.slots[id]);
   const rest = Object.keys(out.slots).filter((id) => !early.includes(id));
   out.ready = load(early);
@@ -107,7 +136,9 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
       } catch { /* A missing/bad loop leaves its still-art fallback in place. */ }
     }));
   };
-  out.all = out.ready.then(() => Promise.all([load(rest), loadAnimations()]));
+  // the rest queue behind the first wave (out.want moves a scene's ahead)
+  const restDone = load(rest);
+  out.all = Promise.all([out.ready, restDone, out.ready.then(loadAnimations)]);
   return out;
 }
 
@@ -229,7 +260,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   };
   const img = (id) => {
     const a = cast[id];
-    let r = a && assets.images[a] ? a : a && PARTIAL ? null : id;
+    let r = a && assets.images[a] ? a : id;
     if (!r) return undefined;
     r = walkFrame(r);
     // the tinted cast look (the default in the film edition; Settings or
@@ -396,7 +427,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   // curtains, HUD and anything the act puts over them (irises, washes).
   function scene(c, view) {
     const t = view.t, st = view.state, act = view.act;
-    cast = FILM ? { ...FILM_CAST, ...(act?.cast || {}) } : PARTIAL ? PARTIAL_CAST : {};
+    cast = FILM ? { ...FILM_CAST, ...(act?.cast || {}) } : {};
     kit.c = c; kit.t = t;
     c.save();
     if (!view.scene && act && st) camApply(c);
@@ -463,12 +494,14 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     c.globalAlpha = 1;
     moonFace(c, 250, 150, 52, t);
     if (!img('sky-backdrop')) headlands(c, b, t);
-    // The lighthouse of Widow's Bay is wheeled on for the last stretch.
+    // The lighthouse of Widow's Bay is wheeled on for the last stretch,
+    // steadily, and comes to rest as the ship does on arrival: once it
+    // stops, the voyage is over.
     const p = b ? b.progress : 0;
     if (p > 0.82) {
       const k = Math.min(1, (p - 0.82) / 0.18);
-      const ease = 1 - (1 - k) ** 3;
-      lighthouse(c, 1320 - ease * 360, 420, t, b.phase !== 'sail');
+      const u = b.phase === 'sail' ? 0 : b.phase === 'arrive' ? Math.min(1, b.phaseT / TUNING.arriveTime) : 1;
+      lighthouse(c, 1320 - k * 320 - 40 * (1 - (1 - u) ** 2), 420, t, b.phase !== 'sail');
     }
   }
 
@@ -1241,9 +1274,7 @@ const WAVE_ART = [
   { id: 'waves-front', x0: 152, len: 1899 },
 ];
 
-const LABEL = FILM
-  ? { leaf: "Aurora's star", tea: "Aurora's stars", pearl: "Neptune's seal", rose: "The Water Fairy's blessing", guitar: 'The enchanted sword', stone: "Aurora's lamp" }
-  : { leaf: 'Tea leaf', tea: 'Tea leaves', pearl: 'Her pearl', rose: 'Sea rose', guitar: PARTIAL ? 'The sword' : 'The guitar', stone: 'The stone' };
+const LABEL = FILM ? TEXT.hud.keepsakes : TEXT.hud.keepsakesClassic;
 
 function circle(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill(); }
 function star(c, x, y, r) {
@@ -1259,11 +1290,11 @@ function star(c, x, y, r) {
 // Prompt text may name buttons as [A], [B], [MENU] or [LS]. They are drawn
 // for the input in use (`mode`): Xbox controller buttons ('pad'), key caps
 // ('key') or the on-screen touch buttons ('touch').
-const GLYPH_KEYS = { A: 'Space', B: 'Esc', X: 'X', MENU: 'Esc', LS: '← →' };
+const GLYPH_KEYS = TEXT.glyphs.keys;
 const XBOX = { A: '#3fa535', B: '#d6262c', X: '#2a6fd6', Y: '#e8b320' };
 // On touch the buttons carry no letters, only what they do here, so a prompt
 // names them the same way (the shell keeps these current; setTouchNames).
-const TOUCH_NAMES = { A: 'Tap', X: 'Action', B: 'Back', MENU: '❚❚', LS: 'Drag' };
+const TOUCH_NAMES = TEXT.glyphs.touch;
 let touchNames = { ...TOUCH_NAMES };
 export function setTouchNames({ A, X } = {}) { touchNames = { ...TOUCH_NAMES, ...(A ? { A } : {}), ...(X ? { X } : {}) }; }
 const touchFont = (px) => `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`;
@@ -1359,7 +1390,7 @@ export function drawCard(c, card, t) {
     c.strokeRect(480, 586, 320, 12); c.strokeRect(476, 582, 328, 20);
     c.fillStyle = PAL.pink; c.fillRect(482, 588, 316 * card.loading, 8);
     c.font = '700 18px "Josefin Sans", sans-serif';
-    c.fillText(LEGACY ? 'TUNING UP THE BAND' : 'TUNING THE ORCHESTRA', 640, 626);
+    c.fillText(card.loadingText || (LEGACY ? TEXT.shell.loading.cardBand : TEXT.shell.loading.cardOrchestra), 640, 626);
   } else if (card.prompt) {
     c.globalAlpha = a * (0.55 + 0.45 * Math.sin(t * 3));
     c.font = '30px Yesteryear, cursive';

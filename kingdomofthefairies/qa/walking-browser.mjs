@@ -4,11 +4,11 @@ const server = await serve(new URL('../', import.meta.url).pathname);
 const { chromium } = await playwright();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 try {
-  for (const [edition, look] of [['film', 'tinted'], ['film', 'original'], ['partial', 'original'], ['widowsbay', 'original']]) {
+  for (const [edition, look] of [['film', 'tinted'], ['film', 'original'], ['widowsbay', 'original']]) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    await page.goto(server.url + '/?qa&widowsbay=' + ({ film: 'off', partial: 'partial', widowsbay: 'on' }[edition]) + '&look=' + look);
+    await page.goto(server.url + '/?qa&widowsbay=' + ({ film: 'off', widowsbay: 'on' }[edition]) + '&look=' + look);
     await page.waitForFunction(() => window.__kingdomOfTheFairies);
     const result = await page.evaluate(async ({ edition, look }) => {
       const { loadAssets, createRenderer } = await import('/src/art.js');

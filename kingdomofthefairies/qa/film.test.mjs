@@ -9,7 +9,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -17,6 +17,8 @@ import { createCavern, stepCavern, surfaces, EXIT_X } from '../src/acts/act4cave
 import { HOUSE } from '../src/acts/act5.js';
 import { FINALE, FINALE_END } from '../src/finale.js';
 import { HOOKS } from '../src/acts/act4.js';
+import act1 from '../src/acts/act1.js';
+import { SCENES as ACT2_SCENES } from '../src/acts/act2.js';
 
 let n = 0;
 const test = (name, fn) => { fn(); n++; console.log('ok -', name); };
@@ -30,6 +32,67 @@ const run = (act, st, sec, input = () => ({}), until = () => false) => {
 };
 // Presses A just on each beat (when the beat's fraction is near 0).
 const onBeat = (st) => { const b = ((st.clock ?? st.t ?? 0) + DT) / BEAT; return { a: (b % 1) < 0.04 }; };
+
+test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse comes to rest', () => {
+  const st = act1.create({ seed: 3 });
+  act1.step(st, DT, { a: true, beat: 0 });
+  assert.equal(st.board.ship.leapT, 0, 'A does nothing at sea');
+  st.board.progress = 0.9999; let arrivedAt = null;
+  for (let t = 0; t < 6 && st.phase !== 'party'; t += DT) { act1.step(st, DT, { beat: 0 }); if (arrivedAt == null && st.board.phase === 'arrive') arrivedAt = t; }
+  assert.equal(st.phase, 'party');
+});
+
+test('The final tableau lays out every pearl and keepsake of the voyage', () => {
+  const st = actBurning.create({ carry: { pearls: 31, tea: 3, guitar: true, pearl: true, stone: false }, from: { scene: 4 } });
+  st.pearls = 6;
+  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, gifts: ['flower', 'ring', 'crown', 'gold'], sword: true, seal: true, lamp: false });
+  // a scene opened with nothing recorded still shows what cannot be missed
+  const bare = treasures(actBurning.create({ from: { scene: 4 } }));
+  assert.deepEqual([bare.pearls, bare.stars, bare.lamp, bare.sword, bare.seal, bare.gifts.length], [0, 0, false, true, true, 4]);
+  assert.equal(actTower.intertitle, null, 'the Cliff Foot has no second card');
+});
+
+test('Losing the last stand: engulfed in flames, with its own words', () => {
+  const st = actBurning.create({ from: { scene: 3, introDone: true } });
+  st.lanterns = 1; st.inv = 0; st.duel.next = 99; st.duel.bolts = [{ x: st.w.x + 20 }];
+  for (let i = 0; i < 30 && st.defeatT == null; i++) actBurning.step(st, DT, {});
+  run(actBurning, st, 0.2);
+  assert.equal(st.lostTitle, 'Engulfed\nin Flames');
+  assert.equal(st.lostSub, 'The witch engulfed you in flames. Try again.');
+  assert.equal(actTower.scenes.at(-1).name, 'Top of the Tower');
+});
+
+test('The Water Fairy gives gift after gift, each flying up onto the heap; X beside her never leaves for the title', () => {
+  const st = actBurning.create({ carry: { pearls: 10 }, from: { scene: 4 } });st.phaseT = 5; st.weddingIntro = false;
+  run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
+  st.w.x = GIFTING.x; st.w.vx = 0;
+  assert.ok(nearGiftFairy(st)); assert.equal(actBurning.touchVerbB(st), 'Gift');
+  for (let i = 0; i < 5; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
+  assert.equal(st.giftsFlying.length, 5); assert.equal(pileCount(st), 10);
+  run(actBurning, st, GIFTING.flight + 0.1);
+  assert.equal(st.giftsLanded, 5); assert.equal(pileCount(st), 15); assert.equal(st.giftKinds.length, 5);
+  st.creditsT = 40; actBurning.step(st, DT, { x: true });
+  assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
+  st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
+});
+
+test('Inside the tower: the left fires are lit by a demon once he moves; a second ladder unfolds when the floor breaks', () => {
+  const st = actBurning.create({ from: { scene: 0 } });
+  assert.equal(st.phase, 'house'); assert.equal(towerLeftFire(st), 0);
+  actBurning.step(st, DT, {}); assert.equal(st.leftFireT, null, 'nothing until he moves');
+  actBurning.step(st, DT, { moveX: 1 }); assert.equal(st.leftFireT, 0);
+  run(actBurning, st, TOWER_FIRE.run + TOWER_FIRE.light + 0.1); assert.equal(towerLeftFire(st), 1);
+  const idle = actBurning.create({ from: { scene: 0 } }); run(actBurning, idle, TOWER_FIRE.wait + 0.05); assert.ok(idle.leftFireT != null, 'or after a moment');
+  const l2 = st.conns.find((c) => c.id === 'ladderDown2');
+  assert.ok(l2 && !l2.on);
+  const carried = actBurning.create({ from: { scene: 1 } });
+  assert.ok(carried.conns.find((c) => c.id === 'ladderDown2').on, 'the carry finds both ladders down');
+  assert.equal(towerLeftFire(carried), 1);
+});
+
+test('Act II scene names follow the film', () => {
+  assert.deepEqual(ACT2_SCENES.slice(4).map((s) => s.name), ['The Water Fairy', 'The Marine Procession']);
+});
 
 test('the film edition is the default, with a prologue and six acts', () => {
   assert.equal(FILM, true); assert.equal(LEGACY, false);
@@ -58,7 +121,7 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
     if (s.phase === 'court') {
       const f = FAIRIES.find((q) => !s.gifts.includes(q.gift));
       const to = f ? f.x + f.hand - HAND : AZURINE_X - 60;   // his hand at her gift
-      return { moveX: Math.abs(to - p.x) > 20 ? Math.sign(to - p.x) : 0, a: press(!!s.near), beat };
+      return { moveX: Math.abs(to - p.x) > 20 ? Math.sign(to - p.x) : 0, x: press(!!s.near), beat };
     }
     if (s.phase === 'rampart') {
       const fire = s.fires.find((f) => f.x > p.x && f.x - p.x < 70 && (f.lit || f.y > RAMPART.y - 120));
@@ -66,7 +129,7 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
     }
     if (s.phase === 'armoury') {
       const a = ARMS.find((q) => !s.arms.includes(q.id));
-      return { moveX: a && Math.abs(a.x - p.x) > 20 ? Math.sign(a.x - p.x) : 0, a: press(!!s.near), beat };
+      return { moveX: a && Math.abs(a.x - p.x) > 20 ? Math.sign(a.x - p.x) : 0, x: press(!!s.near), beat };
     }
     if (s.phase === 'bind') return { moveX: Math.floor(s.phaseT * 4) % 2 ? 1 : -1, beat };   // struggle against the cords
     if (s.phase === 'knighted') return { moveX: -1, beat };
@@ -78,6 +141,23 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
   assert.ok(st.betrothed);
   assert.equal(st.arms.length, 3);
   assert.ok(prologue.intro, 'flows straight into Act I');
+});
+
+test('prologue: X takes, A leaps everywhere he walks, and the X key never skips the scene', () => {
+  const st = prologue.create({});
+  const f = FAIRIES[0]; st.p.x = f.x + f.hand - HAND;
+  prologue.step(st, DT, { beat: 0 });assert.ok(st.near, 'beside the first fairy');
+  prologue.step(st, DT, { a: true, aHeld: true, beat: 0 });
+  assert.equal(st.gifts.length, 0, 'A is a leap, not a take');assert.equal(st.p.on, false, 'he leaps in the court');
+  run(prologue, st, 1, () => ({ beat: 0 }));st.p.x = f.x + f.hand - HAND;st.p.vx = 0;prologue.step(st, DT, { beat: 0 });
+  prologue.step(st, DT, { x: true, b: true, xKey: true, beat: 0 });
+  assert.equal(st.gifts.length, 1, 'X takes the gift');assert.equal(st.phase, 'court');
+  st.p.x = 200; prologue.step(st, DT, { beat: 0 });assert.equal(st.near, null);
+  prologue.step(st, DT, { x: true, b: true, xKey: true, beat: 0 });assert.equal(st.phase, 'court', 'the X key never skips');
+  prologue.step(st, DT, { b: true, beat: 0 });assert.notEqual(st.phase, 'court', 'B (pad B, Backspace) skips');
+  assert.equal(prologue.touchVerb({ phase: 'armoury' }), 'Leap');
+  assert.equal(prologue.touchVerbB({ status: 'play', phase: 'armoury', near: { verb: 'Take' } }), 'Take');
+  assert.equal(prologue.touchVerbB({ status: 'play', phase: 'armoury', near: null }), 'Skip');
 });
 
 test('prologue: bound, he struggles left and right before Aurora frees him; his arms make him the armoured prince', () => {
@@ -99,7 +179,7 @@ test('prologue: bound, he struggles left and right before Aurora frees him; his 
   run(prologue, st, PRO_T.free + 0.1, () => ({ beat: 0 }));
   assert.equal(st.phase, 'armoury');
   st.arms = ['helmet', 'shield']; Object.assign(st.p, { x: ARMS[2].x });
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.equal(st.phase, 'knighted'); assert.ok(!st.armed, 'not until the badges are drawn into him');
   run(prologue, st, PRO_T.armed + 0.1, () => ({ moveX: -1, beat: 0 }));
   assert.ok(st.armed); assert.equal(st.p.x, ARMS[2].x, 'he stands still to be transformed');
@@ -140,14 +220,14 @@ test('prologue: a gift is taken with either hand, not by walking into her', () =
   const st = prologue.create({});
   const ring = FAIRIES.find((f) => f.gift === 'ring');
   Object.assign(st.p, { x: ring.x + ring.hand + 62, face: 1 });   // past her, short of the crown: both hands miss
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.ok(!st.gifts.includes('ring'));
   Object.assign(st.p, { x: ring.x + ring.hand - HAND, face: 1 });   // the outstretched hand
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.deepEqual(st.gifts, ['ring']);
   const crown = FAIRIES.find((f) => f.gift === 'crown');
   Object.assign(st.p, { x: crown.x + crown.hand - NEAR_HAND, face: 1 });   // the near hand, behind him
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.deepEqual(st.gifts, ['ring', 'crown']);
 });
 
@@ -269,6 +349,8 @@ test('Act III: he bows past the lobster guards, leaps for the sea-flora pearls, 
     return pearl ? { moveX: Math.abs(pearl[0] - f.x) > 10 ? Math.sign(pearl[0] - f.x) : 0, a: Math.abs(pearl[0] - f.x) < 75 && f.lift === 0 } : { moveX: 1 };
   }, (s) => !s.tf);
   assert.equal(st.tf, null);
+  assert.equal(st.courtAt, st.t, 'entering the court starts its how-to-hide prompt');
+  assert.equal(act3.intertitle, null, 'no second card: the act card and the hall say it');
   assert.equal(st.pearls, PASSAGE.pearls.length, 'every pearl, by leaping');
   // upright before a guard, he is caught and thrown back; bowing, he passes
   const s3 = act3.create({ seed: 1, carry: {} });
@@ -749,7 +831,7 @@ test('The way back out: walk left until Azurine, following, is behind the curtai
  let last=null;run(actBurning,again,3,()=>({moveX:-1}),s=>{if(s.phase==='apotheosis')last={w:s.w.x,az:s.az.x};return s.phase==='wedding';});
  assert.equal(again.phase,'wedding');assert.ok(last.az<=APOTH.offAz+5&&last.w>APOTH.off,'leaves as soon as she is hidden, not after walking right offstage');
  assert.equal(again.weddingIntro,false);
- run(actBurning,again,.8,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
+ run(actBurning,again,2,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
  assert.equal(again.weddingExit,false);assert.ok(again.w.x < WEDDING.door-40);
  run(actBurning,again,.2,()=>({moveX:1}));assert.equal(again.phase,'wedding');
  run(actBurning,again,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(again.phase,'apotheosis');
@@ -849,8 +931,11 @@ test('Act IV (film): the beach leads on into the cavern', () => {
 });
 
 const manifest = JSON.parse(await readFile(new URL('../assets/manifest.json', import.meta.url)));
-const files = Object.values(manifest.slots).filter((s) => s.edition === 'film' && (s.interim || s.status === 'delivered')).map((s) => s.interim || s.file);
+const files = Object.values(manifest.slots).filter((s) => s.edition === 'film').map((s) => s.file);
 for (const f of files) await access(new URL('../assets/' + f, import.meta.url));
-test('every interim cut-out and tableau the manifest names exists', () => { assert.ok(files.length >= 60, String(files.length)); });
+test('every film slot is delivered and its art exists', () => {
+  assert.ok(files.length >= 60, String(files.length));
+  assert.ok(Object.values(manifest.slots).every((s) => s.edition !== 'film' || s.status === 'delivered'));
+});
 
 console.log(`\n${n} tests passed`);

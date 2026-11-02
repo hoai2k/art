@@ -11,6 +11,7 @@ import { drawMovement, cliffPose, housePose } from './sailor-motion.js';
 import { walkFrame, walkStep, walkFrameFromSwing } from '../walking.js';
 import { CLIMB, wallPose } from './climb.js';
 import { drawPose } from '../pose.js';
+import { TEXT } from '../text_config.js';
 
 const S = 0.6; // the sailor's scale on the cliff and in the house
 const LEGS = [450, 564]; // the giant's boots on their shelf under the lip
@@ -42,16 +43,16 @@ export function onEvent(k, e, st) {
     case 'hit': k.shake(0.35); k.burst(at.x, at.y - 50, '#c8321e', 14, 'streak'); break;
     case 'pearl': { const s = cliffScreen(st, e.x, e.y); k.burst(s.x, s.y - 20, '#eef3ea', 8, 'sparkle'); k.text('+10', s.x, s.y - 60); break; }
     case 'holdCrumble': { const s = cliffScreen(st, e.x, e.y); k.burst(s.x, s.y, '#b8ad9a', 14, 'chip'); k.shake(0.2); break; }
-    case 'stoneGlance': k.burst(at.x + 30, at.y - 110, '#b8ad9a', 8, 'chip'); k.text('Sheltered', at.x, at.y - 130); break;
+    case 'stoneGlance': k.burst(at.x + 30, at.y - 110, '#b8ad9a', 8, 'chip'); k.text(TEXT.widowsbay.burst.sheltered, at.x, at.y - 130); break;
     case 'giantStep': { const s = cliffScreen(st, e.foot ? LEGS[1] : LEGS[0], CLIFF.top - 100); k.burst(s.x, s.y, '#cfc0dc', 4, 'chip'); break; }
     case 'clifftop': k.text(BAY_TITLE, 640, 240, true); k.burst(at.x, at.y - 40, '#d9b34a', 18, 'sparkle'); break;
     case 'strike': k.flash(1); k.shake(0.5); break;
     case 'houseOpen': k.shake(0.3); break;
     case 'beamCrash': k.burst(e.x, e.y - 10, '#3a2112', 14, 'chip'); k.burst(e.x, e.y - 20, '#e9a46a', 8, 'sparkle'); k.shake(0.25); break;
     case 'debrisCrash': k.burst(e.x, e.y - 10, '#8d8f91', 14, 'chip'); k.shake(0.2); break;
-    case 'stoneThrow': k.text('The stone!', at.x, at.y - 130); break;
-    case 'shutterSmash': k.burst(HOUSE.shutterX, HOUSE.shutterY, '#6b4024', 22, 'chip'); k.text('Shortcut!', HOUSE.shutterX, HOUSE.shutterY - 90, true); k.shake(0.2); break;
-    case 'shutterLocked': k.text('Locked fast', HOUSE.shutterX, HOUSE.shutterY - 70); break;
+    case 'stoneThrow': k.text(TEXT.widowsbay.burst.stone, at.x, at.y - 130); break;
+    case 'shutterSmash': k.burst(HOUSE.shutterX, HOUSE.shutterY, '#6b4024', 22, 'chip'); k.text(TEXT.widowsbay.burst.shortcut, HOUSE.shutterX, HOUSE.shutterY - 90, true); k.shake(0.2); break;
+    case 'shutterLocked': k.text(TEXT.widowsbay.burst.locked, HOUSE.shutterX, HOUSE.shutterY - 70); break;
     case 'liftHer': k.burst(HOUSE.beloved, HOUSE.floors[2] - 70, '#f3c6dc', 20, 'sparkle'); break;
     case 'floorBreak': k.shake(0.6); k.burst(560, 560, '#3a2112', 24, 'chip'); k.burst(820, 440, '#e9a46a', 14, 'sparkle'); break;
     case 'thud': k.burst(at.x, at.y, '#b98a5e', 10, 'chip'); break;
@@ -688,7 +689,11 @@ export function rocksWorld(k, st, t) {
   for (const r of st.rocks) {
     if (r.y == null) continue;
     rockfallTrail(k,r,t);
-    c.save(); c.translate(r.x, -r.y); c.rotate(r.spin + t * 7);
+    // The film edition: one stone block from the debris painting (the whole
+    // cut-out is a collapsing wall in a dust cloud, which read as a pink
+    // blob whirling past), turning slowly as it falls.
+    c.save(); c.translate(r.x, -r.y); c.rotate(r.spin + t * (FILM ? 2.2 : 7));
+    if (FILM && k.img('debris-stones') && k.assetCrop('debris-stones', 200, 8, 56, 50, -17, -15, 34, 30)) { c.restore(); continue; }
     if (!k.asset('debris-stones', 0, 22, 60, 40)) {
       c.fillStyle = k.col('#8d8f91');
       c.beginPath(); c.moveTo(-18, -6); c.lineTo(-6, -18); c.lineTo(14, -14); c.lineTo(20, 4); c.lineTo(6, 18); c.lineTo(-14, 14); c.closePath(); c.fill();
@@ -862,10 +867,12 @@ const LADDER_RAILS = 312 / 500, LADDER_W = 52;
 export function connector(k, st, cn, t) {
   const c = k.c, H = HOUSE;
   const ya = H.floors[cn.a.f], yb = H.floors[cn.b.f];
-  if (cn.id === 'ladderDown') {
+  if (cn.id === 'ladderDown' || cn.id === 'ladderDown2') {
     if (!cn.on) return;
-    // It drops on its hinge at the top.
-    const a = (1 - easeOut(clamp((st.ladderDropT ?? 1) / 0.6, 0, 1))) * (Math.PI / 2);
+    // It drops on its hinge at the top (the second just after the first).
+    const drop = (st.ladderDropT ?? 1) - (cn.id === 'ladderDown2' ? 0.45 : 0);
+    if (drop < 0) return;
+    const a = (1 - easeOut(clamp(drop / 0.6, 0, 1))) * (Math.PI / 2);
     // hinged at the top of the painted rails, hanging down to the lower floor
     c.save(); c.translate(cn.b.x, yb - 4); c.rotate(a);
     if (!k.asset('ladder', 0, ya - yb + 8, LADDER_W, (ya - yb + 8) / LADDER_RAILS)) ladderShape(k, 0, ya - yb + 8, 0);
@@ -943,7 +950,7 @@ function flameFlat(k, x, by, s, phase) {
 const kT = (k) => k.t || 0;
 
 // Flame flats rolling across the front, and smoke flats over the top.
-export function flames(k, st, t, amt = 1, { right = 1 } = {}) {
+export function flames(k, st, t, amt = 1, { right = 1, left = 1 } = {}) {
   const c = k.c;
   c.save(); c.globalAlpha = Math.min(1, amt);
   for (let i = 0; i < 2; i++) {
@@ -961,7 +968,7 @@ export function flames(k, st, t, amt = 1, { right = 1 } = {}) {
   const rise = 1 - easeOut(amt);
   for (let i = 0; i < 6; i++) {
     const x = [190, 290, 1000, 1100, 250, 1050][i] + Math.sin(t * 0.8 + i) * 22;
-    const clearing = x > 900 ? clamp(right,0,1) : 1;
+    const clearing = x > 900 ? clamp(right,0,1) : clamp(left,0,1);
     if (clearing <= 0) continue;
     c.globalAlpha = Math.min(1, amt) * clearing;
     flameFlat(k, x, 672 + rise * 160 + (i > 3 ? 20 : 0),
@@ -1016,6 +1023,11 @@ function fallingPiece(k, h, x, y, rot) {
       c.fillStyle = k.col('#2a1a12'); c.fillRect(-75, -11, 150, 22);
       c.fillStyle = k.col('#e9a46a');
       for (let i = -3; i <= 3; i++) { c.beginPath(); c.moveTo(i * 20 - 8, -11); c.lineTo(i * 20, -26 - Math.abs(Math.sin(i + kT(k) * 9)) * 8); c.lineTo(i * 20 + 8, -11); c.fill(); }
+    }
+  } else if (FILM && k.img('debris-stones')) {
+    // (film) three stone blocks from the debris painting, not its dust cloud
+    for (const [dx, dy, sz, r] of [[-24, -4, 30, 0.4], [6, -14, 36, -0.3], [28, 2, 26, 1.1]]) {
+      c.save(); c.translate(dx, dy); c.rotate(r); k.assetCrop('debris-stones', 200, 8, 56, 50, -sz / 2, -sz * 0.45, sz, sz * 0.9); c.restore();
     }
   } else if (!k.asset('debris-stones', 0, 34, 100, 66)) {
     c.fillStyle = k.col('#8d8f91');
@@ -1116,9 +1128,9 @@ function quayScene(k, st, t) {
 
 // ---------------------------------------------------------------- endings
 const CAPTIONS = {
-  witch: ["The Sea Witch's", 'She claims him for the sea. The beloved is safe on the quay.'],
-  lamp: ['A Lamp in the Window', 'She waited. Her pearl is home on its chain.'],
-  dark: ['The Window is Dark', 'Another waits in her doorway. The stone goes into the bay.'],
+  witch: TEXT.widowsbay.captions.witch,
+  lamp: TEXT.widowsbay.captions.lamp,
+  dark: TEXT.widowsbay.captions.dark,
 };
 
 function endingScene(k, st, t) {

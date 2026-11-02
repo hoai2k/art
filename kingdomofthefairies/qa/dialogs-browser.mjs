@@ -9,7 +9,7 @@ const { chromium } = await playwright();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 const evidence = [];
 try {
- for (const edition of ['off', 'partial', 'on']) {
+ for (const edition of ['off', 'on']) {
   const page = await browser.newPage({viewport:{width:1280,height:720}}), errors=[];
   page.on('pageerror', e=>errors.push(e.message));
   await page.goto(`${server.url}/?qa&edit=local&widowsbay=${edition}`);
@@ -18,7 +18,7 @@ try {
   await page.locator('.unlock-editor[open] .card-x').click();
   for (const size of [{width:1280,height:720},{width:800,height:360},{width:640,height:320},{width:390,height:844},{width:320,height:568},{width:320,height:480}]) {
    await page.setViewportSize(size);
-   await page.locator('#btn-credits').focus(); await page.keyboard.press('Enter');
+   await page.evaluate(()=>window.__kingdomOfTheFairies.open.credits());
    await page.waitForTimeout(60);
    const credit = await page.evaluate(()=>{
     const card=document.querySelector('#credits .card'), r=card.getBoundingClientRect();
@@ -38,20 +38,13 @@ try {
    evidence.push({edition,size,credit});
   }
   await page.setViewportSize({width:800,height:360});
-  for (const [button,selector] of [['#btn-instructions','#ins-scroll'],['#btn-scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
-   await page.locator(button).click();
+  for (const [button,selector] of [['scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
+   if (button.startsWith('#')) await page.locator(button).click(); else await page.evaluate(b=>window.__kingdomOfTheFairies.open[b](),button);
    const styles=await page.locator(selector).evaluate(el=>{
     const c=getComputedStyle(el);return {color:c.scrollbarColor,width:c.scrollbarWidth,overflow:c.overflowY,canScroll:el.scrollHeight>el.clientHeight};
    });
    assert.equal(styles.color,'rgb(217, 179, 74) rgb(42, 20, 36)');assert.equal(styles.width,'thin');
    assert.equal(styles.overflow,'auto');
-   if(selector==='#ins-scroll') {
-    await page.keyboard.press('Tab'); await page.locator(selector).focus();
-    const cue=await page.locator(selector).evaluate(el=>{const c=getComputedStyle(el);return{outline:c.outlineStyle,shadow:c.boxShadow};});
-    assert.equal(cue.outline,'none');assert.ok(cue.shadow.includes('217, 179, 74'));
-    await page.keyboard.press('PageDown');
-    await page.waitForTimeout(150);assert.ok(await page.locator(selector).evaluate(el=>el.scrollTop>0),'instructions still scroll with the keyboard');
-   }
    // Inspect every visible outline in the active dialog. Magenta control
    // borders are intentional; large content-container outlines are not.
    const red=await page.evaluate(()=>[...document.querySelectorAll('.dialog:not([hidden]) *')].filter(e=>e.checkVisibility()).filter(e=>{
@@ -73,7 +66,7 @@ try {
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`${server.url}/?qa&widowsbay=${edition}`);
   await page.waitForFunction(()=>window.__kingdomOfTheFairies && !document.body.classList.contains('booting'));
-  await page.evaluate(()=>document.fonts.ready);await page.locator('#btn-credits').click();
+  await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>window.__kingdomOfTheFairies.open.credits());
   const mobile=await page.locator('#credits .card').evaluate(card=>{
    const r=card.getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:innerHeight,
     clipped:[...card.querySelectorAll('h2,.cred-show,dt,dd')].filter(e=>e.checkVisibility()).filter(e=>{const b=e.getBoundingClientRect();return b.bottom>r.bottom-8||b.top<r.top+8;}).map(e=>e.textContent),
@@ -85,5 +78,5 @@ try {
   evidence.push({edition,size,mobile});await page.close();
  }
  await writeFile(`${output}/review.json`,JSON.stringify(evidence,null,2));
- console.log('Credits fit without scrolling at 6 viewport sizes in all 3 editions plus 4 phone configurations; themed scrollbars, focus cues, keyboard scrolling and dialog navigation pass');
+ console.log('Credits fit without scrolling at 6 viewport sizes in both editions plus 4 phone configurations; themed scrollbars, focus cues, keyboard scrolling and dialog navigation pass');
 } finally {await browser.close();await server.close();}

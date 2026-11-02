@@ -1,0 +1,4 @@
+{
+  "_comment": "Read by publish.sh. includeWidowsBay false leaves the Widow's Bay edition (?widowsbay=on) out of the deployed site: its song, band art, title, icons and web manifest are not copied, the published manifest drops them, and the page plays the film edition whatever the address says. It still works locally. A missing or unreadable file means true.",
+  "includeWidowsBay": true
+}

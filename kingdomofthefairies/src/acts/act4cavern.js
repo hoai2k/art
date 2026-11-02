@@ -7,6 +7,7 @@
 // if he found it in the whale. Act IV owns the state (st.cv) and the
 // lanterns; this file is its rules, cavern-art.js its drawing. Headless.
 import { clamp } from './shared.js';
+import { TEXT } from '../text_config.js';
 
 export const CW = 4300;                 // the cavern is this wide (world units = stage px)
 export const EXIT_X = 4140;             // walking into the far opening ends it
@@ -46,10 +47,12 @@ export const LEDGES = [
 export const STALACTITES = [850, 1360, 1620, 2050, 2210, 2600, 3150, 3310, 3700, 3900].map((x, i) => ({ i, x }));
 export const PEARLS = [
   ...LEDGES.map((l) => [(l.x0 + l.x1) / 2, l.y - 50]),
-  [640, 420], [2100, 390], [2750, 210], [3200, 420], [3480, 390], [3800, 420],
+  // over the pools: just past the take-off of the first, just short of the
+  // landing of the last, never in the middle of the leap
+  [596, 440], [2100, 390], [2750, 210], [3200, 420], [3528, 430], [3800, 420],
 ];
 // Checkpoints: the cave mouth, and the far side of the widest pool.
-export const CAVE_SCENES = [{ name: 'The Cave Mouth', x: 140 }, { name: 'The Dark Pools', x: 1980 }];
+export const CAVE_SCENES = [{ name: TEXT.whale.scenes.caveMouth, x: 140 }, { name: TEXT.whale.scenes.darkPools, x: 1980 }];
 
 export const surfaces = () => [...FLOORS.map((f, i) => ({ id: 'F' + i, ...f })), ...LEDGES];
 

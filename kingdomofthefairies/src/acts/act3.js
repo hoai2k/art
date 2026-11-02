@@ -6,6 +6,7 @@
 import { beatPhase, clamp, lerp, easeInOut } from './shared.js';
 import { FILM } from '../theme.js';
 import * as art from './act3-art.js';
+import { TEXT } from '../text_config.js';
 
 // ---------------------------------------------------------------- the set
 // The court is a long processional gallery on a moving panorama: the floor
@@ -46,10 +47,10 @@ export const SENTRY_HEAD = 50, SENTRY_REACH = 42;
 // groove midway between two sentry jaws (heads at sentry x + SENTRY_HEAD), clear
 // of every courtier, and a checkpoint is set as the sailor crosses its x.
 export const SCENES = [
-  { name: 'The Hall Doors', x: START.x, row: START.row },
-  { name: 'Before the Throne', x: 955, row: 2 },
-  { name: "The Witch's Side", x: 1620, row: 2 },
-  { name: 'The Treasury Steps', x: 2220, row: 2 },
+  { name: TEXT.court.scenes.doors, x: START.x, row: START.row },
+  { name: TEXT.court.scenes.throne, x: 955, row: 2 },
+  { name: TEXT.court.scenes.witchSide, x: 1620, row: 2 },
+  { name: TEXT.court.scenes.treasury, x: 2220, row: 2 },
 ];
 export const BEAT = 60 / 76.5;                  // fallback only; input.beat drives
 
@@ -178,17 +179,18 @@ export function litAt(aim, row, x, dir = 1) {
 
 // ---------------------------------------------------------------- module
 export default {
-  id: 3, key: 'court', kicker: 'Act III', title: FILM ? "Neptune's Court" : "The Sea King's Court", size: 110,
-  sub: FILM ? "Cross Neptune's hall to his seal of passage.\nThe witch is watching through her scrying eye."
-    : "Cross the Sea King's hall to the treasury\nand take her pearl from its pedestal.",
+  id: 3, key: 'court', kicker: TEXT.court.kicker, title: FILM ? TEXT.court.title : TEXT.court.titleClassic, size: 110,
+  sub: FILM ? TEXT.court.sub
+    : TEXT.court.subClassic,
   // Shown as a silent-film intertitle after the act card.
-  intertitle: FILM ? "Hold X to bow: lobsters will pass.\nHide beside a courtier from human guards\nand the witch's eye. A jumps up a level.\n\nNeptune grants you passage:\nwalk up to his seal at the far end of the hall."
-    : "Hide beside a courtier\nfrom the Sea King's lantern.\n\nTake her pearl from the pedestal\nat the far end of the hall.",
-  action: FILM ? 'X: hide · A: jump' : 'A: hide',
+  // (the film edition's card and the hall's own prompts say it all)
+  intertitle: FILM ? null
+    : TEXT.court.intertitleClassic,
+  action: FILM ? TEXT.court.action : TEXT.court.actionClassic,
   ...(FILM ? {
-    touchVerb: () => 'Jump', touchVerbB: () => 'Hide',
-    touchHint: 'Drag to walk · hold X to hide · tap to jump up a level',
-    touchScheme: () => ({ mode: 'swipe', hint: 'Drag ↔ to walk · hold X to hide · tap to jump up', flickUpIsA: true }),
+    touchVerb: () => TEXT.touch.verb.jump, touchVerbB: () => TEXT.touch.verb.hide,
+    touchHint: TEXT.court.touchHint,
+    touchScheme: () => ({ mode: 'swipe', hint: TEXT.court.touchScheme, flickUpIsA: true }),
   } : {}),
   scenes: SCENES,
   // The secondary touch button holds X to bow/hide in both film scenes.
@@ -236,6 +238,7 @@ export default {
     Object.assign(st.stats, from.stats || {});
     st.gaze.dur = TUNE.firstDark + 1;                 // the lantern stays dark a while first
     st.whale.next = 14; st.fish.next = 26;
+    st.courtAt = st.t;   // resumed in the court: its prompt shows again
     st.checkpoint = { ...from, scene: k };
     return st;
   },
@@ -295,13 +298,14 @@ export default {
   },
 
   announce(e) {
-    if (e.type === 'hit') return `Hit. ${e.lanterns} lantern${e.lanterns === 1 ? '' : 's'} left.`;
-    if (e.type === 'spotted') return FILM ? "Spotted by the witch's eye!" : 'Spotted by the gaze lantern!';
-    if (e.type === 'gazeTurn') return `${FILM ? "The witch's eye sweeps" : "The Sea King's lantern turns"} ${e.dir > 0 ? 'from the left' : 'from the right'}. Hide beside a courtier!`;
-    if (e.type === 'whaleNear') return FILM ? "Neptune's whale is coming." : 'The whale is coming.';
-    if (e.type === 'whalePass') return FILM ? "The whale masks the hall: the witch's eye cannot see you." : 'The whale masks the hall: the lantern cannot see you.';
-    if (e.type === 'pearlTaken') return FILM ? "Neptune's seal: he grants you passage on his whale." : 'You take her pearl.';
-    if (e.type === 'swallow') return FILM ? 'The whale takes you aboard.' : 'The whale swallows the court.';
+    const A = TEXT.court.announce;
+    if (e.type === 'hit') return A.hit(e.lanterns);
+    if (e.type === 'spotted') return FILM ? A.spottedFilm : A.spotted;
+    if (e.type === 'gazeTurn') return A.gazeTurn(FILM ? A.gazeFilm : A.gaze, e.dir > 0);
+    if (e.type === 'whaleNear') return FILM ? A.whaleNearFilm : A.whaleNear;
+    if (e.type === 'whalePass') return FILM ? A.whalePassFilm : A.whalePass;
+    if (e.type === 'pearlTaken') return FILM ? A.pearlTakenFilm : A.pearlTaken;
+    if (e.type === 'swallow') return FILM ? A.swallowFilm : A.swallow;
     return null;
   },
 
@@ -510,11 +514,12 @@ function hit(st, cause, emit) {
   emit({ type: 'hit', lanterns: st.lanterns, cause });
   if (st.lanterns <= 0) {
     st.phase = 'caught'; st.phaseT = 0; p.frozen = false;
-    st.lostTitle = 'Seized by\nthe Court';
-    st.lostSub = cause === 'sentry' ? 'The red sentries do not sleep for strangers.'
-      : cause === 'lobster' ? 'Bow and let the lobster guard pass.'
-      : cause === 'guard' ? 'Hide beside a courtier from the human guards.'
-      : FILM ? "Hide beside a courtier from the witch's eye." : "The Sea King's lantern found you out.";
+    const L = TEXT.court.lost;
+    st.lostTitle = L.title;
+    st.lostSub = cause === 'sentry' ? L.sentry
+      : cause === 'lobster' ? L.lobster
+      : cause === 'guard' ? L.guard
+      : FILM ? L.eyeFilm : L.eye;
     emit({ type: 'caught' });
   }
 }
@@ -537,7 +542,7 @@ function stepPassage(st, dt, input) {
     f.fade += dt;
     if (f.fade >= P.fade) {
       f.fade = 0;
-      if (f.set >= PASSAGE_SETS - 1) { st.transform = null; st.tf = null; st.events.push({ type: 'courtOpens' }); return; }
+      if (f.set >= PASSAGE_SETS - 1) { st.transform = null; st.tf = null; st.courtAt = st.t; st.events.push({ type: 'courtOpens' }); return; }
       f.set++; f.x = P.x0 + 40; f.vx = 0; f.bow = false;
       st.events.push({ type: 'passageSet', set: f.set });
     }

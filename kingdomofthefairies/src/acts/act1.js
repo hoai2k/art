@@ -5,10 +5,11 @@ import { LEGACY, FILM, BAY_TITLE } from '../theme.js';
 import { createBoard, step as stepBoard, LEAVES, TUNING } from '../board.js';
 import { BEAT_WINDOW, beatHit } from './shared.js';
 import * as art from './act1-art.js';
+import { TEXT } from '../text_config.js';
 
 // Ending timeline, seconds per phase. Each scene shows its moment and moves
 // on: the deck rises as soon as the ship's bell has rung.
-export const ENDING = { landho: 1.7, party: 6, turn: 4.4, wreck: 4.6, sink: 5.0, iris: 1.2 };
+export const ENDING = { landho: 0.5, party: 6, turn: 4.4, wreck: 4.6, sink: 5.0, iris: 1.2 };
 export const LANTERNS = 4; // paper lanterns lit on the beat during the party
 // Cues within the turn and the wreck (seconds into the phase).
 export const CUES = { strike: 1.2, shipBreak: 2.0, splash: 3.2 };
@@ -35,21 +36,20 @@ const ORDER = ['landho', 'party', 'turn', 'wreck', 'sink', 'iris'];
 // Scenes, for checkpoints and the scene select. Scenes 1-3 begin just past
 // each tea leaf (where it floats by, at TUNING.keepsakeAt).
 export const SCENES = [
-  { name: 'Setting Sail' },
-  { name: FILM ? 'Toward the Second Star' : 'Toward the Second Leaf', progress: 0.25 },
-  { name: FILM ? 'Toward the Third Star' : 'Toward the Third Leaf', progress: 0.53 },
-  { name: 'The Last Stretch', progress: 0.81 },
-  { name: FILM ? 'The Tempest' : 'The Celebration' },
-  { name: FILM ? 'The Witch Strikes' : "The Witch's Turn" },
+  { name: TEXT.crossing.scenes.sail },
+  { name: FILM ? TEXT.crossing.scenes.secondStar : TEXT.crossing.scenes.secondLeaf, progress: 0.25 },
+  { name: FILM ? TEXT.crossing.scenes.thirdStar : TEXT.crossing.scenes.thirdLeaf, progress: 0.53 },
+  { name: TEXT.crossing.scenes.lastStretch, progress: 0.81 },
+  { name: FILM ? TEXT.crossing.scenes.tempest : TEXT.crossing.scenes.celebration },
+  { name: FILM ? TEXT.crossing.scenes.witchStrikes : TEXT.crossing.scenes.witchTurn },
 ];
 
 export default {
-  id: 1, key: 'crossing', kicker: 'Act I', title: FILM ? 'The Royal Crossing' : 'The Crossing', size: FILM ? 116 : 130,
-  sub: FILM ? "Sail for the witch's tower; she will turn the wind.\nGather Aurora's three stars on the way."
-    : 'The witch will turn the wind.\nGather the three tea leaves for the reading.',
+  id: 1, key: 'crossing', kicker: TEXT.crossing.kicker, title: FILM ? TEXT.crossing.title : TEXT.crossing.titleClassic, size: FILM ? 116 : 130,
+  sub: FILM ? TEXT.crossing.sub : TEXT.crossing.subClassic,
   // In the film edition the witch rides her storm cloud, not a moon boat.
   cast: FILM ? { 'witch-moonboat': 'witch-storm' } : undefined,
-  action: 'A: leap',
+  action: FILM ? TEXT.crossing.action : TEXT.crossing.actionClassic,
   scenes: SCENES,
 
   // `from` (optional): { scene } to start at a scene, plus the fields of a
@@ -91,7 +91,8 @@ export default {
     const b = st.board;
 
     if (st.phase === 'voyage') {
-      stepBoard(b, dt, { moveX: input.moveX, rowUp: input.up, rowDown: input.down, leap: input.a });
+      // The film edition's ship has no leap: change row to dodge the rocks.
+      stepBoard(b, dt, { moveX: input.moveX, rowUp: input.up, rowDown: input.down, leap: !FILM && input.a });
       // Each tea leaf gathered is a checkpoint: a retry starts just past it.
       if (b.events.some((e) => e.type === 'keepsake')) {
         st.checkpoint = { scene: Math.min(3, b.keepsakesSpawned), progress: b.progress, leaves: b.leaves, spawned: b.keepsakesSpawned, score: b.score, pearls: b.pearls };
@@ -144,16 +145,17 @@ export default {
   },
 
   announce(e) {
-    if (e.type === 'hit') { const n = Math.round(e.hull * 10) / 10; return `Hit. ${n} lantern${n === 1 ? '' : 's'} left.`; }
-    if (e.type === 'pearl' && e.mended) return `A lantern mended: ${Math.floor(e.hull)} whole.`;
-    if (e.type === 'keepsake') return FILM ? `Aurora's star ${e.n} of 3.` : `Tea leaf ${e.n} of 3.`;
-    if (e.type === 'windWarn') return e.to > 0 ? 'The wind is turning behind you.' : 'The wind is turning against you.';
-    if (e.type === 'arrive') return LEGACY ? "Widow's Bay in sight." : FILM ? "The sky blackens: the witch's tempest." : 'The enchanted tower in sight.';
-    if (e.type === 'cheer') return FILM ? "The witch's tempest! The crew light the ship's lanterns against the dark." : 'A celebration on deck! Press A on the beat to light the lanterns.';
-    if (e.type === 'revelry') return FILM ? 'Every lantern lit: they hold against the storm.' : 'Every lantern lit.';
-    if (e.type === 'strike') return 'The witch strikes the mast.';
-    if (e.type === 'shipBreak') return FILM ? 'The royal ship breaks on the rocks.' : 'The ship breaks apart.';
-    if (e.type === 'guitarSink' && FILM) return "Aurora's sword sinks into the deep.";
+    const A = TEXT.crossing.announce;
+    if (e.type === 'hit') { const n = Math.round(e.hull * 10) / 10; return A.hit(n); }
+    if (e.type === 'pearl' && e.mended) return A.mended(Math.floor(e.hull));
+    if (e.type === 'keepsake') return FILM ? A.starFilm(e.n) : A.leaf(e.n);
+    if (e.type === 'windWarn') return e.to > 0 ? A.windBehind : A.windAgainst;
+    if (e.type === 'arrive') return LEGACY ? A.arriveLegacy : FILM ? A.arriveFilm : A.arrive;
+    if (e.type === 'cheer') return FILM ? A.cheerFilm : A.cheer;
+    if (e.type === 'revelry') return FILM ? A.revelryFilm : A.revelry;
+    if (e.type === 'strike') return A.strike;
+    if (e.type === 'shipBreak') return FILM ? A.shipBreakFilm : A.shipBreak;
+    if (e.type === 'guitarSink' && FILM) return A.swordSinks;
     return null;
   },
 

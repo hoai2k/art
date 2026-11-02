@@ -10,6 +10,7 @@ import { clamp, lerp, easeOut, easeInOut, beatPhase } from './shared.js';
 import { FILM } from '../theme.js';
 import { drawPose, drawPerson, personPx } from '../pose.js';
 import { card } from './tableau.js';
+import { TEXT } from '../text_config.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 
 const FLOOR_TOP = 404;
@@ -57,10 +58,11 @@ export function draw(k, st, t) {
 // past its guards' claws, the sea flora and the azure grotto, each set
 // then the sea flora, dissolving into Neptune's court.
 const TSETS = ['lobster-palace'];
-const TNAMES = ['The Lobster Palace'];
-const TSUBS = ['Hold [X] to bow and let each guard pass · leap with [A]'];
+const TNAMES = [TEXT.court.palace.title];
+// (leaping is said where it is needed: at the pearls)
+const TSUBS = [TEXT.court.palace.sub];
 // on touch a tap leaps (there is no Leap button there), so it says tap
-const TSUBS_TOUCH = ['Hold [X] to bow and let each guard pass · tap to leap'];
+const TSUBS_TOUCH = [TEXT.court.palace.subTouch];
 const tsub = (k, i) => (k.inputMode === 'touch' ? TSUBS_TOUCH : TSUBS)[i];
 const BOW_H = 160 * 300 / 360;   // prince-crouch (240 x 300) at the standing pose's scale
 function transformation(k, st, t) {
@@ -74,7 +76,7 @@ function transformation(k, st, t) {
     if (!k.asset(open ? 'lobster-guard-open' : 'lobster-guard-closed', 0, 0, 230, 156)) { c.fillStyle = k.col('#c8321e'); c.fillRect(-30, -140, 60, 140); }
     c.restore();
     // coming up on a guard upright: he is about to snap
-    if (g.mode === 'approach' && near && !open && f.x < g.x && f.knockT <= 0 && f.t > 1) prompt(k, 'Hold [X] to bow', g.x, P.y - 200, '#ffb0a0');
+    if (g.mode === 'approach' && near && !open && f.x < g.x && f.knockT <= 0 && f.t > 1) prompt(k, TEXT.court.holdToBow, g.x, P.y - 200, '#ffb0a0');
   }
   P.pearls.forEach(([px, py], i) => {
     if (f.got.includes(i)) return;
@@ -95,7 +97,7 @@ function transformation(k, st, t) {
   }
   // the way on glows at the right
   c.save(); c.globalAlpha = 0.25 + 0.15 * Math.sin(t * 3); c.fillStyle = k.col('#fff2b0'); c.beginPath(); c.ellipse(P.exit + 40, P.y - 90, 40, 110, 0, 0, Math.PI * 2); c.fill(); c.restore();
-  if (f.guards.every(g => g.passed)) prompt(k, f.got.length ? `Pearls ${f.got.length} of ${P.pearls.length}` : k.inputMode === 'touch' ? 'Tap to leap for the pearls' : 'Leap with [A] for the pearls', 900, 230, '#f3c6dc');
+  if (f.guards.every(g => g.passed)) prompt(k, f.got.length ? TEXT.court.pearlsOf(f.got.length, P.pearls.length) : k.inputMode === 'touch' ? TEXT.court.leapForPearlsTouch : TEXT.court.leapForPearls, 900, 230, '#f3c6dc');
   if (f.fade === 0) card(k, TNAMES[f.set], tsub(k, f.set).replace(/\[(\w)\]/g, '$1'), Math.min(1, clamp((f.t - 0.2) / 0.5, 0, 1)) * (f.t > 4.5 ? clamp((5.2 - f.t) / 0.7, 0, 1) : 1), { y: 92 });
   if (f.fade === 0 && f.t > 4.5) (k.flat || ((g) => g()))(() => prompt(k, tsub(k, f.set), 640, 150, '#f3c6dc'));
   if (f.fade > 0) k.wash('#000000', Math.sin(Math.PI * f.fade / P.fade));
@@ -124,7 +126,12 @@ function prompt(k, text, x, y, col = '#f3c6dc') {
   c.restore();
 }
 
+// On entering Neptune's court, for its first seconds: how to hide.
+export const COURT_PROMPT = 8;
 export function drawOver(k, st) {
+  if (FILM && st.transform == null && st.courtAt != null && st.status === 'play' && st.t - st.courtAt < COURT_PROMPT) {
+    prompt(k, k.inputMode === 'touch' ? TEXT.court.hideHintTouch : TEXT.court.hideHint, 640, 150);
+  }
   if (st.phase === 'iris') k.iris(640, 400, 780 * (1 - easeInOut(st.phaseT / OUTRO.iris)));
   if (st.status === 'won') k.iris(640, 400, 0);
 }
@@ -132,20 +139,20 @@ export function drawOver(k, st) {
 export function onEvent(k, e, st) {
   if (st.tf) {
     if (e.type === 'pearl') { k.burst(e.x, e.y, '#eef3ea', 12, 'sparkle'); k.text('+10', e.x, e.y - 40); }
-    if (e.type === 'clawSnap') { k.shake(0.35); k.burst(e.x, PASSAGE.y - 90, '#c8321e', 12, 'streak'); k.text('Bow to pass!', e.x, PASSAGE.y - 230); }
+    if (e.type === 'clawSnap') { k.shake(0.35); k.burst(e.x, PASSAGE.y - 90, '#c8321e', 12, 'streak'); k.text(TEXT.court.burst.bow, e.x, PASSAGE.y - 230); }
     if (e.type === 'bow') k.burst(st.tf.x, PASSAGE.y - 120, '#fff2b0', 4, 'sparkle');
     return;
   }
   if (e.x != null) e = { ...e, x: e.x - st.cam };
   if (e.type === 'pearl') { k.burst(e.x, e.y - 20, '#eef3ea', 8, 'sparkle'); k.text('+10', e.x, e.y - 60); }
-  if (e.type === 'spotted') { k.flash(0.55); k.shake(0.3); k.text('Spotted!', e.x, e.y - 200, true); k.burst(e.x, e.y - 80, '#e0127a', 14, 'streak'); }
+  if (e.type === 'spotted') { k.flash(0.55); k.shake(0.3); k.text(TEXT.court.burst.spotted, e.x, e.y - 200, true); k.burst(e.x, e.y - 80, '#e0127a', 14, 'streak'); }
   if (e.type === 'guardBump') { k.shake(0.3); k.burst(e.x, e.y - 60, '#d9b34a', 12, 'streak'); }
   if (e.type === 'sentryBite') { k.shake(0.4); k.burst(e.x, e.y - 30, '#c8321e', 14, 'streak'); }
-  if (e.type === 'unseen') { k.text('Unseen +25', e.x, e.y - 190); }
+  if (e.type === 'unseen') { k.text(TEXT.court.burst.unseen, e.x, e.y - 190); }
   if (e.type === 'whalePass') { k.shake(0.25); }
   // as it comes between the eye and the hall, say what it is for
-  if (e.type === 'whaleMask') k.text(FILM ? 'The whale hides you from the eye: go!' : 'The whale hides you: go!', 640, 520, true);
-  if (e.type === 'pearlTaken') { const px = PEDESTAL.x - st.cam, py = pearlY(k, ROWY[0] - 10); k.burst(px, py, '#eef3ea', 22, 'sparkle'); k.burst(px, py, '#f3c6dc', 14, 'sparkle'); k.text('Her pearl', px - 60, 200, true); }
+  if (e.type === 'whaleMask' && !FILM) k.text(TEXT.court.burst.whaleHides, 640, 520, true);
+  if (e.type === 'pearlTaken') { const px = PEDESTAL.x - st.cam, py = pearlY(k, ROWY[0] - 10); k.burst(px, py, '#eef3ea', 22, 'sparkle'); k.burst(px, py, '#f3c6dc', 14, 'sparkle'); k.text(TEXT.court.burst.pearl, px - 60, 200, true); }
   if (e.type === 'whaleTurn') k.shake(0.4);
   if (e.type === 'swallow') { k.shake(0.9); k.flash(0.4); }
 }
