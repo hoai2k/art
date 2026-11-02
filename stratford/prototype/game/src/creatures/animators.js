@@ -202,7 +202,8 @@ export function createBirdAnimator(model, T, cfg = {}) {
     // from the pose sheets: the swan preening, the heron stalking low and striking
     preen: [V(0.05, 1, 0.15), V(0.1, 0.75, -0.65), V(0.15, -0.2, -1), V(0.2, -0.9, -0.45), V(0.15, -1, 0.1)],
     stalk: [V(0, 0.75, 0.7), V(0, 0.6, -0.8), V(0, 0.35, 1), V(0, 0.05, 1), V(0, -0.1, 1)],
-    strike: [V(0, 0.3, 1), V(0, -0.15, 1), V(0, -0.45, 1), V(0, -0.75, 0.7), V(0, -0.85, 0.5)],
+    // the strike: the head lines up with the last neck bone, so head and bill stay one rigid dagger
+    strike: [V(0, 0.3, 1), V(0, -0.15, 1), V(0, -0.5, 1), V(0, -0.8, 0.65), V(0, -0.8, 0.65)],
   };
 
   function update(dt, c, root) {
@@ -243,7 +244,7 @@ export function createBirdAnimator(model, T, cfg = {}) {
     else for (const n of neck) B[n].quaternion.identity();
     const bob = (cfg.headBob ? 0.12 : 0.05) * Math.sin(TAU * legPh * 2) * move;
     if (B.neck1) B.neck1.quaternion.multiply(_q.setFromEuler(_e.set(bob * 0.5 + 0.12 * sit, glance * 0.3, 0)));
-    if (B.head) B.head.quaternion.multiply(_q.setFromEuler(_e.set(-bob, glance * 0.6, 0)));
+    if (B.head) B.head.quaternion.multiply(_q.setFromEuler(_e.set(-bob * (1 - lunge), glance * 0.6 * (1 - lunge), 0)));
 
     // wings: folded on land and water (a little open in the take-off run and landing); spread,
     // flapping or gliding in the air

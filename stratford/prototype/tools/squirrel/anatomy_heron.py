@@ -1,57 +1,57 @@
 """Great blue heron (Ardea herodias), part by part (centimetres; frame as anatomy.py).
 
-Measured on the delivered turnaround's side view (reference/sheets/heron_turnaround.png, R9.7),
-scaled to 85 cm from tail tip to bill tip as drawn, which stands the bird 1.05 m tall (at the
-1 m used before it came out 1.24 m tall): the body slung under folded wings that reach the tail
-(tail tip z -42, y 46; the back rising to the shoulders at y 80, z 0), hanging breast plumes,
-the neck in an S forward to z 18 and back over the shoulders to the head (crown 105 cm at z 15),
-black plumes trailing behind the head, the dagger bill to its tip at z 42.5 / y 96, long bare
-legs with rusty thighs. R9.7's top view shows the bird on its side, so widths come from the
-three-quarter view and the flying views (heron_flying_top.png, R9.9: span about 1.95 m, the inner
-wing about 30 cm deep). Rerun build.py when the replacement turnaround (round 11) lands.
+Measured on the round-11 turnaround (reference/sheets/heron_turnaround.png: side view, a true
+top-down view of the standing bird, a front three-quarter view), scaled to 62 cm from the folded
+wing tips to the bill tip as drawn, which stands the bird 1.05 m tall: an upright stance, the
+body slung steeply from the wing tips (z -30, hanging to y 33) up to the shoulders (y 82, z 0),
+the breast plumes hanging forward, the neck in an S (forward to z 14 at y 80, back over z 3,
+up to the head: crown 105 cm at z 10), black plumes trailing behind the head, a 13 cm dagger
+bill to its tip at z 31 / y 96.5, long bare legs. Widths from the top view: the body 27 cm
+across the folded wings. Wings from the flying views (heron_flying_top.png, R9.9: span about
+1.95 m, the inner wing about 28 cm deep).
 """
 import numpy as np
 
 SPINE = [
     ('root',   None,     (0, 0, 0)),
-    ('pelvis', 'root',   (0, 56, -20)),
-    ('spine1', 'pelvis', (0, 63, -8)),
-    ('spine2', 'spine1', (0, 70, 2)),
-    ('neck1',  'spine2', (0, 74, 8)),
-    ('neck2',  'neck1',  (0, 82, 13)),
-    ('neck3',  'neck2',  (0, 91, 10)),
-    ('neck4',  'neck3',  (0, 97, 10.5)),
-    ('head',   'neck4',  (0, 100.5, 14.5)),
-    ('bill',   'head',   (0, 100.2, 19.5)),
+    ('pelvis', 'root',   (0, 48, -16)),
+    ('spine1', 'pelvis', (0, 58, -8)),
+    ('spine2', 'spine1', (0, 70, 0)),
+    ('neck1',  'spine2', (0, 72, 8)),
+    ('neck2',  'neck1',  (0, 80, 13)),
+    ('neck3',  'neck2',  (0, 88, 9)),
+    ('neck4',  'neck3',  (0, 94, 5)),
+    ('head',   'neck4',  (0, 100, 9)),
+    ('bill',   'head',   (0, 99.6, 16)),
 ]
 TAIL_N = 2
-TAIL_BASE = (0, 50, -33)
-TAIL_LEN = 11.0
-TAIL_RISE = -0.15
+TAIL_BASE = (0, 40, -24)
+TAIL_LEN = 9.0
+TAIL_RISE = -0.9
 TAIL_XS, TAIL_YS = 1.8, 0.5
 
 LIMBS = [
-    ('humerus_L', 'spine2',   (6, 72, 0)),
-    ('ulna_L',    'humerus_L', (30, 73, -4)),
-    ('manus_L',   'ulna_L',   (56, 73, -7)),
-    ('thigh_L',   'pelvis',   (5, 52, -10)),
-    ('shin_L',    'thigh_L',  (5.5, 42, -6)),
-    ('tarsus_L',  'shin_L',   (5.5, 24, -10)),
-    ('toes_L',    'tarsus_L', (5.5, 1.5, -8)),
+    ('humerus_L', 'spine2',   (6, 74, -2)),
+    ('ulna_L',    'humerus_L', (30, 75, -6)),
+    ('manus_L',   'ulna_L',   (56, 75, -9)),
+    ('thigh_L',   'pelvis',   (5, 48, -6)),
+    ('shin_L',    'thigh_L',  (5.5, 40, -3)),
+    ('tarsus_L',  'shin_L',   (5.5, 24, -6)),
+    ('toes_L',    'tarsus_L', (5.5, 1.5, -4)),
 ]
 ENDS = {
-    'manus_L': (76, 73, -12),
-    'toes_L': (6, 0.6, 1),
-    'bill': (0, 96, 42.5),
-    'head': (0, 100.5, 19.5),
+    'manus_L': (76, 75, -14),
+    'toes_L': (6, 0.6, 5),
+    'bill': (0, 96.5, 31),
+    'head': (0, 100.5, 16),
 }
 BODY_BONES = ('root', 'pelvis', 'spine1', 'spine2', 'neck1', 'neck2', 'neck3', 'neck4', 'head', 'bill')
-EYE = dict(bone='head', pos=(2.0, 101.0, 17.6), r=0.55, out=[1, 0.2, 0.35], color=0xe0c640, pupil=True)
+EYE = dict(bone='head', pos=(2.1, 101.6, 13.5), r=0.55, out=[1, 0.2, 0.35], color=0xe0c640, pupil=True)
 FUR = {'root': 0.5, 'pelvis': 0.6, 'spine1': 0.6, 'spine2': 0.6, 'neck1': 0.5, 'neck2': 0.4, 'neck3': 0.3, 'neck4': 0.25,
        'head': 0.2, 'bill': 0.0, 'humerus': 0.5, 'ulna': 0.4, 'manus': 0.3, 'thigh': 0.4, 'shin': 0.25, 'tarsus': 0.0, 'toes': 0.0, 'tail': 0.5}
 COATS = ['natural']
 SHEETS = {'natural': 'heron_turnaround.png'}
-SHEET = dict(body=0.62, rump_u=0.0)        # tail tip to bill tip as drawn (round 11 turnaround), which stands it 1.05 m tall
+SHEET = dict(body=0.62, rump_u=0.0, shadow=False)        # tail tip to bill tip as drawn (round 11 turnaround), which stands it 1.05 m tall
 TRIS = 12000
 GRID = 0.3
 GREY = 0x7d8a98
@@ -69,21 +69,21 @@ def parts(B):
     P = []
     add = lambda *a: P.append(a)
     # a slim body under the folded wings, the breast with its hanging plumes
-    add('ell', 'spine1', ((0, 63, -14), (11, 11, 26), (-0.5, 0, 0)), 4)
-    add('ell', 'spine2', ((0, 69, 1), (9.5, 10, 9), (-0.1, 0, 0)), 4)
-    add('ell', 'spine1', ((0, 64, -16), (10.5, 6, 26), (-0.5, 0, 0)), 3)               # the folded wings' bulk
-    add('ell', 'pelvis', ((0, 52, -27), (8, 6, 12), (-0.3, 0, 0)), 3)
-    add('ell', 'neck1', ((0, 64, 7), (4.5, 12, 4), (0.15, 0, 0)), 2)                 # breast plumes
+    add('ell', 'spine1', ((0, 59, -11), (12.5, 11, 24), (-0.85, 0, 0)), 4)
+    add('ell', 'spine2', ((0, 72, 1), (10, 9, 8), (-0.1, 0, 0)), 4)
+    add('ell', 'spine1', ((0, 60, -13), (12, 6.5, 24), (-0.85, 0, 0)), 3)              # the folded wings' bulk
+    add('ell', 'pelvis', ((0, 45, -19), (9, 7, 10), (-0.6, 0, 0)), 3)
+    add('ell', 'neck1', ((0, 66, 9), (5, 13, 4.5), (0.1, 0, 0)), 2)                  # breast plumes
     # the long S neck: slender
     nk = [B['neck1'], B['neck2'], B['neck3'], B['neck4'], np.array(B['head']) + [0, 0, -1]]
-    add('tube', 'neck1', ([(0, 69, 5), nk[0], nk[1]], [5.5, 4.0, 3.2], 1.0, 1.0), 2)
+    add('tube', 'neck1', ([(0, 70, 3), nk[0], nk[1]], [5.5, 4.0, 3.2], 1.0, 1.0), 2)
     add('tube', 'neck2', ([nk[1], nk[2]], [3.0, 2.6], 1.0, 1.0), 1.2)
     add('tube', 'neck3', ([nk[2], nk[3]], [2.6, 2.3], 1.0, 1.0), 1.0)
     add('tube', 'neck4', ([nk[3], nk[4]], [2.3, 2.3], 1.0, 1.0), 0.8)
     # head: narrow, flat-crowned; the plumes off the back of the head; the dagger bill
-    add('ell', 'head', ((0, 101, 15.5), (2.5, 2.8, 4.2), (-0.1, 0, 0)), 0.8)
-    add('tube', 'head', ([(0, 102.3, 13), (0, 100, 4), (0, 95.5, -6)], [1.0, 0.6, 0.25], 0.8, 0.6), 0.4)   # crest plumes
-    add('tube', 'bill', ([(0, 100.6, 18.5), (0, 99.2, 29), (0, 96, 42.5)], [1.5, 1.0, 0.2], 0.8, 1.0), 0.5)
+    add('ell', 'head', ((0, 100.8, 11.5), (2.5, 2.9, 4.4), (-0.1, 0, 0)), 0.8)
+    add('tube', 'head', ([(0, 102.5, 8.5), (0, 99.5, 0), (0, 93.5, -8)], [1.0, 0.6, 0.25], 0.8, 0.6), 0.4)   # crest plumes
+    add('tube', 'bill', ([(0, 100.2, 15), (0, 98.8, 23), (0, 96.5, 31)], [1.5, 1.0, 0.2], 0.8, 1.0), 0.5)
     for s in (1, -1):
         X = 'LR'[s < 0]
         b = lambda n: B[n + '_' + X]
@@ -113,13 +113,13 @@ def paint(ctx, coat):
     fore = neck * sm(0.2, 0.8, N[:, 2]) * sm(0.6, 0.1, np.abs(N[:, 0]))
     streak = (np.sin(ctx.y * 2.2) > 0.3).astype(float)
     c = mix(c, np.where(streak[:, None] > 0, [[0.12, 0.12, 0.13]], [[0.93, 0.92, 0.88]]), fore * 0.8)   # streaked foreneck
-    c = mix(c, [0.93, 0.92, 0.88], head * sm(97.5, 100.0, ctx.y))                                  # white face and crown
-    stripe = head * sm(0.6, 1.4, np.abs(ctx.y - 102.6) * -1 + 2.0) * sm(13.5, 17.5, ctx.z) * (1 - sm(20, 21, ctx.z))
+    c = mix(c, [0.93, 0.92, 0.88], head * sm(97.0, 99.5, ctx.y))                                  # white face and crown
+    stripe = head * sm(0.6, 1.4, np.abs(ctx.y - 103.4) * -1 + 2.0) * sm(8.0, 11.0, ctx.z) * (1 - sm(15, 16, ctx.z))
     c = mix(c, [0.08, 0.08, 0.1], np.clip(stripe, 0, 1))                                         # black stripe over the eye
-    plume = ctx.bones('head') * sm(12.5, 9.5, ctx.z)
+    plume = ctx.bones('head') * sm(7.5, 5.0, ctx.z)
     c = mix(c, [0.1, 0.1, 0.12], plume)                                                           # black plumes
     c = mix(c, [0.86, 0.68, 0.24], ctx.bones('bill'))                                            # yellow-orange bill
-    c = mix(c, [0.25, 0.23, 0.36], ctx.bones('bill') * sm(98.6, 97.2, ctx.y) * 0.5)
+    c = mix(c, [0.25, 0.23, 0.36], ctx.bones('bill') * sm(98.0, 96.8, ctx.y) * 0.5)
     c = mix(c, [0.56, 0.36, 0.23], ctx.bones('thigh'))                                           # rusty thighs
     c = mix(c, [0.24, 0.24, 0.2], ctx.bones('shin', 'tarsus', 'toes'))                           # dark legs
     c = mix(c, [0.72, 0.72, 0.72], ctx.bones('spine2') * sm(-0.2, -0.7, up) * 0.5)

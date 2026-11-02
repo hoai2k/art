@@ -27,7 +27,7 @@ def own(m):
 
 
 class Sheet:
-    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1, y0=0.0, panels=None, side=None, top=None):
+    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1, y0=0.0, panels=None, side=None, top=None, shadow=True):
         # y0: the model height (m) at the side view's lowest row (0 for an animal standing on the
         # ground; the hull bottom for a swimming bird). panels: (side, top) panel columns.
         # side / top: take that view from another sheet or cell instead, as dict(file, row, rows,
@@ -50,7 +50,8 @@ class Sheet:
         self.sp = cell(side, ps)
         self.tp = None if top is False else cell(top, pt)
         self.y0 = y0
-        self.sm = own(drop_ground_shadow(self.sp, mask(self.sp), 0.45))
+        # shadow=False: keep thin dark legs that the ground-shadow removal would take (the heron)
+        self.sm = own(drop_ground_shadow(self.sp, mask(self.sp), 0.45) if shadow else mask(self.sp))
         self.tm = own(mask(self.tp)) if self.tp is not None else np.ones((4, 4), bool)
         r, c = np.where(self.sm); self.S = (r.min(), r.max(), c.min(), c.max())   # r0, r1, c0, c1
         r, c = np.where(self.tm); self.T = (r.min(), r.max(), c.min(), c.max())

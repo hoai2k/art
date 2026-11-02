@@ -22,7 +22,7 @@ const COLORS = {
   [SURFACE.prop]: 0xc49a5c, [SURFACE.fence]: 0xb8925f,
 };
 
-const POND = { x: 12, z: -3, r: 3, depth: 0.6, level: -0.05 };
+const POND = { x: 12, z: -3, r: 3, depth: 0.9, level: -0.05 };   // about 1 m at the centre: deep enough for the beaver to dive
 
 function groundHeight(x, z) {
   const d = Math.hypot(x - POND.x, z - POND.z);

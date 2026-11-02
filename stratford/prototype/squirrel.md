@@ -236,7 +236,7 @@ secondaries, tertials, coverts and a tail fan, from `META.wings`).
 
 `sheet.py` takes each view from wherever it is usable: `SHEET.side` / `SHEET.top` name another
 sheet or cell (`file`, `row`, `rows`, `col`), an explicit pixel `box` where drawings overlap in
-columns, or `top=False`. Blobs of a neighbouring drawing cut by a panel edge are dropped.
+columns, or `top=False`; `shadow=False` skips the ground-shadow removal (thin legs). Blobs of a neighbouring drawing cut by a panel edge are dropped.
 
 All four were re-measured on the round-9 sheets (reference/sheets/) with
 `tools/squirrel/review/sheet-overlay.py <kind> <out.png>` (the sheet's side and top views with a
@@ -245,22 +245,20 @@ scale) and the silhouette profile (top and bottom of the drawing per centimetre)
 
 | | Side from | Top from | Scale | Notes |
 | --- | --- | --- | --- | --- |
-| Beaver | `beaver_poses.png` cell 1 (walking, a true profile) | `beaver_turnaround.png` top | 80 cm nose to rump | The turnaround's side view is turned three-quarters. The sheets draw a heavy round beaver: back 46 cm, about 56 cm across, so the capsule (0.19 × scale) and swim depth (0.45 × scale) grew with it. The paddle is its own `tail_parts` (flat ellipsoids), 26 cm wide. |
+| Beaver | `beaver_turnaround.png` side (round-11 replacement, a true profile) | its top | 80 cm nose to the base of the tail | A heavy, hunched beaver: back domed to 59 cm, head held high (nose at 42 cm), about 60 cm across the haunches, so the capsule (0.22 × scale), swim depth (0.58 × scale), eye and camera heights grew with it. The paddle is its own `tail_parts` (thin flat ellipsoids, little blend): 22 cm long and wide, 2-3 cm thick. |
 | Cottontail | `rabbit_turnaround.png` side | its top | 40 cm nose to rump | The alert sit: head up (crown 30 cm), ears 11 cm to 41 cm, big haunches. |
 | Mute swan | `swan_turnaround.png` side | its top | 1.1 m tail to bill as drawn, the drawn water at the 36 cm waterline | At the old 1.4 m the body came out 1.35 m long. The sheet draws the busking display (wings arched to 1 m); the model keeps the wings folded (back 66 cm). |
-| Great blue heron | `heron_turnaround.png` side (a pixel box: the bill overlaps the top drawing's columns) | none (`top=False`) | 85 cm tail to bill, 1.05 m tall | The turnaround's top shows the bird on its side; widths from the three-quarter view and `heron_flying_top.png`. The body is a wedge, shoulders high, wings to the tail. |
+| Great blue heron | `heron_turnaround.png` side (round-11 replacement; `shadow=False` keeps the thin legs the ground-shadow removal would take) | its top (a true top-down view) | 62 cm wing tips to bill tip, 1.05 m tall | Upright: the body slung steeply from the hanging wing tips (y 33) to the shoulders (y 82), 27 cm across, a 13 cm bill. |
 
 Wings from the flying views (`swan_flying_top.png`, `heron_flying_top.png`): swan span about
 2.5 m with the wrist at 45 % of the wing and a 36 cm inner wing (secondaries), heron span about
 1.95 m with a 28 cm inner wing. The wing bones are unchanged in length; the feather lengths
 follow the views.
 
-**When the round-11 replacements land** (`beaver_turnaround.png`, `heron_turnaround.png`, at the
-same paths): for the beaver, point `SHEET.side` back at the turnaround if its side view is a true
-profile (and drop `side=`), check `rump_u`, then rebuild; for the heron, set `top=` back to the
-turnaround's top view and check the widths (`spine1` and `pelvis` x radii) against it. In both
-cases `python3 tools/squirrel/build.py --creature <kind> --paint sheet` picks the new files up,
-and `review/sheet-overlay.py` shows the fit.
+The round-11 replacements of `beaver_turnaround.png` and `heron_turnaround.png` are in and both
+creatures are measured on them; a later replacement at the same path is picked up by rerunning
+`python3 tools/squirrel/build.py --creature <kind> --paint sheet` (then check the fit with
+`review/sheet-overlay.py`).
 
 ### How each one moves
 
@@ -269,7 +267,7 @@ and `review/sheet-overlay.py` shows the fit.
 | Beaver | waddle (run 1.3 m/s), slow gallop on RT (3.2) | swims low at the surface (1.7); A dives steeply after a tail slap (2.0 m/s, down to 1.4 m, 60 s breath), A again surfaces | small jump | Y sits up and gnaws, the hands at the mouth; X and idling: stands up to look round; no climbing |
 | Cottontail | hops from a slow hop to a bound (3.5, sprint 11), sharp turns and zig-zags | swims poorly (0.45) and after 3 s heads for the nearest bank | big jumps (2× body length) | X stands tall; Y grooms the face with both fore paws; idling: grooms, then freezes flat with the ears down; no climbing |
 | Mute swan | awkward waddle (0.9, 2.6) | graceful swim (1.3) | hold A to run (on land or water) and take off at 6.5 m/s; fly 15 m/s, RT to 21; A flaps to climb, release to glide; stick steers and banks; lands on water or ground, feet forward and wings up | Y preens, the neck curled back into the wing |
-| Great blue heron | stately walk (0.7, 1.7) with a head bob; a crouched stalk with the neck drawn in at a slow walk | wades to 0.42 m deep with high, careful steps, never swims (the deep water stops it) | A takes off from standing with wingbeats; flies 9 m/s, RT 13, neck folded, legs trailing; glides, lands on roofs and trees | perches; Y strikes: draws the neck back, then lunges the bill down and forward |
+| Great blue heron | stately walk (0.7, 1.7) with a head bob; a crouched stalk with the neck drawn in at a slow walk | wades to 0.42 m deep with high, careful steps, never swims (the deep water stops it) | A takes off from standing with wingbeats; flies 9 m/s, RT 13, neck folded, legs trailing; glides, lands on roofs and trees | perches; Y strikes: draws the neck back, then lunges the bill down and forward, head and bill one straight dagger |
 
 Swimming, diving, wading and flight are generic modes of `src/creatures/controller.js` (states
 `swim`, `dive`, `fly`), switched on by tuning: `canSwim`, `swimTire`, `canDive`/`diveSpeed`/
@@ -308,6 +306,8 @@ stand-ins show until it loads.
   menu, switching to the heron, the saved swan at boot) and LT/Q.
 - `node stratford/prototype/tools/squirrel/review/creature-shots.mjs <dir> [kind ...]` renders
   `<kind>_turnaround.png` and `<kind>_gaits.png` boards, and puts them beside the sheets:
-  `<kind>_turnaround_vs_sheet.png` and `<kind>_gaits_vs_poses.png` (never into the repo).
+  `<kind>_turnaround_vs_sheet.png` and `<kind>_gaits_vs_poses.png` (never into the repo). A step
+  marked `'touchdown'` keeps a rolling buffer of frames and stops just after the creature lands
+  (the swan's landing strip).
 - `python3 stratford/prototype/tools/squirrel/review/sheet-overlay.py <kind> <out.png> [label]`:
   the model's outline over the sheet's side and top views at the sheet's scale.

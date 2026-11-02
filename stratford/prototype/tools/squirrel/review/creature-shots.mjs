@@ -44,7 +44,9 @@ const ACTIONS = {
     ['takeoff', E(), [[100, { move: [0, 1], jump: true }, 0], [48, { move: [0, 1], jump: true }, 8]]],
     ['fly', E(), [[170, { move: [0, 1], jump: true }, 0], [30, { move: [0, 1], jump: true }, 5]]],
     ['glide', E(), [[200, { move: [0, 1], jump: true }, 0], [60, { move: [0, 1] }, 10]]],
-    ['landing', E(), [[200, { move: [0, 1], jump: true }, 0], [400, { move: [0, -0.6] }, 0], [120, { move: [0, -0.6] }, 20]]],
+    // take off, climb a little, then glide down with the stick back: the strip keeps the frames
+    // around the touchdown ('touchdown' steps keep a rolling buffer and stop just after landing)
+    ['landing', E(), [[110, { move: [0, 1], jump: true }, 0], [25, { move: [0, 1], jump: true }, 0], [900, { move: [0, -0.5] }, 6, 'touchdown']]],
   ],
   heron: [
     ['walk', E(), [[40, { move: [0, 0.8] }, 0], [60, { move: [0, 0.8] }, 10]]],
@@ -89,11 +91,18 @@ for (const kind of KINDS) {
       if (spawn.x > 5) { ctrlCam.position.set(spawn.x - 20, 1, spawn.z); ctrlCam.lookAt(spawn.x + 20, 1, spawn.z); ctrlCam.updateMatrixWorld(); }
       sq.update(1 / 60, c0, W, ctrlCam);
       out[name] = [];
-      for (const [n, ctl, every] of steps) {
+      for (const [n, ctl, every, mode] of steps) {
+        const ring = []; let after = -1, flew = false;
         for (let i = 0; i < n; i++) {
           sq.update(1 / 60, { ...c0, ...ctl, jumpPressed: !!ctl.jumpPressed && i === 0, sitPressed: !!ctl.sitPressed && i === 0, digPressed: !!ctl.digPressed && i === 0 }, W, ctrlCam);
-          if (every && (i + 1) % every === 0) out[name].push(view(['swim', 'dive'].includes(sq.state) || sq.controller.wading ? [0, 0.45, 1] : [0, 0.08, 1], (sq.state === 'fly' ? 5 : 3.0) * s, [0, 1, 0], H));
+          const snap = () => view(['swim', 'dive'].includes(sq.state) || sq.controller.wading ? [0, 0.45, 1] : [0, 0.08, 1], (sq.state === 'fly' ? 5 : 3.0) * s, [0, 1, 0], H);
+          if (mode === 'touchdown') {
+            flew ||= sq.state === 'fly';
+            if (after < 0 && flew && sq.state !== 'fly') after = 3;
+            if ((i + 1) % every === 0) { ring.push(snap()); if (after < 0 && ring.length > 4) ring.shift(); if (after >= 0 && --after === 0) break; }
+          } else if (every && (i + 1) % every === 0) out[name].push(snap());
         }
+        out[name].push(...ring);
       }
     }
     return out;

@@ -21,12 +21,12 @@ function edgeNear(b, x, z) {
   b.outer.forEach((a, i) => { const c = b.outer[(i + 1) % b.outer.length], d = Math.hypot((a[0] + c[0]) / 2 - x, (a[1] + c[1]) / 2 - z); if (d < bd) { bd = d; best = i; } });
   return best;
 }
-// the Avon Theatre's George Street walls: the north-facing edges of the west (Studio Theatre) part
+// the Avon Theatre's George Street walls: its north-facing edges (red brick in the photos)
 function georgeSide(b) {
   const out = [];
   b.outer.forEach((a, i) => { const c = b.outer[(i + 1) % b.outer.length], L = edgeLen(b, i); if (L < 2) return;
     const nz = -(c[0] - a[0]) / L;                                                    // outward normal's z
-    if (nz < -0.7 && (a[0] + c[0]) / 2 < 136) out.push(i); });
+    if (nz < -0.7) out.push(i); });
   return out;
 }
 
@@ -384,7 +384,14 @@ export const landmarkParts = {
       if (Math.abs(ax * nx + az * nz) < 0.7071) { ax = -o.uz; az = o.ux; ha = o.hv; hb = o.hu; }
       const back = (ax * nx + az * nz) > 0 ? -1 : 1;              // away from the front
       const sdx = o.cx + ax * back * ha * 0.55, sdz = o.cz + az * back * ha * 0.55;
-      const sh = eaves + 8, sw = ha * 0.42, sl = hb * 0.85, syaw = Math.atan2(-az, ax);
+      let sw = ha * 0.42, sl = hb * 0.85;
+      const syaw = Math.atan2(-az, ax), sh = eaves + 8;
+      // keep the stage house inside the (irregular) footprint: shrink it until its corners are
+      const inside = (x, z) => { let c = false; const r = b.outer; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, zi] = r[i], [xj, zj] = r[j]; if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) c = !c; } return c; };
+      for (let it = 0; it < 12; it++) {
+        const ok = [[-1, -1], [1, -1], [1, 1], [-1, 1]].every(([p, q]) => inside(sdx + ax * sw * p - az * sl * q, sdz + az * sw * p + ax * sl * q));
+        if (ok) break; sw *= 0.9; sl *= 0.88;
+      }
       kit.setPart(vb, { ...P, seed: 0.62 }, PART.wall, MAT.stucco, FLAG.noWindows, 2 * sl, sh - base, 1);
       kit.box(vb, cb, sdx - ox, (base + sh) / 2 - 0.4, sdz - oz, sw, (sh - base) / 2 + 0.4, sl, syaw, SURFACE.wall_smooth);
       kit.setPart(vb, P, PART.flat);
