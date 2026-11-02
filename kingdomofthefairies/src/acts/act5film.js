@@ -594,9 +594,11 @@ function stepDive(st, dt, input) {
     else if (d.t >= FILM_T.splash) startSwim(st);
     return;
   }
-  walk(w, dt, input, { y: diveFloor(w.x), x0: DIVE.x0, x1: DIVE.edge + 40 });
+  // A leaps on the clifftop like anywhere else; at the edge it dives
+  const atEdge = w.x > DIVE.edge - 110;
+  walk(w, dt, atEdge ? { ...input, a: false } : input, { y: diveFloor(w.x), x0: DIVE.x0, x1: DIVE.edge + 40, leap: true });
   if (w.on) w.y = diveFloor(w.x);
-  if ((input.a && w.x > DIVE.edge - 110) || w.x > DIVE.edge + 10) {
+  if ((input.a && atEdge) || w.x > DIVE.edge + 10) {
     st.dv = { t: 0, vx: 170, vy: -260, rot: 0, splash: false };
     st.events.push({ type: 'diveLeap' });
   }

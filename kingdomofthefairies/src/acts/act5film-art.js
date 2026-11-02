@@ -111,21 +111,37 @@ function swimScene(k, st, t) {
   c.save();
   if (st.inv > 0 && Math.floor(st.inv * 10) % 2) c.globalAlpha = 0.45;
   const ab = Math.floor(sw.stroke * 4) % 2 ? 'a' : 'b';
-  const id = (sw.dive > 0 ? 'prince-swim-under-' : 'prince-swim-') + ab;
+  // at the surface: the front-crawl frames once delivered (their waterline
+  // 40% down the canvas), else the stroke frames sunk to the head and arms
+  const surf = sw.dive <= 0 && k.img('prince-swim-surface-' + ab) ? 'prince-swim-surface-' + ab : null;
+  const id = surf || (sw.dive > 0 ? 'prince-swim-under-' : 'prince-swim-') + ab;
+  const by = surf ? y + 83 * 0.6 - 2 : y + 35;   // surf: its waterline on the sea's
   if (position.land > .65) drawPose(k, position.land < 1 ? 'prince-mantle-c' : 'prince-stand', px, y, 124);
-  else if (!drawPose(k, id, px, y + 35, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
+  else if (!drawPose(k, id, px, by, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
   c.restore();
   // the sea over him below its rippling waterline: the painted water laid
   // back over his lower half at the surface, and over all of him when he
   // dives (no box: the cloth itself, clipped to the water)
   const under = sw.dive > 0 ? Math.sin(Math.PI * clamp(1 - sw.dive / SWIM.dive, 0, 1)) : 0;
+  // He swims in the sea, not on it: the water closes over all but his head
+  // and arms (the delivered surface frames paint the rest faint themselves).
+  const line = surf ? y - 2 : y - 16;
   c.save();
   c.beginPath(); c.moveTo(px-105, 720);
-  for (let x = px-105; x <= px+105; x += 10) c.lineTo(x, y - 2 + Math.sin(x * 0.05 + t * 3) * 4);   // at his chest
+  for (let x = px-105; x <= px+105; x += 10) c.lineTo(x, line + Math.sin(x * 0.05 + t * 3) * 3);
   c.lineTo(px+105, 720); c.closePath(); c.clip();
-  c.globalAlpha = 0.5 + 0.1 * under;   // under, he shows as a dim shape through it
+  c.globalAlpha = surf ? 0.55 : 0.92;
   if (position.land <= .65) cloth();
   c.restore();
+  if (position.land <= .65) {
+    // diving under her swoop he shows lit beneath the surface for a moment
+    if (under > 0 && k.img('prince-swim-under-' + ab)) {
+      c.save(); c.globalAlpha = 0.72 * under; drawPose(k, 'prince-swim-under-' + ab, px, y + 35, 124);
+      c.globalAlpha = 0.18 * under; c.fillStyle = k.col('#9fd8d0'); c.beginPath(); c.ellipse(px, y - 6, 80, 34, 0, 0, Math.PI * 2); c.fill(); c.restore();
+    }
+    // spray thrown up by each stroke at the surface
+    if (sw.dive <= 0) strokeSpray(k, px, line, sw.stroke, t);
+  }
   // how far to the tower (fixed to the screen through the mobile camera)
   (k.flat || ((g) => g()))(() => {
   c.save(); c.globalAlpha = 0.85; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(440, 96, 400, 14, 7); c.fill();
@@ -422,6 +438,33 @@ function hint(k, text, y = 630) {
 }
 
 // Act V: the clifftop over the sea gap; he walks to the edge and dives.
+// Water particles: the drops of a splash (u 0..1 through it), and the spray
+// of each swimming stroke at the waterline.
+function splashDrops(k, x, y, u) {
+  const c = k.c;
+  c.save();
+  for (let i = 0; i < 26; i++) {
+    const n = Math.sin(i * 78.233) * 43758.5453, r = n - Math.floor(n);
+    const vx = (r - 0.5) * 220, vy = -(180 + ((i * 37) % 11) * 26), tt = u * 0.9;
+    const dx = vx * tt, dy = vy * tt + 620 * tt * tt;
+    if (dy > 6) continue;
+    c.globalAlpha = 0.85 * (1 - u); c.fillStyle = k.col(i % 3 ? '#eef3ea' : '#bfe3e0');
+    k.circle(x + dx, y + dy, 2 + (i % 3));
+  }
+  c.restore();
+}
+function strokeSpray(k, px, line, stroke, t) {
+  const c = k.c, u = (stroke * 4) % 1;
+  c.save();
+  for (let i = 0; i < 8; i++) {
+    const tt = (u + i * 0.11) % 1, side = i % 2 ? 1 : -1;
+    const x = px + 42 + side * (6 + tt * 22) + (i % 3) * 3, y = line - Math.sin(Math.PI * tt) * (10 + (i % 4) * 4);
+    c.globalAlpha = 0.7 * (1 - tt); c.fillStyle = k.col(i % 3 ? '#eef3ea' : '#bfe3e0');
+    k.circle(x, y, 1.6 + (i % 2));
+  }
+  c.restore();
+}
+
 function diveScene(k, st, t) {
   const c = k.c, w = st.w, d = st.dv;
   if (!k.asset('coast-gap', 640, 720, 1280, 720)) { c.fillStyle = k.col('#1c1630'); c.fillRect(0, 0, 1280, 720); c.fillStyle = k.col('#4a3a40'); c.fillRect(0, DIVE.y, DIVE.edge, 400); }
@@ -435,7 +478,8 @@ function diveScene(k, st, t) {
     if (!k.asset('prince-leap', 0, 0, 110, 152)) { c.fillStyle = k.col('#6f9fc8'); c.fillRect(-14, -100, 28, 100); }
     c.restore();
   } else if (!d) princeOnFoot(k, w, 124);
-  if (d?.splash) { c.save(); c.globalAlpha = Math.max(0, 1 - d.t / FILM_T.splash); c.fillStyle = k.col('#eef3ea'); c.beginPath(); c.ellipse(w.x, DIVE.water, 40 + d.t * 80, 10, 0, 0, Math.PI * 2); c.fill(); c.restore(); }
+  // the splash: drops thrown up and falling back (no flat marker)
+  if (d?.splash) splashDrops(k, w.x, DIVE.water, d.t / FILM_T.splash);
 
 }
 
