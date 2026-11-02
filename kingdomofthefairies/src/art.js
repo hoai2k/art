@@ -76,7 +76,9 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
   const load = (ids) => Promise.all(ids.map((id) => new Promise((done) => {
     const s = out.slots[id];
     if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return done(); }
-    if (!s || s.status !== 'delivered' || !s.file) { out.failed.push(id); return done(); }
+    // Art still requested is not a failure: its stand-in draws until it arrives.
+    if (s && s.status !== 'delivered') return done();
+    if (!s || !s.file) { out.failed.push(id); return done(); }
     const img = new Image();
     // Film art keeps its proportions in its box (fitBox); a tinted alternate is
     // drawn the way its original is, so one of an older, stretched-to-box

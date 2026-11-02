@@ -847,6 +847,8 @@ function treasurePile(k, st, t) {
   }
   if (T.sword) { c.save(); c.translate(x + 26, y - 12); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 32, 64, 64); c.restore(); }
   if (T.lamp) k.asset('keepsake-lamp', x - 68, y + 8, 44, 44);
+  // the betrothal gifts along the front of the heap
+  T.gifts.forEach((g, i) => k.asset('gift-' + g, x + (i - (T.gifts.length - 1) / 2) * 26, y + 14, 30, 30));
   if (T.seal) k.asset('keepsake-seal', x + 60, y + 8, 40, 40);
   if (T.stars) {
     const top = n ? pileSlot(n - 1).y : y;

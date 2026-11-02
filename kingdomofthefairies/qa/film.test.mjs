@@ -45,7 +45,10 @@ test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse 
 test('The final tableau lays out every pearl and keepsake of the voyage', () => {
   const st = actBurning.create({ carry: { pearls: 31, tea: 3, guitar: true, pearl: true, stone: false }, from: { scene: 4 } });
   st.pearls = 6;
-  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, sword: true, seal: true, lamp: false });
+  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, gifts: ['flower', 'ring', 'crown', 'gold'], sword: true, seal: true, lamp: false });
+  // a scene opened with nothing recorded still shows what cannot be missed
+  const bare = treasures(actBurning.create({ from: { scene: 4 } }));
+  assert.deepEqual([bare.pearls, bare.stars, bare.lamp, bare.sword, bare.seal, bare.gifts.length], [0, 0, false, true, true, 4]);
   assert.equal(actTower.intertitle, null, 'the Cliff Foot has no second card');
 });
 

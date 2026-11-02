@@ -229,9 +229,14 @@ export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 }
   kinds: ['pearl', 'keepsake-shell', 'aurora-star', 'keepsake-pearl', 'pearl', 'keepsake-star', 'keepsake-rose', 'pearl'] };
 export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
 export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
+// What cannot be missed on the way here (the betrothal gifts, the sword,
+// Neptune's seal) is always laid out, even with nothing recorded (a scene
+// opened directly); the optional finds (pearls, Aurora's stars, her lamp)
+// only when they were found.
+export const REQUIRED_GIFTS = ['flower', 'ring', 'crown', 'gold'];
 export const treasures = st => ({
   pearls: (st.carry?.pearls || 0) + (st.pearls || 0), stars: Math.min(3, st.carry?.tea || 0),
-  sword: !!st.carry?.guitar, seal: !!st.carry?.pearl, lamp: !!st.carry?.stone,
+  gifts: REQUIRED_GIFTS, sword: true, seal: true, lamp: !!st.carry?.stone,
 });
 export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: 80 };
 // After the credits: [X] fades out to the title screen over `fade` seconds;
