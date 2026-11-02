@@ -308,7 +308,7 @@ async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
     maxAbove: Math.max(0, ...ok.map((p) => p.diff)), maxBelow: Math.min(0, ...ok.map((p) => p.diff)),
     multiLayer: ok.filter((p) => p.layers > 1).length,
     pairs: ok.filter((p) => p.layers > 1).reduce((a, p) => { a[p.pair] = (a[p.pair] || 0) + 1; return a; }, {}),
-    pairSamples: ok.filter((p) => p.layers > 1 && p.pair === 'streets+terrain').slice(0, 4).map((p) => [p.x, p.z, p.cat]),
+    pairSamples: ok.filter((p) => p.layers > 1 && p.pair !== 'streets+streets' && p.pair !== 'markings+streets').slice(0, 40).map((p) => [p.pair, p.x, p.z, p.cat]),
     stacked: ghosts.length, leaks: ghosts.filter((p) => p.leak).length,
     stackedBy: ghosts.reduce((a, p) => { a[p.cat] = (a[p.cat] || 0) + 1; return a; }, {}),
     leakSamples: ghosts.filter((p) => p.leak).slice(0, 6).map((p) => [p.cat, p.x, p.z, p.gap]),

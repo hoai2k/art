@@ -149,6 +149,7 @@ function buildMarkings(ctx) {
       let rx = q.seg.bx - q.seg.ax, rz = q.seg.bz - q.seg.az; const rl = Math.hypot(rx, rz); rx /= rl; rz /= rl;
       const cos = Math.abs(((b[0] - a[0]) * rx + (b[1] - a[1]) * rz) / L);
       if (cos > 0.6) continue; // runs along the road, not across
+      if (crossings.any(q.qx, q.qz, 4)) { r.crossing = true; continue; }   // one zebra per crossing (a crossing is often several footway pieces)
       zebra(q.qx, q.qz, rx, rz, q.seg.data.hw, 3.0);
       crossings.add(q.qx, q.qz, true);
       r.crossing = true;
@@ -172,6 +173,7 @@ function buildMarkings(ctx) {
       const cx = j.p[0] + dx * d, cz = j.p[1] + dz * d;
       if (crossings.any(cx, cz, 12)) continue;
       zebra(cx, cz, dx, dz, a.s.hw, 3.0);
+      crossings.add(cx, cz, true);
       // stop bar on the approaching lane (right-hand traffic)
       const nx = -dz, nz = dx; // left of outward direction = right of incoming
       quad(cx + dx * 2.6 + nx * a.s.hw * 0.5, cz + dz * 2.6 + nz * a.s.hw * 0.5, nx, nz, a.s.hw * 0.5 - 0.3, 0.22, STREET.white);
@@ -188,6 +190,7 @@ function buildMarkings(ctx) {
       idx++;
       const j = jgrid.any(x, z, 30, (J) => Math.hypot(J.p[0] - x, J.p[1] - z) < J.r + 3.5);
       if (j) return;
+      if (crossings.any(x, z, 3)) return;             // no paint over paint (a centre line through a zebra)
       if (dbl) { const nx = -dz, nz = dx; quad(x + nx * 0.1, z + nz * 0.1, dx, dz, 1.0, 0.055, STREET.yellow); quad(x - nx * 0.1, z - nz * 0.1, dx, dz, 1.0, 0.055, STREET.yellow); }
       else if (idx % 9 < 3) quad(x, z, dx, dz, 0.5, 0.06, STREET.yellow);
     });
@@ -330,7 +333,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
         // no grass boulevards on bridge decks
         const bq = streets.bgrid.nearest(p[0], p[1], 14);
         if (bq && bq.d <= bq.seg.data.b.half + 0.5) i.blv = 0;
-        const y = H(p[0], p[1]) + (isCurb ? curb : 0.04);
+        const y = isCurb ? H(p[0], p[1]) + curb : Math.max(H(p[0], p[1]), terrainTri(ctx.hf, p[0], p[1])) + 0.04;
         meta.set(p, { isCurb, y, d: isCurb ? 0 : Math.max(i.d, 0.3), i });
       }
       triangulate(P, (pts) => pts.map((p) => {
@@ -369,13 +372,14 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
     }
     yield;
   }
+  const inCarriageway = (x, z) => { const q = streets.grid.nearest(x, z, 20); return !!q && q.d < q.seg.data.hw - 0.4 && !streets.bgrid.nearest(x, z, 2); };
   // ribbons: footways, paths, service lanes (segments whose midpoint is in the chunk)
   for (const r of ctx.ribbonsIn(chunk)) {
     const kind = RIBBON[r.road.kind];
     // each kind a clear step above the terrain and each other (no depth fighting), all in the collider
     const y0 = kind === STREET.service ? 0.05 : kind === STREET.path ? 0.06 : 0.07;
     const surf = kind === STREET.service ? SURFACE.road : kind === STREET.path ? SURFACE.ground : SURFACE.sidewalk;
-    ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz, cb, surf, ctx.hf);
+    ribbon(r.pts, r.road.width, (x, z) => Math.max(H(x, z), terrainTri(ctx.hf, x, z)) + y0, kind, vb, ox, oz, cb, surf, ctx.hf, inCarriageway);
     if (r.road.kind === 'steps') { /* drawn as a footway */ }
   }
   // markings
@@ -396,6 +400,14 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
   for (const b of streets.bridges) if (!b.alongside) buildBridge(ctx, b, chunk, vb, cb);
 }
 
+// The drawn terrain's height: its grid cells are split along the (i, j)-(i+1, j+1)
+// diagonal (index.js terrainMesh), which can sit centimetres above the bilinear height.
+export function terrainTri(hf, x, z) {
+  const fx = (x - hf.x0) / hf.cell, fz = (z - hf.z0) / hf.cell, i = Math.floor(fx), j = Math.floor(fz), u = fx - i, v = fz - j;
+  const a = hf.node(i, j), b = hf.node(i + 1, j), c = hf.node(i + 1, j + 1), d = hf.node(i, j + 1);
+  return u >= v ? a + (b - a) * u + (c - b) * v : a + (c - d) * u + (d - a) * v;
+}
+
 // Earcut via three's ShapeUtils. emit(pts) -> vertex indices, in pts order.
 function triangulate(P, emit, vb, onTri) {
   const toV = (l) => l.map((p) => new THREE.Vector2(p[0], p[1]));
@@ -413,7 +425,7 @@ function triangulate(P, emit, vb, onTri) {
   }
 }
 
-function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0, hf = null) {
+function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0, hf = null, skip = null, cut = [false, false]) {
   const base = hf ? (P) => {
     const x = P[0] + ox, z = P[2] + oz, g = hf.at(x, z);
     if (hf.waterAt(x, z) !== null) return P[1] - 0.4;      // over water the bridge structure closes it
@@ -427,13 +439,22 @@ function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0, hf = nul
   }
   dense.push(pts[pts.length - 1]);
   if (dense.length < 2) return;
+  // the parts over a curbed carriageway are left out (the road is drawn and walked there;
+  // a ribbon's end on the road would be a little wall across it)
+  if (skip) {
+    let run = [], cutStart = false;
+    const flush = (cutEnd) => { if (run.length >= 2) ribbon(run, width, yAt, kind, vb, ox, oz, cb, surf, hf, null, [cutStart, cutEnd]); run = []; };
+    for (const p of dense) { if (skip(p[0], p[1])) { flush(true); cutStart = true; } else { if (!run.length && p !== dense[0] && !cutStart) cutStart = false; run.push(p); } }
+    flush(false);
+    return;
+  }
   let prev = null;
   for (let i = 0; i < dense.length; i++) {
     const p = dense[Math.max(0, i - 1)], q = dense[Math.min(dense.length - 1, i + 1)];
     let dx = q[0] - p[0], dz = q[1] - p[1]; const l = Math.hypot(dx, dz) || 1; dx /= l; dz /= l;
     const x = dense[i][0], z = dense[i][1];
     // extend the ends a little so ribbons overlap at joins
-    const ext = i === 0 ? -hw * 0.6 : i === dense.length - 1 ? hw * 0.6 : 0;
+    const ext = i === 0 ? (cut[0] ? 0 : -hw * 0.6) : i === dense.length - 1 ? (cut[1] ? 0 : hw * 0.6) : 0;
     const cx = x + dx * ext, cz = z + dz * ext;
     vb.set('aSt', [kind, 0, 0, 0]).set('aDir', [dx, dz]);
     const pl = [cx - dz * hw - ox, yAt(cx - dz * hw, cz + dx * hw), cz + dx * hw - oz], pr = [cx + dz * hw - ox, yAt(cx + dz * hw, cz - dx * hw), cz - dx * hw - oz];

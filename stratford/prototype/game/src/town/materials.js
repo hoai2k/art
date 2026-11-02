@@ -3,7 +3,7 @@
 // shader. Every pattern has a stand-in; a delivered texture (assets.js) is
 // sampled instead when it is listed in assets/manifest.json.
 import * as THREE from 'three';
-import { GLSL_NOISE } from './util.js';
+import { GLSL_NOISE, bleedColours } from './util.js';
 
 const WORLD_VARYINGS = 'varying vec3 vWP;\nvarying vec3 vWN;\n';
 const WORLD_POS = /* glsl */`
@@ -120,7 +120,7 @@ export function groundArray(assets) {
     const t = assets && assets.tex[name], img = t && t.texture.image;
     g.clearRect(0, 0, S, S);
     if (img) { g.drawImage(img, 0, 0, S, S); delivered[name] = true; } else GD_STANDIN[name](g, S);
-    const d = g.getImageData(0, 0, S, S).data;
+    const d = (name === 'leaf_drift' || name === 'leaf_scatter' ? bleedColours(cv) : g.getImageData(0, 0, S, S)).data;   // cut-outs: no dark fringes in the mips
     // rows flipped: v = 0 at the image's bottom, as for the other textures
     for (let y = 0; y < S; y++) data.set(d.subarray((S - 1 - y) * S * 4, (S - y) * S * 4), layer * S * S * 4 + y * S * 4);
   });
@@ -374,7 +374,7 @@ vec3 streetBase(vec3 wp) {
     return c;
   }
   if (kind == 2.0) {               // curb face (vSt.y: the top of the curb)
-    vec3 c = gdAT(3.0, vec2(along / 1.2, 1.0 - clamp((vSt.y - wp.y) / 0.3, 0.0, 0.98))).rgb;
+    vec3 c = gdAT(3.0, vec2(along / 1.2, 1.0 - (vSt.y - wp.y) / 0.3)).rgb;
     return c * (1.0 - 0.35 * smoothstep(0.16, 0.3, vSt.y - wp.y));
   }
   if (kind == 3.0) {

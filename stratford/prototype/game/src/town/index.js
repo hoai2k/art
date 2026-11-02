@@ -17,7 +17,7 @@ import { createTrees, prepareTrees, addStreetTrees } from './trees.js';
 import { placeProps, createProps } from './props.js';
 import { createSky } from './sky.js';
 import { grassLayer, cellSeed } from './detail.js';
-import { buildAtlas, nearLayer, midLayer, fixturesLayer, createView } from './ground.js';
+import { buildAtlas, nearLayer, midLayer, fixturesLayer, createView, pilesOf } from './ground.js';
 import { facadeLayer, FACADE_SHOW_RADIUS } from './facade3d.js';
 
 export const CHUNK = 200;
@@ -500,7 +500,8 @@ export async function createTown(opts = {}) {
     roadsIn: (x0, z0, size) => { const set = new Set(); ctx.streets.grid.query(x0 + size / 2, z0 + size / 2, size * 0.75, (sg) => set.add(sg.data)); return [...set].filter((st) => !st.road.bridge).map((st) => ({ points: st.road.points, hw: st.hw, id: st.id })); },
     downtownAt: (x, z) => { const q = ctx.streets.grid.nearest(x, z, 40); return (q && q.seg.data.downtown) || Math.hypot(x - centreL.x, z - centreL.z) < 120; },
   });
-  details.add(nearLayer(details.env, view.U, atlas.texture, view));
+  const near = nearLayer(details.env, view.U, atlas.texture, view);
+  details.add(near);
   details.add(midLayer(details.env, view.U, atlas.texture, view));
   details.add(fixturesLayer(details.env, view.U, atlas.texture, shared));
   details.add(grassLayer(details.env));
@@ -529,7 +530,7 @@ export async function createTown(opts = {}) {
     waterAt: (x, z) => hf.waterAt(x, z),
     surfaceAt,
     spawn, landmarks,
-    trees: ctx.trees.map((t) => ({ x: t.x, y: t.y, z: t.z, height: t.height, crown: t.crown, kind: t.kind })),
+    trees: ctx.trees.map((t) => ({ x: t.x, y: t.y, z: t.z, height: t.height, crown: t.crown, kind: t.kind, street: !!t.grate })),
     data,
     collidersNear, raycast,
     setScale(s) { if (s > 0 && s !== scale) { setScaleRadii(s); details.setScale(s); } },
@@ -572,6 +573,9 @@ export async function createTown(opts = {}) {
     },
     setTimeOfDay: (h) => sky.setTimeOfDay(h),
     get timeOfDay() { return sky.hours; },
+    // for the bench: the leaf piles (ground.js) near (x, z)
+    debugFixtures: (x, z, r = 40) => { const out = []; root.traverse((o) => { for (const f of o.userData.fixtures || []) if (Math.hypot(f.x - x, f.z - z) < r) out.push(f); }); return out; },
+    debugPiles: (x, z, r = 30) => pilesOf(details.env, details.env.treesNear(x, z, r + 14), x - r, z - r, 2 * r).map((p) => ({ x: p.x, z: p.z, y: p.y, R: p.R, H: p.H })),
     // for tests and probes: the visible ground-level meshes of the chunks
     // around (x, z) (terrain, streets, buildings) and of the detail layers
     debugGroundMeshes(x, z, r = 30) {
@@ -580,7 +584,7 @@ export async function createTown(opts = {}) {
         if (!c.group || x < c.x0 - r || x > c.x0 + CHUNK + r || z < c.z0 - r || z > c.z0 + CHUNK + r) continue;
         c.group.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.parent && o.parent.visible) out.push(o); });
       }
-      root.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.userData.detailLayer) out.push(o); });
+      root.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.userData.detailLayer && !o.userData.notGround) out.push(o); });
       return out;
     },
     buildingAt(x, z) { const b = ctx.buildingAt(x, z); return b ? b.id : null; },
@@ -594,7 +598,7 @@ export async function createTown(opts = {}) {
       const seen = new Set(); root.traverse((o) => { if (o.geometry) seen.add(o.geometry); });
       let cols = 0; for (const c of chunks.values()) cols += c.colliders.length;
       const box = new THREE.Box3(new THREE.Vector3(-1e9, -1e9, -1e9), new THREE.Vector3(1e9, 1e9, 1e9)); const dc = []; details.collidersNear(box, dc);
-      return { geometries: seen.size + cols + dc.length, chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale, zoom: +view.zoom.toFixed(2), groundNearR: +view.rNear.toFixed(2) };
+      return { geometries: seen.size + cols + dc.length, chunks: chunks.size, far: lv[1], near: lv[2], colliders: [...chunks.values()].reduce((s, c) => s + c.colliders.length, 0), colliderTris: stats.colliderTris, detailCells: details.count(), nearR, farR, scale, zoom: +view.zoom.toFixed(2), groundNearR: +view.rNear.toFixed(2), leavesFlying: near.flying };
     },
     dispose() {
       disposed = true;

@@ -15,7 +15,7 @@
 import * as THREE from 'three';
 import { MeshBVH } from 'three-mesh-bvh';
 import { SURFACE } from '../surface.js';
-import { Builder, hash1, hash2 } from './util.js';
+import { Builder, hash1, hash2, bleedColours } from './util.js';
 import { pebble } from './detail.js';
 
 // ---------------------------------------------------------------- the sprite atlas
@@ -68,6 +68,7 @@ export function buildAtlas(assets) {
     g.closePath(); g.clip();
     if (m) g.drawImage(m, 0, 0, m.width / 2, m.height / 2, x, y, w, w); else { g.fillStyle = '#7a3c22'; g.fillRect(x, y, w, w); for (let k = 0; k < 400; k++) { g.fillStyle = `hsl(${15 + (k % 7) * 3},55%,${18 + (k % 5) * 6}%)`; g.fillRect(x + ((k * 37) % w), y + ((k * 61) % w), 6, 2); } }
     g.restore(); }
+  bleedColours(cv);
   const t = new THREE.CanvasTexture(cv);
   t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter;
   return { texture: t, has };
@@ -129,7 +130,7 @@ const standIn = {
     const cw = w / 3, ch = h / 2;
     for (let i = 0; i < 6; i++) {
       const cx = x + (i % 3) * cw + cw / 2, by = y + Math.floor(i / 3) * ch + ch * 0.85;
-      for (let k = 0; k < 220; k++) { const a = Math.random() * Math.PI, rr = Math.sqrt(Math.random()); g.fillStyle = ['#c04018', '#d87020', '#e0a028', '#9a5a2a'][k % 4]; g.beginPath(); g.ellipse(cx + Math.cos(a) * rr * cw * 0.42, by - Math.sin(a) * rr * ch * 0.55, 9, 5, k, 0, Math.PI * 2); g.fill(); }
+      for (let k = 0; k < 220; k++) { const a = hash1(k * 3 + i) * Math.PI, rr = Math.sqrt(hash1(k * 7 + i + 1)); g.fillStyle = ['#c04018', '#d87020', '#e0a028', '#9a5a2a'][k % 4]; g.beginPath(); g.ellipse(cx + Math.cos(a) * rr * cw * 0.42, by - Math.sin(a) * rr * ch * 0.55, 9, 5, k, 0, Math.PI * 2); g.fill(); }
     }
   },
   pebbles(g, x, y, w, h) {
@@ -194,15 +195,28 @@ function puddleMaterial(atlas, shared) {
   return m;
 }
 
-// contact shadows under the near leaves (they share the leaves' instances)
-function shadowMaterial(atlas) {
-  const m = new THREE.MeshBasicMaterial({ color: 0x000000, map: atlas, transparent: true, opacity: 0.42, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -4 });
-  const r = cellRect('blob', 0, 0.02);
+// contact shadows under the near leaves: a soft blob texture of its own (in the atlas
+// its neighbours would bleed into it in the far mips), thinned and faded as the leaves are
+function shadowMaterial(U) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 64;
+  const g = cv.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 31);
+  gr.addColorStop(0, '#fff'); gr.addColorStop(0.55, '#999'); gr.addColorStop(1, '#000');     // an alpha map reads the grey
+  g.fillStyle = '#000'; g.fillRect(0, 0, 64, 64); g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+  const tex = new THREE.CanvasTexture(cv);
+  const m = new THREE.MeshBasicMaterial({ color: 0x000000, alphaMap: tex, transparent: true, opacity: 0.55, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -4 });
   m.onBeforeCompile = (sh) => {
-    sh.vertexShader = sh.vertexShader.replace('#include <uv_vertex>', `#include <uv_vertex>\nvMapUv = vec2(${r[0].toFixed(5)}, ${r[1].toFixed(5)}) + uv * vec2(${r[2].toFixed(5)}, ${r[3].toFixed(5)});`);
-    sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', '#include <map_fragment>\ndiffuseColor.rgb = vec3(0.0);');
+    sh.uniforms.uFade = U.fade; sh.uniforms.uKeep = U.keep;
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>', '#include <common>\nuniform vec4 uFade; uniform float uKeep; attribute float aRnd; varying vec2 vFadeP; varying float vKeep;')
+      .replace('#include <project_vertex>', '#include <project_vertex>\n{ vec4 q = vec4(transformed, 1.0);\n#ifdef USE_INSTANCING\n q = instanceMatrix * q;\n#endif\n vFadeP = (modelMatrix * q).xz; vKeep = step(aRnd, uKeep); }');
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\nuniform vec4 uFade; varying vec2 vFadeP; varying float vKeep;')
+      .replace('#include <alphamap_fragment>', `#include <alphamap_fragment>
+        if (vKeep < 0.5) discard;
+        if (uFade.w > 0.0) diffuseColor.a *= 1.0 - clamp((length(vFadeP - uFade.xy) - uFade.z + uFade.w) / uFade.w, 0.0, 1.0);`);
   };
   m.customProgramCacheKey = () => 'ground-blob';
+  m.userData.tex = tex;
   return m;
 }
 
@@ -300,7 +314,7 @@ export function pilesOf(env, trees, x0, z0, size) {
     const a = hash2(t.z, t.x * 2.1) * Math.PI * 2, r = t.crown * (0.45 + 0.3 * hash2(t.x, t.z * 3.3));
     const x = t.x + Math.cos(a) * r, z = t.z + Math.sin(a) * r;
     const s = env.surfaceAt(x, z); if (!s || (s.surface !== SURFACE.grass && s.surface !== SURFACE.ground) || s.normal.y < 0.9) continue;
-    const R = 0.38 + 0.3 * hash2(x, z), H = R * (0.5 + 0.25 * hash2(z, x));
+    const R = 0.4 + 0.3 * hash2(x, z), H = R * (0.42 + 0.18 * hash2(z, x));
     out.push({ x, z, y: s.y, R, H, cell: Math.floor(hash2(x * 3, z) * 6), tree: t });
   }
   return out;
@@ -311,8 +325,8 @@ export function nearLayer(env, U, atlas, view) {
   const leafMat = cardMaterial(atlas, U, { mode: 1, keep: true });
   const plantMat = cardMaterial(atlas, U, { mode: 1, keep: true });
   const solidMat = new THREE.MeshLambertMaterial({ map: atlas, vertexColors: true });
-  const domeMat = new THREE.MeshLambertMaterial({ map: atlas, color: 0xb07050 });
-  const blobMat = shadowMaterial(atlas);
+  const domeMat = new THREE.MeshLambertMaterial({ map: atlas, color: 0xe0b090 });
+  const blobMat = shadowMaterial(U);
   const leafGeo = leafGeometry(), quadGeo = flatGeometry(0.0015), crossGeo = crossGeometry();
   const live = new Set();
   const layer = {
@@ -361,12 +375,12 @@ export function nearLayer(env, U, atlas, view) {
           void r;
         }
         for (let j = 0; j < M; j++) for (let i = 0; i < N; i++) { const a = j * (N + 1) + i; db.quad(a, a + 1, a + N + 2, a + N + 1); }
-        const dm = new THREE.Mesh(db.geometry(), domeMat); dm.position.set(p.x - ox, p.y, p.z - oz); dm.receiveShadow = true; dm.castShadow = true; domes.push(dm);
+        const dm = new THREE.Mesh(db.geometry(), domeMat); dm.position.set(p.x - ox, p.y, p.z - oz); dm.receiveShadow = true; dm.castShadow = true; dm.userData.notGround = true; domes.push(dm);   // a creature dives into it: no collider
         p.mesh = dm; p.burst = 0; p.t = 0;
         const set = leafCells(p.tree);
-        for (let k = 0; k < 150; k++) {
-          const a = rng() * Math.PI * 2, rr = Math.sqrt(rng()) * p.R, h = p.H * Math.sqrt(Math.max(0, 1 - (rr / p.R) ** 2));
-          addLeaf(p.x + Math.cos(a) * rr, p.y + h + 0.004, p.z + Math.sin(a) * rr, (0.08 + rng() * 0.06) * sc, set[Math.floor(rng() * set.length)] ?? 1, p.y, pi, 0.9);
+        for (let k = 0; k < 320; k++) {
+          const a = rng() * Math.PI * 2, rr = Math.sqrt(rng()) * p.R * 1.05, h = p.H * Math.sqrt(Math.max(0, 1 - (rr / p.R) ** 2));
+          addLeaf(p.x + Math.cos(a) * rr, p.y + h + 0.004, p.z + Math.sin(a) * rr, (0.1 + rng() * 0.06) * sc, set[Math.floor(rng() * set.length)] ?? 1, p.y, pi, 0.9);
         }
       });
       // debris under the trees: twigs and branches, pine cones, acorns, horse chestnuts
@@ -381,7 +395,7 @@ export function nearLayer(env, U, atlas, view) {
             const a = rng() * Math.PI * 2, r = Math.sqrt(rng()) * reach, x = t.x + Math.cos(a) * r, z = t.z + Math.sin(a) * r;
             if (x < x0 || x >= x0 + size || z < z0 || z >= z0 + size) continue;
             const s = gnd(x, z); if (!surfOk(s) || s.normal.y < 0.85) continue;
-            if (s.surface === SURFACE.road && kind !== 'acorn') continue;
+            if (s.surface === SURFACE.road || (kind === 'branch' && s.surface === SURFACE.sidewalk)) continue;   // the carriageway is swept by traffic
             const lx = x - ox, lz = z - oz;
             if (kind === 'cone') solid(sb, tris, surfs, lx, s.y, lz, 0.045 * sc, 0.022 * sc, rng, cellRect('debris', DEBRIS.cone), SURFACE.prop);
             else if (kind === 'acorn') { solid(sb, tris, surfs, lx, s.y, lz, 0.013 * sc, 0.01 * sc, rng, cellRect('debris', DEBRIS.acorn), SURFACE.prop); if (rng() < 0.4) leaves.push(flatCard(lx + 0.03, s.y + 0.003, lz, 0.025 * sc, cellRect('debris', DEBRIS.cap), rng)); }
@@ -397,7 +411,7 @@ export function nearLayer(env, U, atlas, view) {
         const x = x0 + rng() * size, z = z0 + rng() * size;
         const s = gnd(x, z); if (!s || s.normal.y < 0.85) continue;
         const lx = x - ox, lz = z - oz;
-        if (s.surface === SURFACE.grass || s.surface === SURFACE.ground) {
+        if (s.surface === SURFACE.grass || (s.surface === SURFACE.ground && [0, 1, 5].includes(env.groundClass(x, z)))) {
           const shade = treeCover(trees, x, z).dens > 20;
           const r = rng();
           const kind = shade ? (r < 0.06 ? PLANT.mushrooms : r < 0.4 ? PLANT.clover : r < 0.5 ? PLANT.plantain : -1)
@@ -425,7 +439,8 @@ export function nearLayer(env, U, atlas, view) {
         const lm = instanced(leafGeo.clone(), leafMat, leaves);
         group.add(lm); st.leafMesh = lm;
         // contact shadows (leaves only, not the flat bits): flat blobs on the ground under each leaf
-        const blobs = new THREE.InstancedMesh(quadGeo.clone(), blobMat, nLeaf); blobs.frustumCulled = false;
+        const bg = quadGeo.clone(); bg.setAttribute('aRnd', new THREE.InstancedBufferAttribute(lm.geometry.attributes.aRnd.array.slice(0, nLeaf), 1));
+        const blobs = new THREE.InstancedMesh(bg, blobMat, nLeaf); blobs.frustumCulled = false;
         for (let i = 0; i < nLeaf; i++) blobs.setMatrixAt(i, blobMatrix(L, i));
         group.add(blobs); st.blobMesh = blobs; st.nLeaf = nLeaf;
         lm.renderOrder = 1;
@@ -454,7 +469,7 @@ export function nearLayer(env, U, atlas, view) {
             p.burst = 1;
             for (let i = 0; i < st.nLeaf; i++) if (L.pile[i] === st.piles.indexOf(p)) launch(L, i, (L.x[i] - px) * 4, 1.6 + Math.random() * 2.2, (L.z[i] - pz) * 4, v.vel, sc), st.moving++;
           }
-          if (p.burst && p.t < 1) { p.t = Math.min(1, p.t + dt * 2.5); p.mesh.scale.set(1 + p.t * 0.25, 1 - p.t * 0.75, 1 + p.t * 0.25); }
+          if (p.burst && p.t < 1) { p.t = Math.min(1, p.t + dt * 2.5); p.mesh.scale.set(1 + p.t * 0.25, Math.max(0.01, 1 - p.t), 1 + p.t * 0.25); if (p.t >= 1) p.mesh.visible = false; }   // flattened, then gone (its leaves lie about)
         }
         // a running creature kicks up the leaves in its way
         if (sp > 0.35 * sc && st.bucket) {
@@ -492,7 +507,9 @@ export function nearLayer(env, U, atlas, view) {
         st.moving = moving;
       }
     },
-    dispose() { leafMat.dispose(); plantMat.dispose(); solidMat.dispose(); domeMat.dispose(); blobMat.dispose(); leafGeo.dispose(); quadGeo.dispose(); crossGeo.dispose(); live.clear(); },
+    // leaves in the air now (for the bench and the tests)
+    get flying() { let n = 0; for (const st of live) n += st.moving || 0; return n; },
+    dispose() { leafMat.dispose(); plantMat.dispose(); solidMat.dispose(); domeMat.dispose(); blobMat.userData.tex.dispose(); blobMat.dispose(); leafGeo.dispose(); quadGeo.dispose(); crossGeo.dispose(); live.clear(); },
   };
   return layer;
 }
@@ -504,7 +521,7 @@ function launch(L, i, ox, up, oz, vel, sc) {
 }
 function blobMatrix(L, i) {
   const h = Math.max(0, L.y[i] - L.g[i]), k = Math.max(0.15, 1 - h * 4) * L.s[i];
-  return compose(L.x[i], L.g[i], L.z[i], 0, L.ry[i], 0, k * 0.9, 1, k * 1.25, _m);
+  return compose(L.x[i], L.g[i], L.z[i], 0, L.ry[i], 0, k * 0.95, 1, k * 1.35, _m);
 }
 function flatCard(x, y, z, s, rect, rng) {
   return { m: compose(x, y, z, 0, rng() * Math.PI * 2, 0, s, s * 0.6, s), rect, rnd: rng(), col: [1, 1, 1] };
@@ -572,7 +589,7 @@ export function midLayer(env, U, atlas, view) {
         const { dens, tree } = treeCover(trees, x, z);
         const s = env.surfaceAt(x, z);
         if (!surfOk(s)) continue;
-        const isPebble = rng() < (s.surface === SURFACE.ground ? 0.3 : 0.06);
+        const isPebble = s.surface !== SURFACE.road && rng() < (s.surface === SURFACE.ground ? 0.3 : 0.06);   // none on the carriageway (swept by traffic)
         if (!isPebble && rng() * 46 > (s.surface === SURFACE.road ? 0.3 : 1) * (dens * 0.9 + 2)) continue;
         const lx = x - cell.ox, lz = z - cell.oz, y = s.y + 0.004, up = s.normal;
         if (isPebble) { pcoll.push(...pebble(pb, lx, y - 0.003, lz, 0.008 + rng() * 0.02, Math.floor(rng() * 16), rng)); continue; }
@@ -612,9 +629,11 @@ export function fixturesLayer(env, U, atlas, shared) {
       const { x0, z0, size, rng } = cell, ox = cell.ox, oz = cell.oz;
       const items = [], puddles = [];
       const inCell = (x, z) => x >= x0 && x < x0 + size && z >= z0 && z < z0 + size;
+      const where = [];                                   // (for the bench: what is where)
       const place = (list, x, z, w, l, yaw, rect, lift, want) => {
         const s = env.surfaceAt(x, z); if (!s || s.normal.y < 0.97 || (want && !want.includes(s.surface))) return false;
         list.push({ m: compose(x - ox, s.y + lift, z - oz, 0, yaw, 0, w, 1, l), rect, rnd: rng(), col: [1, 1, 1] });
+        where.push({ x, z, kind: list === puddles ? 'puddle' : Object.keys(ITEM).find((k) => cellRect('items', ITEM[k], 0.04)[0] === rect[0] && cellRect('items', ITEM[k], 0.04)[1] === rect[1]) || 'mulch' });
         return true;
       };
       // along each curbed street: manholes in the lanes, storm grates at the curb
@@ -653,8 +672,8 @@ export function fixturesLayer(env, U, atlas, shared) {
         const x = x0 + rng() * size, z = z0 + rng() * size, r = rng();
         const s = env.surfaceAt(x, z); if (!s) continue;
         if (s.surface === SURFACE.sidewalk) {
-          const kind = r < 0.3 ? ITEM.valve : r < 0.5 ? ITEM.plate : r < 0.6 ? ITEM.marker : r < 0.85 ? ITEM.crack : -1; if (kind < 0) continue;
-          const si = env.streetInfo(x, z), w = kind === ITEM.plate ? 0.5 : kind === ITEM.crack ? 0.45 : 0.16;
+          const kind = r < 0.3 ? ITEM.valve : r < 0.5 ? ITEM.plate : r < 0.6 ? ITEM.marker : -1; if (kind < 0) continue;
+          const si = env.streetInfo(x, z), w = kind === ITEM.plate ? 0.5 : 0.16;
           place(items, x, z, w, w * (kind === ITEM.plate ? 0.7 : 1), si ? Math.atan2(-si.dz, si.dx) : 0, cellRect('items', kind, 0.04), 0.002);
         } else if ((s.surface === SURFACE.ground || s.surface === SURFACE.road) && r < 0.25 && env.groundClass(x, z) !== 1) {
           place(puddles, x, z, 0.8 + rng() * 1.4, 0.5 + rng() * 0.6, rng() * 6.28, cellRect('items', ITEM.puddle, 0.03), 0.003);
@@ -664,6 +683,7 @@ export function fixturesLayer(env, U, atlas, shared) {
       const group = new THREE.Group();
       if (items.length) group.add(instanced(quad.clone(), mat, items, { color: false }));
       if (puddles.length) { const m = instanced(quad.clone(), pmat, puddles, { color: false }); group.add(m); }
+      group.userData.fixtures = where;
       return { object: group };
     },
     dispose() { mat.dispose(); pmat.dispose(); quad.dispose(); },

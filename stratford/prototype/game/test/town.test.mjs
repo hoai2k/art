@@ -203,6 +203,57 @@ test('every visible ground matches the collider (ground probe)', { timeout: 9000
   } finally { await page.close(); }
 });
 
+test('ground detail: leaves scatter and piles burst where a creature runs, the near tier follows the zoom, walkable debris is in the collider', { timeout: 900000 }, async (t) => {
+  if (!(await hasRealData())) { t.skip('no town data'); return; }
+  const { page, errors } = await openTown('?norender');
+  try {
+    const r = await page.evaluate(async () => {
+      const w = bench.world, cam = bench.camera, V = bench.vec;
+      w.setScale(0.25);
+      // a leaf pile in the park (Shakespearean Gardens)
+      const piles = w.debugPiles(-234.8, -215.8, 80);
+      const p = piles[0];
+      const out = { piles: piles.length };
+      if (!p) return out;
+      const start = { x: p.x - (p.R + 1.2), z: p.z };
+      const focus = V(start.x, w.groundAt(start.x, start.z), start.z);
+      const place = (d) => { cam.position.set(focus.x - d, focus.y + 0.3, focus.z); cam.lookAt(focus); };
+      await w.ready({ x: p.x, y: 0, z: p.z });
+      place(0.85); for (let k = 0; k < 10; k++) w.update(1 / 60, cam, focus);
+      out.rDefault = w.info().groundNearR;
+      place(4.25); for (let k = 0; k < 10; k++) w.update(1 / 60, cam, focus);
+      out.rFar = w.info().groundNearR;
+      place(0.85); for (let k = 0; k < 10; k++) w.update(1 / 60, cam, focus);
+      await w.ready({ x: p.x, y: 0, z: p.z });
+      // run east through the pile at 3 m/s
+      let flying = 0;
+      for (let k = 0; k < 90; k++) {
+        focus.x += 3 / 60; focus.y = w.groundAt(focus.x, focus.z); place(0.85);
+        w.update(1 / 60, cam, focus);
+        flying = Math.max(flying, w.info().leavesFlying);
+      }
+      out.flying = flying;
+      for (let k = 0; k < 240; k++) w.update(1 / 60, cam, focus);
+      out.settled = w.info().leavesFlying;
+      // walkable debris under the trees: branches (perches) and props (cones, acorns, twigs) in the near tier's colliders
+      const surf = new Set();
+      for (const m of w.collidersNear(bench.box(p.x - 6, -100, p.z - 6, p.x + 6, 100, p.z + 6))) {
+        if (!m.userData || m.name) continue;
+        const a = m.geometry.attributes.surface; for (let i = 0; i < a.count; i += 3) surf.add(a.getX(i));
+      }
+      out.detailSurfaces = [...surf].sort();
+      return out;
+    });
+    console.log(`  ground detail: ${JSON.stringify(r)}`);
+    assert.ok(r.piles > 0, 'leaf piles in the park');
+    assert.ok(r.rFar < r.rDefault, `the near tier pulls in when the camera zooms out (${r.rDefault} -> ${r.rFar} m)`);
+    assert.ok(r.flying >= 20, `leaves fly up when the creature runs through a pile (${r.flying})`);
+    assert.ok(r.settled === 0, `and settle again (${r.settled} still in the air)`);
+    assert.ok(r.detailSurfaces.includes(12), 'cones, acorns, twigs and pebbles are in the collider');
+    assert.deepEqual(errors, [], 'no console errors');
+  } finally { await page.close(); }
+});
+
 test('the fixture town builds too', { timeout: 300000 }, async () => {
   const fx = JSON.parse(await readFile(join(GAME, 'test/fixtures/town-mini.json'), 'utf8'));
   const { page, errors } = await openTown('?data=fixture&norender');

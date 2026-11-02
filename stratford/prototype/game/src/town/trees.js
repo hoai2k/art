@@ -373,6 +373,8 @@ export function addStreetTrees(ctx) {
         if (hash2(px, pz) < 0.3) return;
         if (streets.jgrid.any(x, z, 40, (J) => Math.hypot(J.p[0] - x, J.p[1] - z) < J.r + 6)) return;
         if (ctx.markingGrid.any(px, pz, 4)) return;
+        // clear of every carriageway (at a bend the offset from one segment can land in the next)
+        const q = streets.grid.nearest(px, pz, 30); if (q && q.d < q.seg.data.hw + 0.55) return;
         for (const o of [[0, 0], [nx * 1.6, nz * 1.6], [nx * 3, nz * 3]]) if (ctx.buildingAt(px + o[0], pz + o[1])) return;
         if (near(px, pz, 6)) return;
         const h = hash2(pz, px);

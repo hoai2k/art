@@ -324,3 +324,22 @@ export function disposeObject(root) {
     }
   });
 }
+
+// Cut-out textures: give the transparent pixels the colour of the nearby opaque
+// ones, so mipmaps and filtering do not draw dark fringes round the cut-outs.
+export function bleedColours(canvas, radius = 6) {
+  const W = canvas.width, H = canvas.height, g = canvas.getContext('2d', { willReadFrequently: true });
+  const src = g.getImageData(0, 0, W, H);
+  const bc = document.createElement('canvas'); bc.width = W; bc.height = H;
+  const bg = bc.getContext('2d', { willReadFrequently: true });
+  for (const r of [radius, radius * 4]) { bg.filter = `blur(${r}px)`; bg.drawImage(canvas, 0, 0); }
+  bg.filter = 'none';
+  const b = bg.getImageData(0, 0, W, H).data, d = src.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const a = d[i + 3]; if (a === 255 || b[i + 3] === 0) continue;
+    const t = a / 255;
+    d[i] = d[i] * t + b[i] * (1 - t); d[i + 1] = d[i + 1] * t + b[i + 1] * (1 - t); d[i + 2] = d[i + 2] * t + b[i + 2] * (1 - t);
+  }
+  g.putImageData(src, 0, 0);
+  return src;
+}
