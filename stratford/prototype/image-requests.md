@@ -358,3 +358,18 @@ Nine animal reference sheets and the transparent creature portrait strip deliver
 ## Round 10 delivery — 2026-11-02
 
 All 14 ground-detail images generated with built-in image_gen, saved at listed asset paths with web copies and manifest entries. Prompts in `generation-prompts-round-10.json`. PNG decoding, dimensions and requested alpha channels checked; contact sheet visually reviewed. Two sheets have near-transparent minimum alpha of 1/255. Texture seams remain subject to in-game review. 23 shell/town-data tests passed. No deployment.
+
+## Round 11: replacements after reviewing rounds 9 and 10
+
+Rounds 9 and 10 were reviewed image by image on delivery. Almost all of them
+work as delivered. These six fall short of what the game needs and are asked
+for again; the originals stay in use until the replacements arrive.
+
+| # | File | Size | Why it's asked again | Prompt |
+|---|---|---|---|---|
+| R11.1 | `beaver_turnaround.png` → `reference/sheets/beaver_turnaround.png` | 1920 × 1080 | The "side" view came out turned three-quarters, so it can't be measured as a profile. | Exactly as R9.1, but the left view must be a **strict orthographic side profile facing right**: the camera level with the body and at right angles to it, only the near side visible, the near legs in front of the far ones, the tail seen edge-on as a thin flat paddle. Middle: strict top view, head right. Right: three-quarter front view. Same beaver, same scale, plain light grey background, no text. Status: `open` |
+| R11.2 | `heron_turnaround.png` → `reference/sheets/heron_turnaround.png` | 1920 × 1080 | The "top" view shows the heron lying on its side with its legs sideways, not seen from above while standing. | Exactly as R9.7, but the middle view must be a **strict top-down view of the heron standing upright**, the camera directly overhead looking down at its back: the folded wings and back plumes, the S-curved neck and bill pointing right, and only the toes showing below the body. Left: strict side view facing right. Right: three-quarter front view. Same bird, same scale, plain light grey background, no text. Status: `open` |
+| G11.3 | `textures/curb_face.png` | 1024 × 256 | Came out painted bright yellow (a no-parking curb); the default curb is bare concrete. | As G10.6, in **plain weathered grey concrete with no paint**: a seamless (left–right) front view of the vertical face and rounded top edge of an old concrete curb, chipped in places, grimy at the bottom. Status: `open` |
+| G11.4 | `textures/asphalt_patched.png` | 1024 × 1024 | Has yellow lane-paint dashes baked in, which would repeat every 4 m on every road. | As G10.11 **with no road paint at all**: worn downtown asphalt with darker patched rectangles, sealed cracks in black tar lines and a few leaves; seamless, top-down. Status: `open` |
+| G11.5 | `sprites/ground_plants.png` | 2048 × 1024 | Each plant sits in a pale glow halo instead of a clean cut-out edge. | The same twelve plants as G10.13, on a **flat pure #FF00FF magenta background** with crisp edges, no glow, no soft shadow and no halo around any item, each plant whole and separate. Status: `open` |
+| G11.6 | `textures/leaf_drift_edge.png` | 1024 × 1024 | Has a stone curb painted along its top edge; the curb is modelled separately. | As G10.1 with **no curb or pavement drawn**: leaves only, thickest along the top edge and thinning to scattered single leaves at the bottom, transparent everywhere else; seamless left–right. Status: `open` |
