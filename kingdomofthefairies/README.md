@@ -2,7 +2,7 @@
 
 A hand-tinted toy-theatre voyage inspired by Georges Méliès’s silent film
 *Le Royaume des fées* (1903). Play at
-https://hoai2k.github.io/mini/kingdomofthefairies/.
+https://games.hoai.net/art/kingdomofthefairies/.
 
 There are two editions, chosen by the address:
 
@@ -82,11 +82,13 @@ so an immediate forward press cannot send you straight back inside. Each jump in
 while the credits run only once. “Procession Royale” continues throughout,
 and completion is saved before the roll.
 
-The film cast, props and sets use the delivered production art; anything still
-requested is drawn by an interim cut-out from the planning sheets (`assets/interim/`, `assets/tableaux/`, made by
-`design/source/cut_planning.py`) until the production requests arrive.
+The film cast, props and sets all use the delivered production art: every
+requested image has arrived, and `qa/film.test.mjs` fails if a film slot in
+`assets/manifest.json` is anything but delivered. (The interim cut-outs and
+tableaux once cut from the planning sheets were retired once the last of it
+arrived; they are in Git history.)
 
-[`?widowsbay=on`](https://hoai2k.github.io/mini/kingdomofthefairies/?widowsbay=on)
+[`?widowsbay=on`](https://games.hoai.net/art/kingdomofthefairies/?widowsbay=on)
 keeps the original five acts unchanged (and the default plays them without the band or guitar): The Crossing, The Sleepers' Grotto,
 The Sea King's Court, The Whale's Road and The Enchanted Tower (cliff, burning
 house, beloved, endings and pageant).
@@ -151,7 +153,7 @@ New documentation uses the full film, not the music-video edit, as its authority
 
 [The film planning gallery](design/references/film-planning/index.html) contains
 the ten character sheets and twenty scene concepts for the proposed adaptation.
-Source request briefs, named references and native originals are retained. These are design references; interim cut-outs from them remain only for assets whose production art has not arrived.
+Source request briefs, named references and native originals are retained. These are design references only; the game draws none of them.
 
 [The production artwork gallery](design/generated/film-production/index.html)
 contains the film-edition sprites, props and sets, with native originals and
@@ -174,7 +176,7 @@ scene moods. New effects use `design/source/build_sfx.py`; its key comes from
 `ELEVENLABS_API_KEY` and must never be committed.
 
 [The workbench](workbench/README.md), at
-https://hoai2k.github.io/mini/kingdomofthefairies/workbench/, reviews every
+https://games.hoai.net/art/kingdomofthefairies/workbench/, reviews every
 cinematic with pause, scrub, stepping and copied moment links. Append
 `?widowsbay=on` there to review the legacy cast.
 

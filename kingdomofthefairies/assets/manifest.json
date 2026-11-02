@@ -967,8 +967,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-stand.webp"
+      "edition": "film"
     },
     "prince-walk-a": {
       "status": "delivered",
@@ -978,8 +977,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-walk-a.webp"
+      "edition": "film"
     },
     "prince-walk-b": {
       "status": "delivered",
@@ -989,8 +987,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-walk-b.webp"
+      "edition": "film"
     },
     "prince-leap": {
       "status": "delivered",
@@ -1000,8 +997,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-leap.webp"
+      "edition": "film"
     },
     "prince-crouch": {
       "status": "delivered",
@@ -1011,8 +1007,7 @@
         300
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-crouch.webp"
+      "edition": "film"
     },
     "prince-carry": {
       "status": "delivered",
@@ -1022,8 +1017,7 @@
         400
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-carry.webp"
+      "edition": "film"
     },
     "prince-swim-a": {
       "status": "delivered",
@@ -1033,8 +1027,7 @@
         240
       ],
       "anchor": "centre (between his shoulder blades)",
-      "edition": "film",
-      "interim": "interim/prince-swim-a.webp"
+      "edition": "film"
     },
     "prince-swim-b": {
       "status": "delivered",
@@ -1044,8 +1037,7 @@
         240
       ],
       "anchor": "centre (between his shoulder blades)",
-      "edition": "film",
-      "interim": "interim/prince-swim-b.webp"
+      "edition": "film"
     },
     "prince-seated": {
       "status": "delivered",
@@ -1055,8 +1047,7 @@
         220
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-seated.webp"
+      "edition": "film"
     },
     "prince-hang": {
       "status": "delivered",
@@ -1086,8 +1077,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-climb-a.webp"
+      "edition": "film"
     },
     "prince-climb-b": {
       "status": "delivered",
@@ -1097,8 +1087,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-climb-b.webp"
+      "edition": "film"
     },
     "prince-apex": {
       "status": "delivered",
@@ -1108,8 +1097,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-apex.webp"
+      "edition": "film"
     },
     "prince-fall": {
       "status": "delivered",
@@ -1119,8 +1107,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-fall.webp"
+      "edition": "film"
     },
     "prince-land": {
       "status": "delivered",
@@ -1130,8 +1117,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-land.webp"
+      "edition": "film"
     },
     "prince-stairs-a": {
       "status": "delivered",
@@ -1141,8 +1127,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-stairs-a.webp"
+      "edition": "film"
     },
     "prince-stairs-b": {
       "status": "delivered",
@@ -1152,8 +1137,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-stairs-b.webp"
+      "edition": "film"
     },
     "prince-push": {
       "status": "delivered",
@@ -1163,8 +1147,7 @@
         440
       ],
       "anchor": "bottom centre (lowest boot)",
-      "edition": "film",
-      "interim": "interim/prince-push.webp"
+      "edition": "film"
     },
     "prince-court": {
       "status": "delivered",
@@ -1174,8 +1157,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/prince-court.webp"
+      "edition": "film"
     },
     "azurine-stand": {
       "status": "delivered",
@@ -1185,8 +1167,7 @@
         380
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/azurine-stand.webp"
+      "edition": "film"
     },
     "azurine-asleep": {
       "status": "delivered",
@@ -1216,8 +1197,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/aurora-stand.webp"
+      "edition": "film"
     },
     "aurora-point": {
       "status": "delivered",
@@ -1227,8 +1207,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/aurora-point.webp"
+      "edition": "film"
     },
     "water-fairy-stand": {
       "status": "delivered",
@@ -1238,8 +1217,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/water-fairy-stand.webp"
+      "edition": "film"
     },
     "witch-hooded": {
       "status": "delivered",
@@ -1289,8 +1267,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/king-stand.webp"
+      "edition": "film"
     },
     "queen-stand": {
       "status": "delivered",
@@ -1300,8 +1277,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/queen-stand.webp"
+      "edition": "film"
     },
     "fairy-ring": {
       "status": "delivered",
@@ -1311,8 +1287,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/fairy-ring.webp"
+      "edition": "film"
     },
     "fairy-crown": {
       "status": "delivered",
@@ -1322,8 +1297,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/fairy-crown.webp"
+      "edition": "film"
     },
     "fairy-gold": {
       "status": "delivered",
@@ -1333,8 +1307,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/fairy-gold.webp"
+      "edition": "film"
     },
     "demon-red": {
       "status": "delivered",
@@ -1344,8 +1317,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/demon-red.webp"
+      "edition": "film"
     },
     "demon-teal": {
       "status": "delivered",
@@ -1355,8 +1327,7 @@
         360
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/demon-teal.webp"
+      "edition": "film"
     },
     "crew-squire": {
       "status": "delivered",
@@ -1366,8 +1337,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-squire.webp"
+      "edition": "film"
     },
     "crew-helmsman": {
       "status": "delivered",
@@ -1377,8 +1347,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-helmsman.webp"
+      "edition": "film"
     },
     "crew-manatarms": {
       "status": "delivered",
@@ -1388,8 +1357,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-manatarms.webp"
+      "edition": "film"
     },
     "crew-asleep": {
       "status": "delivered",
@@ -1399,8 +1367,7 @@
         120
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-asleep.webp"
+      "edition": "film"
     },
     "crew-rider": {
       "status": "delivered",
@@ -1420,8 +1387,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/octopus.webp"
+      "edition": "film"
     },
     "dolphin-carriage": {
       "status": "delivered",
@@ -1431,8 +1397,7 @@
         340
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/dolphin-carriage.webp"
+      "edition": "film"
     },
     "lobster-guard-closed": {
       "status": "delivered",
@@ -1442,8 +1407,7 @@
         340
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/lobster-guard-closed.webp"
+      "edition": "film"
     },
     "lobster-guard-open": {
       "status": "delivered",
@@ -1453,8 +1417,7 @@
         340
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/lobster-guard-open.webp"
+      "edition": "film"
     },
     "scrying-eye": {
       "status": "delivered",
@@ -1504,8 +1467,7 @@
         520
       ],
       "anchor": "centre",
-      "edition": "film",
-      "interim": "interim/sword-sinking.webp"
+      "edition": "film"
     },
     "aurora-star": {
       "status": "delivered",
@@ -1515,8 +1477,7 @@
         64
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/aurora-star.webp"
+      "edition": "film"
     },
     "keepsake-star": {
       "status": "delivered",
@@ -1526,8 +1487,7 @@
         128
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/keepsake-star.webp"
+      "edition": "film"
     },
     "keepsake-sword": {
       "status": "delivered",
@@ -1537,8 +1497,7 @@
         128
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/keepsake-sword.webp"
+      "edition": "film"
     },
     "keepsake-shell": {
       "status": "delivered",
@@ -1558,8 +1517,7 @@
         128
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/keepsake-seal.webp"
+      "edition": "film"
     },
     "keepsake-lamp": {
       "status": "delivered",
@@ -1569,8 +1527,7 @@
         128
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/keepsake-lamp.webp"
+      "edition": "film"
     },
     "chariot": {
       "status": "delivered",
@@ -1590,8 +1547,7 @@
         96
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/gift-ring.webp"
+      "edition": "film"
     },
     "gift-flower": {
       "status": "delivered",
@@ -1601,8 +1557,7 @@
         96
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/gift-flower.webp"
+      "edition": "film"
     },
     "gift-crown": {
       "status": "delivered",
@@ -1612,8 +1567,7 @@
         96
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/gift-crown.webp"
+      "edition": "film"
     },
     "gift-gold": {
       "status": "delivered",
@@ -1623,8 +1577,7 @@
         96
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/gift-gold.webp"
+      "edition": "film"
     },
     "whirlpool": {
       "status": "delivered",
@@ -1806,102 +1759,6 @@
       "anchor": "full frame",
       "edition": "film"
     },
-    "tableau-betrothal": {
-      "status": "delivered",
-      "file": "tableaux/betrothal.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-betrothal.png"
-    },
-    "tableau-curse": {
-      "status": "delivered",
-      "file": "tableaux/curse.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-curse.png"
-    },
-    "tableau-abduction": {
-      "status": "delivered",
-      "file": "tableaux/abduction.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-abduction.png"
-    },
-    "tableau-arming": {
-      "status": "delivered",
-      "file": "tableaux/arming.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-arming.png"
-    },
-    "tableau-tempest": {
-      "status": "delivered",
-      "file": "tableaux/tempest.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-tempest.png"
-    },
-    "tableau-water-fairy": {
-      "status": "delivered",
-      "file": "tableaux/water-fairy.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-water-fairy.png"
-    },
-    "tableau-procession": {
-      "status": "delivered",
-      "file": "tableaux/procession.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-procession.png"
-    },
-    "tableau-azure-grotto": {
-      "status": "delivered",
-      "file": "tableaux/azure-grotto.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-azure-grotto.png"
-    },
-    "tableau-whale-shore": {
-      "status": "delivered",
-      "file": "tableaux/whale-shore.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-whale-shore.png"
-    },
-    "tableau-cliff-gap": {
-      "status": "delivered",
-      "file": "tableaux/cliff-gap.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-cliff-gap.png"
-    },
-    "tableau-tower-fire": {
-      "status": "delivered",
-      "file": "tableaux/tower-fire.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-tower-fire.png"
-    },
-    "tableau-stair-carry": {
-      "status": "delivered",
-      "file": "tableaux/stair-carry.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-stair-carry.png"
-    },
-    "tableau-barrel": {
-      "status": "delivered",
-      "file": "tableaux/barrel.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-barrel.png"
-    },
-    "tableau-wedding": {
-      "status": "delivered",
-      "file": "tableaux/wedding.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-wedding.png"
-    },
-    "tableau-apotheosis": {
-      "status": "delivered",
-      "file": "tableaux/apotheosis.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-apotheosis.png"
-    },
-    "tableau-galley-departure": {
-      "status": "delivered",
-      "file": "tableaux/galley-departure.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-galley-departure.png"
-    },
     "witch-storm": {
       "status": "delivered",
       "file": "witch-storm.webp",
@@ -1922,12 +1779,6 @@
       "anchor": "centre",
       "edition": "film"
     },
-    "tableau-tower-climb": {
-      "status": "delivered",
-      "file": "tableaux/tower-climb.webp",
-      "edition": "film",
-      "from": "design/references/film-planning/originals/concept-tower-climb.png"
-    },
     "crew-bosun": {
       "status": "delivered",
       "file": "crew-bosun.webp",
@@ -1936,8 +1787,7 @@
         420
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-bosun.webp"
+      "edition": "film"
     },
     "crew-asleep-b": {
       "status": "delivered",
@@ -1947,8 +1797,7 @@
         120
       ],
       "anchor": "bottom centre",
-      "edition": "film",
-      "interim": "interim/crew-asleep-b.webp"
+      "edition": "film"
     },
     "crew-squire-idle-b": {
       "status": "delivered",
@@ -5197,7 +5046,7 @@
         600,
         440
       ],
-      "anchor": "bottom centre (Azurine\u2019s feet)",
+      "anchor": "bottom centre (Azurine’s feet)",
       "edition": "film"
     },
     "prince-set-down-tinted": {
@@ -5207,7 +5056,7 @@
         600,
         440
       ],
-      "anchor": "bottom centre (Azurine\u2019s feet)",
+      "anchor": "bottom centre (Azurine’s feet)",
       "edition": "film"
     },
     "cavern-platform": {
@@ -5332,7 +5181,7 @@
           "wedding"
         ],
         "beat": null,
-        "note": "\u201cProcession Royale\u201d, supplied by the user 31 October 2026; 118.75 s, stereo 48 kHz. Prepared at -12.23 LUFS / -1.20 dBTP (measured after MP3 encoding). Wedding, apotheosis and rolling credits."
+        "note": "“Procession Royale”, supplied by the user 31 October 2026; 118.75 s, stereo 48 kHz. Prepared at -12.23 LUFS / -1.20 dBTP (measured after MP3 encoding). Wedding, apotheosis and rolling credits."
       }
     }
   },

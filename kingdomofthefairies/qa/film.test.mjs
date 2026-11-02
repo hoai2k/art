@@ -931,8 +931,11 @@ test('Act IV (film): the beach leads on into the cavern', () => {
 });
 
 const manifest = JSON.parse(await readFile(new URL('../assets/manifest.json', import.meta.url)));
-const files = Object.values(manifest.slots).filter((s) => s.edition === 'film' && (s.interim || s.status === 'delivered')).map((s) => s.interim || s.file);
+const files = Object.values(manifest.slots).filter((s) => s.edition === 'film').map((s) => s.file);
 for (const f of files) await access(new URL('../assets/' + f, import.meta.url));
-test('every interim cut-out and tableau the manifest names exists', () => { assert.ok(files.length >= 60, String(files.length)); });
+test('every film slot is delivered and its art exists', () => {
+  assert.ok(files.length >= 60, String(files.length));
+  assert.ok(Object.values(manifest.slots).every((s) => s.edition !== 'film' || s.status === 'delivered'));
+});
 
 console.log(`\n${n} tests passed`);

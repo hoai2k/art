@@ -13,7 +13,7 @@ import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
   connector, flames, hazards, player, rubble, beloved,
 } from './act5-art.js';
-import { tableau, card, cardAlpha } from './tableau.js';
+import { card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 import { drawPose, drawPerson, personPx } from '../pose.js';
@@ -273,7 +273,7 @@ export function onEventBurning(k, e, st) {
 }
 
 // The tower cut open like a dollhouse, on the house's floors: the delivered
-// tower-interior cloth, or the fire tableau darkened behind stone floors.
+// tower-interior cloth, or (if it fails to load) dark stone floors.
 // The cloth's floors are 500 px apart at y 636, 1136 and 1636 of its 1800, so
 // at 0.348 scale (one storey) they land on HOUSE.floors and its walls on
 // wallL/wallR.
@@ -291,8 +291,7 @@ function towerInterior(k, st, t) {
   }
   const painted = k.asset('tower-interior', ...TOWER_ART);
   if (!painted) {
-    tableau(k, 'tower-fire', 6, 12, { zoom: 0.04, focus: [640, 360] });
-    c.save(); c.globalAlpha = 0.62; c.fillStyle = k.col('#160c10'); c.fillRect(0, 0, 1280, 720); c.restore();
+    c.fillStyle = k.col('#140a12'); c.fillRect(0, 0, 1280, 720);
     // the tower's walls and vaults
     c.fillStyle = k.col('#5e5864'); c.fillRect(H.x0 - 24, 96, 24, 548); c.fillRect(H.x1, 96, 24, 548);
     c.fillStyle = k.col('#3a3440');

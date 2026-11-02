@@ -27,13 +27,9 @@ export const STORAGE_PREFIX = LEGACY ? 'widowsbay' : 'kingdomofthefairies';
 import { WALK_FIT, POSE_FIT } from './sprite-fit.js';
 
 export function themeManifest(manifest, edition = EDITION) {
-  // The new slots (production requests, interim cut-outs, tableaux) never
-  // load in the music-video edition.
+  // The film edition's slots never load in the music-video edition.
   if (edition === 'widowsbay' || edition === true) return { ...manifest, slots: Object.fromEntries(Object.entries(manifest.slots || {}).filter(([, s]) => s.edition !== 'film')) };
-  // A requested film slot with an interim cut-out (design/source/cut_planning.py)
-  // loads that until its own art is delivered.
-  const slots = Object.fromEntries(Object.entries(manifest.slots || {}).filter(([id]) => !id.startsWith('band-'))
-    .map(([id, s]) => [id, s.status === 'requested' && s.interim ? { ...s, status: 'delivered', file: s.interim, interimArt: true } : s]));
+  const slots = Object.fromEntries(Object.entries(manifest.slots || {}).filter(([id]) => !id.startsWith('band-')));
   slots.logo = { status: 'delivered', file: 'fairies-title.webp' };
   const anims = Object.fromEntries(Object.entries(manifest.anims || {}).filter(([id, slot]) =>
     !id.includes('band-') && !String(slot.file).includes('band-')));
@@ -67,7 +63,7 @@ function filmWords(root) {
 }
 
 // The film edition's cast: a legacy sprite id drawn as its film counterpart
-// whenever that art is loaded (delivered, or an interim cut-out), else the
+// whenever that art is loaded, else the
 // legacy art. Acts add their own with a `cast` map (src/acts/CONTRACT.md).
 export const FILM_CAST = {
   ...Object.fromEntries(['stand', 'walk-a', 'walk-b', 'pass-a', 'pass-b', 'leap', 'crouch', 'carry', 'carry-walk-a', 'carry-pass-a', 'carry-walk-b', 'carry-pass-b', 'swim-a', 'swim-b', 'seated', 'hang', 'pullup',

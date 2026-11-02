@@ -26,16 +26,16 @@ for (const [search, edition] of [['', 'film'], ['?qa', 'film'], ['?widowsbay', '
   assert.equal(Object.values(result.audio.period).filter((v) => v.status === 'delivered').length, 6);
   assert.deepEqual(result.audio.period['period-wedding'].moods, ['wedding']);
   assert.ok(result.slots['sailor-stand']);
-  // film-only slots stay out of the query edition; interim cut-outs load in the film edition
+  // film-only slots stay out of the query edition
   assert.equal(Object.values(result.slots).some((sl) => sl.edition === 'film'), !legacy);
   if (!legacy) {
     assert.equal(result.slots['prince-stand'].status, 'delivered');
     for (const [id, sl] of Object.entries(manifest.slots)) if (sl.edition === 'film') {
-      // delivered art loads as delivered; a slot still requested loads its interim cut-out
-      if (sl.status === 'delivered') assert.equal(result.slots[id].file, sl.file, id);
-      else if (sl.interim) assert.equal(result.slots[id].file, sl.interim, id);
+      // every film slot is delivered production art and loads as delivered
+      assert.equal(sl.status, 'delivered', id);
+      assert.equal(result.slots[id].file, sl.file, id);
+      assert.ok(!sl.interim && !/^(interim|tableaux)\//.test(sl.file), id + ' is a planning cut-out');
     }
-    assert.ok(result.slots['tableau-curse']);
   } else assert.equal(result.slots['prince-stand'], undefined);
   assert.equal(JSON.stringify(manifest), original, 'shared source manifest is untouched');
 }
