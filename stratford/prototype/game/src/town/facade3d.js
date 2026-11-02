@@ -281,7 +281,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     }
     set(PART.trim, [L, 0.32, 1]);
     const fr = W(L / 2, yb - 0.37, -0.025); KIT.box(vb, null, fr[0], fr[1], fr[2], L / 2, 0.16, 0.03, yaw, 0);
-    cbox(L / 2, L / 2, yb - 0.37, 0.16, -0.055, WALL_SURF[P.mat]);
+    cbox(L / 2, L / 2, yb - 0.37, 0.16, -0.055, SURFACE.prop);
   }
 }
 

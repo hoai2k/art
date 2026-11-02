@@ -17,7 +17,7 @@ after(async () => { await browser?.close(); srv?.close(); });
 async function openTown(query = '') {
   const page = await browser.newPage({ viewport: { width: 960, height: 540 } });
   const errors = [];
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('console', (m) => { if (m.type() === 'error' || /^\[town\] (building|facade|detail layer)/.test(m.text())) errors.push(m.text()); });
   page.on('pageerror', (e) => errors.push(String(e)));
   await page.goto(`${srv.url}/lab/town.html${query}`);
   await page.waitForFunction(() => window.bench, null, { timeout: 180000 });

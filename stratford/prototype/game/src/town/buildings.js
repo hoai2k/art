@@ -82,6 +82,30 @@ export function modelledFront(ctx, P, b, isFront, L) {
   return 1;
 }
 
+// Where to split a wall so its top can follow a roof exactly: its ends, a few
+// metres apart, and where it crosses the roof's ridge line or hip lines.
+function wallStations(R, a, c, L) {
+  const us = [0, L];
+  if (!R) return us;
+  const n = Math.max(1, Math.ceil(L / 2));
+  for (let k = 1; k < n; k++) us.push((L * k) / n);
+  const S = (u) => { const x = a[0] + (c[0] - a[0]) * u / L, z = a[1] + (c[1] - a[1]) * u / L, dx = x - R.o.cx, dz = z - R.o.cz; return [dx * R.ux + dz * R.uz, dx * R.vx + dz * R.vz]; };
+  const f = (u) => { const [s, t] = S(u); return (R.hs - Math.abs(t)) / R.hs - (R.ridge < R.hl - 0.01 ? (R.hl - Math.abs(s)) / (R.hl - R.ridge) : 1e9); };
+  const fine = 24;
+  for (let k = 0; k < fine; k++) {
+    const u0 = (L * k) / fine, u1 = (L * (k + 1)) / fine;
+    const [s0, t0] = S(u0), [s1, t1] = S(u1);
+    if (t0 * t1 < 0) us.push(u0 + (u1 - u0) * (t0 / (t0 - t1)));          // the ridge line
+    if (s0 * s1 < 0) us.push(u0 + (u1 - u0) * (s0 / (s0 - s1)));          // the roof's middle (pyramid apex line)
+    let lo = u0, hi = u1, flo = f(lo), fhi = f(hi);
+    if (flo * fhi < 0 && Math.abs(flo) < 1e8 && Math.abs(fhi) < 1e8) {     // a hip line
+      for (let it = 0; it < 30; it++) { const m = (lo + hi) / 2, fm = f(m); if (fm * flo <= 0) { hi = m; fhi = fm; } else { lo = m; flo = fm; } }
+      us.push((lo + hi) / 2);
+    }
+  }
+  return [...new Set(us.map((u) => Math.round(u * 1e4) / 1e4))].sort((p, q) => p - q);
+}
+
 // Miter inset of a ring (positive area = CCW in x,z), clamped.
 export function insetRing(ring, d) {
   const n = ring.length, out = [];
@@ -125,6 +149,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
   };
   const rel = (p, y) => [p[0] - ox, y, p[1] - oz];
   const rings = [b.outer, ...b.holes.map((h) => (signedArea(h) > 0 ? h.slice().reverse() : h))];
+  const R = special && special.replacesRoof ? null : roofFrame(b, rings, eaves, rh, roof, P);
   // ---- walls
   rings.forEach((ring, ri) => {
     const n = ring.length;
@@ -134,13 +159,25 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
       const isFront = ri === 0 && fronts.has(i);
       const swap = ri === 0 ? modelledFront(ctx, P, b, isFront, L) : 0;
-      vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [swap]);
-      const i0 = vb.v(a[0] - ox, y0, a[1] - oz, nx, 0, nz, 0, y0 - base);
-      const i1 = vb.v(c[0] - ox, y0, c[1] - oz, nx, 0, nz, L, y0 - base);
-      const i2 = vb.v(c[0] - ox, top, c[1] - oz, nx, 0, nz, L, top - base);
-      const i3 = vb.v(a[0] - ox, top, a[1] - oz, nx, 0, nz, 0, top - base);
-      vb.quad(i1, i0, i3, i2);
-      cb.quad(rel(c, y0), rel(a, y0), rel(a, top), rel(c, top), WALL_SURF[P.mat]);   // wound to face out
+      const setW = (fac) => vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [P.mat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
+      // stations along the wall: the ends, and where its top meets a roof ridge or hip
+      const us = wallStations(R, a, c, L);
+      const wq = (u0, y0a, y0b, u1, y1a, y1b) => {
+        const A = [a[0] + (c[0] - a[0]) * u0 / L, a[1] + (c[1] - a[1]) * u0 / L], C = [a[0] + (c[0] - a[0]) * u1 / L, a[1] + (c[1] - a[1]) * u1 / L];
+        const i0 = vb.v(A[0] - ox, y0a, A[1] - oz, nx, 0, nz, u0, y0a - base), i1 = vb.v(C[0] - ox, y0b, C[1] - oz, nx, 0, nz, u1, y0b - base);
+        const i2 = vb.v(C[0] - ox, y1b, C[1] - oz, nx, 0, nz, u1, y1b - base), i3 = vb.v(A[0] - ox, y1a, A[1] - oz, nx, 0, nz, u0, y1a - base);
+        vb.quad(i1, i0, i3, i2);
+        return [A, C];
+      };
+      for (let k = 0; k + 1 < us.length; k++) {
+        const u0 = us[k], u1 = us[k + 1];
+        const pa = [a[0] + (c[0] - a[0]) * u0 / L, a[1] + (c[1] - a[1]) * u0 / L], pc = [a[0] + (c[0] - a[0]) * u1 / L, a[1] + (c[1] - a[1]) * u1 / L];
+        const ta = R ? Math.max(top, roofHeightAt(R, pa[0], pa[1])) : top, tc = R ? Math.max(top, roofHeightAt(R, pc[0], pc[1])) : top;
+        // the storeys (swapped for a modelled front near the focus), then the gable or the wall up to the roof
+        setW(swap); wq(u0, y0, y0, u1, top, top);
+        if (ta > top + 1e-3 || tc > top + 1e-3) { setW(0); wq(u0, top, top, u1, ta - 0.003, tc - 0.003); }
+        cb.quad(rel(pc, y0), rel(pa, y0), rel(pa, ta + 0.02), rel(pc, tc + 0.02), WALL_SURF[P.mat]);   // wound to face out; into the roof
+      }
       // storefront awnings and cornices on street fronts
       if (isFront && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, swap ? null : cb, a, c, L, nx, nz, base, P, ox, oz, i, swap);
       if (isFront && parapet > 0.5 && L > 2) cornice(vb, swap ? null : cb, a, c, L, nx, nz, top, P, ox, oz, swap);
@@ -155,7 +192,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
     cap(rings, eaves + (parapet > 0.5 ? 0 : 0.02), parapet > 0.5 ? PART.flat : PART.flat);
     if (parapet > 0) parapetInside(vb, cb, rings[0], eaves, top, P, ox, oz);
   } else {
-    pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx);
+    pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx, R);
   }
   if (P.church && !(special && special.noSteeple)) steeple(vb, cb, b, eaves, rh, P, ox, oz, fronts);
   if (special) special.build({ ctx, b, P, vb, cb, ox, oz, base, eaves, rh, fronts, S, kit: KIT });
@@ -200,11 +237,11 @@ function parapetInside(vb, cb, ring, y0, y1, P, ox, oz) {
     vb.quad(i0, i1, i2, i3);
     // coping on top
     vb.set('aF0', [PART.trim, L, 0, 1]);
-    const j0 = vb.v(A[0] - ox, y1 + 0.06, A[1] - oz, 0, 1, 0, 0, 0), j1 = vb.v(C[0] - ox, y1 + 0.06, C[1] - oz, 0, 1, 0, L, 0);
-    const j2 = vb.v(c[0] - ox, y1 + 0.06, c[1] - oz, 0, 1, 0, L, 0.25), j3 = vb.v(a[0] - ox, y1 + 0.06, a[1] - oz, 0, 1, 0, 0, 0.25);
+    const j0 = vb.v(A[0] - ox, y1, A[1] - oz, 0, 1, 0, 0, 0), j1 = vb.v(C[0] - ox, y1, C[1] - oz, 0, 1, 0, L, 0);
+    const j2 = vb.v(c[0] - ox, y1, c[1] - oz, 0, 1, 0, L, 0.25), j3 = vb.v(a[0] - ox, y1, a[1] - oz, 0, 1, 0, 0, 0.25);
     vb.quadFacing(j0, j1, j2, j3, [0, 1, 0]);
     cb.quad([a[0] - ox, y0, a[1] - oz], [c[0] - ox, y0, c[1] - oz], [c[0] - ox, y1, c[1] - oz], [a[0] - ox, y1, a[1] - oz], WALL_SURF[P.mat]);
-    cb.quad([A[0] - ox, y1 + 0.06, A[1] - oz], [C[0] - ox, y1 + 0.06, C[1] - oz], [c[0] - ox, y1 + 0.06, c[1] - oz], [a[0] - ox, y1 + 0.06, a[1] - oz], SURFACE.roof);
+    cb.quad([A[0] - ox, y1, A[1] - oz], [C[0] - ox, y1, C[1] - oz], [c[0] - ox, y1, c[1] - oz], [a[0] - ox, y1, a[1] - oz], SURFACE.roof);
   }
 }
 
@@ -231,8 +268,8 @@ export function cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, swap = 0) {
   }
   const r = (p, y) => [p[0] - ox, y, p[1] - oz];
   if (!cb) return;
-  cb.quad(r(Ao, yb), r(Co, yb), r(Co, yt), r(Ao, yt), WALL_SURF[P.mat]);
-  cb.quad(r(A, yb), r(C, yb), r(Co, yb), r(Ao, yb), WALL_SURF[P.mat]);
+  cb.quad(r(Ao, yb), r(Co, yb), r(Co, yt), r(Ao, yt), SURFACE.prop);     // a cornice is not a wall to cling to
+  cb.quad(r(A, yb), r(C, yb), r(Co, yb), r(Ao, yb), SURFACE.prop);
   cb.quad(r(A, yt), r(C, yt), r(Co, yt), r(Ao, yt), SURFACE.roof);
 }
 
@@ -265,24 +302,41 @@ export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0
 
 // Gabled / hipped / pyramidal roofs over the footprint's oriented rectangle
 // when the footprint is close to one, else a hip-like roof from an inset ring.
-function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx) {
+// A pitched roof fitted to the footprint's oriented rectangle (when the
+// footprint is close to one), or null. Shared by the roof and the walls: the
+// walls rise to the roof's underside so no slot opens between them.
+export function roofFrame(b, rings, eaves, rh, roof, P) {
+  if (roof === 'flat' || rh < 0.4 || polyArea(b.outer) < 6 || roof === 'dome' || roof === 'mansard') return null;
   const o = obb(b.outer);
-  const area = polyArea(b.outer);
-  const rectish = o && area / o.area > 0.86 && rings.length === 1;
+  if (!o || polyArea(b.outer) / o.area <= 0.86 || rings.length !== 1) return null;
+  let ux = o.ux, uz = o.uz, hl = o.hu, hs = o.hv;
+  if (hs > hl) { ux = -o.uz; uz = o.ux; hl = o.hv; hs = o.hu; }
+  const e = P.house ? 0.4 : 0.25;
+  hl += e; hs += e;
+  const slopeDrop = e * (rh / Math.max(0.5, hs - e));
+  const yE = eaves - slopeDrop, yR = eaves + rh;
+  let ridge = roof === 'gabled' ? hl : roof === 'pyramidal' ? 0 : Math.max(0, hl - hs);
+  if (roof === 'gabled' && P.church) ridge = hl;
+  return { o, ux, uz, vx: -uz, vz: ux, hl, hs, e, slopeDrop, yE, yR, ridge };
+}
+// height of that roof's surface over (x, z)
+export function roofHeightAt(R, x, z) {
+  const dx = x - R.o.cx, dz = z - R.o.cz;
+  const s = Math.abs(dx * R.ux + dz * R.uz), t = Math.abs(dx * R.vx + dz * R.vz);
+  const rise = R.yR - R.yE;
+  let f = (R.hs - t) / R.hs;                                   // the long slopes
+  if (R.ridge < R.hl - 0.01) f = Math.min(f, (R.hl - s) / (R.hl - R.ridge));   // hip ends
+  return R.yE + rise * Math.max(0, f);
+}
+
+function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx, R) {
   const roofPart = (P.church || P.civic) && P.seed < 0.5 ? PART.copper : PART.roof;
   const set = (L) => vb.set('aF0', [roofPart === PART.copper ? PART.roof : PART.roof, L, 0, 1]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
-  if (rectish && roof !== 'dome' && roof !== 'mansard') {
-    // long axis
-    let ux = o.ux, uz = o.uz, hl = o.hu, hs = o.hv;
-    if (hs > hl) { ux = -o.uz; uz = o.ux; hl = o.hv; hs = o.hu; }
-    const vx = -uz, vz = ux;
-    const e = P.house ? 0.4 : 0.25;
-    hl += e; hs += e;
-    const slopeDrop = e * (rh / Math.max(0.5, hs - e));
-    const yE = eaves - slopeDrop, yR = eaves + rh;
+  if (R) {
+    const { o, ux, uz, vx, vz, e, slopeDrop, yE, yR, ridge } = R;
+    let { hl, hs } = R;
     const W = (s, t, y) => [o.cx + ux * s + vx * t - ox, y, o.cz + uz * s + vz * t - oz];
-    let ridge = roof === 'gabled' ? hl : roof === 'pyramidal' ? 0 : Math.max(0, hl - hs);
-    if (roof === 'gabled' && P.church) ridge = hl;
+    void hl; void hs;
     const plane = (p0, p1, p2, p3, L) => {
       set(L);
       const nrm = new THREE.Vector3().crossVectors(new THREE.Vector3(...p1).sub(new THREE.Vector3(...p0)), new THREE.Vector3(...p3).sub(new THREE.Vector3(...p0))).normalize();
@@ -306,16 +360,7 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx) {
       tri(W(hl, -hs, yE), W(hl, hs, yE), W(ridge, 0, yR), 2 * hs);
       tri(W(-hl, hs, yE), W(-hl, -hs, yE), W(-ridge, 0, yR), 2 * hs);
     } else {
-      // gable end walls
-      for (const s of [-1, 1]) {
-        const g = s * (hl - e);
-        const nrm = [ux * s, 0, uz * s];
-        vb.set('aF0', [PART.wall, 2 * hs, b.height, P.storeys]).set('aF1', [P.mat, P.flags, P.seed, P.gfh]).set('aFac', [0]);
-        const base = P.base;
-        const ids = [W(g, -hs + e, eaves), W(g, hs - e, eaves), W(g, 0, yR - 0.05)].map((p, k) => vb.v(p[0], p[1], p[2], nrm[0], 0, nrm[2], k === 0 ? 0 : k === 1 ? 2 * (hs - e) : hs - e, p[1] - base));
-        vb.triFacing(ids[0], ids[1], ids[2], nrm);
-        cb.tri(W(g, -hs + e, eaves), W(g, hs - e, eaves), W(g, 0, yR - 0.05), WALL_SURF[P.mat]);
-      }
+      // the gable walls are the footprint's own walls, which rise to the roof (see addBuilding)
       // bargeboards along the rakes of house gables (painted trim)
       if (P.house) {
         vb.set('aF0', [PART.trim, 2, 0.22, 1]).set('aF1', [P.mat, 0, P.seed + 0.37, 3]).set('aFac', [0]);
@@ -344,6 +389,7 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx) {
   }
   // inset (hip-like) roof for irregular footprints
   const outer = rings[0];
+  const o = obb(b.outer);
   const minHalf = o ? Math.min(o.hu, o.hv) : 3;
   let d = roof === 'mansard' ? Math.min(rh * 0.35, minHalf * 0.4) : Math.min(rh * 1.4, minHalf * 0.75);
   let inner = insetRing(outer, d);
