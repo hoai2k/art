@@ -18,7 +18,7 @@ try {
   await page.locator('.unlock-editor[open] .card-x').click();
   for (const size of [{width:1280,height:720},{width:800,height:360},{width:640,height:320},{width:390,height:844},{width:320,height:568},{width:320,height:480}]) {
    await page.setViewportSize(size);
-   await page.locator('#btn-credits').focus(); await page.keyboard.press('Enter');
+   await page.evaluate(()=>window.__kingdomOfTheFairies.open.credits());
    await page.waitForTimeout(60);
    const credit = await page.evaluate(()=>{
     const card=document.querySelector('#credits .card'), r=card.getBoundingClientRect();
@@ -38,8 +38,8 @@ try {
    evidence.push({edition,size,credit});
   }
   await page.setViewportSize({width:800,height:360});
-  for (const [button,selector] of [['#btn-instructions','#ins-scroll'],['#btn-scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
-   await page.locator(button).click();
+  for (const [button,selector] of [['instructions','#ins-scroll'],['scenes','#scene-list'],['#btn-settings','#settings .stack']]) {
+   if (button.startsWith('#')) await page.locator(button).click(); else await page.evaluate(b=>window.__kingdomOfTheFairies.open[b](),button);
    const styles=await page.locator(selector).evaluate(el=>{
     const c=getComputedStyle(el);return {color:c.scrollbarColor,width:c.scrollbarWidth,overflow:c.overflowY,canScroll:el.scrollHeight>el.clientHeight};
    });
@@ -73,7 +73,7 @@ try {
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`${server.url}/?qa&widowsbay=${edition}`);
   await page.waitForFunction(()=>window.__kingdomOfTheFairies && !document.body.classList.contains('booting'));
-  await page.evaluate(()=>document.fonts.ready);await page.locator('#btn-credits').click();
+  await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>window.__kingdomOfTheFairies.open.credits());
   const mobile=await page.locator('#credits .card').evaluate(card=>{
    const r=card.getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:innerHeight,
     clipped:[...card.querySelectorAll('h2,.cred-show,dt,dd')].filter(e=>e.checkVisibility()).filter(e=>{const b=e.getBoundingClientRect();return b.bottom>r.bottom-8||b.top<r.top+8;}).map(e=>e.textContent),

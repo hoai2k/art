@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, pileCount } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -16,7 +16,7 @@ import {
 import { tableau, card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
-import { drawPose, drawPerson, personPx, personScale } from '../pose.js';
+import { drawPose, drawPerson, personPx } from '../pose.js';
 
 // ================================================================= Act V
 export function drawTower(k, st, t) {
@@ -36,17 +36,6 @@ export function drawTower(k, st, t) {
 // The sea gap, where the witch swoops across the stage and Aurora's light
 // drives her off, plays on the whole stage, as do the window and the scenes
 // between.
-// The surface cutouts share a registered head and invisible waterline. Draw
-// at the prince's measured person scale, translating the normal foot anchor
-// to the neck so switching strokes cannot lift him out of the sea.
-export const SURFACE_SWIM = { headX: 234, waterY: 96 };
-export function drawSurfaceSwimmer(k,id,x,y,height=124) {
-  const im=k.img(id), scale=personScale(k,id,height);
-  if (!im || !scale) return false;
-  const width=im.naturalWidth||im.width, h=im.naturalHeight||im.height;
-  return drawPerson(k,id,x+(width/2-SURFACE_SWIM.headX)*scale,y+(h-SURFACE_SWIM.waterY)*scale,height);
-}
-
 export function focusTower(st) {
   if (st.phase === 'cliff' || st.phase === 'tower') { const p = climberPos(st); return { x: p.x, y: 640 + st.camY - p.y - 40 }; }
   if (st.phase === 'dive') return st.w && !st.dv ? { x: st.w.x, y: st.w.y - 70 } : null;
@@ -122,21 +111,37 @@ function swimScene(k, st, t) {
   c.save();
   if (st.inv > 0 && Math.floor(st.inv * 10) % 2) c.globalAlpha = 0.45;
   const ab = Math.floor(sw.stroke * 4) % 2 ? 'a' : 'b';
-  const id = (sw.dive > 0 ? 'prince-swim-under-' : 'prince-swim-') + ab;
+  // at the surface: the front-crawl frames once delivered (their waterline
+  // 40% down the canvas), else the stroke frames sunk to the head and arms
+  const surf = sw.dive <= 0 && k.img('prince-swim-surface-' + ab) ? 'prince-swim-surface-' + ab : null;
+  const id = surf || (sw.dive > 0 ? 'prince-swim-under-' : 'prince-swim-') + ab;
+  const by = surf ? y + 83 * 0.6 - 2 : y + 35;   // surf: its waterline on the sea's
   if (position.land > .65) drawPose(k, position.land < 1 ? 'prince-mantle-c' : 'prince-stand', px, y, 124);
-  else if (!(sw.dive <= 0 && drawSurfaceSwimmer(k, 'prince-swim-surface-'+ab, px, y, 124)) && !drawPose(k, id, px, y + 35, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
+  else if (!drawPose(k, id, px, by, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
   c.restore();
   // the sea over him below its rippling waterline: the painted water laid
   // back over his lower half at the surface, and over all of him when he
   // dives (no box: the cloth itself, clipped to the water)
   const under = sw.dive > 0 ? Math.sin(Math.PI * clamp(1 - sw.dive / SWIM.dive, 0, 1)) : 0;
+  // He swims in the sea, not on it: the water closes over all but his head
+  // and arms (the delivered surface frames paint the rest faint themselves).
+  const line = surf ? y - 2 : y - 16;
   c.save();
   c.beginPath(); c.moveTo(px-105, 720);
-  for (let x = px-105; x <= px+105; x += 10) c.lineTo(x, y - 2 + Math.sin(x * 0.05 + t * 3) * 4);   // at his chest
+  for (let x = px-105; x <= px+105; x += 10) c.lineTo(x, line + Math.sin(x * 0.05 + t * 3) * 3);
   c.lineTo(px+105, 720); c.closePath(); c.clip();
-  c.globalAlpha = 0.5 + 0.1 * under;   // under, he shows as a dim shape through it
+  c.globalAlpha = surf ? 0.55 : 0.92;
   if (position.land <= .65) cloth();
   c.restore();
+  if (position.land <= .65) {
+    // diving under her swoop he shows lit beneath the surface for a moment
+    if (under > 0 && k.img('prince-swim-under-' + ab)) {
+      c.save(); c.globalAlpha = 0.72 * under; drawPose(k, 'prince-swim-under-' + ab, px, y + 35, 124);
+      c.globalAlpha = 0.18 * under; c.fillStyle = k.col('#9fd8d0'); c.beginPath(); c.ellipse(px, y - 6, 80, 34, 0, 0, Math.PI * 2); c.fill(); c.restore();
+    }
+    // spray thrown up by each stroke at the surface
+    if (sw.dive <= 0) strokeSpray(k, px, line, sw.stroke, t);
+  }
   // how far to the tower (fixed to the screen through the mobile camera)
   (k.flat || ((g) => g()))(() => {
   c.save(); c.globalAlpha = 0.85; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(440, 96, 400, 14, 7); c.fill();
@@ -171,7 +176,7 @@ function azurineAtWindow(k, t) {
   const g = c.createRadialGradient(x, y, 6, x, y, 70);
   g.addColorStop(0, `rgba(255,214,140,${0.55 + 0.15 * Math.sin(t * 2.2)})`); g.addColorStop(1, 'rgba(255,214,140,0)');
   c.fillStyle = g; c.fillRect(x - 70, y - 70, 140, 140);
-  if (!k.asset('azurine-window', x, -TOWER_TOP - 4, 64, 80)) { c.fillStyle = k.col('#c9d8ee'); k.circle(x, -TOWER_TOP - 50, 14); }
+  if (!k.asset('azurine-window', x, -TOWER_TOP + 5, 64, 80)) { c.fillStyle = k.col('#c9d8ee'); k.circle(x, -TOWER_TOP - 50, 14); }
 }
 
 function towerScene(k, st, t) {
@@ -240,7 +245,7 @@ export function drawBurning(k, st, t) {
 export function drawOverBurning(k, st) {
   if (st.creditsT != null) rollingCredits(k, st.creditsT);
   // the credits over and the stage lit again: the way back to the title
-  if (creditsDone(st) && st.leaveT == null) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
+  if (creditsDone(st) && st.leaveT == null && !nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Title to return to the title screen' : 'Press [X] to return to the title screen');
   if (st.defeatT != null) k.wash('#2a1424', 0.55 * clamp(st.defeatT / FILM_T.defeat, 0, 1));
   if (st.phase === 'iris') k.iris(640, 300, 760 * (1 - easeInOut(st.phaseT / FILM_T.iris)));
   if (st.status === 'won') k.iris(640, 300, 0);
@@ -328,12 +333,14 @@ function towerInterior(k, st, t) {
     }
   });
   // the demons who set it alight, dancing with their torches at the foot
+  // (the red one runs in from the left once he is inside: TOWER_FIRE)
+  const runIn = st.leftFireT == null ? 0 : easeOut(clamp(st.leftFireT / TOWER_FIRE.run, 0, 1));
   for (const [x, id, ph0] of [[318, 'demon-red', 0], [962, 'demon-teal', 1.7]]) {
-    const hop = Math.abs(Math.sin(t * 4 + ph0)) * 8;
-    const clearing = id === 'demon-teal' ? rightFire : 1;
+    const hop = Math.abs(Math.sin(t * (id === 'demon-red' && runIn < 1 ? 9 : 4) + ph0)) * 8;
+    const clearing = id === 'demon-teal' ? rightFire : runIn > 0 ? 1 : 0;
     if (clearing <= 0) continue;
     c.save(); c.globalAlpha *= clearing;
-    const retreat = id === 'demon-teal' ? (1-clearing)*180 : 0;
+    const retreat = id === 'demon-teal' ? (1-clearing)*180 : -(1 - runIn) * 420;
     k.asset(id, x+retreat, H.floors[0] - hop, 70, 115);
     c.restore();
   }
@@ -341,7 +348,7 @@ function towerInterior(k, st, t) {
   k.asset('tower-escape-door', TOWER_ESCAPE.x+2, H.floors[0]+2, 98, 152);
   hazards(k, st, t);
   player(k, st, t);
-  flames(k, st, t, 1, { right: rightFire });
+  flames(k, st, t, 1, { right: rightFire, left: towerLeftFire(st) });
   // Azurine in front of the smoke, so she can always be seen
   if (!st.p.carry) beloved(k, H.beloved, H.floors[2], 0.6, -1, Math.sin(t * 5) > 0.3 ? 'reach' : 'down');
   // where he is going: to her at the top, then out of the door with her
@@ -433,6 +440,33 @@ function hint(k, text, y = 630) {
 }
 
 // Act V: the clifftop over the sea gap; he walks to the edge and dives.
+// Water particles: the drops of a splash (u 0..1 through it), and the spray
+// of each swimming stroke at the waterline.
+function splashDrops(k, x, y, u) {
+  const c = k.c;
+  c.save();
+  for (let i = 0; i < 26; i++) {
+    const n = Math.sin(i * 78.233) * 43758.5453, r = n - Math.floor(n);
+    const vx = (r - 0.5) * 220, vy = -(180 + ((i * 37) % 11) * 26), tt = u * 0.9;
+    const dx = vx * tt, dy = vy * tt + 620 * tt * tt;
+    if (dy > 6) continue;
+    c.globalAlpha = 0.85 * (1 - u); c.fillStyle = k.col(i % 3 ? '#eef3ea' : '#bfe3e0');
+    k.circle(x + dx, y + dy, 2 + (i % 3));
+  }
+  c.restore();
+}
+function strokeSpray(k, px, line, stroke, t) {
+  const c = k.c, u = (stroke * 4) % 1;
+  c.save();
+  for (let i = 0; i < 8; i++) {
+    const tt = (u + i * 0.11) % 1, side = i % 2 ? 1 : -1;
+    const x = px + 42 + side * (6 + tt * 22) + (i % 3) * 3, y = line - Math.sin(Math.PI * tt) * (10 + (i % 4) * 4);
+    c.globalAlpha = 0.7 * (1 - tt); c.fillStyle = k.col(i % 3 ? '#eef3ea' : '#bfe3e0');
+    k.circle(x, y, 1.6 + (i % 2));
+  }
+  c.restore();
+}
+
 function diveScene(k, st, t) {
   const c = k.c, w = st.w, d = st.dv;
   if (!k.asset('coast-gap', 640, 720, 1280, 720)) { c.fillStyle = k.col('#1c1630'); c.fillRect(0, 0, 1280, 720); c.fillStyle = k.col('#4a3a40'); c.fillRect(0, DIVE.y, DIVE.edge, 400); }
@@ -446,7 +480,8 @@ function diveScene(k, st, t) {
     if (!k.asset('prince-leap', 0, 0, 110, 152)) { c.fillStyle = k.col('#6f9fc8'); c.fillRect(-14, -100, 28, 100); }
     c.restore();
   } else if (!d) princeOnFoot(k, w, 124);
-  if (d?.splash) { c.save(); c.globalAlpha = Math.max(0, 1 - d.t / FILM_T.splash); c.fillStyle = k.col('#eef3ea'); c.beginPath(); c.ellipse(w.x, DIVE.water, 40 + d.t * 80, 10, 0, 0, Math.PI * 2); c.fill(); c.restore(); }
+  // the splash: drops thrown up and falling back (no flat marker)
+  if (d?.splash) splashDrops(k, w.x, DIVE.water, d.t / FILM_T.splash);
 
 }
 
@@ -524,10 +559,42 @@ function duel(k, st, t, entrance = false) {
       c.beginPath(); c.arc(w.x + 30, w.y - 80, 70, -1.1, 0.5); c.stroke(); c.restore();
     }
   } else princeOnFoot(k, w, H);
+  // beaten: the witch's fire engulfs him, rising until the retry card
+  if (st.defeatT != null) engulfed(k, w, H, st.defeatT, t);
   // her strength left, as three marks over her
   if (!trap) for (let i = 0; i < DUEL.hp; i++) { c.fillStyle = k.col(i < d.hp ? '#b06ad0' : '#3a2a40'); k.circle(d.x - 24 + i * 24, BARREL.y - DUEL.witchHeight - 40, 7); }
   // on touch the buttons are named Leap and Strike, so they need no line
   if (st.phaseT < 7 && !trap && k.inputMode !== 'touch') hint(k, '[A] leaps her fire · [X] strikes with the sword');
+}
+
+// Flames wrapping the prince where he stands, in the layered style of her
+// running fire, growing from his feet to over his head.
+function engulfed(k, w, H, dt, t) {
+  const c = k.c, grow = clamp(dt / 0.7, 0, 1), top = H * (0.5 + 0.7 * grow);
+  c.save(); c.translate(w.x, w.y);
+  // the glow of the fire on him
+  const g = c.createRadialGradient(0, -top * 0.45, 4, 0, -top * 0.45, top * 0.75);
+  g.addColorStop(0, `rgba(255,190,90,${0.55 * grow})`); g.addColorStop(1, 'rgba(255,120,40,0)');
+  c.fillStyle = g; c.fillRect(-top, -top * 1.3, top * 2, top * 1.5);
+  // tongues of flame licking up round him, each its own height and sway
+  for (let i = 0; i < 11; i++) {
+    const n = Math.sin(i * 12.9898) * 43758.5453, r = n - Math.floor(n);
+    const x = (r - 0.5) * 70 + Math.sin(t * 7 + i * 2.3) * 5;
+    const h = top * (0.45 + 0.55 * r) * (0.75 + 0.25 * Math.sin(t * 14 + i * 1.9));
+    for (const [col, wd, f, a] of [['#b8281a', 15, 1, 0.7], ['#e9693a', 10, 0.78, 0.8], ['#ffd27a', 5, 0.5, 0.9]]) {
+      const sway = Math.sin(t * 19 + i * 3 + wd) * 7;
+      c.globalAlpha = a * (0.25 + 0.75 * grow); c.fillStyle = k.col(col); c.beginPath(); c.moveTo(x - wd, 6);
+      c.bezierCurveTo(x - wd * 1.1, -h * f * 0.4, x + sway - wd * 0.3, -h * f * 0.75, x + sway, -h * f);
+      c.bezierCurveTo(x + sway + wd * 0.3, -h * f * 0.75, x + wd * 1.1, -h * f * 0.4, x + wd, 6); c.closePath(); c.fill();
+    }
+  }
+  // embers rising off him
+  for (let i = 0; i < 14; i++) {
+    const life = ((t * (0.6 + (i % 5) * 0.12) + i * 0.37) % 1);
+    c.globalAlpha = (1 - life) * grow; c.fillStyle = k.col(i % 2 ? '#ffcf7a' : '#e9693a');
+    k.circle(Math.sin(i * 7.1 + t) * 30, -top * 0.4 - life * top * 0.9, 2.2);
+  }
+  c.restore();
 }
 
 // Until barrel-upturned (F26) is delivered: the barrel body of witch-barrel
@@ -704,21 +771,38 @@ function wedding(k,st,t){
   const couple=stairs=>{
     for(const [actor,princess] of [[st.az,true],[w,false]]){
       if((actor.x>=WEDDING.stairs)!==stairs)continue;
-      c.save();c.globalAlpha=weddingDoorAlpha(actor.x);
       const h=160*weddingScale(actor.x);
       if(princess)azurineOnFoot(k,actor,WEDDING.y,h);else princeOnFoot(k,actor,h,true);
-      c.restore();
     }
   };
-  couple(true);
-  weddingForeground(k);
-  weddingGuests(st).forEach(([id,x],i)=>{
+  // The guests at the foot of the stairs stand behind the couple climbing
+  // them (no jump behind the fairy at the first step); those at the right,
+  // before the ramp, stay in front.
+  const guest=([id,x],i)=>{
     const hop=guestHop(st,id);c.save();c.translate(x,GUESTS_Y-hop);if(x>935)c.scale(-1,1);
     k.idle(id,t+i,0,0,82,150);c.restore();
-  });
+  };
+  const guests=weddingGuests(st).map((g,i)=>[g,i]);
+  guests.filter(([[,x]])=>x<WEDDING.stairs+40).forEach(([g,i])=>guest(g,i));
+  couple(true);
+  doorJamb(k);
+  weddingForeground(k);
+  guests.filter(([[,x]])=>x>=WEDDING.stairs+40).forEach(([g,i])=>guest(g,i));
   couple(false);
   for(const p of st.petals)if(!p.got&&p.y>-20){c.fillStyle=k.col('#f3c6dc');c.save();c.translate(p.x,p.y);c.rotate(p.y*.05);c.beginPath();c.ellipse(0,0,8,4,0,0,Math.PI*2);c.fill();c.restore();}
   if(st.phaseT<6&&st.weddingIntro!==false)hint(k,'Dance with the guests · walk up the stairs and through the door');
+}
+
+// The wall right of the doorway, repainted over whoever has walked on
+// through it: a soft (feathered) edge at the jamb, then solid wall.
+function doorJamb(k){
+  const c=k.c,x0=WEDDING.door,feather=10,top=300,bottom=626;
+  for(let i=0;i<feather;i+=2){
+    c.save();c.globalAlpha=(i+1)/feather;c.beginPath();c.rect(x0-feather/2+i,top,2,bottom-top);c.clip();
+    k.asset('wedding-street',640,720,1280,720);c.restore();
+  }
+  c.save();c.beginPath();c.rect(x0+feather/2,top,WEDDING.gate+60-(x0+feather/2),bottom-top);c.clip();
+  k.asset('wedding-street',640,720,1280,720);c.restore();
 }
 
 // The apotheosis: walk together into the light beneath Aurora, and rise.
@@ -740,7 +824,8 @@ function apotheosis(k, st, t) {
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
+  if (nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? 'Tap Gift to accept the gift' : '[X] Accept the gift');
+  else if (!st.flight && st.creditsT == null) hint(k, '[A] Jump into the light beneath Aurora');
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
   // "The end" fades in as they rise and stays through the celebration,
   // giving way as the credits begin to roll
@@ -748,40 +833,36 @@ function apotheosis(k, st, t) {
   if (endCard > 0) card(k, 'The Kingdom of the Fairies', 'The end', endCard);
 }
 
-// The voyage's treasures at stage right: a heap of the pearls (one painted
-// pearl each, up to TREASURE.max, its count on a plaque), the sword laid
-// behind it, the seal and the lamp at its foot, Aurora's stars above.
+// The voyage's treasures on the top step at the right: a heap of the pearls
+// and of the Water Fairy's gifts (pileSlot, growing up off the stage), the
+// sword standing in it, the lamp and the seal at its foot, Aurora's stars
+// over its top; and the gifts still flying up to it.
 function treasurePile(k, st, t) {
-  const c = k.c, T = treasures(st), { x, y } = TREASURE;
-  if (!T.pearls && !T.stars && !T.sword && !T.seal && !T.lamp) return;
+  const c = k.c, T = treasures(st), { x, y } = TREASURE, kinds = st.giftKinds || [];
+  const n = pileCount(st), pearls = n - kinds.length;
   c.save();
-  const n = Math.min(T.pearls, TREASURE.max);
-  for (let i = 0, row = 0, left = n; left > 0; row++) {
-    const inRow = Math.min(left, 8 - row);
-    for (let j = 0; j < inRow; j++, i++) {
-      const px = x + (j - (inRow - 1) / 2) * 14 + ((i * 7) % 5) - 2, py = y - row * 11;
-      k.asset('pearl', px, py, 18, 18);
-    }
-    left -= inRow;
+  for (let i = 0; i < n; i++) {
+    const p = pileSlot(i); if (p.y < -30) break;
+    k.asset(i < pearls ? 'pearl' : kinds[i - pearls], p.x, p.y + 8, 17, 17);
   }
-  // the sword stands point-down in the heap's right flank (its art lies on the diagonal)
-  if (T.sword) { c.save(); c.translate(x + 40, y - 30); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 50, 100, 100); c.restore(); }
-  if (T.seal) k.asset('keepsake-seal', x + 76, y + 4, 54, 54);
-  if (T.lamp) k.asset('keepsake-lamp', x - 80, y + 4, 62, 62);
+  if (T.sword) { c.save(); c.translate(x + 26, y - 12); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 32, 64, 64); c.restore(); }
+  if (T.lamp) k.asset('keepsake-lamp', x - 68, y + 8, 44, 44);
+  // the betrothal gifts along the front of the heap
+  T.gifts.forEach((g, i) => k.asset('gift-' + g, x + (i - (T.gifts.length - 1) / 2) * 26, y + 14, 30, 30));
+  if (T.seal) k.asset('keepsake-seal', x + 60, y + 8, 40, 40);
   if (T.stars) {
+    const top = n ? pileSlot(n - 1).y : y;
     c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 8;
     for (let i = 0; i < T.stars; i++) {
-      const sx = x + (i - (T.stars - 1) / 2) * 44, sy = y - 112 + Math.sin(t * 1.6 + i) * 5;
-      if (!k.asset('aurora-star', sx, sy, 40, 40)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 15, 12); }
+      const sx = x + (i - (T.stars - 1) / 2) * 34, sy = top - 26 + Math.sin(t * 1.6 + i) * 4;
+      if (sy > -20 && !k.asset('aurora-star', sx, sy, 28, 28)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 14, 10); }
     }
     c.restore();
   }
-  if (T.pearls) {
-    const label = `${T.pearls} pearl${T.pearls === 1 ? '' : 's'}`;
-    c.font = '700 14px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-    const lw = c.measureText(label).width + 24;
-    c.globalAlpha = 0.8; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - lw / 2, y - 172, lw, 22, 11); c.fill();
-    c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc'); c.fillText(label, x, y - 156);
+  for (const g of st.giftsFlying || []) {
+    const u = clamp(g.t / GIFTING.flight, 0, 1), e = easeInOut(u), to = pileSlot(g.slot);
+    const gx = lerp(GIFTING.hand.x, to.x, e), gy = lerp(GIFTING.hand.y, to.y + 8, e) - Math.sin(Math.PI * u) * 70;
+    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 10; k.asset(g.kind, gx, gy, 22 - 5 * u, 22 - 5 * u); c.restore();
   }
   c.restore();
 }

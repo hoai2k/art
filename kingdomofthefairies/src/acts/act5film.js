@@ -147,6 +147,10 @@ export function swimPosition(sw) {
 }
 // The rescue opens a clear route on the right. Time and descent both
 // extinguish it, so waiting works and reaching the ground always clears it.
+// The left-hand demon runs in (`run` s) and lights the fires behind him
+// (over `light` s) once he has moved or `wait` s have passed.
+export const TOWER_FIRE = { wait: 1.5, run: 0.9, light: 0.9 };
+export const towerLeftFire = st => st.leftFireT == null ? 0 : clamp((st.leftFireT - TOWER_FIRE.run) / TOWER_FIRE.light, 0, 1);
 export const TOWER_ESCAPE = { x: HOUSE.wallR, fireSeconds: 8 };
 export function towerEscapeFire(st) {
   if (!st.p?.carry) return 1;
@@ -186,10 +190,12 @@ export function battleIntroFrame(st) {
 // The front flight climbs up and back into the arched doorway (centre ~x 900,
 // threshold ~y 516); the balustraded ramp to its right is scenery. The couple
 // climb at `climb` of their walking pace, shrink by up to `shrink` as they go
-// up and back, and fade into the dark doorway from `door` to `gate`.
-export const WEDDING = { y: 652, x0: 60, gate: 905, start: 330, follow: 96, petals: 14, stairs: 780, door: 872, returnAt: 830, climb: 0.45, shrink: 0.16 };
-// Feet follow the painted paving, the stair flight and the doorway's threshold.
-export const WEDDING_PATH = [[60,652],[760,652],[795,606],[880,524],[905,516]];
+// up and back, and walk on through the doorway, out of sight behind its
+// right jamb (`door`, the wall's edge: a feathered mask) by `gate`.
+export const WEDDING = { y: 652, x0: 60, gate: 1000, start: 330, follow: 96, petals: 14, stairs: 780, door: 944, returnAt: 830, climb: 0.45, shrink: 0.16 };
+// Feet follow the painted paving, the stair flight, the threshold and on
+// into the doorway.
+export const WEDDING_PATH = [[60,652],[760,652],[795,606],[880,524],[905,516],[1000,512]];
 export function weddingFloor(x) {
   for (let i=1;i<WEDDING_PATH.length;i++) {
     const [x1,y1]=WEDDING_PATH[i], [x0,y0]=WEDDING_PATH[i-1];
@@ -197,20 +203,40 @@ export function weddingFloor(x) {
   }
   return WEDDING_PATH.at(-1)[1];
 }
-export const weddingDoorAlpha = x => 1-clamp((x-WEDDING.door)/(WEDDING.gate-WEDDING.door),0,1);
 // Figures shrink slightly as the stairs carry them up and away from the audience.
 export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(x))/(WEDDING.y-WEDDING_PATH.at(-1)[1]),0,1);
 
 // Walking left leads back out to the wedding guests as soon as Azurine,
 // following him, is hidden behind the left curtain (her centre at `offAz`);
 // he can walk on to `off`, offstage.
-// What the voyage earned, laid out at the right of the final tableau: every
-// pearl taken in every act (the carried total and this act's), Aurora's
-// stars, the sword, Neptune's seal and Aurora's lamp.
-export const TREASURE = { x: 1032, y: 632, max: 36 };
+// What the voyage earned, heaped on the top step of the right-hand stairs of
+// the final tableau: every pearl taken in every act (the carried total and
+// this act's), Aurora's stars, the sword, Neptune's seal and Aurora's lamp,
+// and every gift the Water Fairy below it has given.
+export const TREASURE = { x: 980, y: 348 };
+// The heap's slots, bottom up: a broad base narrowing to a column of five
+// and six laid like bricks, so it climbs (slowly) off the top of the stage.
+export function pileSlot(i) {
+  for (let r = 0, n = 0; ; r++) {
+    const w = r < 3 ? 9 - r : r % 2 ? 5 : 6;
+    if (i < n + w) { const c = i - n; return { x: TREASURE.x + (c - (w - 1) / 2) * 14 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 10.5 }; }
+    n += w;
+  }
+}
+// An easter egg: beside the Water Fairy (the far-right figure) X takes one
+// gift after another from her; each flies up onto the heap.
+export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 },
+  kinds: ['pearl', 'keepsake-shell', 'aurora-star', 'keepsake-pearl', 'pearl', 'keepsake-star', 'keepsake-rose', 'pearl'] };
+export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
+export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
+// What cannot be missed on the way here (the betrothal gifts, the sword,
+// Neptune's seal) is always laid out, even with nothing recorded (a scene
+// opened directly); the optional finds (pearls, Aurora's stars, her lamp)
+// only when they were found.
+export const REQUIRED_GIFTS = ['flower', 'ring', 'crown', 'gold'];
 export const treasures = st => ({
   pearls: (st.carry?.pearls || 0) + (st.pearls || 0), stars: Math.min(3, st.carry?.tea || 0),
-  sword: !!st.carry?.guitar, seal: !!st.carry?.pearl, lamp: !!st.carry?.stone,
+  gifts: REQUIRED_GIFTS, sword: true, seal: true, lamp: !!st.carry?.stone,
 });
 export const APOTH = { y: 592, x0: 120, x1: 1160, mark: 640, near: 40, start: 320, off: -140, offAz: 80 };
 // After the credits: [X] fades out to the title screen over `fade` seconds;
@@ -263,7 +289,7 @@ function winFilm(st, extra = {}) {
 // ================================================================= Act V
 export const TOWER_SCENES = [
   { name: 'The Cliff Foot' }, { name: 'Halfway Up the Cliff' }, { name: 'The Sea Gap' },
-  { name: 'The Tower Wall' }, { name: 'Halfway Up the Tower' },
+  { name: 'The Tower Wall' }, { name: 'Top of the Tower' },
 ];
 
 function startSwim(st) {
@@ -452,7 +478,7 @@ export const actBurning = {
   mood: (st) => (['wedding', 'apotheosis', 'finale', 'iris'].includes(st.phase) ? 'wedding' : 'storm'),
   touchLive: (st) => !st.battleIntro && (['house', 'quay', 'apotheosis', 'finale'].includes(st.phase) || (st.phase === 'wedding' && (st.weddingIntro === false || st.phaseT >= FILM_T.weddingLead)) || (st.phase === 'barrel' && st.barrel?.fallT == null)),
   // the second button swings the sword in the witch's last stand
-  touchVerbB: (st) => (creditsDone(st) && st.leaveT == null ? 'Title' : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
+  touchVerbB: (st) => (nearGiftFairy(st) ? 'Gift' : creditsDone(st) && st.leaveT == null ? 'Title' : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? 'Strike' : ''),
   touchVerb: (st) => (st.phase === 'barrel' && st.duel ? 'Leap' : st.phase === 'barrel' ? '' : st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? 'Action' : 'Leap'),
   fade: st => st?.leaveT != null ? clamp(st.leaveT / ENDING.fade, 0, 1) : st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
   touchHint: 'drag to walk and climb, A to leap',
@@ -464,6 +490,15 @@ export const actBurning = {
     const st = act5.create({ seed, carry, from: { ...(from || {}), scene: lk } });
     st.part = 'burning';
     st.houseExit = { side: 'right', x: TOWER_ESCAPE.x };
+    // A second ladder from the middle floor to the ground, unfolding just
+    // after the first when the floor breaks, so the way down reads clearly.
+    if (!st.conns.some((c) => c.id === 'ladderDown2')) {
+      const saved = from?.conns?.find((c) => c.id === 'ladderDown2');
+      st.conns.push({ id: 'ladderDown2', kind: 'ladder', a: { x: 772, f: 0 }, b: { x: 772, f: 1 }, on: saved ? !!saved.on : !!st.broke });
+    }
+    // The left-hand demon and its fires arrive once he is inside (TOWER_FIRE);
+    // a resume into the carry finds them already lit.
+    st.leftFireT = st.p.carry || (from?.scene | 0) > 1 ? 99 : null;
     st.escapeT = st.p.carry ? Math.max(0, from?.escapeT || 0) : null;
     st.escapeFire = st.p.carry ? (from?.escapeFire ?? 1) : 1;
     st.carry = { ...CARRY_DEFAULT, ...carry };
@@ -483,7 +518,7 @@ export const actBurning = {
     if (st.creditsT != null) {
       const active = movingDirection(input) || input.a || input.x;
       st.idleT = active ? 0 : (st.idleT || 0) + dt;
-      if (st.leaveT == null && creditsDone(st) && (input.x
+      if (st.leaveT == null && creditsDone(st) && ((input.x && !nearGiftFairy(st))
         || (input.songLeft != null && input.songLeft <= ENDING.fade && st.idleT >= ENDING.idle))) {
         st.leaveT = 0; st.events.push({ type: 'leaveToTitle' });
       }
@@ -494,6 +529,9 @@ export const actBurning = {
     if (st.phase === 'house') {
       const carrying = st.p.carry;
       if (carrying) { st.escapeT = (st.escapeT || 0) + dt; st.escapeFire = towerEscapeFire(st); }
+      // the demon comes as soon as he moves (or after a moment) and lights the fires behind him
+      if (st.leftFireT == null && (Math.abs(input.moveX || 0) > 0.15 || input.up || input.a || st.phaseT >= TOWER_FIRE.wait)) { st.leftFireT = 0; st.events.push({ type: 'demonArrives' }); }
+      else if (st.leftFireT != null) st.leftFireT += dt;
       stepHouse(st, dt, input);
       if (!carrying && st.p.carry) { st.escapeT = 0; st.escapeFire = 1; }
       if (st.phase === 'house' && st.p.carry) st.escapeFire = towerEscapeFire(st);
@@ -509,7 +547,8 @@ export const actBurning = {
       const film = LEGACY_SCENE.indexOf(st.checkpoint.scene);
       if (film >= 0) st.checkpoint = { ...st.checkpoint, scene: film };
     }
-    if (st.defeatT === 0) { st.lostTitle = 'The Fire Takes\nthe Tower'; st.lostSub = 'The ceiling shudders before it falls.'; }
+    // (the witch's own defeat keeps its words: duelHit)
+    if (st.defeatT === 0 && st.phase === 'house') { st.lostTitle = 'The Fire Takes\nthe Tower'; st.lostSub = 'The ceiling shudders before it falls.'; }
     st.lastBeat = st.beat;
   },
 
@@ -542,7 +581,9 @@ export const actBurning = {
     if (e.type === 'apotheosis') return 'Jump into the light beneath Aurora when you are ready.';
     if (e.type === 'ascend') return 'The Kingdom of the Fairies.';
     if (e.type === 'floatDown') return 'You float gently down.';
+    if (e.type === 'demonArrives') return 'A demon runs in behind you and sets the doorway alight.';
     if (e.type === 'leaveToTitle') return 'Returning to the title screen.';
+    if (e.type === 'giftGiven') return e.n === 1 ? 'The Water Fairy gives you a gift.' : `Gift ${e.n}.`;
     if (e.type === 'finale') return 'The end. Credits: principal game designer Hoai Nguyen; after Le Royaume des fées by Georges Méliès. Thank you for playing.';
     return null;
   },
@@ -593,9 +634,11 @@ function stepDive(st, dt, input) {
     else if (d.t >= FILM_T.splash) startSwim(st);
     return;
   }
-  walk(w, dt, input, { y: diveFloor(w.x), x0: DIVE.x0, x1: DIVE.edge + 40 });
+  // A leaps on the clifftop like anywhere else; at the edge it dives
+  const atEdge = w.x > DIVE.edge - 110;
+  walk(w, dt, atEdge ? { ...input, a: false } : input, { y: diveFloor(w.x), x0: DIVE.x0, x1: DIVE.edge + 40, leap: true });
   if (w.on) w.y = diveFloor(w.x);
-  if ((input.a && w.x > DIVE.edge - 110) || w.x > DIVE.edge + 10) {
+  if ((input.a && atEdge) || w.x > DIVE.edge + 10) {
     st.dv = { t: 0, vx: 170, vy: -260, rot: 0, splash: false };
     st.events.push({ type: 'diveLeap' });
   }
@@ -721,8 +764,8 @@ function stepDuel(st, dt, input) {
 export const duelReach = (st) => !!st.duel && st.duel.x - DUEL.hw - (st.w.x + PRINCE_HW) < DUEL.reach - DUEL.hw && !['trap', 'reel'].includes(st.duel.state);
 function duelHit(st) {
   if (hit(st, { cause: 'witch' }) && st.defeatT != null) {
-    st.lostTitle = 'The Witch\nHolds the Cliff';
-    st.lostSub = 'Leap her fire with A; strike her with the sword with X.';
+    st.lostTitle = 'Engulfed\nin Flames';
+    st.lostSub = 'The witch engulfed you in flames. Try again.';
   }
 }
 function stepBarrel(st, dt, input) {
@@ -819,6 +862,13 @@ export const creditsDone = st => st?.creditsT != null && st.creditsT >= FINALE_E
 const movingDirection=input=>Math.abs(input.moveX||0)>.15||Math.abs(input.moveY||0)>.15||input.up||input.down||input.left||input.right;
 function stepApotheosis(st,dt,input){
   const w=st.w;
+  // the Water Fairy's gifts in flight to the heap
+  st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
+  if(input.x&&nearGiftFairy(st)){
+    const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[(n-1)%GIFTING.kinds.length];
+    st.giftsFlying.push({kind,t:0,slot:pileCount(st)+st.giftsFlying.length});
+    st.events.push({type:'giftGiven',n,kind});
+  }
   if(st.flight){
     if(st.flight==='rise'){
       st.riseT=Math.min(FILM_T.rise,st.riseT+dt);

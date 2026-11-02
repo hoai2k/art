@@ -14,7 +14,7 @@ try {
   await page.goto(server.url+'/?qa');
   await page.waitForFunction(()=>window.__kingdomOfTheFairies?.assets?.all && !document.body.classList.contains('booting'));
   await page.evaluate(()=>window.__kingdomOfTheFairies.assets.all);
-  await page.locator('#btn-scenes').evaluate(button=>button.click());
+  await page.evaluate(()=>window.__kingdomOfTheFairies.open.scenes());
   await page.locator('#scenes').waitFor({state:'visible'});
   const grid=page.locator('.scene-grid').nth(2),buttons=grid.locator('button');
   await buttons.first().focus();

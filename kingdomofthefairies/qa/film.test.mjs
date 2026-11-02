@@ -9,7 +9,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, treasures, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -45,8 +45,49 @@ test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse 
 test('The final tableau lays out every pearl and keepsake of the voyage', () => {
   const st = actBurning.create({ carry: { pearls: 31, tea: 3, guitar: true, pearl: true, stone: false }, from: { scene: 4 } });
   st.pearls = 6;
-  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, sword: true, seal: true, lamp: false });
+  assert.deepEqual(treasures(st), { pearls: 37, stars: 3, gifts: ['flower', 'ring', 'crown', 'gold'], sword: true, seal: true, lamp: false });
+  // a scene opened with nothing recorded still shows what cannot be missed
+  const bare = treasures(actBurning.create({ from: { scene: 4 } }));
+  assert.deepEqual([bare.pearls, bare.stars, bare.lamp, bare.sword, bare.seal, bare.gifts.length], [0, 0, false, true, true, 4]);
   assert.equal(actTower.intertitle, null, 'the Cliff Foot has no second card');
+});
+
+test('Losing the last stand: engulfed in flames, with its own words', () => {
+  const st = actBurning.create({ from: { scene: 3, introDone: true } });
+  st.lanterns = 1; st.inv = 0; st.duel.next = 99; st.duel.bolts = [{ x: st.w.x + 20 }];
+  for (let i = 0; i < 30 && st.defeatT == null; i++) actBurning.step(st, DT, {});
+  run(actBurning, st, 0.2);
+  assert.equal(st.lostTitle, 'Engulfed\nin Flames');
+  assert.equal(st.lostSub, 'The witch engulfed you in flames. Try again.');
+  assert.equal(actTower.scenes.at(-1).name, 'Top of the Tower');
+});
+
+test('The Water Fairy gives gift after gift, each flying up onto the heap; X beside her never leaves for the title', () => {
+  const st = actBurning.create({ carry: { pearls: 10 }, from: { scene: 4 } });st.phaseT = 5; st.weddingIntro = false;
+  run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
+  st.w.x = GIFTING.x; st.w.vx = 0;
+  assert.ok(nearGiftFairy(st)); assert.equal(actBurning.touchVerbB(st), 'Gift');
+  for (let i = 0; i < 5; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
+  assert.equal(st.giftsFlying.length, 5); assert.equal(pileCount(st), 10);
+  run(actBurning, st, GIFTING.flight + 0.1);
+  assert.equal(st.giftsLanded, 5); assert.equal(pileCount(st), 15); assert.equal(st.giftKinds.length, 5);
+  st.creditsT = 40; actBurning.step(st, DT, { x: true });
+  assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
+  st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
+});
+
+test('Inside the tower: the left fires are lit by a demon once he moves; a second ladder unfolds when the floor breaks', () => {
+  const st = actBurning.create({ from: { scene: 0 } });
+  assert.equal(st.phase, 'house'); assert.equal(towerLeftFire(st), 0);
+  actBurning.step(st, DT, {}); assert.equal(st.leftFireT, null, 'nothing until he moves');
+  actBurning.step(st, DT, { moveX: 1 }); assert.equal(st.leftFireT, 0);
+  run(actBurning, st, TOWER_FIRE.run + TOWER_FIRE.light + 0.1); assert.equal(towerLeftFire(st), 1);
+  const idle = actBurning.create({ from: { scene: 0 } }); run(actBurning, idle, TOWER_FIRE.wait + 0.05); assert.ok(idle.leftFireT != null, 'or after a moment');
+  const l2 = st.conns.find((c) => c.id === 'ladderDown2');
+  assert.ok(l2 && !l2.on);
+  const carried = actBurning.create({ from: { scene: 1 } });
+  assert.ok(carried.conns.find((c) => c.id === 'ladderDown2').on, 'the carry finds both ladders down');
+  assert.equal(towerLeftFire(carried), 1);
 });
 
 test('Act II scene names follow the film', () => {
@@ -790,7 +831,7 @@ test('The way back out: walk left until Azurine, following, is behind the curtai
  let last=null;run(actBurning,again,3,()=>({moveX:-1}),s=>{if(s.phase==='apotheosis')last={w:s.w.x,az:s.az.x};return s.phase==='wedding';});
  assert.equal(again.phase,'wedding');assert.ok(last.az<=APOTH.offAz+5&&last.w>APOTH.off,'leaves as soon as she is hidden, not after walking right offstage');
  assert.equal(again.weddingIntro,false);
- run(actBurning,again,.8,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
+ run(actBurning,again,2,()=>({moveX:1}),s=>!s.weddingExit);assert.equal(again.phase,'wedding');
  assert.equal(again.weddingExit,false);assert.ok(again.w.x < WEDDING.door-40);
  run(actBurning,again,.2,()=>({moveX:1}));assert.equal(again.phase,'wedding');
  run(actBurning,again,3,()=>({moveX:1}),s=>s.phase!=='wedding');assert.equal(again.phase,'apotheosis');
