@@ -323,3 +323,31 @@ anatomy; not cute, not chibi, no smiles.
 - **File:** `ui/creatures.png` → `game/assets/ui/creatures.png`
 - **Size:** 2560 × 512, on transparent background
 - **Prompt:** Five round portrait medallions side by side, evenly spaced, each a painted head-and-shoulders portrait of an animal facing slightly right inside a thin cream ring on a warm autumn-coloured disc: a black squirrel, a North American beaver, an eastern cottontail rabbit, a mute swan, a great blue heron. Painted storybook realism, consistent style and lighting across all five, no text, transparent background around the discs.
+
+## Round 10: the ground the squirrel runs on
+
+Playing showed the ground needs more character up close: the fallen-leaf
+sprites read as flat specks rather than leaves lying in drifts, and the
+sidewalks, curbs and gutters are plainer than real downtown streets. These are
+for the street surfaces and for the small things a squirrel meets at ground
+level. Same painted storybook realism and October light. Tiling textures are
+seamless on all four edges, seen exactly from above, no directional shadows.
+Cutouts are on a transparent background, seen from directly above unless the
+request says otherwise, each item whole and not touching the others.
+
+| # | File | Size / real size | Prompt |
+|---|---|---|---|
+| G10.1 | `textures/leaf_drift_edge.png` | 1024 × 1024, 1 m × 1 m | Seamless (left–right only) top-down texture of fallen autumn leaves piled in a drift along a curb: thick overlapping maple, oak and linden leaves at the top edge thinning to scattered single leaves at the bottom edge, transparent where there are no leaves. Reds, oranges, golds, browns, some curled and some flat. Status: `open` |
+| G10.2 | `textures/leaf_scatter.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of scattered fallen leaves on a transparent background, about 25% coverage, mixed maple, oak, linden and elm, some overlapping in small clusters, a few curled up at the edges with soft contact shadows under them. Status: `open` |
+| G10.3 | `sprites/leaf_piles.png` | 2048 × 1024 | Six separate small heaps of raked or wind-blown autumn leaves seen at a three-quarter angle from slightly above, each about the size a squirrel could dive into, from a low scatter to a deep mound, in red, orange, gold and brown, transparent background. Status: `open` |
+| G10.4 | `sprites/leaves_single_hd.png` | 2048 × 2048 | Twenty-four single fallen leaves seen from above in a 6 × 4 grid, large and detailed with veins and stems: sugar maple (red, orange, yellow), red maple, silver maple, red oak, white oak, linden, elm, horse chestnut, Manitoba maple keys, birch; some flat, some curled, some half-decayed with holes; transparent background. Status: `open` |
+| G10.5 | `textures/sidewalk_slab_hd.png` | 1024 × 1024, 1.5 m × 1.5 m | Seamless top-down texture of one square of weathered broom-finished concrete sidewalk with a tooled border, a hairline crack, a few gum spots and a dark rain stain; painted. Status: `open` |
+| G10.6 | `textures/curb_face.png` | 1024 × 256, 2 m × 0.25 m | Seamless (left–right) front view of the vertical face and rounded top edge of an old concrete curb, chipped in places, grimy at the bottom where it meets the gutter; painted. Status: `open` |
+| G10.7 | `textures/gutter.png` | 1024 × 512, 2 m × 1 m | Seamless (left–right) top-down texture of the concrete gutter strip between a curb (top edge) and asphalt (bottom edge), with grit, a few wet leaves, a bottle cap and a faint damp line; painted. Status: `open` |
+| G10.8 | `textures/pavers_square.png` | 1024 × 1024, 3 m × 3 m | Seamless top-down texture of a modern civic plaza: pale grey concrete panels in a large grid with bands of small charcoal-grey pavers between them, a few leaves; painted. Status: `open` |
+| G10.9 | `textures/tactile_paving.png` | 512 × 512, 0.6 m × 0.6 m | Seamless top-down texture of a yellow tactile warning pad of raised truncated domes at a crosswalk ramp, slightly worn; painted. Status: `open` |
+| G10.10 | `textures/mulch_bed.png` | 1024 × 1024, 2 m × 2 m | Seamless top-down texture of a cedar mulch flower bed with a few fallen leaves and the base of dried perennials; painted. Status: `open` |
+| G10.11 | `textures/asphalt_patched.png` | 1024 × 1024, 4 m × 4 m | Seamless top-down texture of worn downtown asphalt with darker patched rectangles, sealed cracks in black tar lines, faded road paint fragments and a few leaves; painted. Status: `open` |
+| G10.12 | `sprites/street_ground_items.png` | 2048 × 1024 | Eight separate street-level fixtures seen exactly from above, on transparent background: a round cast-iron manhole cover with a grid pattern, a rectangular storm drain grate with leaves caught in it, a square cast-iron tree grate around a trunk opening, a water valve cap, a utility access plate, a small puddle with a sky reflection, a crack in concrete with a weed growing out, a round metal survey marker. Painted, no text on the covers. Status: `open` |
+| G10.13 | `sprites/ground_plants.png` | 2048 × 1024 | Twelve separate low plants and ground growth seen from the side at squirrel eye level, transparent background: a dandelion with a seed head, a clump of clover, plantain leaves, a tuft of crabgrass from a sidewalk crack, moss in a crack, a small cluster of mushrooms, a fern, a dried goldenrod stalk, chicory, a patch of creeping thyme, an ivy runner, a fallen twig with lichen. Painted. Status: `open` |
+| G10.14 | `sprites/ground_debris.png` | 2048 × 1024 | Twelve separate small things on the ground seen from slightly above at squirrel eye level, transparent background: a pine cone, a broken branch about 40 cm long, a bundle of twigs, a crushed paper coffee cup with no logo, a bottle cap, an acorn with cap, a half-eaten apple core, a horse chestnut in its spiky husk, a feather, a smooth river stone, a cluster of maple keys, a small heap of sunflower seed shells. Painted, no logos or text. Status: `open` |

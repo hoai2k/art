@@ -4,7 +4,19 @@
 //
 // Frame: `pos` is the contact point (feet on the surface); `up` the surface normal the body
 // stands on (world up on the ground, the wall's normal when climbing); `fwd` the heading (unit,
-// tangent to the surface). State: 'idle' | 'move' | 'air' | 'climb' | 'sit' | 'dig' | 'swim'.
+// tangent to the surface). State: 'idle' | 'move' | 'air' | 'climb' | 'sit' | 'dig' | 'swim' |
+// 'dive' | 'fly'.
+//
+// Modes a creature switches on in its tuning (defaults in brackets):
+//   canSwim [true]   surface swimming (swimSpeed, swimDepth); swimTire [none]: after that many
+//                    seconds a poor swimmer heads for the nearest bank and climbs out
+//   canDive [false]  A in the water dives (diveSpeed, diveDepth, breath) and A surfaces again
+//   wadeDepth [0]    a non-swimmer walks on the bed of water this shallow; deeper stops it
+//   canFly [false]   flight: take off with A (takeoffSpeed > 0: a running start on land or water
+//                    while A is held; 0: straight up with a few wingbeats), stick steers
+//                    (flyTurn), A held flaps and climbs (flyClimb), RT flies faster (flySpeed,
+//                    flySprint), let go to glide (glideSink); lands on ground, roofs, branches or
+//                    (if it swims) water. Any creature can reuse these.
 import * as THREE from 'three';
 import { raycast, resolveCapsule, pathClear } from './collide.js';
 import { climbable as defaultClimbable } from '../surface.js';
@@ -33,6 +45,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     events: [],               // [name, data] emitted this step (index.js forwards them)
     lastLand: 0,
     debug: {},
+    takeoff: 0, flapping: false, landing: 0, wading: 0, swimTime: 0, diveTime: 0, flyTime: 0,
   };
   c.climbable = climbable;
   // can it hold on here? climbable, not a floor, and not an underside (cornice soffits, eaves)
@@ -163,9 +176,26 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       }
     }
 
+    // flight take-off: a running start (A held, up to takeoffSpeed) or straight up
+    if (T.canFly) {
+      if (T.takeoffSpeed > 0 && c.jumpHeld) {
+        c.takeoff = Math.min(1, c.speed / T.takeoffSpeed);
+        if (c.wishMag < 0.3) c.wish.copy(c.fwd);
+        c.speed = Math.min(T.takeoffSpeed * 1.05 * c.boostMul, c.speed + T.accel * 0.6 * dt * c.boostMul);
+        c.vel.copy(c.fwd).multiplyScalar(c.speed);
+        if (c.speed >= T.takeoffSpeed) { takeOff(); return; }
+      } else c.takeoff = 0;
+    }
     // move
     const prevPos = v4.copy(c.pos).clone();
     c.pos.addScaledVector(c.vel, dt);
+    // a non-swimmer wades only where the water is shallow enough
+    if (T.canSwim === false) {
+      const wl0 = world.waterAt?.(c.pos.x, c.pos.z);
+      if (wl0 != null && wl0 - c.pos.y > (T.wadeDepth || 0) && wl0 - c.pos.y > wl0 - prevPos.y) {
+        c.pos.copy(prevPos); c.speed = 0; c.vel.set(0, 0, 0);
+      }
+    }
     collide(world, (n, surf) => {
       if (!isWalkable(n)) {
         const into = c.vel.dot(n);
@@ -189,9 +219,14 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     }
     // water
     const wl = world.waterAt?.(c.pos.x, c.pos.z);
-    if (wl != null && c.pos.y < wl - T.swimDepth) { enterSwim(world, wl); return; }
-    // jump
-    if (c.jumpBuffer > 0) { doJump(world); return; }
+    c.wading = wl != null && wl > c.pos.y ? wl - c.pos.y : 0;
+    if (T.canSwim !== false && wl != null && c.pos.y < wl - T.swimDepth) { enterSwim(world, wl); return; }
+    // jump (a flyer with no running start takes off instead; one with a running start holds A)
+    if (c.jumpBuffer > 0) {
+      if (T.canFly && !(T.takeoffSpeed > 0)) { c.jumpBuffer = 0; takeOff(true); return; }
+      if (!T.canFly) { doJump(world); return; }
+      c.jumpBuffer = 0;
+    }
     // actions
     if (controls.sitPressed && Math.abs(c.speed) < T.runSpeed * 0.5) { c.state = 'sit'; c.actionTime = 0; c.speed = 0; return; }
     if (controls.digPressed && Math.abs(c.speed) < T.runSpeed * 0.5) { c.state = 'dig'; c.actionTime = 0; c.speed = 0; emit('dig', { position: c.pos.clone() }); return; }
@@ -326,7 +361,9 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     }
     // water
     const wl = world.waterAt?.(c.pos.x, c.pos.z);
-    if (wl != null && c.pos.y < wl - T.swimDepth && c.vel.y < 0) { emit('splash', { position: c.pos.clone(), speed: -c.vel.y }); enterSwim(world, wl); return; }
+    if (T.canSwim !== false && wl != null && c.pos.y < wl - T.swimDepth && c.vel.y < 0) { emit('splash', { position: c.pos.clone(), speed: -c.vel.y }); enterSwim(world, wl); return; }
+    // a flyer falling (off a roof, after a hop) opens its wings with A
+    if (T.canFly && c.jumpBuffer > 0 && !c.hop) { c.jumpBuffer = 0; takeOff(true); return; }
     // keep the jump buffer alive for coyote jumps
     if (c.jumpBuffer > 0 && c.coyote > 0 && !c.jumping) { doJump(world); }
     c.coyote -= dt;
@@ -548,7 +585,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
 
   // ---------------------------------------------------------------- swimming
   function enterSwim(world, wl) {
-    c.state = 'swim'; c.grounded = false; c.jumping = false;
+    c.state = 'swim'; c.grounded = false; c.jumping = false; c.swimTime = 0;
     c.pos.y = wl - T.swimDepth; c.vel.y = 0; c.up.copy(UP);
     c.speed = Math.min(c.speed, T.swimSpeed);
   }
@@ -564,9 +601,22 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     }
     c.fwd.y = 0; c.fwd.normalize();
     c.speed += THREE.MathUtils.clamp(vmax * Math.max(0, c.fwd.dot(c.wish)) - c.speed, -4 * dt * c.boostMul, 3 * dt * c.boostMul);
+    // a poor swimmer tires and heads for the nearest bank
+    c.swimTime += dt;
+    if (T.swimTire && c.swimTime > T.swimTire) {
+      const bank = nearestBank(world);
+      if (bank) { c.fwd.lerp(bank, 1 - Math.exp(-dt * 6)).setY(0).normalize(); c.speed = Math.max(c.speed, T.swimSpeed * 0.8); }
+    }
+    // a flyer that can take off from water runs across it with A held
+    if (T.canFly && T.takeoffSpeed > 0 && c.jumpHeld) {
+      c.takeoff = Math.min(1, c.speed / T.takeoffSpeed);
+      c.speed = Math.min(T.takeoffSpeed * 1.05 * c.boostMul, c.speed + T.accel * 0.45 * dt * c.boostMul);
+      if (c.speed >= T.takeoffSpeed) { c.vel.copy(c.fwd).multiplyScalar(c.speed); takeOff(); emit('splash', { position: c.pos.clone(), speed: 1 }); return; }
+    } else c.takeoff = 0;
     c.vel.copy(c.fwd).multiplyScalar(c.speed);
+    const prevSwim = c.pos.clone();
     c.pos.addScaledVector(c.vel, dt);
-    collide(world, (n) => { const into = c.vel.dot(n); if (into < 0 && !isWalkable(n)) c.vel.addScaledVector(n, -into); });
+    collide(world, (n) => { const into = c.vel.dot(n); if (into < 0 && !isWalkable(n)) c.vel.addScaledVector(n, -into); }, prevSwim);
     // shallow: walk out
     const g = ray(world, v1.copy(c.pos).addScaledVector(UP, T.radius * 3), v2.set(0, -1, 0), T.radius * 3 + T.swimDepth + 0.02);
     if (wl == null || (g && g.point.y > (wl ?? -1e9) - T.swimDepth)) {
@@ -574,7 +624,112 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       enterAir('fall'); return;
     }
     c.pos.y = THREE.MathUtils.lerp(c.pos.y, wl - T.swimDepth, 1 - Math.exp(-dt * 10));
-    if (c.jumpBuffer > 0) { c.jumpBuffer = 0; c.vel.y = Math.sqrt(2 * T.gravity * T.jumpHeight * 0.35); c.vel.addScaledVector(c.fwd, 0.5); enterAir('jump'); c.jumping = true; emit('splash', { position: c.pos.clone(), speed: 1 }); }
+    if (c.jumpBuffer > 0) {
+      c.jumpBuffer = 0;
+      if (T.canDive) { c.state = 'dive'; c.diveTime = 0; emit('splash', { position: c.pos.clone(), speed: 0.5 }); return; }
+      if (T.canFly) return;                         // (holding A runs across the water instead)
+      c.vel.y = Math.sqrt(2 * T.gravity * T.jumpHeight * 0.35); c.vel.addScaledVector(c.fwd, 0.5); enterAir('jump'); c.jumping = true; emit('splash', { position: c.pos.clone(), speed: 1 });
+    }
+  }
+
+  // the direction to the nearest dry ground, looking out a few metres round about
+  function nearestBank(world) {
+    for (const r of [0.5, 1, 2, 3.5, 5].map((x) => x * T.scale / 0.25)) {
+      let best = null;
+      for (let k = 0; k < 12; k++) {
+        const a = (k / 12) * Math.PI * 2, x = c.pos.x + Math.sin(a) * r, z = c.pos.z + Math.cos(a) * r;
+        if (world.waterAt?.(x, z) == null) { const d = new THREE.Vector3(Math.sin(a), 0, Math.cos(a)); if (!best || d.dot(c.fwd) > best.dot(c.fwd)) best = d; }
+      }
+      if (best) return best;
+    }
+    return null;
+  }
+
+  // ---------------------------------------------------------------- diving
+  function stepDive(dt, controls, world, camera) {
+    wishFromStick(controls, camera, 'ground');
+    c.diveTime += dt;
+    const wl = world.waterAt?.(c.pos.x, c.pos.z);
+    if (wl == null) { c.state = 'swim'; return stepSwim(dt, controls, world, camera); }
+    // the bed under us, and how deep we go (diveDepth, never into the bed)
+    const bed = ray(world, v1.set(c.pos.x, wl + 0.05, c.pos.z), DOWN, 30);
+    const bedY = bed ? bed.point.y : wl - 30;
+    const target = Math.max(bedY + T.radius * 1.2, wl - (T.diveDepth || 1));
+    const surface = c.jumpBuffer > 0 || c.diveTime > (T.breath || 20) || target > wl - T.swimDepth - 0.02;
+    if (c.jumpBuffer > 0) c.jumpBuffer = 0;
+    if (surface && c.diveTime > 0.25) { c.state = 'swim'; c.swimTime = 0; emit('splash', { position: c.pos.clone(), speed: 0.4 }); return; }
+    if (c.wishMag > 0) {
+      const cross = v1.crossVectors(c.fwd, c.wish).y;
+      c.fwd.applyAxisAngle(UP, THREE.MathUtils.clamp(Math.atan2(cross, c.fwd.dot(c.wish)), -3.5 * dt, 3.5 * dt));
+    }
+    c.fwd.y = 0; c.fwd.normalize();
+    const vmax = c.wishMag * (T.diveSpeed || T.swimSpeed) * (1 + 0.3 * c.sprint) * c.boostMul;
+    c.speed += THREE.MathUtils.clamp(vmax * Math.max(0, c.fwd.dot(c.wish)) - c.speed, -4 * dt * c.boostMul, 3 * dt * c.boostMul);
+    const vy = THREE.MathUtils.clamp((target - c.pos.y) * 3, -1.5, 1.5);
+    c.vel.copy(c.fwd).multiplyScalar(c.speed); c.vel.y = vy;
+    const prev = c.pos.clone();
+    c.pos.addScaledVector(c.vel, dt);
+    collide(world, (n) => { const into = c.vel.dot(n); if (into < 0) c.vel.addScaledVector(n, -into); }, prev);
+    if (c.pos.y < bedY + T.radius) c.pos.y = bedY + T.radius;
+  }
+
+  // ---------------------------------------------------------------- flight
+  function takeOff(standing) {
+    c.state = 'fly'; c.grounded = false; c.jumping = false; c.hop = 0; c.takeoff = 0; c.flyTime = 0;
+    c.up.copy(UP); c.fwd.y = 0; c.fwd.normalize();
+    c.speed = Math.max(c.speed, T.flyMin * (standing ? 0.6 : 1));
+    c.vel.copy(c.fwd).multiplyScalar(c.speed);
+    c.vel.y = standing ? T.flyClimb * 1.6 : T.flyClimb;
+    emit('jump', { position: c.pos.clone(), takeoff: true });
+  }
+
+  function stepFly(dt, controls, world, camera) {
+    c.flyTime += dt;
+    wishFromStick(controls, camera, 'air');
+    // steer: turn the heading toward the stick (banked turns)
+    let turn = 0;
+    if (c.wishMag > 0) {
+      const cross = v1.crossVectors(c.fwd, c.wish).y;
+      const ang = Math.atan2(cross, THREE.MathUtils.clamp(c.fwd.dot(c.wish), -1, 1));
+      turn = THREE.MathUtils.clamp(ang, -T.flyTurn * dt, T.flyTurn * dt);
+      c.fwd.applyAxisAngle(UP, turn);
+    }
+    c.turnRate = THREE.MathUtils.lerp(c.turnRate, turn / dt, 1 - Math.exp(-dt * 6));
+    // speed: cruise, faster with RT, a little slower with the stick pulled back
+    const back = c.wishMag > 0 ? Math.max(0, -c.fwd.dot(c.wish)) * c.wishMag : 0;
+    const want = (T.flySpeed + c.sprint * (T.flySprint - T.flySpeed)) * (1 - 0.35 * back) * c.boostMul;
+    c.speed += THREE.MathUtils.clamp(want - c.speed, -T.flyAccel * dt * c.boostMul, T.flyAccel * dt * c.boostMul);
+    // A held: flap and climb; otherwise glide down slowly
+    c.flapping = c.jumpHeld || c.flyTime < 0.5;
+    const vyWant = c.flapping ? T.flyClimb : -T.glideSink * (c.speed < T.flyMin ? 2.5 : 1);
+    c.vel.y += THREE.MathUtils.clamp(vyWant - c.vel.y, -6 * dt, 6 * dt);
+    c.vel.x = c.fwd.x * c.speed; c.vel.z = c.fwd.z * c.speed;
+    if (c.pos.y > (T.flyCeiling ?? 150) && c.vel.y > 0) c.vel.y = 0;
+    const prev = c.pos.clone();
+    // landing: ground (or a roof, or a branch) close under the feet while descending
+    const step = v3.copy(c.vel).multiplyScalar(dt);
+    if (c.vel.y <= 0 && c.flyTime > 0.6) {
+      const g = ray(world, v4.copy(c.pos).addScaledVector(UP, T.radius), DOWN, T.radius + Math.max(0.02, -step.y) + 0.02);
+      if (g && isWalkable(g.normal)) { c.pos.copy(g.point); landFromFlight(g); return; }
+    }
+    c.pos.add(step);
+    collide(world, (n) => {
+      const into = c.vel.dot(n);
+      if (into < 0) c.vel.addScaledVector(n, -into);
+      if (isWalkable(n) && c.vel.y < 0) c.vel.y = 0;
+    }, prev);
+    // water: a swimmer lands on it (skiing in on its feet), a wader on a shallow bed, else stay up
+    const wl = world.waterAt?.(c.pos.x, c.pos.z);
+    if (wl != null && c.pos.y < wl + 0.02) {
+      if (T.canSwim !== false && c.flyTime > 0.6) { c.state = 'swim'; c.swimTime = 0; c.pos.y = wl - T.swimDepth; c.vel.y = 0; c.speed = Math.min(c.speed, T.swimSpeed * 2); c.landing = 0.6; emit('splash', { position: c.pos.clone(), speed: c.speed }); emit('land', { position: c.pos.clone(), impact: 1, water: true }); return; }
+      if (T.canSwim === false) { c.pos.y = Math.max(c.pos.y, wl + 0.02); c.vel.y = Math.max(0, c.vel.y); }
+    }
+  }
+
+  function landFromFlight(g) {
+    c.state = 'move'; c.grounded = true; c.up.copy(g.normal); c.surface = g.surface;
+    c.speed = Math.min(c.speed, T.runSpeed); c.vel.set(0, 0, 0); c.landing = 0.6; c.flapping = false;
+    emit('land', { position: c.pos.clone(), impact: 1, fromFlight: true });
   }
 
   // ---------------------------------------------------------------- actions
@@ -602,6 +757,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       if (g) c.pos.copy(g.point);
     }
     if (c.topOut > 0) c.topOut -= dt;
+    if (c.landing > 0) c.landing -= dt;
     const c0 = centreOf(c.pos, c.up), p0 = c.pos.clone(), u0 = c.up.clone();
     c._relocated = false;
     switch (c.state) {
@@ -609,6 +765,8 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       case 'air': stepAir(dt, controls, world, camera); break;
       case 'climb': stepClimb(dt, controls, world, camera); break;
       case 'swim': stepSwim(dt, controls, world, camera); break;
+      case 'dive': stepDive(dt, controls, world, camera); break;
+      case 'fly': stepFly(dt, controls, world, camera); break;
       case 'sit': case 'dig': stepAction(dt, controls, world, camera); break;
     }
     // last line of defence: an ordinary step may never carry the body's centre through a surface
