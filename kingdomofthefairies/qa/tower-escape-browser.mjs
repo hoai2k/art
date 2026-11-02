@@ -17,7 +17,7 @@ try{
  for(const tinted of [false,true])for(const stage of ['before','fading','clear']){
   const sample=await page.evaluate(({tinted,stage})=>{
    const r=window.escapeReview,act=r.mod.actBurning,st=act.create({from:{scene:stage==='before'?0:1}});
-   st.phaseT=10;
+   st.phaseT=10;st.leftFireT=99;   // the demon has lit the left fires (they wait for him to move)
    if(stage==='fading'){st.escapeT=3;st.p.y=452;st.p.f=1;}
    if(stage==='clear'){st.escapeT=5;st.p.y=626;st.p.f=0;st.p.x=876;st.p.face=1;}
    const renderer=r.createRenderer(r.canvas,window.__kingdomOfTheFairies.assets),draw=renderer.kit.asset,fire=[],door=[];let teal=0;

@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, pileCount } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, pileCount } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -333,12 +333,14 @@ function towerInterior(k, st, t) {
     }
   });
   // the demons who set it alight, dancing with their torches at the foot
+  // (the red one runs in from the left once he is inside: TOWER_FIRE)
+  const runIn = st.leftFireT == null ? 0 : easeOut(clamp(st.leftFireT / TOWER_FIRE.run, 0, 1));
   for (const [x, id, ph0] of [[318, 'demon-red', 0], [962, 'demon-teal', 1.7]]) {
-    const hop = Math.abs(Math.sin(t * 4 + ph0)) * 8;
-    const clearing = id === 'demon-teal' ? rightFire : 1;
+    const hop = Math.abs(Math.sin(t * (id === 'demon-red' && runIn < 1 ? 9 : 4) + ph0)) * 8;
+    const clearing = id === 'demon-teal' ? rightFire : runIn > 0 ? 1 : 0;
     if (clearing <= 0) continue;
     c.save(); c.globalAlpha *= clearing;
-    const retreat = id === 'demon-teal' ? (1-clearing)*180 : 0;
+    const retreat = id === 'demon-teal' ? (1-clearing)*180 : -(1 - runIn) * 420;
     k.asset(id, x+retreat, H.floors[0] - hop, 70, 115);
     c.restore();
   }
@@ -346,7 +348,7 @@ function towerInterior(k, st, t) {
   k.asset('tower-escape-door', TOWER_ESCAPE.x+2, H.floors[0]+2, 98, 152);
   hazards(k, st, t);
   player(k, st, t);
-  flames(k, st, t, 1, { right: rightFire });
+  flames(k, st, t, 1, { right: rightFire, left: towerLeftFire(st) });
   // Azurine in front of the smoke, so she can always be seen
   if (!st.p.carry) beloved(k, H.beloved, H.floors[2], 0.6, -1, Math.sin(t * 5) > 0.3 ? 'reach' : 'down');
   // where he is going: to her at the top, then out of the door with her
