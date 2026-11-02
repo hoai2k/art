@@ -65,6 +65,7 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
   let fov = T.camFov, fovV = 0;
   const camPos = new THREE.Vector3();
   let cuts = 0, blind = 0;
+  let flyW = 0, flyWV = 0, roll = 0, rollV = 0;   // flight camera weight, bank
   let bend = 0, bendV = 0;                        // temporary pitch bend to see over an obstacle
   let sinceLook = 10, recenter = 0, climbW = 0, climbWV = 0, airY = null;
   const focus = new THREE.Vector3(), focusV = new THREE.Vector3(), prevTarget = new THREE.Vector3();
@@ -129,7 +130,7 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
       if (climbing) {
         const n = c.up;
         if (Math.hypot(n.x, n.z) > 0.3) { yawTarget = Math.atan2(n.x, n.z); yawW = 2.2 * ease; }
-      } else if (speed > 0.6 * (T.scale / 0.25) && c.state !== 'sit') {
+      } else if (speed > Math.min(0.6 * (T.scale / 0.25), 0.5 * T.runSpeed) && c.state !== 'sit') {
         const h = headingYaw(c.fwd);
         // running toward the camera: don't swing round (the classic follow-cam rule)
         if (Math.abs(wrap(h - yaw)) < 2.3) { yawTarget = h; yawW = Math.min(2.4, 0.5 + 0.3 * speed / (T.scale / 0.25)) * ease; }
@@ -143,12 +144,15 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
 
     // ---- pitch: the player's, bent temporarily for climbing and terrain
     [climbW, climbWV] = spring(climbW, climbWV, climbing ? 1 : 0, 4, dt);
-    let pitchGoal = pitchUser;   // (climbing keeps it too: from above, a top-out stays in view)
+    // flight: further back, a little higher, banking with the turns (all on springs)
+    [flyW, flyWV] = spring(flyW, flyWV, c.state === 'fly' ? 1 : 0, 3, dt);
+    [roll, rollV] = spring(roll, rollV, flyW * THREE.MathUtils.clamp(c.turnRate * 0.22, -0.3, 0.3), 4, dt);
+    let pitchGoal = pitchUser + 0.12 * flyW;   // (climbing keeps it too: from above, a top-out stays in view)
 
     // ---- distance: zoom, a little pull-back with speed, a bit more on walls
     [zoomS, zoomV] = spring(zoomS, zoomV, zoomT, 9, dt);
-    const sp = THREE.MathUtils.clamp(speed / (T.sprintSpeed || 7), 0, 1);
-    const wantDist = T.camDistance * Math.pow(zoomFar, zoomS) * (1 + T.camPullBack * sp) * (1 + 0.25 * climbW);
+    const sp = THREE.MathUtils.clamp(speed / ((c.state === 'fly' ? T.flySprint : T.sprintSpeed) || 7) / (c.boostMul || 1), 0, 1);
+    const wantDist = T.camDistance * Math.pow(zoomFar, zoomS) * (1 + T.camPullBack * sp) * (1 + 0.25 * climbW) * (1 + ((T.camFlyMul || 1.8) - 1) * flyW);
     [dist, distV] = spring(dist, distV, wantDist, 5, dt);
     [fov, fovV] = spring(fov, fovV, THREE.MathUtils.lerp(T.camFov, T.camFovSprint, sp * sp), 3, dt);
     camera.fov = fov;
@@ -217,7 +221,7 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
     if (blind > 0.35) { camPos.copy(focus).addScaledVector(dir, -allowed); free = allowed; freeV = 0; blind = 0; cuts++; }
     camera.position.copy(camPos);
     // orientation straight from yaw / pitch (stable even when collision brings it right in)
-    camera.quaternion.setFromEuler(euler.set(-pitchShown, yaw, 0, 'YXZ'));
+    camera.quaternion.setFromEuler(euler.set(-pitchShown, yaw, roll, 'YXZ'));
     camera.up.copy(UP);
     // pulled right in (a wall at its back): don't look out through the creature's own fur
     if (creature.object) creature.object.visible = camPos.distanceTo(focus) > T.radius * 3.5;

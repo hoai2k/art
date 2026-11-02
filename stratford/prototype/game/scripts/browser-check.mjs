@@ -224,6 +224,28 @@ async function run(browser, base, label, query) {
   await btn(5, 0);
   check(await until((d0) => window.stratford.camera.position.distanceTo(window.stratford.creature.position) < d0 * 1.4, d0, 90000), `the camera comes back in (${(await camDist()).toFixed(2)} m)`);
 
+  // ---- creature select: from the pause menu, a fade, the new creature at the same place --------
+  await press(9, () => window.stratford.ui.modals.includes('pause'));
+  await G(() => document.querySelector('#pause [data-open="creatures"]').click());
+  check(await until(() => window.stratford.ui.modals.includes('creatures')), 'the pause menu opens the creature select');
+  check(await G(() => document.querySelectorAll('#creature-grid .creature-card').length === 5 && document.querySelector('.creature-card.current')?.dataset.creature === 'squirrel'), 'the creature select shows five creatures, the squirrel chosen');
+  await shot('06c-creatures');
+  const before = await G(() => window.stratford.creature.position.toArray());
+  await G(() => document.querySelector('.creature-card[data-creature="heron"]').click());
+  check(await until(() => window.stratford.creature.kind === 'heron' && !window.stratford.state.transitioning && !window.stratford.ui.modals.length && !window.stratford.state.paused, null, 90000), 'picking the heron switches creature and resumes play');
+  check(await G((b) => { const p = window.stratford.creature.position; return Math.hypot(p.x - b[0], p.z - b[2]) < 3; }, before), 'the heron appears where the squirrel was');
+  check(await G(() => JSON.parse(localStorage.getItem('stratford.settings')).creature === 'heron'), 'the choice is saved');
+  const hp0 = await G(() => window.stratford.creature.position.toArray());
+  await axes([0, -1, 0, 0]);
+  check(await until((p0) => { const p = window.stratford.creature.position; return Math.hypot(p.x - p0[0], p.z - p0[2]) > 0.3; }, hp0, 60000), 'the stick walks the heron');
+  await axes([0, 0, 0, 0]);
+  await shot('06d-heron');
+  await press(9, () => window.stratford.ui.modals.includes('pause'));
+  await G(() => document.querySelector('#pause [data-open="creatures"]').click());
+  await until(() => window.stratford.ui.modals.includes('creatures'));
+  await G(() => document.querySelector('.creature-card[data-creature="squirrel"]').click());
+  check(await until(() => window.stratford.creature.kind === 'squirrel' && !window.stratford.state.transitioning && !window.stratford.ui.modals.length, null, 90000), 'and back to the squirrel');
+
   // ---- pause, map, settings -----------------------------------------------------------------------
   await wait(500);
   check(await press(9, () => window.stratford.ui.modals.includes('pause') && window.stratford.state.paused), 'Menu pauses');
@@ -324,6 +346,16 @@ async function run(browser, base, label, query) {
   check(await op.evaluate(() => { const s = window.stratford.settings; return s.invertY === false && s.version === 2 && s.coat === 'black' && s.camSens === 1.5; }), 'a version 1 settings file migrates to the new camera default and keeps the rest');
   await old.close();
 
+  // A saved creature is the one the game starts with.
+  const sw = await browser.newContext({ viewport: { width: 800, height: 450 } });
+  const swp = await sw.newPage();
+  watch(swp);
+  await swp.addInitScript(() => localStorage.setItem('stratford.settings', JSON.stringify({ version: 2, changed: ['creature'], creature: 'swan' })));
+  await swp.goto(`${base}/${query}`);
+  await swp.waitForFunction(() => window.stratford?.ui.screen === 'title', null, { timeout: 120000 }).catch(() => {});
+  check(await swp.evaluate(() => window.stratford.creature.kind === 'swan' && document.querySelector('#creature-current').textContent === 'Mute swan'), 'a saved creature (the swan) is the one the game starts with');
+  await sw.close();
+
   check(errors.length === 0, `no console errors${errors.length ? ': ' + errors.slice(0, 4).join(' | ') : ''}`);
   await ctx.close();
 }
@@ -357,7 +389,8 @@ async function smoke(browser, base) {
   await G(() => { window.__pad.axes = [0, -1, 0, 0]; });
   check(await until((p0) => { const p = window.stratford.creature.position; return Math.hypot(p.x - p0[0], p.z - p0[2]) > 0.3; }, p0), 'real town: the stick moves the squirrel');
   await G(() => { window.__pad.axes = [0, 0, 0, 0]; });
-  if (SHOTS) await page.screenshot({ path: join(SHOTS, 'real-play.png') });
+  // software WebGL under load: a screenshot of the real town can take ~50 s
+  if (SHOTS) await page.screenshot({ path: join(SHOTS, 'real-play.png'), timeout: 180000 });
   await btn(9, 1);
   check(await until(() => window.stratford.state.paused), 'real town: Menu pauses');
   await btn(9, 0);

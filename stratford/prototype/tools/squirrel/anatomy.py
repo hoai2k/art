@@ -107,3 +107,12 @@ def tail_core_radius(t):
 def _lerp(a, b, t): return tuple(a[i] + (b[i] - a[i]) * t for i in range(3))
 def _add(a, d): return tuple(a[i] + d[i] for i in range(3))
 def _sx(p, s): return (p[0] * s, p[1], p[2])
+
+
+def fur_adjust(ctx, fur):
+    """tail hair: longest along the middle, short at the base, a tuft at the tip; the nose bare"""
+    import numpy as np
+    tw, tt = ctx.tailw, ctx.tail_t
+    fur = fur * (1 - tw) + tw * np.interp(tt, [0, 0.12, 0.4, 0.8, 1.0], [0.9, 1.9, 2.6, 2.6, 2.3])
+    fur[np.linalg.norm(ctx.P - np.array([0, 8.45, 15.0]), axis=1) < 0.6] = 0.02
+    return fur

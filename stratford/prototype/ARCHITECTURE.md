@@ -165,6 +165,7 @@ squirrel.reset(world.spawn);
 squirrel.update(dt, controls, world, camera);  // fixed or variable dt; it substeps itself
 squirrel.position / squirrel.velocity          // THREE.Vector3
 squirrel.state                                 // 'idle' | 'move' | 'air' | 'climb' | 'sit' | 'dig' | 'swim'
+                                               // | 'dive' | 'fly' (creatures that dive or fly)
 squirrel.on(event, fn)                         // 'land', 'jump', 'climb', 'dig', 'splash'
 squirrel.setCoat(name)
 const cam = createSquirrelCamera({ THREE, camera, squirrel, world });  // follow camera with collision
@@ -183,10 +184,12 @@ cam.update(dt, controls)
   sitPressed: bool,  // X / E: sit up and look around (eat when holding a nut)
   digPressed: bool,  // Y / F: dig (find or bury a nut)
   recenter: bool,    // fresh press of the right stick click / C: camera behind the creature
-  zoom: number }     // follow-camera zoom change this frame, in zoom units (the camera's range
+  zoom: number,      // follow-camera zoom change this frame, in zoom units (the camera's range
                      // is 0 = standard close follow .. 1 = far follow, T.camZoomFar x further);
                      // > 0 = further: held LB / Z (+0.7/s), held RB / X (-0.7/s), mouse wheel
                      // (+0.125 a notch down). The camera clamps it; its `zoom` is a saved setting.
+  boost: 0..1 }      // debug superspeed: left trigger (analog) or Q; multiplies the creature's speeds
+                     // and accelerations up to tuning.boostMax (10x) on the ground, swimming and flying
 ```
 
 ## Controls (Xbox first)
@@ -201,6 +204,10 @@ cam.update(dt, controls)
 | Dig: find or bury a nut | Y | F |
 | Camera behind | Right stick click | C |
 | Camera zoom: further / closer (saved) | Hold LB / hold RB | Mouse wheel, or hold Z / X |
+| Superspeed (debugging aid, up to 10x) | Left trigger (analog), held | Q, held |
+| Fly (swan, heron): take off (swan: hold while running), flap and climb; let go to glide | A | Space |
+| Dive / surface (beaver, in water) | A | Space |
+| Creature select | Menu, then Creature... (or Settings) | Escape, then Creature... |
 | Map and journal | View | M or Tab |
 | Pause | Menu | Escape or P |
 

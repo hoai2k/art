@@ -141,8 +141,11 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     if (!Number.isFinite(c.turnRate)) c.turnRate = 0;
     // speed along the heading (scaled by how well heading matches the wish)
     const align = c.wishMag > 0 ? Math.max(0, c.fwd.dot(c.wish)) : 0;
-    const want = vmax * (0.3 + 0.7 * align * align);
-    const a = (want > c.speed ? T.accel * (c.speed < T.runSpeed * 0.3 ? 1.3 : 1) : T.decel) * c.boostMul;
+    let want = vmax * (0.3 + 0.7 * align * align);
+    // a flyer's take-off run (A held): run on, faster than it walks, up to take-off speed
+    const takeRun = T.canFly && T.takeoffSpeed > 0 && c.jumpHeld;
+    if (takeRun) want = T.takeoffSpeed * 1.05 * c.boostMul * (c.wishMag > 0.3 ? 0.4 + 0.6 * align : 1);
+    const a = (want > c.speed ? T.accel * (c.speed < T.runSpeed * 0.3 ? 1.3 : 1) * (takeRun ? 1.4 : 1) : T.decel) * c.boostMul;
     c.speed += THREE.MathUtils.clamp(want - c.speed, -a * dt, a * dt);
     // keep heading tangent
     c.fwd.addScaledVector(c.up, -c.fwd.dot(c.up)).normalize();
@@ -176,15 +179,10 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       }
     }
 
-    // flight take-off: a running start (A held, up to takeoffSpeed) or straight up
+    // flight take-off at the end of the run
     if (T.canFly) {
-      if (T.takeoffSpeed > 0 && c.jumpHeld) {
-        c.takeoff = Math.min(1, c.speed / T.takeoffSpeed);
-        if (c.wishMag < 0.3) c.wish.copy(c.fwd);
-        c.speed = Math.min(T.takeoffSpeed * 1.05 * c.boostMul, c.speed + T.accel * 0.6 * dt * c.boostMul);
-        c.vel.copy(c.fwd).multiplyScalar(c.speed);
-        if (c.speed >= T.takeoffSpeed) { takeOff(); return; }
-      } else c.takeoff = 0;
+      c.takeoff = takeRun ? Math.min(1, c.speed / T.takeoffSpeed) : 0;
+      if (takeRun && c.speed >= T.takeoffSpeed) { takeOff(); return; }
     }
     // move
     const prevPos = v4.copy(c.pos).clone();
@@ -701,7 +699,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     c.speed += THREE.MathUtils.clamp(want - c.speed, -T.flyAccel * dt * c.boostMul, T.flyAccel * dt * c.boostMul);
     // A held: flap and climb; otherwise glide down slowly
     c.flapping = c.jumpHeld || c.flyTime < 0.5;
-    const vyWant = c.flapping ? T.flyClimb : -T.glideSink * (c.speed < T.flyMin ? 2.5 : 1);
+    const vyWant = c.flapping ? T.flyClimb * (1 - 0.6 * back) : -T.glideSink * (c.speed < T.flyMin ? 2.5 : 1) * (1 + 1.5 * back);
     c.vel.y += THREE.MathUtils.clamp(vyWant - c.vel.y, -6 * dt, 6 * dt);
     c.vel.x = c.fwd.x * c.speed; c.vel.z = c.fwd.z * c.speed;
     if (c.pos.y > (T.flyCeiling ?? 150) && c.vel.y > 0) c.vel.y = 0;
@@ -709,7 +707,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     // landing: ground (or a roof, or a branch) close under the feet while descending
     const step = v3.copy(c.vel).multiplyScalar(dt);
     if (c.vel.y <= 0 && c.flyTime > 0.6) {
-      const g = ray(world, v4.copy(c.pos).addScaledVector(UP, T.radius), DOWN, T.radius + Math.max(0.02, -step.y) + 0.02);
+      const g = ray(world, v4.copy(c.pos).addScaledVector(UP, T.radius), DOWN, T.radius * 1.5 + Math.max(0.02, -step.y) + 0.02);
       if (g && isWalkable(g.normal)) { c.pos.copy(g.point); landFromFlight(g); return; }
     }
     c.pos.add(step);

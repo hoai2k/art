@@ -37,6 +37,8 @@ export function buildingParams(ctx, b) {
   const sv = b.survey && b.survey.full ? b.survey : null;
   if ((commercial && storeys <= 5 && !(sv && Array.isArray(sv.storefronts) && !sv.storefronts.length)) || (sv && sv.storefronts && sv.storefronts.length)) flags |= FLAG.store;
   if ((commercial && brick && seed < 0.8) || (civic && brick) || (house && brick && seed < 0.45)) flags |= FLAG.arched;
+  // a shop storey is tall: room for the shopfront and its sign band under the upper floors
+  if ((flags & FLAG.store) && storeys > 1) gfh = Math.max(gfh, Math.min(4.2, b.height - (storeys - 1) * 2.8));
   if (church) flags |= FLAG.church;
   if (house) flags |= FLAG.house;
   if (b.use === 'theatre') flags |= FLAG.theatre;

@@ -266,6 +266,28 @@ test('input: camera zoom from LB / RB (held), Z / X and the wheel; R3 and C rece
   assert.equal(input.controls(1 / 60).zoom, 0, 'the wheel is used once');
 });
 
+test('settings: the creature played is kept, and only known creatures', () => {
+  assert.equal(sanitizeSettings(null).creature, 'squirrel');
+  for (const k of ['beaver', 'rabbit', 'swan', 'heron']) assert.equal(sanitizeSettings({ version: 2, creature: k }).creature, k);
+  assert.equal(sanitizeSettings({ version: 2, creature: 'dragon' }).creature, 'squirrel');
+  const st = memory();
+  writeSettings({ ...sanitizeSettings(null), creature: 'heron' }, st);
+  assert.equal(loadSettings(st).creature, 'heron');
+});
+
+test('input: superspeed from LT (analog) and Q', () => {
+  const { input, pads, key } = rig();
+  assert.equal(input.controls(1 / 60).boost, 0);
+  key('keydown', 'KeyQ');
+  assert.equal(input.controls(1 / 60).boost, 1, 'Q held');
+  key('keyup', 'KeyQ');
+  const pad = fakePad(); pads[0] = pad; input.poll();
+  pad.buttons[BTN.LT] = { pressed: false, value: 0.4 }; input.poll();
+  assert.ok(Math.abs(input.controls(1 / 60).boost - 0.4) < 1e-9, 'LT analog');
+  pad.buttons[BTN.LT] = { pressed: true, value: 1 }; input.poll();
+  assert.equal(input.controls(1 / 60).boost, 1);
+});
+
 test('input: a button held when the pad appears is ignored until released; lockHeld', () => {
   const { input, pads } = rig();
   const pad = fakePad();

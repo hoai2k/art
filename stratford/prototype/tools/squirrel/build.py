@@ -1,9 +1,16 @@
-"""Build the player squirrel: anatomy parts -> signed distance fields -> smooth union -> surface nets ->
+"""Build a playable creature: anatomy parts -> signed distance fields -> smooth union -> surface nets ->
 decimated, rigged (skin weights from the part fields), painted mesh for the game.
 
-    python3 stratford/prototype/tools/squirrel/build.py [--paint procedural|sheet] [--tris 13000]
+    python3 stratford/prototype/tools/squirrel/build.py [--creature squirrel|beaver|rabbit|swan|heron]
+                                                       [--paint procedural|sheet] [--tris N]
 
-Writes stratford/prototype/game/assets/squirrel/squirrel.json + squirrel.bin (see FORMAT below).
+Each creature is an anatomy module beside this file (anatomy.py for the squirrel, anatomy_<name>.py
+for the others) with the same interface: SPINE / LIMBS / TAIL_* (the skeleton, rest pose, cm),
+parts(B) (the soft-tissue parts), ENDS, EYE, FUR, and optionally COATS, paint(ctx, coat),
+fur_adjust(ctx, fur), SHEETS / SHEET (reference sheets and how to scale them), META (extra data
+for the game, e.g. a bird's wing feather layout), TRIS, BODY_BONES.
+
+Writes stratford/prototype/game/assets/<name>/<name>.json + <name>.bin (see FORMAT below).
 Needs numpy, scipy, Pillow and fast-simplification (installed into /home/user/art/local/pylib:
 `pip install --target local/pylib fast-simplification`, then delete local/pylib/numpy*).
 
@@ -29,9 +36,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..', '..'))
 sys.path.insert(0, HERE)
 sys.path.append(os.path.join(ROOT, 'local', 'pylib'))
-import anatomy as A
-
-OUT = os.path.join(HERE, '..', '..', 'game', 'assets', 'squirrel')
+import importlib
+A = None   # the creature's anatomy module (main() sets it)
+OUT = None
 CM = 0.01
 
 
@@ -102,7 +109,7 @@ def make_fields(B, names):
     for i in range(n):
         a = B[f'tail{i}']; b = B[f'tail{i + 1}'] if i + 1 < n else a + (B[f'tail{i}'] - B[f'tail{i - 1}'])
         t0, t1 = i / n, (i + 1) / n
-        f, lo, hi = f_tube([a, b], [A.tail_core_radius(t0), A.tail_core_radius(t1)], 1.45, 0.8)
+        f, lo, hi = f_tube([a, b], [A.tail_core_radius(t0), A.tail_core_radius(t1)], getattr(A, 'TAIL_XS', 1.45), getattr(A, 'TAIL_YS', 0.8))
         F.append(dict(f=f, lo=lo, hi=hi, bone=f'tail{i}', blend=0.9 if i == 0 else 0.5))
     return F
 
@@ -305,12 +312,12 @@ def paint_procedural(P, N, W, names, B, coat):
     return np.clip(c, 0, 1), tip, ao
 
 
-def paint_sheet(P, N, W, names, coat, file):
+def paint_sheet(P, N, W, names, coat, file, proc):
     """project a turnaround sheet's side and top views (scaled by sheet.py) onto the vertices"""
     from sheet import Sheet
-    sh = Sheet(file)
+    sh = Sheet(file, **getattr(A, 'SHEET', {}))
     from scipy.ndimage import map_coordinates
-    c_proc, tip, ao = paint_procedural(P, N, W, names, None, coat)
+    c_proc, tip, ao = proc
     out = c_proc.copy()
     for view in ('side', 'top'):
         rgb = sh.sp if view == 'side' else sh.tp; m = sh.sm if view == 'side' else sh.tm
@@ -339,7 +346,7 @@ def fur_dirs(P, N, W, names, bones, B):
         a = B[n]
         b = B[child[n]] if n in child else (np.array(A.ENDS.get(n.replace('_R', '_L'), a + [0, 0, -1])) * ([-1, 1, 1] if n.endswith('_R') else 1))
         d = b - a
-        if n in ('root', 'pelvis', 'spine1', 'spine2', 'neck', 'head', 'jaw'):
+        if n in getattr(A, 'BODY_BONES', ('root', 'pelvis', 'spine1', 'spine2', 'neck', 'head', 'jaw')):
             d = -d if d[2] > 0 else d          # body hair runs back toward the rump
             if n == 'head': d = np.array([0, 0.25, -1.0])
         if n.startswith('ear'): d = np.array([0, 1.0, 0])
@@ -350,29 +357,50 @@ def fur_dirs(P, N, W, names, bones, B):
 
 
 # ------------------------------------------------------------------------------------------------
+class Ctx:
+    """what a creature's paint() / fur_adjust() get: the mesh, its weights and the helpers"""
+    def __init__(self, P, N, W, names, B):
+        self.P, self.N, self.W, self.names, self.B = P, N, W, names, B
+        self.x, self.y, self.z = P[:, 0], P[:, 1], P[:, 2]
+        self.n = len(P)
+        self.smooth, self.mix, self.vnoise = smooth, mix, vnoise
+    def bones(self, *prefixes): return region_weights(self.W, self.names, list(prefixes))
+
+
 def main():
+    global A, OUT
     ap = argparse.ArgumentParser()
+    ap.add_argument('--creature', default='squirrel')
     ap.add_argument('--paint', default='procedural', choices=['procedural', 'sheet'])
-    ap.add_argument('--sheet', default=None, help='grey coat sheet (relative to reference/sheets)')
+    ap.add_argument('--sheet', default=None, help='sheet for the first coat (relative to reference/sheets)')
     ap.add_argument('--sheet-black', default=None)
-    ap.add_argument('--tris', type=int, default=13000)
-    ap.add_argument('--h', type=float, default=0.13, help='grid cell, cm')
+    ap.add_argument('--tris', type=int, default=None)
+    ap.add_argument('--h', type=float, default=None, help='grid cell, cm')
     a = ap.parse_args()
+    name = a.creature
+    A = importlib.import_module('anatomy' if name == 'squirrel' else f'anatomy_{name}')
+    OUT = os.path.join(HERE, '..', '..', 'game', 'assets', name)
+    tris = a.tris or getattr(A, 'TRIS', 13000)
+    h = a.h or getattr(A, 'GRID', 0.13)
     t0 = time.time()
     bones, names, B = skeleton()
     F = make_fields(B, names)
-    P, N, faces = build_mesh(F, a.h, a.tris)
+    P, N, faces = build_mesh(F, h, tris)
     bi, bw, W = skin(P, F, names)
-    if a.paint == 'sheet':
-        g = a.sheet or 'squirrel_grey_turnaround.png'; k = a.sheet_black or 'squirrel_black_turnaround.png'
-        cg, tipg, ao = paint_sheet(P, N, W, names, 'grey', g)
-        if os.path.exists(os.path.join(HERE, '..', '..', 'reference', 'sheets', k)):
-            cb, tipb, _ = paint_sheet(P, N, W, names, 'black', k)
+    ctx = Ctx(P, N, W, names, B)
+    coats = getattr(A, 'COATS', ['grey', 'black'])
+    proc = (lambda coat: A.paint(ctx, coat)) if hasattr(A, 'paint') else (lambda coat: paint_procedural(P, N, W, names, B, coat))
+    sheets = dict(getattr(A, 'SHEETS', {'grey': 'squirrel_grey_turnaround.png', 'black': 'squirrel_black_turnaround.png'}))
+    if a.sheet: sheets[coats[0]] = a.sheet
+    if a.sheet_black: sheets['black'] = a.sheet_black
+    painted = {}
+    for coat in coats:
+        f = sheets.get(coat)
+        if a.paint == 'sheet' and f and os.path.exists(os.path.join(HERE, '..', '..', 'reference', 'sheets', f)):
+            painted[coat] = paint_sheet(P, N, W, names, coat, f, proc(coat))
         else:
-            cb, tipb, _ = paint_procedural(P, N, W, names, B, 'black')
-    else:
-        cg, tipg, ao = paint_procedural(P, N, W, names, B, 'grey')
-        cb, tipb, _ = paint_procedural(P, N, W, names, B, 'black')
+            painted[coat] = proc(coat)
+    ao = painted[coats[0]][2]
     fdir = fur_dirs(P, N, W, names, bones, B)
     # fur length per vertex (cm), from the bones' fur
     fl_b = np.array([A.FUR.get(n.split('_')[0].rstrip('0123456789'), 0.3) for n in names])
@@ -383,21 +411,17 @@ def main():
             tail_t += W[:, i] * (int(n[4:]) + 0.5) / A.TAIL_N
     tailw = region_weights(W, names, ['tail'])
     tail_t = np.where(tailw > 1e-3, tail_t / np.maximum(tailw, 1e-3), 0)
-    # tail hair: longest along the middle, short at the base, a tuft at the tip
-    fur = fur * (1 - tailw) + tailw * np.interp(tail_t, [0, 0.12, 0.4, 0.8, 1.0], [0.9, 1.9, 2.6, 2.6, 2.3])
-    # paws, nose, inner ears: almost bare
-    nose = np.linalg.norm(P - np.array([0, 8.45, 15.0]), axis=1) < 0.6
-    fur[nose] = 0.02
-    fmax = float(fur.max())
+    ctx.tail_t, ctx.tailw = tail_t, tailw
+    if hasattr(A, 'fur_adjust'): fur = A.fur_adjust(ctx, fur)
+    fmax = float(max(fur.max(), 1e-3))
     region = np.zeros(len(P), np.uint8)
-    for key, val in (('head', 1), ('jaw', 1), ('ear', 2), ('tail', 3), ('hand', 4), ('fing', 4), ('foot', 4), ('toes', 4)):
+    for key, val in (('head', 1), ('jaw', 1), ('bill', 1), ('ear', 2), ('tail', 3), ('hand', 4), ('fing', 4), ('foot', 4), ('toes', 4)):
         region[region_weights(W, names, [key]) > 0.5] = val
 
     # ---- write ---------------------------------------------------------------------------------
     os.makedirs(OUT, exist_ok=True)
     n = len(P)
     pos = (P * CM).astype(np.float32)
-    arrs = []
     def u8(v): return np.clip(np.round(v * 255), 0, 255).astype(np.uint8)
     def i8(v): return np.clip(np.round(v * 127), -127, 127).astype(np.int8)
     pad4 = lambda a3, w=0: np.concatenate([a3, np.full((len(a3), 1), w, a3.dtype)], 1)
@@ -406,31 +430,38 @@ def main():
         ('normal', pad4(i8(N)), 4, 'i8', True),
         ('skinIndex', bi, 4, 'u8', False),
         ('skinWeight', bw, 4, 'u8', True),
-        ('colorGrey', np.concatenate([u8(cg), u8(tipg)[:, None]], 1), 4, 'u8', True),
-        ('colorBlack', np.concatenate([u8(cb), u8(tipb)[:, None]], 1), 4, 'u8', True),
+    ]
+    for coat in coats:
+        col, tip, _ = painted[coat]
+        attrs.append(('color' + coat[0].upper() + coat[1:], np.concatenate([u8(col), u8(tip)[:, None]], 1), 4, 'u8', True))
+    attrs += [
         ('fur', np.stack([u8(fur / fmax), region, u8(tail_t), u8(ao)], 1).astype(np.uint8), 4, 'u8', True),
         ('furDir', pad4(i8(fdir)), 4, 'i8', True),
     ]
     blob = bytearray(); meta_attrs = {}
-    for name, arr, size, typ, norm in attrs:
+    for aname, arr, size, typ, norm in attrs:
         while len(blob) % 4: blob.append(0)
-        meta_attrs[name] = dict(offset=len(blob), itemSize=size, type=typ, normalized=norm)
+        meta_attrs[aname] = dict(offset=len(blob), itemSize=size, type=typ, normalized=norm)
         blob += np.ascontiguousarray(arr).tobytes()
     while len(blob) % 4: blob.append(0)
     idx32 = n > 65535
     ioff = len(blob); blob += faces.astype(np.uint32 if idx32 else np.uint16).tobytes()
     bone_out = [dict(name=nm, parent=(names.index(p) if p else -1), pos=(np.array(v) * CM).round(5).tolist()) for nm, p, v in bones]
     ends = {k: (np.array(v) * CM).round(5).tolist() for k, v in A.ENDS.items()}
-    meta = dict(version=1, built=time.strftime('%Y-%m-%d'), paint=a.paint, vertexCount=n, indexCount=int(faces.size),
+    eye = dict(bone=A.EYE.get('bone', 'head'), pos=(np.array(A.EYE['pos']) * CM).round(5).tolist(), r=A.EYE['r'] * CM)
+    for k in ('color', 'ring', 'out'):
+        if k in A.EYE: eye[k] = A.EYE[k]
+    meta = dict(version=1, creature=name, built=time.strftime('%Y-%m-%d'), paint=a.paint, vertexCount=n, indexCount=int(faces.size),
                 attributes=meta_attrs, index=dict(offset=ioff, type='u32' if idx32 else 'u16'),
-                bones=bone_out, ends=ends,
-                eyes=dict(bone='head', pos=(np.array(A.EYE['pos']) * CM).round(5).tolist(), r=A.EYE['r'] * CM),
-                whiskers=dict(bone='head', pos=(np.array(A.WHISKERS['pos']) * CM).round(5).tolist()),
+                bones=bone_out, ends=ends, coats=coats, eyes=eye,
                 fur=dict(max=fmax * CM), tail=dict(n=A.TAIL_N, length=A.TAIL_LEN * CM),
                 bounds=dict(min=pos.min(axis=0).round(4).tolist(), max=pos.max(axis=0).round(4).tolist()))
-    with open(os.path.join(OUT, 'squirrel.bin'), 'wb') as f: f.write(bytes(blob))
-    with open(os.path.join(OUT, 'squirrel.json'), 'w') as f: json.dump(meta, f, indent=1)
-    print(f'squirrel: {n} verts, {len(faces)} tris, {len(names)} bones, {len(blob) / 1024:.0f} KB, {time.time() - t0:.1f}s')
+    if getattr(A, 'WHISKERS', None):
+        meta['whiskers'] = dict(bone='head', pos=(np.array(A.WHISKERS['pos']) * CM).round(5).tolist())
+    meta.update(getattr(A, 'META', {}))
+    with open(os.path.join(OUT, name + '.bin'), 'wb') as f: f.write(bytes(blob))
+    with open(os.path.join(OUT, name + '.json'), 'w') as f: json.dump(meta, f, indent=1)
+    print(f'{name}: {n} verts, {len(faces)} tris, {len(names)} bones, {len(blob) / 1024:.0f} KB, {time.time() - t0:.1f}s')
 
 
 if __name__ == '__main__':

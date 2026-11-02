@@ -13,6 +13,8 @@ import { createMap } from './ui/map.js';
 import { bindSettings } from './ui/settings-ui.js';
 import { createTouch } from './ui/touch.js';
 import { createChrome, requestFullscreen, exitFullscreen, fullscreenElement } from './ui/chrome.js';
+import { createCreatureSelect } from './ui/creature-select.js';
+import { CREATURE_INFO } from './creatures/index.js';
 import { loadSettings, writeSettings } from './game/save.js';
 import { createExploration } from './game/exploration.js';
 import { placeNuts } from './game/nuts.js';
@@ -34,7 +36,8 @@ const state = {
 };
 let renderer; let scene; let camera; let world; let creature; let camCtl; let exploration; let nutView; let townData = null;
 let menus; let hud; let map; let audio; let input; let touchUi; let chrome;
-let creatureKind = q.get('creature') || DEFAULT_CREATURE;
+let creatureKind = q.get('creature') || settings.creature || DEFAULT_CREATURE;
+let creatureSelect = null;
 const tmp = new THREE.Vector3();
 const down = new THREE.Vector3(0, -1, 0);
 const ray = new THREE.Raycaster();
@@ -216,8 +219,54 @@ async function transition(work, label = 'Finding the way…') {
   state.transitioning = false;
 }
 
+// ---- creature select: switch with the transition (fade, setScale, ready, fade in), keeping the
+// place: the nearest safe ground, the water for a swimmer, the nearest wadeable spot for a wader
+function pickCreature(kind) {
+  if (!kind || state.transitioning) return;
+  audio.play('click');
+  settings.creature = kind;
+  if (!settings.changed.includes('creature')) settings.changed.push('creature');
+  writeSettings(settings);
+  creatureSelect?.setCurrent(kind);
+  if (kind === creature?.kind) { menus.closeModal(); return; }
+  const playing = menus.ui.screen === 'play';
+  if (playing) menus.closeAll(true);
+  else menus.closeModal();
+  switchCreature(kind).then(() => { if (playing && state.paused) resume(); });
+}
+
+function switchCreature(kind) {
+  return transition(async () => {
+    const p = creature.position.clone(), yaw = state.heading;
+    scene.remove(creature.object);
+    try { creature.dispose?.(); } catch { /* fine */ }
+    const c = await makeCreature(kind);
+    creatureKind = kind;
+    attachCreature(c);
+    resetCreature(safeSpot(c, p.x, p.z, yaw));
+  }, 'Changing shape…');
+}
+
+function safeSpot(c, x, z, yaw) {
+  const T = c.tuning || {};
+  const deep = (px, pz) => {
+    const wl = world.waterAt?.(px, pz);
+    if (wl == null) return false;
+    if (T.canSwim !== false) return false;               // a swimmer is fine in the water
+    const g = probe(px, pz, wl + 1);
+    return !g || wl - g.y > (T.wadeDepth || 0);
+  };
+  if (deep(x, z)) {
+    for (const r of [2, 4, 8, 16, 32, 64]) for (let k = 0; k < 16; k++) {
+      const a = (k / 16) * Math.PI * 2, px = x + Math.sin(a) * r, pz = z + Math.cos(a) * r;
+      if (!deep(px, pz)) return { x: px, z: pz, y: undefined, yaw };
+    }
+  }
+  return { x, z, y: undefined, yaw };
+}
+
 function resetCreature(sp = world.spawn) {
-  const y = sp.y ?? world.groundAt?.(sp.x, sp.z) ?? 0;
+  const y = sp.y ?? probe(sp.x, sp.z, (world.groundAt?.(sp.x, sp.z) ?? 0) + 2)?.y ?? world.groundAt?.(sp.x, sp.z) ?? 0;
   creature.reset({ x: sp.x, y, z: sp.z, yaw: sp.yaw || 0 });
   state.heading = (sp.yaw || 0);
 }
@@ -306,6 +355,7 @@ function wire() {
         return quitToTitle();
       case 'reset-progress':
         return confirmDialog({ title: 'Reset progress?', text: 'This forgets every landmark you found and every nut you gathered or buried. It cannot be undone.', yes: 'Reset', onYes: () => { exploration.reset(); nutDirty(); hud.toast('Progress reset'); } });
+      case 'pick-creature': return pickCreature(el.dataset.creature);
       case 'confirm-no': return menus.closeModal();
       case 'confirm-yes': { const f = confirmDialog.onYes; menus.closeModal(); f?.(); return undefined; }
       default: return undefined;
@@ -580,6 +630,8 @@ async function boot() {
   exploration.on('nut', () => { audio.play('nut'); input.rumble(0.35, 110); nutDirty(); });
   exploration.on('reset', () => nutDirty());
   nutView = createNutView({ THREE, scene: world.scene || scene });
+  creatureSelect = createCreatureSelect({ info: CREATURE_INFO, portraitUrl: await deliveredUrl('ui/creatures.png') });
+  creatureSelect.setCurrent(creatureKind);
   const parchment = await deliveredUrl('ui/map_parchment.png');
   map = createMap({
     input, exploration, parchmentUrl: parchment,

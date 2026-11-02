@@ -6,9 +6,9 @@ const $ = (s) => document.querySelector(s);
 const POINTS = [['N', 0], ['NE', 45], ['E', 90], ['SE', 135], ['S', 180], ['SW', 225], ['W', 270], ['NW', 315]];
 
 const STRIPS = {
-  controller: [['', 'Left stick', 'Move'], ['a', 'A', 'Jump'], ['', 'RT', 'Run'], ['x', 'X', 'Sit'], ['y', 'Y', 'Dig'], ['', 'LB RB', 'Zoom'], ['', 'View', 'Map'], ['', 'Menu', 'Pause']],
-  keyboard: [['', 'WASD', 'Move'], ['', 'Space', 'Jump'], ['', 'Shift', 'Run'], ['', 'E', 'Sit'], ['', 'F', 'Dig'], ['', 'Z X', 'Zoom'], ['', 'M', 'Map'], ['', 'Esc', 'Pause']],
-  pointer: [['', 'WASD', 'Move'], ['', 'Space', 'Jump'], ['', 'Shift', 'Run'], ['', 'E', 'Sit'], ['', 'F', 'Dig'], ['', 'Wheel', 'Zoom'], ['', 'M', 'Map'], ['', 'Esc', 'Pause']],
+  controller: [['', 'Left stick', 'Move'], ['a', 'A', 'Jump'], ['', 'RT', 'Run'], ['x', 'X', 'Sit'], ['y', 'Y', 'Dig'], ['', 'LB RB', 'Zoom'], ['', 'LT', 'Superspeed'], ['', 'View', 'Map'], ['', 'Menu', 'Pause']],
+  keyboard: [['', 'WASD', 'Move'], ['', 'Space', 'Jump'], ['', 'Shift', 'Run'], ['', 'E', 'Sit'], ['', 'F', 'Dig'], ['', 'Z X', 'Zoom'], ['', 'Q', 'Superspeed'], ['', 'M', 'Map'], ['', 'Esc', 'Pause']],
+  pointer: [['', 'WASD', 'Move'], ['', 'Space', 'Jump'], ['', 'Shift', 'Run'], ['', 'E', 'Sit'], ['', 'F', 'Dig'], ['', 'Wheel', 'Zoom'], ['', 'Q', 'Superspeed'], ['', 'M', 'Map'], ['', 'Esc', 'Pause']],
   touch: [],
 };
 

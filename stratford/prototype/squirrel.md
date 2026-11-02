@@ -172,7 +172,6 @@ sees ahead over curbs), near plane `0.08 x scale`, collision sphere 5.5 cm (`cam
 - Lag depended on the frame rate (up to 0.24 m at 30 fps).
 
 ## Checks
-## Checks
 
 - `node --test stratford/prototype/game/test/squirrel.test.mjs` (18 tests, including the camera:
   smooth at 60 and 144 fps and the same path at 30, never inside geometry, the player's pitch
@@ -212,3 +211,92 @@ sees ahead over curbs), near plane `0.08 x scale`, collision sphere 5.5 cm (`cam
   at speed changes), hind feet landing ahead of the fores in the bound, two-bone IK on slopes and
   curbs, eating a nut in the sit, scratching, circling a trunk pose, look-at toward the camera's
   interest.
+
+## The other creatures: beaver, cottontail, swan, heron
+
+The player can be any of five creatures (`src/creatures/index.js`: `CREATURES`, `CREATURE_INFO`).
+The squirrel keeps its own module; the four others are `src/{beaver,rabbit,swan,heron}/index.js`
+on the shared `src/creatures/creature.js` (`creatureTuning(scale, overrides)` derives lengths,
+the capsule and the camera from body length; speeds and abilities are set per creature),
+`model.js` (loads `assets/<kind>/`; coats, fur shells, eyes, whiskers, feather cards) and
+`animators.js` (`createQuadAnimator` with a waddle or hop style; `createBirdAnimator`).
+None of them uses the Wobblers squirrel or any outside model: each is built by our own builder.
+
+### Building them
+
+`python3 tools/squirrel/build.py --creature <kind>` loads `anatomy_<kind>.py` (parts, bones,
+optional `paint`, `fur_adjust`, `COATS`, `SHEETS`/`SHEET`, `META`, `TRIS`, `GRID`, tail curve)
+and writes `game/assets/<kind>/`. Without `--creature` it builds the squirrel, byte for byte as
+before. Triangles: beaver 14k, rabbit 12k, swan about 12.3k, heron about 10.3k (the squirrel is
+about 12k). The beaver and the rabbit carry fur shells; the birds carry no shells but runtime
+feather cards (alpha-tested quads skinned to the humerus, ulna and manus: primaries fanned on
+the hand, secondaries, tertials, coverts and a tail fan, from `META.wings`).
+
+- **Beaver** (0.8 m with tail): measured from anatomy texts and open photos. The tail is a broad,
+  flat paddle (`TAIL_XS` 3.6, `TAIL_YS` 0.4), webbed hind feet, orange incisors, short dense fur.
+- **Cottontail** (0.4 m): long hind feet, large upright ears with pink insides, white scut.
+- **Mute swan** (1.4 m): measured on the delivered `reference/sheets/swan_turnaround.png`
+  (2.07 mm per pixel, the waterline at 0.36 m), orange bill with the black knob, S-neck.
+- **Great blue heron** (1.0 m tall): slate-grey body, white face with the black plume,
+  yellow dagger bill, long legs; built from anatomy and open photos.
+
+### What to redo when the round-9 sheets land
+
+- **R9.1/R9.2 beaver, R9.3/R9.4 rabbit, R9.7/R9.8 heron:** re-measure each `anatomy_<kind>.py`
+  against the turnaround with `review/grid.py` (parts, bone pivots, the beaver's tail length and
+  width, the rabbit's ear length and hind foot, the heron's neck segments and leg lengths), then
+  check `SHEET` (`body`, `rump_u`; the beaver's `rump_u` is a guess) and rebuild with
+  `--paint sheet`, which projects the side and top views onto the coat and keeps the procedural
+  paint for what the sheet can't see.
+- **R9.5 swan pose sheet:** check the walking, swimming and take-off poses in `animators.js`
+  (neck pose, wing lift, the paddle stroke).
+- **R9.6 swan flying and R9.9 heron flying (top views):** lay out `META.wings` from them (span,
+  primary count and fan, secondary length, covert rows) and check the wing bone lengths.
+  The folded wing is today the humerus scaled into the body's wing bulk.
+- **R9.10 portraits:** `ui/creatures.png`, five medallions in a row in `CREATURE_INFO` order,
+  replaces the painted stand-ins in `src/ui/creature-select.js` without code changes.
+- Then two or three review rounds with `review/creature-shots.mjs` (below), as for the squirrel.
+
+### How each one moves
+
+| | Ground | Water | Air | Abilities |
+| --- | --- | --- | --- | --- |
+| Beaver | waddle (run 1.3 m/s), slow gallop on RT (3.2) | swims at the surface (1.7); A dives (2.0 m/s, down to 1.4 m, 60 s breath), A again surfaces | small jump | Y gnaws; no climbing |
+| Cottontail | hops from a slow hop to a bound (3.5, sprint 11), sharp turns and zig-zags | swims poorly (0.45) and after 3 s heads for the nearest bank | big jumps (2× body length) | no climbing |
+| Mute swan | awkward waddle (0.9, 2.6) | graceful swim (1.3) | hold A to run (on land or water) and take off at 6.5 m/s; fly 15 m/s, RT to 21; A flaps to climb, release to glide; stick steers and banks; lands on water or ground | — |
+| Great blue heron | stately walk (0.7, 1.7) with a head bob | wades to 0.42 m deep, never swims (the deep water stops it) | A takes off from standing with wingbeats; flies 9 m/s, RT 13, neck folded, legs trailing; glides, lands on roofs and trees | perches |
+
+Swimming, diving, wading and flight are generic modes of `src/creatures/controller.js` (states
+`swim`, `dive`, `fly`), switched on by tuning: `canSwim`, `swimTire`, `canDive`/`diveSpeed`/
+`diveDepth`/`breath`, `wadeDepth`, `canFly`, `takeoffSpeed` (0 = take off standing), `flySpeed`,
+`flySprint`, `flyMin`, `flyAccel`, `flyClimb`, `glideSink`, `flyTurn`. Pulling the stick back in
+flight slows and steepens the descent, which is how a landing is aimed. In flight the camera
+(`camera.js`) springs to a further (`camFlyMul`, 1.8 to 1.9) and higher view and banks with the
+turn; its sphere sweep against buildings and trees is the same as on foot.
+
+### Superspeed (all creatures)
+
+Holding LT (analog) or Q multiplies speed on the ground, swimming, diving, climbing and flying
+up to `boostMax` (10). The controller substeps by distance (up to 400 substeps a frame), so a
+creature at 10× never crosses a surface; the camera's velocity feed-forward and step detection
+scale with the boost, so it neither lags nor pops. In the real town at 76 m/s along Ontario
+Street the colliders were ready at least 260 m ahead in every frame (0 misses in 720 frames).
+
+### Choosing a creature
+
+The pause menu and Settings open the "Choose a creature" panel (`src/ui/creature-select.js`).
+A switch fades out, swaps the creature, sets the world's scale, waits for `ready` and fades in
+at the nearest safe spot (the heron is moved out of deep water). The choice is saved
+(`settings.creature`); `?creature=<kind>` overrides it. Nuts are a squirrel thing; discovered
+landmarks are shared.
+
+### Checks and review
+
+- `node --test stratford/prototype/game/test/creatures.test.mjs` (8 tests: registry and contract,
+  each creature's moves in the stand-in yard, superspeed without tunnelling and with the camera
+  never inside geometry, a random-input NaN soak for all five, and superspeed through the real
+  town with the chunks ready ahead).
+- `node stratford/prototype/game/scripts/browser-check.mjs` covers the creature select (pause
+  menu, switching to the heron, the saved swan at boot) and LT/Q.
+- `node stratford/prototype/tools/squirrel/review/creature-shots.mjs <dir> [kind ...]` renders
+  `<kind>_turnaround.png` and `<kind>_gaits.png` boards (never into the repo).

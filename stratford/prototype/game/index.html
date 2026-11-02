@@ -131,6 +131,7 @@
           <button class="menu-btn" data-nav data-action="map">Map &amp; journal</button>
           <button class="menu-btn" data-nav data-open="instructions">Instructions</button>
           <button class="menu-btn" data-nav data-open="settings">Settings</button>
+          <button class="menu-btn" data-nav data-open="creatures">Creature&hellip;</button>
           <button class="menu-btn" data-nav data-action="quit-title">Quit to title</button>
         </div>
         <p class="pause-stats" id="pause-stats"></p>
@@ -150,10 +151,10 @@
             <li><b>Climb.</b> Brick, stone and wooden walls, tree trunks, branches and fences can be gripped. Glass, metal and stucco cannot. Swimming is possible, but squirrels do not love it.</li>
           </ul>
           <div class="pad-diagram">
-            <svg viewBox="0 0 880 340" role="img" aria-label="Xbox controller: left stick moves, right stick moves the camera and clicking it puts the camera behind you, LB zooms the camera out and RB zooms it in, A jumps, X sits up, Y digs, right trigger runs, View opens the map, Menu pauses">
+            <svg viewBox="0 0 880 340" role="img" aria-label="Xbox controller: left stick moves, right stick moves the camera and clicking it puts the camera behind you, LB zooms the camera out and RB zooms it in, left trigger is superspeed, A jumps, X sits up, Y digs, right trigger runs, View opens the map, Menu pauses">
               <g transform="translate(120 12)">
               <path d="M200 95 Q350 62 500 95 Q585 105 618 215 Q638 300 574 300 Q530 300 498 248 L202 248 Q170 300 126 300 Q62 300 82 215 Q115 105 200 95 Z" fill="none" stroke="currentColor" stroke-width="3"/>
-              <rect x="150" y="36" width="64" height="22" rx="7" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"/><text x="182" y="52" text-anchor="middle" font-size="12" fill="currentColor" opacity=".6">LT</text>
+              <rect x="150" y="36" width="64" height="22" rx="7" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="182" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">LT</text>
               <rect x="486" y="36" width="64" height="22" rx="7" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="518" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">RT</text>
               <rect x="158" y="64" width="76" height="20" rx="8" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="196" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">LB</text>
               <rect x="466" y="64" width="76" height="20" rx="8" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="504" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">RB</text>
@@ -170,7 +171,7 @@
                 <path d="M180 150H50"/><path d="M425 237v50"/><path d="M262 232l-30 70"/>
                 <path d="M516 118l96-28"/><path d="M548 152h64"/><path d="M516 186l96 26"/><path d="M452 148l-16-44"/>
                 <path d="M331 136V24h-30"/><path d="M369 136V24h30"/><path d="M550 40l30-20"/>
-                <path d="M160 68l-46-14"/><path d="M540 68l72-14"/>
+                <path d="M160 68l-46-14"/><path d="M540 68l72-14"/><path d="M150 44l-4-10"/>
               </g>
               <g font-size="14" font-weight="700" fill="currentColor" stroke="#fbf3df" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
                 <text x="44" y="146" text-anchor="end">Left stick: move</text>
@@ -185,6 +186,7 @@
                 <text x="405" y="28">Menu: pause</text>
                 <text x="586" y="22">RT: run faster</text>
                 <text x="108" y="58" text-anchor="end">LB: zoom out</text>
+                <text x="144" y="30" text-anchor="end">LT: superspeed</text>
                 <text x="618" y="58">RB: zoom in</text>
               </g>
               </g>
@@ -201,6 +203,10 @@
               <tr><td>Dig: bury a carried nut, or find one</td><td><span class="xb xb-y">Y</span></td><td>F</td></tr>
               <tr><td>Camera behind you</td><td>Right stick click</td><td>C</td></tr>
               <tr><td>Camera zoom: further / closer (kept for next time)</td><td>Hold LB / hold RB</td><td>Mouse wheel; or hold Z / X</td></tr>
+              <tr><td>Superspeed: up to ten times faster, for crossing town (a debugging aid)</td><td>Left trigger (LT), held</td><td>Q, held</td></tr>
+              <tr><td>Fly (swan, heron): take off, climb</td><td><span class="xb xb-a">A</span> (the swan: hold it while running); steer with the left stick, RT faster, let go of A to glide down</td><td>Space; Shift faster</td></tr>
+              <tr><td>Dive and surface (beaver)</td><td><span class="xb xb-a">A</span> in the water</td><td>Space in the water</td></tr>
+              <tr><td>Choose a creature</td><td>Menu &rarr; Creature&hellip;</td><td>Esc &rarr; Creature&hellip;</td></tr>
               <tr><td>Map and journal</td><td>View</td><td>M or Tab</td></tr>
               <tr><td>Pause</td><td>Menu</td><td>Esc or P</td></tr>
               <tr><td>Menus</td><td>D-pad or left stick, <span class="xb xb-a">A</span> select, <span class="xb xb-b">B</span> back</td><td>Arrows, Enter, Esc; or the mouse</td></tr>
@@ -219,6 +225,7 @@
       <div class="panel">
         <h2 id="set-title">Settings</h2>
         <div class="scroll settings-list">
+          <div class="row choice-row"><span id="lbl-creature">Creature</span><button type="button" class="choice" data-nav data-open="creatures" id="creature-current" aria-describedby="lbl-creature">Black squirrel</button></div>
           <label class="row">Camera sensitivity <input type="range" min="20" max="250" step="10" data-nav data-setting="camSens"><output></output></label>
           <label class="row check">Invert camera Y <input type="checkbox" data-nav data-setting="invertY"></label>
           <div class="row choice-row"><span id="lbl-coat">Squirrel coat</span><button type="button" class="choice" data-nav data-setting="coat" data-choices="grey|black" aria-labelledby="lbl-coat"></button></div>
@@ -229,6 +236,15 @@
           <p class="settings-note" id="quality-note" hidden>Graphics quality takes full effect the next time the page loads.</p>
           <button class="menu-btn danger" data-nav data-action="reset-progress">Reset progress&hellip;</button>
         </div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="creatures" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="cr-title">
+      <div class="panel wide">
+        <h2 id="cr-title">Choose a creature</h2>
+        <p class="muted">Explore Stratford as any of them. Landmarks you find are shared; nuts are a squirrel thing.</p>
+        <div class="creature-grid" id="creature-grid"></div>
         <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
       </div>
     </section>

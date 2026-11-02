@@ -16,10 +16,14 @@ from segment import load, panel, mask, drop_ground_shadow
 
 
 class Sheet:
-    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1):
+    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1, y0=0.0, panels=None):
+        # y0: the model height (m) at the side view's lowest row (0 for an animal standing on the
+        # ground; the hull bottom for a swimming bird). panels: (side, top) panel columns.
         img = load(file)
         self.file = file
-        self.sp, self.tp = panel(img, row, 0, rows), panel(img, row, 1, rows)
+        ps, pt = panels or (0, 1)
+        self.sp, self.tp = panel(img, row, ps, rows), panel(img, row, pt, rows)
+        self.y0 = y0
         self.sm = drop_ground_shadow(self.sp, mask(self.sp), 0.45)
         self.tm = mask(self.tp)
         r, c = np.where(self.sm); self.S = (r.min(), r.max(), c.min(), c.max())   # r0, r1, c0, c1
@@ -36,8 +40,8 @@ class Sheet:
 
     # metres <-> pixels
     def zs(self, c): return (np.asarray(c, float) - self.zmid) * self.k
-    def ys(self, r): return (self.ground - np.asarray(r, float)) * self.k
-    def side_px(self, z, y): return (np.asarray(z) / self.k + self.zmid, self.ground - np.asarray(y) / self.k)
+    def ys(self, r): return (self.ground - np.asarray(r, float)) * self.k + self.y0
+    def side_px(self, z, y): return (np.asarray(z) / self.k + self.zmid, self.ground - (np.asarray(y) - self.y0) / self.k)
     def top_px(self, z, x):
         tc1 = self.T[3]
         zn = self.zs(self.nose)

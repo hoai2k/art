@@ -63,6 +63,7 @@ world.scene.add(squirrel.object);
 squirrel.reset(world.spawn);
 const cam = mod.createCamera({ THREE, camera, squirrel, creature: squirrel, world });
 const skel = new THREE.SkeletonHelper(squirrel.model.body); skel.visible = false; world.scene.add(skel);
+document.title = (qs.get('creature') || 'squirrel').replace(/^./, (m) => m.toUpperCase()) + ' bench';
 
 // ---- minimal input: gamepad + keyboard + mouse (the shell has its own src/input.js)
 const keys = new Set();
@@ -78,7 +79,7 @@ let lastInput = 'keyboard';
 function readControls(dt) {
   const pad = [...(navigator.getGamepads?.() || [])].find((p) => p && p.connected);
   const dz = (v, d = 0.15) => (Math.abs(v) < d ? 0 : (v - Math.sign(v) * d) / (1 - d));
-  let mx = 0, my = 0, lx = 0, ly = 0, jump = false, sprint = 0, sit = false, dig = false, rec = false, zoom = 0;
+  let mx = 0, my = 0, lx = 0, ly = 0, jump = false, sprint = 0, sit = false, dig = false, rec = false, zoom = 0, boost = 0;
   if (pad) {
     const b = (i) => !!pad.buttons[i]?.pressed;
     mx = dz(pad.axes[0] || 0); my = -dz(pad.axes[1] || 0);
@@ -86,6 +87,7 @@ function readControls(dt) {
     jump = b(0); sit = b(2); dig = b(3); rec = b(11);
     zoom += ((b(4) ? 1 : 0) - (b(5) ? 1 : 0)) * 0.7 * dt;     // LB further, RB closer (as src/input.js)
     sprint = pad.buttons[7]?.value || 0;
+    boost = pad.buttons[6]?.value || 0;          // LT: superspeed (as src/input.js)
     if (mx || my || lx || ly || jump || sprint) lastInput = 'controller';
   }
   const k = (c) => keys.has(c);
@@ -97,9 +99,10 @@ function readControls(dt) {
   jump ||= k('Space'); sit ||= k('KeyE'); dig ||= k('KeyF'); rec ||= k('KeyC');
   zoom += ((k('KeyZ') ? 1 : 0) - (k('KeyX') ? 1 : 0)) * 0.7 * dt + wheel * 0.00125; wheel = 0;
   if (k('ShiftLeft') || k('ShiftRight')) sprint = 1;
+  if (k('KeyQ')) boost = 1;
   // Same direction as the game's default (src/input.js): stick, arrow or mouse up looks up.
   ly = -ly;
-  const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec, zoom };
+  const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec, zoom, boost };
   prev.jump = jump; prev.sit = sit; prev.dig = dig; prev.rec = rec;
   return c;
 }
@@ -107,7 +110,7 @@ function readControls(dt) {
 // ---- panel
 const $ = (id) => document.getElementById(id);
 $('skel').onchange = (e) => { skel.visible = e.target.checked; };
-$('fur').onchange = (e) => { squirrel.model.shells.visible = e.target.checked; };
+$('fur').onchange = (e) => { if (squirrel.model.shells) squirrel.model.shells.visible = e.target.checked; };
 $('coat').onclick = () => { const n = squirrel.coat === 'black' ? 'grey' : 'black'; squirrel.setCoat(n); $('coat').textContent = 'coat: ' + n; };
 $('coat').textContent = 'coat: ' + squirrel.coat;
 $('respawn').onclick = () => { squirrel.reset(world.spawn); cam.snapBehind(); };
