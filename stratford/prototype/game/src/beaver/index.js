@@ -9,18 +9,18 @@ export const KIND = 'beaver';
 export const SCALE = 0.8;
 
 export const beaverTuning = (scale = SCALE) => creatureTuning(scale, {
-  radius: 0.15 * scale, capsuleBack: 0.25 * scale, capsuleFront: 0.28 * scale,
+  radius: 0.19 * scale, capsuleBack: 0.27 * scale, capsuleFront: 0.3 * scale,
   runSpeed: 1.3, sprintSpeed: 3.2, accel: 6, decel: 9, brake: 12,
   turnR0: 0.25 * scale, turnK: 0.06, turnMax: 4.5,
   stepUp: 0.22 * scale, jumpHeight: 0.25 * scale, gravity: 16, airAccel: 2,
-  swimSpeed: 1.7, swimDepth: 0.3 * scale,
+  swimSpeed: 1.7, swimDepth: 0.45 * scale,
   canDive: true, diveSpeed: 2.0, diveDepth: 1.4, breath: 60,
   digTime: 2.4,
-  camDistance: 2.7 * scale, camHeight: 0.45 * scale, camProbe: 0.12 * scale,
+  camDistance: 2.8 * scale, camHeight: 0.55 * scale, camProbe: 0.14 * scale,
 });
 
 export const createCreature = (opts = {}) => makeCreature({
-  kind: KIND, tuning: beaverTuning(), eyeHeight: 0.24, canFly: false, coat: opts.coat, model: opts.model !== false,
+  kind: KIND, tuning: beaverTuning(), eyeHeight: 0.31, canFly: false, coat: opts.coat, model: opts.model !== false,
   animator: (m, T) => createQuadAnimator(m, T, { style: 'waddle' }), shells: 3, strands: 1100,
 });
 export const createCamera = (opts) => makeCamera(opts);

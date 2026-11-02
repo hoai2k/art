@@ -2,13 +2,19 @@
 // their skeletons, driven by the generic controller's state; the squirrel has its own animator).
 //
 //   createQuadAnimator(model, T, cfg)   four-legged: cfg.style 'waddle' (beaver: a rolling walk,
-//       a slow gallop, a paddling swim, a kicking dive, sit-up gnawing) or 'hop' (rabbit: slow hops
-//       with the hind feet landing ahead of the fores, a stretched full-speed bound, sit up tall,
-//       a frantic paddle)
+//       a slow gallop, a paddling swim, a steep kicking dive opened with a tail slap, sitting up to
+//       gnaw with the hands at the mouth (Y), standing up to look round (X and when idle)) or 'hop'
+//       (rabbit: slow hops with the hind feet landing ahead of the fores, a stretched full-speed
+//       bound, standing tall (X), grooming the face with both fore paws (Y and when idle), the
+//       flattened freeze when idle, a frantic paddle). Key poses from the pose sheets
+//       (reference/sheets/beaver_poses.png, rabbit_poses.png).
 //   createBirdAnimator(model, T, cfg)   birds: walk (cfg.waddle for the swan's rolling gait, a
-//       stately stride for the heron), swim, wade, take-off run with flapping, flapping flight and
-//       gliding with the neck straight (swan) or folded back (heron) and the legs tucked or
-//       trailing, landing with the wings spread back and the feet forward
+//       stately stride for the heron), swim, wade with high steps, the heron's crouched stalk at a
+//       slow walk, take-off run with flapping, flapping flight (a high upstroke, a deep downstroke)
+//       and gliding with the neck straight (swan) or folded back (heron) and the legs tucked or
+//       trailing, landing with the wings spread back and the feet forward; Y: the swan preens
+//       (cfg.action 'preen'), the heron strikes (cfg.action 'strike'). Key poses from
+//       reference/sheets/swan_poses.png and heron_poses.png.
 //
 // Bone axes: rest rotations are identity, so local axes are the model's (+z forward, +y up,
 // +x left). Rotation about +x by a positive angle swings a downward limb back, raises a
@@ -68,34 +74,47 @@ export function createQuadAnimator(model, T, cfg = {}) {
     const swim = weigh(st, 'swim', c.state === 'swim', 6, dt), dive = weigh(st, 'dive', c.state === 'dive', 4, dt);
     const sit = weigh(st, 'sit', c.state === 'sit', 6, dt), dig = weigh(st, 'dig', c.state === 'dig', 8, dt);
     const air = weigh(st, 'air', c.state === 'air' && !c.hop, 10, dt);
+    // idle variants after a few still seconds (pose sheets): the rabbit grooms, then freezes flat;
+    // the beaver stands up to look round
+    st.idle = c.state === 'idle' && v < 0.05 ? (st.idle || 0) + dt : 0;
+    const iv = st.idle > 4 ? (st.idle - 4) % 11 : -1;
+    const idleGroom = weigh(st, 'iGroom', hop && iv >= 0 && iv < 3, 5, dt);
+    const freeze = weigh(st, 'freeze', hop && iv >= 5 && iv < 8.5, 4, dt);
+    const idleUp = weigh(st, 'iUp', !hop && iv >= 0 && iv < 3.5, 3, dt);
+    const up = Math.max(sit, idleUp);                          // sitting / standing up
+    const hands = Math.max(dig, idleGroom);                    // hands to the face: gnaw (beaver), groom (rabbit)
+    const slap = c.state === 'dive' ? clamp01(1 - (c.diveTime || 0) / 0.6) : 0;
     // gait: walk / waddle .. gallop (beaver); slow hop .. bound (rabbit)
     const gal = smooth(clamp01((sp - rs * 0.8) / (rs * 0.6)));
     const stride = hop ? 0.12 + 0.07 * sp : 0.22 + 0.16 * sp;
     const freq = sp > 0.02 ? Math.min(hop ? 6 : 4.5, sp / (stride * (T.scale / (hop ? 0.4 : 0.8)))) : 0;
     st.phase = (st.phase + (swim + dive > 0.5 ? (0.8 + sp) * 1.3 : freq) * dt) % 1;
     const ph = st.phase, s = (p) => Math.sin(TAU * p), co = (p) => Math.cos(TAU * p);
-    const move = clamp01(sp / (rs * 0.15)) * (1 - air) * (1 - sit) * (1 - dig) * (1 - swim) * (1 - dive);
+    const move = clamp01(sp / (rs * 0.15)) * (1 - air) * (1 - up) * (1 - hands) * (1 - swim) * (1 - dive);
     // body: waddle roll (beaver), the bound's pitch, swimming low and level, diving nose down
     const roll = hop ? 0 : (1 - gal) * 0.09 * s(ph) * move;
-    const divePitch = dive * (c.vel.y < -0.05 ? 0.35 : c.vel.y > 0.05 ? -0.3 : 0.05);
+    const divePitch = dive * (c.vel.y < -0.05 ? 0.7 : c.vel.y > 0.05 ? -0.35 : 0.05);    // the sheet's steep nose-down dive
     placeBody(st, c, root, dt, { extraRoll: roll, extraPitch: divePitch, lean: hop ? 0.05 : 0.02 });
     // spine flex for the gallop / bound
     const bound = hop ? 1 : gal;
     const flex = bound * (hop ? 0.35 : 0.2) * co(ph) * move;
     const bob = (hop ? 0.05 * T.scale * Math.max(0, s(ph - 0.15)) : 0.01 * T.scale * Math.abs(s(ph * 2))) * move;
     const breath = Math.sin(st.t * (hop ? 6 : 3)) * 0.012 * (1 - move);
-    rot(B.pelvis, -flex * 0.6 - (hop ? 0.9 : 1.05) * sit + 0.1 * dig, 0, 0);
-    if (B.pelvis) B.pelvis.position.set(model.rest.pelvis.x, model.rest.pelvis.y + bob - 0.02 * T.scale * sit, model.rest.pelvis.z);
-    rot(B.spine1, flex * 0.9 + breath - 0.2 * sit, -c.turnRate * 0.04, 0);
-    rot(B.spine2, flex * 0.6 - breath - 0.25 * sit + 0.25 * dig, -c.turnRate * 0.04, 0);
-    const look = blinkAndGlance(st, model, dt, (1 - move) * (1 - dig));
+    // sitting up: standing tall (X), half up with the hands at the mouth (gnaw / groom)
+    const rise = (hop ? 0.9 : 1.3) * up + (hop ? 0.55 : 0.85) * hands * (1 - up);
+    rot(B.pelvis, -flex * 0.6 - rise, 0, 0);
+    if (B.pelvis) B.pelvis.position.set(model.rest.pelvis.x, model.rest.pelvis.y + bob - 0.02 * T.scale * up - 0.07 * T.scale * freeze, model.rest.pelvis.z);
+    rot(B.spine1, flex * 0.9 + breath - 0.2 * up - 0.1 * hands + 0.12 * freeze, -c.turnRate * 0.04, 0);
+    rot(B.spine2, flex * 0.6 - breath - 0.25 * up + 0.1 * hands + 0.1 * freeze, -c.turnRate * 0.04, 0);
+    const look = blinkAndGlance(st, model, dt, (1 - move) * (1 - hands) * (1 - freeze));
     const swimHead = -0.25 * swim;
-    rot(B.neck, -flex * 0.5 + 0.55 * sit + 0.3 * dig + swimHead - 0.15 * dive, look * 0.4, 0);
-    rot(B.head, -flex * 0.4 + 0.25 * sit + (hop ? 0.4 : 0.35) * dig + swimHead * 0.5, look * 0.6, 0);
+    // the face comes down to the paws (groom) or the paws hold the stick at the mouth (gnaw)
+    rot(B.neck, -flex * 0.5 + 0.55 * up + (hop ? 0.75 : 0.45) * hands + swimHead - 0.25 * dive - 0.2 * freeze, look * 0.4, 0);
+    rot(B.head, -flex * 0.4 + 0.25 * up + (hop ? 0.55 : 0.35) * hands + swimHead * 0.5 + 0.2 * freeze, look * 0.6 + (hop ? 0 : 0.15 * dig), 0);
     // gnawing (beaver) / chewing: the jaw chatters
-    rot(B.jaw, (dig * (hop ? 0.05 : 0.18) + sit * 0.05) * Math.max(0, Math.sin(st.t * (hop ? 16 : 22))), 0, 0);
-    // ears: back when bounding (rabbit), twitch
-    const earBack = hop ? 0.9 * smooth(clamp01((sp - rs) / rs)) + 0.6 * air : 0;
+    rot(B.jaw, (dig * (hop ? 0.05 : 0.18) + up * 0.05) * Math.max(0, Math.sin(st.t * (hop ? 16 : 22))), 0, 0);
+    // ears: back when bounding and flat in the freeze (rabbit), twitch
+    const earBack = hop ? 0.9 * smooth(clamp01((sp - rs) / rs)) + 0.6 * air + 1.1 * freeze : 0;
     rot(B.ear_L, earBack + 0.15 * Math.sin(st.t * 3.1) * (1 - move), 0, 0); rot(B.ear_R, earBack + 0.15 * Math.sin(st.t * 2.7 + 1) * (1 - move), 0, 0);
 
     // legs
@@ -110,18 +129,22 @@ export function createQuadAnimator(model, T, cfg = {}) {
       const pad = Math.sin(st.t * (hop ? 9 : 5) + (hind ? 0 : Math.PI / 2) + (S > 0 ? 0 : Math.PI)) * (swim + dive);
       if (hind) {
         const kick = hop ? 0 : pad * 0.9;   // the beaver propels with its hind feet
-        rot(B['thigh_' + side], a * 0.8 - 0.3 * lift * move + 0.9 * sit + air * (c.vel.y > 0 ? 0.9 : -0.5) + kick * 0.5 + 0.4 * (swim + dive), 0, 0);
-        rot(B['shin_' + side], -0.6 * lift * move - 0.8 * sit + kick * 0.4 - 0.2 * (swim + dive), 0, 0);
-        rot(B['foot_' + side], 0.7 * lift * move + Math.max(0, a) * 0.5 - 0.1 * sit + air * (c.vel.y > 0 ? 0.6 : 0) + kick * 0.6 + 0.6 * (swim + dive), 0, 0);
+        const fold = up + hands * (1 - up) * 0.8;                 // the hind legs fold under the sitting body
+        const dk = hop ? 0 : dive * 0.5;                           // diving: the hind feet stretch back and kick
+        rot(B['thigh_' + side], a * 0.8 - 0.3 * lift * move + 0.9 * fold + air * (c.vel.y > 0 ? 0.9 : -0.5) + kick * 0.5 + 0.4 * (swim + dive) + dk, 0, 0);
+        rot(B['shin_' + side], -0.6 * lift * move - 0.8 * fold + kick * 0.4 - 0.2 * (swim + dive) - 0.15 * freeze, 0, 0);
+        rot(B['foot_' + side], 0.7 * lift * move + Math.max(0, a) * 0.5 - 0.1 * fold + air * (c.vel.y > 0 ? 0.6 : 0) + kick * 0.6 + 0.6 * (swim + dive) + dk, 0, 0);
         rot(B['toes_' + side], -0.4 * lift * move, 0, 0);
       } else {
-        rot(B['scap_' + side], a * 0.4 - 0.2 * sit, 0, 0);
-        const dg = dig * Math.sin(st.t * (hop ? 18 : 6) + (S > 0 ? 0 : Math.PI)) * (hop ? 0.5 : 0.15);
+        rot(B['scap_' + side], a * 0.4 - 0.2 * up - 0.2 * hands, 0, 0);
+        // grooming: both paws rub down the face together; gnawing: the hands turn the stick
+        const rub = hands * (hop ? 0.22 * Math.sin(st.t * 9) : 0.06 * Math.sin(st.t * 3 + (S > 0 ? 0 : Math.PI)));
         const paddle = hop ? pad * 0.7 : -0.9 * (swim + dive);   // the beaver tucks its hands; the rabbit paddles with all four
-        rot(B['uarm_' + side], a * 0.5 + 0.3 * lift * move - 1.1 * sit - 0.5 * dig + dg + air * (c.vel.y > 0 ? 0.5 : -1.0) + paddle, 0, 0);
-        rot(B['farm_' + side], -0.8 * lift * move + 1.5 * sit + 0.6 * dig - dg + air * -0.4 + (hop ? 0 : 1.2 * (swim + dive)), 0, S * 0.25 * sit);
-        rot(B['hand_' + side], 0.8 * lift * move - 0.5 * sit + 0.3 * dig, 0, 0);
-        rot(B['fing_' + side], -0.3 * lift * move + 0.3 * sit, 0, 0);
+        const sitArm = up * (1 - hands);
+        rot(B['uarm_' + side], a * 0.5 + 0.3 * lift * move + 0.55 * sitArm - 1.35 * hands + rub + air * (c.vel.y > 0 ? 0.5 : -1.0) + paddle - 0.35 * freeze, 0, -S * 0.12 * hands);
+        rot(B['farm_' + side], -0.8 * lift * move + 0.7 * sitArm + 1.85 * hands - rub + air * -0.4 + (hop ? 0 : 1.2 * (swim + dive)) + 0.3 * freeze, 0, S * 0.25 * up + S * 0.2 * hands);
+        rot(B['hand_' + side], 0.8 * lift * move + 0.5 * sitArm - 0.6 * hands, 0, 0);   // standing: the fore paws hang bent at the chest (pose sheets)
+        rot(B['fing_' + side], -0.3 * lift * move + 0.3 * sitArm + 0.4 * hands, 0, 0);
       }
     };
     // hop: hinds together, fores a beat apart; waddle: lateral walk, then a gallop
@@ -132,7 +155,8 @@ export function createQuadAnimator(model, T, cfg = {}) {
     for (let i = 0; i < tail.length; i++) {
       const t = i / Math.max(1, tail.length - 1);
       let tgt = hop ? 0.3 + 0.5 * move * Math.max(0, s(ph)) + 0.4 * air : 0.05 * move * s(ph * 2 - t);
-      if (!hop) tgt += dive * 0.25 * Math.sin(st.t * 4 - i * 0.9) + swim * 0.1 + sit * (i === 0 ? -0.5 : 0.15);
+      if (!hop) tgt += dive * 0.25 * Math.sin(st.t * 4 - i * 0.9) + swim * 0.1 + (up + hands * (1 - up)) * (i === 0 ? -0.5 : 0.15)
+        + slap * (i === 0 ? 1.5 : 0.25);            // the dive opens with the tail raised high, then slapped down (pose sheet)
       tV[i] += ((tgt - tA[i]) * 80 - tV[i] * 10) * dt; tA[i] += tV[i] * dt;
       rot(tail[i], tA[i], -c.turnRate * 0.05 * (0.4 + t), 0);
     }
@@ -175,6 +199,10 @@ export function createBirdAnimator(model, T, cfg = {}) {
     flyStraight: [V(0, 0.15, 1), V(0, 0.08, 1), V(0, 0.04, 1), V(0, 0, 1), V(0, -0.15, 1)],
     flyFolded: [V(0, 1, 0.15), V(0, 0.45, -0.9), V(0, 0.2, 1), V(0, -0.1, 1), V(0, -0.2, 1)],
     forward: [V(0, 0.7, 0.7), V(0, 0.55, 0.85), V(0, 0.3, 1), V(0, 0.1, 1), V(0, -0.25, 1)],
+    // from the pose sheets: the swan preening, the heron stalking low and striking
+    preen: [V(0.05, 1, 0.15), V(0.1, 0.75, -0.65), V(0.15, -0.2, -1), V(0.2, -0.9, -0.45), V(0.15, -1, 0.1)],
+    stalk: [V(0, 0.75, 0.7), V(0, 0.6, -0.8), V(0, 0.35, 1), V(0, 0.05, 1), V(0, -0.1, 1)],
+    strike: [V(0, 0.3, 1), V(0, -0.15, 1), V(0, -0.45, 1), V(0, -0.75, 0.7), V(0, -0.85, 0.5)],
   };
 
   function update(dt, c, root) {
@@ -185,21 +213,33 @@ export function createBirdAnimator(model, T, cfg = {}) {
     const fly = weigh(st, 'fly', flying, 6, dt), swim = weigh(st, 'swim', c.state === 'swim', 5, dt);
     const take = weigh(st, 'take', c.takeoff > 0.05, 8, dt), land = weigh(st, 'land', c.landing > 0, 10, dt);
     const flap = weigh(st, 'flap', flying && c.flapping, 6, dt);
-    const sit = weigh(st, 'sit', c.state === 'sit' || c.state === 'dig', 5, dt);
+    const sit = weigh(st, 'sit', c.state === 'sit', 5, dt);
+    // Y: the swan preens (the neck curled back, the bill in the back feathers); the heron strikes:
+    // drawn back, then a lunge of the bill down and forward, held, and recovered
+    const act = weigh(st, 'act', c.state === 'dig', 7, dt);
+    const at = c.state === 'dig' ? c.actionTime || 0 : 9;
+    const lunge = cfg.action === 'strike' ? act * smooth(clamp01((at - 0.45) / 0.12)) * (1 - smooth(clamp01((at - 1.3) / 0.4))) : 0;
     const sp = st.speed;
     const move = clamp01(sp / (T.runSpeed * 0.15)) * (1 - fly) * (1 - swim);
+    // the heron stalks at a slow walk and while wading: crouched, the neck drawn in (pose sheet)
+    const stalk = weigh(st, 'stalk', !!cfg.headBob && c.state !== 'fly' && c.state !== 'air' && (c.wading > 0.05 || (sp > 0.03 && sp < T.runSpeed * 0.45)), 3, dt);
+    const wade = clamp01((c.wading || 0) / 0.15);
     // body: level in flight, banking into turns; a rolling waddle on land (swan)
     legPh = (legPh + (sp > 0.02 ? Math.min(3.2, sp / (0.35 * T.scale)) : 0) * dt) % 1;
     const waddle = cfg.waddle ? 0.08 * Math.sin(TAU * legPh) * move : 0.02 * Math.sin(TAU * legPh) * move;
     const bank = fly * THREE.MathUtils.clamp(-c.turnRate * 0.35, -0.6, 0.6);
     const flyPitch = fly * THREE.MathUtils.clamp(-c.vel.y * 0.06, -0.35, 0.35);
-    placeBody(st, c, root, dt, { extraRoll: waddle + bank, extraPitch: flyPitch - land * 0.25 + take * 0.12, lean: flying ? 0 : 0.01, rate: flying ? 6 : 14 });
+    placeBody(st, c, root, dt, { extraRoll: waddle + bank, extraPitch: flyPitch - land * 0.25 + take * 0.12 + 0.12 * stalk + 0.1 * lunge, lean: flying ? 0 : 0.01, rate: flying ? 6 : 14 });
 
     // neck: relaxed S standing; forward when running for take-off; straight (swan) or folded back
     // (heron) in flight; a gentle bob when walking (the heron's head stays still, then catches up)
     const glance = blinkAndGlance(st, model, dt, (1 - move) * (1 - fly));
     const nf = Math.max(take * 0.8, fly);
+    const preen = cfg.action === 'preen' ? act : 0, draw = cfg.action === 'strike' ? act * (1 - lunge) : 0;
     if (nf > 0.01) aimNeck(cfg.foldNeck && fly > take ? NECK.flyFolded : (fly > 0.5 ? NECK.flyStraight : NECK.forward), nf);
+    else if (preen > 0.01) aimNeck(NECK.preen, preen);
+    else if (lunge > 0.01) aimNeck(NECK.strike, lunge);
+    else if (Math.max(stalk, draw) > 0.01) aimNeck(NECK.stalk, Math.max(stalk * 0.85, draw));
     else for (const n of neck) B[n].quaternion.identity();
     const bob = (cfg.headBob ? 0.12 : 0.05) * Math.sin(TAU * legPh * 2) * move;
     if (B.neck1) B.neck1.quaternion.multiply(_q.setFromEuler(_e.set(bob * 0.5 + 0.12 * sit, glance * 0.3, 0)));
@@ -210,7 +250,7 @@ export function createBirdAnimator(model, T, cfg = {}) {
     const open = Math.max(fly, take * 0.8, land * 0.9);
     flapPh = (flapPh + dt * (flap * (cfg.flapRate || 2.4) + take * (cfg.flapRate || 2.4) * 1.3 + land * 2.0)) % 1;
     const beat = Math.sin(TAU * flapPh);
-    const flapAmp = (flap * 0.55 + take * 0.6 + land * 0.3) * open;
+    const flapAmp = (flap * 0.7 + take * 0.75 + land * 0.3) * open;    // the sheets' strokes: well above and below the body
     const glide = fly * (1 - flap) * 0.08;                 // a slight dihedral when gliding
     for (const S of [1, -1]) {
       const X = S > 0 ? '_L' : '_R';
@@ -220,7 +260,7 @@ export function createBirdAnimator(model, T, cfg = {}) {
       // world rotations and turned into local ones, so the fold axes stay vertical
       const yH = S * 1.5 * fold, yU = yH - S * 2.85 * fold, yM = yU + S * 2.75 * fold;
       const r = -S * 1.45 * fold * S;
-      const zH = S * (beat * flapAmp + glide) - S * 0.1 * fold + S * 0.12 * flapAmp;
+      const zH = S * (beat * flapAmp + glide) - S * 0.1 * fold + S * 0.18 * flapAmp;
       const zU = zH + S * Math.sin(TAU * flapPh - 0.6) * flapAmp * 0.35;
       const zM = zU + S * Math.sin(TAU * flapPh - 1.0) * flapAmp * 0.45 - S * land * 0.2;
       wingW(qa, yH, r, zH); wingW(qb, yU, r, zU); wingW(qc, yM - S * land * 0.4, r, zM);
@@ -239,13 +279,14 @@ export function createBirdAnimator(model, T, cfg = {}) {
     for (const S of [1, -1]) {
       const X = S > 0 ? '_L' : '_R', off = S > 0 ? 0 : 0.5;
       const p = (legPh + off) % 1, sw = Math.sin(TAU * p), lift = Math.max(0, Math.cos(TAU * p));
-      const walkT = -0.45 * sw * move, walkS = -0.6 * lift * move, walkTa = 0.9 * lift * move;
+      const hi = 1 + 0.6 * wade + 0.3 * stalk;                // high, careful steps wading and stalking
+      const walkT = -0.45 * sw * move - 0.2 * lift * move * (hi - 1), walkS = -0.6 * lift * move * hi, walkTa = 0.9 * lift * move * hi;
       const paddle = Math.sin(st.t * 4 + (S > 0 ? 0 : Math.PI)) * swim * (0.3 + 0.5 * clamp01(sp / T.swimSpeed));
       const tuck = fly * (cfg.trailLegs ? 1 : 0.8);
       const runSteps = take * Math.sin(st.t * 14 + (S > 0 ? 0 : Math.PI)) * 0.7;
       // (a heron's legs trail straight back; a swan's tuck back under the tail)
       rot(B['thigh' + X], walkT + paddle * 0.5 + tuck * (cfg.trailLegs ? 1.45 : 1.3) - land * 0.8 + runSteps * 0.6, 0, 0);
-      rot(B['shin' + X], walkS + paddle * 0.4 + tuck * (cfg.trailLegs ? 0.05 : 0.25) + land * 0.4 + runSteps * 0.3, 0, 0);
+      rot(B['shin' + X], walkS + paddle * 0.4 + tuck * (cfg.trailLegs ? 0.05 : 0.25) + land * 0.4 + runSteps * 0.3 - 0.2 * stalk - 0.15 * lunge, 0, 0);
       rot(B['tarsus' + X], walkTa + paddle * 0.6 + tuck * (cfg.trailLegs ? 0.05 : 0.3) + land * 0.5, 0, 0);
       rot(B['toes' + X], -0.4 * lift * move + tuck * (cfg.trailLegs ? 0.9 : 0.6) + swim * 0.3, 0, 0);
     }

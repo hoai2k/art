@@ -15,17 +15,43 @@ import numpy as np
 from segment import load, panel, mask, drop_ground_shadow
 
 
+def own(m):
+    """drop pieces of the neighbouring drawings cut by the panel's left or right edge (a tail tip,
+    whiskers): blobs touching those edges, other than the biggest blob"""
+    from scipy import ndimage as ndi
+    lab, n = ndi.label(m)
+    if n < 2: return m
+    sizes = ndi.sum(m, lab, range(1, n + 1)); big = int(np.argmax(sizes)) + 1
+    edge = set(np.unique(np.concatenate([lab[:, :3].ravel(), lab[:, -3:].ravel()]))) - {0, big}
+    return m & ~np.isin(lab, list(edge))
+
+
 class Sheet:
-    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1, y0=0.0, panels=None):
+    def __init__(self, file, body=0.25, rump_u=0.22, row=0, rows=1, y0=0.0, panels=None, side=None, top=None):
         # y0: the model height (m) at the side view's lowest row (0 for an animal standing on the
         # ground; the hull bottom for a swimming bird). panels: (side, top) panel columns.
-        img = load(file)
+        # side / top: take that view from another sheet or cell instead, as dict(file, row, rows,
+        # col, cols, rot, box) (rot: degrees to turn the panel so the head points right); top=False:
+        # the sheet has no usable top view (then top_px maps nothing and self.tp is None).
         self.file = file
         ps, pt = panels or (0, 1)
-        self.sp, self.tp = panel(img, row, ps, rows), panel(img, row, pt, rows)
+        def cell(d, col):
+            d = dict(d or {})
+            img = load(d.get('file', file))
+            if d.get('box'):          # explicit pixels (x0, y0, x1, y1) where drawings overlap in columns
+                x0, y0_, x1, y1 = d['box']; p = img[y0_:y1, x0:x1]
+            else:
+                p = panel(img, d.get('row', row), d.get('col', col), d.get('rows', rows), d.get('cols', 3))
+            if d.get('rot'):
+                from scipy.ndimage import rotate
+                bg = np.median(np.concatenate([p[:8].reshape(-1, 3), p[-8:].reshape(-1, 3)]), axis=0)
+                p = np.stack([rotate(p[..., k], d['rot'], reshape=True, order=1, cval=float(bg[k])) for k in range(3)], -1)
+            return p
+        self.sp = cell(side, ps)
+        self.tp = None if top is False else cell(top, pt)
         self.y0 = y0
-        self.sm = drop_ground_shadow(self.sp, mask(self.sp), 0.45)
-        self.tm = mask(self.tp)
+        self.sm = own(drop_ground_shadow(self.sp, mask(self.sp), 0.45))
+        self.tm = own(mask(self.tp)) if self.tp is not None else np.ones((4, 4), bool)
         r, c = np.where(self.sm); self.S = (r.min(), r.max(), c.min(), c.max())   # r0, r1, c0, c1
         r, c = np.where(self.tm); self.T = (r.min(), r.max(), c.min(), c.max())
         r0, r1, c0, c1 = self.S

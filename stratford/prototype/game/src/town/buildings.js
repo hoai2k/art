@@ -179,7 +179,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const isFront = ri === 0 && fronts.has(i);
       const swap = ri === 0 ? modelledFront(ctx, P, b, isFront, L) : 0;
       const wmat = (special && special.wallMat && ri === 0 ? special.wallMat(b, i) : null) ?? P.mat;
-      const setW = (fac) => vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [wmat, P.flags | (isFront ? FLAG.front : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
+      const setW = (fac) => vb.set('aF0', [PART.wall, L, b.height, P.storeys]).set('aF1', [wmat, P.flags | (isFront ? FLAG.front : 0) | (wmat !== P.mat ? FLAG.ownMat : 0), P.seed + i * 0.0137, P.gfh]).set('aFac', [fac]);
       // stations along the wall: the ends, and where its top meets a roof ridge or hip
       const us = wallStations(R, a, c, L);
       const wq = (u0, y0a, y0b, u1, y1a, y1b) => {

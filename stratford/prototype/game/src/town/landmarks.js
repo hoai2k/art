@@ -179,11 +179,20 @@ export const landmarkParts = {
       plinth(vb, cb, P, b, base, 2.0, ox, oz, kit);
       // strong dark red-brown sandstone bands on the buff brick (photos): each floor line and under the eaves
       const band = { ...P, seed: 0.07 };                              // oxblood trim
-      for (const y of [base + 2.0, base + 2.0 + (eaves - base - 2.0) / 3, base + 2.0 + 2 * (eaves - base - 2.0) / 3, eaves - 0.35]) belt(vb, cb, band, b.outer, y, y === eaves - 0.35 ? 0.35 : 0.22, ox, oz, kit);
-      const w = 4.8, t = frontTower(b, w, 'left');
+      const w = 4.8, t = frontTower(b, w, 'left'), m = frontTower(b, 7, 'centre');
+      // round the main block, the entrance bay and the tower: a deep course at each
+      // floor line, a narrower one at the window heads, and a deep one under the eaves
+      const rect = (q, hx, hz) => [[-1, 1], [1, 1], [1, -1], [-1, -1]].map(([sa, sn]) => [q.x + q.dx * hx * sa + q.nx * hz * sn, q.z + q.dz * hx * sa + q.nz * hz * sn]);
+      const rings = [b.outer, rect(m, 3.5, 1.2), rect(t, w / 2, w / 2)];
+      const fl = (eaves - base - 2.0) / 3;
+      for (let k = 0; k < 3; k++) {
+        const y = base + 2.0 + k * fl;
+        for (const r of rings) { belt(vb, cb, band, r, y - 0.05, 0.5, ox, oz, kit); belt(vb, cb, band, r, y + fl * 0.72, 0.28, ox, oz, kit); }
+      }
+      for (const r of rings.slice(0, 2)) belt(vb, cb, band, r, eaves - 0.6, 0.6, ox, oz, kit);
+      for (const y of [eaves + 0.6, eaves + 3.2]) belt(vb, cb, band, rings[2], y, 0.45, ox, oz, kit);
       kit.tower(vb, cb, P, t.x - ox, base, t.z - oz, w, base + 20.5, t.yaw, { belfry: 3.6, clock: true, pyramid: 10.5, roofPart: PART.roof, pinnacles: 1.6, mat: MAT.brick_buff });
       // a projecting entrance bay with its gable in the middle of the front
-      const m = frontTower(b, 7, 'centre');
       kit.setPart(vb, P, PART.wall, MAT.brick_buff, FLAG.front | FLAG.arched, 7, eaves - base, 3);
       kit.box(vb, cb, m.x - ox, (base + eaves) / 2, m.z - oz, 3.5, (eaves - base) / 2, 1.2, m.yaw, SURFACE.wall_brick);
       gable(vb, cb, P, m.x - ox, eaves, m.z - oz, m.dx, m.dz, m.nx, m.nz, 7.4, 4.5, kit);

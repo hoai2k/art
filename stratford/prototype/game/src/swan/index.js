@@ -21,7 +21,7 @@ export const swanTuning = (scale = SCALE) => creatureTuning(scale, {
 });
 
 export const createCreature = (opts = {}) => makeCreature({
-  kind: KIND, tuning: swanTuning(), eyeHeight: 1.1, canFly: true, coat: opts.coat, model: opts.model !== false,
-  animator: (m, T) => createBirdAnimator(m, T, { waddle: true, flapRate: 2.2 }), shells: 3, strands: 400,
+  kind: KIND, tuning: swanTuning(), eyeHeight: 1.0, canFly: true, coat: opts.coat, model: opts.model !== false,
+  animator: (m, T) => createBirdAnimator(m, T, { waddle: true, flapRate: 2.2, action: 'preen' }), shells: 3, strands: 400,
 });
 export const createCamera = (opts) => makeCamera(opts);

@@ -1,8 +1,10 @@
 // The creature select: a card per creature (portrait, name, one line) in the #creatures panel,
 // opened from Settings and the pause menu. Cards carry data-action="pick-creature" and
 // data-creature; main.js switches creature (fade, setScale, ready, fade in) and saves the choice.
-// Portraits: the delivered ui/creatures.png (R9.10: five medallions in a row, in CREATURE_INFO
-// order) when it exists, else a painted stand-in drawn here.
+// Portraits: the delivered ui/creatures.png (R9.10: five medallions in a row on transparency, in
+// CREATURE_INFO order), each cropped to its own alpha bounds (the medallions nearly touch, so the
+// strip is cut at the column of least alpha near each fifth first); a painted stand-in drawn here
+// until the strip loads, or if it can't.
 
 const $ = (s, r = document) => r.querySelector(s);
 
@@ -17,7 +19,7 @@ export function createCreatureSelect({ info, portraitUrl = null }) {
     b.dataset.action = 'pick-creature';
     b.dataset.creature = c.kind;
     b.setAttribute('aria-pressed', 'false');
-    const pic = portraitUrl ? spritePortrait(portraitUrl, i, info.length) : paintedPortrait(c.kind);
+    const pic = paintedPortrait(c.kind);
     pic.classList.add('creature-pic');
     pic.setAttribute('aria-hidden', 'true');
     const name = document.createElement('span'); name.className = 'creature-name'; name.textContent = c.name;
@@ -26,6 +28,19 @@ export function createCreatureSelect({ info, portraitUrl = null }) {
     b.setAttribute('aria-label', `${c.name}: ${c.blurb}`);
     grid.append(b);
     cards.set(c.kind, b);
+  }
+  if (portraitUrl) {
+    medallions(portraitUrl, info.length).then((crops) => {
+      if (!crops) return;
+      for (const [i, c] of info.entries()) {
+        const pic = cards.get(c.kind)?.querySelector('.creature-pic');
+        if (!pic || !crops[i]) continue;
+        const g = pic.getContext('2d');
+        g.clearRect(0, 0, pic.width, pic.height);
+        g.drawImage(...crops[i], 0, 0, pic.width, pic.height);
+        pic.dataset.portrait = 'delivered';
+      }
+    });
   }
   function setCurrent(kind) {
     for (const [k, b] of cards) { b.setAttribute('aria-pressed', String(k === kind)); b.classList.toggle('current', k === kind); }
@@ -36,12 +51,45 @@ export function createCreatureSelect({ info, portraitUrl = null }) {
   return { setCurrent, cards };
 }
 
-function spritePortrait(url, i, n) {
-  const d = document.createElement('div');
-  d.style.backgroundImage = `url("${url}")`;
-  d.style.backgroundSize = `${n * 100}% 100%`;
-  d.style.backgroundPosition = `${(i / (n - 1)) * 100}% 0`;
-  return d;
+// The strip's medallions as drawImage source rects [img, sx, sy, sw, sh] (square, centred on each
+// medallion's alpha bounds), or null if the image can't be read.
+async function medallions(url, n) {
+  try {
+    const img = new Image();
+    img.decoding = 'async'; img.src = url;
+    await img.decode();
+    const W = img.naturalWidth, H = img.naturalHeight;
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const g = cv.getContext('2d', { willReadFrequently: true });
+    g.drawImage(img, 0, 0);
+    const a = g.getImageData(0, 0, W, H).data;
+    const cov = new Uint32Array(W);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (a[(y * W + x) * 4 + 3] > 16) cov[x]++;
+    // cuts: the emptiest column within a tenth of the strip either side of each k/n
+    const cuts = [0];
+    for (let k = 1; k < n; k++) {
+      const c = Math.round(k * W / n), r = Math.round(W / n / 5);
+      let best = c;
+      for (let x = c - r; x <= c + r; x++) if (cov[x] < cov[best]) best = x;
+      cuts.push(best);
+    }
+    cuts.push(W);
+    const out = [];
+    for (let k = 0; k < n; k++) {
+      let x0 = W, x1 = -1, y0 = H, y1 = -1;
+      for (let x = cuts[k]; x < cuts[k + 1]; x++) {
+        if (cov[x] < 3) continue;
+        x0 = Math.min(x0, x); x1 = Math.max(x1, x);
+        for (let y = 0; y < H; y++) if (a[(y * W + x) * 4 + 3] > 16) { y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      }
+      if (x1 < 0) { out.push(null); continue; }
+      const side = Math.max(x1 - x0, y1 - y0) + 1, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+      out.push([img, cx - side / 2, cy - side / 2, side, side]);
+    }
+    return out;
+  } catch {
+    return null;
+  }
 }
 
 // A painted medallion: warm disc, cream ring, the animal's head and shoulders in silhouette.

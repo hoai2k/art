@@ -229,6 +229,8 @@ async function run(browser, base, label, query) {
   await G(() => document.querySelector('#pause [data-open="creatures"]').click());
   check(await until(() => window.stratford.ui.modals.includes('creatures')), 'the pause menu opens the creature select');
   check(await G(() => document.querySelectorAll('#creature-grid .creature-card').length === 5 && document.querySelector('.creature-card.current')?.dataset.creature === 'squirrel'), 'the creature select shows five creatures, the squirrel chosen');
+  check(await until(() => [...document.querySelectorAll('#creature-grid .creature-pic')].every((p) => p.dataset.portrait === 'delivered'), null, 30000),
+    'the portraits are the delivered strip (ui/creatures.png), cropped per medallion');
   await shot('06c-creatures');
   const before = await G(() => window.stratford.creature.position.toArray());
   await G(() => document.querySelector('.creature-card[data-creature="heron"]').click());

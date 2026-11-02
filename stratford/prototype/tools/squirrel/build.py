@@ -106,6 +106,11 @@ def make_fields(B, names):
         F.append(dict(f=f, lo=lo, hi=hi, bone=bone, blend=blend))
     # tail: one tube per tail bone (flattened: hairs spread sideways), radius from tail_core_radius
     n = A.TAIL_N
+    if hasattr(A, 'tail_parts'):          # a creature's own tail shape (the beaver's paddle)
+        for kind, bone, args, blend in A.tail_parts(B):
+            f, lo, hi = (f_ell if kind == 'ell' else f_tube)(*args)
+            F.append(dict(f=f, lo=lo, hi=hi, bone=bone, blend=blend))
+        return F
     for i in range(n):
         a = B[f'tail{i}']; b = B[f'tail{i + 1}'] if i + 1 < n else a + (B[f'tail{i}'] - B[f'tail{i - 1}'])
         t0, t1 = i / n, (i + 1) / n
@@ -319,7 +324,7 @@ def paint_sheet(P, N, W, names, coat, file, proc):
     from scipy.ndimage import map_coordinates
     c_proc, tip, ao = proc
     out = c_proc.copy()
-    for view in ('side', 'top'):
+    for view in (('side', 'top') if sh.tp is not None else ('side',)):
         rgb = sh.sp if view == 'side' else sh.tp; m = sh.sm if view == 'side' else sh.tm
         if view == 'side':
             u, v = sh.side_px(P[:, 2] * CM, P[:, 1] * CM); wv = np.abs(N[:, 0]) ** 2

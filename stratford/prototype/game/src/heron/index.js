@@ -22,6 +22,6 @@ export const heronTuning = (scale = SCALE) => creatureTuning(scale, {
 
 export const createCreature = (opts = {}) => makeCreature({
   kind: KIND, tuning: heronTuning(), eyeHeight: 1.05, canFly: true, coat: opts.coat, model: opts.model !== false,
-  animator: (m, T) => createBirdAnimator(m, T, { foldNeck: true, trailLegs: true, headBob: true, flapRate: 1.8 }), shells: 3, strands: 500,
+  animator: (m, T) => createBirdAnimator(m, T, { foldNeck: true, trailLegs: true, headBob: true, flapRate: 1.8, action: 'strike' }), shells: 3, strands: 500,
 });
 export const createCamera = (opts) => makeCamera(opts);

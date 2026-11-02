@@ -343,7 +343,7 @@ export const KIT = {
   kit_cornices: ['kit/cornices.png', 1, 4], kit_trim: ['kit/trim.png', 4, 2], kit_awnings: ['kit/awnings.png', 4, 1],
 };
 export const MAT = { brick_red: 0, brick_buff: 1, stone: 2, clapboard: 3, stucco: 4, glass: 5, metal: 6 };
-export const FLAG = { store: 1, arched: 2, front: 4, church: 8, house: 16, theatre: 32, noWindows: 64, painted: 128 };
+export const FLAG = { store: 1, arched: 2, front: 4, church: 8, house: 16, theatre: 32, noWindows: 64, painted: 128, ownMat: 256 };   // ownMat: a wall of another material than the photographed one (no survey tint)
 
 // detail: { flags: DataTexture (R8, 256 wide, one texel per building), focus: {value: Vector3}, radius: {value} }
 export function buildingMaterial(shared, assets, detail) {
@@ -484,9 +484,10 @@ vec4 survey(float k) {
   return texelFetch(tSurvey, ivec2(i % 256, i / 256), 0);
 }
 float lum3(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
+float gOwnMat = 0.0;
 vec3 wallMat(float mat, float s, vec2 uv, float px) {
   vec3 c = wallMat0(mat, s, uv, px);
-  if (mat > 4.5) return c;
+  if (mat > 4.5 || gOwnMat > 0.5) return c;
   vec4 w = survey(0.0);
   if (w.a > 1.5) return w.rgb * (0.94 + 0.08 * tnoise(uv * 1.7 + s) + 0.04 * tnoise(uv * 9.0));       // painted
   if (w.a > 0.5) {
@@ -584,6 +585,7 @@ vec3 buildingColor(out float glow) {
   glow = 0.0;
   float part = floor(vF0.x + 0.5), len = vF0.y, eaves = vF0.z, storeys = max(1.0, vF0.w);
   float mat = vF1.x, flags = vF1.y, seed = vF1.z, gfh = vF1.w;
+  gOwnMat = bitf(flags, 256.0);
   vec2 uv = vUv2;
   float px = max(length(fwidth(uv)), 1e-4);
   vec3 trim = trimOf(seed);
@@ -742,7 +744,7 @@ vec3 buildingColor(out float glow) {
     return vec3(0.11, 0.12, 0.12) * (0.9 + 0.2 * tnoise(uv * 4.0));
   }
   if (part == 10.0) return trimColor(seed + 0.37) * (0.9 + 0.1 * smoothstep(0.0, 0.1, fract(uv.x / 0.14)));
-  if (part == 11.0) return wallMat(2.0, seed, uv, px);
+  if (part == 11.0) return wallMat0(2.0, seed, uv, px);          // stone dressings keep their own colour (no survey tint)
   if (part == 12.0) {                      // theatre marquee / blade sign
     float h = step(0.5, fract(uv.x * 2.0 + uv.y * 2.0));
     glow = 0.8;
