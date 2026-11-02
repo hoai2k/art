@@ -376,9 +376,6 @@ document.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click
   if (a === 'title') toTitle();
 }));
 $('#start').addEventListener('click', startGame);
-$('#btn-instructions').addEventListener('click', () => { audio.play('ui'); openInstructions(); });
-$('#btn-scenes').addEventListener('click', () => { audio.play('ui'); openScenes(); });
-$('#btn-credits').addEventListener('click', () => { audio.play('ui'); openDialog($('#credits'), $('#credits .card-x')); });
 $('#btn-settings').addEventListener('click', () => { audio.play('ui'); openDialog($('#settings')); });
 $('#btn-sound').addEventListener('click', () => {
   settings.sound = !settings.sound;
@@ -1013,4 +1010,6 @@ $('#start').focus({ preventScroll: true });
 requestAnimationFrame(frame);
 
 // QA hook: ?qa exposes the shell state to browser smoke tests.
-if (new URLSearchParams(location.search).has('qa')) window.__widowsBay = window.__kingdomOfTheFairies = { S, settings, audio, camera, get assets() { return assets; } };
+if (new URLSearchParams(location.search).has('qa')) window.__widowsBay = window.__kingdomOfTheFairies = { S, settings, audio, camera, get assets() { return assets; },
+  // the dialogs the pause menu opens, for the browser checks
+  open: { instructions: () => openInstructions(), scenes: () => openScenes(), credits: () => openDialog($('#credits'), $('#credits .card-x')) } };
