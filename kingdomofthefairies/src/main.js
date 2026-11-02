@@ -2,6 +2,7 @@ import { LEGACY, EDITION, LOOK_PARAM, FILM as FILM_ED, TITLE, STORAGE_PREFIX, ap
 applyDocumentTheme();
 // Shell: title, act cards, play, pause, dialogs, settings, fullscreen.
 import { ACTS } from './acts/index.js';
+import { ACT_ART } from './act-art.js';
 import { loadSave, writeSave, carryInto, recordResult } from './save.js';
 import { editorWanted, openEditor } from './editor.js';
 import { createRenderer, loadAssets, richText, setTouchNames } from './art.js';
@@ -98,6 +99,24 @@ let assetsLoaded = false;
 // scene never opens on its stand-ins (an image that fails still counts as
 // arrived, so the wait always ends).
 let artLoaded = 0, artTotal = 0, artAll = false;
+// Each act's own art (src/act-art.js, by edition and cast look) loads ahead
+// of the rest: the act most likely to be opened next while the title and
+// playbill wait, the chosen act during its card, then the act after it. The
+// card waits only for its own act's art, and only once A is pressed.
+const tintedLook = () => FILM_ED && settings.cast === 'tinted';
+const actArt = (i) => ACT_ART[EDITION]?.[ACTS[i]?.key || String(ACTS[i]?.id)]?.[tintedLook() ? 'tinted' : 'original'] || [];
+let wantedAct = null;
+function wantAct(i) {
+  if (!assets?.want || i == null || i < 0 || i >= ACTS.length) return;
+  const key = `${i}|${tintedLook()}`;
+  if (wantedAct === key) return;
+  wantedAct = key;
+  assets.want(actArt(i)).then(() => { if (wantedAct === key && i + 1 < ACTS.length) assets.want(actArt(i + 1)); });
+}
+const actArtProgress = (i) => (assets?.progress ? assets.progress(actArt(i)) : { done: 0, total: 1 });
+const actArtReady = (i) => { const p = actArtProgress(i); return p.done >= p.total; };
+// The act the title's Start (or the playbill's selection) would most likely open.
+const predictedAct = () => (S.mode === 'playbill' ? S.pb : save.unlocked > 1 ? Math.min(save.unlocked, ACTS.length) - 1 : 0);
 // The title waits behind a spinner for its own art (the first wave and the
 // painted title), so it never shows the drawn stand-ins first.
 let firstArt = false, booted = false;
@@ -150,7 +169,7 @@ loadAssets('assets/', { first: FIRST_ART, onImage: (id, im) => {
   assets = a;
   artTotal = Object.values(a.slots).filter((sl) => sl.status === 'delivered' && sl.file).length;
   a.all.then(() => { artAll = a.failed.length === 0; });
-  a.ready.then(() => { firstArt = true; });
+  a.ready.then(() => { firstArt = true; wantAct(predictedAct()); });
   const song = a.audio?.song;
   if (song?.status === 'delivered' && song.file) audio.setTrack('assets/' + song.file, song.loopStart, song.loopEnd);
   const sfx = Object.fromEntries(Object.entries(a.sfx || {})
@@ -214,6 +233,7 @@ function carryFor(i) {
 function beginAct(i, from = null) {
   renderer.clearFx(); camera.reset();
   S.actIndex = i; S.act = ACTS[i];
+  wantAct(i);
   S.state = S.act.create({ seed: (Math.random() * 2 ** 31) | 0, carry: carryFor(i), from: from ? { ...from } : null });
   S.checkpoint = S.state.checkpoint ? JSON.parse(JSON.stringify(S.state.checkpoint)) : null;
   S.cpRef = S.state.checkpoint;
@@ -617,6 +637,9 @@ function trackInputMode(i) {
 
 function update(dt, i) {
   trackInputMode(i);
+  // what to load first: the act on stage, or the one the menus point to
+  // (re-asked when the playbill selection or the cast look changes)
+  if (firstArt) wantAct(S.act ? S.actIndex : ['title', 'playbill'].includes(S.mode) ? predictedAct() : null);
   if (S.mode === 'title') updateLoadbar();
   const mood = musicMood();
   if (mood === 'song') audio.returnToSong(); else audio.setMood(mood);
@@ -679,16 +702,22 @@ function update(dt, i) {
     // Hold the card until the song can play and the art has arrived,
     // showing their progress.
     if (!songSettled()) { S.card.loading = songStatus().progress; S.readyT = 0; if (i.pause) pause(); return; }
-    if (!artAll) {
-      S.card.error = assets?.failed?.length ? 'The scenery could not load. Please reload.' : null;
-      S.card.loading = S.card.error ? null : artTotal ? Math.min(0.99, artLoaded / artTotal) : 0;
-      S.readyT = 0;
+    // The card shows its prompt at once while the act's art loads behind it.
+    // Pressed (or timed out) before the art is in, the prompt becomes a
+    // loading bar, and the act begins as soon as the bar fills.
+    const artIn = actArtReady(S.actIndex);
+    if (S.card.loading != null && artIn) { S.card.loading = null; S.card.loadingText = null; announce('Ready.'); }
+    S.readyT = (S.readyT || 0) + dt;
+    const wants = (go && S.readyT > 0.4) || S.readyT > (S.card.body ? 12 : 6) || S.card.waiting;
+    if (wants && !artIn) {
+      const p = actArtProgress(S.actIndex);
+      if (!S.card.waiting) announce('Setting the stage.');
+      S.card.waiting = true; S.card.loadingText = 'SETTING THE STAGE';
+      S.card.loading = p.total ? Math.min(0.99, p.done / p.total) : 0;
       if (i.pause) pause();
       return;
     }
-    if (S.card.loading != null) { S.card.loading = null; announce('Ready.'); }
-    S.readyT = (S.readyT || 0) + dt;
-    if ((go && S.readyT > 0.4) || S.readyT > (S.card.body ? 12 : 6)) {
+    if (wants) {
       // Some acts follow their card with a silent-film intertitle that
       // introduces how they play (not on a retry).
       if (S.act.intertitle && !S.card.body && !S.skipIntertitle) {
@@ -943,7 +972,7 @@ function drawPlaybill(k, t) {
     : mode === 'pad' ? '[LS] Choose · [A] Begin · [B] The title' : '↑ ↓ to choose · [A] to begin · [B] for the title';
   // The bill waits for its art (the title holds behind the spinner until it
   // is in): never the drawn stand-in, which is wider, then swapped.
-  if (!rows.art && !artAll) { spinner(k, t); return; }
+  if (!rows.art && !assets?.settled?.(FILM_ED ? 'playbill-film' : 'playbill')) { spinner(k, t); return; }
   if (rows.art && k.asset('playbill', PB.cx, PB.cy + PB.h / 2, PB.w, PB.h)) {
     const s = rows.s, ink = k.col('#2a1424');
     c.fillStyle = ink; c.textAlign = 'center';

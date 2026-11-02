@@ -73,22 +73,48 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
     out.sfx = m.sfx || {};
     animationSlots = m.anims || {};
   } catch { out.failed.push('manifest'); return out; }
-  const load = (ids) => Promise.all(ids.map((id) => new Promise((done) => {
+  // Images load through a queue, a few at a time, so the art a scene needs
+  // can be moved to the front (out.want) instead of waiting behind the whole
+  // game's. Each id settles once: loaded, failed, or (still requested) skipped.
+  const settled = {}, waiters = {}, queue = [];
+  let inflight = 0;
+  const CONCURRENT = 6;
+  const settle = (id) => { settled[id] = true; for (const f of waiters[id] || []) f(); delete waiters[id]; inflight--; pump(); };
+  const start = (id) => {
     const s = out.slots[id];
-    if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return done(); }
+    inflight++;
+    if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return settle(id); }
     // Art still requested is not a failure: its stand-in draws until it arrives.
-    if (s && s.status !== 'delivered') return done();
-    if (!s || !s.file) { out.failed.push(id); return done(); }
+    if (s && s.status !== 'delivered') return settle(id);
+    if (!s || !s.file) { out.failed.push(id); return settle(id); }
     const img = new Image();
     // Film art keeps its proportions in its box (fitBox); a tinted alternate is
     // drawn the way its original is, so one of an older, stretched-to-box
     // sprite stays stretched rather than taking the film art's fitting.
     const originalSlot = id.endsWith('-tinted') ? out.slots[id.slice(0, -7)] : null;
     const fit = s.edition === 'film' && (!originalSlot || originalSlot.edition === 'film');
-    img.onload = () => { if (fit) { img.fitBox = true; img.bodyScale = bodyScaleOf(id); } out.images[id] = img; onImage?.(id, img); done(); };
-    img.onerror = () => { out.failed.push(id); done(); };
+    img.onload = () => { if (fit) { img.fitBox = true; img.bodyScale = bodyScaleOf(id); } out.images[id] = img; onImage?.(id, img); settle(id); };
+    img.onerror = () => { out.failed.push(id); settle(id); };
     img.src = base + s.file;
-  })));
+  };
+  const started = new Set();
+  function pump() {
+    while (inflight < CONCURRENT && queue.length) { const id = queue.shift(); if (started.has(id)) continue; started.add(id); start(id); }
+  }
+  const whenSettled = (id) => (settled[id] ? Promise.resolve() : new Promise((f) => (waiters[id] = waiters[id] || []).push(f)));
+  // Move ids (known slots only) to the front of the queue, in order; resolves
+  // once every one has settled.
+  out.want = (ids) => {
+    const known = [...new Set(ids)].filter((id) => out.slots[id]);
+    const fresh = known.filter((id) => !started.has(id));
+    for (const id of fresh) { const i = queue.indexOf(id); if (i >= 0) queue.splice(i, 1); }
+    queue.unshift(...fresh); pump();
+    return Promise.all(known.map(whenSettled));
+  };
+  // How many of ids have settled, of how many known slots.
+  out.progress = (ids) => { const known = [...new Set(ids)].filter((id) => out.slots[id]); return { done: known.filter((id) => settled[id]).length, total: known.length }; };
+  out.settled = (id) => !!settled[id];
+  const load = (ids) => { for (const id of ids) if (!started.has(id) && !queue.includes(id)) queue.push(id); pump(); return Promise.all(ids.filter((id) => out.slots[id]).map(whenSettled)); };
   const early = first.filter((id) => out.slots[id]);
   const rest = Object.keys(out.slots).filter((id) => !early.includes(id));
   out.ready = load(early);
@@ -109,7 +135,9 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
       } catch { /* A missing/bad loop leaves its still-art fallback in place. */ }
     }));
   };
-  out.all = out.ready.then(() => Promise.all([load(rest), loadAnimations()]));
+  // the rest queue behind the first wave (out.want moves a scene's ahead)
+  const restDone = load(rest);
+  out.all = Promise.all([out.ready, restDone, out.ready.then(loadAnimations)]);
   return out;
 }
 
@@ -1363,7 +1391,7 @@ export function drawCard(c, card, t) {
     c.strokeRect(480, 586, 320, 12); c.strokeRect(476, 582, 328, 20);
     c.fillStyle = PAL.pink; c.fillRect(482, 588, 316 * card.loading, 8);
     c.font = '700 18px "Josefin Sans", sans-serif';
-    c.fillText(LEGACY ? 'TUNING UP THE BAND' : 'TUNING THE ORCHESTRA', 640, 626);
+    c.fillText(card.loadingText || (LEGACY ? 'TUNING UP THE BAND' : 'TUNING THE ORCHESTRA'), 640, 626);
   } else if (card.prompt) {
     c.globalAlpha = a * (0.55 + 0.45 * Math.sin(t * 3));
     c.font = '30px Yesteryear, cursive';
