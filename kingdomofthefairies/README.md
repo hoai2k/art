@@ -4,17 +4,24 @@ A hand-tinted toy-theatre voyage inspired by Georges Méliès’s silent film
 *Le Royaume des fées* (1903). Play at
 https://hoai2k.github.io/mini/kingdomofthefairies/.
 
-There are three editions, chosen by the address:
+There are two editions, chosen by the address:
 
-- **The default** (no parameter, `?widowsbay=off`, or any value but `on` or
-  `partial`) is the film edition: the prince's story after Méliès, with a
-  prologue and six acts and only the period accompaniment.
-- **[`?widowsbay=partial`](https://hoai2k.github.io/mini/kingdomofthefairies/?widowsbay=partial)**
-  is the original five-act game under the new title: no band, no song, and the
-  sailor's guitar becomes a sword (its art and its words), with new art filling
-  the gaps (`PARTIAL_CAST` in `src/theme.js`). It shares the improved climbing.
-- **[`?widowsbay=on`](https://hoai2k.github.io/mini/kingdomofthefairies/?widowsbay=on)**
+- **The default** (no parameter, `?widowsbay=off`, or any value but `on`) is
+  the film edition: the prince's story after Méliès, with a prologue and six
+  acts and only the period accompaniment, in the hand-tinted cast look or
+  (Settings, or `?look=original`) the original one.
+- **[`?widowsbay=on`](https://games.hoai.net/art/kingdomofthefairies/?widowsbay=on)**
   restores the preserved Widow’s Bay title, Langan, Frost & Wane cast and song.
+
+The partial edition (`?widowsbay=partial`, the original five acts without the
+band) has been removed; that address now plays the film edition.
+
+**Leaving Widow’s Bay out of a deploy:** set `"includeWidowsBay": false` in
+`deploy_config.json`. `publish.sh` then copies none of the files only that
+edition loads (its song, band art, painted title, legacy icons and web
+manifest), drops them from the published `assets/manifest.json`, and marks
+the page (`<meta name="kotf-widowsbay" content="off">`), so `?widowsbay=on`
+plays the film edition. Locally nothing changes.
 
 Acts open in order as they are finished. **`?edit=local`** (with any of the
 above) opens a panel for this browser that sets how far each edition is
@@ -91,7 +98,7 @@ ledge's lip; pushing up into a ledge he hauls himself onto it, walks along
 it, and lowers himself off; A springs a short way. The surfaces are read from
 the cloths by `design/source/build_climb_map.py` into `src/acts/climb-map.js`
 (rerun it if a cloth changes), and `src/acts/climb.js` is the climbing. The
-original and partial editions keep their own cliff on it: the giant's boot,
+Widow’s Bay edition keeps its own cliff on it: the giant's boot,
 lifting on the beat, is the only way over the overhanging lip, the tiny
 guitarist's gap shelters from stones, and loose rock gives way if he lingers.
 
@@ -179,7 +186,7 @@ selects its preserved manifest/icons with `start_url: ./?widowsbay=on`.
 From the repository root:
 
 ```sh
-for e in widowsbay partial; do for t in board act2 act3 act4 act5; do KOTF_EDITION=$e node kingdomofthefairies/qa/$t.test.mjs; done; done
+for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs; done
 for t in animation sailor-motion walking theme assets-loader; do node kingdomofthefairies/qa/$t.test.mjs; done
 KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
 for g in build_act_requests build_film_requests build_film_assets; do python3 kingdomofthefairies/design/source/$g.py --check; done

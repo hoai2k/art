@@ -84,6 +84,10 @@ domain, so this repository's site lives at `/art/`).
   workbench out of the deployed site (it still works locally), and a missing or
   unreadable file means `true`. Bronze Drum's sound workbench (about 10 MB of
   alternative takes) is the one today.
+- **`kingdomofthefairies/deploy_config.json`** has `includeWidowsBay`, read by
+  its `publish.sh`: `false` strips the Widow's Bay edition (its song, band art,
+  title and icons) out of the deployed site and the published page plays the
+  film edition for `?widowsbay=on`; a missing or unreadable file means `true`.
 - **The deploy is optimised for Actions minutes and storage, and the
   optimisations are load-bearing:** it runs only on pushes to `deploy`, skips
   pushes that change nothing the site is built from (`paths-ignore`), checks

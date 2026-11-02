@@ -15,7 +15,7 @@ try {
     page.on('pageerror', e => errors.push(e.message));
     page.on('request', r => requests.push(r.url()));
     await page.addInitScript(() => {
-      for (const prefix of ['widowsbay', 'kingdomofthefairies', 'kingdomofthefairies.partial']) localStorage.setItem(prefix + '.settings.v1', JSON.stringify({ film: 'off', music: 0, sfx: 0, period: false, extraAnimations: true }));
+      for (const prefix of ['widowsbay', 'kingdomofthefairies']) localStorage.setItem(prefix + '.settings.v1', JSON.stringify({ film: 'off', music: 0, sfx: 0, period: false, extraAnimations: true }));
     });
     await page.goto(server.url + '/?qa' + (legacy ? '&widowsbay=on' : ''));
     await page.waitForFunction(() => document.querySelector('#logo-img').naturalWidth > 0);

@@ -961,7 +961,19 @@ function captions(k, st, t) {
     c.fillStyle = k.col('#ffe27a'); richText(c, str, lx, y, { px, mode: k.inputMode || 'key', col: k.col });
     c.restore();
   }
-  if (ph === 'swim' && !st.conches[0].used && pt < 14 && onScreen(st, SHELF_Y)) {
+  // After "Follow the sword down": the two things worth saying (film); the
+  // classic edition points out its first conch instead.
+  if (FILM && ph === 'swim' && pt >= 2 && pt < 14) {
+    const str = touch ? 'Tap an open clam for its pearl · get air from the bubbles' : '[X] Grab pearls · get air from the bubbles';
+    const px = touch && k.compact ? 26 : 18, hh = px + 14;
+    c.save(); c.font = `700 ${px}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
+    c.globalAlpha = clamp((14 - pt) / 0.6, 0, 1) * clamp((pt - 2) / 0.4, 0, 1);
+    const fade = c.globalAlpha, w = c.measureText(str.replace(/\[X\]/, 'XX')).width + 44;
+    c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.8 * fade;
+    c.beginPath(); c.roundRect(640 - w / 2, 250 - hh * 0.7, w, hh, hh / 2); c.fill(); c.globalAlpha = fade;
+    c.fillStyle = k.col('#ffe27a'); richText(c, str, 640, 250, { px, mode: k.inputMode || 'key', col: k.col });
+    c.restore();
+  } else if (!FILM && ph === 'swim' && !st.conches[0].used && pt < 14 && onScreen(st, SHELF_Y)) {
     const cn = st.conches[0];
     label(k, 'Swim into the conch', cn.x, sy(st, cn.y) - 86, 18, '#ffe27a');
   }

@@ -2,6 +2,7 @@
 # Copy the Kingdom of the Fairies prototype (a static page, no build step) into a GitHub
 # Pages output directory, so it is published at <site>/kingdomofthefairies/ (the cutscene
 # workbench comes along at <site>/kingdomofthefairies/workbench/).
+# deploy_config.json's includeWidowsBay false strips the Widow's Bay edition out.
 # Usage: kingdomofthefairies/publish.sh local/pages/kingdomofthefairies
 set -eu
 out="${1:?output directory}"
@@ -10,4 +11,32 @@ rm -rf "$out"
 mkdir -p "$out"
 cp "$here/index.html" "$here/styles.css" "$here/manifest.webmanifest" "$here/manifest-widowsbay.webmanifest" "$out/"
 cp -R "$here/src" "$here/assets" "$here/icons" "$here/workbench" "$out/"
+widowsbay=$(python3 -c 'import json,sys
+try: print("false" if json.load(open(sys.argv[1])).get("includeWidowsBay", True) is False else "true")
+except Exception: print("true")' "$here/deploy_config.json")
+if [ "$widowsbay" = false ]; then
+  # Only Widow's Bay loads these (the film edition filters them out: theme.js).
+  python3 - "$out" <<'PY'
+import json, os, shutil, sys
+out = sys.argv[1]
+path = os.path.join(out, 'assets', 'manifest.json')
+m = json.load(open(path))
+gone = []
+for sid in [k for k in m.get('slots', {}) if k.startswith('band-') or k == 'logo']:
+    gone.append(m['slots'].pop(sid).get('file'))
+song = m.get('audio', {}).pop('song', None)
+if song: gone.append(song.get('file'))
+for f in filter(None, gone):
+    p = os.path.join(out, 'assets', f)
+    if os.path.exists(p): os.remove(p)
+json.dump(m, open(path, 'w'), indent=2, ensure_ascii=False)
+shutil.rmtree(os.path.join(out, 'icons', 'legacy'), ignore_errors=True)
+os.remove(os.path.join(out, 'manifest-widowsbay.webmanifest'))
+html = os.path.join(out, 'index.html')
+s = open(html).read()
+assert '<meta name="kotf-widowsbay" content="on">' in s
+open(html, 'w').write(s.replace('<meta name="kotf-widowsbay" content="on">', '<meta name="kotf-widowsbay" content="off">'))
+print('Widow\'s Bay left out:', len(gone), 'asset files removed')
+PY
+fi
 echo "published Kingdom of the Fairies to $out/"

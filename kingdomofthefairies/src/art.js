@@ -1,4 +1,4 @@
-import { LEGACY, FILM, PARTIAL, FILM_CAST, PARTIAL_CAST, bodyScaleOf, themeManifest } from './theme.js';
+import { LEGACY, FILM, FILM_CAST, bodyScaleOf, themeManifest } from './theme.js';
 // Toy-theatre renderer. Every frame is painted twice: a monochrome "print"
 // pass and a flat colour "stencil" pass. The stencil pass is laid over the
 // print with the `color` blend, slightly out of register, which is how
@@ -229,7 +229,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   };
   const img = (id) => {
     const a = cast[id];
-    let r = a && assets.images[a] ? a : a && PARTIAL ? null : id;
+    let r = a && assets.images[a] ? a : id;
     if (!r) return undefined;
     r = walkFrame(r);
     // the tinted cast look (the default in the film edition; Settings or
@@ -396,7 +396,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   // curtains, HUD and anything the act puts over them (irises, washes).
   function scene(c, view) {
     const t = view.t, st = view.state, act = view.act;
-    cast = FILM ? { ...FILM_CAST, ...(act?.cast || {}) } : PARTIAL ? PARTIAL_CAST : {};
+    cast = FILM ? { ...FILM_CAST, ...(act?.cast || {}) } : {};
     kit.c = c; kit.t = t;
     c.save();
     if (!view.scene && act && st) camApply(c);
@@ -1243,7 +1243,7 @@ const WAVE_ART = [
 
 const LABEL = FILM
   ? { leaf: "Aurora's star", tea: "Aurora's stars", pearl: "Neptune's seal", rose: "The Water Fairy's blessing", guitar: 'The enchanted sword', stone: "Aurora's lamp" }
-  : { leaf: 'Tea leaf', tea: 'Tea leaves', pearl: 'Her pearl', rose: 'Sea rose', guitar: PARTIAL ? 'The sword' : 'The guitar', stone: 'The stone' };
+  : { leaf: 'Tea leaf', tea: 'Tea leaves', pearl: 'Her pearl', rose: 'Sea rose', guitar: 'The guitar', stone: 'The stone' };
 
 function circle(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill(); }
 function star(c, x, y, r) {

@@ -11,6 +11,8 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" sizes="any">
+  <!-- "off" when the deploy leaves the Widow's Bay edition out (publish.sh) -->
+  <meta name="kotf-widowsbay" content="on">
   <link rel="apple-touch-icon" href="icons/icon-180.png" data-legacy-icon="icons/legacy/icon-180.png">
   <title>Kingdom of the Fairies</title>
   <meta name="description" content="A hand-tinted toy-theatre voyage inspired by Georges Méliès’s Kingdom of the Fairies (1903).">
@@ -37,7 +39,7 @@
           // when decoded; the plain-text title waits behind it, shown only if the
           // image fails or is slow, so the title never flicks between looks.
           (function () {
-            var q = new URLSearchParams(location.search).get('widowsbay'), card = document.getElementById('logo');
+            var bay = document.querySelector('meta[name=kotf-widowsbay]'), q = bay && bay.content === 'off' ? null : new URLSearchParams(location.search).get('widowsbay'), card = document.getElementById('logo');
             var im = document.getElementById('logo-img');
             im.src = 'assets/' + ((q || '').toLowerCase() === 'on' ? 'logo.webp' : 'fairies-title.webp');
             var show = function () { if (!card.classList.contains('no-img')) { im.hidden = false; card.classList.add('has-img'); } };
@@ -221,9 +223,10 @@
               <thead><tr><th>Action</th><th>Controller</th><th>Keyboard</th><th>Phone / tablet</th></tr></thead>
               <tbody>
                 <tr><td>Walk</td><td><span class="xb xb-ls" aria-label="left stick">LS</span> / <span class="xb xb-dpad">D-pad</span> left, right</td><td>← → or A D</td><td>Drag left / right</td></tr>
-                <tr><td>Take a gift, leap the fire</td><td><span class="xb xb-a">A</span></td><td>Space, Z or J</td><td>Tap</td></tr>
+                <tr><td>Take a gift, take her hand, take up your arms</td><td><span class="xb xb-x">X</span></td><td>X</td><td>The Receive / Take button</td></tr>
+                <tr><td>Leap</td><td><span class="xb xb-a">A</span></td><td>Space, Z or J</td><td>Tap or the Leap button</td></tr>
                 <tr><td>Struggle free</td><td><span class="xb xb-a">A</span>, <span class="xb xb-x">X</span> or the stick</td><td>Arrows, Space or X</td><td>Tap or drag</td></tr>
-                <tr><td>Skip a scene</td><td><span class="xb xb-b">B</span></td><td>X or Backspace</td><td>Skip</td></tr>
+                <tr><td>Skip a scene</td><td><span class="xb xb-b">B</span></td><td>Backspace</td><td>Skip</td></tr>
               </tbody>
             </table>
           </div>

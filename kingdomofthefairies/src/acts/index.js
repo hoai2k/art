@@ -1,7 +1,7 @@
 // The acts, in story order. Each module follows src/acts/CONTRACT.md.
 // The default edition follows Méliès's 1903 film (design/film-adaptation.md):
 // a prologue, Acts I-IV recast, and the film's Acts V and VI. The query
-// editions (?widowsbay=on, ?widowsbay=partial) keep the original five acts.
+// edition (?widowsbay=on) keeps the original five acts.
 import { CLASSIC } from '../theme.js';
 import prologue from './prologue.js';
 import act1 from './act1.js';

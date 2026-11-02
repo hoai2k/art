@@ -162,7 +162,7 @@ export const ridePearlX = (p, rideT) => 1250 - (rideT - p.at) * RIDE.speed;
 // ---------------------------------------------------------------- module
 export default {
   id: 2, key: 'grotto', kicker: 'Act II', title: FILM ? 'The Water Fairy' : "The Sleepers' Grotto", size: 110,
-  sub: FILM ? 'Follow the sinking sword down.\nX takes a pearl from an open clam, or wakes a sleeping crewman.'
+  sub: FILM ? 'Follow the sinking sword down.\nGrab pearls with X and get air from the bubbles.'
     : words('Follow the sinking guitar down.\nSound the conch horns to wake the drowned.'),
   // The film edition: the Water Fairy in the witch's place, and the marine
   // procession's dolphin carriage for the moon boat.
@@ -262,7 +262,7 @@ export default {
     if (FILM) {
       const film = {
         sailorWake: 'The Water Fairy breathes life into the prince. He wakes among his drowned crew.',
-        swimStart: 'Swim down after the sword. Press A to kick. Press X beside an open clam to take its pearl, or beside a sleeping crewman to wake him.',
+        swimStart: 'Follow the sword down. Grab pearls with X and get air from the bubbles.',
         conchBlow: 'The conch sings. Swim close to your crew to wake them.',
         guitarCatch: 'You catch the enchanted sword.',
         witchOffer: 'The Water Fairy waits by the wreck. Swim to her for her blessing.',

@@ -60,6 +60,8 @@ export function createInput(target = window) {
       pause: ke('Escape', 'KeyP') || te('pause'),
       // B in play (refuse, cancel): pad B, or X / Backspace on keys.
       bPress: ke('KeyX', 'Backspace'),
+      // the X key alone (an act that gives X and B different jobs tells them apart)
+      keyX: ke('KeyX'),
       anyPad: false, stickNav: false, padA: false, padStart: false, padB: false, padX: false,
       keyAny: keyEdges.length > 0,
       keyNav: ke('Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'),

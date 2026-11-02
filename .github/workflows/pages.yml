@@ -109,7 +109,7 @@ jobs:
         run: .github/scripts/build-game.sh kingdomofthefairies 'kingdomofthefairies/publish.sh local/pages/kingdomofthefairies'
       - name: Kingdom of the Fairies tests
         if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
-        run: for e in widowsbay partial; do for t in board act2 act3 act4 act5; do KOTF_EDITION=$e node kingdomofthefairies/qa/$t.test.mjs || exit 1; done; done && for t in animation sailor-motion walking theme assets-loader; do node kingdomofthefairies/qa/$t.test.mjs || exit 1; done && KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs && python3 kingdomofthefairies/design/source/build_act_requests.py --check && python3 kingdomofthefairies/design/source/build_film_requests.py --check && python3 kingdomofthefairies/design/source/build_film_assets.py --check
+        run: for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs || exit 1; done && for t in animation sailor-motion walking theme assets-loader; do node kingdomofthefairies/qa/$t.test.mjs || exit 1; done && KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs && python3 kingdomofthefairies/design/source/build_act_requests.py --check && python3 kingdomofthefairies/design/source/build_film_requests.py --check && python3 kingdomofthefairies/design/source/build_film_assets.py --check
       - name: Build Bronze Drum
         run: .github/scripts/build-game.sh bronzedrum 'bronzedrum/publish.sh local/pages/bronzedrum'
       - name: Bronze Drum tests

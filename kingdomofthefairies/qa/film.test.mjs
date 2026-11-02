@@ -58,7 +58,7 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
     if (s.phase === 'court') {
       const f = FAIRIES.find((q) => !s.gifts.includes(q.gift));
       const to = f ? f.x + f.hand - HAND : AZURINE_X - 60;   // his hand at her gift
-      return { moveX: Math.abs(to - p.x) > 20 ? Math.sign(to - p.x) : 0, a: press(!!s.near), beat };
+      return { moveX: Math.abs(to - p.x) > 20 ? Math.sign(to - p.x) : 0, x: press(!!s.near), beat };
     }
     if (s.phase === 'rampart') {
       const fire = s.fires.find((f) => f.x > p.x && f.x - p.x < 70 && (f.lit || f.y > RAMPART.y - 120));
@@ -66,7 +66,7 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
     }
     if (s.phase === 'armoury') {
       const a = ARMS.find((q) => !s.arms.includes(q.id));
-      return { moveX: a && Math.abs(a.x - p.x) > 20 ? Math.sign(a.x - p.x) : 0, a: press(!!s.near), beat };
+      return { moveX: a && Math.abs(a.x - p.x) > 20 ? Math.sign(a.x - p.x) : 0, x: press(!!s.near), beat };
     }
     if (s.phase === 'bind') return { moveX: Math.floor(s.phaseT * 4) % 2 ? 1 : -1, beat };   // struggle against the cords
     if (s.phase === 'knighted') return { moveX: -1, beat };
@@ -78,6 +78,23 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
   assert.ok(st.betrothed);
   assert.equal(st.arms.length, 3);
   assert.ok(prologue.intro, 'flows straight into Act I');
+});
+
+test('prologue: X takes, A leaps everywhere he walks, and the X key never skips the scene', () => {
+  const st = prologue.create({});
+  const f = FAIRIES[0]; st.p.x = f.x + f.hand - HAND;
+  prologue.step(st, DT, { beat: 0 });assert.ok(st.near, 'beside the first fairy');
+  prologue.step(st, DT, { a: true, aHeld: true, beat: 0 });
+  assert.equal(st.gifts.length, 0, 'A is a leap, not a take');assert.equal(st.p.on, false, 'he leaps in the court');
+  run(prologue, st, 1, () => ({ beat: 0 }));st.p.x = f.x + f.hand - HAND;st.p.vx = 0;prologue.step(st, DT, { beat: 0 });
+  prologue.step(st, DT, { x: true, b: true, xKey: true, beat: 0 });
+  assert.equal(st.gifts.length, 1, 'X takes the gift');assert.equal(st.phase, 'court');
+  st.p.x = 200; prologue.step(st, DT, { beat: 0 });assert.equal(st.near, null);
+  prologue.step(st, DT, { x: true, b: true, xKey: true, beat: 0 });assert.equal(st.phase, 'court', 'the X key never skips');
+  prologue.step(st, DT, { b: true, beat: 0 });assert.notEqual(st.phase, 'court', 'B (pad B, Backspace) skips');
+  assert.equal(prologue.touchVerb({ phase: 'armoury' }), 'Leap');
+  assert.equal(prologue.touchVerbB({ status: 'play', phase: 'armoury', near: { verb: 'Take' } }), 'Take');
+  assert.equal(prologue.touchVerbB({ status: 'play', phase: 'armoury', near: null }), 'Skip');
 });
 
 test('prologue: bound, he struggles left and right before Aurora frees him; his arms make him the armoured prince', () => {
@@ -99,7 +116,7 @@ test('prologue: bound, he struggles left and right before Aurora frees him; his 
   run(prologue, st, PRO_T.free + 0.1, () => ({ beat: 0 }));
   assert.equal(st.phase, 'armoury');
   st.arms = ['helmet', 'shield']; Object.assign(st.p, { x: ARMS[2].x });
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.equal(st.phase, 'knighted'); assert.ok(!st.armed, 'not until the badges are drawn into him');
   run(prologue, st, PRO_T.armed + 0.1, () => ({ moveX: -1, beat: 0 }));
   assert.ok(st.armed); assert.equal(st.p.x, ARMS[2].x, 'he stands still to be transformed');
@@ -140,14 +157,14 @@ test('prologue: a gift is taken with either hand, not by walking into her', () =
   const st = prologue.create({});
   const ring = FAIRIES.find((f) => f.gift === 'ring');
   Object.assign(st.p, { x: ring.x + ring.hand + 62, face: 1 });   // past her, short of the crown: both hands miss
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.ok(!st.gifts.includes('ring'));
   Object.assign(st.p, { x: ring.x + ring.hand - HAND, face: 1 });   // the outstretched hand
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.deepEqual(st.gifts, ['ring']);
   const crown = FAIRIES.find((f) => f.gift === 'crown');
   Object.assign(st.p, { x: crown.x + crown.hand - NEAR_HAND, face: 1 });   // the near hand, behind him
-  prologue.step(st, DT, { a: true, beat: 0 });
+  prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
   assert.deepEqual(st.gifts, ['ring', 'crown']);
 });
 
