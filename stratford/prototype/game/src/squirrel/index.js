@@ -17,13 +17,15 @@ import { createAnimator } from './animator.js';
 
 export const KIND = 'squirrel';
 export const SCALE = 0.25;
-const CLIMBS = new Set([SURFACE.wall_brick, SURFACE.wall_stone, SURFACE.wall_wood, SURFACE.bark, SURFACE.branch, SURFACE.fence]);
+// what it holds on to: the climbable walls, bark, branches and fences, and roofs too steep to walk
+// (a squirrel scrambles over shingles; floors are walked whatever their surface)
+const CLIMBS = new Set([SURFACE.wall_brick, SURFACE.wall_stone, SURFACE.wall_wood, SURFACE.bark, SURFACE.branch, SURFACE.fence, SURFACE.roof]);
 
 let _modelData = null;
 
 export async function createSquirrel({ coat = 'black', model = true, assetUrl } = {}) {
   const T = squirrelTuning(SCALE);
-  const ctrl = createController(T, { climbable: (id) => CLIMBS.has(id) });
+  const ctrl = createController(T, { climbable: (id) => CLIMBS.has(id), hangable: (id) => id === SURFACE.bark || id === SURFACE.branch });
   const object = new THREE.Group();
   object.name = 'squirrel';
   let mdl = null, anim = null;

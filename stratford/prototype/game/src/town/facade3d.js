@@ -49,7 +49,10 @@ export function buildFronts(ctx, b, vb, cb, ox, oz) {
 
 function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L, nx = dz, nz = -dx;     // along, outward
-  const base = P.base, eaves = base + b.height, y0 = base - 0.8;
+  // lay the front out from the street level along this edge (on a sloping site the
+  // building's base, the lowest ground under it, can be metres below the street)
+  let fb = Infinity; for (let t = 0.1; t <= 0.91; t += 0.2) fb = Math.min(fb, ctx.hf.at(a[0] + (c[0] - a[0]) * t, a[1] + (c[1] - a[1]) * t));
+  const base = Math.max(P.base, Math.min(fb, P.base + b.height * 0.5)), eaves = P.base + b.height, y0 = P.base - 0.8;
   const seed = P.seed + edge * 0.0137;
   // wall point: u along the wall, y, dep into the building (negative = in front)
   const W = (u, y, dep) => [a[0] + dx * u - nx * dep - ox, y, a[1] + dz * u - nz * dep - oz];
@@ -57,11 +60,21 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   const store = !!(P.flags & FLAG.store), house = !!(P.flags & FLAG.house);
   const brick = P.mat === MAT.brick_red || P.mat === MAT.brick_buff;
   const wood = P.mat === MAT.clapboard;
-  const storeys = P.storeys, gfh = Math.min(P.gfh, b.height);
-  const upperH = storeys > 1 ? (b.height - gfh) / (storeys - 1) : b.height;
+  const hgt = eaves - base;                     // street level to eaves
+  const storeys = Math.max(1, Math.min(P.storeys, Math.round(hgt / 2.6))), gfh = Math.min(P.gfh, hgt);
+  const upperH = storeys > 1 ? (hgt - gfh) / (storeys - 1) : hgt;
   const style = (P.flags & FLAG.arched) ? 1 : brick ? 2 : 0;     // round / segmental / flat heads
+  const has = (slot) => !!(ctx.assets && ctx.assets.tex[slot]);
+  // a facade-kit panel: sheet, cell, glow kind; corners bl, br, tr, tl; crop over the item
+  const kitPanel = (sheet, cell, glowKind, p0, p1, p2, p3, crop = [0, 0, 1, 1], s = seed) => {
+    set(PART.kit, [sheet, cell, glowKind], 0, P.mat, s);
+    face(vb, p0, p1, p2, p3, [nx, 0, nz], [[crop[0], crop[1]], [crop[2], crop[1]], [crop[2], crop[3]], [crop[0], crop[3]]]);
+  };
   const set = (part, f0 = [], flags = 0, mat = P.mat, s = seed) => vb.set('aF0', [part, f0[0] ?? L, f0[1] ?? b.height, f0[2] ?? storeys]).set('aF1', [mat, flags, s, gfh]).set('aFac', [2]);
   const trimPart = wood ? PART.trim : PART.stone;
+  // a collider box over [u0, u1] x [ya, yb], from dep `out` (< 0, in front) to 1 cm before the wall face:
+  // nothing a creature can touch reaches into the wall (its inner faces would push it inside)
+  const cbox = (uc, hu, yc, hy, out, surf) => { const d0 = out, d1 = -0.01, c0 = W(uc, yc, (d0 + d1) / 2); cb.box(c0[0], c0[1], c0[2], hu, hy, (d1 - d0) / 2, yaw, surf); };
 
   // ---- layout: openings in wall coordinates
   const openings = [];
@@ -81,7 +94,7 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   const porchHere = house && b.front === edge && polyArea(b.outer) > 45 && P.seed < 0.7;
   for (let st = 0; st < storeys; st++) {
     if (st === 0 && shopRow) continue;
-    const sb = st === 0 ? base : base + gfh + (st - 1) * upperH, sh = storeys < 2 ? b.height : st === 0 ? gfh : upperH;
+    const sb = st === 0 ? base : base + gfh + (st - 1) * upperH, sh = storeys < 2 ? hgt : st === 0 ? gfh : upperH;
     for (let k = 0; k < nb; k++) {
       const uc = (k + 0.5) * bw;
       if (house && st === 0 && k === Math.floor(nb / 2)) {
@@ -115,29 +128,41 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   for (const o of openings.filter((p) => p.kind === 'window')) {
     const ww = o.u1 - o.u0, wh = o.v1 - o.v0, uc = (o.u0 + o.u1) / 2;
     reveal(vb, W, o, REVEAL, P, set, [nx, nz], [dx, dz], base);
-    set(PART.window, [ww, wh, o.style]);
-    face(vb, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    if (has('kit_windows')) {
+      // the painted sash unit, cropped inside its own surround (the sill and head are modelled)
+      kitPanel(0, o.style === 1 ? 0 : o.style === 2 ? 1 : 2, 1, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [0.13, 0.12, 0.87, 0.9]);
+    } else {
+      set(PART.window, [ww, wh, o.style]);
+      face(vb, W(o.u0, o.v0, REVEAL), W(o.u1, o.v0, REVEAL), W(o.u1, o.v1, REVEAL), W(o.u0, o.v1, REVEAL), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    }
     // sill
     set(trimPart, [ww + 0.16, 0.08, 1]);
     const sill = W(uc, o.v0 - 0.045, -0.05);
     KIT.box(vb, null, sill[0], sill[1], sill[2], ww / 2 + 0.08, 0.045, 0.065, yaw, 0);
-    cb.box(sill[0], sill[1], sill[2], ww / 2 + 0.08, 0.045, 0.065, yaw, SURFACE.prop);
+    cbox(uc, ww / 2 + 0.08, o.v0 - 0.045, 0.045, -0.115, SURFACE.prop);
+    if (has('kit_trim')) kitPanel(4, 3, 0, W(o.u0 - 0.1, o.v0 - 0.1, -0.117), W(o.u1 + 0.1, o.v0 - 0.1, -0.117), W(o.u1 + 0.1, o.v0 + 0.005, -0.117), W(o.u0 - 0.1, o.v0 + 0.005, -0.117));
     // head: an arch with a keystone, a segmental arch, or a flat lintel
     set(trimPart, [ww + 0.3, 0.2, 1]);
-    if (o.style === 1) {
+    if (has('kit_trim')) {
+      const r0 = ww / 2 + 0.01;
+      if (o.style === 1) kitPanel(4, 0, 0, W(uc - r0 - 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 - ww / 2 - 0.06, -0.05), W(uc + r0 + 0.22, o.v1 + 0.3, -0.05), W(uc - r0 - 0.22, o.v1 + 0.3, -0.05));
+      else if (o.style === 2) kitPanel(4, 1, 0, W(uc - ww / 2 - 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 - 0.1, -0.05), W(uc + ww / 2 + 0.22, o.v1 + 0.34, -0.05), W(uc - ww / 2 - 0.22, o.v1 + 0.34, -0.05));
+      else kitPanel(4, 2, 0, W(uc - ww / 2 - 0.16, o.v1, -0.05), W(uc + ww / 2 + 0.16, o.v1, -0.05), W(uc + ww / 2 + 0.16, o.v1 + 0.22, -0.05), W(uc - ww / 2 - 0.16, o.v1 + 0.22, -0.05));
+      cbox(uc, ww / 2 + 0.15, o.v1 + 0.1, 0.15, -0.07, WALL_SURF[P.mat]);
+    } else if (o.style === 1) {
       const r0 = ww / 2 + 0.01, sy = o.v1 - ww / 2;
       archRing(vb, W, uc, sy, r0, r0 + 0.15, 0, Math.PI, 10, [nx, nz], [dx, dz]);
       const k = W(uc, o.v1 + 0.07, -0.06); KIT.box(vb, null, k[0], k[1], k[2], 0.09, 0.12, 0.07, yaw, 0);
-      const hb = W(uc, sy + r0 * 0.5 + 0.1, -0.03); cb.box(hb[0], hb[1], hb[2], r0 + 0.15, r0 * 0.5 + 0.12, 0.04, yaw, SURFACE.wall_stone);
+      cbox(uc, r0 + 0.15, sy + r0 * 0.5 + 0.1, r0 * 0.5 + 0.12, -0.07, SURFACE.wall_stone);
     } else if (o.style === 2) {
       const rise = 0.14, R = ((ww / 2) ** 2 + rise ** 2) / (2 * rise), cy = o.v1 - R + rise * 0.15, a0 = Math.asin(Math.min(1, (ww / 2 + 0.05) / R));
       archRing(vb, W, uc, cy, R, R + 0.17, Math.PI / 2 - a0, Math.PI / 2 + a0, 6, [nx, nz], [dx, dz]);
       const k = W(uc, cy + R + 0.08, -0.06); KIT.box(vb, null, k[0], k[1], k[2], 0.08, 0.1, 0.07, yaw, 0);
-      const hb = W(uc, o.v1 + 0.1, -0.03); cb.box(hb[0], hb[1], hb[2], ww / 2 + 0.12, 0.12, 0.04, yaw, SURFACE.wall_stone);
+      cbox(uc, ww / 2 + 0.12, o.v1 + 0.1, 0.12, -0.07, SURFACE.wall_stone);
     } else {
       const l = W(uc, o.v1 + 0.1, -0.035);
       KIT.box(vb, null, l[0], l[1], l[2], ww / 2 + 0.12, 0.1, 0.05, yaw, 0);
-      cb.box(l[0], l[1], l[2], ww / 2 + 0.12, 0.1, 0.05, yaw, WALL_SURF[P.mat]);
+      cbox(uc, ww / 2 + 0.12, o.v1 + 0.1, 0.1, -0.085, WALL_SURF[P.mat]);
     }
   }
 
@@ -158,9 +183,19 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
       set(PART.kick, [q - p, kick, 1], 0, P.mat, seed + o.h);
       const kb = W((p + q) / 2, o.v0 + kick / 2, (0.12 + SHOP_DEPTH) / 2);
       KIT.box(vb, null, kb[0], kb[1], kb[2], (q - p) / 2, kick / 2, (SHOP_DEPTH - 0.12) / 2, yaw, 0);
-      set(PART.shopglass, [q - p, transomB - (o.v0 + kick), 1], 0, P.mat, seed + o.h);
-      face(vb, W(p, o.v0 + kick, SHOP_DEPTH), W(q, o.v0 + kick, SHOP_DEPTH), W(q, transomB, SHOP_DEPTH), W(p, transomB, SHOP_DEPTH), [nx, 0, nz], [[0, 0], [q - p, 0], [q - p, transomB - o.v0 - kick], [0, transomB - o.v0 - kick]]);
-      face(vb, W(p, transomB + 0.06, SHOP_DEPTH), W(q, transomB + 0.06, SHOP_DEPTH), W(q, o.v1, SHOP_DEPTH), W(p, o.v1, SHOP_DEPTH), [nx, 0, nz], [[0, 1.6], [q - p, 1.6], [q - p, 2.0], [0, 2.0]]);
+      if (has('kit_shopfronts')) {
+        // the painted display windows (lit shop interiors), one per bay between the columns
+        const cell = Math.floor((((seed + o.h) * 4.7) % 1) * 4), nb2 = Math.max(1, Math.round((q - p) / 1.6));
+        for (let m = 0; m < nb2; m++) {
+          const a0 = p + ((q - p) * m) / nb2, a1 = p + ((q - p) * (m + 1)) / nb2;
+          kitPanel(1, cell, 2, W(a0, o.v0 + kick, SHOP_DEPTH), W(a1, o.v0 + kick, SHOP_DEPTH), W(a1, transomB, SHOP_DEPTH), W(a0, transomB, SHOP_DEPTH), [0.09, 0.3, 0.37, 0.8], seed + o.h);
+          kitPanel(1, cell, 2, W(a0, transomB + 0.06, SHOP_DEPTH), W(a1, transomB + 0.06, SHOP_DEPTH), W(a1, o.v1, SHOP_DEPTH), W(a0, o.v1, SHOP_DEPTH), [0.09, 0.78, 0.37, 0.84], seed + o.h);
+        }
+      } else {
+        set(PART.shopglass, [q - p, transomB - (o.v0 + kick), 1], 0, P.mat, seed + o.h);
+        face(vb, W(p, o.v0 + kick, SHOP_DEPTH), W(q, o.v0 + kick, SHOP_DEPTH), W(q, transomB, SHOP_DEPTH), W(p, transomB, SHOP_DEPTH), [nx, 0, nz], [[0, 0], [q - p, 0], [q - p, transomB - o.v0 - kick], [0, transomB - o.v0 - kick]]);
+        face(vb, W(p, transomB + 0.06, SHOP_DEPTH), W(q, transomB + 0.06, SHOP_DEPTH), W(q, o.v1, SHOP_DEPTH), W(p, o.v1, SHOP_DEPTH), [nx, 0, nz], [[0, 1.6], [q - p, 1.6], [q - p, 2.0], [0, 2.0]]);
+      }
       // slim cast-iron columns and the transom bar
       set(PART.dark, [0.1, 3, 1]);
       const nCol = Math.max(1, Math.round((q - p) / 1.6));
@@ -180,8 +215,11 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     face(vb, W(du0, o.v0 + 2.4, 0), W(du1, o.v0 + 2.4, 0), W(du1, o.v1, 0.0001), W(du0, o.v1, 0.0001), [nx, 0, nz], [[0, 0], [doorW, 0], [doorW, 0.3], [0, 0.3]]);
     set(PART.stone);
     face(vb, W(du0, o.v0 + 0.01, 0), W(du1, o.v0 + 0.01, 0), W(du1, o.v0 + 0.01, DOOR_DEPTH), W(du0, o.v0 + 0.01, DOOR_DEPTH), [0, 1, 0], [[0, 0], [doorW, 0], [doorW, 1], [0, 1]]);
-    set(PART.door, [doorW, 2.3, 1], 0, P.mat, seed + o.h);
-    face(vb, W(du0, o.v0, DOOR_DEPTH), W(du1, o.v0, DOOR_DEPTH), W(du1, o.v0 + 2.3, DOOR_DEPTH), W(du0, o.v0 + 2.3, DOOR_DEPTH), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    if (has('kit_doors')) kitPanel(2, 4, 0, W(du0, o.v0, DOOR_DEPTH), W(du1, o.v0, DOOR_DEPTH), W(du1, o.v0 + 2.3, DOOR_DEPTH), W(du0, o.v0 + 2.3, DOOR_DEPTH), [0.12, 0.0, 0.88, 0.9]);
+    else {
+      set(PART.door, [doorW, 2.3, 1], 0, P.mat, seed + o.h);
+      face(vb, W(du0, o.v0, DOOR_DEPTH), W(du1, o.v0, DOOR_DEPTH), W(du1, o.v0 + 2.3, DOOR_DEPTH), W(du0, o.v0 + 2.3, DOOR_DEPTH), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    }
     set(PART.shopglass, [doorW, 0.1, 1], 0, P.mat, seed + o.h);
     face(vb, W(du0, o.v0 + 2.3, DOOR_DEPTH), W(du1, o.v0 + 2.3, DOOR_DEPTH), W(du1, o.v0 + 2.4, DOOR_DEPTH), W(du0, o.v0 + 2.4, DOOR_DEPTH), [nx, 0, nz], [[0, 2.2], [doorW, 2.2], [doorW, 2.3], [0, 2.3]]);
     // sign band and the storefront cornice over the whole unit, with brackets at the piers
@@ -189,12 +227,13 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
     set(PART.signband, [s1 - s0, sh, 0], 0, P.mat, seed + o.h);
     const sbm = W((s0 + s1) / 2, o.v1 + sh / 2, -0.05);
     KIT.box(vb, null, sbm[0], sbm[1], sbm[2], (s1 - s0) / 2, sh / 2, 0.05, yaw, 0);
-    cb.box(sbm[0], sbm[1], sbm[2], (s1 - s0) / 2, sh / 2, 0.05, yaw, SURFACE.prop);
+    cbox((s0 + s1) / 2, (s1 - s0) / 2, o.v1 + sh / 2, sh / 2, -0.1, SURFACE.prop);
     set(PART.trim, [s1 - s0, 0.25, 1], 0, P.mat, seed + o.h);
     const cm = W((s0 + s1) / 2, o.v1 + sh + 0.12, -0.11);
     KIT.box(vb, null, cm[0], cm[1], cm[2], (s1 - s0) / 2 + 0.1, 0.12, 0.12, yaw, 0);
-    cb.box(cm[0], cm[1], cm[2], (s1 - s0) / 2 + 0.1, 0.12, 0.12, yaw, SURFACE.prop);
-    for (const u of [o.u0 - 0.19, o.u1 + 0.19]) { const br = W(u, o.v1 + sh * 0.5, -0.09); KIT.box(vb, null, br[0], br[1], br[2], 0.09, sh * 0.5, 0.09, yaw, 0); }
+    cbox((s0 + s1) / 2, (s1 - s0) / 2 + 0.1, o.v1 + sh + 0.12, 0.12, -0.23, SURFACE.prop);
+    set(PART.stone);
+    for (const u of [o.u0 - 0.19, o.u1 + 0.19]) { const br = W(u, o.v1 + sh * 0.5, -0.09); KIT.box(vb, null, br[0], br[1], br[2], 0.09, sh * 0.5, 0.09, yaw, 0); cbox(u, 0.09, o.v1 + sh * 0.5, sh * 0.5, -0.18, SURFACE.prop); }
   }
   if (shopRow) awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, 2);
 
@@ -202,12 +241,15 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   for (const o of openings.filter((p) => p.kind === 'door')) {
     const w = o.u1 - o.u0, uc = (o.u0 + o.u1) / 2;
     reveal(vb, W, o, 0.22, P, set, [nx, nz], [dx, dz], base);
-    set(PART.door, [w, o.v1 - o.v0, 0], 0, P.mat, seed);
-    face(vb, W(o.u0, o.v0, 0.22), W(o.u1, o.v0, 0.22), W(o.u1, o.v1, 0.22), W(o.u0, o.v1, 0.22), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    if (has('kit_doors')) kitPanel(2, Math.floor(((seed * 3.1) % 1) * 3), 0, W(o.u0, o.v0, 0.22), W(o.u1, o.v0, 0.22), W(o.u1, o.v1, 0.22), W(o.u0, o.v1, 0.22), [0.1, 0.0, 0.9, 0.93]);
+    else {
+      set(PART.door, [w, o.v1 - o.v0, 0], 0, P.mat, seed);
+      face(vb, W(o.u0, o.v0, 0.22), W(o.u1, o.v0, 0.22), W(o.u1, o.v1, 0.22), W(o.u0, o.v1, 0.22), [nx, 0, nz], [[0, 0], [1, 0], [1, 1], [0, 1]]);
+    }
     set(PART.trim, [w + 0.4, 0.2, 1], 0, P.mat, seed + 0.37);
     for (const u of [o.u0 - 0.06, o.u1 + 0.06]) { const sp = W(u, (o.v0 + o.v1) / 2, -0.03); KIT.box(vb, null, sp[0], sp[1], sp[2], 0.07, (o.v1 - o.v0) / 2, 0.04, yaw, 0); }
     const hd = W(uc, o.v1 + 0.1, -0.07); KIT.box(vb, null, hd[0], hd[1], hd[2], w / 2 + 0.2, 0.1, 0.09, yaw, 0);
-    cb.box(hd[0], hd[1], hd[2], w / 2 + 0.2, 0.1, 0.09, yaw, SURFACE.prop);
+    cbox(uc, w / 2 + 0.2, o.v1 + 0.1, 0.1, -0.16, SURFACE.prop);
     if (o.steps) {
       set(PART.stone);
       for (let k = 0; k < 2; k++) {
@@ -225,15 +267,21 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
       const y = base + gfh + (st - 1) * upperH;
       const m = W(L / 2, y + 0.06, -0.03);
       KIT.box(vb, null, m[0], m[1], m[2], L / 2, 0.06, 0.04, yaw, 0);
+      cbox(L / 2, L / 2, y + 0.06, 0.06, -0.07, SURFACE.wall_stone);
     }
   }
   if (parapet > 0.5) {
     cornice(vb, cb, a, c, L, nx, nz, top, P, ox, oz, 2);
     set(PART.trim, [0.1, 0.42, 1]);
     const yb = top - 0.6 - 0.21;
-    for (let u = 0.45; u < L - 0.3; u += 0.9) { const br = W(u, yb, -0.17); KIT.box(vb, null, br[0], br[1], br[2], 0.055, 0.21, 0.17, yaw, 0); }
+    for (let u = 0.45; u < L - 0.3; u += 0.9) {
+      const br = W(u, yb, -0.17); KIT.box(vb, null, br[0], br[1], br[2], 0.055, 0.21, 0.17, yaw, 0);
+      cbox(u, 0.055, yb, 0.21, -0.34, SURFACE.prop);
+      if (has('kit_trim')) { kitPanel(4, 5, 0, W(u - 0.11, yb - 0.21, -0.345), W(u + 0.11, yb - 0.21, -0.345), W(u + 0.11, yb + 0.21, -0.345), W(u - 0.11, yb + 0.21, -0.345), [0.0, 0.0, 0.5, 1.0]); set(PART.trim, [0.1, 0.42, 1]); }
+    }
     set(PART.trim, [L, 0.32, 1]);
     const fr = W(L / 2, yb - 0.37, -0.025); KIT.box(vb, null, fr[0], fr[1], fr[2], L / 2, 0.16, 0.03, yaw, 0);
+    cbox(L / 2, L / 2, yb - 0.37, 0.16, -0.055, WALL_SURF[P.mat]);
   }
 }
 
@@ -286,7 +334,7 @@ export function facadeLayer(env) {
       }
       if (!vb.n) return null;
       const mesh = new THREE.Mesh(vb.geometry(), env.material);
-      mesh.castShadow = true; mesh.receiveShadow = true; mesh.name = 'facades';
+      mesh.castShadow = false; mesh.receiveShadow = true; mesh.name = 'facades';   // the base walls cast the shadows
       const res = { object: mesh, onDrop: () => { for (const i of done) env.setFlag(i, false); } };
       for (const i of done) env.setFlag(i, true);
       if (cb.triangles) {

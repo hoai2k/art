@@ -92,6 +92,30 @@ test('town builds from the data and answers the World contract', { timeout: 6000
       assert.ok(v.calls > 10 && v.calls < 300, `draw calls under 300 (${v.calls})`);
       assert.ok(v.tris < 1.5e6, `triangles under 1.5 M (${v.tris})`);
     }
+    // see-through walls: a camera inside a detached house sees its dark interior, not the world
+    const inside = await page.evaluate(async () => {
+      const w = bench.world, sp = w.spawn, bs = w.data.buildings;
+      const box = (b, m) => ({ x0: b.bb.minX - m, x1: b.bb.maxX + m, z0: b.bb.minZ - m, z1: b.bb.maxZ + m });
+      const lone = bs.filter((b) => b.use === 'residential' && b.height > 5.5 && (b.bb.maxX - b.bb.minX) > 7 && (b.bb.maxZ - b.bb.minZ) > 7 && Math.hypot(b.outer[0][0] - sp.x, b.outer[0][1] - sp.z) < 250)
+        .filter((b) => { const B = box(b, 3); return !bs.some((q) => q !== b && q.bb.maxX > B.x0 && q.bb.minX < B.x1 && q.bb.maxZ > B.z0 && q.bb.minZ < B.z1); });
+      const b = lone[0]; if (!b) return null;
+      const cx = (b.bb.minX + b.bb.maxX) / 2, cz = (b.bb.minZ + b.bb.maxZ) / 2, y = b.base + b.height * 0.5;
+      bench.setMode('fly');
+      const gl = bench.renderer.getContext(), W = gl.drawingBufferWidth, H = gl.drawingBufferHeight, px = new Uint8Array(W * H * 4);
+      const out = { id: b.id, views: [] };
+      for (const [yaw, pitch] of [[0, 0], [1.7, 0.1], [3.3, 0], [0.5, 1.3]]) {
+        bench.set(cx, y, cz, yaw, pitch);
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+        bench.renderer.render(bench.scene, bench.camera);
+        gl.readPixels(0, 0, W, H, gl.RGBA, gl.UNSIGNED_BYTE, px);
+        let bright = 0, n = 0;
+        for (let i = 0; i < px.length; i += 4 * 7) { n++; if ((px[i] + px[i + 1] + px[i + 2]) / 765 > 0.35) bright++; }
+        out.views.push(+(bright / n).toFixed(3));
+      }
+      return out;
+    });
+    assert.ok(inside, 'a detached house near the spawn');
+    for (const f of inside.views) assert.ok(f < 0.05, `inside ${inside.id} the walls and roof are opaque and dark (${JSON.stringify(inside.views)} bright)`);
     console.log(`  build ${r.stats.buildMs} ms (prep ${r.stats.prepMs}), chunks ${r.info.chunks} (${r.info.near} near), collider tris ${r.info.colliderTris}, views ${JSON.stringify(views)}`);
     assert.deepEqual(errors, [], 'no console errors');
   } finally { await page.close(); }

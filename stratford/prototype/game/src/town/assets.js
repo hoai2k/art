@@ -47,6 +47,8 @@ export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 
 export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png',
   blades: 'sprites/grass_blades.png', pebbles: 'sprites/pebbles.png', litter: 'sprites/litter_bits.png' };
 export const SKY = 'ui/sky_autumn.png';
+// facade kit sheets in shader order: [slot, columns, rows]
+export const KIT_GRIDS = [['kit_windows', 4, 2], ['kit_shopfronts', 4, 1], ['kit_doors', 3, 2], ['kit_cornices', 1, 4], ['kit_trim', 4, 2], ['kit_awnings', 4, 1]];
 
 const GAME = new URL('../../', import.meta.url);
 
@@ -117,7 +119,26 @@ export async function loadAssets(manifestUrl, opts = {}) {
     facadeArray.colorSpace = THREE.SRGBColorSpace; facadeArray.generateMipmaps = true; facadeArray.anisotropy = 4;
     facadeArray.minFilter = THREE.LinearMipmapLinearFilter; facadeArray.magFilter = THREE.LinearFilter; facadeArray.needsUpdate = true;
   }
-  return { files: listed, tex, sprites, sky, facadeArray, facadeLayer, facadeAspect, facadeCrop, fallen: sprites.fallen || null };
+  // facade kit: each cell's real bounds from its alpha (items are not on exact grid cells)
+  const kitRects = new Float32Array(48 * 4);
+  KIT_GRIDS.forEach(([slot, cols, rows], sheet) => {
+    const t = tex[slot]; if (!t) return;
+    t.texture.wrapS = t.texture.wrapT = THREE.ClampToEdgeWrapping;
+    const img = t.texture.image, W = 512, Hh = 256;
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = Hh;
+    const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, 0, 0, W, Hh);
+    const a = cx.getImageData(0, 0, W, Hh).data;
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const x0 = Math.floor((c * W) / cols), x1 = Math.floor(((c + 1) * W) / cols), y0 = Math.floor((r * Hh) / rows), y1 = Math.floor(((r + 1) * Hh) / rows);
+      let mx0 = x1, mx1 = x0, my0 = y1, my1 = y0;
+      for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) if (a[(y * W + x) * 4 + 3] > 40) { if (x < mx0) mx0 = x; if (x > mx1) mx1 = x; if (y < my0) my0 = y; if (y > my1) my1 = y; }
+      if (mx1 < mx0) { mx0 = x0; mx1 = x1 - 1; my0 = y0; my1 = y1 - 1; }
+      const k = (sheet * 8 + r * cols + c) * 4;
+      // (u0, v0, u1, v1) in texture space; v up (the texture is flipped on upload)
+      kitRects.set([mx0 / W, 1 - (my1 + 1) / Hh, (mx1 + 1) / W, 1 - my0 / Hh], k);
+    }
+  });
+  return { files: listed, tex, sprites, sky, kitRects, facadeArray, facadeLayer, facadeAspect, facadeCrop, fallen: sprites.fallen || null };
 }
 
 // Cut-outs arrive on #FF00FF: key it to alpha.

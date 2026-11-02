@@ -108,14 +108,19 @@ export async function createStandInWorld({ THREE: _T, renderer, scene } = {}) {
     parts.push(b);
   }
 
-  const geo = mergeGeometries(parts.map((g) => { for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'surface'].includes(k)) g.deleteAttribute(k); return g; }));
+  const clean = (g) => { for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'surface'].includes(k)) g.deleteAttribute(k); return g; };
+  const visGeo = mergeGeometries(parts.map(clean));
+  // invisible walls round the yard (collider only), so nothing runs off the edge of the world
+  const E = size / 2 - 0.5;
+  for (const [cx, cz, sx, sz] of [[0, -E, size, 0.2], [0, E, size, 0.2], [-E, 0, 0.2, size], [E, 0, 0.2, size]]) parts.push(clean(box(cx, 1.5, cz, sx, 3, sz, SURFACE.wall_smooth)));
+  const geo = mergeGeometries(parts.map(clean));
   geo.boundsTree = new MeshBVH(geo);
   const collider = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ visible: false }));
   collider.name = 'stand-in-collider';
   collider.updateMatrixWorld(true);
 
   // visuals: the same geometry, coloured per surface
-  const vis = geo.clone();
+  const vis = visGeo;
   {
     const s = vis.attributes.surface, c = new Float32Array(s.count * 3), col = new THREE.Color();
     for (let i = 0; i < s.count; i++) { col.setHex(COLORS[s.getX(i)] ?? 0x888888).convertSRGBToLinear(); c[i * 3] = col.r; c[i * 3 + 1] = col.g; c[i * 3 + 2] = col.b; }

@@ -74,8 +74,8 @@ test('stands on the ground and does not fall through it', async () => {
 });
 
 test('accelerates quickly to running and sprinting speed', async () => {
-  const sq = await makeSquirrel({ x: -16, y: 0, z: 16, yaw: Math.PI / 2 });   // facing west, open grass
-  const cam = new THREE.PerspectiveCamera(); cam.position.set(-10, 1, 16); cam.lookAt(-20, 1, 16); cam.updateMatrixWorld();
+  const sq = await makeSquirrel({ x: 21, y: 0, z: 16, yaw: Math.PI / 2 });    // facing west, open grass
+  const cam = new THREE.PerspectiveCamera(); cam.position.set(27, 1, 16); cam.lookAt(17, 1, 16); cam.updateMatrixWorld();
   let t03 = null;
   run(sq, 0.6, () => ({ move: [0, 1] }), cam, 1 / 60, (t, s) => { if (t03 === null && s.velocity.length() > 4.0) t03 = t; });
   const v = sq.velocity.length();
@@ -237,6 +237,110 @@ test('bench page loads, draws the squirrel and follows a simulated gamepad', { t
     const air = await page.evaluate(() => window.__lab.squirrel.position.y);
     await page.evaluate(() => { window.__pad.buttons[0] = { pressed: false, touched: false, value: 0 }; });
     assert.ok(air > 0.05, `A jumps (y ${air.toFixed(2)})`);
+    assert.deepEqual(errors, []);
+  } finally {
+    await browser.close(); srv.close();
+  }
+});
+
+// ------------------------------------------------------------------------------------------------
+// Regression (owner report: "went through a ceiling and back"; the camera saw through a wall).
+// The town's building colliders are thin open shells, and pitched roofs are fitted to each
+// footprint's bounding box, so there are slots between wall tops and roofs. Climb real downtown
+// buildings with scripted input (straight up to the top, diagonally toward corners, sideways,
+// up then down, roaming the roof with jumps) and check, every frame, that the squirrel is never
+// inside a footprint below the eaves, only ever gets above a roof by arriving on it, and that
+// the follow camera is never inside a footprint below the eaves either.
+const TOWN_CASES = [
+  // [building id, roof] from the climb probe (tools/squirrel/review/climb-probe.mjs)
+  ['w1462606519', 'gabled'], ['w1462606790', 'gabled'], ['w1463843464', 'gabled'],
+  ['w1462606521', 'gabled'], ['w1471432610', 'flat'], ['w164420370', 'hipped'],
+];
+test('climbs real downtown buildings without getting inside one (body or camera)', { timeout: 900000 }, async (t) => {
+  const { access } = await import('node:fs/promises');
+  try { await access(join(GAME, 'data/town.json')); } catch { t.skip('no town data'); return; }
+  const { launch, serve } = await import(pathToFileURL(join(GAME, '../../../shared/test/lib.mjs')).href);
+  const srv = await serve(GAME);
+  const browser = await launch();
+  try {
+    const page = await browser.newPage({ viewport: { width: 320, height: 200 } });
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto(srv.url + '/lab/squirrel.html?town=1&test=1');
+    await page.waitForFunction(() => window.__lab && window.__lab.ready, null, { timeout: 300000 });
+    const res = await page.evaluate(async (cases) => {
+      const L = window.__lab, T = L.THREE, W = L.world, sq = L.squirrel;
+      L.paused = true;
+      const ctrlCam = new T.PerspectiveCamera(55, 16 / 9, 0.02, 500);
+      const pip = (x, z, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, zi] = poly[i], [xj, zj] = poly[j]; if ((zi > z) !== (zj > z) && x < (xj - xi) * (z - zi) / (zj - zi) + xi) c = !c; } return c; };
+      const edgeDist = (x, z, poly) => { let d = 1e9; for (let e = 0; e < poly.length; e++) { const A = poly[e], C = poly[(e + 1) % poly.length]; const vx = C[0] - A[0], vz = C[1] - A[1]; const t = Math.max(0, Math.min(1, ((x - A[0]) * vx + (z - A[1]) * vz) / (vx * vx + vz * vz))); d = Math.min(d, Math.hypot(x - A[0] - vx * t, z - A[1] - vz * t)); } return d; };
+      const scen = [[0, 1], [0, 1, 'roam'], [0.7, 0.7], [1, 0.25], [0, 1, 'down']];
+      const out = { runs: 0, climbed: 0, onRoof: 0, problems: [] };
+      let k = 0;
+      for (const [id] of cases) {
+        const B = W.data.buildings.find((q) => q.id === id);
+        if (!B) { out.problems.push(`missing building ${id}`); continue; }
+        const nb = W.data.buildings.filter((q) => Math.abs(q.outer[0][0] - B.outer[0][0]) < 90 && Math.abs(q.outer[0][1] - B.outer[0][1]) < 90);
+        let best = 0, bi = 0;
+        for (let i = 0; i < B.outer.length; i++) { const a = B.outer[i], c = B.outer[(i + 1) % B.outer.length]; const l = Math.hypot(c[0] - a[0], c[1] - a[1]); if (l > best) { best = l; bi = i; } }
+        for (const ei of [bi, (bi + 1) % B.outer.length, (bi + 2) % B.outer.length]) {
+          const a = B.outer[ei], c = B.outer[(ei + 1) % B.outer.length];
+          const mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2, ex = c[0] - a[0], ez = c[1] - a[1], el = Math.hypot(ex, ez);
+          if (el < 2) continue;
+          let nx = ez / el, nz = -ex / el;
+          if (pip(mx + nx * 0.3, mz + nz * 0.3, B.outer)) { nx = -nx; nz = -nz; }
+          const sx = mx + nx, sz = mz + nz;
+          if (nb.some((q) => pip(sx, sz, q.outer))) continue;            // party wall
+          await W.ready({ x: sx, y: 0, z: sz });
+          const g = W.raycast(new T.Vector3(sx, W.groundAt(sx, sz) + 3, sz), new T.Vector3(0, -1, 0), 6);
+          if (!g || g.normal.y < 0.7 || g.point.y > W.groundAt(sx, sz) + 0.6) continue;
+          const sc = scen[k++ % scen.length];
+          sq.reset({ x: sx, y: g.point.y, z: sz, yaw: Math.atan2(nx, nz) });
+          ctrlCam.position.set(sx + nx * 1.5, g.point.y + 0.6, sz + nz * 1.5); ctrlCam.lookAt(mx, g.point.y + 0.5, mz); ctrlCam.updateMatrixWorld();
+          L.cam.snapBehind();
+          out.runs++;
+          let climbed = false, onRoof = false;
+          const above = new Set();     // footprints the squirrel is over at roof height
+          let prevY = sq.position.y, prevState = sq.state;
+          for (let i = 0; i < 60 * 8; i++) {
+            let mv = [sc[0], sc[1]];
+            if (sc[2] === 'down' && i > 150) mv = [0, -1];
+            if (sc[2] === 'roam' && i > 240) { const tt = i / 60; mv = [Math.sin(tt * 1.3), Math.cos(tt * 0.9)]; }
+            const jp = sc[2] === 'roam' && i % 97 === 0;
+            const controls = { move: mv, look: [0, 0], jump: jp, jumpPressed: jp, sprint: i % 200 < 60 ? 1 : 0, sitPressed: false, digPressed: false, recenter: false };
+            sq.update(1 / 60, controls, W, ctrlCam);
+            L.cam.update(1 / 60, controls);
+            if (i % 30 === 0) W.update(0.5, ctrlCam, sq.position);
+            const p = sq.position, cp = L.camera.position;
+            if (sq.state === 'climb') climbed = true;
+            if (sq.state !== 'climb' && p.y > B.base + B.height - 0.3) onRoof = true;
+            for (const q of nb) {
+              const eav = q.base + q.height;
+              const inBody = pip(p.x, p.z, q.outer) && edgeDist(p.x, p.z, q.outer) > 0.08;
+              if (inBody && p.y > q.base + 0.1) {
+                if (p.y < eav - 0.2) out.problems.push(`${id} ${sc.join(',')} frame ${i}: squirrel inside ${q.id} at ${p.toArray().map((v) => v.toFixed(2))} (eaves ${eav.toFixed(2)}, ${sq.state})`);
+                else if (!above.has(q.id)) {
+                  // it may only arrive over a roof by climbing onto it or leaping (<= ~1 m) onto it
+                  if (prevState !== 'climb' && prevY < eav - 1.1) out.problems.push(`${id} ${sc.join(',')} frame ${i}: appeared above ${q.id}'s roof from y ${prevY.toFixed(2)} (eaves ${eav.toFixed(2)})`);
+                  above.add(q.id);
+                }
+              } else above.delete(q.id);
+              if (pip(cp.x, cp.z, q.outer) && cp.y < eav - 0.2 && cp.y > q.base + 0.1 && edgeDist(cp.x, cp.z, q.outer) > 0.0)
+                out.problems.push(`${id} ${sc.join(',')} frame ${i}: camera inside ${q.id} at ${cp.toArray().map((v) => v.toFixed(2))}`);
+            }
+            prevY = p.y; prevState = sq.state;
+            if (out.problems.length > 6) break;
+          }
+          if (climbed) out.climbed++;
+          if (onRoof) out.onRoof++;
+        }
+      }
+      return out;
+    }, TOWN_CASES);
+    assert.deepEqual(res.problems.slice(0, 6), [], 'never inside a building');
+    assert.ok(res.runs >= 8, `ran ${res.runs} climbs`);
+    assert.ok(res.climbed >= res.runs * 0.6, `climbed in ${res.climbed} of ${res.runs} runs`);
+    assert.ok(res.onRoof >= 1, `topped out onto a roof in ${res.onRoof} runs`);
     assert.deepEqual(errors, []);
   } finally {
     await browser.close(); srv.close();

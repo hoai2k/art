@@ -140,7 +140,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       const i2 = vb.v(c[0] - ox, top, c[1] - oz, nx, 0, nz, L, top - base);
       const i3 = vb.v(a[0] - ox, top, a[1] - oz, nx, 0, nz, 0, top - base);
       vb.quad(i1, i0, i3, i2);
-      cb.quad(rel(a, y0), rel(c, y0), rel(c, top), rel(a, top), WALL_SURF[P.mat]);
+      cb.quad(rel(c, y0), rel(a, y0), rel(a, top), rel(c, top), WALL_SURF[P.mat]);   // wound to face out
       // storefront awnings and cornices on street fronts
       if (isFront && (P.flags & FLAG.store) && L > 3.5 && P.storeys >= 1) awnings(vb, swap ? null : cb, a, c, L, nx, nz, base, P, ox, oz, i, swap);
       if (isFront && parapet > 0.5 && L > 2) cornice(vb, swap ? null : cb, a, c, L, nx, nz, top, P, ox, oz, swap);
@@ -155,7 +155,7 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
     cap(rings, eaves + (parapet > 0.5 ? 0 : 0.02), parapet > 0.5 ? PART.flat : PART.flat);
     if (parapet > 0) parapetInside(vb, cb, rings[0], eaves, top, P, ox, oz);
   } else {
-    pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz);
+    pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx);
   }
   if (P.church && !(special && special.noSteeple)) steeple(vb, cb, b, eaves, rh, P, ox, oz, fronts);
   if (special) special.build({ ctx, b, P, vb, cb, ox, oz, base, eaves, rh, fronts, S, kit: KIT });
@@ -265,7 +265,7 @@ export function awnings(vb, cb, a, c, L, nx, nz, base, P, ox, oz, edge, swap = 0
 
 // Gabled / hipped / pyramidal roofs over the footprint's oriented rectangle
 // when the footprint is close to one, else a hip-like roof from an inset ring.
-function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
+function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx) {
   const o = obb(b.outer);
   const area = polyArea(b.outer);
   const rectish = o && area / o.area > 0.86 && rings.length === 1;
@@ -290,16 +290,14 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
       const sl = Math.hypot(rh + slopeDrop, hs);
       const ids = [p0, p1, p2, p3].map((p, k) => vb.v(p[0], p[1], p[2], nrm.x, nrm.y, nrm.z, k === 1 || k === 2 ? L : 0, k >= 2 ? sl : 0));
       const n2 = new THREE.Vector3().crossVectors(new THREE.Vector3(...p1).sub(new THREE.Vector3(...p0)), new THREE.Vector3(...p3).sub(new THREE.Vector3(...p0)));
-      if (n2.y > 0) vb.quad(ids[0], ids[1], ids[2], ids[3]); else vb.quad(ids[1], ids[0], ids[3], ids[2]);
-      cb.quad(p0, p1, p2, p3, SURFACE.roof);
+      if (n2.y > 0) { vb.quad(ids[0], ids[1], ids[2], ids[3]); cb.quad(p0, p1, p2, p3, SURFACE.roof); } else { vb.quad(ids[1], ids[0], ids[3], ids[2]); cb.quad(p1, p0, p3, p2, SURFACE.roof); }
     };
     const tri = (p0, p1, p2, L) => {
       set(L);
       const n2 = new THREE.Vector3().crossVectors(new THREE.Vector3(...p1).sub(new THREE.Vector3(...p0)), new THREE.Vector3(...p2).sub(new THREE.Vector3(...p0)));
       const up = n2.y > 0; n2.normalize(); if (!up) n2.negate();
       const ids = [p0, p1, p2].map((p, k) => vb.v(p[0], p[1], p[2], n2.x, n2.y, n2.z, k === 1 ? L : k === 2 ? L / 2 : 0, k === 2 ? Math.hypot(rh, hs) : 0));
-      if (up) vb.tri(ids[0], ids[1], ids[2]); else vb.tri(ids[0], ids[2], ids[1]);
-      cb.tri(p0, p1, p2, SURFACE.roof);
+      if (up) { vb.tri(ids[0], ids[1], ids[2]); cb.tri(p0, p1, p2, SURFACE.roof); } else { vb.tri(ids[0], ids[2], ids[1]); cb.tri(p0, p2, p1, SURFACE.roof); }
     };
     // the two long slopes
     plane(W(-hl, -hs, yE), W(hl, -hs, yE), W(ridge, 0, yR), W(-ridge, 0, yR), 2 * hl);
@@ -325,6 +323,16 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
           const o = [ux * sg * 0.03, 0, uz * sg * 0.03];
           const E1 = W(sg * hl, -hs, yE - 0.02), Rg = W(sg * hl, 0, yR + 0.02), E2 = W(sg * hl, hs, yE - 0.02);
           for (const [A, C] of [[E1, Rg], [Rg, E2]]) board(vb, [A[0] + o[0], A[1], A[2] + o[2]], [C[0] + o[0], C[1], C[2] + o[2]], [ux * sg, 0, uz * sg], 0.24, 0.05);
+          if (ctx.assets && ctx.assets.tex.kit_trim) {
+            // the carved bargeboard peak (facade kit) at the top of the gable
+            const rise = yR - yE, pw = Math.min(hs * 1.1, rise * 1.6), ph = pw * 0.62;
+            vb.set('aF0', [PART.kit, 4, 7, 0]).set('aF1', [P.mat, 0, P.seed, 3]).set('aFac', [0]);
+            const Q = [W(sg * (hl + 0.06), -pw / 2, yR - ph + 0.05), W(sg * (hl + 0.06), pw / 2, yR - ph + 0.05), W(sg * (hl + 0.06), pw / 2, yR + 0.05), W(sg * (hl + 0.06), -pw / 2, yR + 0.05)];
+            const wantN = [ux * sg, 0, uz * sg];
+            const uvs = sg > 0 ? [[0, 0], [1, 0], [1, 1], [0, 1]] : [[1, 0], [0, 0], [0, 1], [1, 1]];
+            const ids = Q.map((q, k) => vb.v(q[0], q[1], q[2], wantN[0], 0, wantN[2], uvs[k][0], uvs[k][1]));
+            vb.quadFacing(ids[0], ids[1], ids[2], ids[3], wantN);
+          }
         }
       }
     }
@@ -352,8 +360,7 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz) {
     set(L);
     const sl = Math.hypot(yT - eaves, d);
     const ids = [p0, p1, p2, p3].map((p, k) => vb.v(p[0], p[1], p[2], nrm.x, nrm.y, nrm.z, k === 1 || k === 2 ? L : 0, k >= 2 ? sl : 0));
-    if (up) vb.quad(ids[0], ids[1], ids[2], ids[3]); else vb.quad(ids[1], ids[0], ids[3], ids[2]);
-    cb.quad(p0, p1, p2, p3, SURFACE.roof);
+    if (up) { vb.quad(ids[0], ids[1], ids[2], ids[3]); cb.quad(p0, p1, p2, p3, SURFACE.roof); } else { vb.quad(ids[1], ids[0], ids[3], ids[2]); cb.quad(p1, p0, p3, p2, SURFACE.roof); }
   }
   set(1);
   capPoly(vb, cb, [inner], yT, ox, oz, PART.roof);

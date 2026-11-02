@@ -81,13 +81,37 @@ falls back to `world.collider`).
 - Step-up: obstacles up to 36 cm (curbs, steps) are hopped automatically without losing speed;
   higher non-climbable things block and slide.
 - Climbing: running or leaping into a climbable surface (`SURFACE` brick, stone, wood, bark,
-  branch, fence) attaches; the stick moves on the wall (up = up the surface, sideways matched to
-  the camera's right); inner corners, outer corners and trunks are followed; reaching a roof edge
-  tops out; going down a wall is head-first and walks off at the bottom; A kicks away. Smooth
-  walls (glass, stucco) never attach.
+  branch, fence, and roofs too steep to walk) attaches; the stick moves on the wall (up = up the
+  surface, sideways matched to the camera's right); inner corners, outer corners and trunks are
+  followed; reaching the top tops out, over a flush wall top or parapet or out and round an
+  overhanging eave (up to 60 cm) onto the roof; with nowhere to go (the gap under a roof, an
+  overhang too deep) it holds at the top. It never clings to an underside (cornice soffits,
+  eaves) except bark and branches. Going down is head-first and walks off at the bottom; A kicks
+  away. Smooth walls (glass, stucco) never attach.
 - Swimming: in water the body floats low and paddles at 0.9 m/s; A hops out.
 - X sits up (any move or X again ends it), Y digs (1.8 s, emits `dig`). Events: `land`,
   `jump`, `climb`, `dig`, `splash`.
+
+### Never through a surface
+
+The town's colliders are thin, open shells: a wall is one quad from below the ground to the
+eaves, and pitched roofs are fitted to each footprint's oriented bounding box, so wherever a
+footprint isn't an exact rectangle there is a slot between the wall top and the roof. In the
+first deployed build the squirrel climbed to a wall top, lost the wall, failed to top out (the
+ledge probe started inside the slot), fell, and air control carried it through the slot into the
+hollow building ("went through a ceiling"). The rules now:
+
+- Every relocation (attaching, inner and outer corners, topping out, step hops, ground snaps)
+  needs a clear straight path from the body's centre to where it goes, or via checked points
+  (round an eave: out past the edge, up, over). A step "found" behind a wall is no step.
+- A re-found climbing surface must continue where the current one is; a hit much deeper is
+  another surface seen through a gap (the inside of a parapet) and counts as lost.
+- Substeps are short (under half the body radius of travel), depenetration pushes back to the
+  side of a triangle the body came from, never on through it, and after every ordinary step the
+  centre's motion is ray-checked: a move that crosses any surface is undone.
+- Letting go of a wall steps the feet out one body radius first (on a wall the feet are on its
+  surface; in the air the body is above them, so it would straddle the wall).
+- In the air it won't fly sideways into a pocket with a roof just overhead and no floor beneath.
 
 ## Animation (`src/squirrel/animator.js`, forward kinematics)
 
@@ -104,15 +128,26 @@ hind feet back going down head-first; swimming paddles.
 ## Camera (`src/creatures/camera.js`)
 
 Low follow at 0.75 m (`3 × scale`), look point 12 cm up, right-stick orbit, auto-swing behind
-the heading when moving, recenter (R-stick click / C), ray collision so it never enters walls,
-pull-back and FOV 55° → 63° with speed; while climbing it keeps world-up and swings out to face
-the wall. Near plane `0.08 × scale`.
+the heading when moving, recenter (R-stick click / C), pull-back and FOV 55° → 63° with speed;
+while climbing it keeps world-up and swings out to face the wall. Near plane `0.08 × scale`.
+Collision: the look-at point must be in the open and seen straight from the squirrel's body (the
+smoothed, lagging point could otherwise cut through a roof corner); the camera is a 5.5 cm
+sphere (`camProbe`, well over the near plane's half-diagonal) swept from there to where it wants
+to be through `world.collidersNear`, stopping at the first touch: it pulls in at once and eases
+back out. It applies `controls.look` as given (`pitch -= look[1]`); invert-Y is the input
+layer's setting.
 
 ## Checks
 
-- `node --test stratford/prototype/game/test/squirrel.test.mjs` (12 tests: registry/contract,
+- `node --test stratford/prototype/game/test/squirrel.test.mjs` (13 tests: registry/contract,
   ground, speeds, turning, leap height/distance, curb, brick wall + roof top-out, glass wall,
-  trunk up and down, sit/dig/swim, random-input NaN soak, bench page with a simulated gamepad).
+  trunk up and down, sit/dig/swim, random-input NaN soak, bench page with a simulated gamepad,
+  and climbing real downtown buildings with the body and the camera never inside one; that one
+  needs `game/data/town.json` and takes about 3 minutes).
+- Climb probe: `node stratford/prototype/tools/squirrel/review/climb-probe.mjs [count] [skip]`
+  climbs the nearest `count` brick, stone and wood buildings from the spawn in five scripted
+  ways and prints every frame where the squirrel or the camera is inside a building
+  (`VERBOSE=1` lists every run).
 - Bench: `game/lab/squirrel.html` (stand-in world; `?town=1` loads `src/town/index.js`,
   `?coat=grey`). Debug panel: state, gait, speed, skeleton, slow motion, fur shells, coat.
 - Review renders: `node stratford/prototype/tools/squirrel/review/shots.mjs <dir>` writes

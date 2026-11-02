@@ -2,15 +2,24 @@
 // heading when moving, recenter, world collision (never inside walls), speed pull-back and FOV,
 // steady while climbing (world-up, swings out from the wall). Distances come from the creature's
 // tuning (T.camDistance, T.camHeight, T.camNear, ...), so it works at any scale.
+//
+// Never inside geometry: the look-at point is kept where the creature can see it from (a straight
+// clear line from the body, so the lagging, smoothed point can't cut through a roof corner or
+// wall), and the camera is a sphere (T.camProbe, bigger than the near plane's half-diagonal)
+// swept from the look-at point out to where it wants to be, stopping at the first touch. It
+// pulls in at once when blocked and eases back out. It applies `look` as given (pitch -= look[1]);
+// any invert-Y setting belongs to the input layer.
 import * as THREE from 'three';
-import { raycast } from './collide.js';
+import { pathClear, raycast, sweepSphere, sphereHits } from './collide.js';
 
 const UP = new THREE.Vector3(0, 1, 0);
 
 export function createFollowCamera({ camera, creature, world, tuning: T }) {
   let yaw = 0, pitch = T.camPitch;                // yaw: direction the camera looks (0 = north, -z)
   let idleLook = 1;                               // s since the player last orbited
-  let dist = T.camDistance;
+  let dist = T.camDistance, free = T.camDistance;   // wanted distance, collision-limited distance
+  const probe = T.camProbe || T.camNear * 3;
+  const body = new THREE.Vector3(), back = new THREE.Vector3();
   const target = new THREE.Vector3(), smoothed = new THREE.Vector3(), desired = new THREE.Vector3();
   const tmp = new THREE.Vector3(), dir = new THREE.Vector3();
   let first = true, recentering = 0;
@@ -30,13 +39,19 @@ export function createFollowCamera({ camera, creature, world, tuning: T }) {
 
     // look-at point: above the feet along the body's up (out from a wall when climbing)
     const climbing = c.state === 'climb';
-    target.copy(c.pos).addScaledVector(climbing ? c.up : UP, T.camHeight);
+    const upv = climbing ? c.up : UP;
+    body.copy(c.pos).addScaledVector(upv, T.radius * 0.9);           // the body's centre: always in the open
+    target.copy(c.pos).addScaledVector(upv, T.camHeight);
+    // the look-at point itself must be reachable from the body (not inside a ledge overhead)
+    tmp.subVectors(target, body); { const l = tmp.length(); const h = l > 1e-6 && raycast(world, body, tmp.divideScalar(l), l + probe); if (h) target.copy(body).addScaledVector(tmp, Math.max(0, h.distance - probe)); }
     if (first) smoothed.copy(target);
     // track tightly (never floaty): fast exponential follow, faster vertically when landing
     const k = 1 - Math.exp(-dt * 14);
     smoothed.x += (target.x - smoothed.x) * k; smoothed.z += (target.z - smoothed.z) * k;
     smoothed.y += (target.y - smoothed.y) * (1 - Math.exp(-dt * (c.state === 'air' ? 6 : 12)));
     if (smoothed.distanceTo(target) > T.camDistance * 2) smoothed.copy(target);
+    // the lagging point must still be in the open, seen straight from the body
+    if (!pathClear(world, body, smoothed, 0) || sphereHits(world, smoothed, probe * 0.5)) smoothed.copy(target);
 
     // auto-follow: swing behind the heading when moving and not orbiting
     const speed = c.vel.length();
@@ -66,16 +81,16 @@ export function createFollowCamera({ camera, creature, world, tuning: T }) {
     // camera direction: looks along (yaw, -pitch)
     dir.set(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch));
     desired.copy(smoothed).addScaledVector(dir, -dist);
-    // collision: pull in along the ray from the target
-    tmp.copy(desired).sub(smoothed); const L = tmp.length(); tmp.divideScalar(L || 1);
-    const hit = raycast(world, smoothed, tmp, L + T.camNear * 2);
-    let d = L;
-    if (hit) d = Math.max(T.camNear * 2, hit.distance - T.camNear * 2.5);
-    desired.copy(smoothed).addScaledVector(tmp, d);
-    // keep above the ground
-    const gy = world.groundAt ? world.groundAt(desired.x, desired.z) : -Infinity;
-    if (Number.isFinite(gy) && desired.y < gy + T.camNear * 3) desired.y = gy + T.camNear * 3;
-    camera.position.copy(desired);
+    // collision: sweep the camera sphere out from the look-at point; pull in at once, ease out
+    const L = dist;
+    const t = sweepSphere(world, smoothed, desired, probe);
+    const allowed = t * L;
+    free = allowed < free ? allowed : free + (allowed - free) * (1 - Math.exp(-dt * 4));
+    back.copy(smoothed).addScaledVector(dir, -Math.min(free, allowed));
+    // keep above the bare terrain too (where the town has no collider yet), if that's clear
+    const gy = world.groundAt ? world.groundAt(back.x, back.z) : -Infinity;
+    if (Number.isFinite(gy) && back.y < gy + probe) { tmp.copy(back); tmp.y = gy + probe; if (!sphereHits(world, tmp, probe) && pathClear(world, back, tmp, 0)) back.copy(tmp); }
+    camera.position.copy(back);
     camera.up.copy(UP);
     camera.lookAt(smoothed);
     camera.updateProjectionMatrix();

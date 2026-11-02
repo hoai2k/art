@@ -17,7 +17,7 @@ function plinth(vb, cb, P, b, base, h, ox, oz, kit) {
     const nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
     const ids = [[a, base - 0.8, 0], [c, base - 0.8, L], [c, base + h, L], [a, base + h, 0]].map(([p, y, u]) => vb.v(p[0] - ox, y, p[1] - oz, nx, 0, nz, u, y - base));
     vb.quad(ids[1], ids[0], ids[3], ids[2]);
-    cb.quad([a[0] - ox, base - 0.8, a[1] - oz], [c[0] - ox, base - 0.8, c[1] - oz], [c[0] - ox, base + h, c[1] - oz], [a[0] - ox, base + h, a[1] - oz], SURFACE.wall_stone);
+    cb.quad([c[0] - ox, base - 0.8, c[1] - oz], [a[0] - ox, base - 0.8, a[1] - oz], [a[0] - ox, base + h, a[1] - oz], [c[0] - ox, base + h, c[1] - oz], SURFACE.wall_stone);
     // a sloped stone cap
     const A2 = b.outer[i], C2 = b.outer[(i + 1) % n];
     const ids2 = [[a, base + h], [c, base + h], [C2, base + h + 0.12], [A2, base + h + 0.12]].map(([p, y]) => vb.v(p[0] - ox, y, p[1] - oz, nx * 0.5, 0.86, nz * 0.5, p[0], p[1]));

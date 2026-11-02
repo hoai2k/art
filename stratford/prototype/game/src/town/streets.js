@@ -218,7 +218,7 @@ export function buildGroundMap(ctx, mPerPx) {
 
 // ---------------------------------------------------------------- per chunk
 const R = 0.5;            // raster resolution (m)
-const ROAD_Y = 0.02;      // carriageway above the (sunken) terrain
+const ROAD_Y = 0.035;     // carriageway above the (sunken) terrain: a clear step, no depth fighting at its edges
 const MARK_Y = 0.004;     // paint above the carriageway (drawn with a stronger depth offset)
 const MARGIN = 16;        // px around the chunk so blur and strokes see their neighbours
 let _canvas = null, _canvas2 = null;
@@ -323,7 +323,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
           const i0 = vb.v(a[0] - ox, ya - 0.03, a[1] - oz, nx, 0, nz), i1 = vb.v(b[0] - ox, yb - 0.03, b[1] - oz, nx, 0, nz);
           const i2 = vb.v(b[0] - ox, mb.y, b[1] - oz, nx, 0, nz), i3 = vb.v(a[0] - ox, ma.y, a[1] - oz, nx, 0, nz);
           vb.quad(i1, i0, i3, i2);
-          cb.quad([a[0] - ox, ya, a[1] - oz], [b[0] - ox, yb, b[1] - oz], [b[0] - ox, mb.y, b[1] - oz], [a[0] - ox, ma.y, a[1] - oz], SURFACE.sidewalk);
+          cb.quad([b[0] - ox, yb, b[1] - oz], [a[0] - ox, ya, a[1] - oz], [a[0] - ox, ma.y, a[1] - oz], [b[0] - ox, mb.y, b[1] - oz], SURFACE.sidewalk);   // faces the road
         }
       }
     }
@@ -333,7 +333,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
   for (const r of ctx.ribbonsIn(chunk)) {
     const kind = RIBBON[r.road.kind];
     // each kind a clear step above the terrain and each other (no depth fighting), all in the collider
-    const y0 = kind === STREET.service ? 0.03 : kind === STREET.path ? 0.04 : 0.045;
+    const y0 = kind === STREET.service ? 0.05 : kind === STREET.path ? 0.06 : 0.07;
     const surf = kind === STREET.service ? SURFACE.road : kind === STREET.path ? SURFACE.ground : SURFACE.sidewalk;
     ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz, cb, surf);
     if (r.road.kind === 'steps') { /* drawn as a footway */ }

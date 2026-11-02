@@ -336,7 +336,7 @@ vec3 streetBase(vec3 wp) {
 // aBid: building index (for the per-building "3D front is built" flag); aCen: its centre (x, z)
 // Panels (parts 13-17) carry uv 0..1 or metres as noted, and their size in aF0.yz.
 export const PART = { wall: 0, roof: 1, flat: 2, trim: 3, awning: 4, glass: 5, plain: 6, clock: 7, copper: 8, dark: 9, porch: 10, stone: 11, sign: 12,
-  window: 13, door: 14, signband: 15, shopglass: 16, kick: 17 };
+  window: 13, door: 14, signband: 15, shopglass: 16, kick: 17, kit: 18 };
 // facade kit sheets (round 8 image requests): slot -> [file, columns, rows]
 export const KIT = {
   kit_windows: ['kit/windows_victorian.png', 4, 2], kit_shopfronts: ['kit/shopfronts.png', 4, 1], kit_doors: ['kit/doors.png', 3, 2],
@@ -351,11 +351,12 @@ export function buildingMaterial(shared, assets, detail) {
   const td = texDefines(assets, slots);
   const uniforms = { ...td.uniforms, tDetail: { value: detail.flags }, uFocus: detail.focus, uFacR: detail.radius };
   const defines = { ...td.defines };
-  for (const [slot, [, cols, rows]] of Object.entries(KIT)) {
+  for (const slot of Object.keys(KIT)) {
     const t = assets && assets.tex[slot]; if (!t) continue;
     defines[slot.toUpperCase()] = ''; uniforms['t_' + slot] = { value: t.texture };
-    void cols; void rows;
   }
+  const rects = []; for (let i = 0; i < 48; i++) rects.push(new THREE.Vector4(...(assets && assets.kitRects ? assets.kitRects.slice(i * 4, i * 4 + 4) : [0, 0, 1, 1])));
+  uniforms.uKitRect = { value: rects };
   const kitDecl = Object.keys(KIT).map((k) => `#ifdef ${k.toUpperCase()}\nuniform sampler2D t_${k};\n#endif`).join('\n');
   // double-sided: a camera that ends up inside a building sees a dark interior, not the world through the wall
   const m = painted({ color: 0xffffff, side: THREE.DoubleSide }, {
@@ -363,9 +364,36 @@ export function buildingMaterial(shared, assets, detail) {
     vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; attribute float aBid; attribute vec2 aCen; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;',
     vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac; vBid = aBid; vCen = aCen;',
     fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;
-uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR;
+uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR; uniform vec4 uKitRect[48];
 ${texDecl(slots)}
 ${kitDecl}
+// a facade-kit item: sheet (0 windows, 1 shopfronts, 2 doors, 3 cornices, 4 trim, 5 awnings), cell, uv over its bounds
+vec4 kitTex(float sheet, float cell, vec2 uv) {
+  vec4 r = uKitRect[int(sheet * 8.0 + cell + 0.5)];
+  vec2 t = mix(r.xy, r.zw, clamp(uv, 0.002, 0.998));
+  vec4 c = vec4(0.0);
+#ifdef KIT_WINDOWS
+  if (sheet < 0.5) c = texture2D(t_kit_windows, t);
+#endif
+#ifdef KIT_SHOPFRONTS
+  if (sheet > 0.5 && sheet < 1.5) c = texture2D(t_kit_shopfronts, t);
+#endif
+#ifdef KIT_DOORS
+  if (sheet > 1.5 && sheet < 2.5) c = texture2D(t_kit_doors, t);
+#endif
+#ifdef KIT_CORNICES
+  if (sheet > 2.5 && sheet < 3.5) c = texture2D(t_kit_cornices, t);
+#endif
+#ifdef KIT_TRIM
+  if (sheet > 3.5 && sheet < 4.5) c = texture2D(t_kit_trim, t);
+#endif
+#ifdef KIT_AWNINGS
+  if (sheet > 4.5) c = texture2D(t_kit_awnings, t);
+#endif
+  return c;
+}
+float kitAspect(float sheet, float cell) { vec4 r = uKitRect[int(sheet * 8.0 + cell + 0.5)]; return (r.z - r.x) * 2.0 / max(1e-3, r.w - r.y); }
+float mirrorTile(float x) { return 1.0 - abs(fract(x * 0.5) * 2.0 - 1.0); }
 ${GLSL_COMMON}\n${GLSL_BUILDING}`,
     color: `
       // a building shows exactly one street front: the flat one, or (near the focus,
@@ -517,11 +545,6 @@ vec3 windowUnit(vec2 uv, float w, float h, float style, float mat, float seed, o
   float kind = style > 2.5 ? 2.0 : style > 0.5 && style < 1.5 ? 1.0 : 0.0;
   float d = winSD(q, w, h, kind);
   if (style > 1.5 && style < 2.5) d = max(d, q.y - (h - 0.12 * (1.0 - pow(2.0 * abs(q.x) / w, 2.0))));
-#ifdef KIT_WINDOWS
-  { float cell = style > 2.5 ? 6.0 : style > 1.5 ? 1.0 : style > 0.5 ? 0.0 : 2.0;
-    vec4 k = kitCell(t_kit_windows, 4.0, 2.0, cell, uv);
-    if (k.a > 0.5) { glow = step(0.5, fract(seed * 13.7)) * 0.6; return k.rgb; } }
-#endif
   if (d > 0.0) return wallMat(mat, seed, q + vec2(seed * 10.0, 0.0), px) * 0.9;     // tympanum
   vec3 fr = mat > 2.5 && mat < 3.5 ? vec3(0.92, 0.91, 0.86) : trimColor(seed + 0.21);
   float lit; vec3 g = glassColor(q, h, fract(seed * 17.0), lit);
@@ -544,14 +567,17 @@ vec3 buildingColor(out float glow) {
   vec3 trim = trimColor(seed);
 
   if (part == 13.0) return windowUnit(uv, vF0.y, vF0.z, vF0.w, mat, seed, glow);
+  if (part == 18.0) {                      // a facade-kit panel (uv over the item, crop in the uv)
+    vec4 k = kitTex(vF0.y, vF0.z, uv);
+    if (k.a < 0.5) discard;
+    if (vF0.w > 0.5 && vF0.w < 1.5) glow = step(0.45, fract(seed * 13.7)) * smoothstep(0.35, 0.7, k.r) * 0.8;   // window panes
+    if (vF0.w > 1.5) { glow = smoothstep(0.3, 0.8, dot(k.rgb, vec3(0.4, 0.4, 0.2))) * 0.9; return k.rgb * 1.25; }   // lit shop windows, bright even by day
+    return k.rgb;
+  }
   if (part == 14.0) {                      // a door: panels below, glass above (shop doors glazed)
     float w = vF0.y, h = vF0.z, style = vF0.w;
     vec2 q = vec2(uv.x * w, uv.y * h);
     float dpx = max(length(fwidth(q)), 1e-4);
-#ifdef KIT_DOORS
-    { vec4 k = kitCell(t_kit_doors, 3.0, 2.0, style > 1.5 ? 3.0 : style > 0.5 ? 4.0 : floor(fract(seed * 3.1) * 3.0), uv);
-      if (k.a > 0.5) return k.rgb; }
-#endif
     vec3 dc = style > 0.5 ? trimColor(seed + 0.4) * 0.8 : signColor(fract(seed * 2.9 + 0.2));
     float fr = 1.0 - sbox(q, vec2(0.07), vec2(w - 0.07, h - 0.07), dpx);
     float glassTop = style > 0.5 ? 0.45 : h * 0.6;
@@ -568,18 +594,15 @@ vec3 buildingColor(out float glow) {
     float L = vF0.y, h = vF0.z;
     vec3 sc = signColor(fract(seed * 5.7));
 #ifdef KIT_TRIM
-    { vec4 k = kitCell(t_kit_trim, 4.0, 2.0, 6.0, vec2(fract(uv.x / max(1.0, L / max(1.0, floor(L / (h * 4.0) + 0.5)))), uv.y / h));
-      if (k.a > 0.5) return mix(k.rgb, k.rgb * sc * 1.6, 0.5); }
+    { float n = max(1.0, floor(L / (h * kitAspect(4.0, 6.0)) + 0.5));
+      vec4 k = kitTex(4.0, 6.0, vec2(fract(uv.x / (L / n)), uv.y / h));
+      if (k.a > 0.3) return mix(k.rgb, sc * 1.4, 0.25 * smoothstep(0.6, 0.9, dot(k.rgb, vec3(0.33)))); }
 #endif
     float mould = 1.0 - sbox(uv, vec2(0.08, 0.07), vec2(L - 0.08, h - 0.07), px);
     return mix(sc, trimColor(seed) * 1.1, mould);
   }
   if (part == 16.0) {                      // shop display glass and the warm shop behind it
     float w = vF0.y, h = vF0.z;
-#ifdef KIT_SHOPFRONTS
-    { vec4 k = kitCell(t_kit_shopfronts, 4.0, 1.0, floor(fract(seed * 4.7) * 4.0), vec2(0.18 + 0.64 * fract(uv.x / 3.2), 0.22 + 0.5 * uv.y / max(h, 0.5)));
-      if (k.a > 0.5) { glow = 0.8; return k.rgb; } }
-#endif
     vec2 cell = floor(vec2(uv.x * 2.2, uv.y * 3.0));
     vec3 goods = mix(vec3(0.20, 0.15, 0.11), signColor(th(cell + seed * 13.0)) * 1.3, 0.35 * step(0.45, th(cell + 2.0)) * step(uv.y, 1.6));
     vec3 g = mix(goods, vec3(0.55, 0.62, 0.66), 0.16 + 0.25 * smoothstep(0.0, h, uv.y));
@@ -588,14 +611,23 @@ vec3 buildingColor(out float glow) {
     return g;
   }
   if (part == 17.0) {                      // panelled base under a shop window
+#ifdef KIT_SHOPFRONTS
+    { vec4 k = kitTex(1.0, floor(fract(seed * 4.7) * 4.0), vec2(mix(0.07, 0.36, fract(uv.x / 1.3)), mix(0.03, 0.15, clamp(uv.y / max(0.2, vF0.z), 0.0, 1.0))));
+      if (k.a > 0.5) return k.rgb; }
+#endif
     vec3 tc = trimColor(seed + 0.11);
     float inset = sbox(vec2(fract(uv.x / 1.1), uv.y), vec2(0.07, 0.09), vec2(0.93, vF0.z - 0.09), px / 1.1);
     return tc * (0.72 + 0.22 * inset);
   }
   if (part == 3.0) {
 #ifdef KIT_CORNICES
-    if (vFac > 1.5) { vec4 k = kitCell(t_kit_cornices, 1.0, 4.0, floor(fract(seed * 3.3) * 4.0), vec2(fract(uv.x / 4.0), clamp(uv.y / max(0.3, vF0.z), 0.0, 1.0)));
-      if (k.a > 0.5) return k.rgb; }
+    // modelled cornices: the strip that suits the wall, mirror-tiled so its ends always meet
+    if (vFac > 1.5 && abs(vWN.y) < 0.5) {
+      float strip = mat < 0.5 ? (fract(seed * 3.3) < 0.5 ? 2.0 : 1.0) : mat < 1.5 ? 0.0 : mat < 2.5 ? 3.0 : (fract(seed * 3.3) < 0.5 ? 0.0 : 1.0);
+      float h = max(0.3, vF0.z);
+      vec4 k = kitTex(3.0, strip, vec2(mirrorTile(uv.x / (h * kitAspect(3.0, strip))), clamp(uv.y / h, 0.0, 1.0)));
+      if (k.a > 0.3) return k.rgb;
+    }
 #endif
   }
 
@@ -642,8 +674,8 @@ vec3 buildingColor(out float glow) {
   }
   if (part == 4.0) {                       // awning stripes
 #ifdef KIT_AWNINGS
-    { vec4 k = kitCell(t_kit_awnings, 4.0, 1.0, floor(fract(seed * 3.3) * 4.0), vec2(fract(uv.x / 2.0), fract(uv.y)));
-      if (k.a > 0.5) return k.rgb; }
+    { vec4 k = kitTex(5.0, floor(fract(seed * 3.3) * 4.0), vec2(mirrorTile(uv.x / 1.6), 1.0 - clamp(uv.y / 1.3, 0.0, 1.0)));
+      if (k.a > 0.3) return k.rgb; }
 #endif
     vec3 a = signColor(fract(seed * 3.3 + floor(uv.y * 0.0)));
     float plain = step(0.6, fract(seed * 5.1));

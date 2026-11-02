@@ -149,7 +149,7 @@ export async function createTown(opts = {}) {
   // Terrain node heights for a chunk at a step (in grid cells). Near chunks sink
   // the nodes under carriageways a little so the road surface always covers them;
   // the collider is built from the very same heights, so what is drawn is what is walked on.
-  const SINK = 0.12;
+  const SINK = 0.08, SINK_ROAD = 0.25;
   function terrainHeights(c, step, sink) {
     const i0 = Math.round((c.x0 - hf.x0) / hf.cell), j0 = Math.round((c.z0 - hf.z0) / hf.cell);
     const cols = Math.floor(Math.round(CHUNK / hf.cell) / step) + 1;
@@ -159,8 +159,12 @@ export async function createTown(opts = {}) {
       let h = hf.node(i, j);
       if (sink) {
         const x = hf.x0 + i * hf.cell, z = hf.z0 + j * hf.cell;
-        const q = ctx.streets.grid.nearest(x, z, 12);
-        if (q && q.d < q.seg.data.hw - 0.4) h -= SINK;
+        // under the carriageway and the sidewalk band (both drawn over it), not under lawns
+        // (deeper under carriageways: a wide road is triangulated between its curbs, so its
+        // surface is a chord that sits below a crowned road's middle)
+        const q = ctx.streets.grid.nearest(x, z, 16);
+        if (q && q.d < q.seg.data.hw - 0.3) h -= SINK_ROAD;
+        else if (q && q.d < q.seg.data.hw + q.seg.data.band - 0.6) h -= SINK;
       }
       y[jj * cols + ii] = h;
     }
@@ -500,6 +504,7 @@ export async function createTown(opts = {}) {
       root.traverse((o) => { if (o.isMesh && !o.isInstancedMesh && o.visible && o.userData.detailLayer) out.push(o); });
       return out;
     },
+    buildingAt(x, z) { const b = ctx.buildingAt(x, z); return b ? b.id : null; },
     debugChunk(x, z) { const c = chunks.get(keyOf(x, z)); return c && { key: c.key, level: c.level, want: c.want, task: !!c.task, colliders: c.colliders.length, error: c.error || null }; },
     get chunkSize() { return CHUNK; },
     get chunkOrigin() { return { x: X0, z: Z0 }; },

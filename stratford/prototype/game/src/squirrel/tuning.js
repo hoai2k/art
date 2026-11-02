@@ -39,6 +39,9 @@ export function squirrelTuning(scale = 0.25) {
     climbAccel: 16 * s,
     climbTurn: 14,
     ledgeReach: 0.3 * scale,
+    eaveReach: 2.4 * scale,          // how far out round an overhanging eave it reaches (60 cm)
+    pocketRoof: 1.6 * scale,         // a roof this close overhead ...
+    pocketFloor: 6 * scale,          // ... with no floor this close below is a slot, not open air
     // water
     swimSpeed: 0.9 * s,
     swimDepth: 0.2 * scale,          // body sits this deep under the surface
@@ -53,5 +56,6 @@ export function squirrelTuning(scale = 0.25) {
     camNear: 0.08 * scale,
     camFov: 55, camFovSprint: 63,
     camPullBack: 0.35,               // extra distance at top speed (fraction)
+    camProbe: 0.22 * scale,          // camera collision sphere (5.5 cm; well over the near plane's half-diagonal)
   };
 }

@@ -97,7 +97,9 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
   function reach(world, point, normal, via = []) {
     let a = centreOf(c.pos, c.up);
     for (const v of via) { if (!pathClear(world, a, v)) return false; a = v; }
-    return pathClear(world, a, centreOf(point, normal));
+    const ok = pathClear(world, a, centreOf(point, normal));
+    if (ok && via.length) c._relocated = true;     // a checked path that isn't a straight line
+    return ok;
   }
 
   // ---------------------------------------------------------------- ground
@@ -134,21 +136,26 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
 
     // step-up / climb probe ahead
     if (c.speed > 0.05 || c.wishMag > 0.3) {
-      const look = T.radius + 0.04 * T.scale / 0.25 + Math.max(c.speed, 0.3) * T.stepLook;
+      const look = T.capsuleFront + T.radius * 1.5 + Math.max(c.speed, 0.3) * T.stepLook;
       const o = v1.copy(c.pos).addScaledVector(c.up, T.radius * 0.6);
       const dir = c.wishMag > 0.3 && c.speed < 0.3 ? v4.copy(c.wish) : v4.copy(c.fwd);
       const hit = ray(world, o, dir, look);
       if (hit && !isWalkable(hit.normal)) {
-        const top = findTop(world, hit, dir);
-        if (top !== null && top - c.pos.y <= T.stepUp && top - c.pos.y > T.radius * 0.2 && hopClear(world, top, dir)) {
+        const step = findTop(world, hit, dir);
+        const top = step ? step.y : null;
+        if (top !== null && top - c.pos.y <= T.stepUp && top - c.pos.y > T.radius * 0.2 && hopClear(world, step)) {
           // hop the step: a small real jump that keeps the forward speed
+          // rise fast enough to be over the edge by the time the capsule's nose gets there
           const h = top - c.pos.y + T.radius * 0.6;
-          c.vel.copy(c.fwd).multiplyScalar(Math.max(c.speed, T.runSpeed * 0.3));
-          c.vel.y = Math.sqrt(2 * T.gravity * h);
+          const vh = Math.max(c.speed, T.runSpeed * 0.3);
+          const gap = Math.max(0.01, hit.distance - (T.capsuleFront + T.radius) * 0.8);
+          const t = gap / vh;
+          c.vel.copy(c.fwd).multiplyScalar(vh);
+          c.vel.y = Math.min(Math.sqrt(2 * T.gravity * T.stepUp * 2), Math.max(Math.sqrt(2 * T.gravity * h), h / t + T.gravity * t / 2));
           c.hop = 1; enterAir('hop');
           return;
         }
-        if (c.canCling(hit) && dir.dot(hit.normal) < -0.5 && reach(world, hit.point, hit.normal) && (c.speed > 0.2 || c.wishMag > 0.5) && hit.distance < T.radius + 0.06 * T.scale / 0.25 + c.speed * dt * 2) {
+        if (c.canCling(hit) && dir.dot(hit.normal) < -0.5 && reach(world, hit.point, hit.normal) && (c.speed > 0.2 || c.wishMag > 0.5) && hit.distance < T.capsuleFront + T.radius + 0.12 * T.radius + c.speed * dt * 2) {
           attachClimb(hit, dir);
           return;
         }
@@ -190,12 +197,13 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     c.state = Math.abs(c.speed) > 0.05 || c.wishMag > 0 ? 'move' : 'idle';
   }
 
-  // the hop's path: straight up from the body to above the step, then across onto it
-  function hopClear(world, top, dir) {
+  // the hop's path: straight up from the body to above the step, then across to the very spot
+  // found on top of it (so a floor seen behind a wall, inside a building, is never a step)
+  function hopClear(world, step) {
     const a = centreOf(c.pos, UP);
-    const b = a.clone(); b.y = top + T.radius * 1.2;
-    const t = a.clone().addScaledVector(dir, T.radius * 2); t.y = top + T.radius * 1.2;
-    return pathClear(world, a, b) && pathClear(world, b, t);
+    const b = a.clone(); b.y = step.y + T.radius * 1.2;
+    const t = step.point.clone(); t.y = step.y + T.radius * 1.2;
+    return pathClear(world, a, b) && pathClear(world, b, t) && pathClear(world, t, centreOf(step.point, UP));
   }
 
   function findTop(world, hit, dir) {
@@ -207,7 +215,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     // room above it
     const above = ray(world, v3.copy(down.point).addScaledVector(UP, 0.005), UP, T.radius * 2.2);
     if (above) return null;
-    return down.point.y;
+    return { y: down.point.y, point: down.point };
   }
 
   // push the body capsule out of the world; prevPos = where the feet were before this step, so a
@@ -236,6 +244,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     const h = T.jumpHeight;
     const vy = Math.sqrt(2 * T.gravity * h);
     if (fromWall) {
+      leaveWall(world);
       const n = c.up;
       const kick = v1.copy(n).multiplyScalar(T.wallKick);
       v2.copy(c.wish).multiplyScalar(c.wishMag * T.runSpeed * 0.5);
@@ -381,7 +390,7 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     const goingUp = c.fwd.dot(UP) > 0.3 && c.speed > 0.05;
     // reached the ground on the way down (head first): walk off, away from the wall
     if (c.fwd.y < -0.2 && c.speed > 0.02) {
-      const g = ray(world, v1.copy(c.pos).addScaledVector(n, T.radius), v2.set(0, -1, 0), T.radius * 1.3 + move.length());
+      const g = ray(world, v1.copy(c.pos).addScaledVector(n, T.radius), v2.set(0, -1, 0), T.capsuleFront + T.radius * 1.3 + move.length());
       if (g && isWalkable(g.normal)) {
         c.pos.copy(g.point); c.up.copy(g.normal);
         c.fwd.set(n.x, 0, n.z); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 0, -1); c.fwd.normalize();
@@ -392,9 +401,9 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
     // inner corner / obstacle ahead along the surface
     if (c.speed > 0.02) {
       const o = v1.copy(c.pos).addScaledVector(n, T.radius * 0.7);
-      const ahead = ray(world, o, c.fwd, T.radius + move.length() + 0.01);
+      const ahead = ray(world, o, c.fwd, T.capsuleFront + T.radius + move.length() + 0.01);   // as far as the body's nose
       if (ahead) {
-        if (isWalkable(ahead.normal) && c.fwd.dot(UP) < -0.3) { // reached the ground head-first
+        if (isWalkable(ahead.normal) && c.fwd.dot(UP) < -0.3 && reach(world, ahead.point, ahead.normal)) { // reached the ground head-first
           c.pos.copy(ahead.point); c.up.copy(ahead.normal);
           c.fwd.set(n.x, 0, n.z);                  // walk on, away from the wall
           if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 0, -1);
@@ -402,66 +411,138 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
           c.state = 'move'; c.grounded = true; c.speed = Math.min(c.speed, T.runSpeed * 0.5); emit('land', { position: c.pos.clone(), impact: 0 });
           return;
         }
-        if (c.climbable(ahead.surface) && !isWalkable(ahead.normal)) {     // turn the inner corner
+        if (c.canCling(ahead) && reach(world, ahead.point, ahead.normal)) {     // turn the inner corner
           c.pos.copy(ahead.point); c.up.copy(ahead.normal);
           c.fwd.addScaledVector(c.up, -c.fwd.dot(c.up));
           if (c.fwd.lengthSq() < 1e-4) c.fwd.copy(n);
           c.fwd.normalize();
           return;
         }
-        if (isWalkable(ahead.normal) && goingUp) { // an overhang that's a floor? (rare) stop
-          c.speed = 0; return;
-        }
-        c.speed = 0; return;                       // blocked by something we can't climb
+        // something we can't hold on to (a ceiling, the underside of an eave or cornice, glass):
+        // going up, try to get round it onto the top; otherwise stop
+        if (goingUp) { const top = findTopOut(world, n); if (top) { topOut(top, n); return; } }
+        c.speed = 0; return;
       }
     }
     const p1 = v1.copy(c.pos).add(move);
-    // re-find the surface under us
+    // re-find the surface under us: it must continue where the current one is (a hit much
+    // deeper is another surface seen through a gap, e.g. the inside of a parapet)
     const o = v2.copy(p1).addScaledVector(n, T.radius * 1.5);
-    let hit = ray(world, o, v3.copy(n).negate(), T.radius * 3.5);
-    if (hit && (c.climbable(hit.surface) || isWalkable(hit.normal))) {
+    const hit = ray(world, o, v3.copy(n).negate(), T.radius * 3.5);
+    const continues = hit && hit.distance < T.radius * 1.5 + T.radius * 0.8 + move.length();
+    if (continues && (c.canCling(hit) || isWalkable(hit.normal))) {
+      if (!reach(world, hit.point, hit.normal)) { c.speed = 0; return; }
       if (isWalkable(hit.normal)) {
         // walked onto a floor (top of a branch, bottom of a wall)
         c.pos.copy(hit.point); c.up.copy(hit.normal); c.state = 'move'; c.grounded = true;
         c.fwd.addScaledVector(c.up, -c.fwd.dot(c.up)); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(-n.x, 0, -n.z); c.fwd.normalize();
         return;
       }
+      const prevPos = c.pos.clone();
       c.pos.copy(hit.point);
       c.up.lerp(hit.normal, 1 - Math.exp(-dt * 25)).normalize();
       c.surface = hit.surface;
+      // the body itself must not run into things beside or ahead of it on the wall
+      collide(world, (cn) => {
+        if (cn.dot(c.up) > 0.8) return;          // the wall we're on
+        const into = c.vel.dot(cn);
+        if (into < 0) { c.vel.addScaledVector(cn, -into); c.speed = Math.max(0, c.vel.dot(c.fwd)); }
+      }, prevPos);
       return;
     }
-    if (hit && !c.climbable(hit.surface)) { c.speed = 0; return; }       // smooth wall: stop at the edge
-    // lost the surface: top out onto a ledge?
+    if (continues && hit && !c.canCling(hit)) { c.speed = 0; return; }   // smooth wall: stop at the edge
+    // lost the surface going up: top out onto the roof / ledge (round an eave if need be)
     if (goingUp || c.fwd.dot(UP) > 0) {
-      const ledgeO = v2.copy(c.pos).addScaledVector(UP, T.radius * 2.5 + T.ledgeReach).addScaledVector(n, -T.radius * 2.2);
-      const top = ray(world, ledgeO, v3.set(0, -1, 0), T.radius * 2.5 + T.ledgeReach * 2);
-      if (top && isWalkable(top.normal)) {
-        c.pos.copy(top.point); c.up.copy(top.normal);
-        c.fwd.set(-n.x, 0, -n.z); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 0, -1); c.fwd.normalize();
-        c.state = 'move'; c.grounded = true; c.speed = Math.max(c.speed, T.runSpeed * 0.3); c.topOut = 0.25;
-        emit('land', { position: c.pos.clone(), impact: 0, topOut: true });
-        return;
-      }
+      const top = findTopOut(world, n);
+      if (top) { topOut(top, n); return; }
     }
     // outer corner: wrap round it
     {
       const past = v2.copy(c.pos).add(move).addScaledVector(c.fwd, T.radius * 0.8).addScaledVector(n, -T.radius * 0.5);
       const back = ray(world, past, v3.copy(c.fwd).negate(), T.radius * 2);
-      if (back && c.climbable(back.surface) && !isWalkable(back.normal)) {
+      const via = [c.pos.clone().add(move).addScaledVector(c.fwd, T.radius * 1.2).addScaledVector(n, T.radius * 0.9)];
+      if (back && c.canCling(back) && reach(world, back.point, back.normal, via)) {
         c.pos.copy(back.point); c.up.copy(back.normal);
         c.fwd.copy(n).negate().addScaledVector(back.normal, n.dot(back.normal)); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 1, 0); c.fwd.normalize();
         return;
       }
-      if (back && isWalkable(back.normal)) {
+      if (back && isWalkable(back.normal) && reach(world, back.point, back.normal, via)) {
         c.pos.copy(back.point); c.up.copy(back.normal); c.state = 'move'; c.grounded = true; c.fwd.set(-n.x, 0, -n.z).normalize();
         return;
       }
     }
-    // nothing: fall off
+    // going up with nowhere to go (a gap under a roof, an eave too deep): hold at the top
+    if (goingUp || c.fwd.dot(UP) > 0.3) { c.speed = 0; return; }
+    // nothing: let go, away from the wall
     c.vel.copy(move).divideScalar(dt).addScaledVector(n, 0.5);
+    leaveWall(world);
     c.up.copy(UP);
     enterAir('fall');
+  }
+
+  // A place to stand at the top of the wall we're on (outward normal n), reachable without going
+  // through anything: straight over the top (flush wall top, parapet, ledge, fence rail), or out
+  // and round an overhanging eave onto the roof. Returns the floor hit or null.
+  function findTopOut(world, n) {
+    const R = T.radius;
+    const nh = v3.set(n.x, 0, n.z);
+    if (nh.lengthSq() < 0.05) return null;
+    nh.normalize();
+    const out = nh.clone();
+    const cen = centreOf(c.pos, n);
+    for (const d of [R * 0.6, R * 1.2, R * 2.2, R * 4]) {
+      const o = c.pos.clone().addScaledVector(UP, R * 2.5 + T.ledgeReach).addScaledVector(out, -d);
+      const top = ray(world, o, DOWN, R * 2.5 + T.ledgeReach * 2);
+      if (!top || !standable(top) || top.distance < 0.005) continue;
+      const via = cen.clone(); via.y = Math.max(cen.y, top.point.y + R * 1.2);
+      if (pathClear(world, cen, via) && pathClear(world, via, centreOf(top.point, top.normal))) return top;
+    }
+    // round an eave: scan outward for the roof edge from above, then go out past it, up and over
+    const H = T.eaveReach;
+    let last = null;
+    for (let d = R; d <= T.eaveReach + 1e-6; d += R * 0.75) {
+      const o = c.pos.clone().addScaledVector(out, d); o.y += H;
+      const h = ray(world, o, DOWN, H + R * 3);
+      if (h && h.distance > 0.005 && h.point.y > c.pos.y - R * 3) { last = { h, d }; continue; }
+      if (!last) continue;
+      const h0 = last.h;
+      if (!standable(h0)) return null;
+      const away = c.pos.clone().addScaledVector(out, d + R * 0.5); away.y = cen.y;
+      const over = away.clone(); over.y = Math.max(cen.y, h0.point.y + R * 1.5);
+      const tgt = centreOf(h0.point, h0.normal);
+      if (pathClear(world, cen, away) && pathClear(world, away, over) && pathClear(world, over, tgt)) return h0;
+      return null;
+    }
+    return null;
+  }
+
+  // Letting go of a wall: on the wall the feet (pos) are on its surface and the body is out along
+  // its normal; in the air the body is above the feet. Step the feet out one body radius first, or
+  // the body would straddle the wall (and rays starting on it can't see it).
+  function leaveWall(world) {
+    const n = c.up;
+    if (n.y > 0.6) return;
+    const out = c.pos.clone().addScaledVector(n, T.radius * 1.05);
+    if (pathClear(world, centreOf(c.pos, n), centreOf(out, n))) c.pos.copy(out);
+    c._relocated = true;
+  }
+
+  // a floor, or an upward-facing slope it can hold on to (a steep roof)
+  const standable = (h) => isWalkable(h.normal) || (h.normal.y > 0.05 && c.canCling(h));
+
+  function topOut(top, n) {
+    c._relocated = true;                            // checked by findTopOut (possibly round an eave)
+    c.pos.copy(top.point); c.up.copy(top.normal);
+    c.fwd.set(-n.x, 0, -n.z); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(0, 0, -1); c.fwd.normalize();
+    c.topOut = 0.25;
+    if (isWalkable(top.normal)) {
+      c.state = 'move'; c.grounded = true; c.speed = Math.max(c.speed, T.runSpeed * 0.3);
+      emit('land', { position: c.pos.clone(), impact: 0, topOut: true });
+    } else {
+      // onto a steep roof: keep climbing, up the slope
+      c.state = 'climb'; c.surface = top.surface;
+      c.fwd.copy(UP).addScaledVector(c.up, -c.up.y); if (c.fwd.lengthSq() < 1e-4) c.fwd.set(-n.x, 0, -n.z); c.fwd.normalize();
+    }
   }
 
   // ---------------------------------------------------------------- swimming
@@ -518,12 +599,26 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
       if (g) c.pos.copy(g.point);
     }
     if (c.topOut > 0) c.topOut -= dt;
+    const c0 = centreOf(c.pos, c.up), p0 = c.pos.clone(), u0 = c.up.clone();
+    c._relocated = false;
     switch (c.state) {
       case 'idle': case 'move': c.groundTime += dt; stepGround(dt, controls, world, camera); break;
       case 'air': stepAir(dt, controls, world, camera); break;
       case 'climb': stepClimb(dt, controls, world, camera); break;
       case 'swim': stepSwim(dt, controls, world, camera); break;
       case 'sit': case 'dig': stepAction(dt, controls, world, camera); break;
+    }
+    // last line of defence: an ordinary step may never carry the body's centre through a surface
+    // (relocations along a checked path, like topping out round an eave, are exempt)
+    if (!c._relocated && Number.isFinite(c.pos.x + c.pos.y + c.pos.z)) {
+      const c1 = centreOf(c.pos, c.up);
+      if (c1.distanceToSquared(c0) > 1e-10 && !pathClear(world, c0, c1, 0)) {
+        const d = c1.sub(c0).normalize();
+        c.pos.copy(p0); c.up.copy(u0);
+        const into = c.vel.dot(d); if (into > 0) c.vel.addScaledVector(d, -into);
+        c.speed = Math.min(c.speed, Math.max(0, c.vel.dot(c.fwd)));
+        c.debug.blocked = (c.debug.blocked || 0) + 1;
+      }
     }
     // never NaN, never below the world
     if (!Number.isFinite(c.pos.x + c.pos.y + c.pos.z + c.vel.x + c.vel.y + c.vel.z)) {
@@ -539,7 +634,10 @@ export function createController(T, { climbable = defaultClimbable, hangable = (
   c.update = (dt, controls, world, camera) => {
     c.events.length = 0;
     if (!(dt > 0)) return;
-    const n = Math.max(1, Math.ceil(dt / T.maxStep));
+    // short enough steps that the body never moves more than ~half its radius at once (so it
+    // can't cross a zero-thickness wall between two collision checks)
+    const sp = c.vel.length() + 1;
+    const n = Math.min(48, Math.max(1, Math.ceil(dt / T.maxStep), Math.ceil(sp * dt / (T.radius * 0.45))));
     const h = dt / n;
     for (let i = 0; i < n; i++) {
       c.step(h, i === 0 ? controls : { ...controls, jumpPressed: false, sitPressed: false, digPressed: false }, world, camera);

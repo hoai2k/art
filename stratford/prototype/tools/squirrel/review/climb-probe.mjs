@@ -71,6 +71,7 @@ const res = await page.evaluate(async ([N, SKIP]) => {
         const cb = inside(L.camera.position, nb, 0.0);
         if (cb && !rec.cam) rec.cam = { i, ...cb, cam: L.camera.position.toArray().map((v) => +v.toFixed(2)), sq: p.toArray().map((v) => +v.toFixed(2)), state: sq.state };
       }
+      rec.end = [sq.state, sq.position.toArray().map((v) => +v.toFixed(2)), +(B.base + B.height).toFixed(2)];
       out.push(rec);
     }
   }
@@ -81,5 +82,6 @@ for (const r of res) {
   if (r.bad) { bad++; console.log('BODY', JSON.stringify({ ...r, cam: undefined })); }
   if (r.cam) { cam++; console.log('CAM ', JSON.stringify({ id: r.id, sc: r.sc, cam: r.cam })); }
 }
+if (process.env.VERBOSE) for (const r of res) console.log('RUN ', r.id, r.roof, r.sc, 'climbed', r.climbed, 'roof', r.onRoof, 'end', JSON.stringify(r.end));
 console.log(`runs ${res.length}  body-inside ${bad}  camera-inside ${cam}  climbed ${res.filter((r) => r.climbed).length}  topped-out ${res.filter((r) => r.onRoof).length}`);
 await b.close(); srv.close();
