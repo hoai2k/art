@@ -283,43 +283,43 @@ studio light, no text, no ground shadows touching other views, the same animal
 at the same scale in every view. Painted storybook realism with accurate adult
 anatomy; not cute, not chibi, no smiles.
 
-### R9.1 North American beaver turnaround — `open`
+### R9.1 North American beaver turnaround — `delivered`
 - **File:** `beaver_turnaround.png` → `reference/sheets/beaver_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult North American beaver (Castor canadensis), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Standing on all fours on land in a neutral walking pose, all four feet visible. Heavy rounded body about 80 cm long, short legs, large webbed hind feet, small clawed fore paws, the broad flat scaly paddle tail held flat behind (fully visible in the top view), small round ears, small dark eyes, orange-brown incisors just showing. Coat glossy rich chestnut brown, darker on the back, the tail dark grey-black with a scale pattern.
 
-### R9.2 Beaver pose sheet — `open`
+### R9.2 Beaver pose sheet — `delivered`
 - **File:** `beaver_poses.png` → `reference/sheets/beaver_poses.png`
 - **Prompt:** A model sheet of one North American beaver in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) waddling walk on land, (2) sitting up on its haunches gnawing a stick held in its fore paws, tail flat on the ground in front, (3) swimming at the surface, only head, back and a little tail above a faint flat waterline, (4) diving, body angled down under a faint waterline, hind feet kicking, (5) slapping its tail on the water, tail raised high, (6) standing upright on its hind feet and tail, sniffing the air.
 
-### R9.3 Eastern cottontail rabbit turnaround — `open`
+### R9.3 Eastern cottontail rabbit turnaround — `delivered`
 - **File:** `rabbit_turnaround.png` → `reference/sheets/rabbit_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult eastern cottontail rabbit (Sylvilagus floridanus), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Neutral crouched sitting pose with all four feet visible, long ears upright, large dark eyes, the white cottontail visible. Grizzled brown-grey coat, a rusty patch on the nape, pale belly, white tail underside. Body about 40 cm long.
 
-### R9.4 Rabbit pose sheet — `open`
+### R9.4 Rabbit pose sheet — `delivered`
 - **File:** `rabbit_poses.png` → `reference/sheets/rabbit_poses.png`
 - **Prompt:** A model sheet of one eastern cottontail in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) slow hop, gathered, hind feet planted ahead of the fore feet, (2) slow hop, extended, (3) full-speed bound in mid-air, body stretched long, ears laid back, (4) sitting up tall on its hind legs, ears up, alert, (5) grooming its face with its fore paws, (6) flattened low in the grass, freezing, ears down.
 
-### R9.5 Mute swan pose sheet — `open`
+### R9.5 Mute swan pose sheet — `delivered`
 - **File:** `swan_poses.png` → `reference/sheets/swan_poses.png`
 - **Prompt:** A model sheet of one adult mute swan in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping (the swimming turnaround already exists, R1.5): (1) walking on land, upright stance, black webbed feet, (2) standing preening, neck curved back to its wing, (3) take-off running across water, wings raised, feet slapping a faint flat waterline, (4) flying, neck stretched straight forward, wings at the top of the downstroke, (5) flying, wings at the bottom of the downstroke, (6) landing on water, wings spread back, feet forward skiing on a faint waterline. Pure white plumage, orange bill with a black knob.
 
-### R9.6 Mute swan flying, top view — `open`
+### R9.6 Mute swan flying, top view — `delivered`
 - **File:** `swan_flying_top.png` → `reference/sheets/swan_flying_top.png`
 - **Prompt:** Three views of one mute swan in flight at the same scale, side by side: exact top view head right with wings fully spread, exact underside view head right with wings fully spread, exact front view with wings spread level. Neck stretched straight, feet tucked back under the tail. Pure white plumage, orange bill with black knob.
 
-### R9.7 Great blue heron turnaround — `open`
+### R9.7 Great blue heron turnaround — `delivered`
 - **File:** `heron_turnaround.png` → `reference/sheets/heron_turnaround.png`
 - **Prompt:** Turnaround sheet of one adult great blue heron (Ardea herodias), three views side by side at the same scale: exact side view facing right, exact top view head right, three-quarter front view. Standing in a neutral walking pose, neck in its relaxed S-curve, long yellow-orange dagger bill, long dark legs with long toes. Blue-grey body and wings, white face with a black stripe above the eye extending into black plumes, rusty thighs, streaked white and black foreneck plumes. About 1.1 m tall.
 
-### R9.8 Great blue heron pose sheet — `open`
+### R9.8 Great blue heron pose sheet — `delivered`
 - **File:** `heron_poses.png` → `reference/sheets/heron_poses.png`
 - **Prompt:** A model sheet of one great blue heron in six poses, all exactly side-on facing right, same scale, two rows of three, not overlapping: (1) slow wading walk, one leg raised, a faint flat waterline at its shins, (2) hunched, neck folded, stalking, (3) striking, neck shot forward, bill at a faint waterline, (4) take-off, wings raised high, legs pushing off, (5) flying, neck folded back into an S, legs trailing straight behind, wings at the top of the downstroke, (6) flying, wings at the bottom of the downstroke.
 
-### R9.9 Great blue heron flying, top view — `open`
+### R9.9 Great blue heron flying, top view — `delivered`
 - **File:** `heron_flying_top.png` → `reference/sheets/heron_flying_top.png`
 - **Prompt:** Three views of one great blue heron in flight at the same scale, side by side: exact top view head right with wings fully spread, exact underside view head right with wings fully spread, exact front view with wings spread level. Neck folded back into an S, legs trailing straight behind. Blue-grey plumage with darker flight feathers.
 
-### R9.10 Creature portraits for the creature select — `open`
+### R9.10 Creature portraits for the creature select — `delivered`
 - **File:** `ui/creatures.png` → `game/assets/ui/creatures.png`
 - **Size:** 2560 × 512, on transparent background
 - **Prompt:** Five round portrait medallions side by side, evenly spaced, each a painted head-and-shoulders portrait of an animal facing slightly right inside a thin cream ring on a warm autumn-coloured disc: a black squirrel, a North American beaver, an eastern cottontail rabbit, a mute swan, a great blue heron. Painted storybook realism, consistent style and lighting across all five, no text, transparent background around the discs.
@@ -351,3 +351,6 @@ request says otherwise, each item whole and not touching the others.
 | G10.12 | `sprites/street_ground_items.png` | 2048 × 1024 | Eight separate street-level fixtures seen exactly from above, on transparent background: a round cast-iron manhole cover with a grid pattern, a rectangular storm drain grate with leaves caught in it, a square cast-iron tree grate around a trunk opening, a water valve cap, a utility access plate, a small puddle with a sky reflection, a crack in concrete with a weed growing out, a round metal survey marker. Painted, no text on the covers. Status: `open` |
 | G10.13 | `sprites/ground_plants.png` | 2048 × 1024 | Twelve separate low plants and ground growth seen from the side at squirrel eye level, transparent background: a dandelion with a seed head, a clump of clover, plantain leaves, a tuft of crabgrass from a sidewalk crack, moss in a crack, a small cluster of mushrooms, a fern, a dried goldenrod stalk, chicory, a patch of creeping thyme, an ivy runner, a fallen twig with lichen. Painted. Status: `open` |
 | G10.14 | `sprites/ground_debris.png` | 2048 × 1024 | Twelve separate small things on the ground seen from slightly above at squirrel eye level, transparent background: a pine cone, a broken branch about 40 cm long, a bundle of twigs, a crushed paper coffee cup with no logo, a bottle cap, an acorn with cap, a half-eaten apple core, a horse chestnut in its spiky husk, a feather, a smooth river stone, a cluster of maple keys, a small heap of sunflower seed shells. Painted, no logos or text. Status: `open` |
+## Round 9 delivery — 2026-11-02
+
+Nine animal reference sheets and the transparent creature portrait strip delivered to the listed paths with built-in image_gen. Prompts recorded in `generation-prompts-round-9.json`. PNG decoding and delivery sizes checked, portrait alpha verified, full set visually reviewed, with beaver layout and heron flight corrections generated. Portrait web copy and manifest updated; no deployment.
