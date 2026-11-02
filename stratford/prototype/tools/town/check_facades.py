@@ -4,7 +4,8 @@
 Checks that every building id exists in town.json, that enumerated fields hold
 known values, that colours are #rrggbb hex, that storeys are plausible against
 the building's wall height, that confidence is in 0..1 and that photo ids look
-like Mapillary ids. Prints errors and warnings; exits 1 if there are errors.
+like Mapillary ids, and that `year` (the capture year of
+the newest frame relied on) is a plausible year. Prints errors and warnings; exits 1 if there are errors.
 
     python3 stratford/prototype/tools/town/check_facades.py [facades.json] [town.json]
 """
@@ -22,7 +23,7 @@ ROOFS = {'gable_front', 'gable_side', 'hipped', 'mansard', 'flat', 'cross_gable'
 HEX = re.compile(r'^#[0-9a-fA-F]{6}$')
 PHOTO = re.compile(r'^\d{6,20}$')
 KNOWN = {'storeys', 'material', 'wall', 'trim', 'windows', 'cornice', 'storefronts', 'bay',
-         'corner_entrance', 'features', 'notes', 'photos', 'confidence', 'roof', 'roof_colour', 'sides'}
+         'corner_entrance', 'features', 'notes', 'photos', 'confidence', 'roof', 'roof_colour', 'sides', 'year'}
 
 
 def check(facades, town):
@@ -127,6 +128,9 @@ def check(facades, town):
             err(f'{w}: no photos')
         else:
             photos(w, f['photos'])
+        y = f.get('year')
+        if y is not None and (not isinstance(y, int) or not 2000 <= y <= 2100):
+            err(f'{w}: year {y!r} is not a capture year')
         c = f.get('confidence')
         if not isinstance(c, (int, float)) or not 0 <= c <= 1:
             err(f'{w}: confidence {c!r} not in 0..1')
@@ -135,6 +139,10 @@ def check(facades, town):
         if not isinstance(sq.get('notes'), str):
             err('square: notes must be a string')
         photos('square', sq.get('photos', []))
+    for where, v in [('square', sq or {})] + [(f'landmarks.{k}', l) for k, l in (facades.get('landmarks') or {}).items()]:
+        y = v.get('year')
+        if y is not None and (not isinstance(y, int) or not 2000 <= y <= 2100):
+            err(f'{where}: year {y!r} is not a capture year')
     lm_ids = {l['id'] for l in town.get('landmarks', [])}
     for lid, l in (facades.get('landmarks') or {}).items():
         if lid not in lm_ids:

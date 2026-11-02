@@ -40,6 +40,19 @@ of them can be opened at `https://www.mapillary.com/app/?pKey=<id>`.
    (ignored by Git); nothing from Mapillary is stored in the repository except
    image ids and the survey's own words.
 
+Each entry's `year` is the capture year of the newest frame it relies on.
+Newer frames were preferred in the selection (2019 and later, and the
+2025–26 frames where they show a building rather than a close-up of a
+street object). Storefront and awning colours were mostly read from one
+frame or from frames of the same year; where frames of different years
+were compared, no change in a front's colours was noticed, but this was not
+checked systematically, so a storefront colour is only as current as that
+entry's `year`. Years of the entries: 2016 (1), 2017 (43), 2019 (53),
+2020 (50), 2021 (25), 2025 (3). The 2025 frames near the Courthouse and the
+Huron/Ontario crossing are mostly close-ups of street objects; they were
+used for the Courthouse and the river boathouse. None of the May 2026
+frames (south and east of the theatres) fall on an in-scope front.
+
 `confidence` is roughly: 0.7+ clear square-on view, attribution certain;
 0.5–0.65 good oblique view; 0.35–0.45 partial view or attribution among
 narrow fronts uncertain; 0.2–0.3 only a glimpse (colour/material only).
@@ -141,15 +154,18 @@ Why fronts are missing:
   band of glass-block windows, an oculus and a glass-block stair tower, and
   a tall grey/beige stage house with fire escapes and a black fly tower
   rises behind.
-- **Market Square** (2017 on): pale concrete paving in large panels with
-  dark charcoal brick-paver bands, a paver parking lane along Market Place
-  with black bollards, tall black lamp posts with hanging baskets, young
-  trees in pits and large concrete block seats. No fountain is visible.
+- **Market Square.** Described from 2019-or-later frames only, as the
+  square was rebuilt around 2017–18 and the 2017 frames show it new or
+  behind construction hoarding. No 2019+ frame shows the square's interior:
+  the only later ones (2020) look along Wellington Street beside City Hall
+  and show the pale concrete sidewalk edge, black lamp posts and young
+  trees. The paving, seating and planting of the square remain unsurveyed;
+  `square.notes` says so rather than describing the 2017 state.
 
 ## Files
 
 - `game/data/facades.json`: the survey data (schema in the file's header
-  fields; houses add `roof` and `roof_colour`).
+  fields; houses add `roof` and `roof_colour`, and every entry has `year`).
 - `tools/town/check_facades.py`: validates it against `town.json` (ids,
   enumerations, hex colours, storeys vs height); exits 1 on errors.
 - Review boards (photo beside the recorded data) were made for the owner
