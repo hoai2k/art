@@ -8,6 +8,7 @@ import { LEGACY, BAY_TITLE } from '../theme.js';
 import { beatPhase, clamp, lerp, rng } from './shared.js';
 import { createWall, stepWall, jolt, mantleTo, CLIMB } from './climb.js';
 import * as art from './act5-art.js';
+import { TEXT } from '../text_config.js';
 
 export const BEAT_S = 60 / 76.5;          // one beat of the song, seconds
 export const GRACE = 1.6;                 // invulnerable after a hit
@@ -132,13 +133,13 @@ const PROG = { cliff: [0, 0.45], up: [0.45, 0.7], carry: [0.7, 0.9], quay: [0.9,
 
 // Scenes, for checkpoints and the scene select.
 export const SCENES = [
-  { name: 'The Cliff Foot' },
-  { name: 'Halfway Up the Cliff' },
-  { name: 'The Burning House' },
-  { name: 'Carrying Her Down' },
-  { name: 'The Quay' },
-  { name: 'The Ending' },
-  { name: 'The Pageant' },
+  { name: TEXT.widowsbay.scenes.cliffFoot },
+  { name: TEXT.widowsbay.scenes.halfway },
+  { name: TEXT.widowsbay.scenes.house },
+  { name: TEXT.widowsbay.scenes.carrying },
+  { name: TEXT.widowsbay.scenes.quay },
+  { name: TEXT.widowsbay.scenes.ending },
+  { name: TEXT.widowsbay.scenes.pageant },
 ];
 // The solid ledge about halfway up (the checkpoint hold).
 export const HALF = HOLDS.findIndex((h) => h.x === 900 && h.y === 1030);
@@ -150,11 +151,11 @@ export function endingFor(carry = {}) {
 }
 
 export default {
-  id: 5, kicker: 'Act V', title: BAY_TITLE, size: 120,
-  sub: 'Climb the cliff to the stone house.\nCarry her out of the fire.',
+  id: 5, kicker: TEXT.widowsbay.kicker, title: BAY_TITLE, size: 120,
+  sub: TEXT.widowsbay.sub,
   // Shown as a silent-film intertitle after the act card.
-  intertitle: 'Climb anywhere on the rock:\nfastest up the ivy and the cracks.\nPush up into a ledge to haul yourself onto it.\n\nOnly the giant\'s boot lifts you over the lip:\nride it up on the beat.\nDust above means a stone is about to fall.',
-  action: 'A: leap',
+  intertitle: TEXT.widowsbay.intertitle,
+  action: TEXT.widowsbay.action,
   scenes: SCENES,
 
   // `from` (optional): { scene } to start at a scene, plus the fields of a
@@ -251,19 +252,20 @@ export default {
   },
 
   announce(e) {
-    if (e.type === 'hit') return `Hit. ${e.lanterns} lantern${e.lanterns === 1 ? '' : 's'} left.`;
-    if (e.type === 'stoneWarn') return 'Dust above: a stone is about to fall.';
-    if (e.type === 'holdCrumble') return 'The hold crumbles away.';
-    if (e.type === 'clifftop') return 'The clifftop. The stone house.';
-    if (e.type === 'houseOpen') return 'The house is burning. Its front swings open. Climb to her.';
-    if (e.type === 'beamWarn') return 'The ceiling shudders.';
-    if (e.type === 'shutterLocked') return 'The shutter is locked fast.';
-    if (e.type === 'shutterSmash') return 'The stone breaks the shutter. Climb the ivy.';
-    if (e.type === 'liftHer') return 'You lift her. Carry her down: no leaping now.';
-    if (e.type === 'floorBreak') return 'The way you came is gone. A ladder drops at the right.';
-    if (e.type === 'houseFall') return 'Out onto the quay. The house is falling.';
-    if (e.type === 'ending') return { witch: "The Sea Witch's. Her moon boat claims him.", lamp: 'A lamp in the window.', dark: 'The window is dark.' }[e.ending];
-    if (e.type === 'pageant') return 'The pageant.';
+    const A = TEXT.widowsbay.announce;
+    if (e.type === 'hit') return A.hit(e.lanterns);
+    if (e.type === 'stoneWarn') return A.stoneWarn;
+    if (e.type === 'holdCrumble') return A.holdCrumble;
+    if (e.type === 'clifftop') return A.clifftop;
+    if (e.type === 'houseOpen') return A.houseOpen;
+    if (e.type === 'beamWarn') return A.beamWarn;
+    if (e.type === 'shutterLocked') return A.shutterLocked;
+    if (e.type === 'shutterSmash') return A.shutterSmash;
+    if (e.type === 'liftHer') return A.liftHer;
+    if (e.type === 'floorBreak') return A.floorBreak;
+    if (e.type === 'houseFall') return A.houseFall;
+    if (e.type === 'ending') return A.ending[e.ending];
+    if (e.type === 'pageant') return A.pageant;
     return null;
   },
 
@@ -313,8 +315,8 @@ export function hit(st, extra = {}) {
   st.events.push({ type: 'hit', lanterns: st.lanterns, ...extra });
   if (st.lanterns <= 0) {
     st.defeatT = 0;
-    st.lostTitle = st.phase === 'cliff' ? 'The Cliff\nGives Way' : 'The Fire Takes\nthe House';
-    st.lostSub = st.phase === 'cliff' ? 'Watch the dust: the stone falls where it gathers.' : 'The ceiling shudders before it falls.';
+    st.lostTitle = st.phase === 'cliff' ? TEXT.widowsbay.lost.cliffTitle : TEXT.widowsbay.lost.houseTitle;
+    st.lostSub = st.phase === 'cliff' ? TEXT.widowsbay.lost.cliffSub : TEXT.widowsbay.lost.houseSub;
   }
   return true;
 }

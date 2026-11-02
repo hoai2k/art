@@ -5,6 +5,7 @@
 import { clamp, lerp, easeInOut } from './shared.js';
 import { FILM } from '../theme.js';
 import * as art from './act4-art.js';
+import { TEXT } from '../text_config.js';
 import { createCavern, stepCavern, cavernProgress, CAVE_SCENES } from './act4cavern.js';
 
 export const BEAT_S = 60 / 76.5;     // fallback beat length if no beat comes in
@@ -134,11 +135,11 @@ export function shoreTimes(n) {
 // is a detour within the last scene, so no scene starts with it. (The lip by
 // the throat makes no scene: the last hook reaches every spot on it.)
 export const SCENES = [
-  { name: 'The Belly', on: 'bank', x: 260 },
-  { name: 'The Rib Ledges', on: 'L1', x: 1320 },
-  { name: 'The Wreck Field', on: 'L3', x: 2940 },
-  { name: 'The Far Wreckage', on: 'L5', x: 3980 },
-  { name: 'The Ribcage', on: 'L6', x: 5450 },
+  { name: TEXT.whale.scenes.belly, on: 'bank', x: 260 },
+  { name: TEXT.whale.scenes.ribLedges, on: 'L1', x: 1320 },
+  { name: TEXT.whale.scenes.wreckField, on: 'L3', x: 2940 },
+  { name: TEXT.whale.scenes.farWreckage, on: 'L5', x: 3980 },
+  { name: TEXT.whale.scenes.ribcage, on: 'L6', x: 5450 },
 ];
 
 // ---------------------------------------------------------------- machines
@@ -186,10 +187,10 @@ export function toScreen(st, x, y) {
 
 // ---------------------------------------------------------------- module
 export default {
-  id: 4, key: 'whale', kicker: 'Act IV', title: FILM ? "The Whale's Passage" : "The Whale's Road", size: 120,
-  sub: FILM ? "Neptune's whale carries you toward the tower.\nRide the wreckage up on its breath to the daylight in its throat."
-    : 'Swallowed whole. Ride the wreckage up on the whale\'s breath\nand climb to the daylight in its throat.',
-  action: 'A: leap',
+  id: 4, key: 'whale', kicker: TEXT.whale.kicker, title: FILM ? TEXT.whale.title : TEXT.whale.titleClassic, size: 120,
+  sub: FILM ? TEXT.whale.sub
+    : TEXT.whale.subClassic,
+  action: TEXT.whale.action,
 
   // The film edition goes on from the beach through the cavern route
   // (act4cavern.js), with its own two scenes.
@@ -263,23 +264,24 @@ export default {
   },
 
   announce(e) {
-    if (e.type === 'hit') return `Hit. ${e.lanterns} lantern${e.lanterns === 1 ? '' : 's'} left.`;
-    if (e.type === 'breathCue' && e.n === 1) return 'The whale is about to breathe in.';
-    if (e.type === 'whaleInhale') return 'The whale breathes in. The water rises.';
-    if (e.type === 'lowTide') return 'Low tide. The stomach floor is bare.';
-    if (e.type === 'stoneFound') return FILM ? "Aurora's lamp." : 'The stone.';
-    if (e.type === 'daylight') return 'Daylight in the throat.';
-    if (e.type === 'caveEnter') return "Aurora points the prince to a cave in the cliff: the way to the witch's tower." + (e.lamp ? ' Her lamp lights the dark.' : '');
-    if (e.type === 'dropShake') return 'A stalactite shakes loose above.';
-    if (e.type === 'caveExit') return 'Out of the cavern, onto the night sea.';
-    if (e.type === 'beachSurf') return FILM ? 'The whale sets you down on a rocky shore. Aurora points the way.' : 'The whale lies beached on a rocky shore.';
+    const A = TEXT.whale.announce;
+    if (e.type === 'hit') return A.hit(e.lanterns);
+    if (e.type === 'breathCue' && e.n === 1) return A.breathCue;
+    if (e.type === 'whaleInhale') return A.inhale;
+    if (e.type === 'lowTide') return A.lowTide;
+    if (e.type === 'stoneFound') return FILM ? A.lampFound : A.stoneFound;
+    if (e.type === 'daylight') return A.daylight;
+    if (e.type === 'caveEnter') return A.caveEnter + (e.lamp ? A.caveLamp : '');
+    if (e.type === 'dropShake') return A.dropShake;
+    if (e.type === 'caveExit') return A.caveExit;
+    if (e.type === 'beachSurf') return FILM ? A.beachSurfFilm : A.beachSurf;
     return null;
   },
 
   focus: art.focus, draw: art.draw, drawOver: art.drawOver, onEvent: art.onEvent,
 };
 
-function setStatus(st, s) { st.status = s; st.statusT = 0; if (s === 'lost') { st.lostTitle = 'Swallowed\nWhole'; st.lostSub = 'The whale keeps what it takes.'; } }
+function setStatus(st, s) { st.status = s; st.statusT = 0; if (s === 'lost') { st.lostTitle = TEXT.whale.lost.swallowedTitle; st.lostSub = TEXT.whale.lost.swallowedSub; } }
 function toPhase(st, p) {
   st.phase = p; st.phaseT = 0;
   if (p === 'throat') st.events.push({ type: 'daylight' });
@@ -521,7 +523,7 @@ function cavern(st, dt, input) {
       if (st.grace > 0) return;
       st.lanterns--; st.hits++; st.grace = GRACE;
       st.events.push({ type: 'hit', why, lanterns: st.lanterns });
-      if (st.lanterns <= 0) { setStatus(st, 'lost'); st.lostTitle = 'Lost in\nthe Dark'; st.lostSub = 'The cavern keeps the way to the tower.'; }
+      if (st.lanterns <= 0) { setStatus(st, 'lost'); st.lostTitle = TEXT.whale.lost.darkTitle; st.lostSub = TEXT.whale.lost.darkSub; }
     },
     pearl: () => { st.pearls++; st.score += 10; },
     events: st.events, graceLeft: () => st.grace,

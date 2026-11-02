@@ -6,6 +6,7 @@
 import { clamp, lerp } from './shared.js';
 import { FILM, words } from '../theme.js';
 import * as art from './act2-art.js';
+import { TEXT } from '../text_config.js';
 
 // ---------------------------------------------------------------- tuning
 export const BEAT_LEN = 60 / 76.5;      // seconds per beat (for omens and fallbacks)
@@ -79,13 +80,13 @@ const GUITAR_PATH = [[0, 880], [700, 760], [1300, 640], [1700, 520], [2100, 720]
 // Scenes, for checkpoints and the scene select. Scenes 1-3 begin in the
 // bubbles of a vent partway down; `y` is where the sailor starts.
 export const SCENES = [
-  { name: 'The Wreck' },
-  { name: 'Into the Grotto', vent: 0 },
-  { name: 'The Deep Caves', vent: 2 },
-  { name: "The Dragon's Floor", vent: 3 },
+  { name: TEXT.grotto.scenes.wreck },
+  { name: TEXT.grotto.scenes.grotto, vent: 0 },
+  { name: TEXT.grotto.scenes.caves, vent: 2 },
+  { name: TEXT.grotto.scenes.dragon, vent: 3 },
   // the film edition's Water Fairy and her procession in the witch's offer and the moon boat's place
-  { name: FILM ? 'The Water Fairy' : "The Witch's Offer" },
-  { name: FILM ? 'The Marine Procession' : 'The Moon-Boat Ride' },
+  { name: FILM ? TEXT.grotto.scenes.waterFairy : TEXT.grotto.scenes.witchOffer },
+  { name: FILM ? TEXT.grotto.scenes.procession : TEXT.grotto.scenes.moonBoat },
 ];
 // The descent scene a depth belongs to (0..3), by vent boundaries.
 const SCENE_Y = [0, 800, 2400, 3150]; // just above each scene's vent spot
@@ -162,13 +163,13 @@ export const ridePearlX = (p, rideT) => 1250 - (rideT - p.at) * RIDE.speed;
 
 // ---------------------------------------------------------------- module
 export default {
-  id: 2, key: 'grotto', kicker: 'Act II', title: FILM ? 'The Water Fairy' : "The Sleepers' Grotto", size: 110,
-  sub: FILM ? 'Follow the sinking sword down.\nGrab pearls with X and get air from the bubbles.'
-    : words('Follow the sinking guitar down.\nSound the conch horns to wake the drowned.'),
+  id: 2, key: 'grotto', kicker: TEXT.grotto.kicker, title: FILM ? TEXT.grotto.title : TEXT.grotto.titleClassic, size: 110,
+  sub: FILM ? TEXT.grotto.sub
+    : words(TEXT.grotto.subClassic),
   // The film edition: the Water Fairy in the witch's place, and the marine
   // procession's dolphin carriage for the moon boat.
   cast: FILM ? { 'witch-stand': 'water-fairy-stand', 'witch-moonboat': 'dolphin-carriage' } : undefined,
-  action: 'A: kick',
+  action: TEXT.grotto.action,
   scenes: SCENES,
 
   // `from` (optional): { scene } to start at a scene, plus the fields of a
@@ -260,34 +261,35 @@ export default {
   },
 
   announce(e) {
+    const A = TEXT.grotto.announce;
     if (FILM) {
       const film = {
-        sailorWake: 'The Water Fairy breathes life into the prince. He wakes among his drowned crew.',
-        swimStart: 'Follow the sword down. Grab pearls with X and get air from the bubbles.',
-        conchBlow: 'The conch sings. Swim close to your crew to wake them.',
-        guitarCatch: 'You catch the enchanted sword.',
-        witchOffer: 'The Water Fairy waits by the wreck. Swim to her for her blessing.',
-        roseTake: 'Her blessing revives the rest of your crew.',
-        rideStart: 'The marine procession. Sail, change row and leap to gather the pearls.',
-        drown: 'The prince sinks.',
+        sailorWake: A.sailorWake,
+        swimStart: A.swimStart,
+        conchBlow: A.conchBlow,
+        guitarCatch: A.swordCatch,
+        witchOffer: A.witchOffer,
+        roseTake: A.roseTake,
+        rideStart: A.rideStart,
+        drown: A.drown,
       }[e.type];
       if (film) return film;
-      if (e.type === 'sleeperWake') return `A crewman wakes. ${e.n} woken.`;
+      if (e.type === 'sleeperWake') return A.crewWake(e.n);
     }
     switch (e.type) {
-      case 'sailorWake': return 'The witch breathes life into the sailor. He wakes among the drowned.';
-      case 'swimStart': return words('Swim down after the guitar. Press A to kick. Sound the conch to wake the sleepers.');
-      case 'conchBlow': return 'The conch sings. Swim close to the sleepers to wake them.';
-      case 'sleeperWake': return `A sleeper wakes. ${e.n} woken.`;
-      case 'hit': return `Hit. ${e.lanterns} lantern${e.lanterns === 1 ? '' : 's'} left.`;
-      case 'airLow': return 'Air running low. Find a vent.';
-      case 'eelGlow': return 'Eyes glow in a hole.';
-      case 'guitarCatch': return words('You catch the guitar.');
-      case 'witchOffer': return 'The witch offers the sea rose. A to take it, B to refuse.';
-      case 'roseTake': return 'You take the sea rose. Every sleeper wakes.';
-      case 'witchLaugh': return 'You refuse the rose. The witch laughs.';
-      case 'rideStart': return 'The moon boat. Sail, change row and leap to gather the pearls.';
-      case 'drown': return 'The sailor sinks.';
+      case 'sailorWake': return A.sailorWakeClassic;
+      case 'swimStart': return words(A.swimStartClassic);
+      case 'conchBlow': return A.conchBlowClassic;
+      case 'sleeperWake': return A.sleeperWake(e.n);
+      case 'hit': return A.hit(e.lanterns);
+      case 'airLow': return A.airLow;
+      case 'eelGlow': return A.eelGlow;
+      case 'guitarCatch': return words(A.guitarCatchClassic);
+      case 'witchOffer': return A.witchOfferClassic;
+      case 'roseTake': return A.roseTakeClassic;
+      case 'witchLaugh': return A.witchLaugh;
+      case 'rideStart': return A.rideStartClassic;
+      case 'drown': return A.drownClassic;
       default: return null;
     }
   },
