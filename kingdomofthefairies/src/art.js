@@ -7,7 +7,7 @@ import { TEXT } from './text_config.js';
 // is cut from. Procedural stand-ins draw everything until delivered art
 // (assets/manifest.json) replaces a slot.
 
-import { animationFrame, validAnimation, idleFrameId, idlePose } from './animation.js';
+import { animationFrame, validAnimation } from './animation.js';
 
 import { ROWS, STAGE, TUNING, rowPos, leapHeight, effectiveRow } from './board.js';
 
@@ -267,8 +267,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     // ?look=original turn it off): a sprite's hand-tinted alternate
     return (tinted && assets.images[r + '-tinted']) || assets.images[r];
   };
-  let extraAnimations = false, tinted = false;
-  let filmAmp = 1;   // how strongly the people's film idle moves (Film look)
+  let tinted = false;
 
   // Act events: the act's own onEvent, which may call kit.voyageEvent (Act I).
   function onEvent(e, view) {
@@ -370,10 +369,8 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   // view = { board, curtain(0 closed..1 open), card, film: 'full'|'gentle'|'off', t }
   function render(view) {
     cam = view.cam || null;
-    extraAnimations = view.extraAnimations === true;
     tinted = view.tinted === true;
     const { t, film } = view;
-    filmAmp = film === 'off' ? 0.35 : film === 'gentle' ? 0.6 : 1;
     if (film !== 'off' && ++reg.n % 5 === 0) {
       const m = film === 'full' ? 3 : 1.4;
       reg.x = (Math.random() - 0.5) * m * 2; reg.y = (Math.random() - 0.5) * m * 2;
@@ -1163,44 +1160,22 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     c.beginPath(); c.moveTo(x, y0); c.lineTo(x, y1); c.stroke();
   }
 
-  // The people's old-film idle frame for this moment (the still when Extra
-  // Animations is off or no idle frames are delivered).
-  // A recast sprite flicks between its own film idle frames (crew-squire-idle-b
-  // and so on), never the legacy figure's.
-  const idleId = (id, time, step) => {
-    if (!extraAnimations) return id;
-    const film = cast[id] && assets.images[cast[id]] ? cast[id] : null;
-    return film ? idleFrameId(film, time, (f) => !!assets.images[f], step) : idleFrameId(id, time, (f) => !!img(f), step);
-  };
-  // A person drawn with the film idle (frames plus the film tricks in
-  // idlePose) when Extra Animations is on; the plain still otherwise.
-  // `over(c, s, im)` draws something held by the figure (a gift in her
-  // hands): called at the figure's bottom centre inside its idle sway, with
-  // `s` the stage pixels per art pixel. `onlyOver` draws just what is held,
-  // in the same sway (so it can be drawn over a figure in front of hers).
+  // A person, drawn as their still. `over(c, s, im)` draws something held by
+  // the figure (a gift in her hands): called at the figure's bottom centre,
+  // with `s` the stage pixels per art pixel. `onlyOver` draws just what is
+  // held (so it can be drawn over a figure in front of hers).
   function drawIdle(c, id, time, cx, by, w, h, step, over, onlyOver = false) {
     if (!img(id)) return false;
-    const held = (im) => {
-      if (!over) return;
+    const im = img(id);
+    if (!onlyOver) drawAsset(c, P, im, cx, by, w, h);
+    if (over) {
       const iw = im.naturalWidth || im.width, ih = im.naturalHeight || im.height;
-      over(c, im.fitBox ? Math.min(h / ih, (w * 1.6) / iw) * (im.bodyScale || 1) : h / ih, im);
-    };
-    if (!extraAnimations) {
-      if (!onlyOver) drawAsset(c, P, img(id), cx, by, w, h);
-      if (over) { c.save(); c.translate(cx, by); held(img(id)); c.restore(); }
-      return true;
+      c.save(); c.translate(cx, by); over(c, im.fitBox ? Math.min(h / ih, (w * 1.6) / iw) * (im.bodyScale || 1) : h / ih, im); c.restore();
     }
-    const pose = idlePose(id, time, { step, amp: filmAmp, w, h });
-    c.save(); c.translate(cx + pose.dx, by + pose.dy); c.rotate(pose.rot); c.scale(1, pose.sy);
-    const im = img(idleId(id, pose.time, step));
-    if (!onlyOver) drawAsset(c, P, im, 0, 0, w, h);
-    held(im);
-    c.restore();
     return true;
   }
 
   function drawAnimation(c, id, time, cx, by, w, h) {
-    if (!extraAnimations) return false;
     const record = assets.anims?.[id];
     if (!record) return false;
     const frame = animationFrame(record.meta, time);
@@ -1220,8 +1195,8 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     // Draw `f` after the frame and footlights (this pass), over everything.
     over(f) { overQueue.push(f); },
     anim(id, time, cx, by, w, h) { return drawAnimation(kit.c, id, time, cx, by, w, h); },
-    // A person's still, flicked with its idle frames when Extra Animations is
-    // on (see idleFrameId); false if the still isn't delivered.
+    // A person's still (with anything held, see drawIdle); false if the
+    // still isn't delivered.
     idle(id, time, cx, by, w, h, step, over, onlyOver) { return drawIdle(kit.c, id, time, cx, by, w, h, step, over, onlyOver); },
     // Draw a delivered image (bottom-centre anchor); false if not delivered.
     asset(id, cx, by, w, h, extra = '') { const im = img(id); if (!im) return false; drawAsset(kit.c, P, im, cx, by, w, h, extra); return true; },

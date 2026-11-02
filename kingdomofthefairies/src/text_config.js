@@ -692,7 +692,6 @@ export const TEXT = {
       effects: 'Effects',
       periodAccompaniment: 'Period accompaniment:',
       filmLook: 'Film look:',
-      extraAnimations: 'Extra Animations:',
       castLook: 'Cast look:',
       mobileCamera: 'Mobile camera:',
       vibration: 'Vibration:',

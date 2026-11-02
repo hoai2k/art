@@ -27,7 +27,13 @@ export const STORAGE_PREFIX = LEGACY ? 'widowsbay' : 'kingdomofthefairies';
 import { WALK_FIT, POSE_FIT } from './sprite-fit.js';
 import { TEXT } from './text_config.js';
 
+// The people's old-film idle frames (<id>-idle-b, -idle-c, and their tinted
+// alternates) belonged to the retired Extra Animations setting: never loaded
+// (publish.sh leaves them out too). The climber's own wall-idle poses stay.
+export const RETIRED_IDLE = /(?<!wall)-idle-[bc](?:-tinted)?$/;
+const dropRetired = (slots) => Object.fromEntries(Object.entries(slots || {}).filter(([id]) => !RETIRED_IDLE.test(id)));
 export function themeManifest(manifest, edition = EDITION) {
+  manifest = { ...manifest, slots: dropRetired(manifest.slots) };
   // The film edition's slots never load in the music-video edition.
   if (edition === 'widowsbay' || edition === true) return { ...manifest, slots: Object.fromEntries(Object.entries(manifest.slots || {}).filter(([, s]) => s.edition !== 'film')) };
   const slots = Object.fromEntries(Object.entries(manifest.slots || {}).filter(([id]) => !id.startsWith('band-')));

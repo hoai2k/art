@@ -150,8 +150,8 @@ const SCENES = [
     end: (st, t) => t >= 7,
   },
   {
-    id: 'extra-animations', act: null, title: 'Extra Animations · everything', max: 12, draw: drawAnimGallery,
-    note: 'Everything Extra Animations adds, side by side, drawn by the game\'s own kit: the jellyfish loop (assets/anims/) and each person\'s old-film idle: film tricks on the still (uneven cranking, a boil every twelfth of a second, a slow sway on the feet, a breath; src/animation.js idlePose), plus the generated frames flicked A, B, A, C once they arrive (requests in design/image-requests.md, C15). Each label says which frames are in. The Film look menu scales the tricks. This page shows them whatever the Extra Animations box says; tick the box to see them in place in the other scenes.',
+    id: 'animations', act: null, title: 'Animation loops', max: 12, draw: drawAnimGallery,
+    note: 'The delivered animation loops (assets/anims/: the Act II jellyfish), drawn by the game\'s own kit.',
     create: () => null,
     input: () => ({}),
     end: (st, t) => t >= 12,
@@ -165,49 +165,27 @@ function drawCurtainCall(k, t) {
   for (let r = 0; r < 3; r++) k.waves(r, t * 40);
 }
 
-// The people with old-film idle frames (design/image-requests.md, C15), and
-// the step each uses in the game (half a beat unless given).
-const IDLE_PEOPLE = [['band-trio'], ['band-beard'], ['reveller-yellow'], ['reveller-shaggy'], ['reveller-jester'],
-  ['reveller-lady'], ['sea-spirit', 0.55], ['witch-stand', 0.5], ['pageant-dancers']];
-// Every Extra Animation in a grid with its id, as the game draws it: the
-// delivered loops (the jellyfish) and each person's idle frames.
+// Every delivered animation loop (the jellyfish) in a grid with its id.
 function drawAnimGallery(k, t) {
-  const c = k.c, loops = Object.keys(assets?.anims || {}).sort();
-  const items = [...loops.map((id) => ({ id, loop: true })), ...IDLE_PEOPLE.filter(([id]) => LEGACY || !id.startsWith('band-')).map(([id, step]) => ({ id, step }))];
+  const c = k.c, items = Object.keys(assets?.anims || {}).sort();
   c.fillStyle = k.col('#16282c'); c.fillRect(0, 0, 1280, 720);
-  const cols = 4, rows = Math.ceil(items.length / cols), x0 = 170, x1 = 1110, y0 = 90, y1 = 622;
-  const cw = (x1 - x0) / cols, ch = (y1 - y0) / rows;
-  items.forEach((it, i) => {
+  const cols = Math.max(1, Math.min(4, items.length)), rows = Math.ceil(items.length / cols), x0 = 170, x1 = 1110, y0 = 90, y1 = 622;
+  const cw = (x1 - x0) / cols, ch = (y1 - y0) / Math.max(1, rows);
+  items.forEach((id, i) => {
     const col = i % cols, row = Math.floor(i / cols);
     const cx = x0 + cw * (col + 0.5), by = y0 + ch * (row + 1) - 30, bw = cw - 18, bh = ch - 46;
-    const label = it.id.replace(/^anim-/, '');
-    let sub;
-    if (it.loop) {
-      const meta = assets.anims[it.id].meta;
-      const time = meta.loop === 'once' ? t % (animationDuration(meta) + 0.8) : t;
-      k.anim(it.id, time, cx, meta.anchor === 'centre' ? by - bh / 2 : by, bw, bh);
-      sub = 'loop';
-    } else {
-      const im = k.img(it.id);
-      if (im) {
-        const s = Math.min(bw / im.width, bh / im.height);
-        k.idle(it.id, t, cx, by, im.width * s, im.height * s, it.step);
-      }
-      const n = ['b', 'c'].filter((f) => k.img(`${it.id}-idle-${f}`)).length;
-      sub = 'film tricks' + (n ? (n === 2 ? ' + frames A B A C' : ' + 1 of 2 frames') : ' only (frames awaited)');
-    }
+    const meta = assets.anims[id].meta;
+    const time = meta.loop === 'once' ? t % (animationDuration(meta) + 0.8) : t;
+    k.anim(id, time, cx, meta.anchor === 'centre' ? by - bh / 2 : by, bw, bh);
     c.fillStyle = k.col('#f1e3c8'); c.font = '600 14px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-    c.fillText(label, cx, by + 16);
-    c.font = '13px "Josefin Sans", sans-serif'; c.globalAlpha = 0.7; c.fillText(sub, cx, by + 32); c.globalAlpha = 1;
+    c.fillText(id.replace(/^anim-/, ''), cx, by + 16);
   });
 }
 
 // ---------------------------------------------------------------- setup
 const canvas = $('#stage');
 const audio = createAudio();
-const ui = { sound: $('#sound'), hud: $('#hud'), loop: $('#loop'), lanterns: $('#lanterns'), film: $('#film'), anims: $('#anims'), scrub: $('#scrub') };
-// The Extra Animations box is remembered between visits (the game's setting is separate).
-try { ui.anims.checked = localStorage.getItem(STORAGE_PREFIX + '.workbench.anims') === '1'; } catch { /* storage is optional */ }
+const ui = { sound: $('#sound'), hud: $('#hud'), loop: $('#loop'), lanterns: $('#lanterns'), film: $('#film'), scrub: $('#scrub') };
 let renderer = null;
 let assets = null;
 let dirty = true;
@@ -246,7 +224,6 @@ function setView() {
   view.t = sim.f * DT;
   view.hud = ui.hud.checked;
   view.film = ui.film.value;
-  view.extraAnimations = ui.anims.checked || d.draw === drawAnimGallery;
   view.curtainCall = d.act || d.draw ? 0 : Math.min(1, view.t / 1.4);
   view.scene = d.act ? null : d.draw || drawCurtainCall;
 }
@@ -372,10 +349,6 @@ sel.addEventListener('change', () => { location.hash = sel.value; });
 ui.sound.addEventListener('change', () => { if (ui.sound.checked) { audio.unlock(); audio.resume(); } });
 ui.hud.addEventListener('change', () => { setView(); dirty = true; });
 ui.film.addEventListener('change', () => { setView(); dirty = true; });
-ui.anims.addEventListener('change', () => {
-  try { localStorage.setItem(STORAGE_PREFIX + '.workbench.anims', ui.anims.checked ? '1' : '0'); } catch { /* storage is optional */ }
-  setView(); dirty = true;
-});
 ui.lanterns.addEventListener('change', () => { const t = sim.f * DT; load(sim.def.id, t); });
 $('#link').addEventListener('click', () => {
   const h = `#${sim.def.id}@${(sim.f * DT).toFixed(1)}`;
