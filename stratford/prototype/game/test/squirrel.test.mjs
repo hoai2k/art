@@ -197,6 +197,133 @@ test('never NaN or stuck under random input', async () => {
   }
 });
 
+// ---- the follow camera (src/creatures/camera.js), headless on the stand-in yard ---------------
+const { createSquirrelCamera } = await import(pathToFileURL(join(GAME, 'src/squirrel/index.js')).href);
+const { sphereHits } = await import(pathToFileURL(join(GAME, 'src/creatures/collide.js')).href);
+const wrapA = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+
+// Run the squirrel with the follow camera as the stick's reference (as in the game) and record
+// every frame: [t, camera position, squirrel position].
+async function follow(spawn, seconds, controlsAt, dt, setup) {
+  const sq = await makeSquirrel(spawn);
+  const camera = new THREE.PerspectiveCamera(55, 16 / 9, 0.02, 500);
+  const cam = createSquirrelCamera({ THREE, camera, squirrel: sq, world });
+  setup?.(cam, sq);
+  cam.update(1 / 60, idle());
+  const fr = [];
+  const n = Math.round(seconds / dt);
+  for (let i = 0; i < n; i++) {
+    const c = { ...idle(), zoom: 0, ...controlsAt(i * dt, i, dt) };
+    sq.update(dt, c, world, camera);
+    cam.update(dt, c);
+    fr.push({ t: (i + 1) * dt, cam: camera.position.clone(), sq: sq.position.clone(), state: sq.state });
+  }
+  return { fr, cam, sq, camera };
+}
+const maxAcc = (fr, dt) => { let m = 0; for (let i = 2; i < fr.length; i++) m = Math.max(m, fr[i].cam.clone().sub(fr[i - 1].cam).sub(fr[i - 1].cam.clone().sub(fr[i - 2].cam)).length() / dt / dt); return m; };
+
+const CAM_RUNS = {
+  straight: [{ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 3, (t) => ({ move: [0, 1], sprint: t > 1 ? 1 : 0 })],
+  turns: [{ x: -15, y: 0, z: 21, yaw: 0 }, 4, (t) => ({ move: [Math.sin(t * 3.2) > 0 ? 0.9 : -0.9, 0.5], sprint: 0.5 })],
+  stopStart: [{ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 4, (t) => ({ move: [0, (t % 1.2) < 0.6 ? 1 : 0] })],
+  jumps: [{ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 4, (t, i, dt) => { const ph = t % 0.9; return { move: [0, 1], jump: ph < 0.45, jumpPressed: ph < dt * 0.999 }; }],
+  climbAndTopOut: [{ x: 4, y: 0, z: -11, yaw: 0 }, 2.8, () => ({ move: [0, 1] })],
+};
+
+test('camera: smooth (bounded frame-to-frame acceleration) at 60 and 144 fps, the same path at any frame rate', async () => {
+  for (const [name, [spawn, secs, ctl]] of Object.entries(CAM_RUNS)) {
+    const runs = {};
+    for (const fps of [30, 60, 144]) {
+      const dt = 1 / fps;
+      runs[fps] = (await follow(spawn, secs, ctl, dt)).fr;
+      if (fps !== 30) {
+        const a = maxAcc(runs[fps], dt);
+        assert.ok(a < 150, `${name} @${fps} fps: camera acceleration peaks at ${a.toFixed(0)} m/s^2 (no pops or jitter)`);
+      }
+    }
+    if (name === 'turns') continue;   // (the squirrel's own camera-relative path differs a little with the frame rate)
+    // the camera's offset from the squirrel at the same moments, 30 / 60 fps vs 144 fps
+    for (const fps of [30, 60]) {
+      let dev = 0;
+      for (const f of runs[fps]) {
+        const g = runs[144].reduce((b, x) => (Math.abs(x.t - f.t) < Math.abs(b.t - f.t) ? x : b));
+        if (Math.abs(g.t - f.t) < 0.004) dev = Math.max(dev, f.cam.clone().sub(f.sq).sub(g.cam.clone().sub(g.sq)).length());
+      }
+      assert.ok(dev < 0.16, `${name}: camera offset at ${fps} fps within ${dev.toFixed(3)} m of 144 fps`);
+    }
+  }
+});
+
+test('camera: never inside geometry and never on top of the squirrel (yard runs, climbing, walls)', async () => {
+  const runs = [...Object.values(CAM_RUNS),
+    [{ x: 4, y: 0, z: -11, yaw: 0 }, 5, (t) => ({ move: [t < 2.5 ? 0 : 1, 1] })],               // climb, then along the roof
+    [{ x: -4, y: 0, z: -12.5, yaw: Math.PI }, 3, (t, i, dt) => ({ move: [0, 0.6], look: [t < 1.5 ? 1.8 * dt : 0, 0] })],   // orbit with the glass wall behind
+  ];
+  for (const [spawn, secs, ctl] of runs) {
+    const { fr, cam, sq } = await follow(spawn, secs, ctl, 1 / 60);
+    const probe = sq.tuning.camProbe;
+    for (const f of fr) {
+      assert.ok(!sphereHits(world, f.cam, probe * 0.45), `camera clear of geometry at t=${f.t.toFixed(2)} (${f.cam.toArray().map((v) => v.toFixed(2))})`);
+      assert.ok(f.cam.distanceTo(f.sq) > 0.3, `camera not on top of the squirrel at t=${f.t.toFixed(2)}`);
+    }
+    // the building's and the glass wall's insides
+    for (const f of fr) {
+      const p = f.cam;
+      assert.ok(!(p.x > 2.02 && p.x < 5.98 && p.z < -14.02 && p.z > -17.98 && p.y < 2.98), 'camera not inside the brick building');
+      assert.ok(!(p.x > -6 && p.x < -2 && p.z < -14 && p.z > -14.4 && p.y < 3), 'camera not inside the glass wall');
+    }
+    assert.equal(cam.debug.cuts, 0, 'no cuts');
+  }
+});
+
+test('camera: the player\'s pitch is kept while running, turning and climbing', async () => {
+  const set = -0.25;   // stick up for a moment: tilts the view up by 0.25 rad from the default
+  const { cam, sq } = await follow({ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 4.5, (t, i, dt) => (t < 0.25 ? { look: [0, 1.0 * dt] } : { move: [Math.sin(t) * 0.6, 1], sprint: t > 2 ? 1 : 0 }), 1 / 60);
+  const want = sq.tuning.camPitch + set;
+  assert.ok(Math.abs(cam.pitch - want) < 0.02, `pitch kept at the player's ${want.toFixed(2)} (now ${cam.pitch.toFixed(3)})`);
+  assert.ok(Math.abs(cam.debug.pitch - cam.pitch) < 0.03, `shown pitch ${cam.debug.pitch.toFixed(3)} = the player's on open ground`);
+  // climbing a wall keeps it too
+  const r2 = await follow({ x: 4, y: 0, z: -11, yaw: 0 }, 1.6, () => ({ move: [0, 1] }), 1 / 60, (c) => { c.pitch = 0.5; });
+  assert.equal(r2.sq.state, 'climb');
+  assert.ok(Math.abs(r2.cam.pitch - 0.5) < 1e-9 && Math.abs(r2.cam.debug.pitch - 0.5) < 0.05, `pitch on the wall ${r2.cam.debug.pitch.toFixed(3)}`);
+});
+
+test('camera: zoom (LB / RB, wheel, Z / X) changes the distance smoothly within its range', async () => {
+  const T = (await makeSquirrel({ x: 0, y: 0, z: 0 })).tuning;
+  const near = T.camDistance, far = T.camDistance * T.camZoomFar;
+  // hold LB (zoom further) 2 s while standing in the open
+  const out = await follow({ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 3.5, (t, i, dt) => ({ zoom: t < 2 ? 0.7 * dt : 0 }), 1 / 60);
+  assert.equal(out.cam.zoom, 1, 'zoomed all the way out');
+  assert.ok(out.cam.debug.free > far * 0.9 && out.cam.debug.free < far * 1.05, `far follow at ${out.cam.debug.free.toFixed(2)} m (range ${near.toFixed(2)} .. ${far.toFixed(2)} m)`);
+  assert.ok(maxAcc(out.fr, 1 / 60) < 150, 'smoothly');
+  // then hold RB (closer) from there
+  const back = await follow({ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 3.5, (t, i, dt) => ({ zoom: t < 2 ? -0.7 * dt : 0 }), 1 / 60, (c) => { c.zoom = 1; c.snapBehind(); });
+  assert.equal(back.cam.zoom, 0);
+  assert.ok(Math.abs(back.cam.debug.free - near) < 0.05, `back to the standard ${near.toFixed(2)} m (${back.cam.debug.free.toFixed(2)})`);
+});
+
+test('camera: an R3 / C tap turns it behind the squirrel and keeps the pitch; the stick is never fought', async () => {
+  // orbit 90 degrees round a squirrel standing still, let go, then tap recenter
+  let yawAfterOrbit = null;
+  const { cam, sq } = await follow({ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 2.2, (t, i, dt) => {
+    if (t < 0.6) return { look: [(Math.PI / 2) / 0.6 * dt, 0] };
+    if (Math.abs(t - 1.2) < dt / 2) return { recenter: true };
+    return {};
+  }, 1 / 60, (c) => { c.pitch = 0.45; });
+  const behind = Math.atan2(-sq.controller.fwd.x, -sq.controller.fwd.z);
+  assert.ok(Math.abs(wrapA(cam.yaw - behind)) < 0.03, `behind the squirrel after recenter (off by ${wrapA(cam.yaw - behind).toFixed(3)} rad)`);
+  assert.ok(Math.abs(cam.pitch - 0.45) < 1e-9, 'kept the pitch');
+  // while the stick turns the camera during a run, auto-follow doesn't pull against it
+  const rates = [];
+  const r = await follow({ x: -14, y: 0, z: 18, yaw: -Math.PI / 2 }, 2.5, (t, i, dt) => ({ move: [0, 1], look: [t > 1 && t < 2 ? 1.2 * dt : 0, 0] }), 1 / 60, (c) => {
+    const u = c.update; let prev = null;
+    c.update = (dt, ctl) => { u(dt, ctl); if (ctl.look[0]) { if (prev !== null) rates.push(wrapA(prev - c.yaw) / dt); prev = c.yaw; } };
+  });
+  void r; void yawAfterOrbit;
+  const off = Math.max(...rates.map((x) => Math.abs(x - 1.2)));
+  assert.ok(off < 0.02, `stick turns the camera at exactly its rate (max deviation ${off.toFixed(4)} rad/s)`);
+});
+
 // ------------------------------------------------------------------------------------------------
 test('bench page loads, draws the squirrel and follows a simulated gamepad', { timeout: 120000 }, async () => {
   const { launch, serve } = await import(pathToFileURL(join(GAME, '../../../shared/test/lib.mjs')).href);

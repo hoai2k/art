@@ -209,6 +209,21 @@ async function run(browser, base, label, query) {
   await page.setViewportSize({ width: 1280, height: 720 });
   await wait(800);
 
+  // ---- camera zoom: LB further, RB closer (held), saved in the settings --------------------------
+  const camDist = () => G(() => window.stratford.camera.position.distanceTo(window.stratford.creature.position));
+  const d0 = await camDist();
+  await btn(4, 1);
+  check(await until(() => window.stratford.settings.zoom >= 0.99, null, 90000), 'holding LB zooms the camera out to the far follow');
+  await btn(4, 0);
+  check(await until((d0) => window.stratford.camera.position.distanceTo(window.stratford.creature.position) > d0 * 2.5, d0, 90000), `the camera eases out (from ${d0.toFixed(2)} m to ${(await camDist()).toFixed(2)} m)`);
+  check(await until(() => JSON.parse(localStorage.getItem('stratford.settings') || '{}').zoom > 0.9, null, 30000), 'the zoom is saved in the settings');
+  check(await G(() => [...document.querySelectorAll('#hint-strip b')].some((b) => b.textContent === 'LB RB')), 'the controls strip shows LB RB: Zoom');
+  await shot('06b-zoomed-out');
+  await btn(5, 1);
+  check(await until(() => window.stratford.settings.zoom === 0, null, 90000), 'holding RB zooms back in');
+  await btn(5, 0);
+  check(await until((d0) => window.stratford.camera.position.distanceTo(window.stratford.creature.position) < d0 * 1.4, d0, 90000), `the camera comes back in (${(await camDist()).toFixed(2)} m)`);
+
   // ---- pause, map, settings -----------------------------------------------------------------------
   await wait(500);
   check(await press(9, () => window.stratford.ui.modals.includes('pause') && window.stratford.state.paused), 'Menu pauses');

@@ -15,6 +15,11 @@ export const DEAD_MOVE = 0.18;
 export const DEAD_LOOK = 0.14;
 export const LOOK_RATE = 2.6; // radians a second at full stick, sensitivity 1
 export const MOUSE_RATE = 0.0022; // radians a pixel, sensitivity 1
+// Camera zoom, in zoom units (0 = the standard close follow .. 1 = the far follow; see
+// src/creatures/camera.js): held LB / RB or Z / X sweep the whole range in about 1.4 s, a mouse
+// wheel notch (100 px) moves an eighth of it.
+export const ZOOM_RATE = 0.7;
+export const WHEEL_RATE = 0.00125;
 
 // Radial dead zone with the live range rescaled to 0..1.
 export function stick(x, y, dead = DEAD_MOVE) {
@@ -28,12 +33,13 @@ export const KEYS = {
   forward: 'KeyW', back: 'KeyS', left: 'KeyA', right: 'KeyD',
   lookUp: 'ArrowUp', lookDown: 'ArrowDown', lookLeft: 'ArrowLeft', lookRight: 'ArrowRight',
   jump: 'Space', sprint: ['ShiftLeft', 'ShiftRight'], sit: 'KeyE', dig: 'KeyF', recenter: 'KeyC',
+  zoomOut: 'KeyZ', zoomIn: 'KeyX',
   map: ['KeyM', 'Tab'], pause: ['Escape', 'KeyP'],
 };
 
 const zeroControls = () => ({
   move: [0, 0], look: [0, 0], jump: false, jumpPressed: false, sprint: 0,
-  sitPressed: false, digPressed: false, recenter: false,
+  sitPressed: false, digPressed: false, recenter: false, zoom: 0,
 });
 export { zeroControls };
 
@@ -47,7 +53,7 @@ export function createInput(opts = {}) {
   const pressed = new Set(); // fresh this frame
   const pads = new Map(); // index -> { gp, prev, now, axes, held:Set }
   const handlers = { kind: [], padlost: [], padfound: [], lock: [] };
-  const mouse = { dx: 0, dy: 0 };
+  const mouse = { dx: 0, dy: 0, wheel: 0 };
   const touch = { move: [0, 0], look: [0, 0], jump: false, jumpPressed: false, sit: false, dig: false, sprint: 0, active: false };
   let kind = 'keyboard';
   let lockEl = null;
@@ -70,6 +76,11 @@ export function createInput(opts = {}) {
     if (isLocked()) { mouse.dx += e.movementX || 0; mouse.dy += e.movementY || 0; setKind('pointer'); }
   });
   target.addEventListener('pointerdown', (e) => setKind(e.pointerType === 'touch' ? 'touch' : 'pointer'));
+  // The wheel zooms the follow camera during play (the map has its own wheel handler on its view).
+  target.addEventListener('wheel', (e) => {
+    const px = (e.deltaY || 0) * (e.deltaMode === 1 ? 33 : e.deltaMode === 2 ? 400 : 1);
+    mouse.wheel += px;
+  }, { passive: true });
   doc?.addEventListener?.('pointerlockchange', () => emit('lock', isLocked()));
 
   const padFresh = (p, b) => !p.held.has(b) && p.now[b] > 0.5 && !(p.prev[b] > 0.5);
@@ -118,7 +129,7 @@ export function createInput(opts = {}) {
         }
       }
     },
-    endFrame() { pressed.clear(); mouse.dx = mouse.dy = 0; touch.jumpPressed = false; },
+    endFrame() { pressed.clear(); mouse.dx = mouse.dy = mouse.wheel = 0; touch.jumpPressed = false; },
     // Whatever is held now is stale until released (after a screen change).
     lockHeld() {
       for (const p of pads.values()) p.now.forEach((v, i) => v > 0.5 && p.held.add(i));
@@ -187,7 +198,9 @@ export function createInput(opts = {}) {
       let sprint = anyKey(KEYS.sprint) ? 1 : 0;
       let jump = keys.has(KEYS.jump); let jumpPressed = pressed.has(KEYS.jump);
       let sit = pressed.has(KEYS.sit); let dig = pressed.has(KEYS.dig);
-      let recenter = keys.has(KEYS.recenter);
+      let recenter = pressed.has(KEYS.recenter);
+      // Zoom: Z further, X closer (held), the wheel (down = further).
+      let zoom = (k(KEYS.zoomOut) - k(KEYS.zoomIn)) * ZOOM_RATE * dt + mouse.wheel * WHEEL_RATE;
       // Camera from the arrow keys and the mouse.
       const sens = settings.camSens ?? 1;
       let lookX = (k(KEYS.lookRight) - k(KEYS.lookLeft)) * 0.8 * LOOK_RATE * dt * sens;
@@ -209,7 +222,8 @@ export function createInput(opts = {}) {
         if (padFresh(p, BTN.A)) jumpPressed = true;
         if (padFresh(p, BTN.X)) sit = true;
         if (padFresh(p, BTN.Y)) dig = true;
-        if (padDown(p, BTN.RS)) recenter = true;
+        if (padFresh(p, BTN.RS)) recenter = true;          // R3 click: camera behind
+        zoom += ((padDown(p, BTN.LB) ? 1 : 0) - (padDown(p, BTN.RB) ? 1 : 0)) * ZOOM_RATE * dt;   // LB further, RB closer
       }
       if (touch.active) {
         if (Math.hypot(touch.move[0], touch.move[1]) > bestMag) { mx = touch.move[0]; my = touch.move[1]; }
@@ -227,7 +241,7 @@ export function createInput(opts = {}) {
       c.move = [mx, my];
       c.look = [lookX, lookY];
       c.jump = jump; c.jumpPressed = jumpPressed; c.sprint = Math.min(1, sprint);
-      c.sitPressed = sit; c.digPressed = dig; c.recenter = recenter;
+      c.sitPressed = sit; c.digPressed = dig; c.recenter = recenter; c.zoom = zoom;
       return c;
     },
 

@@ -127,23 +127,63 @@ hind feet back going down head-first; swimming paddles.
 
 ## Camera (`src/creatures/camera.js`)
 
-Low follow at 0.75 m (`3 × scale`), look point 12 cm up, right-stick orbit, auto-swing behind
-the heading when moving, recenter (R-stick click / C), pull-back and FOV 55° → 63° with speed;
-while climbing it keeps world-up and swings out to face the wall. Near plane `0.08 × scale`.
-Collision: the look-at point must be in the open and seen straight from the squirrel's body (the
-smoothed, lagging point could otherwise cut through a roof corner); the camera is a 5.5 cm
-sphere (`camProbe`, well over the near plane's half-diagonal) swept from there to where it wants
-to be through `world.collidersNear`, stopping at the first touch: it pulls in at once and eases
-back out. It applies `controls.look` as given (`pitch -= look[1]`); invert-Y is the input
-layer's setting.
+A normal follow camera, every length from the creature's tuning (multiples of `scale`):
+standard distance 0.85 m (`3.4 x scale`), look-at point 15 cm up, default pitch 0.32 rad (18 deg,
+sees ahead over curbs), near plane `0.08 x scale`, collision sphere 5.5 cm (`camProbe`).
+
+- **Follow:** the look-at point rides critically damped springs, integrated exactly for a target
+  moving through the frame, so 30, 60 and 144 fps give the same path. 85% of the creature's
+  velocity is fed forward, so it trails a sprint by about 0.2 m (a plain spring trails by 1.4 m). In
+  the air it follows only a third of the rise, so leaps don't bob the view.
+- **Yaw:** the right stick turns it directly, and auto-follow never pulls against it. When the
+  stick is let go, a gentle swing behind the heading fades in over about a second. It doesn't
+  swing round when running toward the camera. On a wall it turns to face the wall from outside.
+- **Pitch:** the player's. Set with the right stick, it is kept while running, turning and
+  climbing. Terrain (the real ground under the camera, curbs and paving included) and obstacles
+  (a wall or roof edge between it and the squirrel) bend it up for a while. It then returns.
+- **Recenter** (R3 click / C): turns behind the squirrel and keeps the player's pitch. That
+  keeps a chosen view; the default pitch comes back with a new game or reset settings.
+- **Zoom** (hold LB further, RB closer; mouse wheel; hold Z / X): 0 = the standard 0.85 m ..
+  1 = far, 5x (4.25 m), smoothed, saved as `settings.zoom`. `controls.zoom` is the change per
+  frame (ARCHITECTURE.md).
+- **Collision:** a sphere is swept from the look-at point toward the wanted spot. It starts thin
+  (a third of the probe) and widens over 25 cm, so a curb beside the squirrel doesn't count. Thin
+  things are ignored: props (lamp posts, benches, parked cars), branches, fences. When something
+  comes between, it first looks over the top (pitch bend), then pulls in on a fast spring (a few
+  frames, no snap) and eases back out slowly. The camera itself never ends inside or touching
+  geometry. Each move is checked from its last position, and only a short glitch, like going over
+  a roof edge after a fall, may pass a thin surface between two frames. If it's hidden from the
+  squirrel for over 0.35 s it cuts to a clear spot. The view direction comes from yaw and pitch,
+  not `lookAt`, so it is stable when pulled right in. Closer than 3.5 body radii, the squirrel is
+  hidden rather than clipped by the near plane.
+
+**What was buggy** (measured with `tools/squirrel/review/camera-trace.mjs`, plotted with
+`camera-plot.py`):
+- Landing after a leap snapped the view: acceleration peaks of 196 to 475 m/s^2, from separate
+  vertical smoothing rates in the air and on the ground.
+- Topping out pulled the camera to 1.5 cm from the squirrel and back (1,339 to 7,322 m/s^2). It was
+  clamped at once to the first hit of a sweep from the lagging look-at point, and that point was
+  snapped about whenever it touched something.
+- Orbiting near props in the town brought it to 4 mm from the squirrel, and `lookAt` then spun the
+  view at up to 409 rad/s.
+- Running past props popped the distance at up to 19 m/s (7,500 m/s^2).
+- Auto-follow pulled the pitch back to the default (0.29 rad of drift with no input).
+- `snapBehind` didn't settle the springs.
+- Lag depended on the frame rate (up to 0.24 m at 30 fps).
 
 ## Checks
+## Checks
 
-- `node --test stratford/prototype/game/test/squirrel.test.mjs` (13 tests: registry/contract,
+- `node --test stratford/prototype/game/test/squirrel.test.mjs` (18 tests, including the camera:
+  smooth at 60 and 144 fps and the same path at 30, never inside geometry, the player's pitch
+  kept, zoom range, recenter, the stick never fought; earlier ones: registry/contract,
   ground, speeds, turning, leap height/distance, curb, brick wall + roof top-out, glass wall,
   trunk up and down, sit/dig/swim, random-input NaN soak, bench page with a simulated gamepad,
   and climbing real downtown buildings with the body and the camera never inside one; that one
   needs `game/data/town.json` and takes about 3 minutes).
+- Camera traces: `node stratford/prototype/tools/squirrel/review/camera-trace.mjs <out.json> [town]`
+  (scripted runs at 30 / 60 / 144 fps; `GAME_DIR=<copy>` measures another build), then
+  `python3 .../review/camera-plot.py <before.json> <after.json> <out.png>`.
 - Climb probe: `node stratford/prototype/tools/squirrel/review/climb-probe.mjs [count] [skip]`
   climbs the nearest `count` brick, stone and wood buildings from the spawn in five scripted
   ways and prints every frame where the squirrel or the camera is inside a building

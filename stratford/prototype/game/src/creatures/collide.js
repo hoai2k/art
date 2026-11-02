@@ -71,6 +71,20 @@ function isIdentity(m) {
   return e[0] === 1 && e[5] === 1 && e[10] === 1 && e[12] === 0 && e[13] === 0 && e[14] === 0 && e[1] === 0 && e[2] === 0 && e[4] === 0 && e[6] === 0 && e[8] === 0 && e[9] === 0;
 }
 
+// First hit along a ray that isn't one of the `ignore` surfaces (steps past ignored hits).
+export function raycastSolid(world, origin, dir, far, ignore = null) {
+  let o = origin.clone(), left = far, travelled = 0;
+  for (let k = 0; k < 8; k++) {
+    const h = raycast(world, o, dir, left);
+    if (!h) return null;
+    if (!ignore || !ignore.has(h.surface)) { h.distance += travelled; return h; }
+    const step = h.distance + 1e-3;
+    o = o.addScaledVector(dir, step); left -= step; travelled += step;
+    if (left <= 0) return null;
+  }
+  return null;
+}
+
 // Is the straight path a -> b free of geometry (nothing hit before b, less `pad`)?
 export function pathClear(world, a, b, pad = 0.002) {
   _w.subVectors(b, a);
@@ -81,8 +95,9 @@ export function pathClear(world, a, b, pad = 0.002) {
   return !hit || hit.distance >= L - pad;
 }
 
-// Does a sphere overlap any collider triangle?
-export function sphereHits(world, center, r) {
+// Does a sphere overlap any collider triangle? `ignore` (optional): a Set of SURFACE ids to pass
+// through (the camera ignores thin props).
+export function sphereHits(world, center, r, ignore = null) {
   _box.setFromCenterAndSize(center, _v.set(2 * r, 2 * r, 2 * r));
   for (const m of collidersNear(world, _box)) {
     const bvh = m.geometry.boundsTree;
@@ -94,7 +109,11 @@ export function sphereHits(world, center, r) {
     let hit = false;
     bvh.shapecast({
       intersectsBounds: (box) => box.intersectsSphere(_sph),
-      intersectsTriangle: (tri) => { if (tri.closestPointToPoint(_c, _p1).distanceToSquared(_c) < r * r) { hit = true; return true; } return false; },
+      intersectsTriangle: (tri, ti) => {
+        if (ignore && ignore.has(surfaceOf(m, ti))) return false;
+        if (tri.closestPointToPoint(_c, _p1).distanceToSquared(_c) < r * r) { hit = true; return true; }
+        return false;
+      },
     });
     if (hit) return true;
   }
@@ -102,17 +121,20 @@ export function sphereHits(world, center, r) {
 }
 
 // Sweep a sphere from `from` toward `to`; returns the fraction (0..1) of the way it can travel
-// before touching geometry (1 = free). `from` itself is assumed free.
-export function sweepSphere(world, from, to, r) {
+// before touching geometry (1 = free). `from` itself is assumed free. With `r0` / `ramp`, the
+// radius starts at r0 and grows to r over the first `ramp` metres (a camera ray starting at a
+// look-at point close to the ground or a curb).
+export function sweepSphere(world, from, to, r, ignore = null, r0 = r, ramp = 0) {
   const L = from.distanceTo(to);
   if (L < 1e-6) return 1;
-  const steps = Math.max(1, Math.ceil(L / (r * 0.5)));
+  const rad = (t) => (ramp > 0 ? Math.min(r, r0 + (r - r0) * (t * L) / ramp) : r);
+  const steps = Math.max(1, Math.ceil(L / (Math.min(r, Math.max(r0, 1e-4)) * 0.5)));
   let lo = 0;
   for (let i = 1; i <= steps; i++) {
     const t = i / steps;
-    if (sphereHits(world, _p2.lerpVectors(from, to, t), r)) {
+    if (sphereHits(world, _p2.lerpVectors(from, to, t), rad(t), ignore)) {
       let hi = t;
-      for (let k = 0; k < 5; k++) { const m = (lo + hi) / 2; if (sphereHits(world, _p2.lerpVectors(from, to, m), r)) hi = m; else lo = m; }
+      for (let k = 0; k < 6; k++) { const m = (lo + hi) / 2; if (sphereHits(world, _p2.lerpVectors(from, to, m), rad(m), ignore)) hi = m; else lo = m; }
       return lo;
     }
     lo = t;

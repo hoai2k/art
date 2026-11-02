@@ -79,6 +79,7 @@ export const SETTINGS_VERSION = 2;
 export const DEFAULT_SETTINGS = {
   version: SETTINGS_VERSION, changed: [],
   camSens: 1, invertY: false, coat: 'grey', quality: 'medium', volume: 0.8, rumble: true, hints: true, sound: true,
+  zoom: 0, // follow-camera zoom, 0 (standard, close) .. 1 (far); set in play with LB / RB, the wheel or Z / X
 };
 
 export function sanitizeSettings(raw) {
@@ -87,6 +88,7 @@ export function sanitizeSettings(raw) {
   const version = Number.isInteger(raw.version) ? raw.version : 1;
   if (Array.isArray(raw.changed)) s.changed = [...new Set(raw.changed.filter((k) => typeof k === 'string' && k in DEFAULT_SETTINGS))];
   if (Number.isFinite(raw.camSens)) s.camSens = Math.min(2.5, Math.max(0.2, raw.camSens));
+  if (Number.isFinite(raw.zoom)) s.zoom = Math.min(1, Math.max(0, raw.zoom));
   // Version 1's invertY was the old default (or a choice we cannot tell apart from it): drop it.
   if (typeof raw.invertY === 'boolean' && version >= 2) s.invertY = raw.invertY;
   if (raw.coat === 'grey' || raw.coat === 'black') s.coat = raw.coat;

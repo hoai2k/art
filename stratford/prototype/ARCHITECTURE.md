@@ -175,13 +175,18 @@ cam.update(dt, controls)
 
 ```js
 { move: [x, y],      // left stick, -1..1, y up = forward (away from camera)
-  look: [x, y],      // right stick / mouse delta (already scaled), radians-ish per frame
+  look: [x, y],      // right stick / mouse delta (already scaled), radians per frame; x > 0
+                     // turns right, y > 0 tilts the view up (invert-Y is applied in input.js)
   jump: bool,        // held
   jumpPressed: bool, // fresh press this frame
   sprint: 0..1,      // right trigger (analog) or Shift
   sitPressed: bool,  // X / E: sit up and look around (eat when holding a nut)
   digPressed: bool,  // Y / F: dig (find or bury a nut)
-  recenter: bool }   // right stick click / C: camera behind the squirrel
+  recenter: bool,    // fresh press of the right stick click / C: camera behind the creature
+  zoom: number }     // follow-camera zoom change this frame, in zoom units (the camera's range
+                     // is 0 = standard close follow .. 1 = far follow, T.camZoomFar x further);
+                     // > 0 = further: held LB / Z (+0.7/s), held RB / X (-0.7/s), mouse wheel
+                     // (+0.125 a notch down). The camera clamps it; its `zoom` is a saved setting.
 ```
 
 ## Controls (Xbox first)
@@ -195,6 +200,7 @@ cam.update(dt, controls)
 | Sit up, look around / eat | X | E |
 | Dig: find or bury a nut | Y | F |
 | Camera behind | Right stick click | C |
+| Camera zoom: further / closer (saved) | Hold LB / hold RB | Mouse wheel, or hold Z / X |
 | Map and journal | View | M or Tab |
 | Pause | Menu | Escape or P |
 

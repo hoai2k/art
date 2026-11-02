@@ -5,7 +5,7 @@ import { defaultSave, sanitizeSave, loadSave, writeSave, SAVE_KEY, SAVE_VERSION,
 import { placeNuts, nutWithin, SURFACE_IDS } from '../src/game/nuts.js';
 import { newDiscoveries } from '../src/game/discover.js';
 import { createExploration } from '../src/game/exploration.js';
-import { createInput, stick, BTN } from '../src/input.js';
+import { createInput, stick, BTN, ZOOM_RATE, WHEEL_RATE } from '../src/input.js';
 
 const memory = (init = {}) => {
   const m = new Map(Object.entries(init));
@@ -216,6 +216,54 @@ test('input: a fake gamepad moves, jumps, sprints and digs with fresh presses', 
   c = input.controls(1 / 60);
   assert.equal(c.jumpPressed, false); assert.equal(c.jump, true); assert.equal(c.digPressed, false);
   assert.equal(input.kind, 'controller');
+});
+
+test('settings: the camera zoom is kept, clamped to 0..1', () => {
+  assert.equal(sanitizeSettings(null).zoom, 0);
+  assert.equal(sanitizeSettings({ version: 2, zoom: 0.4 }).zoom, 0.4);
+  assert.equal(sanitizeSettings({ version: 2, zoom: 7 }).zoom, 1);
+  assert.equal(sanitizeSettings({ version: 2, zoom: -1 }).zoom, 0);
+  assert.equal(sanitizeSettings({ version: 2, zoom: 'far' }).zoom, 0);
+  const st = memory();
+  writeSettings({ ...sanitizeSettings(null), zoom: 0.65 }, st);
+  assert.equal(loadSettings(st).zoom, 0.65);
+});
+
+test('input: camera zoom from LB / RB (held), Z / X and the wheel; R3 and C recenter on a fresh press', () => {
+  const { input, pads, key, target } = rig();
+  assert.equal(input.controls(1 / 60).zoom, 0, 'no zoom by default');
+  const pad = fakePad(); pads[0] = pad; input.poll();
+  pad.buttons[BTN.LB] = { pressed: true, value: 1 }; input.poll();
+  assert.ok(Math.abs(input.controls(0.1).zoom - ZOOM_RATE * 0.1) < 1e-9, 'LB held: further');
+  pad.buttons[BTN.LB] = { pressed: false, value: 0 }; pad.buttons[BTN.RB] = { pressed: true, value: 1 }; input.poll();
+  assert.ok(Math.abs(input.controls(0.1).zoom + ZOOM_RATE * 0.1) < 1e-9, 'RB held: closer');
+  pad.buttons[BTN.RB] = { pressed: false, value: 0 }; input.poll();
+  // the right stick stays orbit + pitch, whatever the bumpers do
+  pad.axes = [0, 0, 1, -1]; pad.buttons[BTN.LB] = { pressed: true, value: 1 }; input.poll();
+  const c = input.controls(0.1);
+  assert.ok(c.look[0] > 0 && c.look[1] > 0 && c.zoom > 0, 'stick orbits and pitches while LB zooms');
+  pad.axes = [0, 0, 0, 0]; pad.buttons[BTN.LB] = { pressed: false, value: 0 }; input.poll();
+  // R3: one recenter per click, not every frame it's held
+  pad.buttons[BTN.RS] = { pressed: true, value: 1 }; input.poll();
+  assert.equal(input.controls(1 / 60).recenter, true);
+  input.endFrame(); input.poll();
+  assert.equal(input.controls(1 / 60).recenter, false, 'held R3 is not a new recenter');
+  pad.buttons[BTN.RS] = { pressed: false, value: 0 }; input.poll(); input.endFrame();
+  // keyboard: Z further, X closer, C recenters once
+  key('keydown', 'KeyZ');
+  assert.ok(input.controls(0.1).zoom > 0, 'Z: further');
+  key('keyup', 'KeyZ'); key('keydown', 'KeyX');
+  assert.ok(input.controls(0.1).zoom < 0, 'X: closer');
+  key('keyup', 'KeyX'); input.endFrame();
+  key('keydown', 'KeyC');
+  assert.equal(input.controls(1 / 60).recenter, true); input.endFrame();
+  assert.equal(input.controls(1 / 60).recenter, false, 'held C is not a new recenter');
+  key('keyup', 'KeyC');
+  // the wheel: down = further, and it is used once
+  const w = new Event('wheel'); w.deltaY = 100; w.deltaMode = 0; target.dispatchEvent(w);
+  assert.ok(Math.abs(input.controls(1 / 60).zoom - 100 * WHEEL_RATE) < 1e-9, 'a wheel notch down: further');
+  input.endFrame();
+  assert.equal(input.controls(1 / 60).zoom, 0, 'the wheel is used once');
 });
 
 test('input: a button held when the pad appears is ignored until released; lockHeld', () => {

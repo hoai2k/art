@@ -49,13 +49,16 @@ export function squirrelTuning(scale = 0.25) {
     digTime: 1.8,
     // simulation
     maxStep: 1 / 120,
-    // camera
-    camDistance: 3.0 * scale,        // 0.75 m behind
-    camHeight: 0.5 * scale,          // look-at point above the feet
-    camPitch: 0.2,                   // rad, default elevation
+    // camera (src/creatures/camera.js)
+    camDistance: 3.4 * scale,        // 0.85 m behind at the standard (closest) zoom
+    camZoomFar: 5,                   // far zoom: 5x further (4.25 m)
+    camHeight: 0.6 * scale,          // look-at point 15 cm above the feet
+    camPitch: 0.32,                  // rad (18 deg) default elevation: sees ahead over curbs
+    camPitchMin: -0.3, camPitchMax: 1.25,
+    camFollow: 11,                   // look-at spring (rad/s, critically damped)
     camNear: 0.08 * scale,
-    camFov: 55, camFovSprint: 63,
-    camPullBack: 0.35,               // extra distance at top speed (fraction)
+    camFov: 55, camFovSprint: 62,
+    camPullBack: 0.3,                // extra distance at top speed (fraction)
     camProbe: 0.22 * scale,          // camera collision sphere (5.5 cm; well over the near plane's half-diagonal)
   };
 }

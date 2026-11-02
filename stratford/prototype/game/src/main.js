@@ -28,6 +28,7 @@ const STEP = 1 / 30; // the rules run on a fixed step
 
 const settings = loadSettings();
 const state = {
+  zoomSave: 0, // s until the changed camera zoom is written to the settings
   paused: false, pauseReason: '', transitioning: false, expectUnlock: false,
   heading: 0, time: 0, acc: 0, idle: 0, stride: 0, climbTick: 0, lastFrame: 0, size: '',
 };
@@ -114,7 +115,8 @@ function attachCreature(c) {
   scene.add(c.object);
   setProjection(c);
   try { c.setCoat?.(settings.coat); } catch { /* fine */ }
-  camCtl = c.__makeCam({ THREE, camera, creature: c, squirrel: c, world });
+  camCtl = c.__makeCam({ THREE, camera, creature: c, squirrel: c, world, zoom: settings.zoom });
+  if ('zoom' in camCtl) camCtl.zoom = settings.zoom;
   const on = (e, fn) => { try { c.on?.(e, fn); } catch { /* optional */ } };
   on('jump', () => audio.play('jump'));
   on('land', (e) => {
@@ -416,6 +418,11 @@ function playFrame(dt) {
   if (!state.transitioning) {
     creature.update(dt, controls, world, camera);
     camCtl.update(dt, controls);
+    // the follow camera's zoom is a setting: keep it, written once the player stops zooming
+    if (Number.isFinite(camCtl.zoom) && Math.abs(camCtl.zoom - settings.zoom) > 1e-4) {
+      settings.zoom = camCtl.zoom; state.zoomSave = 0.6;
+      if (!settings.changed.includes('zoom')) settings.changed.push('zoom');
+    } else if (state.zoomSave > 0 && (state.zoomSave -= dt) <= 0) writeSettings(settings);
     state.acc += dt;
     let n = 0;
     while (state.acc >= STEP && n++ < 4) {
@@ -593,7 +600,7 @@ async function boot() {
   window.stratford = {
     state, settings, input, audio, hud, map, menus, ui: menus.ui,
     get world() { return world; }, get creature() { return creature; }, get exploration() { return exploration; },
-    get camera() { return camera; }, start, pause, teleport, openMap,
+    get camera() { return camera; }, get camCtl() { return camCtl; }, start, pause, teleport, openMap,
   };
   requestAnimationFrame(frame);
 }

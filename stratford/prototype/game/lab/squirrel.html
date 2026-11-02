@@ -26,13 +26,14 @@
   <div class="row"><span>speed</span><b id="spd">-</b></div>
   <div class="row"><span>height</span><b id="hgt">-</b></div>
   <div class="row"><span>input</span><b id="inp">-</b></div>
+  <div class="row"><span>camera</span><b id="camd">-</b></div>
   <label><input type="checkbox" id="skel"> skeleton</label>
   <label><input type="checkbox" id="slow"> slow motion (¼)</label>
   <label><input type="checkbox" id="fur" checked> fur shells</label>
   <button id="coat">coat: black</button>
   <button id="respawn">respawn</button>
 </div>
-<div id="help">Stick / WASD move · A / Space jump (hold to leap) · RT / Shift run · X / E sit · Y / F dig · right stick / mouse / arrows camera · R-click / C behind</div>
+<div id="help">Stick / WASD move · A / Space jump (hold to leap) · RT / Shift run · X / E sit · Y / F dig · right stick / mouse / arrows camera · R-click / C behind · LB RB / wheel / Z X zoom</div>
 <script type="module">
 import * as THREE from 'three';
 import { createStandInWorld } from '../src/stand-in-world.js';
@@ -68,7 +69,8 @@ const keys = new Set();
 addEventListener('keydown', (e) => { keys.add(e.code); if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.code)) e.preventDefault(); });
 addEventListener('keyup', (e) => keys.delete(e.code));
 addEventListener('blur', () => keys.clear());
-let mouse = [0, 0];
+let mouse = [0, 0], wheel = 0;
+addEventListener('wheel', (e) => { wheel += (e.deltaY || 0) * (e.deltaMode === 1 ? 33 : 1); }, { passive: true });
 renderer.domElement.addEventListener('click', () => { if (!qs.has('test')) renderer.domElement.requestPointerLock?.(); });
 addEventListener('mousemove', (e) => { if (document.pointerLockElement) { mouse[0] += e.movementX * 0.0025; mouse[1] += e.movementY * 0.0025; } });
 const prev = {};
@@ -76,12 +78,13 @@ let lastInput = 'keyboard';
 function readControls(dt) {
   const pad = [...(navigator.getGamepads?.() || [])].find((p) => p && p.connected);
   const dz = (v, d = 0.15) => (Math.abs(v) < d ? 0 : (v - Math.sign(v) * d) / (1 - d));
-  let mx = 0, my = 0, lx = 0, ly = 0, jump = false, sprint = 0, sit = false, dig = false, rec = false;
+  let mx = 0, my = 0, lx = 0, ly = 0, jump = false, sprint = 0, sit = false, dig = false, rec = false, zoom = 0;
   if (pad) {
     const b = (i) => !!pad.buttons[i]?.pressed;
     mx = dz(pad.axes[0] || 0); my = -dz(pad.axes[1] || 0);
     lx = dz(pad.axes[2] || 0) * 2.6 * dt; ly = dz(pad.axes[3] || 0) * 1.8 * dt;
     jump = b(0); sit = b(2); dig = b(3); rec = b(11);
+    zoom += ((b(4) ? 1 : 0) - (b(5) ? 1 : 0)) * 0.7 * dt;     // LB further, RB closer (as src/input.js)
     sprint = pad.buttons[7]?.value || 0;
     if (mx || my || lx || ly || jump || sprint) lastInput = 'controller';
   }
@@ -92,10 +95,11 @@ function readControls(dt) {
   ly += ((k('ArrowDown') ? 1 : 0) - (k('ArrowUp') ? 1 : 0)) * 1.5 * dt + mouse[1];
   mouse = [0, 0];
   jump ||= k('Space'); sit ||= k('KeyE'); dig ||= k('KeyF'); rec ||= k('KeyC');
+  zoom += ((k('KeyZ') ? 1 : 0) - (k('KeyX') ? 1 : 0)) * 0.7 * dt + wheel * 0.00125; wheel = 0;
   if (k('ShiftLeft') || k('ShiftRight')) sprint = 1;
   // Same direction as the game's default (src/input.js): stick, arrow or mouse up looks up.
   ly = -ly;
-  const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec };
+  const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec, zoom };
   prev.jump = jump; prev.sit = sit; prev.dig = dig; prev.rec = rec;
   return c;
 }
@@ -124,6 +128,7 @@ function frame(now) {
     $('st').textContent = squirrel.state; $('gait').textContent = squirrel.gait;
     $('spd').textContent = squirrel.velocity.length().toFixed(2) + ' m/s'; $('hgt').textContent = squirrel.position.y.toFixed(2) + ' m';
     $('inp').textContent = lastInput;
+    if (cam.debug) $('camd').textContent = `${cam.debug.free.toFixed(2)} m, zoom ${cam.zoom.toFixed(2)}`;
   }
   renderer.render(world.scene, camera);
   lab.frames++;
