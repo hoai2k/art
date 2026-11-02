@@ -1,0 +1,399 @@
+{
+ "version": 1,
+ "creature": "beaver",
+ "built": "2026-11-02",
+ "paint": "sheet",
+ "vertexCount": 7001,
+ "indexCount": 41994,
+ "attributes": {
+  "position": {
+   "offset": 0,
+   "itemSize": 3,
+   "type": "f32",
+   "normalized": false
+  },
+  "normal": {
+   "offset": 84012,
+   "itemSize": 4,
+   "type": "i8",
+   "normalized": true
+  },
+  "skinIndex": {
+   "offset": 112016,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": false
+  },
+  "skinWeight": {
+   "offset": 140020,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "colorNatural": {
+   "offset": 168024,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "fur": {
+   "offset": 196028,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "furDir": {
+   "offset": 224032,
+   "itemSize": 4,
+   "type": "i8",
+   "normalized": true
+  }
+ },
+ "index": {
+  "offset": 252036,
+  "type": "u16"
+ },
+ "bones": [
+  {
+   "name": "root",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "pelvis",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.3,
+    -0.24
+   ]
+  },
+  {
+   "name": "spine1",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.38,
+    -0.08
+   ]
+  },
+  {
+   "name": "spine2",
+   "parent": 2,
+   "pos": [
+    0.0,
+    0.36,
+    0.1
+   ]
+  },
+  {
+   "name": "neck",
+   "parent": 3,
+   "pos": [
+    0.0,
+    0.36,
+    0.2
+   ]
+  },
+  {
+   "name": "head",
+   "parent": 4,
+   "pos": [
+    0.0,
+    0.4,
+    0.28
+   ]
+  },
+  {
+   "name": "jaw",
+   "parent": 5,
+   "pos": [
+    0.0,
+    0.31,
+    0.33
+   ]
+  },
+  {
+   "name": "ear_L",
+   "parent": 5,
+   "pos": [
+    0.085,
+    0.485,
+    0.23
+   ]
+  },
+  {
+   "name": "scap_L",
+   "parent": 3,
+   "pos": [
+    0.105,
+    0.32,
+    0.14
+   ]
+  },
+  {
+   "name": "uarm_L",
+   "parent": 8,
+   "pos": [
+    0.12,
+    0.22,
+    0.17
+   ]
+  },
+  {
+   "name": "farm_L",
+   "parent": 9,
+   "pos": [
+    0.125,
+    0.12,
+    0.18
+   ]
+  },
+  {
+   "name": "hand_L",
+   "parent": 10,
+   "pos": [
+    0.125,
+    0.026,
+    0.2
+   ]
+  },
+  {
+   "name": "fing_L",
+   "parent": 11,
+   "pos": [
+    0.125,
+    0.012,
+    0.23
+   ]
+  },
+  {
+   "name": "thigh_L",
+   "parent": 1,
+   "pos": [
+    0.14,
+    0.28,
+    -0.22
+   ]
+  },
+  {
+   "name": "shin_L",
+   "parent": 13,
+   "pos": [
+    0.155,
+    0.14,
+    -0.12
+   ]
+  },
+  {
+   "name": "foot_L",
+   "parent": 14,
+   "pos": [
+    0.165,
+    0.03,
+    -0.24
+   ]
+  },
+  {
+   "name": "toes_L",
+   "parent": 15,
+   "pos": [
+    0.17,
+    0.015,
+    -0.12
+   ]
+  },
+  {
+   "name": "ear_R",
+   "parent": 5,
+   "pos": [
+    -0.085,
+    0.485,
+    0.23
+   ]
+  },
+  {
+   "name": "scap_R",
+   "parent": 3,
+   "pos": [
+    -0.105,
+    0.32,
+    0.14
+   ]
+  },
+  {
+   "name": "uarm_R",
+   "parent": 18,
+   "pos": [
+    -0.12,
+    0.22,
+    0.17
+   ]
+  },
+  {
+   "name": "farm_R",
+   "parent": 19,
+   "pos": [
+    -0.125,
+    0.12,
+    0.18
+   ]
+  },
+  {
+   "name": "hand_R",
+   "parent": 20,
+   "pos": [
+    -0.125,
+    0.026,
+    0.2
+   ]
+  },
+  {
+   "name": "fing_R",
+   "parent": 21,
+   "pos": [
+    -0.125,
+    0.012,
+    0.23
+   ]
+  },
+  {
+   "name": "thigh_R",
+   "parent": 1,
+   "pos": [
+    -0.14,
+    0.28,
+    -0.22
+   ]
+  },
+  {
+   "name": "shin_R",
+   "parent": 23,
+   "pos": [
+    -0.155,
+    0.14,
+    -0.12
+   ]
+  },
+  {
+   "name": "foot_R",
+   "parent": 24,
+   "pos": [
+    -0.165,
+    0.03,
+    -0.24
+   ]
+  },
+  {
+   "name": "toes_R",
+   "parent": 25,
+   "pos": [
+    -0.17,
+    0.015,
+    -0.12
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.055,
+    -0.39
+   ]
+  },
+  {
+   "name": "tail1",
+   "parent": 27,
+   "pos": [
+    0.0,
+    0.055,
+    -0.445
+   ]
+  },
+  {
+   "name": "tail2",
+   "parent": 28,
+   "pos": [
+    0.0,
+    0.055,
+    -0.5
+   ]
+  },
+  {
+   "name": "tail3",
+   "parent": 29,
+   "pos": [
+    0.0,
+    0.055,
+    -0.555
+   ]
+  }
+ ],
+ "ends": {
+  "fing_L": [
+   0.125,
+   0.006,
+   0.26
+  ],
+  "toes_L": [
+   0.185,
+   0.008,
+   -0.04
+  ],
+  "head": [
+   0.0,
+   0.42,
+   0.405
+  ]
+ },
+ "coats": [
+  "natural"
+ ],
+ "eyes": {
+  "bone": "head",
+  "pos": [
+   0.096,
+   0.455,
+   0.29
+  ],
+  "r": 0.0105,
+  "out": [
+   1,
+   0.35,
+   0.25
+  ]
+ },
+ "fur": {
+  "max": 0.007140180007987519
+ },
+ "tail": {
+  "n": 4,
+  "length": 0.22
+ },
+ "bounds": {
+  "min": [
+   -0.29980000853538513,
+   -0.0010000000474974513,
+   -0.6389999985694885
+  ],
+  "max": [
+   0.29989999532699585,
+   0.5900999903678894,
+   0.42579999566078186
+  ]
+ },
+ "whiskers": {
+  "pos": [
+   0.035,
+   0.39,
+   0.385
+  ],
+  "length": 0.09,
+  "color": 1906452
+ }
+}

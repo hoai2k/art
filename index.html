@@ -65,6 +65,12 @@
     box-shadow: 0 18px 28px rgba(0, 0, 0, 0.55);
   }
   .game:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  /* The controller's selection (the script at the end of the page). */
+  .game.pad-selected {
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: 0 0 0 4px var(--accent), 0 0 28px 6px rgba(242, 181, 68, 0.45), 0 18px 28px rgba(0, 0, 0, 0.55);
+    outline: none;
+  }
 
   .cover {
     position: relative;
@@ -163,22 +169,19 @@
     <h1>art <span>games</span></h1>
   </header>
 
-  <!-- The art games, moved here from mini. Newest game first by when the
-       game was made, except that Fibre Art sits after Kingdom of the Fairies
-       at the owner's request. A new game's card goes at the top. A game
+  <!-- The art games, moved here from mini, in the order the owner chose:
+       Kingdom of the Fairies, Bronze Drum, Fibre Art, The Ice-Cream Cone
+       Coot. A new game's card goes at the top unless the owner says otherwise. A game
        switched off in deploy_config.json is not published and its card is
        left out of the published copy of this page. -->
   <section class="shelf" aria-label="Games">
 
 
-    <a class="game icecreamcone" href="icecreamcone/">
-      <div class="cover">
-        <span class="tag">Friends</span>
-        <img src="icecreamcone/assets/ui/logo.png" alt="The Ice-Cream Cone Coot and Other Rare Birds">
-      </div>
+    <a class="game kingdomofthefairies" href="kingdomofthefairies/">
+      <div class="cover" role="img" aria-label="Kingdom of the Fairies title card"></div>
       <div class="info">
-        <h2>The Ice-Cream Cone Coot</h2>
-        <p>A field guide of rare birds from Arnold Lobel's book, each one a household object. Stack scoops, pour tea, snap pictures and more, and set new world records.</p>
+        <h2>Kingdom of the Fairies</h2>
+        <p>A hand-tinted toy-theatre voyage inspired by Georges Méliès’s 1903 silent film.</p>
         <span class="play">Play →</span>
       </div>
     </a>
@@ -195,15 +198,6 @@
       </div>
     </a>
 
-    <a class="game kingdomofthefairies" href="kingdomofthefairies/">
-      <div class="cover" role="img" aria-label="Kingdom of the Fairies title card"></div>
-      <div class="info">
-        <h2>Kingdom of the Fairies</h2>
-        <p>A hand-tinted toy-theatre voyage inspired by Georges Méliès’s 1903 silent film.</p>
-        <span class="play">Play →</span>
-      </div>
-    </a>
-
     <a class="game fibreart" href="fibreart/">
       <div class="cover">
         <img src="fibreart/web/ui/logo.webp" alt="Fibre Art">
@@ -212,6 +206,18 @@
         <h2>Fibre Art</h2>
         <p>A shifting collage of quilts, tapestries and paintings. Every stick and button moves something in the picture, some a little and some a lot: find the big ones, set them up, and carry the picture somewhere new. One to four players.</p>
         <span class="pad-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 6h10a5 5 0 0 1 4.9 6l-1 4.6a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.8 1.8a2.6 2.6 0 0 1-4.5-1.2l-1-4.6A5 5 0 0 1 7 6zm0 3v1.5H5.5v1.5H7v1.5h1.5V12H10v-1.5H8.5V9H7zm9.5.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>Controller recommended</span>
+        <span class="play">Play →</span>
+      </div>
+    </a>
+
+    <a class="game icecreamcone" href="icecreamcone/">
+      <div class="cover">
+        <span class="tag">Friends</span>
+        <img src="icecreamcone/assets/ui/logo.png" alt="The Ice-Cream Cone Coot and Other Rare Birds">
+      </div>
+      <div class="info">
+        <h2>The Ice-Cream Cone Coot</h2>
+        <p>A field guide of rare birds from Arnold Lobel's book, each one a household object. Stack scoops, pour tea, snap pictures and more, and set new world records.</p>
         <span class="play">Play →</span>
       </div>
     </a>
@@ -225,5 +231,110 @@
     Source on <a href="https://github.com/hoai2k/art">GitHub</a>.
   </footer>
 </main>
+<script>
+// Controller navigation. Any button on any controller shows a selection on a
+// card; the d-pad or left stick moves it to the nearest card in that
+// direction (by the cards' positions on screen, so it follows whatever the
+// grid wraps to), and A or START opens the selected game. Using the mouse or
+// a touch hides the selection again until the next button press.
+(function () {
+  if (!navigator.getGamepads) return;
+  var A = 0, START = 9, UP = 12, DOWN = 13, LEFT = 14, RIGHT = 15;
+  var DELAY = 380, REPEAT = 160, DEAD = 0.5;
+  var prev = {};            // pad index -> array of pressed flags last frame
+  var held = {};            // pad index -> { dir, next } for d-pad/stick repeat
+  var selected = null, last = null, running = false;
+
+  function cards() { return Array.prototype.slice.call(document.querySelectorAll('.shelf .game')); }
+
+  function select(card) {
+    if (selected) selected.classList.remove('pad-selected');
+    selected = card;
+    if (!card) return;
+    last = card;
+    card.classList.add('pad-selected');
+    card.focus({ preventScroll: true });
+    card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  function centre(el) {
+    var r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  // The nearest card whose centre lies in direction (dx, dy) from the
+  // selected one, favouring cards in line with it over diagonal ones.
+  function move(dx, dy) {
+    var list = cards();
+    if (!list.length) return;
+    if (!selected || list.indexOf(selected) < 0) { select(list[0]); return; }
+    var from = centre(selected), best = null, bestScore = Infinity;
+    list.forEach(function (c) {
+      if (c === selected) return;
+      // Only cards wholly past the selected card's centre count, so a card
+      // beside it (or the lift of the selected card) is never "below" it.
+      var r = c.getBoundingClientRect();
+      if (dx > 0 ? r.left <= from.x : dx < 0 ? r.right >= from.x : dy > 0 ? r.top <= from.y : r.bottom >= from.y) return;
+      var to = centre(c), vx = to.x - from.x, vy = to.y - from.y;
+      var along = vx * dx + vy * dy, across = Math.abs(vx * dy - vy * dx);
+      var score = along + across * 2;
+      if (score < bestScore) { bestScore = score; best = c; }
+    });
+    if (best) select(best);
+  }
+
+  function direction(pad) {
+    var b = pad.buttons, ax = pad.axes;
+    function on(i) { return b[i] && b[i].pressed; }
+    var x = ax[0] || 0, y = ax[1] || 0;
+    if (on(UP)) return 'up';
+    if (on(DOWN)) return 'down';
+    if (on(LEFT)) return 'left';
+    if (on(RIGHT)) return 'right';
+    if (Math.max(Math.abs(x), Math.abs(y)) < DEAD) return null;
+    return Math.abs(x) > Math.abs(y) ? (x < 0 ? 'left' : 'right') : (y < 0 ? 'up' : 'down');
+  }
+  var STEP = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+
+  function frame(now) {
+    var pads = navigator.getGamepads(), any = false;
+    for (var i = 0; i < pads.length; i++) {
+      var pad = pads[i];
+      if (!pad || !pad.connected) continue;
+      any = true;
+      var pressed = pad.buttons.map(function (b) { return b.pressed; });
+      var was = prev[pad.index];
+      prev[pad.index] = pressed;
+      // A button already down when the pad is first seen (say, the A that
+      // was pressed in a game before coming back here) counts as held.
+      if (!was) { held[pad.index] = { dir: direction(pad), next: Infinity }; continue; }
+      var fresh = pressed.map(function (p, k) { return p && !was[k]; });
+      var dir = direction(pad), h = held[pad.index] || (held[pad.index] = { dir: null, next: 0 });
+      if (!selected) {
+        if (fresh.indexOf(true) >= 0 || (dir && dir !== h.dir)) {
+          var list = cards();
+          select(list.indexOf(last) >= 0 ? last : list[0] || null);
+          h.dir = dir; h.next = now + DELAY;
+        } else if (!dir) h.dir = null;
+        continue;
+      }
+      if (fresh[A] || fresh[START]) { location.href = selected.href; continue; }
+      if (dir && dir !== h.dir) { move(STEP[dir][0], STEP[dir][1]); h.next = now + DELAY; }
+      else if (dir && now >= h.next) { move(STEP[dir][0], STEP[dir][1]); h.next = now + REPEAT; }
+      h.dir = dir;
+    }
+    if (any) requestAnimationFrame(frame); else running = false;
+  }
+
+  function start() { if (!running) { running = true; requestAnimationFrame(frame); } }
+  window.addEventListener('gamepadconnected', start);
+  // Coming back from a game (the back/forward cache): the pads are still
+  // connected but no new event fires, and old button states are stale.
+  window.addEventListener('pageshow', function () { prev = {}; held = {}; select(null); start(); });
+  window.addEventListener('pointerdown', function () { select(null); });
+  window.addEventListener('mousemove', function (e) { if (selected && (e.movementX || e.movementY)) select(null); });
+  start();
+})();
+</script>
 </body>
 </html>

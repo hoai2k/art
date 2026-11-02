@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#2a1d14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Stratford Squirrel">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="web/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="web/icons/icon-180.png">
+  <title>Stratford Squirrel</title>
+  <meta name="description" content="Run, leap and climb as an eastern grey squirrel through downtown Stratford, Ontario: find the landmarks, gather and bury nuts. A prototype for Xbox controller, keyboard and mouse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Nunito+Sans:wght@400;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./lib/three.module.min.js",
+      "three/addons/": "./lib/addons/",
+      "three-mesh-bvh": "./lib/three-mesh-bvh.module.js"
+    }
+  }
+  </script>
+  <!-- Visit counting (GoatCounter: no cookies, no identifiers), read by games.hoai.net/stats/. -->
+  <script>window.goatcounter = { path: function () { return location.pathname; } };</script>
+  <script data-goatcounter="https://hoai.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="gl" aria-hidden="true"></canvas>
+
+    <section id="loading" class="screen">
+      <div class="loading-card">
+        <p class="loading-title" aria-hidden="true">Stratford Squirrel</p>
+        <div class="leaf-bar" role="progressbar" aria-label="Loading the town" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="leaf-fill"></span></div>
+        <p class="loading-text" id="loading-text" aria-live="polite">Raking the leaves&hellip;</p>
+      </div>
+    </section>
+
+    <section id="title" class="screen" hidden aria-labelledby="logo-text">
+      <div class="title-block">
+        <div class="logo" id="logo">
+          <img id="logo-img" class="logo-img" alt="" hidden>
+          <div id="logo-art" class="logo-art" aria-hidden="true">
+            <svg class="logo-squirrel" viewBox="0 0 150 120">
+              <path d="M44 100C14 92 4 58 26 38c14-12 34-6 38 8 3 11-8 14-4 24 3 7 14 6 20-3 3 18-8 38-36 33z" fill="#8c8b88" stroke="#2b1a10" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M26 38c4-6 12-9 20-7M18 60c0-8 4-16 9-21" fill="none" stroke="#e9e5dc" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+              <ellipse cx="86" cy="86" rx="30" ry="21" fill="#7b7a77" stroke="#2b1a10" stroke-width="3"/>
+              <path d="M70 100c10 6 32 5 40-8-6 4-14 8-40 8z" fill="#f1e8d6"/>
+              <circle cx="116" cy="62" r="14" fill="#8c8b88" stroke="#2b1a10" stroke-width="3"/>
+              <path d="M110 52l-2-12 9 7z" fill="#8c8b88" stroke="#2b1a10" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="121" cy="60" r="2.4" fill="#1b0f08"/>
+              <circle cx="128" cy="67" r="2.2" fill="#2b1a10"/>
+              <ellipse cx="108" cy="82" rx="7" ry="5" fill="#8c8b88" stroke="#2b1a10" stroke-width="3"/>
+              <ellipse cx="127" cy="80" rx="7" ry="7" fill="#c07a2c" stroke="#2b1a10" stroke-width="2.5"/>
+              <path d="M121 76c2-6 11-6 13 0z" fill="#6b4423" stroke="#2b1a10" stroke-width="2"/>
+              <path d="M70 106l-8 8h18M96 104l4 10h12" fill="none" stroke="#2b1a10" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="logo-line l1">Stratford</span>
+            <span class="logo-line l2">Squirrel</span>
+            <svg class="leaf lf1" viewBox="0 0 24 24"><path d="M12 2l2 5 5-2-2 5 5 2-5 2 2 5-5-2-2 5-2-5-5 2 2-5-5-2 5-2-2-5 5 2z" fill="#b3261e" stroke="#4b1410" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            <svg class="leaf lf2" viewBox="0 0 24 24"><path d="M12 2l2 5 5-2-2 5 5 2-5 2 2 5-5-2-2 5-2-5-5 2 2-5-5-2 5-2-2-5 5 2z" fill="#d9822b" stroke="#5a2a0a" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            <svg class="leaf lf3" viewBox="0 0 24 24"><path d="M12 2l2 5 5-2-2 5 5 2-5 2 2 5-5-2-2 5-2-5-5 2 2-5-5-2 5-2-2-5 5 2z" fill="#c9a227" stroke="#4d3b05" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          </div>
+          <h1 id="logo-text" class="visually-hidden">Stratford Squirrel</h1>
+        </div>
+        <button id="press-start" class="press-start" data-nav data-action="start">Press Start</button>
+        <p id="pad-note" class="pad-note" hidden>Xbox controller recommended</p>
+        <p id="nav-hint" class="nav-hint" hidden>Move left stick for options</p>
+      </div>
+      <div class="corner-buttons" role="group" aria-label="Game options">
+        <button class="pic-btn" data-nav data-open="instructions" aria-label="Instructions" title="Instructions">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h10l4 4v14H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M8 12h8M8 16h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="btn-label">Instructions</span>
+        </button>
+        <button class="pic-btn" data-nav data-open="settings" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></svg>
+          <span class="btn-label">Settings</span>
+        </button>
+        <button class="pic-btn sound-btn" id="sound-btn" data-nav data-action="sound" aria-pressed="true" aria-label="Sound on" title="Sound on">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="waves" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/><path class="cross" d="M16 9l6 6M22 9l-6 6"/></g></svg>
+          <span class="btn-label">Sound on</span>
+        </button>
+        <button class="pic-btn" data-nav data-action="fullscreen" aria-label="Fullscreen" title="Fullscreen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="btn-label">Fullscreen</span>
+        </button>
+      </div>
+    </section>
+
+    <div id="hud" hidden>
+      <div class="hud-top-left" aria-live="off">
+        <div class="chip" id="chip-nuts" title="Nuts found"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c-4 0-6-4-6-8 0-3 2-5 6-5s6 2 6 5c0 4-2 8-6 8z" fill="#c4883f" stroke="#3a2210" stroke-width="1.5"/><path d="M6 12c0-3 2-5 6-5s6 2 6 5z" fill="#6b4423" stroke="#3a2210" stroke-width="1.5"/><path d="M12 7V4" stroke="#3a2210" stroke-width="1.8" stroke-linecap="round"/></svg><span><b id="hud-nuts">0</b><small id="hud-nuts-total"> / 0</small></span><span class="carry" id="hud-carry" hidden></span></div>
+        <div class="chip" id="chip-lm" title="Landmarks found"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z" fill="#b3261e" stroke="#4b1410" stroke-width="1.5"/><circle cx="12" cy="10" r="2.6" fill="#f4e8cf"/></svg><span><b id="hud-lm">0</b><small id="hud-lm-total"> / 0</small></span></div>
+      </div>
+      <canvas id="compass" class="compass" width="440" height="56" role="img" aria-label="Compass"></canvas>
+      <button class="hud-pause pic-btn" data-action="pause" aria-label="Pause" title="Pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>
+      <!-- Everything said during play sits here, under the squirrel. -->
+      <div class="bottom-stack" id="bottom-stack">
+        <div id="discovery" class="discovery" role="status" aria-live="polite" hidden>
+          <svg class="d-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z" fill="#b3261e" stroke="#4b1410" stroke-width="1.4"/><circle cx="12" cy="10" r="2.6" fill="#f4e8cf"/></svg>
+          <div><div class="d-head"><h3 id="d-name"></h3><p class="d-kicker">Discovered</p></div><p id="d-blurb"></p></div>
+        </div>
+        <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+        <p id="ctx-hint" class="ctx-hint" aria-live="polite" hidden></p>
+        <div id="hint-strip" class="hint-strip" aria-hidden="true"></div>
+      </div>
+      <div id="touch" class="touch" hidden>
+        <div class="stick-zone" id="touch-move"><i></i></div>
+        <div class="touch-btns">
+          <button data-touch="sprint" aria-label="Run">Run</button>
+          <button data-touch="dig" aria-label="Dig">Dig</button>
+          <button data-touch="sit" aria-label="Sit up">Sit</button>
+          <button data-touch="jump" class="big" aria-label="Jump">Jump</button>
+          <button data-action="map" aria-label="Map and journal">Map</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="pause" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="pause-title">
+      <div class="panel narrow">
+        <h2 id="pause-title">Paused</h2>
+        <p id="pause-reason" class="muted"></p>
+        <div class="menu-list">
+          <button class="menu-btn primary" data-nav data-action="resume">Resume</button>
+          <button class="menu-btn" data-nav data-action="map">Map &amp; journal</button>
+          <button class="menu-btn" data-nav data-open="instructions">Instructions</button>
+          <button class="menu-btn" data-nav data-open="settings">Settings</button>
+          <button class="menu-btn" data-nav data-open="creatures">Creature&hellip;</button>
+          <button class="menu-btn" data-nav data-action="quit-title">Quit to title</button>
+        </div>
+        <p class="pause-stats" id="pause-stats"></p>
+      </div>
+    </section>
+
+    <section id="instructions" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="ins-title">
+      <div class="panel wide">
+        <h2 id="ins-title">Instructions</h2>
+        <div class="scroll" id="ins-scroll" tabindex="0">
+          <p class="lead">You are an eastern grey squirrel in downtown Stratford, Ontario, in mid-October. Run, leap and climb through Market Square, along the Avon River and around the theatres. There is nothing to lose and no clock.</p>
+          <h3>What to do</h3>
+          <ul class="bullets">
+            <li><b>Find the landmarks.</b> Run up to a famous place for the first time and it is written into your journal.</li>
+            <li><b>Gather nuts.</b> Acorns under oaks, walnuts and conkers under other trees, and a few hidden on roofs, up trees and in planters. Run over one to pick it up.</li>
+            <li><b>Bury and dig.</b> Press Dig to bury a nut you carry where you stand. Press it again on the spot to dig it up. Buried nuts are kept.</li>
+            <li><b>Climb.</b> Brick, stone and wooden walls, tree trunks, branches and fences can be gripped. Glass, metal and stucco cannot. Swimming is possible, but squirrels do not love it.</li>
+          </ul>
+          <div class="pad-diagram">
+            <svg viewBox="0 0 880 340" role="img" aria-label="Xbox controller: left stick moves, right stick moves the camera and clicking it puts the camera behind you, LB zooms the camera out and RB zooms it in, left trigger is superspeed, A jumps, X sits up, Y digs, right trigger runs, View opens the map, Menu pauses">
+              <g transform="translate(120 12)">
+              <path d="M200 95 Q350 62 500 95 Q585 105 618 215 Q638 300 574 300 Q530 300 498 248 L202 248 Q170 300 126 300 Q62 300 82 215 Q115 105 200 95 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+              <rect x="150" y="36" width="64" height="22" rx="7" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="182" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">LT</text>
+              <rect x="486" y="36" width="64" height="22" rx="7" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="518" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">RT</text>
+              <rect x="158" y="64" width="76" height="20" rx="8" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="196" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">LB</text>
+              <rect x="466" y="64" width="76" height="20" rx="8" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.6"/><text x="504" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">RB</text>
+              <circle cx="205" cy="150" r="25" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="2.6"/><text x="205" y="154" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">L</text>
+              <circle cx="425" cy="212" r="25" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="2.6"/><text x="425" y="216" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">R</text>
+              <path d="M262 205h17v-17h17v17h17v17h-17v17h-17v-17h-17z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="500" cy="122" r="16" fill="#e8b830"/><text x="500" y="128" text-anchor="middle" font-size="15" font-weight="800" fill="#1b1430">Y</text>
+              <circle cx="468" cy="152" r="16" fill="#3d7bd9"/><text x="468" y="158" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">X</text>
+              <circle cx="532" cy="152" r="16" fill="#d9443d"/><text x="532" y="158" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">B</text>
+              <circle cx="500" cy="182" r="16" fill="#4caf50"/><text x="500" y="188" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">A</text>
+              <rect x="322" y="136" width="18" height="11" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="360" y="136" width="18" height="11" rx="4" fill="currentColor"/>
+              <g stroke="currentColor" stroke-width="1.3" fill="none">
+                <path d="M180 150H50"/><path d="M425 237v50"/><path d="M262 232l-30 70"/>
+                <path d="M516 118l96-28"/><path d="M548 152h64"/><path d="M516 186l96 26"/><path d="M452 148l-16-44"/>
+                <path d="M331 136V24h-30"/><path d="M369 136V24h30"/><path d="M550 40l30-20"/>
+                <path d="M160 68l-46-14"/><path d="M540 68l72-14"/><path d="M150 44l-4-10"/>
+              </g>
+              <g font-size="14" font-weight="700" fill="currentColor" stroke="#fbf3df" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
+                <text x="44" y="146" text-anchor="end">Left stick: move</text>
+                <text x="425" y="304" text-anchor="middle">Right stick: camera</text>
+                <text x="425" y="322" text-anchor="middle" font-size="12" font-weight="600">(click it: camera behind you)</text>
+                <text x="226" y="318" text-anchor="end" font-size="13">D-pad: menus</text>
+                <text x="620" y="88">Y: dig or bury</text>
+                <text x="620" y="157">B: back</text>
+                <text x="620" y="217">A: jump / grab on</text>
+                <text x="430" y="98" text-anchor="end">X: sit up / eat</text>
+                <text x="295" y="28" text-anchor="end">View: map</text>
+                <text x="405" y="28">Menu: pause</text>
+                <text x="586" y="22">RT: run faster</text>
+                <text x="108" y="58" text-anchor="end">LB: zoom out</text>
+                <text x="144" y="30" text-anchor="end">LT: superspeed</text>
+                <text x="618" y="58">RB: zoom in</text>
+              </g>
+              </g>
+            </svg>
+          </div>
+          <table class="map-table">
+            <thead><tr><th scope="col">Action</th><th scope="col">Xbox controller</th><th scope="col">Keyboard and mouse</th></tr></thead>
+            <tbody>
+              <tr><td>Move</td><td>Left stick</td><td>W A S D</td></tr>
+              <tr><td>Camera</td><td>Right stick</td><td>Mouse (click the game to capture it), or arrow keys</td></tr>
+              <tr><td>Jump (hold for a longer leap; beside a wall or trunk: grab on)</td><td><span class="xb xb-a">A</span></td><td>Space</td></tr>
+              <tr><td>Run faster</td><td>Right trigger (RT)</td><td>Shift</td></tr>
+              <tr><td>Sit up and look around; eat a carried nut</td><td><span class="xb xb-x">X</span></td><td>E</td></tr>
+              <tr><td>Dig: bury a carried nut, or find one</td><td><span class="xb xb-y">Y</span></td><td>F</td></tr>
+              <tr><td>Camera behind you</td><td>Right stick click</td><td>C</td></tr>
+              <tr><td>Camera zoom: further / closer (kept for next time)</td><td>Hold LB / hold RB</td><td>Mouse wheel; or hold Z / X</td></tr>
+              <tr><td>Superspeed: up to ten times faster, for crossing town (a debugging aid)</td><td>Left trigger (LT), held</td><td>Q, held</td></tr>
+              <tr><td>Fly (swan, heron): take off, climb</td><td><span class="xb xb-a">A</span> (the swan: hold it while running); steer with the left stick, RT faster, let go of A to glide down</td><td>Space; Shift faster</td></tr>
+              <tr><td>Dive and surface (beaver)</td><td><span class="xb xb-a">A</span> in the water</td><td>Space in the water</td></tr>
+              <tr><td>Choose a creature</td><td>Menu &rarr; Creature&hellip;</td><td>Esc &rarr; Creature&hellip;</td></tr>
+              <tr><td>Map and journal</td><td>View</td><td>M or Tab</td></tr>
+              <tr><td>Pause</td><td>Menu</td><td>Esc or P</td></tr>
+              <tr><td>Menus</td><td>D-pad or left stick, <span class="xb xb-a">A</span> select, <span class="xb xb-b">B</span> back</td><td>Arrows, Enter, Esc; or the mouse</td></tr>
+              <tr><td>Map: pan and zoom</td><td>Left stick pans; right stick up/down, LB and RB zoom; A centres on you</td><td>Drag and wheel; arrows, + and -; Enter centres</td></tr>
+            </tbody>
+          </table>
+          <p>On a touch screen, the left half of the screen is a stick, the right half turns the camera, and the buttons do the rest.</p>
+          <h3>Credits</h3>
+          <p class="credits">A prototype by Hoai Nguyen, made with Claude Code and three.js. Map, buildings, roads, water and trees are drawn from <b>&copy; OpenStreetMap contributors</b> (<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>) and Ontario / Canada open data, under the Open Government Licence &ndash; Ontario. <span id="credits-attr"></span></p>
+        </div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="settings" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="set-title">
+      <div class="panel">
+        <h2 id="set-title">Settings</h2>
+        <div class="scroll settings-list">
+          <div class="row choice-row"><span id="lbl-creature">Creature</span><button type="button" class="choice" data-nav data-open="creatures" id="creature-current" aria-describedby="lbl-creature">Black squirrel</button></div>
+          <label class="row">Camera sensitivity <input type="range" min="20" max="250" step="10" data-nav data-setting="camSens"><output></output></label>
+          <label class="row check">Invert camera Y <input type="checkbox" data-nav data-setting="invertY"></label>
+          <div class="row choice-row"><span id="lbl-coat">Squirrel coat</span><button type="button" class="choice" data-nav data-setting="coat" data-choices="grey|black" aria-labelledby="lbl-coat"></button></div>
+          <div class="row choice-row"><span id="lbl-quality">Graphics quality</span><button type="button" class="choice" data-nav data-setting="quality" data-choices="low|medium|high" aria-labelledby="lbl-quality"></button></div>
+          <label class="row">Volume <input type="range" min="0" max="100" step="5" data-nav data-setting="volume"><output></output></label>
+          <label class="row check">Rumble (controller vibration) <input type="checkbox" data-nav data-setting="rumble"></label>
+          <label class="row check">Show controller hints <input type="checkbox" data-nav data-setting="hints"></label>
+          <p class="settings-note" id="quality-note" hidden>Graphics quality takes full effect the next time the page loads.</p>
+          <button class="menu-btn danger" data-nav data-action="reset-progress">Reset progress&hellip;</button>
+        </div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="creatures" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="cr-title">
+      <div class="panel wide">
+        <h2 id="cr-title">Choose a creature</h2>
+        <p class="muted">Explore Stratford as any of them. Landmarks you find are shared; nuts are a squirrel thing.</p>
+        <div class="creature-grid" id="creature-grid"></div>
+        <button class="close-x" data-nav data-action="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <section id="confirm" class="screen modal" hidden role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+      <div class="panel narrow">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="menu-list row-buttons">
+          <button class="menu-btn primary" data-nav data-action="confirm-no" id="confirm-no">Cancel</button>
+          <button class="menu-btn danger" data-nav data-action="confirm-yes" id="confirm-yes">Yes</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="screen modal" hidden role="dialog" aria-modal="true" aria-labelledby="map-title">
+      <div class="panel map-panel">
+        <h2 id="map-title" class="visually-hidden">Map and journal</h2>
+        <div class="map-view" id="map-view">
+          <canvas id="map-canvas" aria-label="Map of downtown Stratford" role="img"></canvas>
+          <div class="map-tools">
+            <button type="button" id="map-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+            <button type="button" id="map-zoom-out" aria-label="Zoom out" title="Zoom out">&minus;</button>
+            <button type="button" id="map-center" aria-label="Centre on the squirrel" title="Centre on the squirrel"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          </div>
+          <p class="map-attr" id="map-attr">&copy; OpenStreetMap contributors (ODbL); Ontario / Canada open data</p>
+          <p class="map-keys" id="map-keys"></p>
+        </div>
+        <aside class="journal">
+          <h2>Journal</h2>
+          <p class="journal-counts"><span id="j-lm">0 of 0 landmarks</span> &middot; <span id="j-nuts">0 of 0 nuts</span></p>
+          <ul class="landmark-list scroll" id="landmark-list" tabindex="0" aria-label="Landmarks"></ul>
+        </aside>
+        <button class="close-x" data-action="close" aria-label="Close map" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      </div>
+    </section>
+
+    <div id="fade" class="fade" aria-hidden="true"><p id="fade-text"></p></div>
+    <div id="bars-hint" hidden><span class="arrow" aria-hidden="true">&uarr;</span> Swipe up</div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

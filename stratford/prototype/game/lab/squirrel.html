@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squirrel bench</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #bfd3e0; overflow: hidden; font: 13px/1.35 system-ui, sans-serif; }
+  canvas { display: block; width: 100%; height: 100%; }
+  #panel { position: fixed; top: 10px; left: 10px; background: rgba(28, 26, 24, 0.78); color: #f1ead9; padding: 10px 12px; border-radius: 8px; min-width: 210px; }
+  #panel h1 { font-size: 14px; margin: 0 0 6px; }
+  #panel .row { display: flex; justify-content: space-between; gap: 12px; }
+  #panel label { display: block; margin-top: 4px; cursor: pointer; }
+  #panel button { margin-top: 6px; font: inherit; }
+  #help { position: fixed; bottom: 10px; left: 10px; color: #26303a; background: rgba(255, 255, 255, 0.6); padding: 6px 10px; border-radius: 6px; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "../lib/three.module.min.js", "three/addons/": "../lib/addons/", "three-mesh-bvh": "../lib/three-mesh-bvh.module.js" } }
+</script>
+</head>
+<body>
+<div id="panel">
+  <h1>Squirrel bench</h1>
+  <div class="row"><span>state</span><b id="st">-</b></div>
+  <div class="row"><span>gait</span><b id="gait">-</b></div>
+  <div class="row"><span>speed</span><b id="spd">-</b></div>
+  <div class="row"><span>height</span><b id="hgt">-</b></div>
+  <div class="row"><span>input</span><b id="inp">-</b></div>
+  <div class="row"><span>camera</span><b id="camd">-</b></div>
+  <label><input type="checkbox" id="skel"> skeleton</label>
+  <label><input type="checkbox" id="slow"> slow motion (¼)</label>
+  <label><input type="checkbox" id="fur" checked> fur shells</label>
+  <button id="coat">coat: black</button>
+  <button id="respawn">respawn</button>
+</div>
+<div id="help">Stick / WASD move · A / Space jump (hold to leap) · RT / Shift run · X / E sit · Y / F dig · right stick / mouse / arrows camera · R-click / C behind · LB RB / wheel / Z X zoom</div>
+<script type="module">
+import * as THREE from 'three';
+import { createStandInWorld } from '../src/stand-in-world.js';
+import { loadCreature } from '../src/creatures/index.js';
+
+const qs = new URLSearchParams(location.search);
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: qs.has('test') || qs.has('review') });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.02, 600);
+
+let world;
+if (qs.get('town') === '1') {
+  try {
+    const town = await import('../src/town/index.js');
+    world = await town.createTown({ THREE, renderer, scene, quality: 'medium' });
+  } catch (e) { console.warn('town not available, using the stand-in world', e); }
+}
+world ||= await createStandInWorld({ THREE, renderer, scene });
+const mod = await loadCreature(qs.get('creature') || 'squirrel');
+const squirrel = await mod.createCreature({ THREE, coat: qs.get('coat') || 'black' });
+world.scene.add(squirrel.object);
+squirrel.reset(world.spawn);
+const cam = mod.createCamera({ THREE, camera, squirrel, creature: squirrel, world });
+const skel = new THREE.SkeletonHelper(squirrel.model.body); skel.visible = false; world.scene.add(skel);
+document.title = (qs.get('creature') || 'squirrel').replace(/^./, (m) => m.toUpperCase()) + ' bench';
+
+// ---- minimal input: gamepad + keyboard + mouse (the shell has its own src/input.js)
+const keys = new Set();
+addEventListener('keydown', (e) => { keys.add(e.code); if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.code)) e.preventDefault(); });
+addEventListener('keyup', (e) => keys.delete(e.code));
+addEventListener('blur', () => keys.clear());
+let mouse = [0, 0], wheel = 0;
+addEventListener('wheel', (e) => { wheel += (e.deltaY || 0) * (e.deltaMode === 1 ? 33 : 1); }, { passive: true });
+renderer.domElement.addEventListener('click', () => { if (!qs.has('test')) renderer.domElement.requestPointerLock?.(); });
+addEventListener('mousemove', (e) => { if (document.pointerLockElement) { mouse[0] += e.movementX * 0.0025; mouse[1] += e.movementY * 0.0025; } });
+const prev = {};
+let lastInput = 'keyboard';
+function readControls(dt) {
+  const pad = [...(navigator.getGamepads?.() || [])].find((p) => p && p.connected);
+  const dz = (v, d = 0.15) => (Math.abs(v) < d ? 0 : (v - Math.sign(v) * d) / (1 - d));
+  let mx = 0, my = 0, lx = 0, ly = 0, jump = false, sprint = 0, sit = false, dig = false, rec = false, zoom = 0, boost = 0;
+  if (pad) {
+    const b = (i) => !!pad.buttons[i]?.pressed;
+    mx = dz(pad.axes[0] || 0); my = -dz(pad.axes[1] || 0);
+    lx = dz(pad.axes[2] || 0) * 2.6 * dt; ly = dz(pad.axes[3] || 0) * 1.8 * dt;
+    jump = b(0); sit = b(2); dig = b(3); rec = b(11);
+    zoom += ((b(4) ? 1 : 0) - (b(5) ? 1 : 0)) * 0.7 * dt;     // LB further, RB closer (as src/input.js)
+    sprint = pad.buttons[7]?.value || 0;
+    boost = pad.buttons[6]?.value || 0;          // LT: superspeed (as src/input.js)
+    if (mx || my || lx || ly || jump || sprint) lastInput = 'controller';
+  }
+  const k = (c) => keys.has(c);
+  const kx = (k('KeyD') ? 1 : 0) - (k('KeyA') ? 1 : 0), ky = (k('KeyW') ? 1 : 0) - (k('KeyS') ? 1 : 0);
+  if (kx || ky) { const l = Math.hypot(kx, ky); mx = kx / l; my = ky / l; lastInput = 'keyboard'; }
+  lx += ((k('ArrowRight') ? 1 : 0) - (k('ArrowLeft') ? 1 : 0)) * 2.2 * dt + mouse[0];
+  ly += ((k('ArrowDown') ? 1 : 0) - (k('ArrowUp') ? 1 : 0)) * 1.5 * dt + mouse[1];
+  mouse = [0, 0];
+  jump ||= k('Space'); sit ||= k('KeyE'); dig ||= k('KeyF'); rec ||= k('KeyC');
+  zoom += ((k('KeyZ') ? 1 : 0) - (k('KeyX') ? 1 : 0)) * 0.7 * dt + wheel * 0.00125; wheel = 0;
+  if (k('ShiftLeft') || k('ShiftRight')) sprint = 1;
+  if (k('KeyQ')) boost = 1;
+  // Same direction as the game's default (src/input.js): stick, arrow or mouse up looks up.
+  ly = -ly;
+  const c = { move: [mx, my], look: [lx, ly], jump, jumpPressed: jump && !prev.jump, sprint, sitPressed: sit && !prev.sit, digPressed: dig && !prev.dig, recenter: rec && !prev.rec, zoom, boost };
+  prev.jump = jump; prev.sit = sit; prev.dig = dig; prev.rec = rec;
+  return c;
+}
+
+// ---- panel
+const $ = (id) => document.getElementById(id);
+$('skel').onchange = (e) => { skel.visible = e.target.checked; };
+$('fur').onchange = (e) => { if (squirrel.model.shells) squirrel.model.shells.visible = e.target.checked; };
+$('coat').onclick = () => { const n = squirrel.coat === 'black' ? 'grey' : 'black'; squirrel.setCoat(n); $('coat').textContent = 'coat: ' + n; };
+$('coat').textContent = 'coat: ' + squirrel.coat;
+$('respawn').onclick = () => { squirrel.reset(world.spawn); cam.snapBehind(); };
+
+addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+
+const lab = window.__lab = { THREE, renderer, scene: world.scene, camera, world, squirrel, cam, ready: false, paused: false, frames: 0 };
+let last = performance.now();
+function frame(now) {
+  requestAnimationFrame(frame);
+  let dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if ($('slow').checked) dt *= 0.25;
+  if (!lab.paused) {
+    const controls = lab.controlsOverride ? lab.controlsOverride(dt) : readControls(dt);
+    squirrel.update(dt, controls, world, camera);
+    cam.update(dt, controls);
+    world.update(dt, camera, squirrel.position);
+    $('st').textContent = squirrel.state; $('gait').textContent = squirrel.gait;
+    $('spd').textContent = squirrel.velocity.length().toFixed(2) + ' m/s'; $('hgt').textContent = squirrel.position.y.toFixed(2) + ' m';
+    $('inp').textContent = lastInput;
+    if (cam.debug) $('camd').textContent = `${cam.debug.free.toFixed(2)} m, zoom ${cam.zoom.toFixed(2)}`;
+  }
+  renderer.render(world.scene, camera);
+  lab.frames++;
+  if (lab.frames > 2) lab.ready = true;
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

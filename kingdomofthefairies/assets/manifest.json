@@ -5231,7 +5231,7 @@
       "edition": "film"
     },
     "prince-swim-surface-a": {
-      "status": "requested",
+      "status": "delivered",
       "file": "prince-swim-surface-a.webp",
       "size": [
         360,
@@ -5241,7 +5241,7 @@
       "edition": "film"
     },
     "prince-swim-surface-a-tinted": {
-      "status": "requested",
+      "status": "delivered",
       "file": "prince-swim-surface-a-tinted.webp",
       "size": [
         360,
@@ -5251,7 +5251,7 @@
       "edition": "film"
     },
     "prince-swim-surface-b": {
-      "status": "requested",
+      "status": "delivered",
       "file": "prince-swim-surface-b.webp",
       "size": [
         360,
@@ -5261,7 +5261,7 @@
       "edition": "film"
     },
     "prince-swim-surface-b-tinted": {
-      "status": "requested",
+      "status": "delivered",
       "file": "prince-swim-surface-b-tinted.webp",
       "size": [
         360,

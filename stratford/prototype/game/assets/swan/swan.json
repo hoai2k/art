@@ -1,0 +1,387 @@
+{
+ "version": 1,
+ "creature": "swan",
+ "built": "2026-11-02",
+ "paint": "sheet",
+ "vertexCount": 6133,
+ "indexCount": 36786,
+ "attributes": {
+  "position": {
+   "offset": 0,
+   "itemSize": 3,
+   "type": "f32",
+   "normalized": false
+  },
+  "normal": {
+   "offset": 73596,
+   "itemSize": 4,
+   "type": "i8",
+   "normalized": true
+  },
+  "skinIndex": {
+   "offset": 98128,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": false
+  },
+  "skinWeight": {
+   "offset": 122660,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "colorNatural": {
+   "offset": 147192,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "fur": {
+   "offset": 171724,
+   "itemSize": 4,
+   "type": "u8",
+   "normalized": true
+  },
+  "furDir": {
+   "offset": 196256,
+   "itemSize": 4,
+   "type": "i8",
+   "normalized": true
+  }
+ },
+ "index": {
+  "offset": 220788,
+  "type": "u16"
+ },
+ "bones": [
+  {
+   "name": "root",
+   "parent": -1,
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "pelvis",
+   "parent": 0,
+   "pos": [
+    0.0,
+    0.46,
+    -0.24
+   ]
+  },
+  {
+   "name": "spine1",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.47,
+    -0.02
+   ]
+  },
+  {
+   "name": "spine2",
+   "parent": 2,
+   "pos": [
+    0.0,
+    0.48,
+    0.22
+   ]
+  },
+  {
+   "name": "neck1",
+   "parent": 3,
+   "pos": [
+    0.0,
+    0.52,
+    0.4
+   ]
+  },
+  {
+   "name": "neck2",
+   "parent": 4,
+   "pos": [
+    0.0,
+    0.63,
+    0.41
+   ]
+  },
+  {
+   "name": "neck3",
+   "parent": 5,
+   "pos": [
+    0.0,
+    0.75,
+    0.34
+   ]
+  },
+  {
+   "name": "neck4",
+   "parent": 6,
+   "pos": [
+    0.0,
+    0.87,
+    0.305
+   ]
+  },
+  {
+   "name": "head",
+   "parent": 7,
+   "pos": [
+    0.0,
+    0.97,
+    0.35
+   ]
+  },
+  {
+   "name": "bill",
+   "parent": 8,
+   "pos": [
+    0.0,
+    0.975,
+    0.42
+   ]
+  },
+  {
+   "name": "humerus_L",
+   "parent": 3,
+   "pos": [
+    0.11,
+    0.58,
+    0.2
+   ]
+  },
+  {
+   "name": "ulna_L",
+   "parent": 10,
+   "pos": [
+    0.4,
+    0.59,
+    0.14
+   ]
+  },
+  {
+   "name": "manus_L",
+   "parent": 11,
+   "pos": [
+    0.72,
+    0.59,
+    0.1
+   ]
+  },
+  {
+   "name": "thigh_L",
+   "parent": 1,
+   "pos": [
+    0.1,
+    0.36,
+    -0.02
+   ]
+  },
+  {
+   "name": "shin_L",
+   "parent": 13,
+   "pos": [
+    0.11,
+    0.25,
+    0.02
+   ]
+  },
+  {
+   "name": "tarsus_L",
+   "parent": 14,
+   "pos": [
+    0.11,
+    0.12,
+    -0.02
+   ]
+  },
+  {
+   "name": "toes_L",
+   "parent": 15,
+   "pos": [
+    0.11,
+    0.018,
+    0.03
+   ]
+  },
+  {
+   "name": "humerus_R",
+   "parent": 3,
+   "pos": [
+    -0.11,
+    0.58,
+    0.2
+   ]
+  },
+  {
+   "name": "ulna_R",
+   "parent": 17,
+   "pos": [
+    -0.4,
+    0.59,
+    0.14
+   ]
+  },
+  {
+   "name": "manus_R",
+   "parent": 18,
+   "pos": [
+    -0.72,
+    0.59,
+    0.1
+   ]
+  },
+  {
+   "name": "thigh_R",
+   "parent": 1,
+   "pos": [
+    -0.1,
+    0.36,
+    -0.02
+   ]
+  },
+  {
+   "name": "shin_R",
+   "parent": 20,
+   "pos": [
+    -0.11,
+    0.25,
+    0.02
+   ]
+  },
+  {
+   "name": "tarsus_R",
+   "parent": 21,
+   "pos": [
+    -0.11,
+    0.12,
+    -0.02
+   ]
+  },
+  {
+   "name": "toes_R",
+   "parent": 22,
+   "pos": [
+    -0.11,
+    0.018,
+    0.03
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": 1,
+   "pos": [
+    0.0,
+    0.5,
+    -0.4
+   ]
+  },
+  {
+   "name": "tail1",
+   "parent": 24,
+   "pos": [
+    0.0,
+    0.51921,
+    -0.4621
+   ]
+  }
+ ],
+ "ends": {
+  "manus_L": [
+   0.95,
+   0.59,
+   0.04
+  ],
+  "toes_L": [
+   0.115,
+   0.008,
+   0.17
+  ],
+  "bill": [
+   0.0,
+   0.89,
+   0.55
+  ],
+  "head": [
+   0.0,
+   1.0,
+   0.45
+  ]
+ },
+ "coats": [
+  "natural"
+ ],
+ "eyes": {
+  "bone": "head",
+  "pos": [
+   0.034,
+   1.006,
+   0.4
+  ],
+  "r": 0.0075,
+  "color": 1708560,
+  "out": [
+   1,
+   0.25,
+   0.25
+  ]
+ },
+ "fur": {
+  "max": 0.005894644389431474
+ },
+ "tail": {
+  "n": 2,
+  "length": 0.13
+ },
+ "bounds": {
+  "min": [
+   -0.2574000060558319,
+   -0.0,
+   -0.5533000230789185
+  ],
+  "max": [
+   0.25760000944137573,
+   1.0371999740600586,
+   0.5508000254631042
+  ]
+ },
+ "wings": {
+  "bones": [
+   "humerus",
+   "ulna",
+   "manus"
+  ],
+  "color": 15987178,
+  "tipColor": 15789798,
+  "covertColor": 16447730,
+  "secColor": 15855592,
+  "primaries": {
+   "n": 10,
+   "len": 0.42,
+   "width": 0.075,
+   "fan0": 0.25,
+   "fan1": 1.15
+  },
+  "secondaries": {
+   "n": 13,
+   "len": 0.36,
+   "width": 0.07
+  },
+  "tertials": {
+   "n": 7,
+   "len": 0.3,
+   "width": 0.08
+  },
+  "tail": {
+   "n": 9,
+   "len": 0.2,
+   "width": 0.06,
+   "spread": 1.0,
+   "color": 15921385
+  }
+ },
+ "waterline": 0.36
+}

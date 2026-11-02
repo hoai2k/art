@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Town Bench</title>
+<style>
+  :root { --ink: #2b241c; --paper: #f4ead6; --accent: #b3471d; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #c9b896; font: 14px/1.35 Georgia, 'Times New Roman', serif; color: var(--ink); }
+  canvas { display: block; }
+  #panel { position: fixed; top: 10px; left: 10px; width: 270px; max-height: calc(100% - 20px); overflow: auto; background: rgba(244, 234, 214, 0.92); border: 1px solid #8a7457; border-radius: 8px; padding: 10px 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  #panel h1 { font-size: 16px; margin: 0 0 6px; }
+  #panel h2 { font-size: 13px; margin: 10px 0 4px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a5434; }
+  #stats { font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; white-space: pre; }
+  button, select, input { font: inherit; }
+  button { background: #fffaf0; border: 1px solid #8a7457; border-radius: 5px; padding: 3px 8px; cursor: pointer; margin: 2px 2px 2px 0; }
+  button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: #6e2a10; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #1f5fa8; outline-offset: 1px; }
+  select { width: 100%; }
+  label { display: block; margin: 4px 0; }
+  input[type=range] { width: 100%; }
+  #help { font-size: 12px; color: #5a4a36; }
+  #loading { position: fixed; inset: 0; display: grid; place-items: center; background: #e8dcc2; font-size: 20px; }
+  #loading .bar { width: 320px; height: 10px; border: 1px solid #8a7457; border-radius: 6px; margin-top: 10px; overflow: hidden; }
+  #loading .bar div { height: 100%; width: 0; background: var(--accent); }
+  @media (max-width: 600px) { #panel { width: calc(100% - 44px); max-height: 45%; } }
+</style>
+<script type="importmap">
+{ "imports": { "three": "../lib/three.module.min.js", "three/addons/": "../lib/addons/", "three-mesh-bvh": "../lib/three-mesh-bvh.module.js" } }
+</script>
+</head>
+<body>
+<div id="loading" role="status"><div><div id="loadmsg">Loading the town…</div><div class="bar"><div id="loadbar"></div></div></div></div>
+<div id="panel" aria-label="Town bench controls">
+  <h1>Stratford town bench</h1>
+  <div id="stats" aria-live="off">…</div>
+  <h2>Camera</h2>
+  <button id="mode-fly" aria-pressed="true">Free fly</button><button id="mode-walk" aria-pressed="false">Walk (creature's eye)</button>
+  <label>Creature scale (body length): <span id="scaleval">0.25 m</span>
+    <input id="scale" type="range" min="0" max="1" step="0.001" value="0.79" aria-label="Creature scale"></label>
+  <h2>Jump to</h2>
+  <select id="jump" aria-label="Jump to a landmark"></select>
+  <h2>Detail layers</h2>
+  <div id="layers"></div>
+  <h2>Time of day</h2>
+  <input id="tod" type="range" min="5" max="22" step="0.1" value="16.3" aria-label="Time of day">
+  <p id="help">Fly: WASD + mouse drag (or right stick), Q/E or triggers down/up, Shift faster. Walk: WASD / left stick at the creature's eye height, mouse / right stick looks. Tab toggles the panel.</p>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { createTown } from '../src/town/index.js';
+
+const params = new URLSearchParams(location.search);
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: params.has('shot') });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.05, 4000);
+addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+
+const errors = [];
+addEventListener('error', (e) => errors.push(String(e.message)));
+const quality = params.get('quality') || 'medium';
+const dataUrl = params.get('data') === 'fixture' ? new URL('../test/fixtures/town-mini.json', location.href).href : (params.get('data') || undefined);
+const world = await createTown({ THREE, renderer, scene, quality, dataUrl, onProgress: (p, m) => { document.getElementById('loadbar').style.width = `${Math.round(p * 100)}%`; document.getElementById('loadmsg').textContent = m; } });
+document.getElementById('loading').remove();
+
+// ---- camera state
+let mode = 'fly', scale = 0.25;
+const pos = new THREE.Vector3(world.spawn.x, world.spawn.y + 30, world.spawn.z + 40);
+let yaw = world.spawn.yaw, pitch = -0.4;
+function look(at) { const d = new THREE.Vector3().subVectors(at, pos); yaw = Math.atan2(-d.x, -d.z); pitch = Math.atan2(d.y, Math.hypot(d.x, d.z)); }
+const eye = () => scale * 0.4;
+function setMode(m) {
+  mode = m;
+  document.getElementById('mode-fly').setAttribute('aria-pressed', m === 'fly');
+  document.getElementById('mode-walk').setAttribute('aria-pressed', m === 'walk');
+  if (m === 'walk') { const s = world.surfaceAt(pos.x, pos.z, 1.5); pos.y = (s ? s.y : world.groundAt(pos.x, pos.z)) + eye(); pitch = 0.05; }
+}
+document.getElementById('mode-fly').onclick = () => setMode('fly');
+document.getElementById('mode-walk').onclick = () => setMode('walk');
+const scaleInput = document.getElementById('scale');
+const sliderToScale = (v) => 0.003 * Math.pow(0.6 / 0.003, v);   // log 3 mm .. 60 cm
+function setScale(s) {
+  scale = s; world.setScale(s);
+  document.getElementById('scaleval').textContent = s < 0.01 ? `${(s * 1000).toFixed(1)} mm` : s < 1 ? `${(s * 100).toFixed(1)} cm` : `${s.toFixed(2)} m`;
+  camera.near = Math.max(0.0005, 0.02 * s); camera.far = Math.max(400, s * 16000); camera.updateProjectionMatrix();
+  if (mode === 'walk') { const g = world.surfaceAt(pos.x, pos.z, 1.5); pos.y = (g ? g.y : pos.y) + eye(); }
+  renderLayers();
+}
+scaleInput.oninput = () => setScale(sliderToScale(+scaleInput.value));
+scaleInput.value = String(Math.log(0.25 / 0.003) / Math.log(0.6 / 0.003));
+document.getElementById('tod').oninput = (e) => world.setTimeOfDay(+e.target.value);
+
+// ---- landmarks
+const jumps = [{ id: 'spawn', name: 'Market Square (spawn)', x: world.spawn.x, z: world.spawn.z, look: world.data.spawn?.lookAt }].concat(world.landmarks);
+const sel = document.getElementById('jump');
+for (const l of jumps) { const o = document.createElement('option'); o.value = l.id; o.textContent = l.name; sel.append(o); }
+async function jumpTo(id, how = mode) {
+  const l = jumps.find((j) => j.id === id) || jumps[0];
+  if (how === 'walk') {
+    const a = Math.atan2(l.z - world.spawn.z, l.x - world.spawn.x) + Math.PI;
+    pos.set(l.x + Math.cos(a) * (l.radius || 25) * 0.9, 0, l.z + Math.sin(a) * (l.radius || 25) * 0.9);
+  } else pos.set(l.x + 40, world.groundAt(l.x, l.z) + 35, l.z + 55);
+  await world.ready(pos);
+  setMode(how);
+  look(new THREE.Vector3(l.look ? l.look[0] : l.x, world.groundAt(l.x, l.z) + (how === 'walk' ? 6 : 0), l.look ? l.look[1] : l.z));
+}
+sel.onchange = () => jumpTo(sel.value);
+
+// ---- detail layers
+function renderLayers() {
+  const box = document.getElementById('layers'); box.textContent = '';
+  for (const L of world.detailLayers) {
+    const b = document.createElement('button');
+    b.setAttribute('aria-pressed', L.enabled);
+    b.textContent = `${L.id} (${L.minScale}–${L.maxScale} m)${L.active ? '' : ' · off at this scale'}`;
+    b.onclick = () => { world.setDetailLayerEnabled(L.id, !L.enabled); renderLayers(); };
+    box.append(b);
+  }
+}
+renderLayers();
+
+// ---- input
+const keys = new Set();
+addEventListener('keydown', (e) => { if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return; keys.add(e.code); if (e.code === 'Tab') { e.preventDefault(); const p = document.getElementById('panel'); p.hidden = !p.hidden; } });
+addEventListener('keyup', (e) => keys.delete(e.code));
+let drag = null;
+renderer.domElement.addEventListener('pointerdown', (e) => { drag = [e.clientX, e.clientY]; renderer.domElement.setPointerCapture(e.pointerId); });
+renderer.domElement.addEventListener('pointermove', (e) => { if (!drag) return; yaw -= (e.clientX - drag[0]) * 0.004; pitch = THREE.MathUtils.clamp(pitch - (e.clientY - drag[1]) * 0.004, -1.5, 1.5); drag = [e.clientX, e.clientY]; });
+renderer.domElement.addEventListener('pointerup', () => { drag = null; });
+const dz = (v) => (Math.abs(v) < 0.15 ? 0 : (v - Math.sign(v) * 0.15) / 0.85);
+
+// ---- stats
+const statsEl = document.getElementById('stats');
+let frames = 0, fpsT = performance.now(), fps = 0, worst = 0, lastT = performance.now();
+function loop() {
+  const now = performance.now(), dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
+  worst = Math.max(worst, dt);
+  const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find((g) => g && g.connected);
+  let mx = 0, my = 0, lx = 0, ly = 0, up = 0, fast = keys.has('ShiftLeft') || keys.has('ShiftRight') ? 1 : 0;
+  if (keys.has('KeyW')) my += 1; if (keys.has('KeyS')) my -= 1; if (keys.has('KeyA')) mx -= 1; if (keys.has('KeyD')) mx += 1;
+  if (keys.has('KeyE')) up += 1; if (keys.has('KeyQ')) up -= 1;
+  if (keys.has('ArrowLeft')) lx -= 1; if (keys.has('ArrowRight')) lx += 1; if (keys.has('ArrowUp')) ly += 1; if (keys.has('ArrowDown')) ly -= 1;
+  if (gp) {
+    mx += dz(gp.axes[0]); my -= dz(gp.axes[1]); lx += dz(gp.axes[2]); ly -= dz(gp.axes[3]);
+    up += (gp.buttons[7]?.value || 0) - (gp.buttons[6]?.value || 0);
+    if (gp.buttons[0]?.pressed) fast = 1;
+  }
+  yaw -= lx * dt * 1.8; pitch = THREE.MathUtils.clamp(pitch + ly * dt * 1.4, -1.5, 1.5);
+  const fwd = new THREE.Vector3(-Math.sin(yaw), 0, -Math.cos(yaw)), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
+  if (mode === 'fly') {
+    const sp = (fast ? 120 : 30) * dt;
+    const f3 = new THREE.Vector3(-Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch));
+    pos.addScaledVector(f3, my * sp).addScaledVector(right, mx * sp); pos.y += up * sp;
+    pos.y = Math.max(pos.y, world.groundAt(pos.x, pos.z) + 0.3);
+  } else {
+    const sp = scale * (fast ? 24 : 7) * dt;
+    const nx = pos.x + (fwd.x * my + right.x * mx) * sp, nz = pos.z + (fwd.z * my + right.z * mx) * sp;
+    const s = world.surfaceAt(nx, nz, Math.max(0.3, scale * 2));
+    if (s && s.normal.y > 0.5) { pos.x = nx; pos.z = nz; pos.y += (s.y + eye() - pos.y) * Math.min(1, dt * 12); }
+  }
+  camera.position.copy(pos);
+  camera.rotation.set(pitch, yaw, 0, 'YXZ');
+  const focus = mode === 'walk' ? new THREE.Vector3(pos.x, pos.y - eye(), pos.z) : new THREE.Vector3(pos.x, world.groundAt(pos.x, pos.z), pos.z);
+  world.update(dt, camera, focus);
+  if (!params.has('norender') || window.bench?.renderNow) { renderer.render(scene, camera); if (window.bench) window.bench.renderNow = false; }
+  frames++;
+  if (now - fpsT > 500) {
+    fps = (frames * 1000) / (now - fpsT); frames = 0; fpsT = now;
+    const r = renderer.info.render, i = world.info();
+    statsEl.textContent = `fps ${fps.toFixed(0)}  worst ${(worst * 1000).toFixed(0)} ms\ndraw calls ${r.calls}\ntriangles ${(r.triangles / 1e6).toFixed(2)} M\nchunks ${i.chunks}: ${i.near} near, ${i.far} far\ncolliders ${i.colliders} (${(i.colliderTris / 1e3).toFixed(0)} k tris)\ndetail cells ${i.detailCells}\nbuild ${world.stats.buildMs} ms (prep ${world.stats.prepMs})\nmemory geo ${renderer.info.memory.geometries} tex ${renderer.info.memory.textures}\npos ${pos.x.toFixed(1)}, ${pos.y.toFixed(2)}, ${pos.z.toFixed(1)}`;
+    worst = 0;
+  }
+  requestAnimationFrame(loop);
+}
+// initial view: the spawn, looking at City Hall from above
+const la = world.data.spawn?.lookAt;
+look(new THREE.Vector3(la ? la[0] : world.spawn.x, world.spawn.y, la ? la[1] : world.spawn.z - 10));
+setScale(0.25);
+if (params.get('view')) await jumpTo(params.get('view'), params.get('mode') || 'fly');
+
+// ---- ground probe: does every visible walkable ground surface match the collider?
+// At sample points (random, under trees, near curbs, on chunk borders, in a park) a
+// downward ray against the visible ground meshes is compared with one against the
+// colliders. diff = visible - collider (m): > +1 cm means the creature sinks into
+// what it sees. layers = how many distinct visible surfaces lie within 1.5 cm of the top
+// (two drawn grounds that close fight in the depth buffer).
+async function groundProbe({ foci, perFocus = 160, seed = 7 } = {}) {
+  const { MeshBVH } = await import('three-mesh-bvh');
+  const w = world;
+  let s = seed >>> 0 || 1; const rnd = () => { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return (s >>> 0) / 4294967296; };
+  const down = new THREE.Vector3(0, -1, 0), ray = new THREE.Ray(), inv = new THREE.Matrix4(), nm = new THREE.Matrix3();
+  const GROUND = new Set([0, 1, 2, 3, 11]);
+  const samples = [];
+  for (const f of foci) {
+    pos.set(f.x, w.groundAt(f.x, f.z) + 2, f.z);           // the bench's own focus follows too
+    await w.ready({ x: f.x, y: 0, z: f.z });
+    for (let k = 0; k < 30; k++) w.update(0.016, camera, new THREE.Vector3(f.x, w.groundAt(f.x, f.z), f.z));
+    await w.ready({ x: f.x, y: 0, z: f.z });
+    const pts = [];
+    for (let i = 0; i < perFocus; i++) { const a = rnd() * 6.283, r = Math.sqrt(rnd()) * 90; pts.push(['random', f.x + Math.cos(a) * r, f.z + Math.sin(a) * r]); }
+    for (const t of w.trees) if (Math.hypot(t.x - f.x, t.z - f.z) < 90 && rnd() < 0.5) { const a = rnd() * 6.283, r = rnd() * t.crown; pts.push(['under-tree', t.x + Math.cos(a) * r, t.z + Math.sin(a) * r]); }
+    for (const r of w.data.roads) {
+      if (!['primary', 'secondary', 'tertiary', 'residential', 'unclassified'].includes(r.kind)) continue;
+      for (let i = 1; i < r.points.length; i++) {
+        const A = r.points[i - 1], B = r.points[i], mx = (A[0] + B[0]) / 2, mz = (A[1] + B[1]) / 2;
+        if (Math.hypot(mx - f.x, mz - f.z) > 90) continue;
+        const L = Math.hypot(B[0] - A[0], B[1] - A[1]); if (L < 1) continue;
+        const nx = -(B[1] - A[1]) / L, nz = (B[0] - A[0]) / L;
+        for (const o of [0, r.width / 2 - 1, r.width / 2 - 0.15, r.width / 2 + 0.15, r.width / 2 + 1.2, r.width / 2 + 3, r.width / 2 + 3.9, r.width / 2 + 4.3, r.width / 2 + 4.7]) for (const sg of [-1, 1]) { const t = rnd(); pts.push([o < r.width / 2 ? 'road' : 'curbside', A[0] + (B[0] - A[0]) * t + nx * o * sg, A[1] + (B[1] - A[1]) * t + nz * o * sg]); }
+      }
+    }
+    for (const r of w.data.roads) {
+      if (!['footway', 'path', 'service', 'cycleway'].includes(r.kind)) continue;
+      for (let i = 1; i < r.points.length; i++) {
+        const A = r.points[i - 1], B = r.points[i], L = Math.hypot(B[0] - A[0], B[1] - A[1]); if (L < 1) continue;
+        if (Math.hypot((A[0] + B[0]) / 2 - f.x, (A[1] + B[1]) / 2 - f.z) > 90) continue;
+        const nx = -(B[1] - A[1]) / L, nz = (B[0] - A[0]) / L, t = rnd();
+        for (const o of [r.width / 2 - 0.1, r.width / 2 + 0.1]) for (const sg of [-1, 1]) pts.push(['ribbon-edge', A[0] + (B[0] - A[0]) * t + nx * o * sg, A[1] + (B[1] - A[1]) * t + nz * o * sg]);
+      }
+    }
+    // the place the camera work found (south of the spawn)
+    for (let i = 0; i < 12; i++) pts.push(['spawn-south', 3.9 + (rnd() - 0.5) * 3, 39.7 + (rnd() - 0.5) * 3]);
+    const C = w.chunkSize, O = w.chunkOrigin;
+    for (let i = 0; i < 40; i++) {
+      const bx = O.x + Math.round((f.x - O.x) / C + (rnd() - 0.5) * 0.8) * C, bz = O.z + Math.round((f.z - O.z) / C + (rnd() - 0.5) * 0.8) * C;
+      const along = (rnd() - 0.5) * 160, e = (rnd() - 0.5) * 0.2;
+      pts.push(['chunk-border', bx + e, f.z + along]); pts.push(['chunk-border', f.x + along, bz + e]);
+    }
+    for (const [cat, x, z] of pts) {
+      if (w.buildingAt(x, z)) continue;                         // inside a footprint (cellars, lobbies, rooms)
+      const top = w.groundAt(x, z) + 6;
+      const col = w.raycast(new THREE.Vector3(x, top, z), down, 10);
+      if (!col || !GROUND.has(col.surface)) continue;          // inside a building, under an awning, on a prop...
+      if (w.waterAt(x, z) !== null) continue;
+      const hits = [];
+      for (const m of w.debugGroundMeshes(x, z, 4)) {
+        const g = m.geometry; if (!g.index && !g.attributes.position) continue;
+        if (!g.boundsTree) g.boundsTree = new MeshBVH(g);
+        m.updateMatrixWorld(); inv.copy(m.matrixWorld).invert();
+        ray.origin.set(x, top, z).applyMatrix4(inv); ray.direction.copy(down).transformDirection(inv);
+        for (const h of g.boundsTree.raycast(ray, THREE.DoubleSide)) {
+          const p = h.point.clone().applyMatrix4(m.matrixWorld);
+          const n = h.face.normal.clone().applyMatrix3(nm.getNormalMatrix(m.matrixWorld)).normalize();
+          if (n.y < -0.3) continue;                             // undersides and ceilings face away from a creature above
+          hits.push({ y: p.y, name: m.userData.detailLayer || m.name });
+        }
+      }
+      // every walkable collider surface under the point (stacked slabs), and whether a
+      // creature could get under the top one from the side (an open, undercuttable edge)
+      const under = [];
+      for (const m of w.collidersNear(new THREE.Box3(new THREE.Vector3(x - 0.1, top - 10, z - 0.1), new THREE.Vector3(x + 0.1, top + 0.1, z + 0.1)))) {
+        m.updateMatrixWorld(); inv.copy(m.matrixWorld).invert();
+        ray.origin.set(x, top, z).applyMatrix4(inv); ray.direction.copy(down).transformDirection(inv);
+        for (const h of m.geometry.boundsTree.raycast(ray, THREE.DoubleSide)) {
+          const n = h.face.normal.clone().applyMatrix3(nm.getNormalMatrix(m.matrixWorld)).normalize();
+          if (Math.abs(n.y) < 0.5) continue;
+          under.push(h.point.clone().applyMatrix4(m.matrixWorld).y);
+        }
+      }
+      under.sort((p, q) => q - p);
+      const levels = []; for (const y of under) if (col.point.y - y <= 0.3 && !levels.some((l) => Math.abs(l - y) < 0.01)) levels.push(y);
+      let leak = false;
+      if (levels.length > 1 && levels[0] - levels[1] > 0.05) {          // room for a creature underneath
+        const mid = (levels[0] + levels[1]) / 2;
+        for (let k = 0; k < 8 && !leak; k++) {
+          const a = (k / 8) * 6.283, dir = new THREE.Vector3(Math.cos(a), 0, Math.sin(a));
+          const h = w.raycast(new THREE.Vector3(x, mid, z), dir, 2);
+          if (h) continue;
+          const ex = x + dir.x * 2, ez = z + dir.z * 2, g = w.raycast(new THREE.Vector3(ex, w.groundAt(ex, ez) + 6, ez), down, 12);
+          if (g && g.point.y < mid) leak = true;
+        }
+      }
+      if (levels.length > 1) samples.push({ cat, x: +x.toFixed(2), z: +z.toFixed(2), stacked: levels.length, gap: +(levels[0] - levels[1]).toFixed(3), leak, ghost: true });
+      if (!hits.length) { samples.push({ cat, x, z, diff: null, col: col.point.y, surface: col.surface }); continue; }
+      hits.sort((a, b) => b.y - a.y);
+      const vis = hits.find((h) => h.name !== 'buildings') || hits[0];
+      if (vis.name === 'buildings') continue;
+      const close = [...new Set(hits.filter((h) => vis.y - h.y < 0.015 && h.name !== 'buildings').map((h) => `${h.name}@${h.y.toFixed(3)}`))];
+      samples.push({ cat, x: +x.toFixed(2), z: +z.toFixed(2), diff: vis.y - col.point.y, vis: vis.name, surface: col.surface, layers: close.length, pair: close.map((c) => c.split('@')[0]).sort().join('+') });
+    }
+  }
+  const ghosts = samples.filter((p) => p.ghost);
+  for (let i = samples.length - 1; i >= 0; i--) if (samples[i].ghost) samples.splice(i, 1);
+  const ok = samples.filter((p) => p.diff !== null);
+  const pct = (a, q) => { const b = a.slice().sort((u, v) => u - v); return b.length ? b[Math.min(b.length - 1, Math.floor(q * b.length))] : 0; };
+  const by = {};
+  for (const p of ok) { const k = `${p.cat}/${p.vis}`; (by[k] ||= []).push(p.diff); }
+  const summary = {};
+  for (const [k, a] of Object.entries(by)) summary[k] = { n: a.length, above1cm: a.filter((d) => d > 0.01).length, below1cm: a.filter((d) => d < -0.01).length, p50: +pct(a, 0.5).toFixed(4), max: +Math.max(...a).toFixed(4), min: +Math.min(...a).toFixed(4) };
+  return {
+    n: ok.length, missing: samples.length - ok.length,
+    above1cm: ok.filter((p) => p.diff > 0.01).length, below1cm: ok.filter((p) => p.diff < -0.01).length,
+    maxAbove: Math.max(0, ...ok.map((p) => p.diff)), maxBelow: Math.min(0, ...ok.map((p) => p.diff)),
+    multiLayer: ok.filter((p) => p.layers > 1).length,
+    pairs: ok.filter((p) => p.layers > 1).reduce((a, p) => { a[p.pair] = (a[p.pair] || 0) + 1; return a; }, {}),
+    pairSamples: ok.filter((p) => p.layers > 1 && p.pair === 'streets+terrain').slice(0, 4).map((p) => [p.x, p.z, p.cat]),
+    stacked: ghosts.length, leaks: ghosts.filter((p) => p.leak).length,
+    stackedBy: ghosts.reduce((a, p) => { a[p.cat] = (a[p.cat] || 0) + 1; return a; }, {}),
+    leakSamples: ghosts.filter((p) => p.leak).slice(0, 6).map((p) => [p.cat, p.x, p.z, p.gap]),
+    summary, worst: ok.slice().sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff)).slice(0, 12),
+  };
+}
+
+window.bench = { groundProbe, rayAt: (o, d, inv) => new THREE.Ray(o.clone().applyMatrix4(inv), d.clone().transformDirection(inv)), world, camera, renderer, scene, pos, vec: (x, y, z) => new THREE.Vector3(x, y, z), box: (a, b, c, d, e, f) => new THREE.Box3(new THREE.Vector3(a, b, c), new THREE.Vector3(d, e, f)), setMode, setScale, jumpTo, look: (x, y, z) => look(new THREE.Vector3(x, y, z)), set: (x, y, z, yw, p) => { pos.set(x, y, z); yaw = yw; pitch = p; }, errors };
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

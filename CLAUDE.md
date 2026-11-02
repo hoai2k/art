@@ -43,7 +43,8 @@ Repository-wide instructions for Claude Code sessions in this repository.
 four were mini's largest published games; mini's own copies stay there until
 the move is finished and every link points here). **Each top-level folder is a
 separate game**, apart from `shared/` (code more than one game uses: today the
-browser-check helper `shared/test/lib.mjs`) and `local/` (ignored by Git:
+browser-check helper `shared/test/lib.mjs`, and the library page's
+controller check `node shared/test/library-gamepad.test.mjs`) and `local/` (ignored by Git:
 dependencies, caches and build output).
 
 | Folder | What it is | Published at |
@@ -52,6 +53,7 @@ dependencies, caches and build output).
 | `bronzedrum/` | Bronze Drum | https://games.hoai.net/art/bronzedrum/ |
 | `kingdomofthefairies/` | Kingdom of the Fairies (includes the preserved Widow's Bay edition) | https://games.hoai.net/art/kingdomofthefairies/ |
 | `fibreart/` | Fibre Art (a shifting collage after the fibre art, paintings and drawings of Hanneke de Neve: controllers move, stretch, swirl and dissolve the parts of her pictures) | https://games.hoai.net/art/fibreart/ |
+| `stratford/` | Stratford (the prototype *Stratford Squirrel*: exploring a 3D model of downtown Stratford, Ontario as small creatures; unlisted, no library card or `/stratford/` page until the game proper) | https://games.hoai.net/art/stratford/prototype/ |
 
 The site is published at https://games.hoai.net/art/ (the owner's
 `hoai2k.github.io` user site serves every repository's Pages under its custom
@@ -66,9 +68,9 @@ domain, so this repository's site lives at `/art/`).
   `.github/workflows/pages.yml` (through `.github/scripts/build-game.sh`, with
   its tests as `tests: full` steps), its unread `design/` or `reference/`
   folders to that workflow's sparse-checkout list, a link in the root
-  `README.md`, a card on the game library page (`index.html`, newest game
-  first by when it was made; Fibre Art sits after Kingdom of the Fairies at the
-  owner's request) and a row in the table above.
+  `README.md`, a card on the game library page (`index.html`, in the owner's
+  order: Kingdom of the Fairies, Bronze Drum, Fibre Art, The Ice-Cream Cone
+  Coot; a new game goes at the top unless the owner says otherwise) and a row in the table above.
 - **The root holds only what is shared.** `README.md` is a list of links to
   the games and nothing more; each game's details belong in its own README.
   `index.html` is the game library published at https://games.hoai.net/art/,
@@ -140,7 +142,7 @@ arrives.
 
 ## Intake
 
-Each game has its own drop box at `<game>/intake/` (`kingdomofthefairies/intake/`, `bronzedrum/intake/`, `icecreamcone/intake/`, `fibreart/intake/`). The user drops files there for
+Each game has its own drop box at `<game>/intake/` (`kingdomofthefairies/intake/`, `bronzedrum/intake/`, `icecreamcone/intake/`, `fibreart/intake/`, `stratford/intake/`). The user drops files there for
 integration: artwork, audio, models, exported data, notes from another agent.
 A file belongs to the game whose intake it was dropped in. If it plainly
 belongs to a different game, move it there; if that is unclear, ask.

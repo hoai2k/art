@@ -1,0 +1,224 @@
+[
+  {
+    "look": "original",
+    "phase": "a",
+    "draws": [
+      "coast-gap",
+      "prince-swim-surface-a",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-surface-a",
+      "coast-gap"
+    ],
+    "anchors": [
+      {
+        "x": 661.5000188970057,
+        "y": 550.0000106431411
+      },
+      {
+        "x": 661.5000188970057,
+        "y": 550.0000106431411
+      }
+    ],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "original",
+    "phase": "b",
+    "draws": [
+      "coast-gap",
+      "prince-swim-surface-b",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-surface-b",
+      "coast-gap"
+    ],
+    "anchors": [
+      {
+        "x": 661.5000188970057,
+        "y": 550.0000106431411
+      },
+      {
+        "x": 661.5000188970057,
+        "y": 550.0000106431411
+      }
+    ],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "original",
+    "phase": "under-a",
+    "draws": [
+      "coast-gap",
+      "prince-swim-under-a",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-under-a",
+      "coast-gap"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "original",
+    "phase": "under-b",
+    "draws": [
+      "coast-gap",
+      "prince-swim-under-b",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-under-b",
+      "coast-gap"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "original",
+    "phase": "shore",
+    "draws": [
+      "coast-gap",
+      "prince-stand",
+      "coast-gap",
+      "prince-stand"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 960,
+      "y": 496,
+      "land": 1
+    }
+  },
+  {
+    "look": "tinted",
+    "phase": "a",
+    "draws": [
+      "coast-gap",
+      "prince-swim-surface-a",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-surface-a",
+      "coast-gap"
+    ],
+    "anchors": [
+      {
+        "x": 661.5000052546823,
+        "y": 550.0000266776179
+      },
+      {
+        "x": 661.5000052546823,
+        "y": 550.0000266776179
+      }
+    ],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "tinted",
+    "phase": "b",
+    "draws": [
+      "coast-gap",
+      "prince-swim-surface-b",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-surface-b",
+      "coast-gap"
+    ],
+    "anchors": [
+      {
+        "x": 661.5000052546823,
+        "y": 550.0000266776179
+      },
+      {
+        "x": 661.5000052546823,
+        "y": 550.0000266776179
+      }
+    ],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "tinted",
+    "phase": "under-a",
+    "draws": [
+      "coast-gap",
+      "prince-swim-under-a",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-under-a",
+      "coast-gap"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "tinted",
+    "phase": "under-b",
+    "draws": [
+      "coast-gap",
+      "prince-swim-under-b",
+      "coast-gap",
+      "coast-gap",
+      "prince-swim-under-b",
+      "coast-gap"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 661.5,
+      "y": 550,
+      "land": 0
+    }
+  },
+  {
+    "look": "tinted",
+    "phase": "shore",
+    "draws": [
+      "coast-gap",
+      "prince-stand",
+      "coast-gap",
+      "prince-stand"
+    ],
+    "anchors": [],
+    "missing": [],
+    "expected": {
+      "x": 960,
+      "y": 496,
+      "land": 1
+    }
+  }
+]

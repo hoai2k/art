@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-02",
+  "background_edit": "Remove only magenta background, preserve twelve plants and layout, crisp transparent edges with no glow or halo.",
+  "assets": [
+    {
+      "id": "R11.1",
+      "file": "reference/sheets/beaver_turnaround.png",
+      "size": "1920 × 1080",
+      "reason": "The \"side\" view came out turned three-quarters, so it can't be measured as a profile.",
+      "prompt": "Replacement reference/sheets/beaver_turnaround.png. Size 1920 × 1080. Exactly as R9.1, but the left view must be a **strict orthographic side profile facing right**: the camera level with the body and at right angles to it, only the near side visible, the near legs in front of the far ones, the tail seen edge-on as a thin flat paddle. Middle: strict top view, head right. Right: three-quarter front view. Same beaver, same scale, plain light grey background, no text.  Adult North American beaver, chestnut brown coat, heavy 80cm rounded body, short legs, webbed hind feet, clawed forepaws, round small ears, dark eyes, orange incisors, broad dark scaly flat paddle tail. Three views single horizontal row. Painted autumn storybook realism, fine soft gouache, gently simplified real anatomy/materials, no text logos watermarks photographic effects. Plain light grey, even studio light, all views same animal at same scale with no overlap. Strict orthographic requested views, no perspective in side and top."
+    },
+    {
+      "id": "R11.2",
+      "file": "reference/sheets/heron_turnaround.png",
+      "size": "1920 × 1080",
+      "reason": "The \"top\" view shows the heron lying on its side with its legs sideways, not seen from above while standing.",
+      "prompt": "1920x1080 three-panel scientific model sheet of ONE adult great blue heron. Plain light grey background no labels, painted storybook gouache realism. LEFT panel: strict right-facing side profile of heron standing with long vertical dark legs, folded wings, relaxed S neck, yellow dagger bill, blue grey feathers white head black eye stripe. MIDDLE panel: EXACT VERTICAL OVERHEAD ORTHOGRAPHIC VIEW of the same bird STANDING ON ITS FEET. Camera high directly ABOVE the bird, looking straight DOWN along gravity. The body appears as a SHORT OVAL of folded wing backs, with tail pointing LEFT and head and bill projecting RIGHT. Long legs are HIDDEN UNDER the body because viewed from above; only tiny toes peek at edges. Neck is foreshortened, seen from ABOVE, not long upright. Bird has NOT been laid on side or rotated sideways. Do NOT draw a standing front elevation in this panel. RIGHT panel: three quarter front standing heron, full legs. Three evenly spaced panels same anatomical scale; whole animals visible."
+    },
+    {
+      "id": "G11.3",
+      "file": "textures/curb_face.png",
+      "size": "1024 × 256",
+      "reason": "Came out painted bright yellow (a no-parking curb); the default curb is bare concrete.",
+      "prompt": "Replacement textures/curb_face.png. Size 1024 × 256. As G10.6, in **plain weathered grey concrete with no paint**: a seamless (left–right) front view of the vertical face and rounded top edge of an old concrete curb, chipped in places, grimy at the bottom.  ONLY unpainted neutral GREY concrete, no yellow anywhere, no paint, front-on elevation seamless horizontally. Painted autumn storybook realism, fine soft gouache, gently simplified real anatomy/materials, no text logos watermarks photographic effects. "
+    },
+    {
+      "id": "G11.4",
+      "file": "textures/asphalt_patched.png",
+      "size": "1024 × 1024",
+      "reason": "Has yellow lane-paint dashes baked in, which would repeat every 4 m on every road.",
+      "prompt": "Replacement textures/asphalt_patched.png. Size 1024 × 1024. As G10.11 **with no road paint at all**: worn downtown asphalt with darker patched rectangles, sealed cracks in black tar lines and a few leaves; seamless, top-down.  Road asphalt dark grey, black tar sealed cracks, patched rectangles, a few autumn leaves. Absolutely NO road paint, no markings, no yellow lines or white lines. Painted autumn storybook realism, fine soft gouache, gently simplified real anatomy/materials, no text logos watermarks photographic effects. "
+    },
+    {
+      "id": "G11.5",
+      "file": "sprites/ground_plants.png",
+      "size": "2048 × 1024",
+      "reason": "Each plant sits in a pale glow halo instead of a clean cut-out edge.",
+      "prompt": "Replacement sprites/ground_plants.png. Size 2048 × 1024. The same twelve plants as G10.13, on a **flat pure #FF00FF magenta background** with crisp edges, no glow, no soft shadow and no halo around any item, each plant whole and separate.  Twelve plants, three rows of four: dandelion with seed head, clover, plantain, crabgrass tuft, moss in crack, mushrooms, fern, dried goldenrod, chicory, creeping thyme, ivy runner, fallen twig with lichen. Side view squirrel eye level, pure solid magenta background #FF00FF, no transparency, no glow/shadow or halo; crisp silhouette boundaries, no soil patches. Painted autumn storybook realism, fine soft gouache, gently simplified real anatomy/materials, no text logos watermarks photographic effects. "
+    },
+    {
+      "id": "G11.6",
+      "file": "textures/leaf_drift_edge.png",
+      "size": "1024 × 1024",
+      "reason": "Has a stone curb painted along its top edge; the curb is modelled separately.",
+      "prompt": "Replacement textures/leaf_drift_edge.png. Size 1024 × 1024. As G10.1 with **no curb or pavement drawn**: leaves only, thickest along the top edge and thinning to scattered single leaves at the bottom, transparent everywhere else; seamless left–right.  Top-down overlapping maple oak linden leaves in reds orange gold brown, thick at top thinning to sparse at bottom. Leaves ONLY, no curb pavement ground stone or wood. Native transparent alpha everywhere without leaves. Painted autumn storybook realism, fine soft gouache, gently simplified real anatomy/materials, no text logos watermarks photographic effects. "
+    }
+  ]
+}

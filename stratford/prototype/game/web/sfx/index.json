@@ -1,0 +1,256 @@
+{
+ "squirrel_step_pavement": [
+  "sfx/squirrel_step_pavement-1.mp3",
+  "sfx/squirrel_step_pavement-2.mp3",
+  "sfx/squirrel_step_pavement-3.mp3",
+  "sfx/squirrel_step_pavement-4.mp3",
+  "sfx/squirrel_step_pavement-5.mp3",
+  "sfx/squirrel_step_pavement-6.mp3"
+ ],
+ "squirrel_step_leaves": [
+  "sfx/squirrel_step_leaves-1.mp3",
+  "sfx/squirrel_step_leaves-2.mp3",
+  "sfx/squirrel_step_leaves-3.mp3",
+  "sfx/squirrel_step_leaves-4.mp3",
+  "sfx/squirrel_step_leaves-5.mp3",
+  "sfx/squirrel_step_leaves-6.mp3"
+ ],
+ "squirrel_step_grass": [
+  "sfx/squirrel_step_grass-1.mp3",
+  "sfx/squirrel_step_grass-2.mp3",
+  "sfx/squirrel_step_grass-3.mp3",
+  "sfx/squirrel_step_grass-4.mp3"
+ ],
+ "squirrel_climb_bark": [
+  "sfx/squirrel_climb_bark-1.mp3",
+  "sfx/squirrel_climb_bark-2.mp3",
+  "sfx/squirrel_climb_bark-3.mp3",
+  "sfx/squirrel_climb_bark-4.mp3",
+  "sfx/squirrel_climb_bark-5.mp3",
+  "sfx/squirrel_climb_bark-6.mp3"
+ ],
+ "squirrel_climb_brick": [
+  "sfx/squirrel_climb_brick-1.mp3",
+  "sfx/squirrel_climb_brick-2.mp3",
+  "sfx/squirrel_climb_brick-3.mp3",
+  "sfx/squirrel_climb_brick-4.mp3"
+ ],
+ "squirrel_land": [
+  "sfx/squirrel_land-1.mp3",
+  "sfx/squirrel_land-2.mp3",
+  "sfx/squirrel_land-3.mp3",
+  "sfx/squirrel_land-4.mp3"
+ ],
+ "squirrel_chatter": [
+  "sfx/squirrel_chatter-1.mp3",
+  "sfx/squirrel_chatter-2.mp3",
+  "sfx/squirrel_chatter-3.mp3",
+  "sfx/squirrel_chatter-4.mp3"
+ ],
+ "squirrel_eat": [
+  "sfx/squirrel_eat-1.mp3",
+  "sfx/squirrel_eat-2.mp3",
+  "sfx/squirrel_eat-3.mp3"
+ ],
+ "squirrel_dig": [
+  "sfx/squirrel_dig-1.mp3",
+  "sfx/squirrel_dig-2.mp3",
+  "sfx/squirrel_dig-3.mp3",
+  "sfx/squirrel_dig-4.mp3"
+ ],
+ "leaf_pile_burst": [
+  "sfx/leaf_pile_burst-1.mp3",
+  "sfx/leaf_pile_burst-2.mp3",
+  "sfx/leaf_pile_burst-3.mp3",
+  "sfx/leaf_pile_burst-4.mp3"
+ ],
+ "beaver_step": [
+  "sfx/beaver_step-1.mp3",
+  "sfx/beaver_step-2.mp3",
+  "sfx/beaver_step-3.mp3",
+  "sfx/beaver_step-4.mp3"
+ ],
+ "beaver_tail_slap": [
+  "sfx/beaver_tail_slap-1.mp3",
+  "sfx/beaver_tail_slap-2.mp3",
+  "sfx/beaver_tail_slap-3.mp3"
+ ],
+ "beaver_gnaw": [
+  "sfx/beaver_gnaw-1.mp3",
+  "sfx/beaver_gnaw-2.mp3",
+  "sfx/beaver_gnaw-3.mp3",
+  "sfx/beaver_gnaw-4.mp3"
+ ],
+ "rabbit_hop": [
+  "sfx/rabbit_hop-1.mp3",
+  "sfx/rabbit_hop-3.mp3",
+  "sfx/rabbit_hop-4.mp3",
+  "sfx/rabbit_hop-5.mp3",
+  "sfx/rabbit_hop-6.mp3"
+ ],
+ "rabbit_thump": [
+  "sfx/rabbit_thump-1.mp3",
+  "sfx/rabbit_thump-2.mp3",
+  "sfx/rabbit_thump-3.mp3"
+ ],
+ "swan_hiss": [
+  "sfx/swan_hiss-1.mp3",
+  "sfx/swan_hiss-2.mp3",
+  "sfx/swan_hiss-3.mp3"
+ ],
+ "swan_wingbeat": [
+  "sfx/swan_wingbeat-1.mp3",
+  "sfx/swan_wingbeat-2.mp3",
+  "sfx/swan_wingbeat-3.mp3",
+  "sfx/swan_wingbeat-4.mp3"
+ ],
+ "swan_takeoff": [
+  "sfx/swan_takeoff-1.mp3",
+  "sfx/swan_takeoff-2.mp3"
+ ],
+ "swan_land_water": [
+  "sfx/swan_land_water-1.mp3",
+  "sfx/swan_land_water-2.mp3",
+  "sfx/swan_land_water-3.mp3"
+ ],
+ "heron_call": [
+  "sfx/heron_call-1.mp3",
+  "sfx/heron_call-2.mp3",
+  "sfx/heron_call-3.mp3"
+ ],
+ "heron_wingbeat": [
+  "sfx/heron_wingbeat-1.mp3",
+  "sfx/heron_wingbeat-2.mp3",
+  "sfx/heron_wingbeat-3.mp3",
+  "sfx/heron_wingbeat-4.mp3"
+ ],
+ "heron_wade": [
+  "sfx/heron_wade-1.mp3",
+  "sfx/heron_wade-2.mp3",
+  "sfx/heron_wade-3.mp3",
+  "sfx/heron_wade-4.mp3"
+ ],
+ "swim_paddle": [
+  "sfx/swim_paddle-1.mp3",
+  "sfx/swim_paddle-2.mp3",
+  "sfx/swim_paddle-3.mp3",
+  "sfx/swim_paddle-4.mp3"
+ ],
+ "dive": [
+  "sfx/dive-1.mp3",
+  "sfx/dive-2.mp3",
+  "sfx/dive-3.mp3"
+ ],
+ "surface": [
+  "sfx/surface-1.mp3",
+  "sfx/surface-2.mp3",
+  "sfx/surface-3.mp3"
+ ],
+ "nut_pickup": [
+  "sfx/nut_pickup-1.mp3",
+  "sfx/nut_pickup-2.mp3",
+  "sfx/nut_pickup-3.mp3"
+ ],
+ "city_hall_bell": [
+  "sfx/city_hall_bell-1.mp3",
+  "sfx/city_hall_bell-2.mp3"
+ ],
+ "wind_gust": [
+  "sfx/wind_gust-1.mp3",
+  "sfx/wind_gust-2.mp3",
+  "sfx/wind_gust-3.mp3",
+  "sfx/wind_gust-4.mp3"
+ ],
+ "car_pass": [
+  "sfx/car_pass-1.mp3",
+  "sfx/car_pass-2.mp3",
+  "sfx/car_pass-3.mp3",
+  "sfx/car_pass-4.mp3"
+ ],
+ "geese_overhead": [
+  "sfx/geese_overhead-1.mp3",
+  "sfx/geese_overhead-2.mp3"
+ ],
+ "crow_call": [
+  "sfx/crow_call-1.mp3",
+  "sfx/crow_call-2.mp3",
+  "sfx/crow_call-3.mp3"
+ ],
+ "bluejay_call": [
+  "sfx/bluejay_call-1.mp3",
+  "sfx/bluejay_call-2.mp3",
+  "sfx/bluejay_call-3.mp3"
+ ],
+ "chickadee_call": [
+  "sfx/chickadee_call-1.mp3",
+  "sfx/chickadee_call-2.mp3",
+  "sfx/chickadee_call-3.mp3"
+ ],
+ "discover": [
+  "sfx/discover-1.mp3",
+  "sfx/discover-2.mp3",
+  "sfx/discover-3.mp3"
+ ],
+ "ui_move": [
+  "sfx/ui_move-1.mp3",
+  "sfx/ui_move-2.mp3"
+ ],
+ "ui_confirm": [
+  "sfx/ui_confirm-1.mp3",
+  "sfx/ui_confirm-2.mp3"
+ ],
+ "ui_back": [
+  "sfx/ui_back-1.mp3",
+  "sfx/ui_back-2.mp3"
+ ],
+ "map_open": [
+  "sfx/map_open-1.mp3",
+  "sfx/map_open-2.mp3"
+ ],
+ "creature_switch": [
+  "sfx/creature_switch-1.mp3",
+  "sfx/creature_switch-2.mp3"
+ ],
+ "_levels": {
+  "squirrel_step_pavement": 0.5,
+  "squirrel_step_leaves": 0.55,
+  "squirrel_step_grass": 0.4,
+  "squirrel_climb_bark": 0.55,
+  "squirrel_climb_brick": 0.55,
+  "squirrel_land": 0.6,
+  "squirrel_chatter": 0.7,
+  "squirrel_eat": 0.5,
+  "squirrel_dig": 0.6,
+  "leaf_pile_burst": 0.8,
+  "beaver_step": 0.6,
+  "beaver_tail_slap": 0.9,
+  "beaver_gnaw": 0.6,
+  "rabbit_hop": 0.45,
+  "rabbit_thump": 0.7,
+  "swan_hiss": 0.7,
+  "swan_wingbeat": 0.7,
+  "swan_takeoff": 0.8,
+  "swan_land_water": 0.8,
+  "heron_call": 0.8,
+  "heron_wingbeat": 0.7,
+  "heron_wade": 0.5,
+  "swim_paddle": 0.5,
+  "dive": 0.7,
+  "surface": 0.6,
+  "nut_pickup": 0.5,
+  "city_hall_bell": 0.9,
+  "wind_gust": 0.5,
+  "car_pass": 0.6,
+  "geese_overhead": 0.5,
+  "crow_call": 0.5,
+  "bluejay_call": 0.5,
+  "chickadee_call": 0.5,
+  "discover": 0.6,
+  "ui_move": 0.35,
+  "ui_confirm": 0.5,
+  "ui_back": 0.4,
+  "map_open": 0.5,
+  "creature_switch": 0.5
+ },
+ "_loops": []
+}
