@@ -463,12 +463,14 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     c.globalAlpha = 1;
     moonFace(c, 250, 150, 52, t);
     if (!img('sky-backdrop')) headlands(c, b, t);
-    // The lighthouse of Widow's Bay is wheeled on for the last stretch.
+    // The lighthouse of Widow's Bay is wheeled on for the last stretch,
+    // steadily, and comes to rest as the ship does on arrival: once it
+    // stops, the voyage is over.
     const p = b ? b.progress : 0;
     if (p > 0.82) {
       const k = Math.min(1, (p - 0.82) / 0.18);
-      const ease = 1 - (1 - k) ** 3;
-      lighthouse(c, 1320 - ease * 360, 420, t, b.phase !== 'sail');
+      const u = b.phase === 'sail' ? 0 : b.phase === 'arrive' ? Math.min(1, b.phaseT / TUNING.arriveTime) : 1;
+      lighthouse(c, 1320 - k * 320 - 40 * (1 - (1 - u) ** 2), 420, t, b.phase !== 'sail');
     }
   }
 

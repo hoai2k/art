@@ -83,8 +83,9 @@ export const SCENES = [
   { name: 'Into the Grotto', vent: 0 },
   { name: 'The Deep Caves', vent: 2 },
   { name: "The Dragon's Floor", vent: 3 },
-  { name: "The Witch's Offer" },
-  { name: 'The Moon-Boat Ride' },
+  // the film edition's Water Fairy and her procession in the witch's offer and the moon boat's place
+  { name: FILM ? 'The Water Fairy' : "The Witch's Offer" },
+  { name: FILM ? 'The Marine Procession' : 'The Moon-Boat Ride' },
 ];
 // The descent scene a depth belongs to (0..3), by vent boundaries.
 const SCENE_Y = [0, 800, 2400, 3150]; // just above each scene's vent spot

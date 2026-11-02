@@ -17,6 +17,8 @@ import { createCavern, stepCavern, surfaces, EXIT_X } from '../src/acts/act4cave
 import { HOUSE } from '../src/acts/act5.js';
 import { FINALE, FINALE_END } from '../src/finale.js';
 import { HOOKS } from '../src/acts/act4.js';
+import act1 from '../src/acts/act1.js';
+import { SCENES as ACT2_SCENES } from '../src/acts/act2.js';
 
 let n = 0;
 const test = (name, fn) => { fn(); n++; console.log('ok -', name); };
@@ -30,6 +32,19 @@ const run = (act, st, sec, input = () => ({}), until = () => false) => {
 };
 // Presses A just on each beat (when the beat's fraction is near 0).
 const onBeat = (st) => { const b = ((st.clock ?? st.t ?? 0) + DT) / BEAT; return { a: (b % 1) < 0.04 }; };
+
+test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse comes to rest', () => {
+  const st = act1.create({ seed: 3 });
+  act1.step(st, DT, { a: true, beat: 0 });
+  assert.equal(st.board.ship.leapT, 0, 'A does nothing at sea');
+  st.board.progress = 0.9999; let arrivedAt = null;
+  for (let t = 0; t < 6 && st.phase !== 'party'; t += DT) { act1.step(st, DT, { beat: 0 }); if (arrivedAt == null && st.board.phase === 'arrive') arrivedAt = t; }
+  assert.equal(st.phase, 'party');
+});
+
+test('Act II scene names follow the film', () => {
+  assert.deepEqual(ACT2_SCENES.slice(4).map((s) => s.name), ['The Water Fairy', 'The Marine Procession']);
+});
 
 test('the film edition is the default, with a prologue and six acts', () => {
   assert.equal(FILM, true); assert.equal(LEGACY, false);
