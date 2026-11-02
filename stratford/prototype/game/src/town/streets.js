@@ -58,6 +58,27 @@ export function prepareStreets(ctx) {
     walk(r.points, 2, (x, z) => { const w = hf.waterAt(x, z); if (w !== null) wl = Math.max(wl, w); });
     const b = { road: r, half, L, h0, h1, wl, curbed: !!st, style: st };
     bridges.push(b);
+  }
+  // a footbridge mapped alongside a road bridge (its sidewalk) is part of that bridge
+  for (const b of bridges) {
+    if (b.curbed) continue;
+    const P = b.road.points, m = P[Math.floor(P.length / 2)], m0 = P[0], m1 = P[P.length - 1];
+    const mid = [(m0[0] + m1[0]) / 2, (m0[1] + m1[1]) / 2];
+    for (const o of bridges) {
+      if (!o.curbed) continue;
+      const Q = o.road.points;
+      let d = Infinity;
+      for (let i = 1; i < Q.length; i++) for (const p of [mid, m]) {
+        const ax = Q[i - 1][0], az = Q[i - 1][1], bx = Q[i][0], bz = Q[i][1], dx = bx - ax, dz = bz - az, l2 = dx * dx + dz * dz;
+        const t = l2 ? Math.max(0, Math.min(1, ((p[0] - ax) * dx + (p[1] - az) * dz) / l2)) : 0;
+        d = Math.min(d, Math.hypot(p[0] - ax - dx * t, p[1] - az - dz * t));
+      }
+      if (d < o.half + 1) b.alongside = true;
+    }
+  }
+  for (const b of bridges) {
+    if (b.alongside) continue;
+    const r = b.road, L = b.L;
     let s = 0;
     for (let i = 1; i < r.points.length; i++) {
       const a = r.points[i - 1], c = r.points[i]; const l = Math.hypot(c[0] - a[0], c[1] - a[1]);
@@ -218,6 +239,8 @@ export function buildGroundMap(ctx, mPerPx) {
 
 // ---------------------------------------------------------------- per chunk
 const R = 0.5;            // raster resolution (m)
+// how far the terrain is sunk under carriageways and sidewalk bands (index.js uses these)
+export const ROAD_SINK = 0.25, BAND_SINK = 0.08;
 const ROAD_Y = 0.035;     // carriageway above the (sunken) terrain: a clear step, no depth fighting at its edges
 const MARK_Y = 0.004;     // paint above the carriageway (drawn with a stronger depth offset)
 const MARGIN = 16;        // px around the chunk so blur and strokes see their neighbours
@@ -270,21 +293,26 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
       const s = q.seg.data; let dx = q.seg.bx - q.seg.ax, dz = q.seg.bz - q.seg.az; const l = Math.hypot(dx, dz) || 1;
       return { d: Math.max(0, q.d - s.hw), blv: s.blv, dx: dx / l, dz: dz / l };
     };
-    // carriageway
-    const roadLoops = contourLoops(road, N, x0, z0, R);
-    yield;
-    for (const P of polygons(roadLoops.map((l) => cleanLoop(l, 0.04, 3)).filter(Boolean))) {
-      // the carriageway is walked on: the collider gets exactly the drawn triangles
-      const ry = new Map();
-      triangulate(P, (pts) => {
-        const idx = pts.map((p) => {
-          const i = info(p[0], p[1]);
-          const y = H(p[0], p[1]) + ROAD_Y; ry.set(p, y);
-          vb.set('aSt', [STREET.road, 0, 0, 0]).set('aDir', [i.dx, i.dz]);
-          return vb.v(p[0] - ox, y, p[1] - oz, 0, 1, 0);
-        });
-        return idx;
-      }, vb, (a, b, c) => cb.tri([a[0] - ox, ry.get(a), a[1] - oz], [b[0] - ox, ry.get(b), b[1] - oz], [c[0] - ox, ry.get(c), c[1] - oz], SURFACE.road));
+    // carriageway, traced and triangulated in 4 m tiles so its surface follows the ground
+    // (one outline per chunk gives long triangles whose flat faces dip into crowned roads)
+    const TS = 8, sub = new Float32Array((TS + 1) * (TS + 1));
+    for (let ty = 0; ty * TS < N - 1; ty++) {
+      for (let tx = 0; tx * TS < N - 1; tx++) {
+        let mx = 0;
+        for (let j = 0; j <= TS; j++) for (let i = 0; i <= TS; i++) { const v = road[Math.min(N - 1, ty * TS + j) * N + Math.min(N - 1, tx * TS + i)]; sub[j * (TS + 1) + i] = v; if (v > mx) mx = v; }
+        if (mx < 0.5) continue;
+        const tl = contourLoops(sub, TS + 1, x0 + tx * TS * R, z0 + ty * TS * R, R).map((l) => cleanLoop(l, 0.03, 2)).filter(Boolean);
+        for (const P of polygons(tl)) {
+          const ry = new Map();
+          triangulate(P, (pts) => pts.map((p) => {
+            const i = info(p[0], p[1]);
+            const y = H(p[0], p[1]) + ROAD_Y; ry.set(p, y);
+            vb.set('aSt', [STREET.road, 0, 0, 0]).set('aDir', [i.dx, i.dz]);
+            return vb.v(p[0] - ox, y, p[1] - oz, 0, 1, 0);
+          }), vb, (a, b, c) => cb.tri([a[0] - ox, ry.get(a), a[1] - oz], [b[0] - ox, ry.get(b), b[1] - oz], [c[0] - ox, ry.get(c), c[1] - oz], SURFACE.road));
+        }
+      }
+      if (ty % 10 === 9) yield;
     }
     yield;
     // sidewalks + boulevards, and the curbs along their road side
@@ -311,19 +339,25 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
         const surf = blv > 0 && d > 0.25 && d < blv ? SURFACE.grass : SURFACE.sidewalk;
         cb.tri([a[0] - ox, ma.y, a[1] - oz], [c[0] - ox, mc.y, c[1] - oz], [b[0] - ox, mb.y, b[1] - oz], surf);
       });
-      // curb faces: loop edges whose both ends are on the curb (inside is on the left, the road on the right)
+      // the slab's edges, all closed down to below the (sunken) terrain so nothing can get
+      // under a sidewalk: curb faces on the road side, skirts on the outer side (inside is
+      // on the left of each loop edge, the outside on the right); none along the chunk edge
       for (const ring of rings) {
         for (let k = 0; k < ring.length; k++) {
           const a = ring[k], b = ring[(k + 1) % ring.length];
+          if (a[2] && b[2]) continue;
           const ma = meta.get(a), mb = meta.get(b);
-          if (!ma.isCurb || !mb.isCurb || (a[2] && b[2])) continue;
           let nx = b[1] - a[1], nz = -(b[0] - a[0]); const l = Math.hypot(nx, nz); if (l < 1e-4) continue; nx /= l; nz /= l;
-          const ya = ma.y - curb, yb = mb.y - curb;
+          const isCurb = ma.isCurb && mb.isCurb;
+          // down below the (sunken) ground, which beside a slab draped up to a bridge deck can be well below it
+          const bot = (p) => { const h = H(p[0], p[1]), g = ctx.hf.at(p[0], p[1]), d = h - (isCurb ? ROAD_SINK + 0.05 : BAND_SINK + 0.25);
+            return ctx.hf.waterAt(p[0], p[1]) !== null ? d : Math.max(h - 2.5, Math.min(d, g - ROAD_SINK - 0.05)); };
+          const ya = bot(a), yb = bot(b);
           vb.set('aSt', [STREET.curb, 0, 0, 0]).set('aDir', [-nz, nx]);
-          const i0 = vb.v(a[0] - ox, ya - 0.03, a[1] - oz, nx, 0, nz), i1 = vb.v(b[0] - ox, yb - 0.03, b[1] - oz, nx, 0, nz);
+          const i0 = vb.v(a[0] - ox, ya, a[1] - oz, nx, 0, nz), i1 = vb.v(b[0] - ox, yb, b[1] - oz, nx, 0, nz);
           const i2 = vb.v(b[0] - ox, mb.y, b[1] - oz, nx, 0, nz), i3 = vb.v(a[0] - ox, ma.y, a[1] - oz, nx, 0, nz);
           vb.quad(i1, i0, i3, i2);
-          cb.quad([b[0] - ox, yb, b[1] - oz], [a[0] - ox, ya, a[1] - oz], [a[0] - ox, ma.y, a[1] - oz], [b[0] - ox, mb.y, b[1] - oz], SURFACE.sidewalk);   // faces the road
+          cb.quad([b[0] - ox, yb, b[1] - oz], [a[0] - ox, ya, a[1] - oz], [a[0] - ox, ma.y, a[1] - oz], [b[0] - ox, mb.y, b[1] - oz], isCurb ? SURFACE.sidewalk : SURFACE.ground);   // faces out
         }
       }
     }
@@ -335,7 +369,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
     // each kind a clear step above the terrain and each other (no depth fighting), all in the collider
     const y0 = kind === STREET.service ? 0.05 : kind === STREET.path ? 0.06 : 0.07;
     const surf = kind === STREET.service ? SURFACE.road : kind === STREET.path ? SURFACE.ground : SURFACE.sidewalk;
-    ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz, cb, surf);
+    ribbon(r.pts, r.road.width, (x, z) => H(x, z) + y0, kind, vb, ox, oz, cb, surf, ctx.hf);
     if (r.road.kind === 'steps') { /* drawn as a footway */ }
   }
   // markings
@@ -353,7 +387,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
     }
   }
   // bridges
-  for (const b of streets.bridges) buildBridge(ctx, b, chunk, vb, cb);
+  for (const b of streets.bridges) if (!b.alongside) buildBridge(ctx, b, chunk, vb, cb);
 }
 
 // Earcut via three's ShapeUtils. emit(pts) -> vertex indices, in pts order.
@@ -373,7 +407,12 @@ function triangulate(P, emit, vb, onTri) {
   }
 }
 
-function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0) {
+function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0, hf = null) {
+  const base = hf ? (P) => {
+    const x = P[0] + ox, z = P[2] + oz, g = hf.at(x, z);
+    if (hf.waterAt(x, z) !== null) return P[1] - 0.4;      // over water the bridge structure closes it
+    return Math.max(P[1] - 2.5, Math.min(P[1] - 0.4, g - ROAD_SINK - 0.05));
+  } : null;
   const hw = width / 2;
   const dense = [];
   for (let i = 0; i < pts.length - 1; i++) {
@@ -394,9 +433,26 @@ function ribbon(pts, width, yAt, kind, vb, ox, oz, cb = null, surf = 0) {
     const pl = [cx - dz * hw - ox, yAt(cx - dz * hw, cz + dx * hw), cz + dx * hw - oz], pr = [cx + dz * hw - ox, yAt(cx + dz * hw, cz - dx * hw), cz - dx * hw - oz];
     const L = vb.v(pl[0], pl[1], pl[2], 0, 1, 0);
     const Rr = vb.v(pr[0], pr[1], pr[2], 0, 1, 0);
-    if (prev) { vb.quad(prev[0], L, Rr, prev[1]); if (cb) cb.quad(prev[2], pl, pr, prev[3], surf); }
+    if (prev) {
+      vb.quad(prev[0], L, Rr, prev[1]); if (cb) cb.quad(prev[2], pl, pr, prev[3], surf);
+      // skirts down the two sides, so the slab cannot be crept under
+      skirt(vb, cb, prev[2], pl, [-dz, 0, dx], kind, base); skirt(vb, cb, pr, prev[3], [dz, 0, -dx], kind, base);
+    }
+    if (i === 0) skirt(vb, cb, pr, pl, [-dx, 0, -dz], kind, base);
+    if (i === dense.length - 1) skirt(vb, cb, pl, pr, [dx, 0, dz], kind, base);
     prev = [L, Rr, pl, pr];
   }
+}
+
+// a vertical face from a slab edge (A to B, chunk-relative, with their slab heights)
+// down to 40 cm below it: drawn and in the collider, facing `n`
+function skirt(vb, cb, A, B, n, kind, base) {
+  // down to the ground (below a slab draped up to a bridge, the ground can be far below its edge)
+  const ya = base ? base(A) : A[1] - 0.4, yb = base ? base(B) : B[1] - 0.4;
+  vb.set('aSt', [kind === STREET.path ? STREET.path : STREET.curb, 0, 0, 0]);
+  const i0 = vb.v(A[0], ya, A[2], n[0], 0, n[2]), i1 = vb.v(B[0], yb, B[2], n[0], 0, n[2]), i2 = vb.v(B[0], B[1], B[2], n[0], 0, n[2]), i3 = vb.v(A[0], A[1], A[2], n[0], 0, n[2]);
+  vb.quadFacing(i0, i1, i2, i3, n);
+  if (cb) cb.quad([A[0], ya, A[2]], [B[0], yb, B[2]], [B[0], B[1], B[2]], [A[0], A[1], A[2]], SURFACE.ground);
 }
 
 function buildBridge(ctx, b, chunk, vb, cb) {

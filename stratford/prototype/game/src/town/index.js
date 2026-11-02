@@ -11,7 +11,7 @@ import { loadTown } from './data.js';
 import { loadAssets } from './assets.js';
 import { Builder, ColliderBuilder, PointGrid, pointInPoly, bbox, centroid, disposeObject, rng } from './util.js';
 import { sharedUniforms, groundMaterial, streetMaterial, buildingMaterial, waterMaterial } from './materials.js';
-import { prepareStreets, buildGroundMap, buildChunkStreets, binStreetParts } from './streets.js';
+import { prepareStreets, buildGroundMap, buildChunkStreets, binStreetParts, ROAD_SINK, BAND_SINK } from './streets.js';
 import { addBuilding, BUILDING_ATTRS } from './buildings.js';
 import { createTrees, prepareTrees } from './trees.js';
 import { placeProps, createProps } from './props.js';
@@ -149,11 +149,11 @@ export async function createTown(opts = {}) {
   // Terrain node heights for a chunk at a step (in grid cells). Near chunks sink
   // the nodes under carriageways a little so the road surface always covers them;
   // the collider is built from the very same heights, so what is drawn is what is walked on.
-  const SINK = 0.08, SINK_ROAD = 0.25;
+  const SINK = BAND_SINK, SINK_ROAD = ROAD_SINK;
   function terrainHeights(c, step, sink) {
     const i0 = Math.round((c.x0 - hf.x0) / hf.cell), j0 = Math.round((c.z0 - hf.z0) / hf.cell);
     const cols = Math.floor(Math.round(CHUNK / hf.cell) / step) + 1;
-    const y = new Float32Array(cols * cols);
+    const y = new Float32Array(cols * cols), sunk = new Uint8Array(cols * cols);
     for (let jj = 0; jj < cols; jj++) for (let ii = 0; ii < cols; ii++) {
       const i = i0 + ii * step, j = j0 + jj * step;
       let h = hf.node(i, j);
@@ -163,12 +163,12 @@ export async function createTown(opts = {}) {
         // (deeper under carriageways: a wide road is triangulated between its curbs, so its
         // surface is a chord that sits below a crowned road's middle)
         const q = ctx.streets.grid.nearest(x, z, 16);
-        if (q && q.d < q.seg.data.hw - 0.3) h -= SINK_ROAD;
-        else if (q && q.d < q.seg.data.hw + q.seg.data.band - 0.6) h -= SINK;
+        if (q && q.d < q.seg.data.hw - 0.3) { h -= SINK_ROAD; sunk[jj * cols + ii] = 1; }
+        else if (q && q.d < q.seg.data.hw + q.seg.data.band - 0.6) { h -= SINK; sunk[jj * cols + ii] = 1; }
       }
       y[jj * cols + ii] = h;
     }
-    return { y, cols, i0, j0, step };
+    return { y, sunk, cols, i0, j0, step };
   }
 
   function terrainMesh(c, T) {
@@ -203,9 +203,45 @@ export async function createTown(opts = {}) {
     return m;
   }
 
+  // The top of the walkable slabs (roads, sidewalks, footways) over a chunk, on a 0.5 m raster
+  // (chunk-relative collider triangles in), -Infinity where there is none.
+  function slabRaster(cbStreets) {
+    const r = 0.5, n = Math.round(CHUNK / r) + 1, top = new Float32Array(n * n).fill(-Infinity);
+    const P = cbStreets.pos;
+    for (let t = 0; t < P.length; t += 9) {
+      const ax = P[t], ay = P[t + 1], az = P[t + 2], bx = P[t + 3], by = P[t + 4], bz = P[t + 5], cx = P[t + 6], cy = P[t + 7], cz = P[t + 8];
+      const ux = bx - ax, uz = bz - az, vx = cx - ax, vz = cz - az, det = ux * vz - uz * vx;
+      if (Math.abs(det) < 1e-6) continue;
+      const uy = by - ay, vy = cy - ay;
+      const ny = Math.abs(det) / Math.hypot(uy * vz - uz * vy, det, ux * vy - uy * vx);
+      if (ny < 0.7) continue;                                   // walls, curbs, skirts
+      const i0 = Math.max(0, Math.ceil(Math.min(ax, bx, cx) / r)), i1 = Math.min(n - 1, Math.floor(Math.max(ax, bx, cx) / r));
+      const j0 = Math.max(0, Math.ceil(Math.min(az, bz, cz) / r)), j1 = Math.min(n - 1, Math.floor(Math.max(az, bz, cz) / r));
+      for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
+        const px = i * r - ax, pz = j * r - az;
+        const s1 = (px * vz - pz * vx) / det, s2 = (ux * pz - uz * px) / det;
+        if (s1 < -1e-4 || s2 < -1e-4 || s1 + s2 > 1 + 1e-4) continue;
+        const y = ay + (by - ay) * s1 + (cy - ay) * s2, k = j * n + i;
+        if (y > top[k]) top[k] = y;
+      }
+    }
+    return { top, n, r };
+  }
+
   // terrain collider: the drawn triangles, two cells merged only where all four are exactly coplanar
-  function terrainCollider(c, cb, T) {
+  function terrainCollider(c, cb, T, slabs) {
     const { y: Y, cols, i0, j0 } = T;
+    // a cell wholly under a road or sidewalk slab is not a ground anyone can reach: leave it out
+    // (every 0.5 m sample of it has a slab at or above the terrain)
+    const covered = (ii, jj) => {
+      if (!slabs) return false;
+      const k = 4 / slabs.r, si = ii * k, sj = jj * k, h = (p, q) => {
+        const u = p / k, v = q / k;
+        return (Y[jj * cols + ii] * (1 - u) + Y[jj * cols + ii + 1] * u) * (1 - v) + (Y[(jj + 1) * cols + ii] * (1 - u) + Y[(jj + 1) * cols + ii + 1] * u) * v;
+      };
+      for (let q = 0; q <= k; q++) for (let p = 0; p <= k; p++) if (!(slabs.top[(sj + q) * slabs.n + si + p] >= h(p, q) - 0.005)) return false;
+      return true;
+    };
     const P = (ii, jj) => [hf.x0 + (i0 + ii) * hf.cell - c.ox, Y[jj * cols + ii], hf.z0 + (j0 + jj) * hf.cell - c.oz];
     const surf = (ii, jj) => {
       const x = hf.x0 + (i0 + ii + 0.5) * hf.cell, z = hf.z0 + (j0 + jj + 0.5) * hf.cell;
@@ -225,12 +261,13 @@ export async function createTown(opts = {}) {
         for (let q = 0; q <= 2 && flat; q++) for (let p = 0; p <= 2 && flat; p++) if (Math.abs(Y[(jj + q) * cols + ii + p] - (a + gx * p + gz * q)) > 0.002) flat = false;
       }
       const s00 = surf(ii, jj);
-      if (flat && s00 === surf(ii + 1, jj) && s00 === surf(ii, jj + 1) && s00 === surf(ii + 1, jj + 1)) {
+      const anyCovered = covered(ii, jj) || (ii + 1 < n && covered(ii + 1, jj)) || (jj + 1 < n && covered(ii, jj + 1)) || (ii + 1 < n && jj + 1 < n && covered(ii + 1, jj + 1));
+      if (flat && !anyCovered && s00 === surf(ii + 1, jj) && s00 === surf(ii, jj + 1) && s00 === surf(ii + 1, jj + 1)) {
         tri(P(ii, jj), P(ii, jj + 2), P(ii + 2, jj + 2), s00); tri(P(ii, jj), P(ii + 2, jj + 2), P(ii + 2, jj), s00);
         continue;
       }
       for (let q = 0; q < 2; q++) for (let p = 0; p < 2; p++) {
-        const I = ii + p, J = jj + q; if (I >= n || J >= n) continue;
+        const I = ii + p, J = jj + q; if (I >= n || J >= n || covered(I, J)) continue;
         const s = surf(I, J);
         tri(P(I, J), P(I, J + 1), P(I + 1, J + 1), s); tri(P(I, J), P(I + 1, J + 1), P(I + 1, J), s);
       }
@@ -291,7 +328,7 @@ export async function createTown(opts = {}) {
     if (markMesh) { markMesh.receiveShadow = true; markMesh.name = 'markings'; markMesh.renderOrder = 1; }
     yield;
     const tc = new ColliderBuilder();
-    terrainCollider(c, tc, T);
+    terrainCollider(c, tc, T, slabRaster(cb));
     const e = binned.get(c.key) || { trees: [], props: [] };
     const oc = new ColliderBuilder();
     trees.addColliders(e.trees, oc, c.ox, c.oz);
