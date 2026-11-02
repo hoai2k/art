@@ -7,7 +7,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingDoorAlpha, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -722,6 +722,7 @@ function apotheosis(k, st, t) {
     c.save(); c.translate(x, y); k.idle(id, t + x, 0, 0, h * 0.55, h); c.restore();
   }
   c.save(); c.translate(APOTH.mark, 330 - 30 * rise); k.idle('aurora-stand', t, 0, 0, 110, 180); c.restore();
+  treasurePile(k, st, t);
   if (!w) return;
   // Aloft they hold the jump pose they leapt in while they slowly rise.
   c.save(); c.translate(0, -rise * 140);
@@ -734,6 +735,44 @@ function apotheosis(k, st, t) {
   // giving way as the credits begin to roll
   const endCard = st.creditsT == null ? (st.riseT == null ? 0 : clamp(st.riseT - 1, 0, 1)) : clamp((FINALE.celebrate - st.creditsT) / 0.6, 0, 1);
   if (endCard > 0) card(k, 'The Kingdom of the Fairies', 'The end', endCard);
+}
+
+// The voyage's treasures at stage right: a heap of the pearls (one painted
+// pearl each, up to TREASURE.max, its count on a plaque), the sword laid
+// behind it, the seal and the lamp at its foot, Aurora's stars above.
+function treasurePile(k, st, t) {
+  const c = k.c, T = treasures(st), { x, y } = TREASURE;
+  if (!T.pearls && !T.stars && !T.sword && !T.seal && !T.lamp) return;
+  c.save();
+  const n = Math.min(T.pearls, TREASURE.max);
+  for (let i = 0, row = 0, left = n; left > 0; row++) {
+    const inRow = Math.min(left, 8 - row);
+    for (let j = 0; j < inRow; j++, i++) {
+      const px = x + (j - (inRow - 1) / 2) * 14 + ((i * 7) % 5) - 2, py = y - row * 11;
+      k.asset('pearl', px, py, 18, 18);
+    }
+    left -= inRow;
+  }
+  // the sword stands point-down in the heap's right flank (its art lies on the diagonal)
+  if (T.sword) { c.save(); c.translate(x + 40, y - 30); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 50, 100, 100); c.restore(); }
+  if (T.seal) k.asset('keepsake-seal', x + 76, y + 4, 54, 54);
+  if (T.lamp) k.asset('keepsake-lamp', x - 80, y + 4, 62, 62);
+  if (T.stars) {
+    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 8;
+    for (let i = 0; i < T.stars; i++) {
+      const sx = x + (i - (T.stars - 1) / 2) * 44, sy = y - 112 + Math.sin(t * 1.6 + i) * 5;
+      if (!k.asset('aurora-star', sx, sy, 40, 40)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 15, 12); }
+    }
+    c.restore();
+  }
+  if (T.pearls) {
+    const label = `${T.pearls} pearl${T.pearls === 1 ? '' : 's'}`;
+    c.font = '700 14px "Josefin Sans", sans-serif'; c.textAlign = 'center';
+    const lw = c.measureText(label).width + 24;
+    c.globalAlpha = 0.8; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - lw / 2, y - 172, lw, 22, 11); c.fill();
+    c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc'); c.fillText(label, x, y - 156);
+  }
+  c.restore();
 }
 
 function celebrationSparkles(k, time) {
