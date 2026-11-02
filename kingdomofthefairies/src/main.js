@@ -706,6 +706,12 @@ function update(dt, i) {
     // Pressed (or timed out) before the art is in, the prompt becomes a
     // loading bar, and the act begins as soon as the bar fills.
     const artIn = actArtReady(S.actIndex);
+    // An act's own art that failed to load stops at its card: never the stand-ins.
+    if (artIn && assets?.failed?.length && actArt(S.actIndex).some((id) => assets.failed.includes(id))) {
+      S.card.error = 'The scenery could not load. Please reload.'; S.card.loading = null; S.readyT = 0;
+      if (i.pause) pause();
+      return;
+    }
     if (S.card.loading != null && artIn) { S.card.loading = null; S.card.loadingText = null; announce('Ready.'); }
     S.readyT = (S.readyT || 0) + dt;
     const wants = (go && S.readyT > 0.4) || S.readyT > (S.card.body ? 12 : 6) || S.card.waiting;

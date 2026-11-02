@@ -17,9 +17,10 @@ try {
   await page.evaluate(() => { window.allAt = null; window.__kingdomOfTheFairies.assets.all.then(() => { window.allAt = performance.now(); }); });
   await page.keyboard.press('Enter');
   await poll(page, () => window.__kingdomOfTheFairies.S.mode === 'intro');
-  await page.waitForTimeout(600);
+  // past the card's 0.4 s guard against an accidental press
+  await poll(page, () => window.__kingdomOfTheFairies.S.readyT > 0.6);
   await page.keyboard.down('Space'); await page.waitForTimeout(120); await page.keyboard.up('Space'); await page.waitForTimeout(200);
-  const card = await page.evaluate(() => { const c = window.__kingdomOfTheFairies.S.card; return { waiting: c?.waiting, loading: c?.loading, text: c?.loadingText }; });
+  const card = await page.evaluate(() => { const q = window.__kingdomOfTheFairies, c = q.S.card; return { mode: q.S.mode, waiting: c?.waiting, loading: c?.loading, text: c?.loadingText, readyT: q.S.readyT }; });
   assert.equal(card.waiting, true, 'A before the art is in waits'); assert.ok(card.loading >= 0 && card.loading < 1); assert.equal(card.text, 'SETTING THE STAGE');
   await poll(page, () => window.__kingdomOfTheFairies.S.mode === 'play');
   const playAt = await page.evaluate(() => performance.now());
