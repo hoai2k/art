@@ -51,7 +51,7 @@ FUR = {'root': 0.5, 'pelvis': 0.6, 'spine1': 0.6, 'spine2': 0.6, 'neck1': 0.5, '
        'head': 0.2, 'bill': 0.0, 'humerus': 0.5, 'ulna': 0.4, 'manus': 0.3, 'thigh': 0.4, 'shin': 0.25, 'tarsus': 0.0, 'toes': 0.0, 'tail': 0.5}
 COATS = ['natural']
 SHEETS = {'natural': 'heron_turnaround.png'}
-SHEET = dict(body=0.85, rump_u=0.0, side=dict(box=(0, 0, 830, 1080)), top=False)   # tail tip to bill tip; 1.05 m tall; R9.7's top view is the bird on its side
+SHEET = dict(body=0.62, rump_u=0.0)        # tail tip to bill tip as drawn (round 11 turnaround), which stands it 1.05 m tall
 TRIS = 12000
 GRID = 0.3
 GREY = 0x7d8a98

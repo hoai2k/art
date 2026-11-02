@@ -52,8 +52,7 @@ FUR = {'root': 0.6, 'pelvis': 0.7, 'spine1': 0.7, 'spine2': 0.6, 'neck': 0.7, 'h
        'thigh': 0.8, 'shin': 0.35, 'foot': 0.02, 'toes': 0.02, 'tail': 0.0}
 COATS = ['natural']
 SHEETS = {'natural': 'beaver_turnaround.png'}
-# R9.1's side view is turned: the side comes from R9.2's walking pose, the top from R9.1
-SHEET = dict(body=0.8, rump_u=0.25, side=dict(file='beaver_poses.png', row=0, rows=2, col=0), top=dict(file='beaver_turnaround.png', row=0, rows=1, col=1))
+SHEET = dict(body=0.8, rump_u=0.22)        # R9.1 replacement (round 11): a true profile, the top view head right
 TRIS = 14000
 GRID = 0.4
 META = {'whiskers': dict(pos=[0.035, 0.252, 0.38], length=0.09, color=0x1d1714)}
