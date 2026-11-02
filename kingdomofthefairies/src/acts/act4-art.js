@@ -90,7 +90,8 @@ function belly(k, st, t) {
   setBase(k);
   c.restore();
   fulcrum(k);
-  cueBoard(k, st, t);
+  // the film edition shows the breath in the water and the ribs alone
+  if (!FILM) cueBoard(k, st, t);
 }
 
 function backcloth(k, st, t) {
