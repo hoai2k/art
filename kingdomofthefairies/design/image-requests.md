@@ -94,7 +94,7 @@ and the production art for the film edition (F1–F4) after them.
 
 Requested 11 October 2026: 416 game assets for following the film (see [the adaptation plan](film-adaptation.md)). Each prompt is complete; paste it as it stands and attach the references it names (the character sheets and scene concepts are in [references/film-planning/](references/film-planning/index.html)). Sizes are 2× game units, as for the existing art, and match the sprite each one replaces so it drops into place. Name each file by its id and drop it in [`../intake/`](../intake/README.md). The ids are listed as `requested` in `assets/manifest.json`; until each arrives the game draws an interim cut-out or stand-in.
 
-Delivery: 412 of 416 assets generated and prepared. [Delivery notes](generated/film-production/README.md) retain native originals and generation records.
+Delivery: 416 of 416 assets generated and prepared. [Delivery notes](generated/film-production/README.md) retain native originals and generation records.
 
 ### F1. Prince Bel-Azor
 
@@ -3224,10 +3224,10 @@ Requested 2 November 2026. In the sea gap only his head, his arm on each stroke 
 
 | Id | Size | Anchor | Replaces | Delivery |
 | --- | --- | --- | --- | --- |
-| `prince-swim-surface-a` | 360 × 240 | waterline 40% down from the top, centred on his head | new | requested |
-| `prince-swim-surface-a-tinted` | 360 × 240 | waterline 40% down from the top, centred on his head | new | requested |
-| `prince-swim-surface-b` | 360 × 240 | waterline 40% down from the top, centred on his head | new | requested |
-| `prince-swim-surface-b-tinted` | 360 × 240 | waterline 40% down from the top, centred on his head | new | requested |
+| `prince-swim-surface-a` | 360 × 240 | waterline 40% down from the top, centred on his head | new | [delivered](../assets/prince-swim-surface-a.webp) |
+| `prince-swim-surface-a-tinted` | 360 × 240 | waterline 40% down from the top, centred on his head | new | [delivered](../assets/prince-swim-surface-a-tinted.webp) |
+| `prince-swim-surface-b` | 360 × 240 | waterline 40% down from the top, centred on his head | new | [delivered](../assets/prince-swim-surface-b.webp) |
+| `prince-swim-surface-b-tinted` | 360 × 240 | waterline 40% down from the top, centred on his head | new | [delivered](../assets/prince-swim-surface-b-tinted.webp) |
 
 #### `prince-swim-surface-a` — Swimming at the surface, stroke A
 

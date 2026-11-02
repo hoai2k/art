@@ -2,7 +2,7 @@
 // standing height as painted in it (art px), measured by the head against
 // the character's reference sprite. Draw with drawPerson (src/pose.js) so
 // every sprite of a character comes out at one person size.
-// Inputs fingerprint 5a52f4c140a666ed (person_sizes.py --check).
+// Inputs fingerprint 13e1c620e054d8b4 (person_sizes.py --check).
 export const PERSON = {
   'prince-court': { who: 'prince-court', px: 353 },
   'prince-court-stairs-a': { who: 'prince-court', px: 440 },
@@ -13,11 +13,15 @@ export const PERSON = {
   'prince-stand': { who: 'prince-armed', px: 360 },
   'prince-strike': { who: 'prince-armed', px: 209 },
   'prince-set-down': { who: 'prince-armed', px: 414 },
+  'prince-swim-surface-a': { who: 'prince-armed', px: 281 },
+  'prince-swim-surface-b': { who: 'prince-armed', px: 281 },
   'prince-caught-lobster': { who: 'prince-armed', px: 439 },
   'prince-caught-human': { who: 'prince-armed', px: 353 },
   'prince-stand-tinted': { who: 'prince-armed', px: 359 },
   'prince-strike-tinted': { who: 'prince-armed', px: 258 },
   'prince-set-down-tinted': { who: 'prince-armed', px: 413 },
+  'prince-swim-surface-a-tinted': { who: 'prince-armed', px: 302 },
+  'prince-swim-surface-b-tinted': { who: 'prince-armed', px: 302 },
   'prince-caught-lobster-tinted': { who: 'prince-armed', px: 424 },
   'prince-caught-human-tinted': { who: 'prince-armed', px: 323 },
   'azurine-stand': { who: 'azurine', px: 380 },

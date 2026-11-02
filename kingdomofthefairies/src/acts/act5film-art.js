@@ -16,7 +16,7 @@ import {
 import { tableau, card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
 import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
-import { drawPose, drawPerson, personPx } from '../pose.js';
+import { drawPose, drawPerson, personPx, personScale } from '../pose.js';
 
 // ================================================================= Act V
 export function drawTower(k, st, t) {
@@ -36,6 +36,17 @@ export function drawTower(k, st, t) {
 // The sea gap, where the witch swoops across the stage and Aurora's light
 // drives her off, plays on the whole stage, as do the window and the scenes
 // between.
+// The surface cutouts share a registered head and invisible waterline. Draw
+// at the prince's measured person scale, translating the normal foot anchor
+// to the neck so switching strokes cannot lift him out of the sea.
+export const SURFACE_SWIM = { headX: 234, waterY: 96 };
+export function drawSurfaceSwimmer(k,id,x,y,height=124) {
+  const im=k.img(id), scale=personScale(k,id,height);
+  if (!im || !scale) return false;
+  const width=im.naturalWidth||im.width, h=im.naturalHeight||im.height;
+  return drawPerson(k,id,x+(width/2-SURFACE_SWIM.headX)*scale,y+(h-SURFACE_SWIM.waterY)*scale,height);
+}
+
 export function focusTower(st) {
   if (st.phase === 'cliff' || st.phase === 'tower') { const p = climberPos(st); return { x: p.x, y: 640 + st.camY - p.y - 40 }; }
   if (st.phase === 'dive') return st.w && !st.dv ? { x: st.w.x, y: st.w.y - 70 } : null;
@@ -113,7 +124,7 @@ function swimScene(k, st, t) {
   const ab = Math.floor(sw.stroke * 4) % 2 ? 'a' : 'b';
   const id = (sw.dive > 0 ? 'prince-swim-under-' : 'prince-swim-') + ab;
   if (position.land > .65) drawPose(k, position.land < 1 ? 'prince-mantle-c' : 'prince-stand', px, y, 124);
-  else if (!drawPose(k, id, px, y + 35, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
+  else if (!(sw.dive <= 0 && drawSurfaceSwimmer(k, 'prince-swim-surface-'+ab, px, y, 124)) && !drawPose(k, id, px, y + 35, 124) && !k.asset('sailor-swim-' + ab, px, y + 35, 124, 83)) { c.fillStyle = k.col('#2b3550'); c.fillRect(380, y - 12, 80, 22); }
   c.restore();
   // the sea over him below its rippling waterline: the painted water laid
   // back over his lower half at the surface, and over all of him when he
