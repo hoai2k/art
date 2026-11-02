@@ -301,6 +301,8 @@ test('Act III: he bows past the lobster guards, leaps for the sea-flora pearls, 
     return pearl ? { moveX: Math.abs(pearl[0] - f.x) > 10 ? Math.sign(pearl[0] - f.x) : 0, a: Math.abs(pearl[0] - f.x) < 75 && f.lift === 0 } : { moveX: 1 };
   }, (s) => !s.tf);
   assert.equal(st.tf, null);
+  assert.equal(st.courtAt, st.t, 'entering the court starts its how-to-hide prompt');
+  assert.equal(act3.intertitle, null, 'no second card: the act card and the hall say it');
   assert.equal(st.pearls, PASSAGE.pearls.length, 'every pearl, by leaping');
   // upright before a guard, he is caught and thrown back; bowing, he passes
   const s3 = act3.create({ seed: 1, carry: {} });
