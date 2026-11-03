@@ -19,7 +19,7 @@ its stand-in.
   seams or odd events. They're made with `hold: true`, which keeps them out of
   the game, and the owner hears a preview that plays the loop twice across its
   seam before they go in.
-- **Ambient beds** (approved by the owner) are placed by area in the town by `src/ambience-zones.js` and played as crossfading beds by `src/audio.js`. `amb_river_flow` (the Avon below the dam) is still held; until it is approved the river below the dam plays `amb_pond_waterfowl` quietly.
+- **Ambient beds** (approved by the owner) are placed by area in the town by `src/ambience-zones.js` and played as crossfading beds by `src/audio.js`. `amb_river_flow` (the Avon below the dam) plays its two approved takes there.
 - **Held loops** are previewed in the scratchpad's `sfx-previews/<name>-<take>-seam.mp3` (each loop
   played twice across its crossfade). To approve one, delete its `"hold": true` in
   `tools/sfx/sfx.json` and run `python3 tools/sfx/generate.py --no-generate`: it is processed into
@@ -72,7 +72,7 @@ Status key: `open`, `held` (generated, waiting for the owner's ear),
 | `amb_park_trees` | loop | 2 | A park on a calm October afternoon: wind gently moving through maple trees with dry leaves rustling, chickadees and a blue jay in the distance, seamless loop, 30 seconds | `delivered` |
 | `amb_waterfowl_busy` | loop | 1 | A river lake shore busy with waterfowl: a great many ducks and geese quacking and honking close by, water lapping, wings splashing, seamless loop, 30 seconds (the owner's take `amb_river-1`: only where waterfowl gather) | `delivered` |
 | `amb_pond_waterfowl` | loop | 1 | A quiet pond or calm lake with a few waterfowl on it: occasional soft duck quacks and geese far off, gentle lapping at the bank, seamless loop, 30 seconds (the owner's take `amb_river-2`) | `delivered` |
-| `amb_river_flow` | loop | 2 | A slow small river flowing past grassy banks under willows: gentle continuous water movement and soft gurgles over stones, no birds, no ducks, no voices, seamless loop, 30 seconds | `held` |
+| `amb_river_flow` | loop | 2 | A slow small river flowing past grassy banks under willows: gentle continuous water movement and soft gurgles over stones, no birds, no ducks, no voices, seamless loop, 30 seconds | `delivered` |
 | `amb_weir` | loop | 1 | A small river dam with water spilling over a low weir, a steady soft roar and splash, seamless loop, 20 seconds | `delivered` |
 | `amb_residential` | loop | 1 | A quiet residential street in autumn: wind in the trees, a dog barking once far away, a screen door, birds; seamless loop, 30 seconds | `delivered` |
 | `city_hall_bell` | one-shot | 2 | A large tower clock bell striking the hour once, deep bronze tone with a long decay, heard from a little distance in a town square | `delivered` |

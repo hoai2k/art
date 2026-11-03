@@ -129,10 +129,10 @@ const zones = buildZones(town);
 const top = (x, z, opts) => { const g = bedGains(zones.weights(x, z), opts); return Object.entries(g).sort((a, b) => b[1] - a[1])[0]?.[0]; };
 const lm = (id) => town.landmarks.find((l) => l.id === id);
 
-test('beds: the approved loops are in the index, the river flow is held', () => {
-  for (const k of ['downtown', 'residential', 'park', 'busy', 'pond', 'weir', 'underwater']) assert.ok(names.includes(BEDS[k]), BEDS[k]);
+test('beds: every approved loop is in the index, the river flow with both takes', () => {
+  for (const k of ['downtown', 'residential', 'park', 'busy', 'pond', 'weir', 'river', 'underwater']) assert.ok(names.includes(BEDS[k]), BEDS[k]);
   assert.ok(index.amb_downtown.length === 2 && index.amb_park_trees.length === 2, 'both takes kept as variants');
-  assert.ok(!names.includes(BEDS.river), 'amb_river_flow waits for the owner');
+  assert.ok(index.amb_river_flow.length === 2, 'both river-flow takes approved by the owner');
   assert.ok(index._loops.includes('amb_weir'));
 });
 

@@ -175,7 +175,8 @@ export function buildZones(town) {
 // Gains (0..1 before the sound's own level) of each bed from the raw weights. Under water only
 // the underwater bed plays. At most `max` beds are audible, the loudest ones; the total is kept
 // near one so crossfades stay level. `zoom` (0..1): the further out, the slightly quieter.
-// The river below the dam plays the pond bed at low volume until `amb_river_flow` is approved.
+// The river below the dam plays `amb_river_flow`; if it is missing from the index, the pond bed
+// stands in at low volume.
 export function bedGains(w, { underwater = false, zoom = 0, hasRiverFlow = false, max = 3 } = {}) {
   if (underwater) return { underwater: 1 };
   const g = { ...w };

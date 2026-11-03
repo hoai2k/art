@@ -265,8 +265,7 @@
    "dur": 30,
    "level": 0.5,
    "prompt": "A slow small river flowing past grassy banks under willows: gentle continuous water movement and soft gurgles over stones, no birds, no ducks, no voices, seamless loop, 30 seconds",
-   "loop": true,
-   "hold": true
+   "loop": true
   },
   {
    "name": "amb_weir",
