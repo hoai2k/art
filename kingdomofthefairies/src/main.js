@@ -33,9 +33,9 @@ const chrome = createChrome({ touch: TOUCH, isPlaying: () => S.mode === 'play' &
 const SETTINGS_KEY = STORAGE_PREFIX + '.settings.v1';
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Touch devices start on the gentler film look (lighter on a phone's GPU and battery).
-const settings = { sound: true, period: true, music: 7, sfx: 8, mobileCamera: true, film: reduced || matchMedia('(pointer: coarse)').matches ? 'gentle' : 'full', vibration: true, extraAnimations: false };
+const settings = { sound: true, period: true, music: 7, sfx: 8, mobileCamera: true, film: reduced || matchMedia('(pointer: coarse)').matches ? 'gentle' : 'full', vibration: true };
 try { Object.assign(settings, JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}')); } catch { /* storage unavailable */ }
-settings.extraAnimations = settings.extraAnimations === true;
+delete settings.extraAnimations;   // (the setting is gone)
 settings.mobileCamera = settings.mobileCamera !== false;
 // The film edition's cast look: the hand-tinted alternates by default, or the
 // first art (design/character-audit.md). `cast` replaces the earlier
@@ -54,7 +54,6 @@ function syncSettingsUI() {
     else if (k === 'vibration') el.querySelector('span').textContent = settings.vibration ? TEXT.shell.settings.on : TEXT.shell.settings.off;
     else if (k === 'sound') el.querySelector('span').textContent = settings.sound ? TEXT.shell.settings.on : TEXT.shell.settings.off;
     else if (k === 'period') el.querySelector('span').textContent = settings.period ? TEXT.shell.settings.on : TEXT.shell.settings.off;
-    else if (k === 'extraAnimations') el.querySelector('span').textContent = settings.extraAnimations ? TEXT.shell.settings.on : TEXT.shell.settings.off;
     else if (k === 'mobileCamera') el.querySelector('span').textContent = settings.mobileCamera ? TEXT.shell.settings.follow : TEXT.shell.settings.wholeStage;
     else if (k === 'castLook') el.querySelector('span').textContent = settings.cast === 'tinted' ? TEXT.shell.settings.tinted : TEXT.shell.settings.original;
   }
@@ -84,7 +83,6 @@ for (const el of document.querySelectorAll('#settings [data-key]')) {
     if (k === 'film') settings.film = { full: 'gentle', gentle: 'off', off: 'full' }[settings.film];
     if (k === 'sound') settings.sound = !settings.sound;
     if (k === 'vibration') settings.vibration = !settings.vibration;
-    if (k === 'extraAnimations') settings.extraAnimations = !settings.extraAnimations;
     if (k === 'mobileCamera') settings.mobileCamera = !settings.mobileCamera;
     if (k === 'castLook') settings.cast = settings.cast === 'tinted' ? 'original' : 'tinted';
     if (k === 'period') { settings.period = !settings.period; audio.setPeriodOn(settings.period); }
@@ -521,7 +519,7 @@ function frame(now) {
   // Paused in play, the last frame holds still under the menu (the film
   // grain and flicker included), drawn again only if a setting changes it.
   const still = S.paused && S.mode === 'play';
-  const look = `${view.film}|${view.tinted}|${view.extraAnimations}`;
+  const look = `${view.film}|${view.tinted}`;
   if (!still || look !== heldLook) renderer.render(view);
   heldLook = still ? look : null;
   requestAnimationFrame(frame);
@@ -529,7 +527,7 @@ function frame(now) {
 
 function currentView() {
   return {
-    act: S.act, state: S.state, curtain: S.curtain, card: S.card, film: settings.film, extraAnimations: settings.extraAnimations === true, tinted: FILM_ED && settings.cast === 'tinted', t: S.t,
+    act: S.act, state: S.state, curtain: S.curtain, card: S.card, film: settings.film, tinted: FILM_ED && settings.cast === 'tinted', t: S.t,
     hud: S.mode === 'play' || S.mode === 'over',
     curtainCall: S.mode === 'curtaincall' ? Math.min(1, S.modeT / 1.4) : 0,
     scene: S.mode === 'playbill' ? drawPlaybill : S.mode === 'curtaincall' ? drawCurtainCall : null,

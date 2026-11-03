@@ -33,6 +33,7 @@ for (const [search, edition] of [['', 'film'], ['?qa', 'film'], ['?widowsbay', '
     for (const [id, sl] of Object.entries(manifest.slots)) if (sl.edition === 'film') {
       // every film slot is delivered production art and loads as delivered
       assert.equal(sl.status, 'delivered', id);
+      if (theme.RETIRED_IDLE.test(id)) { assert.equal(result.slots[id], undefined, id + ' is a retired idle frame'); continue; }
       assert.equal(result.slots[id].file, sl.file, id);
       assert.ok(!sl.interim && !/^(interim|tableaux)\//.test(sl.file), id + ' is a planning cut-out');
     }

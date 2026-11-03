@@ -40,7 +40,7 @@ try {
   assert.equal(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.p.row),1);
   assert.ok(await page.evaluate(() => window.__kingdomOfTheFairies.S.state.p.jumpT > 0));
   await page.evaluate(() => { window.__kingdomOfTheFairies.S.paused = true; });
-  for (const film of ['off', 'gentle', 'full']) for (const extraAnimations of [false, true]) {
+  for (const film of ['off', 'gentle', 'full']) for (const extraAnimations of [false]) {   // (Extra Animations retired: stills only)
    for (const phase of ['hall', 'hall-parked', 'bow', 'hall-capture', 'court', 'human-capture', 'lobster-capture', 'jump', 'beam-left', 'beam-right', 'scale']) {
     const result = await page.evaluate(({ look, film, extraAnimations, phase }) => {
      const q = window.courtReview, r = q.createRenderer(q.canvas, q.assets), draws = [], sizes = {};

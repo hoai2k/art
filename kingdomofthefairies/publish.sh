@@ -11,6 +11,10 @@ rm -rf "$out"
 mkdir -p "$out"
 cp "$here/index.html" "$here/styles.css" "$here/manifest.webmanifest" "$here/manifest-widowsbay.webmanifest" "$out/"
 cp -R "$here/src" "$here/assets" "$here/icons" "$here/workbench" "$out/"
+# The retired Extra Animations idle frames are never loaded (theme.js RETIRED_IDLE).
+find "$out/assets" -maxdepth 1 -name '*-idle-[bc].webp' ! -name '*wall-idle*' -delete
+find "$out/assets" -maxdepth 1 -name '*-idle-[bc]-tinted.webp' ! -name '*wall-idle*' -delete
+find "$out/assets" -maxdepth 1 -name '*-idle-[bc]*-redo.webp' ! -name '*wall-idle*' -delete
 widowsbay=$(python3 -c 'import json,sys
 try: print("false" if json.load(open(sys.argv[1])).get("includeWidowsBay", True) is False else "true")
 except Exception: print("true")' "$here/deploy_config.json")
