@@ -13,6 +13,7 @@ import { createHud } from './ui/hud.js';
 import { createMap } from './ui/map.js';
 import { bindSettings } from './ui/settings-ui.js';
 import { createTouch } from './ui/touch.js';
+import { chooseCameraProfile } from './ui/touch-logic.js';
 import { createChrome, requestFullscreen, exitFullscreen, fullscreenElement } from './ui/chrome.js';
 import { createCreatureSelect } from './ui/creature-select.js';
 import { CREATURE_INFO } from './creatures/index.js';
@@ -30,6 +31,11 @@ const DEFAULT_CREATURE = 'squirrel';
 const STEP = 1 / 30; // the rules run on a fixed step
 
 const settings = loadSettings();
+// Phones and tablets: the main pointer is a finger.
+const coarse = matchMedia('(pointer: coarse)').matches;
+// They start on low graphics (pixel ratio 1, no shadows, smaller detail radii) unless the player
+// chose a quality in Settings.
+if (coarse && !settings.changed.includes('quality')) settings.quality = 'low';
 const state = {
   zoomSave: 0, // s until the changed camera zoom is written to the settings
   paused: false, pauseReason: '', transitioning: false, expectUnlock: false,
@@ -119,7 +125,7 @@ function attachCreature(c) {
   scene.add(c.object);
   setProjection(c);
   try { c.setCoat?.(settings.coat); } catch { /* fine */ }
-  camCtl = c.__makeCam({ THREE, camera, creature: c, squirrel: c, world, zoom: settings.zoom });
+  camCtl = c.__makeCam({ THREE, camera, creature: c, squirrel: c, world, zoom: settings.zoom, profile: cameraProfile() });
   if ('zoom' in camCtl) camCtl.zoom = settings.zoom;
   const on = (e, fn) => { try { c.on?.(e, fn); } catch { /* optional */ } };
   const kind = () => c.kind || creatureKind;
@@ -210,6 +216,16 @@ function toggleSound() {
   writeSettings(settings);
   syncSoundButton();
   if (settings.sound) audio.play('click');
+}
+
+// Touch play (the on-screen controls and the touch camera) while touch is the input in use, or
+// before any input on a touch-first device; a pad, the keyboard or a mouse switches back.
+const cameraProfile = () => chooseCameraProfile({ kind: input.kind, explicit: input.kindExplicit, coarse });
+function applyInputMode() {
+  const touch = cameraProfile() === 'touch';
+  $('#hud').classList.toggle('touch', touch);
+  touchUi?.show(touch);
+  camCtl?.setProfile?.(touch ? 'touch' : 'console');
 }
 
 function toggleFullscreen() { if (fullscreenElement()) exitFullscreen(); else requestFullscreen(); }
@@ -305,8 +321,8 @@ function start() {
   state.paused = false;
   hud.startPlay();
   hud.setKind(input.kind);
-  touchUi.show(input.kind === 'touch' || matchMedia('(pointer: coarse)').matches);
-  $('#hud').classList.toggle('touch', input.kind === 'touch' || matchMedia('(pointer: coarse)').matches);
+  applyInputMode();
+  touchUi.reveal();
   audio.ambience(true);
   transition(() => resetCreature(), 'Into the leaves…');
 }
@@ -402,9 +418,7 @@ function wire() {
     hud.setKind(k);
     menus.refreshFocus();
     if (k === 'controller') input.unlockPointer();
-    const touch = k === 'touch';
-    $('#hud').classList.toggle('touch', touch);
-    touchUi.show(touch);
+    applyInputMode();
   });
   input.on('padlost', (_i, wasActive) => {
     if (wasActive && !input.hasPad() && menus.ui.screen === 'play') pause('The controller was disconnected. Reconnect it to carry on, or use the keyboard.');
@@ -422,6 +436,8 @@ function wire() {
   addEventListener('focus', syncAudio);
   addEventListener('pageshow', syncAudio);
   document.addEventListener('fullscreenchange', () => { resize(true); });
+  // iOS Safari ignores user-scalable=no: no pinch-zooming the page (the play view pinches the camera)
+  document.addEventListener('gesturestart', (e) => e.preventDefault());
 }
 
 let revealTimer = 0;
@@ -466,7 +482,8 @@ function updateCounts() {
 
 // The hint line for what the creature can do right now.
 function contextHint() {
-  const k = input.kind === 'controller' ? { a: 'A', x: 'X', y: 'Y' } : { a: 'Space', x: 'E', y: 'F' };
+  const touch = touchUi?.shown;
+  const k = input.kind === 'controller' ? { a: 'A', x: 'X', y: 'Y' } : touch ? { a: 'Jump', x: 'Eat', y: 'Dig' } : { a: 'Space', x: 'E', y: 'F' };
   const st = creature.state;
   if (st === 'climb') return `Left stick: climb · ${k.a}: leap off`;
   if (st === 'air' || st === 'swim') return '';
@@ -475,7 +492,7 @@ function contextHint() {
   if (g) return `${k.a}: grab on`;
   if (exploration.buried().some((b) => Math.hypot(b.x - creature.position.x, b.z - creature.position.z) < 1.3)) return `${k.y}: dig up the nut`;
   if (exploration.carried && st === 'idle') return `${k.y}: bury a nut · ${k.x}: eat it`;
-  if (state.idle > 10) return `${k.x}: sit up and look around`;
+  if (state.idle > 10) return touch ? 'Sit: sit up and look around' : `${k.x}: sit up and look around`;
   return '';
 }
 
@@ -559,7 +576,12 @@ function frame(now) {
   const nav = input.nav();
   const screen = menus.ui.screen;
   const modals = menus.ui.modals.length;
-  if (screen === 'play' && !modals && !state.paused) {
+  const playing = screen === 'play' && !modals && !state.paused;
+  touchUi.setActive(playing && !state.transitioning);
+  if (playing && touchUi.shown) {
+    touchUi.frame(dt, { kind: creature.kind, state: creature.state, carried: exploration?.carried || 0, sens: settings.camSens ?? 1 });
+  }
+  if (playing) {
     if (nav.pause) pause();
     else if (input.mapPressed()) openMap();
     else playFrame(dt);
@@ -641,7 +663,7 @@ async function boot() {
   state.size = '';
   resize(true);
   wire();
-  touchUi = createTouch(input, { onMap: () => openMap() });
+  touchUi = createTouch(input);
 
   progress(0.02, 'Raking the leaves…');
   const [dataP, w] = [loadTownData(), await loadWorld()];
@@ -690,7 +712,7 @@ async function boot() {
   window.stratford = {
     state, settings, input, audio, hud, map, menus, ui: menus.ui,
     get world() { return world; }, get creature() { return creature; }, get exploration() { return exploration; },
-    get camera() { return camera; }, get camCtl() { return camCtl; }, start, pause, teleport, openMap,
+    get camera() { return camera; }, get camCtl() { return camCtl; }, start, pause, teleport, openMap, touchUi,
   };
   requestAnimationFrame(frame);
 }

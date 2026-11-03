@@ -12,7 +12,7 @@
   <link rel="icon" href="web/icons/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="web/icons/icon-180.png">
   <title>Stratford Squirrel</title>
-  <meta name="description" content="Run, leap and climb as an eastern grey squirrel through downtown Stratford, Ontario: find the landmarks, gather and bury nuts. A prototype for Xbox controller, keyboard and mouse.">
+  <meta name="description" content="Run, leap and climb as an eastern grey squirrel through downtown Stratford, Ontario: find the landmarks, gather and bury nuts. A prototype for Xbox controller, keyboard and mouse, and touch screens.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Nunito+Sans:wght@400;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -110,15 +110,13 @@
         <p id="ctx-hint" class="ctx-hint" aria-live="polite" hidden></p>
         <div id="hint-strip" class="hint-strip" aria-hidden="true"></div>
       </div>
+      <!-- Touch screens: the play surface (a drag turns the camera, a tap shows the controls),
+           the stick bottom left, jump / fly / dive bottom right with the action and sit beside it. -->
       <div id="touch" class="touch" hidden>
-        <div class="stick-zone" id="touch-move"><i></i></div>
-        <div class="touch-btns">
-          <button data-touch="sprint" aria-label="Run">Run</button>
-          <button data-touch="dig" aria-label="Dig">Dig</button>
-          <button data-touch="sit" aria-label="Sit up">Sit</button>
-          <button data-touch="jump" class="big" aria-label="Jump">Jump</button>
-          <button data-action="map" aria-label="Map and journal">Map</button>
-        </div>
+        <div class="stick" id="touch-stick" aria-hidden="true"><div class="stick-ring"><i class="stick-knob"></i></div></div>
+        <button type="button" class="t-btn t-jump" data-touch="jump" aria-label="Jump" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"></svg><span>Jump</span></button>
+        <button type="button" class="t-btn t-small" data-touch="action" aria-label="Dig" tabindex="-1">Dig</button>
+        <button type="button" class="t-btn t-small" data-touch="sit" aria-label="Sit" tabindex="-1">Sit</button>
       </div>
     </div>
 
@@ -213,7 +211,44 @@
               <tr><td>Map: pan and zoom</td><td>Left stick pans; right stick up/down, LB and RB zoom; A centres on you</td><td>Drag and wheel; arrows, + and -; Enter centres</td></tr>
             </tbody>
           </table>
-          <p>On a touch screen, the left half of the screen is a stick, the right half turns the camera, and the buttons do the rest.</p>
+          <h3>On a touch screen</h3>
+          <div class="touch-diagram">
+            <svg viewBox="0 0 640 300" role="img" aria-label="Touch controls on a phone held sideways: the stick at the bottom left moves (push it to the edge to run fast), drag anywhere else to turn the camera, pinch to zoom, tap to show the controls, the big button at the bottom right jumps, flies or dives, the small buttons beside it are the creature's action and sit or eat, the pause button is at the top right">
+              <rect x="20" y="10" width="600" height="280" rx="34" fill="none" stroke="currentColor" stroke-width="3"/>
+              <rect x="44" y="30" width="552" height="240" rx="14" fill="currentColor" opacity=".06"/>
+              <circle cx="128" cy="196" r="46" fill="currentColor" opacity=".12" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="146" cy="184" r="20" fill="currentColor" opacity=".45"/>
+              <circle cx="528" cy="206" r="36" fill="#4caf50" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M528 222v-28M516 206l12-12 12 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="508" cy="138" r="21" fill="#e8b830" stroke="currentColor" stroke-width="2"/>
+              <circle cx="454" cy="180" r="21" fill="#3d7bd9" stroke="currentColor" stroke-width="2"/>
+              <circle cx="572" cy="56" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M567 50v12M577 50v12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M262 112h116M262 112l12-9M262 112l12 9M378 112l-12-9M378 112l-12 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="320" cy="112" r="12" fill="none" stroke="currentColor" stroke-width="2.2"/>
+              <g font-size="15" font-weight="700" fill="currentColor" stroke="#fbf3df" stroke-width="4" paint-order="stroke" stroke-linejoin="round" text-anchor="middle">
+                <text x="128" y="132">Stick: move</text>
+                <text x="128" y="262" font-size="13">push to the edge: run fast</text>
+                <text x="320" y="92">Drag: camera</text>
+                <text x="320" y="146" font-size="13">pinch: zoom · tap: show controls</text>
+                <text x="528" y="262">Jump / fly / dive</text>
+                <text x="508" y="108" font-size="13">action</text>
+                <text x="400" y="185" font-size="13">sit, eat</text>
+                <text x="520" y="61" font-size="13">pause</text>
+              </g>
+            </svg>
+          </div>
+          <table class="map-table touch-table">
+            <thead><tr><th scope="col">Action</th><th scope="col">Touch screen</th></tr></thead>
+            <tbody>
+              <tr><td>Move</td><td>The stick at the bottom left (it follows your thumb); push it to the edge to run fast</td></tr>
+              <tr><td>Camera</td><td>Drag anywhere else; pinch to zoom</td></tr>
+              <tr><td>Jump (hold for a longer leap); fly and flap (swan, heron); dive and surface (beaver)</td><td>The big button at the bottom right</td></tr>
+              <tr><td>The creature's action (dig, gnaw, thump, preen, strike); sit up or eat</td><td>The small buttons beside it</td></tr>
+              <tr><td>Show the controls (they fade when unused)</td><td>Tap the screen, or just use the stick or a button</td></tr>
+              <tr><td>Pause, map and journal, creature, settings</td><td>The pause button at the top right</td></tr>
+            </tbody>
+          </table>
           <h3>Credits</h3>
           <p class="credits">A prototype by Hoai Nguyen, made with Claude Code and three.js. Map, buildings, roads, water and trees are drawn from <b>&copy; OpenStreetMap contributors</b> (<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>) and Ontario / Canada open data, under the Open Government Licence &ndash; Ontario. <span id="credits-attr"></span></p>
         </div>

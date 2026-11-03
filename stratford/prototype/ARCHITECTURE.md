@@ -33,8 +33,8 @@ stratford/
                        addons/ (BufferGeometryUtils, SkeletonUtils; copy more from
                        local/npm/three-0.170.0/package/examples/jsm/ as needed)
       src/main.js      boot, loop, screens (shell)
-      src/input.js     controllers, keyboard, mouse (shell)
-      src/ui/          title, menus, settings, pause, HUD, map (shell)
+      src/input.js     controllers, keyboard, mouse, touch state (shell)
+      src/ui/          title, menus, settings, pause, HUD, map, touch controls (shell)
       src/game/        exploration rules: nuts, discoveries, journal (shell)
       src/town/        the town: meshes, materials, collider, landmarks, sky (town)
       src/squirrel/    the squirrel: model, rig, animation, controller, camera (squirrel)
@@ -168,8 +168,9 @@ squirrel.state                                 // 'idle' | 'move' | 'air' | 'cli
                                                // | 'dive' | 'fly' (creatures that dive or fly)
 squirrel.on(event, fn)                         // 'land', 'jump', 'climb', 'dig', 'splash'
 squirrel.setCoat(name)
-const cam = createSquirrelCamera({ THREE, camera, squirrel, world });  // follow camera with collision
+const cam = createSquirrelCamera({ THREE, camera, squirrel, world, zoom, profile });  // follow camera with collision
 cam.update(dt, controls)
+cam.setProfile('touch' | 'console'); cam.profile   // see "Camera profiles" below
 ```
 
 `controls` (built by the shell from `src/input.js` each frame):
@@ -192,6 +193,13 @@ cam.update(dt, controls)
                      // and accelerations up to tuning.boostMax (10x) on the ground, swimming and flying
 ```
 
+Touch feeds the same fields (src/ui/touch.js writes `input.touch`, which input.js merges like any
+device): the stick → `move` (and `sprint` when pushed past its ring), a camera drag → `look`
+(radians, a swipe across the screen's short side turns π, times the camera sensitivity, eased over a
+few frames), a pinch → `zoom` (fingers apart = closer), the big button → `jump` / `jumpPressed`,
+the action button → `digPressed`, the sit button → `sitPressed`. `input.kind` is `'touch'` after a
+touch; `input.kindExplicit` says whether any device has been used yet.
+
 ## Controls (Xbox first)
 
 | Control | Xbox | Keyboard / mouse |
@@ -210,6 +218,38 @@ cam.update(dt, controls)
 | Creature select | Menu, then Creature... (or Settings) | Escape, then Creature... |
 | Map and journal | View | M or Tab |
 | Pause | Menu | Escape or P |
+
+Touch screens (phones and tablets; `src/ui/touch.js`, logic in `src/ui/touch-logic.js`):
+
+| Control | Touch |
+|---|---|
+| Move | Virtual stick, bottom left: it floats to where the thumb lands in the bottom-left zone (left 45% below the top 30%; portrait: left half, bottom half), or is grabbed where it rests. Radius 13% of the short side (44..72 CSS px), dead zone 12% |
+| Run faster | Push the stick past its ring (sprint ramps from 1.0 to 1.35 radii; the ring turns gold). A finger past 1.6 radii drags the stick along |
+| Camera | Drag anywhere else (a press that moves more than 1.5% of the short side, 8..12 px); pinch to zoom |
+| Jump / fly and flap (swan, heron) / dive and surface (beaver in water) | The big round button, bottom right (A held while pressed); labelled Jump, Leap, Fly, Flap, Dive or Surface |
+| The creature's action (dig, gnaw, thump, preen, strike) | The small yellow button above it (Y) |
+| Sit up / eat (squirrel), rest | The small blue button to its left (X) |
+| Show the controls | They fade out after 3.5 s unused; a tap (released within 280 ms, under the drag threshold) brings them back, and a touch on the stick or a button works while they are hidden |
+| Pause (map, journal, creature and settings from there) | The pause button, top right |
+
+Every finger keeps the role it got when it went down (stick, button or camera) until it lifts, so a
+second finger never moves the stick and the stick finger never turns the camera. Touch play (the
+controls and the touch camera) is on while touch is the input in use, or before any input on a
+device whose main pointer is coarse; using a pad, the keyboard or a mouse switches back. On a
+coarse-pointer device the graphics quality defaults to low unless the player chose one.
+
+### Camera profiles (`src/creatures/camera.js`, `profileOf(T, name)`)
+
+| | console (pads, keyboard, mouse) | touch |
+|---|---|---|
+| Default pitch | `T.camPitch` (squirrel 18°) | `T.camTouchPitch` ?? `T.camPitch` + 0.2 rad, clamped 0.44..0.6 rad (squirrel, rabbit, beaver 30°; swan 29°; heron 27.5°) |
+| Distance | `T.camDistance` | × `T.camTouchDistMul` ?? 1.45 (squirrel 0.85 → 1.23 m; swan 3.6 → 5.3 m) |
+| Framing | creature at the centre | aimed above it: the look-at point sits `T.camTouchFrame` ?? 0.26 half-heights below the centre (the lower-middle of the view, clear of the thumbs) |
+| Auto-follow | spring up to 2.4 rad/s, from half the run speed, eases in 0.6..1.8 s after a look | up to 3.6 rad/s (base 1.1 + 0.45 per scaled m/s), from 0.35 of the run speed, eases in 0.5..2 s after a drag |
+
+Both keep the player's yaw and pitch while they look, the collision sweep, the terrain bend, zoom
+and the flight variant (further back and higher in flight: `camFlyMul`, +0.12 rad). `setProfile`
+takes up the new default pitch; distance and framing ease over on their springs.
 
 ## Exploration rules (shell, `src/game/`)
 

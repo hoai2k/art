@@ -54,13 +54,16 @@ export function createInput(opts = {}) {
   const pads = new Map(); // index -> { gp, prev, now, axes, held:Set }
   const handlers = { kind: [], padlost: [], padfound: [], lock: [] };
   const mouse = { dx: 0, dy: 0, wheel: 0 };
-  const touch = { move: [0, 0], look: [0, 0], jump: false, jumpPressed: false, sit: false, dig: false, sprint: 0, active: false };
+  // The on-screen touch controls (src/ui/touch.js) write here; `look` in radians in the mouse's
+  // convention (y > 0 looks down), `zoom` in zoom units (a pinch).
+  const touch = { move: [0, 0], look: [0, 0], jump: false, jumpPressed: false, sit: false, dig: false, sprint: 0, zoom: 0, active: false };
   let kind = 'keyboard';
+  let explicit = false; // has any device actually been used yet (kind is a guess until then)
   let lockEl = null;
   let activePad = null;
 
   const emit = (name, ...a) => { for (const fn of handlers[name]) fn(...a); };
-  const setKind = (k) => { if (k !== kind) { kind = k; emit('kind', k); } };
+  const setKind = (k) => { const first = !explicit; explicit = true; if (k !== kind || first) { kind = k; emit('kind', k); } };
   const isLocked = () => !!doc && doc.pointerLockElement != null && doc.pointerLockElement === lockEl;
 
   target.addEventListener('keydown', (e) => {
@@ -90,6 +93,7 @@ export function createInput(opts = {}) {
     settings,
     touch,
     get kind() { return kind; },
+    get kindExplicit() { return explicit; },
     get locked() { return isLocked(); },
     on(name, fn) { handlers[name].push(fn); },
     setKind,
@@ -236,6 +240,7 @@ export function createInput(opts = {}) {
         sprint = Math.max(sprint, touch.sprint);
         sit = sit || touch.sit; dig = dig || touch.dig;
         touch.sit = touch.dig = false;
+        zoom += touch.zoom || 0; touch.zoom = 0;
       }
       // The camera's vertical direction is set here and only here (the creature
       // cameras take look[1] as given: positive tilts the view up). Default

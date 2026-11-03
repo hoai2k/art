@@ -67,9 +67,9 @@ export async function createSquirrel({ coat = 'black', model = true, assetUrl } 
 
 export const createCreature = (opts = {}) => createSquirrel(opts);
 
-export function createSquirrelCamera({ camera, squirrel, creature, world, zoom = 0 }) {
+export function createSquirrelCamera({ camera, squirrel, creature, world, zoom = 0, profile = 'console' }) {
   const c = squirrel || creature;
-  return createFollowCamera({ camera, creature: c, world, tuning: c.tuning, zoom });
+  return createFollowCamera({ camera, creature: c, world, tuning: c.tuning, zoom, profile });
 }
 
 export const createCamera = (opts) => createSquirrelCamera(opts);

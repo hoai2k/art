@@ -356,6 +356,7 @@ export function createMap({ input, exploration, getPlayer, getTown, parchmentUrl
       dirty = true;
       const k = input.kind === 'controller'
         ? 'Left stick: pan   Right stick / LB RB: zoom   A: centre   B: close'
+        : input.kind === 'touch' ? 'Drag: pan · pinch or + −: zoom'
         : 'Drag: pan   Wheel or + -: zoom   Enter: centre   Esc or M: close';
       $('#map-keys').textContent = k;
       draw();

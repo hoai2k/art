@@ -66,7 +66,7 @@ export async function makeCreature({ kind, tuning: T, climbs = new Set(), hangab
   };
 }
 
-export function makeCamera({ camera, creature, squirrel, world, zoom = 0 }) {
+export function makeCamera({ camera, creature, squirrel, world, zoom = 0, profile = 'console' }) {
   const c = creature || squirrel;
-  return createFollowCamera({ camera, creature: c, world, tuning: c.tuning, zoom });
+  return createFollowCamera({ camera, creature: c, world, tuning: c.tuning, zoom, profile });
 }

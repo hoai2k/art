@@ -15,6 +15,13 @@
 // zoom level 0 (close, the standard follow) .. 1 (far: T.camZoomFar times further), smoothed;
 // `zoom` get/set for the saved setting.
 //
+// Profiles (`profile` option, `setProfile(name)`): 'console' (the default above, for pads, keys and
+// mouse) and 'touch' (phones and tablets, see profileOf): raised higher and further back, the
+// creature framed in the lower-middle third so thumbs don't cover it, and a stronger auto-follow
+// that swings behind the direction of travel, so steering with the touch stick alone is easy. A
+// drag keeps the player's yaw and pitch; the follow then resumes gently. Every value derives from
+// the creature's tuning (T.camTouch* override them); switching profile eases over on the springs.
+//
 // Never inside geometry, never popping: a camera-sized sphere (T.camProbe, larger than the near
 // plane's half-diagonal) is swept out from the look-at point; when something comes between, the
 // camera pulls in quickly (springs, a few frames) but never past what's free, and eases back out
@@ -53,15 +60,32 @@ function springV(x, v, from, to, w, dt, ff) {
   }
 }
 
-export function createFollowCamera({ camera, creature, world, tuning: T, zoom: zoom0 = 0 }) {
+// The two camera profiles for a creature's tuning (see the header).
+export function profileOf(T, name = 'console') {
+  if (name === 'touch') {
+    return {
+      name,
+      pitch: T.camTouchPitch ?? Math.min(0.6, Math.max(0.44, T.camPitch + 0.2)),  // ~25..34 deg down
+      distMul: T.camTouchDistMul ?? 1.45,        // further back than the console follow
+      frame: T.camTouchFrame ?? 0.26,            // creature this many half-heights below the centre
+      followMax: 3.6, followBase: 1.1, followPerSpeed: 0.45,   // auto-follow strength (rad/s spring)
+      followFrom: 0.35, followSince: [0.5, 2.0],  // starts at a slower speed; eases in after a drag
+    };
+  }
+  return { name: 'console', pitch: T.camPitch, distMul: 1, frame: 0, followMax: 2.4, followBase: 0.5, followPerSpeed: 0.3, followFrom: 0.5, followSince: [0.6, 1.8] };
+}
+
+export function createFollowCamera({ camera, creature, world, tuning: T, zoom: zoom0 = 0, profile: profile0 = 'console' }) {
   const probe = T.camProbe || T.camNear * 3;
   const zoomFar = T.camZoomFar || 5;
+  let P = profileOf(T, profile0);
   let yaw = 0, yawV = 0;
-  let pitchUser = T.camPitch;                     // what the player chose
-  let pitchEff = T.camPitch, pitchV = 0;          // what's shown (player's + temporary bends)
+  let pitchUser = P.pitch;                        // what the player chose
+  let pitchEff = P.pitch, pitchV = 0;             // what's shown (player's + temporary bends)
+  let frameW = P.frame, frameV = 0;               // framing offset (touch: the creature sits low)
   let zoomT = Math.min(1, Math.max(0, zoom0)), zoomS = zoomT, zoomV = 0;
-  let dist = T.camDistance, distV = 0;            // wanted distance (zoom, speed)
-  let free = T.camDistance, freeV = 0;            // what's shown (collision-limited)
+  let dist = T.camDistance * P.distMul, distV = 0;  // wanted distance (zoom, speed)
+  let free = dist, freeV = 0;                     // what's shown (collision-limited)
   let fov = T.camFov, fovV = 0;
   const camPos = new THREE.Vector3();
   let cuts = 0, blind = 0;
@@ -73,7 +97,7 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
   let first = true;
   const headingYaw = (f) => Math.atan2(-f.x, -f.z);
   const euler = new THREE.Euler();
-  const debug = { focus, yaw: 0, pitch: 0, dist: 0, free: 0, zoom: 0 };
+  const debug = { focus, yaw: 0, pitch: 0, dist: 0, free: 0, zoom: 0, profile: P.name };
 
   camera.near = T.camNear; camera.fov = T.camFov; camera.updateProjectionMatrix();
 
@@ -126,14 +150,14 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
     if (recenter > 0) {
       recenter -= dt; yawTarget = headingYaw(c.fwd); yawW = 12;
     } else if (!looking) {
-      const ease = smoothstep(0.6, 1.8, sinceLook);       // fades in after the stick is let go
+      const ease = smoothstep(P.followSince[0], P.followSince[1], sinceLook);   // fades in after the stick is let go
       if (climbing) {
         const n = c.up;
         if (Math.hypot(n.x, n.z) > 0.3) { yawTarget = Math.atan2(n.x, n.z); yawW = 2.2 * ease; }
-      } else if (speed > Math.min(0.6 * (T.scale / 0.25), 0.5 * T.runSpeed) && c.state !== 'sit') {
+      } else if (speed > Math.min(1.2 * P.followFrom * (T.scale / 0.25), P.followFrom * T.runSpeed) && c.state !== 'sit') {
         const h = headingYaw(c.fwd);
         // running toward the camera: don't swing round (the classic follow-cam rule)
-        if (Math.abs(wrap(h - yaw)) < 2.3) { yawTarget = h; yawW = Math.min(2.4, 0.5 + 0.3 * speed / (T.scale / 0.25)) * ease; }
+        if (Math.abs(wrap(h - yaw)) < 2.3) { yawTarget = h; yawW = Math.min(P.followMax, P.followBase + P.followPerSpeed * speed / (T.scale / 0.25)) * ease; }
       }
     }
     if (yawTarget !== null && yawW > 0) {
@@ -152,7 +176,7 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
     // ---- distance: zoom, a little pull-back with speed, a bit more on walls
     [zoomS, zoomV] = spring(zoomS, zoomV, zoomT, 9, dt);
     const sp = THREE.MathUtils.clamp(speed / ((c.state === 'fly' ? T.flySprint : T.sprintSpeed) || 7) / (c.boostMul || 1), 0, 1);
-    const wantDist = T.camDistance * Math.pow(zoomFar, zoomS) * (1 + T.camPullBack * sp) * (1 + 0.25 * climbW) * (1 + ((T.camFlyMul || 1.8) - 1) * flyW);
+    const wantDist = T.camDistance * P.distMul * Math.pow(zoomFar, zoomS) * (1 + T.camPullBack * sp) * (1 + 0.25 * climbW) * (1 + ((T.camFlyMul || 1.8) - 1) * flyW);
     [dist, distV] = spring(dist, distV, wantDist, 5, dt);
     [fov, fovV] = spring(fov, fovV, THREE.MathUtils.lerp(T.camFov, T.camFovSprint, sp * sp), 3, dt);
     camera.fov = fov;
@@ -221,25 +245,35 @@ export function createFollowCamera({ camera, creature, world, tuning: T, zoom: z
     if (blind > 0.35) { camPos.copy(focus).addScaledVector(dir, -allowed); free = allowed; freeV = 0; blind = 0; cuts++; }
     camera.position.copy(camPos);
     // orientation straight from yaw / pitch (stable even when collision brings it right in)
-    camera.quaternion.setFromEuler(euler.set(-pitchShown, yaw, roll, 'YXZ'));
+    // (touch: aim a little above the creature, so it sits in the lower-middle third of the view)
+    [frameW, frameV] = spring(frameW, frameV, P.frame, 4, dt);
+    const aim = Math.atan(frameW * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2));
+    camera.quaternion.setFromEuler(euler.set(-pitchShown + aim, yaw, roll, 'YXZ'));
     camera.up.copy(UP);
     // pulled right in (a wall at its back): don't look out through the creature's own fur
     if (creature.object) creature.object.visible = camPos.distanceTo(focus) > T.radius * 3.5;
     camera.updateProjectionMatrix();
     camera.updateMatrixWorld();
     first = false;
-    debug.yaw = yaw; debug.pitch = pitchShown; debug.bend = bend; debug.pitchUser = pitchUser; debug.dist = dist; debug.free = free; debug.cuts = cuts; debug.zoom = zoomS;
+    debug.yaw = yaw; debug.pitch = pitchShown; debug.aim = aim; debug.profile = P.name; debug.bend = bend; debug.pitchUser = pitchUser; debug.dist = dist; debug.free = free; debug.cuts = cuts; debug.zoom = zoomS;
   }
 
   // behind the creature, everything settled (respawn, teleport); keeps the player's pitch and zoom
   function snapBehind() {
     yaw = headingYaw(creature.controller.fwd); yawV = 0; first = true;
-    zoomS = zoomT; zoomV = 0; dist = T.camDistance * Math.pow(zoomFar, zoomS); distV = 0; free = dist; freeV = 0;
+    zoomS = zoomT; zoomV = 0; dist = T.camDistance * P.distMul * Math.pow(zoomFar, zoomS); distV = 0; frameW = P.frame; frameV = 0; free = dist; freeV = 0;
     fov = T.camFov; fovV = 0; bend = 0; bendV = 0; pitchEff = pitchUser; pitchV = 0; climbW = 0; climbWV = 0; blind = 0; sinceLook = 10; recenter = 0;
   }
   snapBehind();
   return {
     update, snapBehind, debug,
+    get profile() { return P.name; },
+    // 'touch' | 'console': the new default pitch is taken up and the distance and framing ease over
+    setProfile(name) {
+      const next = profileOf(T, name === 'touch' ? 'touch' : 'console');
+      if (next.name === P.name) return;
+      P = next; pitchUser = P.pitch;
+    },
     get yaw() { return yaw; }, get pitch() { return pitchUser; },
     set pitch(p) { pitchUser = p; },
     get zoom() { return zoomT; },

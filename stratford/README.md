@@ -22,7 +22,7 @@ worked on.
   step. three.js r170 and three-mesh-bvh 0.8.3 vendored in `lib/`.
   - `index.html`, `styles.css`, `src/main.js` (shell, loop, screens),
     `src/input.js`, `src/audio.js` (all synthesized), `src/ui/` (title,
-    menus, HUD, map and journal), `src/game/` (landmark discoveries, nuts,
+    menus, HUD, map and journal, touch controls for phones and tablets), `src/game/` (landmark discoveries, nuts,
     the save).
   - `src/town/`: the streaming town (200 m chunks, LOD, colliders, landmarks,
     streets with real curbs, trees, water, sky, detail layers by scale).
@@ -53,7 +53,7 @@ worked on.
 Run from the repository root before committing a change here:
 
 ```bash
-node --test stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs stratford/prototype/game/test/squirrel.test.mjs stratford/prototype/game/test/town.test.mjs
+node --test --test-concurrency=1 stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs stratford/prototype/game/test/squirrel.test.mjs stratford/prototype/game/test/creatures.test.mjs stratford/prototype/game/test/audio.test.mjs stratford/prototype/game/test/town.test.mjs stratford/prototype/game/test/touch.test.mjs
 ```
 
 ```bash
@@ -67,7 +67,9 @@ python3 stratford/prototype/tools/build_web.py --check
 The squirrel and town tests and the browser check use Playwright with
 Chromium. In software WebGL the real town draws a frame in seconds, so the
 browser check runs a smoke test on the real town and its full controller suite
-on the test yard. The on-demand "tests: full" deploy run uses only the
+on the test yard. It also runs a phone suite (`--only mobile`): real touch
+events on an 844×390 and a 390×844 screen at DPR 3, on the test yard and a
+short real-town smoke, with screenshots in `<shots>/mobile`. The on-demand "tests: full" deploy run uses only the
 browser-free tests (shell and town data).
 
 ## Data and credits
