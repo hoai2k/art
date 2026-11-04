@@ -377,3 +377,21 @@ for again; the originals stay in use until the replacements arrive.
 ## Round 11 delivery — 2026-11-02
 
 Six requested replacements delivered with built-in image_gen, prompts recorded in `generation-prompts-round-11.json`. Beaver profile and heron overhead view regenerated, curb and asphalt have no paint, leaf drift contains no curb. Plant sheet generated on magenta (preserved in `reference/delivery/round-11/`), then background removed with image_gen for game use. PNG dimensions and alpha checked; web copies rebuilt. Texture seams require in-game review. No deployment.
+
+## Round 12: leaves for the residential street trees
+
+The street trees now come in species (silver, sugar and Norway maples, red oak,
+linden, honey locust, ash, spruce, pine, willow), and each tree is coloured in
+the game from a mid-October spread for its species, so the leaf sprites only
+give the leaves' shape and light: their own colour is taken out. Linden and
+the pinnate-leaved honey locust and ash still use leaves drawn by the code.
+Same format as the existing `sprites/maple_leaf_cluster.png`: one cluster
+filling the square, on a **flat pure #FF00FF magenta background** with crisp
+edges and no glow or halo (the game keys the magenta out). Until they arrive
+the drawn stand-ins stay in use (`src/town/trees.js`, slots `linden` and `fine`
+in `src/town/assets.js`).
+
+| # | File | Size | Prompt |
+|---|---|---|---|
+| T12.1 | `sprites/linden_leaf_cluster.png` | 1024 × 1024 | A cluster of basswood (American linden) leaves on a thin brown twig seen from slightly below: eight to twelve broad heart-shaped leaves with finely toothed edges and lopsided bases, a few winged seed bracts with small round nutlets hanging among them, soft yellow-green, some leaves overlapping. Painted autumn storybook realism, soft gouache, even light, the cluster filling the square, flat pure #FF00FF magenta background, crisp edges, no glow, no shadow, no text. Status: `requested` |
+| T12.2 | `sprites/locust_leaf_cluster.png` | 1024 × 1024 | A spray of honey locust foliage seen from slightly below: several feathery doubly-pinnate leaves of many small oval leaflets on thin green stalks, airy with lots of gaps between the leaflets, two or three twisted flat brown seed pods, golden yellow-green. Painted autumn storybook realism, soft gouache, even light, the spray filling the square, flat pure #FF00FF magenta background, crisp edges, no glow, no shadow, no text. Status: `requested` |
