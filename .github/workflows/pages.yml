@@ -148,7 +148,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.tests == 'full'
         # Only the checks that need no browser: the Playwright ones (squirrel and
         # town benches, scripts/browser-check.mjs) run locally before committing.
-        run: node --test stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs
+        run: node --test stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs stratford/prototype/game/test/publish.test.mjs
       - name: Fail only if no game built
         run: .github/scripts/check-games.sh
       - uses: actions/upload-pages-artifact@v3
