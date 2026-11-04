@@ -354,7 +354,8 @@ function shipWreck(k, st, pt, t) {
     c.save();
     c.translate(x + side * brk * 50, y0 - lift + sink);
     c.rotate(side * brk * 0.6 + Math.sin(t * 2.4) * 0.04);
-    const half = side < 0 ? 'ship-wreck-bow' : 'ship-wreck-stern';
+    // Stern on the left, bow on the right: both splintered edges face the break.
+    const half = side < 0 ? 'ship-wreck-stern' : 'ship-wreck-bow';
     // The delivered halves once requested art arrives; until then each half of
     // the ship's own art (380x400, drawn 190x200 with its waterline at +20).
     if (!(brk > 0.05 && k.asset(half, side * 75, 20, 150, 200))) {

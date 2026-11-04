@@ -15,9 +15,12 @@ try {
   const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;
   canvas.id='crossing-review';canvas.style.cssText='position:fixed;inset:0;z-index:99999;width:1280px;height:720px';document.body.append(canvas);
   const renderer=createRenderer(canvas,q.assets),asset=renderer.kit.asset;
-  window.crossing={act,canvas,renderer,witches:[]};
+  window.crossing={act,canvas,renderer,witches:[],halves:[]};
   renderer.kit.asset=(id,x,y,w,h,...rest)=>{
    if(id==='witch-storm')window.crossing.witches.push({x,y,w,h});
+   if(id==='ship-wreck-bow'||id==='ship-wreck-stern'){
+    const m=renderer.kit.c.getTransform();window.crossing.halves.push({id,x:m.a*x+m.c*y+m.e,flipped:m.a<0});
+   }
    return asset(id,x,y,w,h,...rest);
   };
  });
@@ -52,6 +55,17 @@ try {
    }
    await page.locator('#crossing-review').screenshot({path:`${out}/${tinted?'tinted':'original'}-${phase}-${time}.png`});
    evidence.push(sample);
+  }
+  for(const time of [2.2,2.6,3]){
+   const halves=await page.evaluate(({time,tinted})=>{
+    const q=window.crossing,st=q.act.create({seed:5,from:{scene:5}});st.phase='wreck';st.phaseT=time;
+    q.halves=[];q.renderer.render({act:q.act,state:st,curtain:1,film:'off',tinted,t:20});return q.halves;
+   },{time,tinted});
+   const stern=halves.filter(h=>h.id==='ship-wreck-stern'),bow=halves.filter(h=>h.id==='ship-wreck-bow');
+   assert.ok(stern.length&&bow.length,'both delivered halves are drawn');
+   assert.ok(stern.every(s=>bow.every(b=>s.x<b.x)),'stern left and bow right put the broken edges in the middle');
+   assert.ok(halves.every(h=>!h.flipped),'swap the sprites without mirroring their artwork');
+   await page.locator('#crossing-review').screenshot({path:`${out}/${tinted?'tinted':'original'}-wreck-${time}.png`});
   }
   for(const progress of [.97,.985,.995,1]){
    await page.evaluate(({progress,tinted})=>{
