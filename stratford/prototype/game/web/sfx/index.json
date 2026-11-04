@@ -208,11 +208,6 @@
   "sfx/bluejay_call-2.mp3",
   "sfx/bluejay_call-3.mp3"
  ],
- "chickadee_call": [
-  "sfx/chickadee_call-1.mp3",
-  "sfx/chickadee_call-2.mp3",
-  "sfx/chickadee_call-3.mp3"
- ],
  "discover": [
   "sfx/discover-1.mp3",
   "sfx/discover-2.mp3",
@@ -279,7 +274,6 @@
   "geese_overhead": 0.5,
   "crow_call": 0.5,
   "bluejay_call": 0.5,
-  "chickadee_call": 0.5,
   "discover": 0.6,
   "ui_move": 0.35,
   "ui_confirm": 0.5,
