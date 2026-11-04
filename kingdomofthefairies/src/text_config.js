@@ -6,7 +6,7 @@
 //  - Where a sentence needs a value from the game (a number, a name, a
 //    button), the entry is a small function, e.g. hit: (n) => `Hit. ${n}
 //    lanterns left.`; keep the argument names and change only the words.
-//    Placeholders for buttons stay as written: [A], [B], [X], [MENU], [LS]
+//    Placeholders for buttons stay as written: [CONFIRM], [A], [B], [X], [MENU], [LS]
 //    are drawn as the player's own controller glyphs.
 //  - A "\n" inside a string is a line break on the card.
 //  - Entries ending in Classic, Legacy or Widowsbay (and everything under
@@ -43,7 +43,7 @@ export const TEXT = {
   // ---------------------------------------------------------------------------
   // The placeholder act (src/acts/rehearsal.js)
   // ---------------------------------------------------------------------------
-  rehearsal: { action: 'A: continue', banner: 'IN REHEARSAL', continue: 'Press A to continue the story' },
+  rehearsal: { action: 'A: continue', banner: 'IN REHEARSAL', continue: 'Press [CONFIRM] to continue the story' },
 
   // ---------------------------------------------------------------------------
   // The shell: everything around the acts (src/main.js, src/touch.js, src/art.js)
@@ -62,7 +62,7 @@ export const TEXT = {
       sceneSub: (retry, sceneName) => `${retry ? 'Carrying on from' : 'Scene'}: ${sceneName}`,
       tapToBegin: 'Tap to begin',
       tapToBeginWith: (hint) => `Tap to begin · ${hint}`,
-      pressToBegin: 'Press [A] to begin',
+      pressToBegin: 'Press [CONFIRM] to begin',
       announceAct: (kicker, title, sceneName) => `${kicker}, ${title}.${sceneName ? ' ' + sceneName + '.' : ''}`,
     },
     // Waiting for the song and the scenery
@@ -86,8 +86,8 @@ export const TEXT = {
       tryAgain: 'try again',
       tryAgainFrom: (sceneName) => `try again from ${sceneName}`,
       promptTouch: (again) => `Tap right to ${again} · tap left for the playbill`,
-      promptOther: (again) => `[A] ${again[0].toUpperCase() + again.slice(1)} · [B] The playbill`,
-      announce: (again) => `The act is lost. Press A to ${again}.`,
+      promptOther: (again) => `[CONFIRM] ${again[0].toUpperCase() + again.slice(1)} · [B] The playbill`,
+      announce: (again) => `The act is lost. Press [CONFIRM] to ${again}.`,
     },
     pause: {
       controllerLost: 'Controller disconnected — reconnect it, or carry on with keys or touch.',
@@ -97,8 +97,8 @@ export const TEXT = {
       announce: 'The playbill. Choose an act.',
       hint: {
         touch: 'Tap an act to begin · tap outside for the title',
-        pad: '[LS] Choose · [A] Begin · [B] The title',
-        key: 'Click an Act · Tab / [A] · Esc menu',
+        pad: '[LS] Choose · [CONFIRM] Begin · [B] The title',
+        key: 'Click an Act · Tab / [CONFIRM] · Esc menu',
       },
       subtitleFilm: 'A TOY THEATRE IN A PROLOGUE AND SIX ACTS',
       subtitle: 'A TOY THEATRE IN FIVE ACTS',
@@ -114,7 +114,7 @@ export const TEXT = {
       hintTouch: 'Tip: Add to Home Screen to play full screen',
       hintPadNav: (glyph) => `${glyph('A')} Select · ${glyph('MENU')} Start`,
       hintPad: (glyph) => `Move ${glyph('LS')} for options · ${glyph('A')} Start`,
-      hintKey: 'Press Enter to start · Tab for options',
+      hintKey: 'Press Space to start · Tab for options',
     },
   },
 
@@ -126,10 +126,10 @@ export const TEXT = {
     // The hint on the act card (Tap to begin · ...)
     actHint: {
       1: 'drag to sail, swipe to change row, tap to leap',
-      2: 'drag to swim, A to kick; on the moon boat, drag to sail, swipe to change row, tap to leap',
+      2: 'drag to swim, tap Swim to kick; on the moon boat, drag to sail, swipe to change row, tap to leap',
       3: 'drag to walk, swipe to change groove, tap to hide',
       4: 'drag to walk, swipe up or tap to leap',
-      5: 'drag to climb, A to leap',
+      5: 'drag to climb, tap Leap to leap',
     },
     actHintDefault: 'drag to move',
     // The hint shown over the stage while playing
@@ -176,7 +176,7 @@ export const TEXT = {
   // ---------------------------------------------------------------------------
   glyphs: {
     // the key cap drawn for each button on a keyboard
-    keys: { A: 'Space', B: 'Esc', X: 'X', MENU: 'Esc', LS: '← →' },
+    keys: { A: 'Space', B: 'Backspace', X: 'X', MENU: 'Esc', LS: '← →' },
     // the pill drawn for each button on a touch screen (A and X take the scene's own verb)
     touch: { A: 'Tap', X: 'Action', B: 'Back', MENU: '❚❚', LS: 'Drag' },
   },
@@ -223,7 +223,7 @@ export const TEXT = {
     },
     announce: {
       scene: {
-        court: 'The betrothal court. Walk to each fairy and press A to receive her gift for Princess Azurine.',
+        court: 'The betrothal court. Walk to each fairy and press [X] to receive her gift for Princess Azurine.',
         curse: 'The witch, uninvited, curses the betrothal.',
         rampart: 'Her demons bear Azurine away in a chariot of fire. Run after it along the rampart; leap the fire it drops.',
         bind: 'In the armoury the witch binds the prince, and laughs at him.',
@@ -277,7 +277,7 @@ export const TEXT = {
       arriveFilm: "The sky blackens: the witch's tempest.",
       arrive: 'The enchanted tower in sight.',
       cheerFilm: "The witch's tempest! The crew light the ship's lanterns against the dark.",
-      cheer: 'A celebration on deck! Press A on the beat to light the lanterns.',
+      cheer: 'A celebration on deck! Press [A] on the beat to light the lanterns.',
       revelryFilm: 'Every lantern lit: they hold against the storm.',
       revelry: 'Every lantern lit.',
       strike: 'The witch strikes the mast.',
@@ -297,7 +297,7 @@ export const TEXT = {
     kicker: 'Act II',
     title: 'The Water Fairy',
     titleClassic: "The Sleepers' Grotto",
-    sub: 'Follow the sinking sword down.\nGrab pearls with X and get air from the bubbles.',
+    sub: 'Follow the sinking sword down.\nGrab pearls with [X] and get air from the bubbles.',
     subClassic: 'Follow the sinking guitar down.\nSound the conch horns to wake the drowned.',
     action: 'A: kick',
     scenes: {
@@ -334,12 +334,12 @@ export const TEXT = {
       title: 'The Water Fairy offers her blessing',
       titleClassic: 'She offers you the sea rose',
       hint: 'Swim to her to receive it',
-      hintClassic: 'A  take it     ·     B  refuse, or swim away',
+      hintClassic: '[A] Take it · [B] Refuse, or swim away',
     },
     rideHint: 'Sail, change row and leap to gather the pearls.',
     announce: {
       sailorWake: 'The Water Fairy breathes life into the prince. He wakes among his drowned crew.',
-      swimStart: 'Follow the sword down. Grab pearls with X and get air from the bubbles.',
+      swimStart: 'Follow the sword down. Grab pearls with [X] and get air from the bubbles.',
       conchBlow: 'The conch sings. Swim close to your crew to wake them.',
       swordCatch: 'You catch the enchanted sword.',
       witchOffer: 'The Water Fairy waits by the wreck. Swim to her for her blessing.',
@@ -349,14 +349,14 @@ export const TEXT = {
       crewWake: (n) => `A crewman wakes. ${n} woken.`,
       // Widow's Bay edition
       sailorWakeClassic: 'The witch breathes life into the sailor. He wakes among the drowned.',
-      swimStartClassic: 'Swim down after the guitar. Press A to kick. Sound the conch to wake the sleepers.',
+      swimStartClassic: 'Swim down after the guitar. Press [A] to kick. Sound the conch to wake the sleepers.',
       conchBlowClassic: 'The conch sings. Swim close to the sleepers to wake them.',
       sleeperWake: (n) => `A sleeper wakes. ${n} woken.`,
       hit: (n) => `Hit. ${n} lantern${n === 1 ? '' : 's'} left.`,
       airLow: 'Air running low. Find a vent.',
       eelGlow: 'Eyes glow in a hole.',
       guitarCatchClassic: 'You catch the guitar.',
-      witchOfferClassic: 'The witch offers the sea rose. A to take it, B to refuse.',
+      witchOfferClassic: 'The witch offers the sea rose. [A] to take it, [B] to refuse.',
       roseTakeClassic: 'You take the sea rose. Every sleeper wakes.',
       witchLaugh: 'You refuse the rose. The witch laughs.',
       rideStartClassic: 'The moon boat. Sail, change row and leap to gather the pearls.',
@@ -378,8 +378,8 @@ export const TEXT = {
     intertitleClassic: "Hide beside a courtier\nfrom the Sea King's lantern.\n\nTake her pearl from the pedestal\nat the far end of the hall.",
     action: 'X: hide · A: jump',
     actionClassic: 'A: hide',
-    touchHint: 'Drag to walk · hold X to hide · tap to jump up a level',
-    touchScheme: 'Drag ↔ to walk · hold X to hide · tap to jump up',
+    touchHint: 'Drag to walk · hold Hide to hide · tap to jump up a level',
+    touchScheme: 'Drag ↔ to walk · hold Hide to hide · tap to jump up',
     scenes: { doors: 'The Hall Doors', throne: 'Before the Throne', witchSide: "The Witch's Side", treasury: 'The Treasury Steps' },
     // the lobster palace tableau's card
     palace: { title: 'The Lobster Palace', sub: 'Hold [X] to bow and let each guard pass', subTouch: 'Hold [X] to bow and let each guard pass' },
@@ -476,7 +476,7 @@ export const TEXT = {
     title: 'The Enchanted Tower',
     sub: 'Climb the cliff and dive for the witch’s tower.\nSwim the sea gap, then climb the tower to her window.',
     action: 'A: leap',
-    touchHint: 'drag to climb, A to leap; in the sea, drag to swim, A to dive',
+    touchHint: 'drag to climb, tap Leap to leap; in the sea, drag to swim, tap Dive to dive',
     touchSwim: 'Drag to swim · tap to dive',
     scenes: { cliffFoot: 'The Cliff Foot', halfway: 'Halfway Up the Cliff', seaGap: 'The Sea Gap', wall: 'The Tower Wall', top: 'Top of the Tower' },
     window: { title: 'Her Window', sub: 'Azurine is held inside' },
@@ -486,13 +486,13 @@ export const TEXT = {
       seaTitle: 'The Sea Takes\nHim Down',
       towerTitle: 'The Tower\nThrows Him Off',
       cliffTitle: 'The Cliff\nGives Way',
-      seaSub: 'When her shadow darkens the water, press A to dive.',
+      seaSub: 'When her shadow darkens the water, press [A] to dive.',
       cliffSub: 'Watch the dust: the stone falls where it gathers.',
     },
     announce: {
       hit: (n) => `Hit. ${n} lantern${n === 1 ? '' : 's'} left.`,
       clifftop: 'The top. He dives for the tower.',
-      swimStart: 'Swim for the tower. Press A to dive under the witch.',
+      swimStart: 'Swim for the tower. Press [A] to dive under the witch.',
       witchSwoop: 'The witch is swooping down! Dive!',
       auroraLight: "Aurora's light drives the witch away.",
       towerFoot: 'The tower. Climb to her window.',
@@ -509,7 +509,7 @@ export const TEXT = {
     title: 'The Burning Tower',
     sub: 'The witch’s demons set the tower alight.\nClimb to Azurine and carry her out before it falls.',
     action: 'A: leap',
-    touchHint: 'drag to walk and climb, A to leap',
+    touchHint: 'drag to walk and climb, tap Leap to leap',
     touchWalk: 'Drag ↔ to walk',
     touchCelebrate: 'Drag ↔ to walk · tap to celebrate',
     touchStairs: 'Drag to walk · up and down on stairs and ladders',
@@ -554,7 +554,7 @@ export const TEXT = {
       faceoff: 'Aurora holds the witch at bay.',
       battleArrival: 'You arrive with Azurine in your arms.',
       azurineSheltered: 'Azurine is safe behind Aurora.',
-      battleReady: 'Face the witch. Leap her fire with A and strike with X; Azurine remains sheltered behind Aurora.',
+      battleReady: 'Face the witch. Leap her fire with [A] and strike with [X]; Azurine remains sheltered behind Aurora.',
       witchStruck: 'A hit! She pushes you back. Leap her next fire and approach again.',
       witchBeatenShort: 'The witch is beaten.',
       witchRepel: 'She drives you back.',

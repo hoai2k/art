@@ -98,7 +98,7 @@ function transformation(k, st, t) {
   // the way on glows at the right
   c.save(); c.globalAlpha = 0.25 + 0.15 * Math.sin(t * 3); c.fillStyle = k.col('#fff2b0'); c.beginPath(); c.ellipse(P.exit + 40, P.y - 90, 40, 110, 0, 0, Math.PI * 2); c.fill(); c.restore();
   if (f.guards.every(g => g.passed)) prompt(k, f.got.length ? TEXT.court.pearlsOf(f.got.length, P.pearls.length) : k.inputMode === 'touch' ? TEXT.court.leapForPearlsTouch : TEXT.court.leapForPearls, 900, 230, '#f3c6dc');
-  if (f.fade === 0) card(k, TNAMES[f.set], tsub(k, f.set).replace(/\[(\w)\]/g, '$1'), Math.min(1, clamp((f.t - 0.2) / 0.5, 0, 1)) * (f.t > 4.5 ? clamp((5.2 - f.t) / 0.7, 0, 1) : 1), { y: 92 });
+  if (f.fade === 0) card(k, TNAMES[f.set], tsub(k, f.set), Math.min(1, clamp((f.t - 0.2) / 0.5, 0, 1)) * (f.t > 4.5 ? clamp((5.2 - f.t) / 0.7, 0, 1) : 1), { y: 92 });
   if (f.fade === 0 && f.t > 4.5) (k.flat || ((g) => g()))(() => prompt(k, tsub(k, f.set), 640, 150, '#f3c6dc'));
   if (f.fade > 0) k.wash('#000000', Math.sin(Math.PI * f.fade / P.fade));
 }

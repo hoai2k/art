@@ -1262,12 +1262,16 @@ function star(c, x, y, r) {
 }
 
 // ---------------------------------------------------------------- button prompts
-// Prompt text may name buttons as [A], [B], [MENU] or [LS]. They are drawn
+// Prompt text uses [CONFIRM] for UI confirmation and [A]/[X] for gameplay.
+// [B], [MENU] and [LS] name the other controls. They are drawn
 // for the input in use (`mode`): Xbox controller buttons ('pad'), key caps
 // ('key') or the on-screen touch buttons ('touch').
-let GLYPH_KEYS = TEXT.glyphs.keys;
+const keyboardGlyphs = ({ primaryX = false, upJump = false } = {}) => ({
+  ...TEXT.glyphs.keys, A: primaryX && upJump ? 'W / ↑' : 'Space', X: primaryX ? 'Space' : 'X',
+});
+let GLYPH_KEYS = keyboardGlyphs();
 export function setKeyboardControls({ primaryX = false, upJump = false } = {}) {
-  GLYPH_KEYS = { ...TEXT.glyphs.keys, A: primaryX && upJump ? 'W / ↑' : 'Space', X: primaryX ? 'Space' : 'X' };
+  GLYPH_KEYS = keyboardGlyphs({ primaryX, upJump });
 }
 const XBOX = { A: '#3fa535', B: '#d6262c', X: '#2a6fd6', Y: '#e8b320' };
 // On touch the buttons carry no letters, only what they do here, so a prompt
@@ -1275,10 +1279,18 @@ const XBOX = { A: '#3fa535', B: '#d6262c', X: '#2a6fd6', Y: '#e8b320' };
 const TOUCH_NAMES = TEXT.glyphs.touch;
 let touchNames = { ...TOUCH_NAMES };
 export function setTouchNames({ A, X } = {}) { touchNames = { ...TOUCH_NAMES, ...(A ? { A } : {}), ...(X ? { X } : {}) }; }
+// Confirmation never inherits a scene's jump or interaction binding.
+const glyphName = (tok, mode, keys = GLYPH_KEYS) => tok === 'CONFIRM'
+  ? (mode === 'key' ? 'Space' : mode === 'touch' ? 'Tap' : 'A')
+  : mode === 'key' ? keys[tok] : mode === 'touch' ? touchNames[tok] : tok;
+export function promptText(str, { mode = 'key', controls } = {}) {
+  const keys = controls ? keyboardGlyphs(controls) : GLYPH_KEYS;
+  return str.replace(/\[(CONFIRM|A|B|X|MENU|LS)\]/g, (_, tok) => glyphName(tok, mode, keys));
+}
 const touchFont = (px) => `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`;
 function glyphWidth(c, tok, mode, px) {
-  if (mode === 'touch') { c.save(); c.font = touchFont(px); const w = c.measureText(touchNames[tok].toUpperCase()).width; c.restore(); return w + px * 0.8; }
-  if (mode === 'key') { c.save(); c.font = `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`; const w = c.measureText(GLYPH_KEYS[tok]).width; c.restore(); return w + px * 0.7; }
+  if (mode === 'touch') { c.save(); c.font = touchFont(px); const w = c.measureText(glyphName(tok, mode).toUpperCase()).width; c.restore(); return w + px * 0.8; }
+  if (mode === 'key') { c.save(); c.font = `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`; const w = c.measureText(glyphName(tok, mode)).width; c.restore(); return w + px * 0.7; }
   return px * 1.0;
 }
 function drawGlyph(c, tok, mode, cx, cy, px, col) {
@@ -1287,13 +1299,13 @@ function drawGlyph(c, tok, mode, cx, cy, px, col) {
   c.textAlign = 'center'; c.textBaseline = 'middle';
   if (mode === 'key') {
     c.font = `700 ${Math.round(px * 0.55)}px "Josefin Sans", sans-serif`;
-    const w = c.measureText(GLYPH_KEYS[tok]).width + px * 0.5, h = px * 0.82;
+    const w = c.measureText(glyphName(tok, mode)).width + px * 0.5, h = px * 0.82;
     c.fillStyle = col('#f1e3c8'); c.strokeStyle = col('#2a1424'); c.lineWidth = Math.max(1.5, px * 0.06);
     c.beginPath(); c.roundRect(cx - w / 2, cy - h / 2, w, h, px * 0.14); c.fill(); c.stroke();
-    c.fillStyle = col('#2a1424'); c.fillText(GLYPH_KEYS[tok], cx, cy + px * 0.03);
+    c.fillStyle = col('#2a1424'); c.fillText(glyphName(tok, mode), cx, cy + px * 0.03);
   } else if (mode === 'touch') {
     // a gold pill with the button's name ("Leap", "Take"); touch's second button stands in for X
-    const name = touchNames[tok].toUpperCase();
+    const name = glyphName(tok, mode).toUpperCase();
     c.font = touchFont(px);
     const w = c.measureText(name).width + px * 0.6, h = px * 0.88;
     c.fillStyle = col('#b8862e'); c.strokeStyle = col('#f1e3c8'); c.lineWidth = Math.max(1.5, px * 0.06);
@@ -1301,11 +1313,12 @@ function drawGlyph(c, tok, mode, cx, cy, px, col) {
     c.fillStyle = col('#fff8e8'); c.fillText(name, cx, cy + px * 0.03);
   } else {
     // Xbox: A, B, X, Y in their colours; Menu and the left stick in charcoal.
-    const face = XBOX[tok];
+    const button = tok === 'CONFIRM' ? 'A' : tok;
+    const face = XBOX[button];
     c.fillStyle = col(face || '#36303a'); c.strokeStyle = col('#140a12'); c.lineWidth = Math.max(1.5, px * 0.07);
     c.beginPath(); c.arc(cx, cy, r, 0, Math.PI * 2); c.fill(); c.stroke();
     c.fillStyle = col('#ffffff'); c.strokeStyle = col('#ffffff');
-    if (face) { c.font = `700 ${Math.round(px * 0.52)}px "Josefin Sans", sans-serif`; c.fillText(tok, cx, cy + px * 0.04); }
+    if (face) { c.font = `700 ${Math.round(px * 0.52)}px "Josefin Sans", sans-serif`; c.fillText(button, cx, cy + px * 0.04); }
     else if (tok === 'MENU') { c.lineWidth = Math.max(1.2, px * 0.07); for (const dy of [-0.16, 0, 0.16]) { c.beginPath(); c.moveTo(cx - r * 0.45, cy + dy * px); c.lineTo(cx + r * 0.45, cy + dy * px); c.stroke(); } }
     else { c.lineWidth = Math.max(1.2, px * 0.06); c.beginPath(); c.arc(cx, cy, r * 0.62, 0, Math.PI * 2); c.stroke(); c.font = `700 ${Math.round(px * 0.3)}px "Josefin Sans", sans-serif`; c.fillText('LS', cx, cy + px * 0.02); }
   }
@@ -1313,11 +1326,11 @@ function drawGlyph(c, tok, mode, cx, cy, px, col) {
 }
 // Draw one line of prompt text centred on x (baseline y) with its button glyphs.
 export function measureRichText(c, str, { px, mode = 'key' } = {}) {
-  return str.split(/\[(A|B|X|MENU|LS)\]/).reduce((total, p, i) =>
+  return str.split(/\[(CONFIRM|A|B|X|MENU|LS)\]/).reduce((total, p, i) =>
     total + (i % 2 ? glyphWidth(c, p, mode, px) + px * 0.36 : c.measureText(p).width), 0);
 }
 export function richText(c, str, x, y, { px, mode = 'key', col = (h) => h } = {}) {
-  const parts = str.split(/\[(A|B|X|MENU|LS)\]/);
+  const parts = str.split(/\[(CONFIRM|A|B|X|MENU|LS)\]/);
   const gap = px * 0.18;
   const widths = parts.map((p, i) => (i % 2 ? glyphWidth(c, p, mode, px) + gap * 2 : c.measureText(p).width));
   const total = measureRichText(c, str, { px, mode });

@@ -1,4 +1,5 @@
 // The film edition's silent-film caption cards. Drawing only; headless-safe.
+import { richText } from '../art.js';
 import { clamp } from './shared.js';
 
 // A silent-film caption: plum card, double pink rule, a line of script and a
@@ -16,7 +17,7 @@ export function card(k, title, sub = '', a = 1, opts = {}) {
   c.strokeRect(x + 5, y + 5, w - 10, h - 10); c.strokeRect(x + 10, y + 10, w - 20, h - 20);
   c.globalAlpha = a; c.textAlign = 'center'; c.fillStyle = k.col('#f3c6dc');
   c.font = '34px Yesteryear, cursive'; c.fillText(title, cx, y + (sub ? 42 : 43));
-  if (sub) { c.font = '700 13px "Josefin Sans", sans-serif'; c.fillText(sub.toUpperCase(), cx, y + 67); }
+  if (sub) { c.font = '700 13px "Josefin Sans", sans-serif'; richText(c, sub.toUpperCase(), cx, y + 67, { px: 13, mode: k.inputMode || 'key', col: k.col }); }
   c.restore();
 }
 

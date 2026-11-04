@@ -926,8 +926,8 @@ function label(k, str, x, y, size = 20, colr = '#f1e3c8') {
   const c = k.c;
   if (k.compact && k.inputMode === 'touch') size = Math.round(size * 1.5);   // readable on a phone
   c.font = `700 ${size}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
-  c.fillStyle = k.col('#2a1424'); c.fillText(str, x + 2, y + 2);
-  c.fillStyle = k.col(colr); c.fillText(str, x, y);
+  c.fillStyle = k.col('#2a1424'); richText(c, str, x + 2, y + 2, { px: size, mode: k.inputMode || 'key', col: k.col });
+  c.fillStyle = k.col(colr); richText(c, str, x, y, { px: size, mode: k.inputMode || 'key', col: k.col });
 }
 
 function captions(k, st, t) {

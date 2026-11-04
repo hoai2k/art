@@ -44,7 +44,9 @@ export default {
 };
 ```
 
-**Button names in text.** In `sub` and `intertitle`, write `[A]`, `[B]`,
+**Button names in text.** Menu, intro and retry confirmation uses `[CONFIRM]`:
+Space on keyboard, A on a controller, Tap on touch. It never inherits a
+scene’s jump binding. In `sub` and `intertitle`, write `[A]`, `[B]`,
 `[MENU]` or `[LS]` for a button. The renderer draws it for the input in use:
 an Xbox button for a controller, a key cap for the keyboard, or the touch
 button on a phone or tablet. The intertitle is skipped on a retry.

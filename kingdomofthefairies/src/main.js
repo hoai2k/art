@@ -6,7 +6,7 @@ import { ACTS } from './acts/index.js';
 import { ACT_ART } from './act-art.js';
 import { loadSave, writeSave, carryInto, recordResult } from './save.js';
 import { editorWanted, openEditor } from './editor.js';
-import { createRenderer, loadAssets, richText, measureRichText, setTouchNames, setKeyboardControls } from './art.js';
+import { createRenderer, loadAssets, richText, measureRichText, promptText, setTouchNames, setKeyboardControls } from './art.js';
 import { createAudio } from './audio.js';
 import { createInput } from './input.js';
 import { keyboardControls } from './keyboard.js';
@@ -465,10 +465,10 @@ function menuInput(i) {
   if (i.padStart && dialogs.length && dialogs[dialogs.length - 1].el.id === 'pause') resume();
 }
 
-// Keyboard on the title: Enter starts when nothing is focused; native
+// Keyboard on the title: Space/Enter starts when nothing is focused; native
 // buttons handle their own Enter/Space.
 window.addEventListener('keydown', (e) => {
-  if (S.mode === 'title' && !dialogs.length && e.code === 'Enter' && (document.activeElement === document.body || !document.activeElement)) startGame();
+  if (S.mode === 'title' && !dialogs.length && ['Enter', 'Space'].includes(e.code) && (document.activeElement === document.body || !document.activeElement)) startGame();
   if (e.code === 'Escape' && document.fullscreenElement) { /* browser exits fullscreen; resize is CSS-driven */ }
 });
 
@@ -494,7 +494,7 @@ input.on('disconnect', (pad, wasOwner) => {
 });
 input.on('connect', () => announce(TEXT.shell.controllerConnected));
 
-function announce(msg) { live.textContent = msg; }
+function announce(msg) { live.textContent = promptText(msg, { mode: S.inputMode || 'key', controls: keyboardControls(S.act, S.state, FILM_ED) }); }
 
 // ---------------------------------------------------------------- loop
 let last = performance.now(), heldLook = null;
@@ -513,10 +513,11 @@ function frame(now) {
   // this clock, so it stops with the play beneath the pause menu.
   if (!(S.paused && S.mode === 'play')) S.t += dt;
   const controls = S.mode === 'play' && !dialogs.length ? keyboardControls(S.act, S.state, FILM_ED) : {};
-  setKeyboardControls(['play', 'intro'].includes(S.mode) && !dialogs.length ? keyboardControls(S.act, S.state, FILM_ED) : {});
   const i = input.poll(dt, controls);
   if (pointerTap) { i.tap = pointerTap; pointerTap = null; }
   update(dt, i);
+  setKeyboardControls(['play', 'intro', 'over'].includes(S.mode) && !dialogs.length ? keyboardControls(S.act, S.state, FILM_ED) : {});
+  if (S.card?.prompts) { S.card.mode = S.inputMode; S.card.prompt = S.inputMode === 'touch' ? S.card.prompts.touch : S.card.prompts.other; }
   syncPlaybillButtons();
   if (!(S.paused && S.mode === 'play')) updateCamera(dt);
   const view = currentView();
@@ -601,7 +602,6 @@ function trackInputMode(i) {
   // a touch screen no text is drawn smaller than MIN_TEXT css px
   renderer.kit.compact = canvas.clientWidth < 900;
   renderer.setMinFont(TOUCH ? MIN_TEXT * 1280 / Math.max(1, canvas.clientWidth) : 0);
-  if (S.card?.prompts) { S.card.mode = mode; S.card.prompt = mode === 'touch' ? S.card.prompts.touch : S.card.prompts.other; }
 }
 
 function update(dt, i) {
@@ -700,7 +700,7 @@ function update(dt, i) {
         S.card = { body: S.act.intertitle, size: 56, alpha: 0,
           prompts: { touch: TEXT.shell.card.tapToBegin, other: TEXT.shell.card.pressToBegin } };
         S.modeT = 0; S.readyT = 0;
-        announce(S.act.intertitle.replace(/\[A\]/g, 'A').replace(/\n+/g, ' '));
+        announce(S.act.intertitle.replace(/\n+/g, ' '));
         return;
       }
       S.mode = 'play'; S.modeT = 0; S.card = null; S.curtainTarget = 1;
