@@ -81,7 +81,7 @@ Status key: `open`, `held` (generated, waiting for the owner's ear),
 | `geese_overhead` | one-shot | 2 | A flock of Canada geese honking as they fly overhead and fade into the distance | `delivered` |
 | `crow_call` | one-shot | 3 | An American crow cawing two or three times from a tree | `delivered` |
 | `bluejay_call` | one-shot | 3 | A blue jay's loud "jay jay" call from a tree | `delivered` |
-| `chickadee_call` | one-shot | 3 | Field recording of a real black-capped chickadee: a quick high thin "chick" then fast buzzy bird notes, no human voice (the first takes sounded like a person singing "dee-dee-dee" and were removed) | `held` |
+| `chickadee_call` | one-shot | 3 | Field recording of a real black-capped chickadee: a quick high thin "chick" then fast buzzy bird notes, no human voice (the first takes sounded like a person singing "dee-dee-dee" and were removed; of the new takes the owner approved 1 and 3) | `delivered` |
 
 ## Round S3: discoveries and interface
 

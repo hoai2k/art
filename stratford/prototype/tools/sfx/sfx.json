@@ -340,7 +340,9 @@
    "dur": 2,
    "level": 0.5,
    "prompt": "Field recording of a real black-capped chickadee, a tiny songbird, calling from a tree: a quick high thin \"chick\" then several fast buzzy bird notes, natural birdsong only, no human voice, no singing person, no speech",
-   "hold": true
+   "skip": [
+    2
+   ]
   },
   {
    "name": "discover",
