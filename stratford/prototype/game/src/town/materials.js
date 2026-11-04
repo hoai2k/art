@@ -456,6 +456,7 @@ export function buildingMaterial(shared, assets, detail) {
   }
   const rects = []; for (let i = 0; i < 48; i++) rects.push(new THREE.Vector4(...(assets && assets.kitRects ? assets.kitRects.slice(i * 4, i * 4 + 4) : [0, 0, 1, 1])));
   uniforms.uKitRect = { value: rects };
+  uniforms.tSigns = { value: signAtlas() };
   const kitDecl = Object.keys(KIT).map((k) => `#ifdef ${k.toUpperCase()}\nuniform sampler2D t_${k};\n#endif`).join('\n');
   // double-sided: a camera that ends up inside a building sees a dark interior, not the world through the wall
   const m = painted({ color: 0xffffff, side: THREE.DoubleSide }, {
@@ -463,7 +464,7 @@ export function buildingMaterial(shared, assets, detail) {
     vertHead: 'attribute vec4 aF0; attribute vec4 aF1; attribute float aFac; attribute float aBid; attribute vec2 aCen; flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;',
     vertMain: 'vF0 = aF0; vF1 = aF1; vUv2 = uv; vFac = aFac; vBid = aBid; vCen = aCen;',
     fragHead: `flat varying vec4 vF0; flat varying vec4 vF1; varying vec2 vUv2; flat varying float vFac; flat varying float vBid; flat varying vec2 vCen;
-uniform sampler2D tDetail; uniform vec3 uFocus; uniform float uFacR; uniform vec4 uKitRect[48]; uniform highp sampler2D tSurvey;
+uniform sampler2D tDetail; uniform sampler2D tSigns; uniform vec3 uSkyTop; uniform vec3 uSkyHorizon; uniform vec3 uFocus; uniform float uFacR; uniform vec4 uKitRect[48]; uniform highp sampler2D tSurvey;
 ${texDecl(slots)}
 ${kitDecl}
 // a facade-kit item: sheet (0 windows, 1 shopfronts, 2 doors, 3 cornices, 4 trim, 5 awnings), cell, uv over its bounds
@@ -508,6 +509,34 @@ ${GLSL_COMMON}\n${GLSL_BUILDING}`,
     emissive: 'totalEmissiveRadiance += vec3(1.0, 0.72, 0.38) * glow * uNight * 0.9;',
   });
   return m;
+}
+
+// Shop names for the sign bands: invented and generic (no real Stratford business), painted
+// into a 4 x 8 atlas of 4:1 cells (white lettering in the alpha), some with a small emblem.
+export const SHOP_NAMES = ['Tea & Toast', 'Books', 'Hardware', 'Bakery', 'Antiques', 'Optician', 'Flowers', 'Caf\u00e9', 'Barber', 'Gallery',
+  'Cheese Shop', 'Toys & Games', 'Kitchenware', 'Music', 'Wool & Yarn', 'Chocolates', 'Outfitters', 'Pharmacy', 'Bistro', 'Stationers',
+  'Shoes', 'Jeweller', 'Pottery', 'Records', 'Tailor', 'Fine Foods', 'Gifts', 'Bicycles', 'Deli', 'Prints & Maps', 'Sweets', 'Ice Cream'];
+let _signs = null;
+function signAtlas() {
+  if (_signs) return _signs;
+  const W = 2048, H = 1024, cw = W / 4, ch = H / 8;
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const g = cv.getContext('2d');
+  g.fillStyle = '#fff'; g.strokeStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  const fonts = ['bold 72px Georgia, "Times New Roman", serif', 'italic bold 70px Georgia, serif', 'bold 64px "Trebuchet MS", Verdana, sans-serif', '700 68px "Palatino Linotype", Palatino, serif'];
+  SHOP_NAMES.forEach((name, i) => {
+    const x = (i % 4) * cw + cw / 2, y = Math.floor(i / 4) * ch + ch / 2, f = fonts[i % fonts.length];
+    g.font = f;
+    let w = g.measureText(name).width, sc = Math.min(1, (cw * 0.78) / w);
+    g.save(); g.translate(x, y + 4); g.scale(sc, sc); g.fillText(name, 0, 0); g.restore();
+    // small rules or emblems either side on some
+    w *= sc;
+    if (i % 3 === 0) { g.lineWidth = 4; for (const s of [-1, 1]) { g.beginPath(); g.moveTo(x + s * (w / 2 + 14), y + 4); g.lineTo(x + s * (w / 2 + 40), y + 4); g.stroke(); } }
+    else if (i % 3 === 1 && w < cw * 0.7) { for (const s of [-1, 1]) { g.beginPath(); const cx = x + s * (w / 2 + 30); g.moveTo(cx, y - 14); g.lineTo(cx + 12, y + 4); g.lineTo(cx, y + 22); g.lineTo(cx - 12, y + 4); g.closePath(); g.fill(); } }
+  });
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.NoColorSpace; t.anisotropy = 4; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter;
+  t.flipY = false; _signs = t;
+  return t;
 }
 
 const GLSL_BUILDING = /* glsl */`
@@ -680,6 +709,18 @@ vec3 windowUnit(vec2 uv, float w, float h, float style, float mat, float seed, o
   return mix(g, fr, bars);
 }
 
+// plate glass: the sky and the street opposite reflected, strongest at a glancing angle, in soft diagonal sheets
+vec3 shopReflect(vec3 inside, inout float glow) {
+  vec3 V = normalize(cameraPosition - vWP);
+  float fr = 0.12 + 0.55 * pow(1.0 - abs(dot(V, normalize(vWN))), 3.0);
+  float sheet = smoothstep(0.25, 0.75, tnoise(vec2(dot(vWP.xz, vec2(0.7, 0.7)) * 0.6 + vWP.y * 0.5, 1.7)));
+  vec3 refl = mix(uSkyHorizon * 0.9, uSkyTop, clamp(V.y * 2.0 + 0.4, 0.0, 1.0)) * (0.6 + 0.5 * sheet);
+  refl = mix(refl, vec3(0.25, 0.22, 0.2), 0.4 * step(vWP.y, 3.2) * (1.0 - sheet));        // the street's own dark band low down
+  float k = fr * (0.7 + 0.5 * sheet) * (1.0 - 0.6 * uNight);
+  glow *= 1.0 - k;
+  return mix(inside, refl, clamp(k, 0.0, 0.8));
+}
+
 vec3 buildingColor(out float glow) {
   glow = 0.0;
   float part = floor(vF0.x + 0.5), len = vF0.y, eaves = vF0.z, storeys = max(1.0, vF0.w);
@@ -690,11 +731,26 @@ vec3 buildingColor(out float glow) {
   vec3 trim = trimOf(seed);
 
   if (part == 13.0) return windowUnit(uv, vF0.y, vF0.z, vF0.w, mat, seed, glow);
+  // lots (lots.js): painted wood and iron (colour in aF0.yzw), foliage, perennials in flower
+  if (part == 19.0) return vF0.yzw * (0.88 + 0.12 * tnoise(uv * 2.0 + seed * 9.0)) * (0.92 + 0.08 * tnoise(vWP.xz * 3.0 + vWP.y * 5.0));
+  if (part == 20.0 || part == 21.0) {
+    vec3 q = vWP * 7.0;
+    float leaf = th(floor(q.xz + q.y * 1.7)) * 0.6 + tnoise(vWP.xz * 3.1 + vWP.y * 2.3) * 0.4;
+    vec3 c = vF0.yzw * (0.62 + 0.62 * leaf);
+    if (part == 21.0) {                      // flower heads over green
+      float f = step(0.55, th(floor(vWP.xz * 14.0 + vWP.y * 9.0)));
+      c = mix(vec3(0.20, 0.30, 0.14) * (0.7 + 0.5 * leaf), vF0.yzw * (0.85 + 0.3 * leaf), f);
+    }
+    return c * (0.8 + 0.3 * smoothstep(0.0, 1.0, vWN.y + 0.4));
+  }
   if (part == 18.0) {                      // a facade-kit panel (uv over the item, crop in the uv)
     vec4 k = kitTex(vF0.y, vF0.z, uv);
     if (k.a < 0.5) discard;
     if (vF0.w > 0.5 && vF0.w < 1.5) glow = step(0.45, fract(seed * 13.7)) * smoothstep(0.35, 0.7, k.r) * 0.8;   // window panes
-    if (vF0.w > 1.5) { glow = smoothstep(0.3, 0.8, dot(k.rgb, vec3(0.4, 0.4, 0.2))) * 0.9; return k.rgb * 1.25; }   // lit shop windows, bright even by day
+    if (vF0.w > 1.5) {                     // lit shop windows, bright even by day, with the street reflected in the glass
+      glow = smoothstep(0.3, 0.8, dot(k.rgb, vec3(0.4, 0.4, 0.2))) * 0.9;
+      return shopReflect(k.rgb * 1.25, glow);
+    }
     return k.rgb;
   }
   if (part == 14.0) {                      // a door: panels below, glass above (shop doors glazed)
@@ -713,17 +769,30 @@ vec3 buildingColor(out float glow) {
     float knob = 1.0 - smoothstep(0.03, 0.035, length(q - vec2(w - 0.13, 1.0)));
     return mix(c, vec3(0.78, 0.62, 0.28), knob);
   }
-  if (part == 15.0) {                      // a blank sign band in a moulded frame
+  if (part == 15.0) {                      // a sign band in a moulded frame, with the shop's painted name
     float L = vF0.y, h = vF0.z;
     vec3 sc = signColor(fract(seed * 5.7));
     if (vF0.w < -0.5) { vec4 u = survey(4.0 + min(3.0, -vF0.w - 1.0)); if (u.a > 0.5) sc = u.rgb; }
+    vec3 base;
+    float mould = 1.0 - sbox(uv, vec2(0.08, 0.07), vec2(L - 0.08, h - 0.07), px);
+    base = mix(sc, trimColor(seed) * 1.1, mould);
 #ifdef KIT_TRIM
     { float n = max(1.0, floor(L / (h * kitAspect(4.0, 6.0)) + 0.5));
       vec4 k = kitTex(4.0, 6.0, vec2(fract(uv.x / (L / n)), uv.y / h));
-      if (k.a > 0.3) return mix(k.rgb, sc * 1.4, 0.25 * smoothstep(0.6, 0.9, dot(k.rgb, vec3(0.33)))); }
+      if (k.a > 0.3) base = mix(k.rgb, sc * 1.4, 0.25 * smoothstep(0.6, 0.9, dot(k.rgb, vec3(0.33)))); }
 #endif
-    float mould = 1.0 - sbox(uv, vec2(0.08, 0.07), vec2(L - 0.08, h - 0.07), px);
-    return mix(sc, trimColor(seed) * 1.1, mould);
+    // the name (sign atlas: 4 x 8 names, each cell 4:1), centred on the band, gold or dark lettering
+    float th0 = min(h * 0.72, L * 0.86 / 4.0);
+    vec2 tq = vec2((uv.x - L * 0.5) / (th0 * 4.0) + 0.5, (uv.y - h * 0.5) / th0 + 0.5);
+    if (tq.x > 0.0 && tq.x < 1.0 && tq.y > 0.0 && tq.y < 1.0) {
+      float id = floor(fract(seed * 13.17 + 0.31) * 32.0);
+      vec2 a = vec2((mod(id, 4.0) + tq.x) / 4.0, (floor(id / 4.0) + 1.0 - tq.y) / 8.0);
+      float ink = texture2D(tSigns, a).a;
+      vec3 bl = base;
+      vec3 inkC = dot(bl, vec3(0.3, 0.55, 0.15)) < 0.42 ? (fract(seed * 7.7) < 0.5 ? vec3(0.92, 0.80, 0.48) : vec3(0.95, 0.93, 0.86)) : vec3(0.10, 0.09, 0.08);
+      base = mix(base, inkC, ink);
+    }
+    return base;
   }
   if (part == 16.0) {                      // shop display glass and the warm shop behind it
     float w = vF0.y, h = vF0.z;
@@ -732,7 +801,7 @@ vec3 buildingColor(out float glow) {
     vec3 g = mix(goods, vec3(0.55, 0.62, 0.66), 0.16 + 0.25 * smoothstep(0.0, h, uv.y));
     g += smoothstep(0.12, 0.0, abs(fract(uv.x * 0.35 + uv.y * 0.25 + seed) - 0.5) - 0.3) * 0.16;
     glow = 0.9;
-    return g;
+    return shopReflect(g * 1.15, glow);
   }
   if (part == 17.0 && vF0.w < -0.5 && survey(4.0 + min(3.0, -vF0.w - 1.0)).a > 0.5) {   // the shop's photographed colour
     vec3 tc = survey(4.0 + min(3.0, -vF0.w - 1.0)).rgb;

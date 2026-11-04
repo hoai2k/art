@@ -257,6 +257,57 @@ test('ground detail: leaves scatter and piles burst where a creature runs, the n
   } finally { await page.close(); }
 });
 
+test('residential street: tree species and colours vary, porches and fences are in the collider', { timeout: 900000 }, async (t) => {
+  if (!(await hasRealData())) { t.skip('no town data'); return; }
+  const { page, errors } = await openTown('?norender');
+  try {
+    const r = await page.evaluate(async () => {
+      const w = bench.world, road = w.data.roads.find((q) => q.name === 'Elizabeth Street'), [x, z] = road.points[2];
+      // trees within 150 m of the middle of Elizabeth Street
+      const near = w.trees.filter((q) => Math.hypot(q.x - x, q.z - z) < 150);
+      const species = {}, colours = new Set(), turned = near.filter((q) => q.colours[0] !== q.colours[1]).length;
+      for (const q of near) { species[q.species] = (species[q.species] || 0) + 1; colours.add(q.colours[1]); }
+      const willowsAway = w.trees.filter((q) => q.species === 'willow' && q.setting !== 'river').length;
+      // the lots: porches and fences in the collider
+      await w.ready({ x, y: 0, z });
+      const lots = w.debugLots(x, z, 100);
+      const hit = (px, pz, dx, dz, y) => { const h = w.raycast(bench.vec(px - dx * 2, y, pz - dz * 2), bench.vec(dx, 0, dz), 4); return h ? h.surface : null; };
+      const posts = [], fences = [], decks = [];
+      for (const l of lots) {
+        if (l.porch && l.porch.post) { const [px, pz] = l.porch.post, g = w.groundAt(px, pz); posts.push(hit(px, pz, -l.porch.out[0], -l.porch.out[1], g + 1.9)); }
+        if (l.porch) { const [dx, dz] = l.porch.deck, h = w.raycast(bench.vec(dx, w.groundAt(dx, dz) + 6, dz), bench.vec(0, -1, 0), 8); if (h) decks.push(h.surface); }
+        for (const f of l.fences) {
+          const mx = (f.p0[0] + f.p1[0]) / 2, mz = (f.p0[1] + f.p1[1]) / 2, L = Math.hypot(f.p1[0] - f.p0[0], f.p1[1] - f.p0[1]);
+          const nx = -(f.p1[1] - f.p0[1]) / L, nz = (f.p1[0] - f.p0[0]) / L;
+          fences.push({ type: f.type, s: hit(mx, mz, nx, nz, w.groundAt(mx, mz) + 0.45) });
+        }
+      }
+      return { n: near.length, species, colours: colours.size, turned, willowsAway, lots: lots.length, types: [...new Set(lots.map((l) => l.type))], posts, decks, fences,
+        drives: lots.filter((l) => l.drive).length, garages: lots.filter((l) => l.garage).length, shrubs: lots.reduce((a, l) => a + l.shrubs, 0), heightFixes: w.stats.heightFixes };
+    });
+    console.log(`  trees ${r.n}: ${JSON.stringify(r.species)}, ${r.colours} colours, ${r.turned} half-turned; lots ${r.lots} (${r.types.join(', ')}), drives ${r.drives}, garages ${r.garages}, shrubs ${r.shrubs}; posts ${JSON.stringify(r.posts)}; decks ${JSON.stringify(r.decks)}; fences ${JSON.stringify(r.fences.slice(0, 8))}; height fixes ${r.heightFixes}`);
+    assert.ok(r.n > 40, 'trees along Elizabeth Street');
+    const kinds = Object.keys(r.species);
+    assert.ok(kinds.length >= 5, `at least five species (${kinds})`);
+    assert.ok(Math.max(...Object.values(r.species)) < r.n * 0.45, 'no species is most of the trees');
+    assert.ok(r.colours >= 12, `many colours (${r.colours})`);
+    assert.ok(r.turned > r.n * 0.3, 'many crowns are half-turned (two colours)');
+    assert.equal(r.willowsAway, 0, 'willows only by the water');
+    assert.ok(r.lots >= 10, `house lots planned (${r.lots})`);
+    assert.ok(r.types.length >= 4, `several house types (${r.types})`);
+    assert.ok(r.drives > 3 && r.shrubs > 10, 'driveways and gardens');
+    const SURF = { wall_wood: 6, prop: 12, fence: 13, branch: 10, wall_stone: 5 };
+    assert.ok(r.posts.length >= 5, `porches with posts (${r.posts.length})`);
+    assert.ok(r.posts.filter((s) => s === SURF.wall_wood).length >= r.posts.length * 0.8, `porch posts are climbable wood in the collider (${r.posts})`);
+    assert.ok(r.decks.filter((s) => s === SURF.prop || s === 8).length >= r.decks.length * 0.8, `porch decks and roofs are in the collider (${r.decks})`);
+    assert.ok(r.fences.length >= 3, `fences and hedges on some lots (${r.fences.length})`);
+    const want = { picket: SURF.fence, iron: SURF.fence, board: SURF.wall_wood, hedge: SURF.branch, stone: SURF.wall_stone };
+    const ok = r.fences.filter((f) => f.s === want[f.type]).length;
+    assert.ok(ok >= r.fences.length * 0.8, `fences, walls and hedges are in the collider with their surfaces (${ok}/${r.fences.length})`);
+    assert.deepEqual(errors, [], 'no console errors');
+  } finally { await page.close(); }
+});
+
 test('the fixture town builds too', { timeout: 300000 }, async () => {
   const fx = JSON.parse(await readFile(join(GAME, 'test/fixtures/town-mini.json'), 'utf8'));
   const { page, errors } = await openTown('?data=fixture&norender');

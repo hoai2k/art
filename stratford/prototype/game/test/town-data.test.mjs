@@ -112,3 +112,40 @@ test('size budget', () => {
   for (const f of fs.readdirSync(dir)) total += fs.statSync(path.join(dir, f)).size;
   assert.ok(total < 8 * 1024 * 1024, 'game/data is ' + total + ' bytes');
 });
+
+// The town's corrections to the data (src/town/houses.js, pure functions): house heights
+// inflated by overhanging trees, flat roofs on small houses; and the house types.
+test('house heights: LiDAR outliers corrected (Elizabeth Street)', async () => {
+  const { correctHouseHeights, houseStyle, maxHouseEaves } = await import('../src/town/houses.js');
+  const data = JSON.parse(JSON.stringify(town));
+  const before = new Map(data.buildings.map((b) => [b.id, { ...b }]));
+  const r = correctHouseHeights(data);
+  console.log(`  corrected ${r.count} houses; worst: ${r.fixes.slice(0, 3).map((f) => `${f.id} ${f.from.height}+${f.from.roofHeight} ${f.from.roof} -> ${f.to.height}+${f.to.roofHeight} ${f.to.roof}`).join('; ')}`);
+  assert.ok(r.count > 200 && r.count < 2500, `a plausible number of corrections (${r.count})`);
+  const byId = new Map(data.buildings.map((b) => [b.id, b]));
+  // the Elizabeth Street outliers the owner saw: a flat three-storey slab and three-storey houses among cottages
+  for (const id of ['w1375718743', 'w1375718734', 'w1469951995', 'w1431054143', 'w1431061009']) {
+    const b = byId.get(id), was = before.get(id);
+    assert.ok(b.height < was.height - 1, `${id} lowered (${was.height} -> ${b.height})`);
+    assert.ok(b.height <= 7.7, `${id} eaves at most 2.5 storeys (${b.height} m)`);
+    assert.ok(b.levels >= 1.5 && b.levels <= 2.5, `${id} 1.5-2.5 storeys (${b.levels})`);
+    assert.notEqual(b.roof, 'flat', `${id} has a pitched roof`);
+    assert.ok(b.roofHeight >= 1.5 && b.roofHeight <= 6, `${id} roof rise ${b.roofHeight}`);
+  }
+  // nothing implausible left among ordinary houses: no flat roofs on small houses, no tall eaves on small footprints
+  const small = data.buildings.filter((b) => b.use === 'residential' && Math.abs(area(b.outer)) >= 30 && Math.abs(area(b.outer)) < 230 && !(b.survey));
+  assert.equal(small.filter((b) => b.roof === 'flat').length, 0, 'no flat roofs on small houses');
+  const tall = small.filter((b) => b.height > maxHouseEaves(Math.abs(area(b.outer))) + 0.16);
+  assert.equal(tall.length, 0, `no small house above its storey limit (${tall.slice(0, 3).map((b) => b.id + ' ' + b.height)})`);
+  // houses that were fine are left alone, and nothing grew
+  for (const b of data.buildings) assert.ok(b.height <= before.get(b.id).height + 1e-6, `${b.id} did not grow`);
+  const untouched = data.buildings.filter((b) => b.use === 'residential' && !b.heightFix).length;
+  assert.ok(untouched > r.count, `most houses keep their measured height (${untouched})`);
+  // every house type appears, none dominates
+  const types = {};
+  for (const b of data.buildings) if (b.use === 'residential') { const t = houseStyle(b).type; types[t] = (types[t] || 0) + 1; }
+  console.log(`  house types: ${JSON.stringify(types)}`);
+  for (const t of ['gothic', 'worker', 'bungalow', 'italianate', 'foursquare', 'queenanne', 'frontgable']) assert.ok(types[t] > 20, `some ${t} houses (${types[t]})`);
+  const total = Object.values(types).reduce((a, n) => a + n, 0);
+  for (const [t, n] of Object.entries(types)) assert.ok(n < total * 0.4, `${t} is not most houses (${n}/${total})`);
+});

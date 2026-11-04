@@ -16,6 +16,8 @@ import { MeshBVH } from 'three-mesh-bvh';
 import { SURFACE } from '../surface.js';
 import { PART, MAT, FLAG } from './materials.js';
 import { buildingParams, frontEdges, modelledFront, awnings, cornice, BUILDING_ATTRS, KIT, CORNICE_STRIP } from './buildings.js';
+import { frontFrame, porchPlan, bayPlan } from './housegeo.js';
+import { lotDetail } from './lots.js';
 
 // the facade kit's four shopfronts: green, oxblood, navy, black
 const SHOP_CELLS = [[0x1f, 0x3d, 0x2c], [0x6e, 0x1c, 0x1e], [0x1f, 0x2b, 0x4f], [0x1a, 0x1a, 0x1c]];
@@ -111,31 +113,33 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   const bay = house ? 3.1 : 2.7;
   const nb = L < 1.6 ? 0 : Math.max(1, Math.floor(L / bay + 0.35)), bw = L / Math.max(1, nb);
   const porchHere = house && b.front === edge && polyArea(b.outer) > 45 && (sv ? (sv.features || []).some((f) => /porch|verandah/.test(f)) : P.seed < 0.7);
-  for (let st = 0; st < storeys; st++) {
-    if (st === 0 && shopRow) continue;
-    const sb = st === 0 ? base : base + gfh + (st - 1) * upperH, sh = storeys < 2 ? hgt : st === 0 ? gfh : upperH;
-    // this storey's photographed windows: count, head, hood, pairs
-    const sw = sv && sv.windows ? sv.windows.find((w) => w.storey === st + 1) : null;
-    // (a house's ground floor: the photographed windows plus the door's bay in the middle)
-    const doorBay = house && st === 0 && sw ? 1 : 0;
-    const nS = sw && sw.count ? Math.max(1, Math.min(sw.count + doorBay, Math.floor(L / 0.9))) : nb, bwS = L / Math.max(1, nS);
-    const styleS = sw && sw.head ? ({ flat: 0, round: 1, segmental: 2, pointed: 3 })[sw.head] ?? style : style;
-    for (let k = 0; k < nS; k++) {
-      const uc = (k + 0.5) * bwS, bw = bwS;
-      if (house && st === 0 && k === Math.floor(nS / 2)) {
-        // the front door: raised a step, with a transom
-        const v0 = base + 0.32, v1 = Math.min(v0 + 2.55, sb + sh - 0.2);
-        if (v1 - v0 > 2) openings.push({ kind: 'door', u0: uc - 0.52, u1: uc + 0.52, v0, v1, steps: !porchHere });
-        continue;
+  if (house && P.style && b.front === edge && !(sv && sv.windows && sv.windows.length)) openings.push(...houseOpenings(P, b, L, base, gfh, upperH, storeys, eaves));
+  else {
+    for (let st = 0; st < storeys; st++) {
+      if (st === 0 && shopRow) continue;
+      const sb = st === 0 ? base : base + gfh + (st - 1) * upperH, sh = storeys < 2 ? hgt : st === 0 ? gfh : upperH;
+      // this storey's photographed windows: count, head, hood, pairs
+      const sw = sv && sv.windows ? sv.windows.find((w) => w.storey === st + 1) : null;
+      // (a house's ground floor: the photographed windows plus the door's bay in the middle)
+      const doorBay = house && st === 0 && sw ? 1 : 0;
+      const nS = sw && sw.count ? Math.max(1, Math.min(sw.count + doorBay, Math.floor(L / 0.9))) : nb, bwS = L / Math.max(1, nS);
+      const styleS = sw && sw.head ? ({ flat: 0, round: 1, segmental: 2, pointed: 3 })[sw.head] ?? style : style;
+      for (let k = 0; k < nS; k++) {
+        const uc = (k + 0.5) * bwS, bw = bwS;
+        if (house && st === 0 && k === Math.floor(nS / 2)) {
+          // the front door: raised a step, with a transom
+          const v0 = base + 0.32, v1 = Math.min(v0 + 2.55, sb + sh - 0.2);
+          if (v1 - v0 > 2) openings.push({ kind: 'door', u0: uc - 0.52, u1: uc + 0.52, v0, v1, steps: !porchHere });
+          continue;
+        }
+        const ww = Math.min(bw * 0.48, house ? 1.0 : 0.95);
+        const wh = Math.min(sh * (house ? 0.55 : 0.58), 2.3);
+        const v0 = sb + (st === 0 ? Math.max(0.85, sh * 0.3) : sh * 0.25), v1 = v0 + wh;
+        if (ww < 0.45 || wh < 0.7 || v1 > eaves - 0.2) continue;
+        openings.push({ kind: 'window', u0: uc - ww / 2, u1: uc + ww / 2, v0, v1, style: styleS, hood: sw && sw.hood ? sw.hood : null, paired: !!(sw && sw.paired) });
       }
-      const ww = Math.min(bw * 0.48, house ? 1.0 : 0.95);
-      const wh = Math.min(sh * (house ? 0.55 : 0.58), 2.3);
-      const v0 = sb + (st === 0 ? Math.max(0.85, sh * 0.3) : sh * 0.25), v1 = v0 + wh;
-      if (ww < 0.45 || wh < 0.7 || v1 > eaves - 0.2) continue;
-      openings.push({ kind: 'window', u0: uc - ww / 2, u1: uc + ww / 2, v0, v1, style: styleS, hood: sw && sw.hood ? sw.hood : null, paired: !!(sw && sw.paired) });
     }
   }
-
   // ---- the wall around the openings, in horizontal bands
   set(PART.wall, [], P.flags | FLAG.front | FLAG.noWindows);
   const ys = [...new Set([y0, top, ...openings.flatMap((o) => [o.v0, o.v1])])].filter((y) => y >= y0 && y <= top).sort((p, q) => p - q);
@@ -330,6 +334,52 @@ function front(ctx, b, P, edge, a, c, L, top, parapet, vb, cb, ox, oz) {
   }
 }
 
+// A house front's openings by its type (houses.js): the door where its porch is, windows
+// in the spans beside the door and the bay window, in real proportions (taller and
+// often paired in an Italianate house, a picture window in a bungalow), the upper
+// storey's windows over the ones below.
+function houseOpenings(P, b, L, base, gfh, upperH, storeys, eaves) {
+  const st = P.style, F = frontFrame(b), out = [];
+  const pp = porchPlan(b, P, F, st);
+  const door = pp ? pp.door : Math.max(0.9, Math.min(L - 0.9, st.doorAt * L));
+  const bay = st.bay ? bayPlan(F, st.bay.at) : null;
+  const style = (P.flags & FLAG.arched) ? 2 : 0;
+  // the door, a step up from the floor line
+  const dv0 = base + 0.32, dv1 = Math.min(dv0 + 2.45, (storeys > 1 ? base + gfh : eaves) - 0.15);
+  if (dv1 - dv0 > 2) out.push({ kind: 'door', u0: door - 0.5, u1: door + 0.5, v0: dv0, v1: dv1, steps: false });
+  for (let s = 0; s < storeys; s++) {
+    const sb = s === 0 ? base : base + gfh + (s - 1) * upperH, sh = s === 0 ? (storeys > 1 ? gfh : eaves - base) : upperH;
+    const wh = Math.min(sh * 0.6, (st.picture ? 1.5 : 1.65) * st.tall), wv0 = sb + (s === 0 ? Math.max(0.8, sh * 0.27) : sh * 0.22);
+    if (wh < 0.8 || wv0 + wh > eaves - 0.15) continue;
+    const ww = st.picture && s === 0 ? 2.1 : st.tall > 1.1 ? 0.82 : 0.9;
+    // spans free of the door and the bay
+    const blocks = [];
+    if (s === 0) blocks.push([door - 0.95, door + 0.95]);
+    if (bay && s < (st.bay.storeys || 1)) blocks.push([bay.u0 - 0.25, bay.u1 + 0.25]);
+    blocks.sort((p, q) => p[0] - q[0]);
+    const spans = []; let u = 0.45;
+    for (const [p, q] of blocks) { if (p > u) spans.push([u, p]); u = Math.max(u, q); }
+    if (L - 0.45 > u) spans.push([u, L - 0.45]);
+    const centres = [];
+    for (const [p, q] of spans) {
+      const len = q - p, pitch = st.paired ? 2.6 : 2.1, n = Math.floor((len + 0.4) / pitch);
+      if (n < 1 && len > ww + 0.3) centres.push((p + q) / 2);
+      for (let k = 0; k < n; k++) centres.push(p + (len * (k + 0.5)) / n);
+    }
+    // upstairs: a window over the door too
+    if (s > 0 && !(bay && s < (st.bay.storeys || 1) && door > bay.u0 && door < bay.u1)) centres.push(door);
+    for (const c of centres) {
+      if (st.paired && c - 0.9 > 0.3 && c + 0.9 < L - 0.3) {
+        for (const o of [-0.46, 0.46]) out.push({ kind: 'window', u0: c + o - 0.38, u1: c + o + 0.38, v0: wv0, v1: wv0 + wh, style, hood: null, paired: false });
+      } else out.push({ kind: 'window', u0: c - ww / 2, u1: c + ww / 2, v0: wv0, v1: wv0 + wh, style, hood: null, paired: false });
+    }
+  }
+  // no two openings may overlap (a narrow front): keep the first
+  const kept = [];
+  for (const o of out) if (!kept.some((k) => o.u0 < k.u1 + 0.12 && o.u1 > k.u0 - 0.12 && o.v0 < k.v1 && o.v1 > k.v0)) kept.push(o);
+  return kept;
+}
+
 // a quad facing `want` (reversed if needed); uv per corner
 function face(vb, p0, p1, p2, p3, want, uv) {
   const ax = p1[0] - p0[0], ay = p1[1] - p0[1], az = p1[2] - p0[2], bx = p3[0] - p0[0], by = p3[1] - p0[1], bz = p3[2] - p0[2];
@@ -376,6 +426,8 @@ export function facadeLayer(env) {
       const done = [];
       for (const b of env.buildingsIn(cell.x0, cell.z0, cell.size)) {
         try { if (buildFronts(env.ctx, b, vb, cb, cell.ox, cell.oz)) done.push(b._idx); } catch (e) { console.warn('[town] facade', b.id, e); }
+        // the house's lot: porch railings, brackets, fences, hedges, shrubs (lots.js)
+        if (b._lot) try { lotDetail(env.ctx, b, vb, cb, cell.ox, cell.oz); } catch (e) { console.warn('[town] lot', b.id, e); }
       }
       if (!vb.n) return null;
       const mesh = new THREE.Mesh(vb.geometry(), env.material);

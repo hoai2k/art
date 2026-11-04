@@ -13,6 +13,9 @@ import { Builder, ColliderBuilder, PointGrid, pointInPoly, bbox, centroid, dispo
 import { sharedUniforms, groundMaterial, streetMaterial, buildingMaterial, waterMaterial, groundArray } from './materials.js';
 import { prepareStreets, buildGroundMap, buildChunkStreets, binStreetParts, ROAD_SINK, BAND_SINK } from './streets.js';
 import { addBuilding, BUILDING_ATTRS } from './buildings.js';
+import { correctHouseHeights } from './houses.js';
+import { planLots } from './lots.js';
+import { porchPlan } from './housegeo.js';
 import { createTrees, prepareTrees, addStreetTrees } from './trees.js';
 import { placeProps, createProps } from './props.js';
 import { createSky } from './sky.js';
@@ -41,6 +44,9 @@ export async function createTown(opts = {}) {
   progress(0.02, 'Reading the map');
   const [assets, data] = await Promise.all([loadAssets(manifestUrl, { facadeSize: quality === 'high' ? 1024 : 512, skyWidth: quality === 'high' ? 4096 : 2048 }), loadTown(dataUrl)]);
   const hf = data.height;
+  // house heights inflated by overhanging trees (LiDAR), flat roofs on small houses (houses.js)
+  const heightFixes = correctHouseHeights(data, hf);
+  stats.heightFixes = heightFixes.count;
   const ctx = { data, hf, quality, curb: 0.15, assets };
   progress(0.15, 'Planting trees');
   ctx.trees = prepareTrees(data, hf);
@@ -80,6 +86,18 @@ export async function createTown(opts = {}) {
   ctx.markingGrid = new PointGrid(20);
   for (const m of ctx.markings) ctx.markingGrid.add(m.cx, m.cz, m);
   stats.streetTrees = addStreetTrees(ctx);
+  // house lots: walks, driveways, garages, fences, gardens (lots.js); garages are extra buildings
+  ctx.registerBuilding = (b) => {
+    b.bb = bbox(b.outer);
+    for (let i = Math.floor(b.bb.minX / 20); i <= Math.floor(b.bb.maxX / 20); i++) for (let j = Math.floor(b.bb.minZ / 20); j <= Math.floor(b.bb.maxZ / 20); j++) {
+      const k = bKey(i, j); let a = bGrid.get(k); if (!a) bGrid.set(k, a = []); a.push(b);
+    }
+  };
+  ctx.extraBuildings = [];
+  stats.lots = planLots(ctx);
+  ctx.extraBuildings.forEach((b, k) => { b._idx = data.buildings.length + k; });
+  stats.garages = ctx.extraBuildings.length;
+  const allBuildings = data.buildings.concat(ctx.extraBuildings);
 
   // chunk grid aligned with the terrain grid
   const X0 = hf.x0, Z0 = hf.z0;
@@ -100,11 +118,11 @@ export async function createTown(opts = {}) {
   const shared = sharedUniforms();
   const minWater = data.water.all.length ? Math.min(...data.water.all.map((p) => p.level)) : -100;
   // one texel per building: 1 when its modelled street front is built (facade3d.js)
-  const flagRows = Math.max(1, Math.ceil(data.buildings.length / 256));
+  const flagRows = Math.max(1, Math.ceil(allBuildings.length / 256));
   const detailFlags = new THREE.DataTexture(new Uint8Array(256 * flagRows), 256, flagRows, THREE.RedFormat, THREE.UnsignedByteType);
   detailFlags.needsUpdate = true;
   // the street-photo survey's colours, 16 texels per building (see materials.js survey())
-  const svRows = Math.max(1, Math.ceil((data.buildings.length * 16) / 256));
+  const svRows = Math.max(1, Math.ceil((allBuildings.length * 16) / 256));
   const svData = new Float32Array(256 * svRows * 4);
   const col = new THREE.Color();
   const put = (bi, k, hex, a) => { if (!hex) return; col.set(hex); const o = (bi * 16 + k) * 4; svData[o] = col.r; svData[o + 1] = col.g; svData[o + 2] = col.b; svData[o + 3] = a; };
@@ -140,7 +158,7 @@ export async function createTown(opts = {}) {
   // bin per chunk
   const binned = new Map();
   const bin = (k) => { let e = binned.get(k); if (!e) binned.set(k, e = { buildings: [], trees: [], props: [] }); return e; };
-  for (const b of data.buildings) { const c = centroid(b.outer); bin(keyOf(c[0], c[1])).buildings.push(b); }
+  for (const b of allBuildings) { const c = centroid(b.outer); bin(keyOf(c[0], c[1])).buildings.push(b); }
   for (const t of ctx.trees) bin(keyOf(t.x, t.z)).trees.push(t);
   for (const p of propItems) bin(keyOf(p.x, p.z)).props.push(p);
   const treeGrid = new PointGrid(20); for (const t of ctx.trees) treeGrid.add(t.x, t.z, t);
@@ -571,9 +589,11 @@ export async function createTown(opts = {}) {
     waterAt: (x, z) => hf.waterAt(x, z),
     surfaceAt,
     spawn, landmarks,
-    trees: ctx.trees.map((t) => ({ x: t.x, y: t.y, z: t.z, height: t.height, crown: t.crown, kind: t.kind, street: !!t.grate })),
+    trees: ctx.trees.map((t) => ({ x: t.x, y: t.y, z: t.z, height: t.height, crown: t.crown, kind: t.kind, species: t.species, setting: t.setting, colours: [t.colIn, t.colOut], street: !!t.grate })),
     data,
     collidersNear, raycast,
+    // residential buildings whose LiDAR height or flat roof was corrected (houses.js), worst first
+    heightFixes: heightFixes.fixes,
     setScale(s) { if (s > 0 && s !== scale) { setScaleRadii(s); details.setScale(s); } },
     setFocus(p) { focus.set(p.x, p.y || 0, p.z); },
     addDetailLayer: (layer) => details.add(layer),
@@ -632,6 +652,12 @@ export async function createTown(opts = {}) {
       return out;
     },
     buildingAt(x, z) { const b = ctx.buildingAt(x, z); return b ? b.id : null; },
+    // for tests and benches: the house lots near (x, z) (lots.js): type, porch post, fences, drive, garage
+    debugLots: (x, z, r = 60) => (ctx.lots || []).filter((l) => Math.hypot(l.F.a[0] - x, l.F.a[1] - z) < r).map((l) => {
+      const pp = porchPlan(l.b, l.P, l.F, l.P.style);
+      return { id: l.b.id, type: l.P.style.type, porch: pp && { kind: pp.kind, roofed: pp.roofed, post: pp.roofed ? l.F.P(pp.s0 + 0.12, -pp.depth + 0.12) : null, out: [l.F.nx, l.F.nz], deck: l.F.P(pp.s0 + pp.w / 2, -pp.depth / 2) },
+        fences: l.fences.map((f) => ({ type: f.type, p0: f.p0, p1: f.p1 })), shrubs: l.shrubs.length, drive: !!l.drive, garage: l.garage ? l.garage.id : null };
+    }),
     debugChunk(x, z) { const c = chunks.get(keyOf(x, z)); return c && { key: c.key, level: c.level, want: c.want, task: !!c.task, colliders: c.colliders.length, error: c.error || null }; },
     get chunkSize() { return CHUNK; },
     get chunkOrigin() { return { x: X0, z: Z0 }; },

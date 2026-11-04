@@ -7,6 +7,8 @@ import { PART, MAT, FLAG } from './materials.js';
 import { hashStr, hash1, signedArea, obb, centroid, polyArea } from './util.js';
 import { landmarkParts } from './landmarks.js';
 import { FAC } from './assets.js';
+import { houseStyle } from './houses.js';
+import { houseParts } from './housegeo.js';
 import * as THREE from 'three';
 
 // cornice types (facades.json) -> facade-kit strip (0 cream bracketed, 1 green pressed metal, 2 corbelled brick, 3 stone);
@@ -25,9 +27,10 @@ function matIndex(b) {
 export function buildingParams(ctx, b) {
   const seed = hashStr(b.id);
   const mat = matIndex(b);
-  const storeys = Math.max(1, Math.round(b.levels));
-  const commercial = b.use === 'commercial';
   const house = b.use === 'residential';
+  // a house's half storey lives in its roof (gable windows, dormers): 1.5 storeys = one storey of walls
+  const storeys = Math.max(1, house ? Math.floor(b.levels + 0.01) : Math.round(b.levels));
+  const commercial = b.use === 'commercial';
   const church = b.use === 'church';
   const shed = b.use === 'garage' || b.use === 'shed';
   const civic = b.use === 'civic' || b.use === 'theatre';
@@ -55,7 +58,18 @@ export function buildingParams(ctx, b) {
   else if (shed) fac = FAC.garage;
   if (b.use === 'theatre' || (ctx.landmarkByBuilding.has(b.id) && !church)) fac = -1;
   if (mat === MAT.glass) flags |= FLAG.noWindows;
-  return { seed, mat, storeys, gfh, flags, base, eaves: b.height, commercial, house, church, civic, shed, fac };
+  // the house's type and parts (houses.js): ordinary houses with a street front
+  const style = house && b.front >= 0 && !ctx.landmarkByBuilding.has(b.id) && polyArea(b.outer) >= 40 && polyArea(b.outer) <= 420 ? houseStyle(b) : null;
+  if (style && style.ridge === 'side' && !(b.survey && b.survey.full && b.survey.roof)) {
+    // a narrow, deep house turns its gable to the street
+    const ob = obb(b.outer), a = b.outer[b.front], c = b.outer[(b.front + 1) % b.outer.length], L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+    if (ob) {
+      const alongU = Math.abs(ob.ux * (c[0] - a[0]) / L + ob.uz * (c[1] - a[1]) / L) > 0.7071;
+      const width = 2 * (alongU ? ob.hu : ob.hv), depth = 2 * (alongU ? ob.hv : ob.hu);
+      if (width < depth * 0.85) { style.ridge = 'front'; style.crossGable = null; if (style.type === 'gothic') { style.type = 'frontgable'; style.doorAt = style.doorAt === 0.5 ? 0.3 : style.doorAt; } style.dormers = []; }
+    }
+  }
+  return { seed, mat, storeys, gfh, flags, base, eaves: b.height, commercial, house, church, civic, shed, fac, style };
 }
 
 // Edges facing a street: the data's front edge, plus (for shops and civic
@@ -158,6 +172,25 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       ridgeAlong = sv.roof === 'gable_side' ? [dx, dz] : sv.roof === 'gable_front' || sv.roof === 'cross_gable' ? [dz, -dx] : null;
     }
   }
+  // a typed house without a photographed roof: the roof its type has, the ridge along the street
+  // (side gable) or across it (the gable to the street), and a rise to suit (steep Gothic, low Italianate hip)
+  if (P.style && !(sv && sv.roof) && !special && roof !== 'flat' && b.front >= 0) {
+    const T = P.style.type, ob = obb(b.outer);
+    if (T === 'italianate' || T === 'foursquare' || T === 'bungalow') roof = 'hipped';
+    else roof = 'gabled';
+    if (ob) {
+      const a = b.outer[b.front], c = b.outer[(b.front + 1) % b.outer.length], L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+      const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
+      if (P.style.ridge === 'side') ridgeAlong = [dx, dz];
+      else if (P.style.ridge === 'front') ridgeAlong = [dz, -dx];
+      // the span the rafters cross: the depth for a side gable, the width for a front gable
+      const alongU = Math.abs(ob.ux * dx + ob.uz * dz) > 0.7071;
+      const width = 2 * (alongU ? ob.hu : ob.hv), depth = 2 * (alongU ? ob.hv : ob.hu);
+      const span = P.style.ridge === 'front' ? width : P.style.ridge === 'side' ? depth : Math.min(width, depth);
+      const k = { gothic: [0.42, 0.6], worker: [0.36, 0.5], queenanne: [0.4, 0.56], frontgable: [0.36, 0.5], italianate: [0.16, 0.24], foursquare: [0.24, 0.32], bungalow: [0.14, 0.22] }[T];
+      rh = Math.max(k[0] * span, Math.min(k[1] * span, rh));
+    }
+  }
   // flat roofs on commercial blocks get a parapet; the survey says what crowns a front
   const parapet = roof === 'flat' && (P.commercial || P.civic) ? (sv && sv.cornice === 'none' ? 0.3 : 0.85) : roof === 'flat' ? 0.3 : 0;
   P.cornice = sv && sv.cornice ? sv.cornice : parapet > 0.5 ? 'bracketed' : 'none';
@@ -226,6 +259,8 @@ export function addBuilding(ctx, b, vb, cb, ox, oz) {
       KIT.box(vb, cb, cx - ox, eaves + rh * 0.55, cz - oz, 0.35, rh * 0.5 + 0.7, 0.45, Math.atan2(o.uz, o.ux), SURFACE.wall_brick);
     }
   }
+  // the house's parts: cross gable, dormers, bay window, porch (housegeo.js)
+  if (P.style) { houseParts(ctx, b, P, R, vb, cb, ox, oz, base, eaves); return; }
   // porches on house fronts
   const porchKind = sv && sv.features ? (sv.features.some((f) => /full-width porch|verandah|two-storey porch|wrap/.test(f)) ? 'full' : sv.features.some((f) => /porch/.test(f)) ? 'entry' : null)
     : (P.seed < 0.35 ? 'full' : P.seed < 0.7 ? 'entry' : null);
@@ -439,7 +474,7 @@ function pitchedRoof(vb, cb, b, rings, eaves, rh, roof, P, ox, oz, ctx, R) {
   if (rings.length > 1) { set(1); capPoly(vb, cb, rings.slice(1).map((h) => h), eaves, ox, oz, PART.roof); }
 }
 // a flat board from A to C (thickness along `side`, width across it), all six faces
-function board(vb, A, C, side, width, thick) {
+export function board(vb, A, C, side, width, thick) {
   const d = [C[0] - A[0], C[1] - A[1], C[2] - A[2]], L = Math.hypot(...d);
   const sv = side.map((v) => v * thick / 2);
   let t = [d[1] * side[2] - d[2] * side[1], d[2] * side[0] - d[0] * side[2], d[0] * side[1] - d[1] * side[0]];
@@ -511,12 +546,14 @@ function porch(vb, cb, b, base, P, ox, oz, kind = 'entry', whitePosts = false) {
 // ---------------------------------------------------------------- kit of parts (also used by landmarks)
 export const KIT = {
   // box with the builder's current attributes; uv in metres on each face
-  box(vb, cb, cx, cy, cz, hx, hy, hz, yaw, surf) {
+  box(vb, cb, cx, cy, cz, hx, hy, hz, yaw, surf, faces = 63) {
     const c = Math.cos(yaw), s = Math.sin(yaw);
     const P = (x, y, z) => [cx + x * c + z * s, cy + y, cz - x * s + z * c];
     const C = [P(-hx, -hy, -hz), P(hx, -hy, -hz), P(hx, hy, -hz), P(-hx, hy, -hz), P(-hx, -hy, hz), P(hx, -hy, hz), P(hx, hy, hz), P(-hx, hy, hz)];
     const F = [[4, 5, 6, 7, 2 * hx], [1, 0, 3, 2, 2 * hx], [5, 1, 2, 6, 2 * hz], [0, 4, 7, 3, 2 * hz], [7, 6, 2, 3, 2 * hx], [0, 1, 5, 4, 2 * hx]];
-    for (const [a, b, cc, d, w] of F) {
+    for (let fi = 0; fi < 6; fi++) {
+      if (!(faces & (1 << fi))) continue;
+      const [a, b, cc, d, w] = F[fi];
       const pa = C[a], pb = C[b], pd = C[d];
       const ux = pb[0] - pa[0], uy = pb[1] - pa[1], uz = pb[2] - pa[2], vx = pd[0] - pa[0], vy = pd[1] - pa[1], vz = pd[2] - pa[2];
       let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx; const l = Math.hypot(nx, ny, nz) || 1; nx /= l; ny /= l; nz /= l;

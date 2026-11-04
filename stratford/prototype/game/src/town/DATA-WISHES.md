@@ -32,5 +32,19 @@ them: each has a fallback, noted below.
 - **Bridge decks.** Deck heights are interpolated between the bank heights
   with a small arch; a deck height from the LiDAR DSM along each `bridge` way
   would match the real bridges.
-- **Trees.** Used as given (kind, height, crown). If a release ever falls back
-  to uniform placeholder trees, `prepareTrees` varies their sizes.
+- **Trees.** Height and crown are used as given; `crown` is read as the crown
+  *diameter* (the LiDAR crown area's equivalent circle, `tools/town/trees.py`).
+  `kind` is a coarse guess: `trees.js` picks a species from it and the tree's
+  setting (boulevard, yard, park, riverside) deterministically by position, and
+  turns a willow away from water into a silver maple. Species tags
+  (`species=*`, `genus=*`) passed through as a `species` field would be better.
+  If a release ever falls back to uniform placeholder trees, `prepareTrees`
+  varies their sizes.
+- **House heights.** A tree overhanging a house lifts its LiDAR ridge (p95) and
+  a crown covering a roof reads as a flat block; the eaves are also often read
+  high because the roof's rise is underestimated. `houses.js`
+  (`correctHouseHeights`) corrects residential outliers at load time (about a
+  third of the houses: footprint size, the neighbours' median, trees over the
+  footprint, flat roofs on small houses); `world.heightFixes` lists them. A
+  pipeline that masked tree canopy out of the DSM before taking the ridge, and
+  measured the eaves from the roof's edge, would make most of that unnecessary.

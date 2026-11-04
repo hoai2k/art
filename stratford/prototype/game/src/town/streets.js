@@ -5,6 +5,7 @@
 // asphalt below, raised sidewalk plates with real vertical curbs above.
 // Footways, service lanes, markings, crosswalks and bridges are built here too.
 import * as THREE from 'three';
+import { paintLots } from './lots.js';
 import { SURFACE } from '../surface.js';
 import { contourLoops, cleanLoop, polygons } from './contour.js';
 import { SegGrid, PointGrid, walk, polylineLength, hash2, hashStr } from './util.js';
@@ -233,6 +234,9 @@ export function buildGroundMap(ctx, mPerPx) {
   A.strokeStyle = A.fillStyle = 'rgb(255,0,0)';
   for (const a of data.areas) if (a.kind === 'parking') poly(A, [a.outer, ...a.holes]);
   for (const r of data.roads) if (r.kind === 'service' || CURBED.has(r.kind)) line(A, r.points, Math.max(0.4, r.width - 0.6));
+  // house lots: driveways, front walks and garden beds (lots.js)
+  paintLots(ctx, A, B);
+  A.globalCompositeOperation = 'lighten';
   // B: lush grass in parks; leaf litter under trees and in woods; dirt on pitches' infields
   B.fillStyle = 'rgb(0,255,0)';
   for (const a of data.areas) if (a.kind === 'park' || a.kind === 'garden' || a.kind === 'pitch' || a.kind === 'cemetery' || a.kind === 'grass') poly(B, [a.outer, ...a.holes]);
@@ -298,12 +302,36 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
       const i = Math.floor(fx), j = Math.floor(fz), u = fx - i, v = fz - j, k = j * N + i;
       return (f[k] * (1 - u) + f[k + 1] * u) * (1 - v) + (f[k + N] * (1 - u) + f[k + N + 1] * u) * v;
     };
+    // distance (m) from each carriageway pixel to the curb: the traced road's own edge, so the
+    // gutter follows a corner's curb return instead of the two streets' straight edges (chamfer
+    // transform; outside the raster counts as more road, so a chunk's border is never a curb)
+    const edt = new Float32Array(N * N);
+    for (let i = 0; i < N * N; i++) edt[i] = road[i] >= 0.5 ? 1e6 : 0;
+    { const a = R, b2 = R * Math.SQRT2;
+      for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) { const k = j * N + i; let v = edt[k]; if (!v) continue;
+        if (i > 0) v = Math.min(v, edt[k - 1] + a); if (j > 0) { v = Math.min(v, edt[k - N] + a); if (i > 0) v = Math.min(v, edt[k - N - 1] + b2); if (i < N - 1) v = Math.min(v, edt[k - N + 1] + b2); } edt[k] = v; }
+      for (let j = N - 1; j >= 0; j--) for (let i = N - 1; i >= 0; i--) { const k = j * N + i; let v = edt[k]; if (!v) continue;
+        if (i < N - 1) v = Math.min(v, edt[k + 1] + a); if (j < N - 1) { v = Math.min(v, edt[k + N] + a); if (i < N - 1) v = Math.min(v, edt[k + N + 1] + b2); if (i > 0) v = Math.min(v, edt[k + N - 1] + b2); } edt[k] = v; } }
     // nearest curbed road: distance from the curb and the street's direction
     const info = (x, z) => {
       const q = streets.grid.nearest(x, z, 40);
       if (!q) return { d: 9, din: 9, blv: 0, band: 0, dx: 1, dz: 0 };
       const s = q.seg.data; let dx = q.seg.bx - q.seg.ax, dz = q.seg.bz - q.seg.az; const l = Math.hypot(dx, dz) || 1;
       return { d: Math.max(0, q.d - s.hw), din: Math.max(0, s.hw - q.d), blv: s.blv, band: s.band, dx: dx / l, dz: dz / l };
+    };
+    // for a carriageway vertex: the distance in from the curb, and the curb's direction near it
+    const roadInfo = (x, z) => {
+      const i = info(x, z);
+      const e = sample(edt, x, z);
+      if (e < 1e5 && e < i.din + 0.6) {
+        // half a pixel of the traced edge: the curb line lies there, not at the pixel centre
+        i.din = Math.max(0, Math.min(i.din, e - R * 0.5));
+        if (e < 3) {
+          const gx = sample(edt, x + R, z) - sample(edt, x - R, z), gz = sample(edt, x, z + R) - sample(edt, x, z - R), gl = Math.hypot(gx, gz);
+          if (gl > 1e-3 && gl < 1e5) { const tx = -gz / gl, tz = gx / gl, sg = tx * i.dx + tz * i.dz < 0 ? -1 : 1; i.dx = tx * sg; i.dz = tz * sg; }
+        }
+      }
+      return i;
     };
     // carriageway, traced and triangulated in 4 m tiles so its surface follows the ground
     // (one outline per chunk gives long triangles whose flat faces dip into crowned roads)
@@ -317,7 +345,7 @@ export function* buildChunkStreets(ctx, chunk, vb, cb, mb = vb) {
         for (const P of polygons(tl)) {
           const ry = new Map();
           triangulate(P, (pts) => pts.map((p) => {
-            const i = info(p[0], p[1]);
+            const i = roadInfo(p[0], p[1]);
             const y = H(p[0], p[1]) + ROAD_Y; ry.set(p, y);
             vb.set('aSt', [STREET.road, i.din, 1, 0]).set('aDir', [i.dx, i.dz]);      // distance in from the curb (the gutter)
             return vb.v(p[0] - ox, y, p[1] - oz, 0, 1, 0);

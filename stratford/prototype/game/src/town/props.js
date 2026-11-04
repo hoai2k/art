@@ -36,6 +36,16 @@ const MAKERS = {
     cyl(b, 0, 3.95, 0, 0.26, 4.15, 0.05, 6, BLACK);         // cap
     cyl(b, 0, 4.15, 0, 0.03, 4.35, 0.01, 4, BLACK);         // finial
     box(b, 0, 3.18, 0, 0.32, 0.02, 0.02, BLACK);           // banner arm
+    // two hanging flower baskets on scrolled arms (petunias, trailing ivy and verbena in October)
+    const FL = [[0.86, 0.28, 0.52], [0.92, 0.80, 0.30], [0.62, 0.20, 0.55], [0.95, 0.94, 0.88], [0.80, 0.16, 0.14]];
+    for (const s of [-1, 1]) {
+      box(b, s * 0.36, 2.86, 0, 0.36, 0.018, 0.018, BLACK);
+      box(b, s * 0.68, 2.72, 0, 0.012, 0.14, 0.012, BLACK);
+      cyl(b, s * 0.68, 2.3, 0, 0.1, 2.56, 0.24, 8, [0.10, 0.14, 0.10]);
+      for (let i = 0; i < 7; i++) { const a = (i / 7) * Math.PI * 2 + s; blob(b, s * 0.68 + Math.cos(a) * 0.17, 2.6 + (i % 2) * 0.05, Math.sin(a) * 0.17, 0.1, FL[(i + (s > 0 ? 2 : 0)) % FL.length], i * 0.17 + s); }
+      blob(b, s * 0.68, 2.66, 0, 0.14, [0.30, 0.44, 0.18], 0.7 + s);
+      for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2 + 0.3; blob(b, s * 0.68 + Math.cos(a) * 0.24, 2.36 - (i % 3) * 0.06, Math.sin(a) * 0.24, 0.08, i % 2 ? [0.28, 0.42, 0.16] : FL[i % FL.length], i * 0.3 + 1.1 * s); }
+    }
   },
   bench(b) {
     for (const s of [-0.75, 0.75]) { box(b, s, 0.22, 0, 0.04, 0.22, 0.24, IRON); box(b, s, 0.6, -0.2, 0.04, 0.2, 0.03, IRON); }
@@ -94,7 +104,7 @@ const MAKERS = {
 };
 // collider boxes per type in local space: [cx, cy, cz, hx, hy, hz, surface]
 const COLLIDE = {
-  lamp: [[0, 2.1, 0, 0.09, 2.1, 0.09, SURFACE.fence], [0, 3.7, 0, 0.2, 0.3, 0.2, SURFACE.prop]],
+  lamp: [[0, 2.1, 0, 0.09, 2.1, 0.09, SURFACE.fence], [0, 3.7, 0, 0.2, 0.3, 0.2, SURFACE.prop], [-0.68, 2.5, 0, 0.26, 0.2, 0.26, SURFACE.prop], [0.68, 2.5, 0, 0.26, 0.2, 0.26, SURFACE.prop]],
   bench: [[0, 0.24, 0, 0.85, 0.24, 0.25, SURFACE.prop], [0, 0.7, -0.24, 0.85, 0.2, 0.03, SURFACE.prop]],
   planter: [[0, 0.4, 0, 0.62, 0.4, 0.32, SURFACE.prop]],
   hydrant: [[0, 0.36, 0, 0.13, 0.36, 0.13, SURFACE.prop]],
