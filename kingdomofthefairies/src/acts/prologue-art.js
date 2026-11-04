@@ -2,8 +2,9 @@ import { walkPose } from '../walking.js';
 // Prologue drawing: the delivered sets (betrothal-court, rampart-strip,
 // armoury) and the cast's cut-outs, staged as a toy theatre. Draw only from
 // state and t.
-import { FLOOR, ARM_FLOOR, FAIRIES, GIFTS, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
+import { FLOOR, ARM_FLOOR, FAIRIES, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
 import { card } from './tableau.js';
+import { GIFT_SHOW } from './prologue-timing.js';
 import { TEXT } from '../text_config.js';
 import { clamp, easeOut, easeInOut, lerp } from './shared.js';
 import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
@@ -23,7 +24,7 @@ const PRINCE = { w: 137, h: 225 };
 // was to the middle of the stage, grows, holds, then settles where it goes.
 // Where he would be behind it, it goes up to one side of him instead (CLEAR
 // apart, centre to centre), on the side with more room.
-const SHOW = { rise: 0.45, hold: 1.25, settle: 1.75, x: 640, y: 330, size: 250, clear: 230, aside: 330 };
+const SHOW = { ...GIFT_SHOW, x: 640, y: 330, size: 250, clear: 230, aside: 330 };
 // What the curtains leave of the stage, stage px.
 const OPEN = { x0: 170, x1: 1100 };
 // His arms, once shown, ride above his head as badges until all three are his.
@@ -51,8 +52,8 @@ export function draw(k, st, t) {
   else if (sc === 1) rampartScene(k, st, t);
   else armouryScene(k, st, t);
   if (st.near) prompt(k, st, st.near);
-  if (st.phase === 'court' && st.gifts.length === GIFTS.length) {
-    const guide = () => prompt(k, st, { at: 640, y: 150, label: TEXT.prologue.takeHand + ' →', passive: true });
+  if (st.phase === 'court' && st.handGuideShown) {
+    const guide = () => prompt(k, st, { at: 640, y: 150, label: TEXT.prologue.takeHand + ' →' });
     k.flat ? k.flat(guide) : guide();
   }
   const cap = CAPTIONS[st.phase];
@@ -629,7 +630,7 @@ function flame(k, x, by, s, t) {
 function prompt(k, st, near) {
   const c = k.c, x = near.at - camX(st), y = near.y ?? FLOOR - 290;
   c.save(); c.font = '700 15px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-  const text = (near.passive || k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase();
+  const text = (k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase();
   const w = measureRichText(c, text, { px: 15, mode: k.inputMode || 'key' }) + 32;
   c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 20, w, 30, 15); c.fill();
   c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');

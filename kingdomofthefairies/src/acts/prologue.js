@@ -19,6 +19,8 @@
 import { clamp } from './shared.js';
 import { TEXT } from '../text_config.js';
 import * as art from './prologue-art.js';
+import { GIFT_SHOW } from './prologue-timing.js';
+export { GIFT_SHOW } from './prologue-timing.js';
 
 export const BEAT_S = 60 / 76.5;
 export const FLOOR = 600;                       // the court's floor
@@ -94,7 +96,7 @@ export default {
       status: 'play', statusT: 0, events: [], result: null, checkpoint: null,
       phase: 'court', phaseT: 0, t: 0, beat: 0, fade: 0,
       p: { x: COURT_START, y: FLOOR, vx: 0, vy: 0, face: 1, on: true, walk: 0, buffer: 0, knockT: 0 },
-      gifts: [], betrothed: false, near: null,
+      gifts: [], betrothed: false, near: null, handGuideAt: null, handGuideShown: false,
       chariot: { x: 0, y: 250, up: 0 }, fires: [], dropT: 0, knocks: 0, lanterns: LANTERNS, grace: 0, defeatT: null,
       arms: [], armed: false, score: 0, struggle: { n: 0, dir: 0, tilt: 0, doneT: 0, held: false },
     };
@@ -158,8 +160,8 @@ export default {
   announce(e) {
     const A = TEXT.prologue.announce;
     if (e.type === 'scene') return A.scene[e.phase] || null;
-    if (e.type === 'gift') return A.gift(e.from, TEXT.prologue.gift[e.gift].gives)
-      + (e.n === GIFTS.length ? ` ${TEXT.prologue.takeHand}.` : '');
+    if (e.type === 'gift') return A.gift(e.from, TEXT.prologue.gift[e.gift].gives);
+    if (e.type === 'handGuide') return `[X] ${TEXT.prologue.takeHand}.`;
     if (e.type === 'betrothed') return A.betrothed;
     if (e.type === 'witchFlees') return A.witchFlees;
     if (e.type === 'seized') return A.seized;
@@ -197,6 +199,9 @@ function court(st, dt, input) {
   // who he is beside, and what X does there (A leaps)
   const f = FAIRIES.find((q) => !st.gifts.includes(q.gift) && handsX(p).some((hx) => Math.abs(q.x + q.hand - hx) < GRASP));
   const done = st.gifts.length === GIFTS.length;
+  if (done && !st.handGuideShown && st.handGuideAt != null && st.t >= st.handGuideAt) {
+    st.handGuideShown = true; st.events.push({ type: 'handGuide' });
+  }
   st.near = f ? { verb: TEXT.prologue.receive, at: f.x, label: TEXT.prologue.gift[f.gift].receive } : null;
   // Once the gifts are gathered, walking up to Azurine starts the witch's
   // entrance. No action press is swallowed by the scene change.
@@ -207,6 +212,7 @@ function court(st, dt, input) {
   }
   if (input.x && f) {
     st.gifts.push(f.gift); st.score += 50;
+    if (st.gifts.length === GIFTS.length) st.handGuideAt = st.t + GIFT_SHOW.settle + GIFT_SHOW.guidePause;
     st.near = null;
     st.events.push({ type: 'gift', gift: f.gift, from: f.name, x: f.x, n: st.gifts.length, t: st.t });
   }

@@ -1267,7 +1267,7 @@ function star(c, x, y, r) {
 // for the input in use (`mode`): Xbox controller buttons ('pad'), key caps
 // ('key') or the on-screen touch buttons ('touch').
 const keyboardGlyphs = ({ primaryX = false, upJump = false } = {}) => ({
-  ...TEXT.glyphs.keys, A: primaryX && upJump ? 'W / ↑' : 'Space', X: primaryX ? 'Space' : 'X',
+  ...TEXT.glyphs.keys, A: upJump ? '↑' : 'Space', X: primaryX ? 'Space' : 'X',
 });
 let GLYPH_KEYS = keyboardGlyphs();
 export function setKeyboardControls({ primaryX = false, upJump = false } = {}) {

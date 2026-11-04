@@ -21,7 +21,7 @@ try {
   const audit=await page.evaluate(async()=>{
    const {ACTS}=await import('/src/acts/index.js'),{keyboardControls}=await import('/src/keyboard.js');
    const {TEXT}=await import('/src/text_config.js');
-   const {drawCard,richText,measureRichText,promptText,setKeyboardControls}=await import('/src/art.js');
+   const {drawCard,richText,measureRichText,promptText,setKeyboardControls,setTouchNames}=await import('/src/art.js');
    const {card:tableau}=await import('/src/acts/tableau.js');
    const {FILM}=await import('/src/theme.js');
    const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;
@@ -51,8 +51,14 @@ try {
    const opening=promptText(TEXT.prologue.announce.scene.court,{mode:'key',controls:{primaryX:true,upJump:true}});
    const battle=promptText(TEXT.burning.announce.battleReady,{mode:'key',controls:{primaryX:true,upJump:true}});
    // Stable menu prompts must remain stable even while a gameplay jump uses W.
+   const chase=[];
+   setTouchNames({A:'Leap'});
+   for(const mode of ['key','pad','touch']) {
+    calls=[];tableau({c,col:v=>v,inputMode:mode},...TEXT.prologue.captions.rampart,1,{now:true});
+    chase.push({mode,text:calls.map(call=>call.text)});
+   }
    const menu=promptText(TEXT.shell.card.pressToBegin,{mode:'key',controls:{primaryX:true,upJump:true}});
-   return {rows,palace,opening,battle,menu};
+   return {rows,palace,opening,battle,menu,chase};
   });
   for(const row of audit.rows){
    const expected=row.mode==='key'?'Space':row.mode==='pad'?'A':'TAP';
@@ -63,13 +69,18 @@ try {
    if(row.mode==='key'){
     assert.ok(row.spoken.includes('Space'));
     assert.ok(row.gameplay.includes(row.controls.primaryX?'Space':'X'));
-    assert.ok(row.gameplay.includes(row.controls.primaryX&&row.controls.upJump?'W / ↑':'Space'));
+    assert.ok(row.gameplay.includes(row.controls.upJump?'↑':'Space'));
    }
   }
   assert.ok(audit.palace.includes('Space'),'palace caption maps the bow action to Space');
   assert.ok(audit.opening.includes('Space')&&!audit.opening.includes('press A'));
-  assert.ok(audit.battle.includes('W / ↑')&&audit.battle.includes('Space'));
+  assert.ok(audit.battle.includes('↑')&&audit.battle.includes('Space'));
   assert.equal(audit.menu,'Press Space to begin');
+  for(const caption of audit.chase) {
+   assert.ok(caption.text.includes(caption.mode==='key'?'↑':caption.mode==='pad'?'A':'LEAP'));
+   assert.ok(caption.text.some(text=>text.includes('RUN AFTER THE CHARIOT')));
+   assert.ok(caption.text.some(text=>text.includes('TO JUMP')));
+  }
   evidence.push({edition,...audit});
   // Real shell intro: W never begins it; Space does. Pad A still begins.
   await page.locator('#start').click();
@@ -87,6 +98,30 @@ try {
   await page.evaluate(()=>{window.testPad.buttons[0]={pressed:true,value:1};});await page.waitForTimeout(100);
   await page.evaluate(()=>{window.testPad.buttons[0]={pressed:false,value:0};});
   await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.mode==='play',null,{timeout:30000});
+  if(edition==='off') {
+   // The invitation shows pad X even though approaching her starts the witch.
+   await page.evaluate(async()=>{
+    const {GIFTS}=await import('/src/acts/prologue.js');
+    const q=window.__kingdomOfTheFairies,st=q.S.act.create();
+    Object.assign(st,{gifts:[...GIFTS],handGuideShown:true,t:5,phaseT:5});st.p.x=650;
+    q.S.state=st;q.S.curtain=q.S.curtainTarget=1;
+    const fill=CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText=function(text,...args){
+     if(['X','Space','A','↑'].includes(text))window.lastGuideGlyph=text;
+     if(text.includes('TAKE PRINCESS AZURINE'))window.padHandGlyph=window.lastGuideGlyph;
+     return fill.call(this,text,...args);
+    };
+   });
+   await page.waitForFunction(()=>window.padHandGlyph);
+   assert.equal(await page.evaluate(()=>window.padHandGlyph),'X');
+   await page.screenshot({path:`${out}/pad-hand-guide.png`});
+   await page.evaluate(()=>{
+    const q=window.__kingdomOfTheFairies;
+    q.S.state=q.S.act.create({from:{scene:1}});q.S.state.phaseT=1;q.S.state.fade=0;
+   });
+   await page.keyboard.press('KeyD');await page.waitForTimeout(100);
+   await page.screenshot({path:`${out}/keyboard-chariot.png`});
+  }
   assert.deepEqual(errors,[]);await page.close();
  }
  await writeFile(out+'/audit.json',JSON.stringify(evidence,null,2)+'\n');

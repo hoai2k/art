@@ -214,7 +214,7 @@ export const TEXT = {
     captions: {
       court: ['The Betrothal', 'Receive the fairies’ gifts for Princess Azurine'],
       curse: ['The Uninvited', 'The witch curses the betrothal and carries Azurine off'],
-      rampart: ['The Abduction', 'Her demons carry Azurine off · run after the chariot'],
+      rampart: ['The Abduction', 'Run after the chariot · press [A] to jump'],
       escape: ['The Abduction', 'The chariot is gone into the night'],
       bind: ['The Armoury', 'The witch binds the prince'],
       free: ['The Arming', 'Aurora breaks the spell'],
@@ -225,7 +225,7 @@ export const TEXT = {
       scene: {
         court: 'The betrothal court. Walk to each fairy and press [X] to receive her gift for Princess Azurine.',
         curse: 'The witch, uninvited, curses the betrothal.',
-        rampart: 'Her demons bear Azurine away in a chariot of fire. Run after it along the rampart; leap the fire it drops.',
+        rampart: 'Her demons bear Azurine away in a chariot of fire. Run after it along the rampart. Press [A] to jump over the fire it drops.',
         bind: 'In the armoury the witch binds the prince, and laughs at him.',
         free: 'Aurora comes; the witch flees, and Aurora breaks the spell.',
         armoury: 'Take up the helmet, the shield and the enchanted sword Aurora gives you.',

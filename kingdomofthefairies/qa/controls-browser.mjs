@@ -82,11 +82,15 @@ try {
  await page.keyboard.press('ArrowUp');await page.waitForTimeout(100);
  assert.ok(await page.evaluate(()=>!window.__kingdomOfTheFairies.S.state.p.on),'Up also jumps');
  await page.waitForTimeout(850);
- // The last gift must show the next goal while he is still by the fairies.
+ // Let the last gift finish, then show the next goal with its action key.
  await page.evaluate(()=>{
   const fillText=CanvasRenderingContext2D.prototype.fillText;
   CanvasRenderingContext2D.prototype.fillText=function(text,...args){
-   if(text.includes('TAKE PRINCESS AZURINE')) window.azurineGuideText=text;
+   if(['Space','X','A','↑'].includes(text)) window.lastPromptGlyph=text;
+   if(text.includes('TAKE PRINCESS AZURINE')) {
+    window.azurineGuideText=text; window.azurineGuideGlyph=window.lastPromptGlyph;
+    window.azurineGuideAt=window.__kingdomOfTheFairies.S.state.t;
+   }
    return fillText.call(this,text,...args);
   };
  });
@@ -99,7 +103,11 @@ try {
   await page.waitForTimeout(60);await page.keyboard.press('Space');
   await page.waitForFunction(n=>window.__kingdomOfTheFairies.S.state.gifts.length===n+1,n);
  }
+ assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.handGuideShown),false);
+ assert.equal(await page.evaluate(()=>window.azurineGuideText),undefined,'no instruction during the final gift');
  await page.waitForFunction(()=>window.azurineGuideText);
+ assert.equal(await page.evaluate(()=>window.azurineGuideGlyph),'Space');
+ assert.ok(await page.evaluate(()=>window.azurineGuideAt>=window.__kingdomOfTheFairies.S.state.handGuideAt),'show only after the gift and pause');
  assert.match(await page.evaluate(()=>window.azurineGuideText),/TAKE PRINCESS AZURINE’S HAND/);
  assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.phase),'court');
  await page.screenshot({path:output+'/keyboard-azurine-guide.png'});
