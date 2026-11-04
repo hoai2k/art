@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-04",
+  "assets": [
+    {
+      "file": "stratford/prototype/game/assets/sprites/linden_leaf_cluster.png",
+      "source": "exec-e5f96a99-8250-475a-8e81-104dab4a3226.png",
+      "review": "Foliage and transparent gaps reviewed; alpha verified",
+      "prompt": "A cluster of basswood (American linden) leaves on a thin brown twig seen from slightly below: eight to twelve broad heart-shaped leaves with finely toothed edges and lopsided bases, a few winged seed bracts with small round nutlets hanging among them, soft yellow-green, some leaves overlapping. Painted autumn storybook realism, soft gouache, even light, the cluster filling the square, genuine transparent alpha background, crisp edges, no glow, no shadow, no text.",
+      "background_edit_prompt": "Remove only the magenta background; preserve foliage, twig, seed pods/bracts, colors, composition and crisp fine edges. Genuine transparent alpha in all gaps and outside foliage. No halo, glow or shadows."
+    },
+    {
+      "file": "stratford/prototype/game/assets/sprites/locust_leaf_cluster.png",
+      "source": "exec-8526cfd8-24f7-44ab-8387-b009af19ea0f.png",
+      "review": "Foliage and transparent gaps reviewed; alpha verified",
+      "prompt": "A spray of honey locust foliage seen from slightly below: several feathery doubly-pinnate leaves of many small oval leaflets on thin green stalks, airy with lots of gaps between the leaflets, two or three twisted flat brown seed pods, golden yellow-green. Painted autumn storybook realism, soft gouache, even light, the spray filling the square, genuine transparent alpha background, crisp edges, no glow, no shadow, no text.",
+      "background_edit_prompt": "Remove only the magenta background; preserve foliage, twig, seed pods/bracts, colors, composition and crisp fine edges. Genuine transparent alpha in all gaps and outside foliage. No halo, glow or shadows."
+    }
+  ]
+}

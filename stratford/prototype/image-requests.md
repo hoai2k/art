@@ -44,8 +44,10 @@ picture book of a real small town, brought into 3D:
   to edge, ground at the bottom edge, roofline at the top edge; no sky, no
   ground, no perspective, no people, no cars. The game wraps them onto the
   block faces.
-- **Cutouts** (`game/assets/sprites/`): PNG on a flat `#FF00FF` magenta
-  background (keyed out on delivery), the object filling most of the frame.
+- **Cutouts** (`game/assets/sprites/`): PNG generated directly with genuine alpha transparency, the object
+  filling most of the frame. Preserve alpha through delivery and WebP export;
+  no coloured matte, keying, glow or halo. This supersedes historical magenta
+  instructions below; old delivery notes remain a record of what was done.
 - **UI art** (`game/assets/ui/`): as given in the request.
 
 ---
@@ -179,7 +181,7 @@ symbol (a teacup, a book, scissors, a loaf).
 
 ## Round 4: cutouts and props
 
-On a flat `#FF00FF` background (keyed out on delivery).
+Generate directly on a transparent background with genuine alpha.
 
 | # | File | Size | Prompt |
 |---|---|---|---|
@@ -212,7 +214,7 @@ The world changes its detail with the creature's size (see "Many creatures,
 many scales" in `ARCHITECTURE.md`): a squirrel sees curbs and leaves, an ant
 sees grains of soil and blades of grass. These are for the close-up detail
 layers. Same painted storybook realism, same October light. Tiling textures
-1024 × 1024 seamless; cutouts on transparent or flat `#FF00FF`.
+1024 × 1024 seamless; cutouts generated directly with genuine alpha transparency.
 
 | # | File | Real size | Prompt |
 |---|---|---|---|
@@ -386,12 +388,12 @@ the game from a mid-October spread for its species, so the leaf sprites only
 give the leaves' shape and light: their own colour is taken out. Linden and
 the pinnate-leaved honey locust and ash still use leaves drawn by the code.
 Same format as the existing `sprites/maple_leaf_cluster.png`: one cluster
-filling the square, on a **flat pure #FF00FF magenta background** with crisp
-edges and no glow or halo (the game keys the magenta out). Until they arrive
+filling the square, generated directly with **genuine alpha transparency**,
+crisp edges and no glow or halo; preserve alpha without colour keying. Until they arrive
 the drawn stand-ins stay in use (`src/town/trees.js`, slots `linden` and `fine`
 in `src/town/assets.js`).
 
 | # | File | Size | Prompt |
 |---|---|---|---|
-| T12.1 | `sprites/linden_leaf_cluster.png` | 1024 × 1024 | A cluster of basswood (American linden) leaves on a thin brown twig seen from slightly below: eight to twelve broad heart-shaped leaves with finely toothed edges and lopsided bases, a few winged seed bracts with small round nutlets hanging among them, soft yellow-green, some leaves overlapping. Painted autumn storybook realism, soft gouache, even light, the cluster filling the square, flat pure #FF00FF magenta background, crisp edges, no glow, no shadow, no text. Status: `requested` |
-| T12.2 | `sprites/locust_leaf_cluster.png` | 1024 × 1024 | A spray of honey locust foliage seen from slightly below: several feathery doubly-pinnate leaves of many small oval leaflets on thin green stalks, airy with lots of gaps between the leaflets, two or three twisted flat brown seed pods, golden yellow-green. Painted autumn storybook realism, soft gouache, even light, the spray filling the square, flat pure #FF00FF magenta background, crisp edges, no glow, no shadow, no text. Status: `requested` |
+| T12.1 | `sprites/linden_leaf_cluster.png` | 1024 × 1024 | A cluster of basswood (American linden) leaves on a thin brown twig seen from slightly below: eight to twelve broad heart-shaped leaves with finely toothed edges and lopsided bases, a few winged seed bracts with small round nutlets hanging among them, soft yellow-green, some leaves overlapping. Painted autumn storybook realism, soft gouache, even light, the cluster filling the square, genuine transparent alpha background, crisp edges, no glow, no shadow, no text. Status: `delivered` |
+| T12.2 | `sprites/locust_leaf_cluster.png` | 1024 × 1024 | A spray of honey locust foliage seen from slightly below: several feathery doubly-pinnate leaves of many small oval leaflets on thin green stalks, airy with lots of gaps between the leaflets, two or three twisted flat brown seed pods, golden yellow-green. Painted autumn storybook realism, soft gouache, even light, the spray filling the square, genuine transparent alpha background, crisp edges, no glow, no shadow, no text. Status: `delivered` |

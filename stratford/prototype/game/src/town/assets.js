@@ -48,12 +48,12 @@ export const FACADES = [
   ['facades/garage_side.png', [0, 0.12, 1, 1]],
 ];
 export const FAC = { red3: 0, buff2: 1, narrow: 2, bank: 3, corner: 4, painted: 5, italianate: 6, cottage: 7, clapboard: 8, queenAnne: 9, side: 10, back: 11, church: 12, buff3: 13, modern: 14, buffCottage: 15, garage: 16 };
-export const SPRITES = { maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png',
+export const SPRITES = { linden: 'sprites/linden_leaf_cluster.png', fine: 'sprites/locust_leaf_cluster.png', maple: 'sprites/maple_leaf_cluster.png', oak: 'sprites/oak_leaf_cluster.png', willow: 'sprites/willow_strands.png', spruce: 'sprites/spruce_bough.png', fallen: 'sprites/fallen_leaves.png',
   blades: 'sprites/grass_blades.png', pebbles: 'sprites/pebbles.png', litter: 'sprites/litter_bits.png',
   // ground detail (round 10/11, delivered with real alpha: not keyed): packed into the atlas in ground.js
   leavesHd: 'sprites/leaves_single_hd.png', piles: 'sprites/leaf_piles.png', items: 'sprites/street_ground_items.png',
   plants: 'sprites/ground_plants.png', debris: 'sprites/ground_debris.png' };
-const ALPHA_SPRITES = new Set(['leavesHd', 'piles', 'items', 'plants', 'debris']);
+const ALPHA_SPRITES = new Set(['linden', 'fine', 'leavesHd', 'piles', 'items', 'plants', 'debris']);
 export const SKY = 'ui/sky_autumn.png';
 // facade kit sheets in shader order: [slot, columns, rows]
 export const KIT_GRIDS = [['kit_windows', 4, 2], ['kit_shopfronts', 4, 1], ['kit_doors', 3, 2], ['kit_cornices', 1, 4], ['kit_trim', 4, 2], ['kit_awnings', 4, 1]];

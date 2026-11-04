@@ -1,5 +1,13 @@
 # Kingdom of the Fairies — images and production direction
 
+## Native alpha first
+
+Generate cutouts directly with genuine alpha transparency whenever available.
+Verify usable alpha, clean edges and transparent gaps; preserve it in PNG/WebP.
+Only try a flat-colour background and keying after native-alpha generation has
+been attempted and fails to work properly. Never key already transparent art.
+This supersedes older keying instructions and prompt fallbacks below.
+
 The complete [film story](film-story.md) and [five-act design](acts.md) are the
 primary briefs. Use the original 1903 film’s theatrical framing, hand-painted
 sets, costume gestures, shells, coral, enchanted armour, tower and cloud

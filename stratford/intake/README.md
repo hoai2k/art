@@ -7,8 +7,9 @@ them to be integrated. Nothing in this folder is published.
   [`../prototype/image-requests.md`](../prototype/image-requests.md). On
   integration each moves to the path shown there (reference sheets to
   `prototype/reference/sheets/`, game art under `prototype/game/assets/`), its
-  status is set to `delivered`, and images on a flat `#FF00FF` background have
-  the magenta keyed out.
+  status is set to `delivered`. Generate cutouts directly with genuine alpha
+  transparency and preserve it in PNG originals and WebP copies; no magenta
+  background or keying step is needed.
 - Photos of Stratford or of squirrels go to
   [`../prototype/reference/`](../prototype/reference/README.md) with a row in
   its catalogue (what it shows, where it came from, its licence).

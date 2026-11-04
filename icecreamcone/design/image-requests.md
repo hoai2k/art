@@ -1,5 +1,13 @@
 # The Ice-Cream Cone Coot: image requests
 
+## Native alpha first
+
+Generate cutouts directly with genuine alpha transparency whenever available.
+Verify usable alpha, clean edges and transparent gaps; preserve it in PNG/WebP.
+Only try a flat-colour background and keying after native-alpha generation has
+been attempted and fails to work properly. Never key already transparent art.
+This supersedes older keying instructions and prompt fallbacks below.
+
 Artwork still wanted for the Ice-Cream Cone Coot game in `icecreamcone/`. Only open requests are listed here; delivered and retired ones move to [`image-requests-history.md`](image-requests-history.md). Generated from `source/build_requests.py`; edit the data there and rerun it, which also rewrites the history and `icecreamcone/game/src/asset-list.js`.
 
 ## How to use this list

@@ -131,3 +131,13 @@ Wait for the first game's description before choosing its mechanics, theme, titl
 - Prefer four phases: contact A → passing A → contact B → passing B. One passing pose reused between contacts is the minimum; two passing poses distinguish the support legs. A passing frame has the support leg beneath the hips while the other foot swings through, not two feet planted in an idle stance.
 - Provide the cycle for every walking character and costume/look, including walking while carrying someone. Keep face, costume colours, body/head scale and the ground anchor consistent. Review the frames together or animated, not only one at a time.
 - Select walking frames from travelled distance (or an explicit motion phase for scripted walks). Idle, airborne, climbing and swimming actions retain their own poses. Procedural walkers must also pass through legs-together between contacts.
+
+## Generated cutouts and transparency
+
+Generate sprite and cutout artwork directly with genuine alpha transparency
+(`transparent_background: true` with built-in image generation). Preserve alpha
+in PNG originals and WebP game copies. Do not request magenta or another colour
+matte, or require colour keying. Only try a colour-keyed fallback after native-alpha
+generation has been attempted and fails to produce usable transparency. This supersedes older per-game keying guidance;
+historical prompts and delivery notes remain records of earlier work. Existing
+legacy assets may retain compatibility processing until replaced.

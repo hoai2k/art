@@ -1,5 +1,13 @@
 # Ice-Cream Cone Coot intake
 
+## Native alpha first
+
+Generate cutouts directly with genuine alpha transparency whenever available.
+Verify usable alpha, clean edges and transparent gaps; preserve it in PNG/WebP.
+Only try a flat-colour background and keying after native-alpha generation has
+been attempted and fails to work properly. Never key already transparent art.
+This supersedes older keying instructions and prompt fallbacks below.
+
 Drop files for the Ice-Cream Cone Coot game here and ask for them to be
 integrated. Nothing in this folder is published or loaded by the game.
 

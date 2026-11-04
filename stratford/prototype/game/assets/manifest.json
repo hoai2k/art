@@ -31,7 +31,9 @@
     "sprites/ground_plants.png",
     "sprites/leaf_piles.png",
     "sprites/leaves_single_hd.png",
+    "sprites/linden_leaf_cluster.png",
     "sprites/litter_bits.png",
+    "sprites/locust_leaf_cluster.png",
     "sprites/maple_leaf_cluster.png",
     "sprites/nuts.png",
     "sprites/oak_leaf_cluster.png",
@@ -150,6 +152,8 @@
     "textures/asphalt_patched.png": "web/textures/asphalt_patched.webp",
     "sprites/street_ground_items.png": "web/sprites/street_ground_items.webp",
     "sprites/ground_plants.png": "web/sprites/ground_plants.webp",
-    "sprites/ground_debris.png": "web/sprites/ground_debris.webp"
+    "sprites/ground_debris.png": "web/sprites/ground_debris.webp",
+    "sprites/linden_leaf_cluster.png": "web/sprites/linden_leaf_cluster.webp",
+    "sprites/locust_leaf_cluster.png": "web/sprites/locust_leaf_cluster.webp"
   }
 }

@@ -1,5 +1,13 @@
 # Bronze Drum: image requests
 
+## Native alpha first
+
+Generate cutouts directly with genuine alpha transparency whenever available.
+Verify usable alpha, clean edges and transparent gaps; preserve it in PNG/WebP.
+Only try a flat-colour background and keying after native-alpha generation has
+been attempted and fails to work properly. Never key already transparent art.
+This supersedes older keying instructions and prompt fallbacks below.
+
 Artwork for the Bronze Drum game in `bronzedrum/game/`, plus direction pieces for the look and atmosphere. Generated from `source/build_requests.py`; edit the data there and rerun it, which also rewrites `game/assets/manifest.json`.
 
 ## How to use this list

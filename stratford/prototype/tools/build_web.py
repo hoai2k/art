@@ -29,7 +29,7 @@ def jobs():
         if not os.path.isdir(d):
             continue
         for name in sorted(os.listdir(d)):
-            if name.lower().endswith('.png'):
+            if not name.startswith('._') and name.lower().endswith('.png'):
                 rel = f'{folder}/{name}'
                 yield rel, f'web/{folder}/{name[:-4]}.webp', SPECIAL.get(rel, RULES[folder])
 
