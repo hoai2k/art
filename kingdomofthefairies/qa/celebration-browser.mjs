@@ -81,7 +81,7 @@ try {
  await page.waitForTimeout(350);
  assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.riseT),null);
  await page.locator('#stage').screenshot({path:out+'/jump-into-light-prompt.png'});
- await page.keyboard.press('Space');
+ await page.keyboard.press('KeyW');
  await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.riseT!=null);
  await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.phase==='finale');
  // Start directly at the wedding with an intentionally delayed recording.

@@ -12,7 +12,7 @@ import { FILM, words } from '../theme.js';
 import { REST_GAP } from '../sprite-fit.js';
 import { TEXT } from '../text_config.js';
 import { drawPose, CREW_OF } from '../pose.js';
-import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
+import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 
 const TAU = Math.PI * 2;
 const sy = (st, wy) => wy - st.cam + 60;           // world y -> stage y
@@ -956,7 +956,7 @@ function captions(k, st, t) {
     c.save(); c.font = `700 ${px}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
     if (touch) c.globalAlpha = clamp((3.5 - since) / 0.5, 0, 1);
     const fade = c.globalAlpha;
-    c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.8 * fade; const w = c.measureText(str).width + 44;
+    c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.8 * fade; const w = measureRichText(c, str, { px, mode: k.inputMode || 'key' }) + 44;
     const lx = clamp(r.x, 180 + w / 2, 1100 - w / 2);
     c.beginPath(); c.roundRect(lx - w / 2, y - hh * 0.7, w, hh, hh / 2); c.fill(); c.globalAlpha = fade;
     c.fillStyle = k.col('#ffe27a'); richText(c, str, lx, y, { px, mode: k.inputMode || 'key', col: k.col });
@@ -969,7 +969,7 @@ function captions(k, st, t) {
     const px = touch && k.compact ? 26 : 18, hh = px + 14;
     c.save(); c.font = `700 ${px}px "Josefin Sans", sans-serif`; c.textAlign = 'center';
     c.globalAlpha = clamp((14 - pt) / 0.6, 0, 1) * clamp((pt - 2) / 0.4, 0, 1);
-    const fade = c.globalAlpha, w = c.measureText(str.replace(/\[X\]/, 'XX')).width + 44;
+    const fade = c.globalAlpha, w = measureRichText(c, str, { px, mode: k.inputMode || 'key' }) + 44;
     c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.8 * fade;
     c.beginPath(); c.roundRect(640 - w / 2, 250 - hh * 0.7, w, hh, hh / 2); c.fill(); c.globalAlpha = fade;
     c.fillStyle = k.col('#ffe27a'); richText(c, str, 640, 250, { px, mode: k.inputMode || 'key', col: k.col });

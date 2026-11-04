@@ -1265,7 +1265,10 @@ function star(c, x, y, r) {
 // Prompt text may name buttons as [A], [B], [MENU] or [LS]. They are drawn
 // for the input in use (`mode`): Xbox controller buttons ('pad'), key caps
 // ('key') or the on-screen touch buttons ('touch').
-const GLYPH_KEYS = TEXT.glyphs.keys;
+let GLYPH_KEYS = TEXT.glyphs.keys;
+export function setKeyboardControls({ primaryX = false, upJump = false } = {}) {
+  GLYPH_KEYS = { ...TEXT.glyphs.keys, A: primaryX && upJump ? 'W / ↑' : 'Space', X: primaryX ? 'Space' : 'X' };
+}
 const XBOX = { A: '#3fa535', B: '#d6262c', X: '#2a6fd6', Y: '#e8b320' };
 // On touch the buttons carry no letters, only what they do here, so a prompt
 // names them the same way (the shell keeps these current; setTouchNames).
@@ -1309,11 +1312,15 @@ function drawGlyph(c, tok, mode, cx, cy, px, col) {
   c.restore();
 }
 // Draw one line of prompt text centred on x (baseline y) with its button glyphs.
+export function measureRichText(c, str, { px, mode = 'key' } = {}) {
+  return str.split(/\[(A|B|X|MENU|LS)\]/).reduce((total, p, i) =>
+    total + (i % 2 ? glyphWidth(c, p, mode, px) + px * 0.36 : c.measureText(p).width), 0);
+}
 export function richText(c, str, x, y, { px, mode = 'key', col = (h) => h } = {}) {
   const parts = str.split(/\[(A|B|X|MENU|LS)\]/);
   const gap = px * 0.18;
   const widths = parts.map((p, i) => (i % 2 ? glyphWidth(c, p, mode, px) + gap * 2 : c.measureText(p).width));
-  const total = widths.reduce((a, b) => a + b, 0);
+  const total = measureRichText(c, str, { px, mode });
   const align = c.textAlign;
   let at = align === 'left' ? x : align === 'right' ? x - total : x - total / 2;
   c.save(); c.textAlign = 'left';

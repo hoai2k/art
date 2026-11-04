@@ -39,6 +39,8 @@ try {
   await page.evaluate(()=>{window.testPad.buttons[13]={pressed:false,value:0};});await page.waitForTimeout(80);
   assert.equal(await selected(),columns,'D-pad down uses the vertical neighbor');
   await page.keyboard.press('ArrowUp');await page.waitForTimeout(100);assert.equal(await selected(),0);
+  await page.keyboard.press('KeyS');await page.waitForTimeout(100);assert.equal(await selected(),columns);
+  await page.keyboard.press('KeyW');await page.waitForTimeout(100);assert.equal(await selected(),0);
   await buttons.last().focus();const last=await selected();
   await stick('down');assert.equal(await selected(),-1,'down from the last row reaches the next act');
   await stick('up');assert.ok(await selected()>=last-(columns-1),'up returns to the nearest card in the uneven row');

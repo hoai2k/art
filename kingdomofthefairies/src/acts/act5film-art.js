@@ -15,7 +15,7 @@ import {
 } from './act5-art.js';
 import { card, cardAlpha } from './tableau.js';
 import { clamp, lerp, easeOut, easeInOut } from './shared.js';
-import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
+import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 import { drawPose, drawPerson, personPx, personScale } from '../pose.js';
 import { TEXT } from '../text_config.js';
 
@@ -441,7 +441,7 @@ function hint(k, text, y = 630) {
   const draw = () => {
     const c = k.c;
     c.save(); c.textAlign = 'center'; c.font = '700 18px "Josefin Sans", sans-serif';
-    const w = c.measureText(text.replace(/\[(\w+)\]/g, 'XX')).width + 60;
+    const w = measureRichText(c, text, { px: 18, mode: k.inputMode || 'key' }) + 60;
     c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(640 - w / 2, y - 24, w, 36, 18); c.fill();
     c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');
     richText(c, text, 640, y, { px: 18, mode: k.inputMode || 'key', col: k.col });

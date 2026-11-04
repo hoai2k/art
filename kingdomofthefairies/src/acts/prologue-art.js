@@ -6,7 +6,7 @@ import { FLOOR, ARM_FLOOR, FAIRIES, AZURINE_X, RAMPART, rampartFloor, ARMS, AURO
 import { card } from './tableau.js';
 import { TEXT } from '../text_config.js';
 import { clamp, easeOut, easeInOut, lerp } from './shared.js';
-import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
+import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 import { REST_GAP } from '../sprite-fit.js';
 import { drawPose, drawPerson, personPx, personScale, personRef } from '../pose.js';
 
@@ -625,11 +625,12 @@ function flame(k, x, by, s, t) {
 function prompt(k, st, near) {
   const c = k.c, x = near.at - camX(st), y = FLOOR - 290;
   c.save(); c.font = '700 15px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-  const w = c.measureText(near.label).width + 60;
+  const text = (k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase();
+  const w = measureRichText(c, text, { px: 15, mode: k.inputMode || 'key' }) + 32;
   c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 20, w, 30, 15); c.fill();
   c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');
   // on touch the button itself is named for it, so the label alone
-  richText(c, (k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase(), x, y + 1, { px: 15, mode: k.inputMode || 'key', col: k.col });
+  richText(c, text, x, y + 1, { px: 15, mode: k.inputMode || 'key', col: k.col });
   c.restore();
 }
 

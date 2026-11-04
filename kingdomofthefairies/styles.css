@@ -424,3 +424,10 @@ html.touch #icons[data-show="play"] .corner-right {
   right: max(16px, calc(env(safe-area-inset-right) + 10px));
   flex-direction: column; gap: 8px; opacity: .85;
 }
+
+/* Transparent native targets follow the painted playbill's actual rows. */
+#playbill-controls { position: absolute; pointer-events: none; }
+#playbill-controls[hidden] { display: none; }
+#playbill-controls button { position: absolute; pointer-events: auto; padding: 0; border: 0; background: transparent; cursor: pointer; }
+#playbill-controls button:disabled { pointer-events: none; }
+#playbill-controls button:focus-visible { outline: 2px solid var(--magenta); outline-offset: -2px; }

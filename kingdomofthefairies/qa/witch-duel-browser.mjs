@@ -64,11 +64,11 @@ try{
  });
  for(let hit=1;hit<=3;hit++){
   await page.keyboard.down('ArrowRight');await page.waitForFunction(()=>{const q=window.__kingdomOfTheFairies;return window.duelReview.mod.duelReach(q.S.state);});await page.keyboard.up('ArrowRight');
-  await page.keyboard.press('KeyX');await page.waitForFunction(hp=>window.__kingdomOfTheFairies.S.state.duel?.hp===hp,3-hit);await page.keyboard.up('Space');
+  await page.keyboard.press('Space');await page.waitForFunction(hp=>window.__kingdomOfTheFairies.S.state.duel?.hp===hp,3-hit);await page.keyboard.up('KeyW');
   if(hit<3){
    await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.duel.state==='counter');
    const reset=await page.evaluate(()=>{const st=window.__kingdomOfTheFairies.S.state;return {x:st.w.x,target:window.duelReview.mod.duelResetX(st)};});
-   assert.ok(Math.abs(reset.x-reset.target)<1);await page.keyboard.down('Space');
+   assert.ok(Math.abs(reset.x-reset.target)<1);await page.keyboard.down('KeyW');
   }
  }
  await page.waitForFunction(()=>!!window.__kingdomOfTheFairies.S.state.barrel);

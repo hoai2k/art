@@ -83,10 +83,13 @@ in Act II.
 - `moveX`, `moveY`: continuous, −1..1, with `moveY` positive meaning down.
 - `up`, `down`, `left`, `right`: fresh presses, with menu-style repeat on
   the stick.
-- `a`: a fresh press of A, Space, Z or J. `aHeld`: A held.
+- `a`: jump/kick, a fresh press of pad A or touch A. Keyboard uses W/Up
+  in walking scenes, Space when vertical movement uses W/Up, and Z/J as
+  aliases (`src/keyboard.js`). `aHeld`: the corresponding button held.
 - `b`: a fresh press of pad B, X or Backspace. Use it for refusing or
   cancelling. Escape is pause and never reaches the act.
-- `x`: a fresh press of pad X, or the X key (or touch B). Use it for taking
+- `x`: a fresh press of pad X, the X key (or touch B), or Space when
+  `primaryX` is set by `src/keyboard.js`. Use it for taking
   or using something within reach (Act II's dive). The X key and touch B also
   reach `b`, so an act reads one or the other in a given moment. `xHeld`:
   X held (Act III's bow).

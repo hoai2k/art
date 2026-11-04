@@ -36,7 +36,7 @@ export function createInput(target = window) {
   // Attach the touch layer (src/touch.js); its input merges in poll().
   function attachTouch(t) { touchSrc = t; }
 
-  function poll(dt) {
+  function poll(dt, { upJump = false, primaryX = false } = {}) {
     const k = (...codes) => codes.some((c) => keys.has(c));
     const ke = (...codes) => codes.some((c) => keyEdges.includes(c));
     const tc = touchSrc ? touchSrc.poll(dt) : null;
@@ -46,15 +46,16 @@ export function createInput(target = window) {
       moveX: (k('ArrowRight', 'KeyD') ? 1 : 0) - (k('ArrowLeft', 'KeyA') ? 1 : 0) + (tc?.moveX || 0),
       // Continuous vertical (positive = down), for swimming and climbing acts.
       moveY: (k('ArrowDown', 'KeyS') ? 1 : 0) - (k('ArrowUp', 'KeyW') ? 1 : 0) + (tc?.moveY || 0),
-      // The action button held (A, Space, Z, J or touch Leap).
-      aHeld: k('Space', 'KeyZ', 'KeyJ') || !!tc?.aHeld,
-      // X held (the X key, pad X, or touch B held): bowing past the guards.
-      xHeld: k('KeyX') || !!tc?.bHeld,
+      // Jump/kick held: W/Up in walking scenes; Space where it is free.
+      aHeld: k(...(upJump ? ['ArrowUp', 'KeyW'] : []), ...(!primaryX ? ['Space'] : []), 'KeyZ', 'KeyJ') || !!tc?.aHeld,
+      // Secondary action held; Space becomes primary in walking scenes.
+      xHeld: k('KeyX', ...(primaryX ? ['Space'] : [])) || !!tc?.bHeld,
+      keyAction: primaryX && ke('Space'),
       up: ke('ArrowUp', 'KeyW') || te('up'),
       down: ke('ArrowDown', 'KeyS') || te('down'),
       left: ke('ArrowLeft', 'KeyA') || te('left'),
       right: ke('ArrowRight', 'KeyD') || te('right'),
-      leap: ke('Space', 'KeyZ', 'KeyJ') || te('a'),
+      leap: ke(...(upJump ? ['ArrowUp', 'KeyW'] : []), ...(!primaryX ? ['Space'] : []), 'KeyZ', 'KeyJ') || te('a'),
       confirm: ke('Enter', 'Space', 'KeyZ', 'KeyJ'),
       back: ke('Escape', 'Backspace'),
       pause: ke('Escape', 'KeyP') || te('pause'),
@@ -64,7 +65,7 @@ export function createInput(target = window) {
       keyX: ke('KeyX'),
       anyPad: false, stickNav: false, padA: false, padStart: false, padB: false, padX: false,
       keyAny: keyEdges.length > 0,
-      keyNav: ke('Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'),
+      keyNav: ke('Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD'),
     };
 
     const pads = navigator.getGamepads ? [...navigator.getGamepads()].filter(Boolean) : [];

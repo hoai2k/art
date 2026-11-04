@@ -98,7 +98,7 @@ export const TEXT = {
       hint: {
         touch: 'Tap an act to begin · tap outside for the title',
         pad: '[LS] Choose · [A] Begin · [B] The title',
-        key: '↑ ↓ to choose · [A] to begin · [B] for the title',
+        key: 'Click an Act · Tab / [A] · Esc menu',
       },
       subtitleFilm: 'A TOY THEATRE IN A PROLOGUE AND SIX ACTS',
       subtitle: 'A TOY THEATRE IN FIVE ACTS',

@@ -6,9 +6,10 @@ import { ACTS } from './acts/index.js';
 import { ACT_ART } from './act-art.js';
 import { loadSave, writeSave, carryInto, recordResult } from './save.js';
 import { editorWanted, openEditor } from './editor.js';
-import { createRenderer, loadAssets, richText, setTouchNames } from './art.js';
+import { createRenderer, loadAssets, richText, measureRichText, setTouchNames, setKeyboardControls } from './art.js';
 import { createAudio } from './audio.js';
 import { createInput } from './input.js';
+import { keyboardControls } from './keyboard.js';
 import { createTouch, isTouchDevice } from './touch.js';
 import { createFit } from './fit.js';
 import { createCamera } from './camera.js';
@@ -511,8 +512,12 @@ function frame(now) {
   // Paused, the stage stands still: lanterns, hooks and water are drawn from
   // this clock, so it stops with the play beneath the pause menu.
   if (!(S.paused && S.mode === 'play')) S.t += dt;
-  const i = input.poll(dt);
+  const controls = S.mode === 'play' && !dialogs.length ? keyboardControls(S.act, S.state, FILM_ED) : {};
+  setKeyboardControls(['play', 'intro'].includes(S.mode) && !dialogs.length ? keyboardControls(S.act, S.state, FILM_ED) : {});
+  const i = input.poll(dt, controls);
+  if (pointerTap) { i.tap = pointerTap; pointerTap = null; }
   update(dt, i);
+  syncPlaybillButtons();
   if (!(S.paused && S.mode === 'play')) updateCamera(dt);
   const view = currentView();
   renderer.tick(S.paused ? 0 : dt, view);
@@ -634,6 +639,7 @@ function update(dt, i) {
       if (i.padB) { S.titleNav = false; clearNavFocus(); document.activeElement?.blur(); syncTitleHint(); return; }
       menuInput({ ...i, padB: false, back: false });
     }
+    if (!S.titleNav && i.source === 'key') menuInput({ ...i, back: false });
     return;
   }
 
@@ -645,8 +651,8 @@ function update(dt, i) {
     // or the touch pause button); B or Backspace go back to the title
     if (i.pause) { pause(); return; }
     const n = Math.min(save.unlocked, ACTS.length);
-    if (i.up) { S.pb = (S.pb + n - 1) % n; audio.play('ui'); }
-    if (i.down) { S.pb = (S.pb + 1) % n; audio.play('ui'); }
+    if (i.up) { S.pb = (S.pb + n - 1) % n; playbillButtons.children[S.pb]?.focus(); audio.play('ui'); }
+    if (i.down) { S.pb = (S.pb + 1) % n; playbillButtons.children[S.pb]?.focus(); audio.play('ui'); }
     if (i.tap) {
       // Tap a line of the playbill to begin that act; tap outside it for the title.
       const pb = playbillRows();
@@ -656,7 +662,7 @@ function update(dt, i) {
       else if (i.tap.y > 650 || i.tap.x < (pb.art ? pb.left - 10 : 330) || i.tap.x > (pb.art ? pb.left + PB.w + 10 : 950)) toTitle();
       return;
     }
-    if (go && S.modeT > 0.3) beginAct(S.pb);
+    if ((i.padA || (go && !playbillButtons.contains(document.activeElement))) && S.modeT > 0.3) beginAct(S.pb);
     else if (i.padB || (i.back && !i.pause)) toTitle();
     return;
   }
@@ -710,7 +716,7 @@ function update(dt, i) {
     // Hold the player still until the curtains are mostly open.
     const ready = S.curtain > 0.9;
     const actInput = ready
-      ? { moveX: i.moveX, moveY: i.moveY, up: i.up, down: i.down, left: i.left, right: i.right, a: i.leap, aHeld: i.aHeld, b: i.padB || i.bPress || i.touchB, x: i.padX || i.bPress || i.touchB || i.touchX, xHeld: i.xHeld, xKey: !!i.keyX, tapAt: i.playTap, beat: audio.beat(),
+      ? { moveX: i.moveX, moveY: i.moveY, up: i.up, down: i.down, left: i.left, right: i.right, a: i.leap, aHeld: i.aHeld, b: i.padB || i.bPress || i.touchB, x: i.keyAction || i.padX || i.bPress || i.touchB || i.touchX, xHeld: i.xHeld, xKey: !!i.keyX, tapAt: i.playTap, beat: audio.beat(),
         songLeft: audio.nowPlaying()?.id === 'period-wedding' ? audio.pieceLeft() : null }
       : { moveX: 0, moveY: 0, beat: audio.beat() };
     S.act.step(S.state, dt, actInput);
@@ -933,6 +939,42 @@ function playbillRows() {
   const gap = ACTS.length > 5 ? 62 : 72, y0 = ACTS.length > 5 ? 226 : 244;
   return { art: false, x0: 360, x1: 920, half: gap / 2, ys: ACTS.map((a, n) => y0 + n * gap) };
 }
+// Native controls over the painted rows support mouse, touch, Tab and Space.
+const playbillButtons = document.createElement('nav');
+playbillButtons.id = 'playbill-controls';
+playbillButtons.setAttribute('aria-label', 'Choose an Act');
+playbillButtons.hidden = true;
+$('#app').append(playbillButtons);
+ACTS.forEach((act, n) => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.setAttribute('aria-label', `${act.kicker}: ${act.title}`);
+  button.addEventListener('focus', () => { S.pb = n; });
+  button.addEventListener('click', () => {
+    if (S.mode === 'playbill' && !dialogs.length && n < save.unlocked) beginAct(n);
+  });
+  playbillButtons.append(button);
+});
+function syncPlaybillButtons() {
+  const wasHidden = playbillButtons.hidden;
+  playbillButtons.hidden = S.mode !== 'playbill' || !!dialogs.length;
+  if (playbillButtons.hidden) return;
+  const rect = canvas.getBoundingClientRect(), parent = $('#app').getBoundingClientRect(), rows = playbillRows();
+  Object.assign(playbillButtons.style, { left: `${rect.left - parent.left}px`, top: `${rect.top - parent.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
+  [...playbillButtons.children].forEach((button, n) => {
+    button.disabled = n >= save.unlocked;
+    Object.assign(button.style, { left: `${rows.x0 / 12.8}%`, top: `${(rows.ys[n] - rows.half) / 7.2}%`, width: `${(rows.x1 - rows.x0) / 12.8}%`, height: `${rows.half * 2 / 7.2}%` });
+  });
+  if (wasHidden) playbillButtons.children[S.pb]?.focus({ preventScroll: true });
+}
+// Desktop clicks also advance canvas cards and retry screens.
+let pointerTap = null;
+canvas.addEventListener('click', e => {
+  if (e.pointerType === 'touch' || dialogs.length || !['playbill', 'intro', 'over', 'curtaincall'].includes(S.mode)) return;
+  const r = canvas.getBoundingClientRect();
+  pointerTap = { x: (e.clientX - r.left) * 1280 / r.width, y: (e.clientY - r.top) * 720 / r.height };
+});
+
 function drawPlaybill(k, t) {
   const c = k.c;
   k.sky(null);
@@ -965,7 +1007,7 @@ function drawPlaybill(k, t) {
     });
     // The prompt rides on a small plum label over the foot of the bill.
     c.font = '700 12px "Josefin Sans", sans-serif';
-    const tw = Math.min(380, c.measureText(hint.replace(/\[(\w+)\]/g, 'XX')).width + 56);
+    const tw = Math.min(380, measureRichText(c, hint, { px: 12, mode }) + 56);
     c.fillStyle = k.col('#2a1424'); c.globalAlpha = 0.85; c.beginPath(); c.roundRect(640 - tw / 2, 624, tw, 22, 11); c.fill(); c.globalAlpha = 1;
     c.fillStyle = k.col('#f1e3c8'); c.textAlign = 'center';
     richText(c, hint, 640, 639, { px: 12, mode, col: k.col });

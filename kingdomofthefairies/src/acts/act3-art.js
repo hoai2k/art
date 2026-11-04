@@ -11,7 +11,7 @@ import { FILM } from '../theme.js';
 import { drawPose, drawPerson, personPx } from '../pose.js';
 import { card } from './tableau.js';
 import { TEXT } from '../text_config.js';
-import { richText } from '../art.js';   // headless-safe: art.js touches no DOM at load
+import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 
 const FLOOR_TOP = 404;
 const BC_H = 900;               // drawn height of the delivered backcloth
@@ -119,7 +119,7 @@ function capture(k, grab, y, height) {
 function prompt(k, text, x, y, col = '#f3c6dc') {
   const c = k.c;
   c.save(); c.font = '700 18px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-  const w = c.measureText(text.replace(/\[(\w+)\]/g, 'XX')).width + 48;
+  const w = measureRichText(c, text, { px: 18, mode: k.inputMode || 'key' }) + 48;
   c.globalAlpha = 0.85; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 24, w, 34, 17); c.fill();
   c.globalAlpha = 1; c.fillStyle = k.col(col);
   richText(c, text, x, y, { px: 18, mode: k.inputMode || 'key', col: k.col });

@@ -46,7 +46,7 @@ try {
     await page.waitForFunction(() => window.__kingdomOfTheFairies.S.state.w.x > 635);
     await page.keyboard.up('ArrowRight');
     await page.waitForTimeout(180);
-    await page.keyboard.press('Space');
+    await page.keyboard.press('KeyW');
     await page.waitForFunction(want => window.__kingdomOfTheFairies.S.state.flight === want, want);
   };
   await walkToLight();

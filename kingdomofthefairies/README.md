@@ -143,8 +143,14 @@ This is a static canvas 2D / Web Audio page, with no build step.
   camera (shown only on phones) turns it off. `?camera=phone` tries it on any
   screen, `?camera=off` turns it off.
 
-Use arrows/WASD to move and Space/Z/J to act. Touch uses swipes for rows and a
-floating stick for swimming/climbing. The game teaches its controls in play (each act's card and on-stage prompts), with a
+Use WASD or arrows to move, Space for the primary action, and W/Up to jump
+in walking scenes. Swimming, climbing, boat/court rows and the wedding
+stairs keep W/Up for direction and Space for kicking or jumping. X handles
+separate actions there, such as taking underwater items or giving gifts
+beside the wedding stairs. Z/J also jump or kick. Choose Acts by clicking or
+tapping their painted rows, or with Tab and Space. Touch uses swipes for rows
+and a floating stick for swimming/climbing. The game teaches its controls in
+play (each act's card and on-stage prompts), with a
 pause menu, scene select, credits and checkpoints. Hull and pearl tuning is in
 `src/game_config.js`.
 
@@ -196,6 +202,8 @@ From the repository root:
 ```sh
 for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs; done
 for t in animation sailor-motion walking theme assets-loader surface-swim cavern-art court-film; do node kingdomofthefairies/qa/$t.test.mjs; done
+node kingdomofthefairies/qa/keyboard.test.mjs
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/controls-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/surface-swim-browser.mjs
 KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
 # (each act suite pins the edition it tests: act2-act4 Widow's Bay, film and court-film the film edition)
