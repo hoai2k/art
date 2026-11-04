@@ -1,5 +1,6 @@
 // Headless checks for Act III, the Sea King's Court.
 // Run: node kingdomofthefairies/qa/act3.test.mjs
+import './edition-widowsbay.mjs';   // this suite tests the widowsbay edition
 import assert from 'node:assert/strict';
 import act, { TUNE, PEDESTAL, SENTRIES, SENTRY_HEAD, OUTRO, CAM_MAX, LANTERN_BX, PAR, GAZE_OFF, litAt, effRow, SCENES } from '../src/acts/act3.js';
 // A spot in the far hall, clear of the pedestal (reaching it takes the pearl).

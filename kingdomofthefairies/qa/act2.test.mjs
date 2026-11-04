@@ -1,4 +1,5 @@
 // Headless checks for Act II, The Sleepers' Grotto. Run: node kingdomofthefairies/qa/act2.test.mjs
+import './edition-widowsbay.mjs';   // this suite tests the widowsbay edition
 import assert from 'node:assert/strict';
 import act, {
   BEAT_LEN, FLOOR, TUNE, PHASE_LEN, REST, SLEEPERS, RIDE, ridePearlX,

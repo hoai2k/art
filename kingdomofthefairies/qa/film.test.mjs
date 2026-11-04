@@ -2,6 +2,7 @@
 // The original acts' own suites run with KOTF_EDITION=widowsbay; this file
 // checks what the film edition changes or adds.
 // Run: KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
+import './edition-film.mjs';   // this suite tests the film edition
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { ACTS } from '../src/acts/index.js';

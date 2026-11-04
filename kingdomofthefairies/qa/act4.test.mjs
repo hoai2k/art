@@ -1,4 +1,5 @@
 // Headless checks for Act IV, The Whale's Road. Run: node kingdomofthefairies/qa/act4.test.mjs
+import './edition-widowsbay.mjs';   // this suite tests the widowsbay edition
 import assert from 'node:assert/strict';
 import act, {
   BEAT_S, WATER, HOOKS, LEDGES, FLOATERS, breath, waterY, tilt, hookTip, platformOf, extent, shoreTimes, OUTRO, SCENES, PEARLS, SAILOR, HANG,

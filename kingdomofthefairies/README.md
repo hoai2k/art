@@ -195,9 +195,10 @@ From the repository root:
 
 ```sh
 for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs; done
-for t in animation sailor-motion walking theme assets-loader surface-swim; do node kingdomofthefairies/qa/$t.test.mjs; done
+for t in animation sailor-motion walking theme assets-loader surface-swim cavern-art court-film; do node kingdomofthefairies/qa/$t.test.mjs; done
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/surface-swim-browser.mjs
 KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
+# (each act suite pins the edition it tests: act2-act4 Widow's Bay, film and court-film the film edition)
 for g in build_act_requests build_film_requests build_film_assets; do python3 kingdomofthefairies/design/source/$g.py --check; done
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/theme-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/walking-browser.mjs
