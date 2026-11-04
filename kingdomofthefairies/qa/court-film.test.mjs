@@ -1,3 +1,4 @@
+import './edition-film.mjs';   // this suite tests the film edition
 import assert from 'node:assert/strict';
 import act, { PASSAGE, stepGaze, beamOn, litAt } from '../src/acts/act3.js';
 const dt = 1 / 60;
