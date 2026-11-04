@@ -144,6 +144,31 @@ test('prologue: gifts, her hand, the chase along the rampart and the arming', ()
   assert.ok(prologue.intro, 'flows straight into Act I');
 });
 
+test('prologue: the last gift guides him to Azurine; approaching her starts the witch without an action', () => {
+  const st = prologue.create({});
+  const last = FAIRIES.at(-1);
+  st.gifts = GIFTS.slice(0, -1);
+  st.p.x = last.x + last.hand - HAND;
+  prologue.step(st, DT, { x: true });
+  assert.deepEqual(st.gifts, GIFTS);
+  assert.equal(st.phase, 'court', 'the last fairy is still far from Azurine');
+  assert.equal(st.near, null, 'the collected gift no longer offers an action');
+  const gift = st.events.find(e => e.type === 'gift');
+  assert.match(prologue.announce(gift), /Take Princess Azurine’s hand/);
+  prologue.step(st, DT, {});
+  assert.equal(st.phase, 'court', 'wait for him to approach');
+  st.p.x = AZURINE_X - 60; st.p.vx = 0;
+  prologue.step(st, DT, {});
+  assert.equal(st.phase, 'curse'); assert.ok(st.betrothed);
+  assert.equal(st.events.filter(e => e.type === 'betrothed').length, 1);
+  prologue.step(st, DT, {});
+  assert.equal(st.events.filter(e => e.type === 'betrothed').length, 1, 'the entrance triggers once');
+  const missing = prologue.create({});
+  missing.p.x = AZURINE_X - 60;
+  prologue.step(missing, DT, {});
+  assert.equal(missing.phase, 'court', 'all gifts are required first');
+});
+
 test('prologue: X takes, A leaps everywhere he walks, and the X key never skips the scene', () => {
   const st = prologue.create({});
   const f = FAIRIES[0]; st.p.x = f.x + f.hand - HAND;

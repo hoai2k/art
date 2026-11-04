@@ -2,7 +2,7 @@ import { walkPose } from '../walking.js';
 // Prologue drawing: the delivered sets (betrothal-court, rampart-strip,
 // armoury) and the cast's cut-outs, staged as a toy theatre. Draw only from
 // state and t.
-import { FLOOR, ARM_FLOOR, FAIRIES, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
+import { FLOOR, ARM_FLOOR, FAIRIES, GIFTS, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
 import { card } from './tableau.js';
 import { TEXT } from '../text_config.js';
 import { clamp, easeOut, easeInOut, lerp } from './shared.js';
@@ -51,6 +51,10 @@ export function draw(k, st, t) {
   else if (sc === 1) rampartScene(k, st, t);
   else armouryScene(k, st, t);
   if (st.near) prompt(k, st, st.near);
+  if (st.phase === 'court' && st.gifts.length === GIFTS.length) {
+    const guide = () => prompt(k, st, { at: 640, y: 150, label: TEXT.prologue.takeHand + ' →', passive: true });
+    k.flat ? k.flat(guide) : guide();
+  }
   const cap = CAPTIONS[st.phase];
   if (cap) card(k, cap[0], cap[1], Math.min(1, clamp((st.phaseT - 0.3) / 0.5, 0, 1), ['court', 'rampart', 'armoury', 'bind'].includes(st.phase) ? clamp((4.5 - st.phaseT) / 0.6, 0, 1) : st.phase === 'curse' ? clamp((ABDUCT.swoon - st.phaseT) / 0.4, 0, 1) : 1));
   // armed, and Aurora gone: now to the ship
@@ -623,9 +627,9 @@ function flame(k, x, by, s, t) {
 
 // "[X] Receive the ring" over what he stands beside.
 function prompt(k, st, near) {
-  const c = k.c, x = near.at - camX(st), y = FLOOR - 290;
+  const c = k.c, x = near.at - camX(st), y = near.y ?? FLOOR - 290;
   c.save(); c.font = '700 15px "Josefin Sans", sans-serif'; c.textAlign = 'center';
-  const text = (k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase();
+  const text = (near.passive || k.inputMode === 'touch' ? '' : '[X] ') + near.label.toUpperCase();
   const w = measureRichText(c, text, { px: 15, mode: k.inputMode || 'key' }) + 32;
   c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 20, w, 30, 15); c.fill();
   c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');

@@ -158,7 +158,8 @@ export default {
   announce(e) {
     const A = TEXT.prologue.announce;
     if (e.type === 'scene') return A.scene[e.phase] || null;
-    if (e.type === 'gift') return A.gift(e.from, TEXT.prologue.gift[e.gift].gives);
+    if (e.type === 'gift') return A.gift(e.from, TEXT.prologue.gift[e.gift].gives)
+      + (e.n === GIFTS.length ? ` ${TEXT.prologue.takeHand}.` : '');
     if (e.type === 'betrothed') return A.betrothed;
     if (e.type === 'witchFlees') return A.witchFlees;
     if (e.type === 'seized') return A.seized;
@@ -196,14 +197,19 @@ function court(st, dt, input) {
   // who he is beside, and what X does there (A leaps)
   const f = FAIRIES.find((q) => !st.gifts.includes(q.gift) && handsX(p).some((hx) => Math.abs(q.x + q.hand - hx) < GRASP));
   const done = st.gifts.length === GIFTS.length;
-  st.near = f ? { verb: TEXT.prologue.receive, at: f.x, label: TEXT.prologue.gift[f.gift].receive }
-    : done && Math.abs(AZURINE_X - 60 - p.x) < REACH ? { verb: TEXT.prologue.takeHand, at: AZURINE_X, label: TEXT.prologue.takeHand }
-      : null;
-  if (!input.x || !st.near) return;
-  if (f) {
+  st.near = f ? { verb: TEXT.prologue.receive, at: f.x, label: TEXT.prologue.gift[f.gift].receive } : null;
+  // Once the gifts are gathered, walking up to Azurine starts the witch's
+  // entrance. No action press is swallowed by the scene change.
+  if (done && Math.abs(AZURINE_X - 60 - p.x) < REACH) {
+    st.betrothed = true; st.near = null;
+    st.events.push({ type: 'betrothed' }); next(st);
+    return;
+  }
+  if (input.x && f) {
     st.gifts.push(f.gift); st.score += 50;
+    st.near = null;
     st.events.push({ type: 'gift', gift: f.gift, from: f.name, x: f.x, n: st.gifts.length, t: st.t });
-  } else { st.betrothed = true; st.near = null; st.events.push({ type: 'betrothed' }); next(st); }
+  }
 }
 
 function rampart(st, dt, input) {

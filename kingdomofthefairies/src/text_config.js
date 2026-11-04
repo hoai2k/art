@@ -195,7 +195,7 @@ export const TEXT = {
     lostSub: 'Leap the fire it drops: touching it costs a lantern.',
     fairies: { flower: 'Aurora', ring: 'the fairy of the ring', crown: 'the fairy of the crown', gold: 'the fairy of gold' },
     receive: 'Receive',
-    takeHand: 'Take her hand',
+    takeHand: 'Take Princess Azurine’s hand',
     // each gift: the prompt over the fairy, what the screen reader says, the words that burst when taken
     gift: {
       flower: { receive: 'Receive the flower', gives: 'the flower', burst: 'The flower!' },

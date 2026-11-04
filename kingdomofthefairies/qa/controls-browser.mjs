@@ -82,6 +82,31 @@ try {
  await page.keyboard.press('ArrowUp');await page.waitForTimeout(100);
  assert.ok(await page.evaluate(()=>!window.__kingdomOfTheFairies.S.state.p.on),'Up also jumps');
  await page.waitForTimeout(850);
+ // The last gift must show the next goal while he is still by the fairies.
+ await page.evaluate(()=>{
+  const fillText=CanvasRenderingContext2D.prototype.fillText;
+  CanvasRenderingContext2D.prototype.fillText=function(text,...args){
+   if(text.includes('TAKE PRINCESS AZURINE')) window.azurineGuideText=text;
+   return fillText.call(this,text,...args);
+  };
+ });
+ for (let n=1;n<4;n++) {
+  await page.evaluate(async n=>{
+   const {FAIRIES,HAND,FLOOR}=await import('/src/acts/prologue.js');
+   const p=window.__kingdomOfTheFairies.S.state.p,f=FAIRIES[n];
+   Object.assign(p,{x:f.x+f.hand-HAND,vx:0,vy:0,on:true,y:FLOOR,face:1});
+  },n);
+  await page.waitForTimeout(60);await page.keyboard.press('Space');
+  await page.waitForFunction(n=>window.__kingdomOfTheFairies.S.state.gifts.length===n+1,n);
+ }
+ await page.waitForFunction(()=>window.azurineGuideText);
+ assert.match(await page.evaluate(()=>window.azurineGuideText),/TAKE PRINCESS AZURINE’S HAND/);
+ assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.phase),'court');
+ await page.screenshot({path:output+'/keyboard-azurine-guide.png'});
+ await page.keyboard.down('KeyD');
+ await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.phase==='curse');
+ await page.keyboard.up('KeyD');
+ assert.ok(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.betrothed),'approach alone triggers the witch');
  // Boat rows must stay independent of jumping; Space still leaps for pearls.
  await page.evaluate(async()=>{
   const {default:act}=await import('/src/acts/act2.js');
@@ -96,5 +121,5 @@ try {
  await page.waitForTimeout(500); await page.keyboard.press('Space');await page.waitForTimeout(80);
  assert.ok(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.ride.leapT>0));
  assert.deepEqual(errors,[]);await page.close();
- console.log('Mouse/touch Act selection in both editions, Tab/Space selection, Space receive, W/Up jumps and independent boat rows pass');
+ console.log('Mouse/touch Act selection in both editions, Tab/Space selection, Space receive, W/Up jumps, the Azurine guide/automatic entrance and independent boat rows pass');
 } finally {await browser.close();server.close();}
