@@ -19,6 +19,7 @@ import { HOUSE } from '../src/acts/act5.js';
 import { FINALE, FINALE_END } from '../src/finale.js';
 import { HOOKS } from '../src/acts/act4.js';
 import act1 from '../src/acts/act1.js';
+import { TUNING as CROSSING } from '../src/board.js';
 import { SCENES as ACT2_SCENES } from '../src/acts/act2.js';
 
 let n = 0;
@@ -41,6 +42,18 @@ test('The Crossing: no leap for the ship, and the voyage ends as the lighthouse 
   st.board.progress = 0.9999; let arrivedAt = null;
   for (let t = 0; t < 6 && st.phase !== 'party'; t += DT) { act1.step(st, DT, { beat: 0 }); if (arrivedAt == null && st.board.phase === 'arrive') arrivedAt = t; }
   assert.equal(st.phase, 'party');
+});
+
+test('The Crossing: the lighthouse means arrival within a few seconds in either wind', () => {
+  for(const dir of [-1,1])for(const x of [210,560,930]){
+    const st=act1.create({seed:3});
+    Object.assign(st.board,{progress:CROSSING.lighthouseAt});
+    Object.assign(st.board.wind,{dir,next:999});Object.assign(st.board.ship,{x,invuln:999});
+    let seconds=0;
+    while(st.phase!=='party'&&seconds<10){act1.step(st,DT,{beat:0});seconds+=DT;}
+    assert.equal(st.phase,'party');assert.ok(seconds<4.6,`wind ${dir}, x ${x}: ${seconds}s`);
+    assert.equal(st.board.ship.x,560,'moored before the deck scene');
+  }
 });
 
 test('The final tableau lays out every pearl and keepsake of the voyage', () => {

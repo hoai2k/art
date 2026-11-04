@@ -26,7 +26,8 @@ export const TUNING = {
   rock: { warn: 0.95, hitW: 44 },
   bolt: { warn: 1.35, strike: 0.32, hitW: 62, from: 0.1 },
   keepsakeAt: [0.22, 0.5, 0.78],
-  arriveTime: 2, // the ship slows to a stop (and the lighthouse with it), then land ho
+  lighthouseAt: 0.98, // reveal land only on the final approach, after the last keepsake
+  arriveTime: 0.8, // a short glide to a stop, then land ho
 };
 
 export function rng(seed) {
@@ -90,7 +91,7 @@ export function step(b, dt, input) {
     if (input.leap && s.leapT <= 0) { s.leapT = TUNING.leapTime; emit(b, 'leap'); }
   } else {
     // Arriving: the ship glides to its mooring at centre stage.
-    s.x += (560 - s.x) * Math.min(1, dt * 1.5);
+    s.x += (560 - s.x) * Math.min(1, dt * 5 / TUNING.arriveTime);
   }
   s.x = Math.max(TUNING.shipMin, Math.min(TUNING.shipMax, s.x));
   if (s.rowT < 1) s.rowT = Math.min(1, s.rowT + dt / TUNING.rowTween);
@@ -163,7 +164,7 @@ export function step(b, dt, input) {
 
   // The voyage ends a moment after arrival; Act I's ending takes over then.
   if (b.phase === 'arrive' && b.phaseT >= TUNING.arriveTime) {
-    b.phase = 'done';
+    b.phase = 'done'; s.x = 560;
     b.score += Math.round(s.hull * 50);
     emit(b, 'landed');
   }

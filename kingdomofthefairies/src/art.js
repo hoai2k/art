@@ -449,7 +449,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   function voyage(c, b, t, opts = {}) {
     backdrop(c, b, t);
     clouds(c, b, t);
-    moonboat(c, t);
+    if (!opts.hideWitch) moonboat(c, t);
     const shipRow = Math.round(rowPos(b.ship));
     const yOff = opts.rowsDrop || 0; // the back row stays up as the horizon
     for (let r = 0; r < 3; r++) {
@@ -495,10 +495,10 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     // steadily, and comes to rest as the ship does on arrival: once it
     // stops, the voyage is over.
     const p = b ? b.progress : 0;
-    if (p > 0.82) {
-      const k = Math.min(1, (p - 0.82) / 0.18);
+    if (p > TUNING.lighthouseAt) {
+      const k = Math.min(1, (p - TUNING.lighthouseAt) / (1 - TUNING.lighthouseAt));
       const u = b.phase === 'sail' ? 0 : b.phase === 'arrive' ? Math.min(1, b.phaseT / TUNING.arriveTime) : 1;
-      lighthouse(c, 1320 - k * 320 - 40 * (1 - (1 - u) ** 2), 420, t, b.phase !== 'sail');
+      lighthouse(c, 1520 - k * 520 - 40 * (1 - (1 - u) ** 2), 420, t, b.phase !== 'sail');
     }
   }
 

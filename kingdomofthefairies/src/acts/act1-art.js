@@ -35,7 +35,7 @@ export function draw(k, st, t) {
     // The wave rows sink through the floor and the deck set rises, at once
     // when the bell has rung; it drops away after the revellers are below.
     const deck = ph === 'party' ? easeInOut(pt / 0.8) : 1 - easeInOut((pt - 2.9) / 1.3);
-    k.voyage(b, { rowsDrop: deck * 360, hideShip: true });
+    k.voyage(b, { rowsDrop: deck * 360, hideShip: true, hideWitch: FILM });
     if (ph === 'turn') whiteout(k, pt);
     if (FILM) tempestSky(k, st, deck, t);
     deckScene(k, st, deck, t);
@@ -82,11 +82,11 @@ export function onEvent(k, e, st) {
 
 // ---------------------------------------------------------------- tempest
 // The film edition's deck scene is the witch's tempest, not a party: the sky
-// blackens behind the deck, she rises on her storm cloud, lightning flickers
-// and rain drives across the stage. Drawn from state and t only.
+// blackens behind the deck; lightning and rain build while the crew finish.
+// The witch herself enters only in the turn. Drawn from state and t only.
 const flash = (t) => { const f = (t * 0.9) % 1, n = Math.floor(t * 0.9); return f < 0.06 && (n * 7) % 3 !== 0 ? 1 - f / 0.06 : 0; };
 function tempestSky(k, st, deck, t) {
-  const c = k.c, rise = st.phase === 'party' ? easeOut(st.phaseT / ENDING.party) : 1;
+  const c = k.c;
   // the delivered storm sky, tiling and drifting, fades up with the deck
   if (k.img('tempest-sky')) {
     const w = 470 * 2560 / 820, o = (t * 24) % w;   // its own proportions, 470 tall
@@ -97,13 +97,6 @@ function tempestSky(k, st, deck, t) {
   c.save(); c.globalAlpha = (k.img('tempest-sky') ? 0.2 : 0.55) * deck; c.fillStyle = k.col('#1a1024'); c.fillRect(0, 0, 1280, 470); c.restore();
   const lf = flash(t);
   if (lf > 0) { c.save(); c.globalAlpha = 0.35 * lf * deck; c.fillStyle = k.col('#e9d6f2'); c.fillRect(0, 0, 1280, 470); c.restore(); }
-  // she rises on her cloud over the stern, larger as the storm grows
-  if (st.phase === 'party' && deck > 0.3) {
-    const s = 0.6 + 0.5 * rise, x = 990, y = 330 - 110 * rise;
-    c.save(); c.globalAlpha = Math.min(1, deck * 1.4);
-    if (!k.asset('witch-storm', x, y, 260 * s, 170 * s)) { c.fillStyle = k.col('#2a2430'); k.cloud?.(x, y - 40, 1.2 * s); }
-    c.restore();
-  }
 }
 function tempestRain(k, st, deck, t) {
   const c = k.c;
@@ -265,10 +258,10 @@ function figure(k, x0, y0, col, bob = 0, s = 1) {
 }
 
 // ---------------------------------------------------------------- the turn
-// The film's witch in the turn: from over the stern she swoops into the
-// middle of the stage and hovers there while the spirits rise, until the last
+// The film's witch enters from beyond the right wing and sweeps into the
+// middle of the stage, hovering while the spirits rise, until the last
 // of the crew has gone down the hatches; then she flies off.
-const WITCH_STORM = { from: { x: 990, y: 220, s: 1.1 }, mid: { x: 640, y: 300, s: 1.25 }, swoop: 0.8, leave: 0.9 };
+const WITCH_STORM = { from: { x: 1480, y: 150, s: 1.1 }, mid: { x: 640, y: 300, s: 1.25 }, swoop: 0.8, leave: 0.9 };
 // When the last reveller has dropped below (s into the turn).
 function allDown(st) {
   let last = 0;
@@ -324,7 +317,7 @@ function spirits(k, pt, t) {
 function wreck(k, st, pt, t) {
   const c = k.c, b = st.board;
   // The waterspout stands behind the ship, which is lifted and broken in front of it.
-  k.voyage(b, { hideShip: true, beforeWave: (r) => { if (r === 1) { waterspout(k, pt, t); shipWreck(k, st, pt, t); } } });
+  k.voyage(b, { hideShip: true, hideWitch: FILM, beforeWave: (r) => { if (r === 1) { waterspout(k, pt, t); shipWreck(k, st, pt, t); } } });
 }
 
 function waterspout(k, pt, t) {

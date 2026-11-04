@@ -205,6 +205,7 @@ for t in animation sailor-motion walking theme assets-loader surface-swim cavern
 node kingdomofthefairies/qa/keyboard.test.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/prompts-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/armoury-browser.mjs
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/crossing-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/controls-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/surface-swim-browser.mjs
 KOTF_EDITION=film node kingdomofthefairies/qa/film.test.mjs
