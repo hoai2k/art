@@ -20,9 +20,14 @@ done
 for d in src lib data web lab; do
   [ -d "$game/$d" ] && cp -R "$game/$d" "$out/prototype/"
 done
-# From assets/ only the manifest and the built models: the full-size delivered
+# From assets/ only the manifest and the built creature models: the full-size delivered
 # PNGs are published as their small copies in web/ (tools/build_web.py).
 mkdir -p "$out/prototype/assets"
 cp "$game/assets/manifest.json" "$out/prototype/assets/"
-[ -d "$game/assets/squirrel" ] && cp -R "$game/assets/squirrel" "$out/prototype/assets/"
+# Every built creature model: a folder holding <name>.json + <name>.bin
+# (squirrel, beaver, rabbit, swan, heron, and any creature added later).
+for d in "$game"/assets/*/; do
+  n="$(basename "$d")"
+  if [ -f "$d$n.json" ] && [ -f "$d$n.bin" ]; then cp -R "$d" "$out/prototype/assets/$n"; fi
+done
 echo "published Stratford Squirrel to $out/ ($(du -sh "$out" | cut -f1))"

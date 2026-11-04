@@ -337,9 +337,12 @@
    "name": "chickadee_call",
    "round": "S2",
    "n": 3,
-   "dur": 1.5,
+   "dur": 2,
    "level": 0.5,
-   "prompt": "A black-capped chickadee singing \"chick-a-dee-dee-dee\" nearby"
+   "prompt": "Field recording of a real black-capped chickadee, a tiny songbird, calling from a tree: a quick high thin \"chick\" then several fast buzzy bird notes, natural birdsong only, no human voice, no singing person, no speech",
+   "skip": [
+    2
+   ]
   },
   {
    "name": "discover",

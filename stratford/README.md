@@ -53,7 +53,7 @@ worked on.
 Run from the repository root before committing a change here:
 
 ```bash
-node --test --test-concurrency=1 stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs stratford/prototype/game/test/squirrel.test.mjs stratford/prototype/game/test/creatures.test.mjs stratford/prototype/game/test/audio.test.mjs stratford/prototype/game/test/town.test.mjs stratford/prototype/game/test/touch.test.mjs
+node --test --test-concurrency=1 stratford/prototype/game/test/shell.test.mjs stratford/prototype/game/test/town-data.test.mjs stratford/prototype/game/test/squirrel.test.mjs stratford/prototype/game/test/creatures.test.mjs stratford/prototype/game/test/audio.test.mjs stratford/prototype/game/test/town.test.mjs stratford/prototype/game/test/touch.test.mjs stratford/prototype/game/test/publish.test.mjs
 ```
 
 ```bash
@@ -70,7 +70,11 @@ browser check runs a smoke test on the real town and its full controller suite
 on the test yard. It also runs a phone suite (`--only mobile`): real touch
 events on an 844×390 and a 390×844 screen at DPR 3, on the test yard and a
 short real-town smoke, with screenshots in `<shots>/mobile`. The on-demand "tests: full" deploy run uses only the
-browser-free tests (shell and town data).
+browser-free tests (shell, town data and publish). `publish.test.mjs` runs
+`publish.sh` and checks the published copy holds every creature model, sound
+and image the game loads (the other tests run from `game/` and would not
+notice a file left out of the copy). Add `?sounds=1` to the page address to
+see a log of each recording as it plays, to name a sound heard in play.
 
 ## Data and credits
 

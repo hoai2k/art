@@ -226,6 +226,26 @@ export function createAudio() {
   }
   const preload = (names) => { if (ctx) for (const n of names) samples(n); };
 
+  // ?sounds=1 shows a small log of each recording as it starts (name and take), and the
+  // ambient beds playing now, so a sound heard in play can be named.
+  const soundLog = (() => {
+    try {
+      if (typeof location === 'undefined' || !/[?&]sounds=1\b/.test(location.search) || typeof document === 'undefined') return null;
+      const el = document.createElement('div');
+      el.id = 'sound-log';
+      el.style.cssText = 'position:fixed;left:8px;top:96px;z-index:9999;max-width:46vw;padding:6px 8px;border-radius:6px;'
+        + 'background:rgba(20,14,10,.72);color:#f4e8cf;font:12px/1.35 ui-monospace,monospace;pointer-events:none;white-space:pre';
+      document.addEventListener('DOMContentLoaded', () => document.body.appendChild(el));
+      if (document.body) document.body.appendChild(el);
+      const lines = []; let bedLine = '';
+      const draw = () => { el.textContent = (bedLine ? 'beds: ' + bedLine + '\n' : '') + lines.join('\n'); };
+      return {
+        play(name, take) { lines.unshift(`${new Date().toLocaleTimeString()}  ${name}  (take ${take + 1})`); lines.length = Math.min(lines.length, 10); draw(); },
+        beds(map) { bedLine = Object.entries(map).filter(([, v]) => v > 0.003).map(([k, v]) => `${k} ${v.toFixed(2)}`).join(', '); draw(); },
+      };
+    } catch { return null; }
+  })();
+
   // Play a recorded sound. Returns false when it is not available (use the synth), true when played
   // or deliberately skipped by the voice limit.
   function sample(name, { gain = 1, rate = 1, jitter = 0.05, pos = null, bus = null, loop = false } = {}) {
@@ -260,6 +280,7 @@ export function createAudio() {
     voices.set(name, (voices.get(name) || 0) + 1); lastStart.set(name, now);
     src.onended = () => { voices.set(name, Math.max(0, (voices.get(name) || 1) - 1)); try { out.disconnect(); } catch { /* gone */ } };
     src.start();
+    soundLog?.play(name, i);
     return true;
   }
 
@@ -279,6 +300,7 @@ export function createAudio() {
   function tickBeds() {
     if (!ctx || !index || !zones) return;
     const want = live() && wantAmbience ? bedTargets() : {};
+    soundLog?.beds(want);
     const names = new Set([...Object.keys(want), ...beds.keys()]);
     for (const name of names) {
       const t = want[name] || 0;
@@ -290,6 +312,7 @@ export function createAudio() {
         const src = ctx.createBufferSource(); src.buffer = c.buffers[Math.floor(Math.random() * c.buffers.length)]; src.loop = true;
         const g = ctx.createGain(); g.gain.value = 0;
         src.connect(g).connect(ambBus); src.start(0, Math.random() * src.buffer.duration);
+        soundLog?.play(name + ' [bed]', c.buffers.indexOf(src.buffer));
         bed = { src, g, quiet: 0 }; beds.set(name, bed);
       }
       // slow fades: about 3 s to follow a change (under water: quicker)
