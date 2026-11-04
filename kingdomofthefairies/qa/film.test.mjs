@@ -209,6 +209,8 @@ test('prologue: bound, he struggles left and right before Aurora frees him; his 
   assert.equal(s2.near, null);
   assert.ok(ARMS.every((a, i) => i === 0 || a.x < ARMS[i - 1].x) && ARMS[0].x < st.p.x, 'his arms lie to the left, in the order he reaches them');
   run(prologue, st, PRO_T.free + 0.1, () => ({ beat: 0 }));
+  assert.equal(st.phase, 'summon');
+  run(prologue, st, PRO_T.summon + 0.1, () => ({ beat: 0 }));
   assert.equal(st.phase, 'armoury');
   st.arms = ['helmet', 'shield']; Object.assign(st.p, { x: ARMS[2].x });
   prologue.step(st, DT, { x: true, xKey: true, beat: 0 });
@@ -246,6 +248,25 @@ test('Act II (touch): a tap on a sleeper swims him there and wakes him; a tap el
   act2.step(st, 1 / 60, { moveX: 1, beat: 0 });
   assert.equal(st.tapTarget, null);
   assert.equal(act2.touchTap(st), 'x', 'a tap is the action in the dive');
+});
+
+test('prologue: Aurora introduces herself, then summons the arms before collection opens', () => {
+  const st = prologue.create({ from: { scene: 2 } });
+  st.phase = 'free'; st.phaseT = 0; st.events.length = 0;
+  assert.match(prologue.announce({type:'scene',phase:'free'}), /Aurora, the princess’ fairy godmother/);
+  const startX=st.p.x, landed=[];
+  const push={moveX:-1,a:true,aHeld:true,x:true,xKey:true};
+  for(let t=0;t<PRO_T.free-0.1;t+=DT) prologue.step(st,DT,push);
+  assert.equal(st.phase,'free');assert.equal(st.p.x,startX);assert.deepEqual(st.arms,[]);assert.equal(st.near,null);
+  while(st.phase==='free')prologue.step(st,DT,push);
+  assert.equal(st.phase,'summon');st.events.length=0;
+  while(st.phase==='summon') {
+    prologue.step(st,DT,push);landed.push(...st.events.filter(e=>e.type==='armLanded'));st.events.length=0;
+    assert.equal(st.p.x,startX);assert.deepEqual(st.arms,[]);assert.equal(st.near,null);
+  }
+  assert.deepEqual(landed.map(e=>e.arm),ARMS.map(a=>a.id));
+  assert.equal(st.phase,'armoury');
+  prologue.step(st,DT,{moveX:-1});assert.ok(st.p.x<startX,'movement opens after all three land');
 });
 
 test('prologue: a gift is taken with either hand, not by walking into her', () => {

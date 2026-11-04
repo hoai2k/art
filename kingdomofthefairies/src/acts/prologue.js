@@ -19,8 +19,8 @@
 import { clamp } from './shared.js';
 import { TEXT } from '../text_config.js';
 import * as art from './prologue-art.js';
-import { GIFT_SHOW } from './prologue-timing.js';
-export { GIFT_SHOW } from './prologue-timing.js';
+import { GIFT_SHOW, ARMING_SHOW } from './prologue-timing.js';
+export { GIFT_SHOW, ARMING_SHOW } from './prologue-timing.js';
 
 export const BEAT_S = 60 / 76.5;
 export const FLOOR = 600;                       // the court's floor
@@ -55,21 +55,23 @@ export const LANTERNS = 3;
 export const OFFSTAGE_X = 1180;
 export const CHARIOT_Y = 165;
 // The armoury: he is bound at the right; Aurora comes on from the stairs at
-// the left, and his arms lie between, in the order he reaches them.
+// the left, then summons his arms between them, in the order he reaches them.
 export const BOUND_X = 1010;
 export const ARMS = [{ id: 'helmet', x: 820 }, { id: 'shield', x: 640 }, { id: 'sword', x: 460 }];
 export const AURORA = { from: -110, at: 250, to: -140 };   // her glide on, where she casts, and off
 export const EXIT_X = [50, 1180];   // the ways out of the armoury, once armed: up the stairs at the left, or off at the right
 export const WIGGLES = 4;     // pulls against the cords: any button or push of the stick
 // bind: the witch's binding; free: Aurora glides on (on) and the witch flees
-// (flee to fled), Aurora casts (cast: the cords break) and the scene moves on; knighted: the last badge settles
+// (flee to fled), Aurora casts (cast: the cords break), and her caption fades.
+// summon: the arms fly to the floor before collection opens; knighted: the last badge settles
 // (badge), he is armoured at `armed` and kneels while she glides off (from
 // `leave`, taking `off`), and stands again at `risen`.
 export const T = {
-  defeat: 1.4, curse: 6.6, escape: 1.1, bind: 1.8, strained: 0.5, free: 2.3, on: 1.2, cast: 1.9, flee: 0.35, fled: 1.25,
+  defeat: 1.4, curse: 6.6, escape: 1.1, bind: 1.8, strained: 0.5,
+  free: ARMING_SHOW.captionEnd + ARMING_SHOW.pause, summon: ARMING_SHOW.flight + 2 * ARMING_SHOW.stagger + ARMING_SHOW.settle, on: 1.2, cast: 1.9, flee: 0.35, fled: 1.25,
   badge: 1.75, armed: 3.85, leave: 4.5, off: 1.5, risen: 6.1, iris: 1.3, fade: 0.6,
 };
-const ORDER = ['court', 'curse', 'rampart', 'escape', 'bind', 'free', 'armoury', 'knighted', 'iris'];
+const ORDER = ['court', 'curse', 'rampart', 'escape', 'bind', 'free', 'summon', 'armoury', 'knighted', 'iris'];
 // The curse, then the abduction (curse phase, seconds): Azurine swoons, the
 // witch takes flight and her demons run on, they seize the princess and fly
 // off with her into the night.
@@ -146,8 +148,16 @@ export default {
       const was = st.phaseT - dt;
       if (was < T.flee && st.phaseT >= T.flee) st.events.push({ type: 'witchFlees', sound: 'witchBreath', gain: 0.7 });
       if (was < T.cast && st.phaseT >= T.cast) st.events.push({ type: 'unbound', x: st.p.x, sound: 'keepsake', gain: 0.8 });
-      walk(st, dt, st.phaseT >= T.cast ? input.moveX || 0 : 0, input, { floor: ARM_FLOOR, x1: 1200 });
+      walk(st, dt, 0, {}, { floor: ARM_FLOOR, x1: 1200 });
       if (st.phaseT >= T.free) next(st);
+    }
+    else if (ph === 'summon') {
+      walk(st, dt, 0, {}, { floor: ARM_FLOOR, x1: 1200 });
+      ARMS.forEach((arm, i) => {
+        const landAt = ARMING_SHOW.flight + i * ARMING_SHOW.stagger;
+        if (st.phaseT - dt < landAt && st.phaseT >= landAt) st.events.push({ type: 'armLanded', arm: arm.id, x: arm.x, sound: 'thud', gain: 0.22 });
+      });
+      if (st.phaseT >= T.summon) next(st);
     }
     else if (ph === 'armoury') armoury(st, dt, input);
     else if (ph === 'knighted') knighted(st, dt, input);

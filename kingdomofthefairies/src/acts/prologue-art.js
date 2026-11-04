@@ -4,7 +4,7 @@ import { walkPose } from '../walking.js';
 // state and t.
 import { FLOOR, ARM_FLOOR, FAIRIES, AZURINE_X, RAMPART, rampartFloor, ARMS, AURORA, ABDUCT, WIGGLES, T, sceneOf } from './prologue.js';
 import { card } from './tableau.js';
-import { GIFT_SHOW } from './prologue-timing.js';
+import { GIFT_SHOW, ARMING_SHOW } from './prologue-timing.js';
 import { TEXT } from '../text_config.js';
 import { clamp, easeOut, easeInOut, lerp } from './shared.js';
 import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
@@ -57,7 +57,7 @@ export function draw(k, st, t) {
     k.flat ? k.flat(guide) : guide();
   }
   const cap = CAPTIONS[st.phase];
-  if (cap) card(k, cap[0], cap[1], Math.min(1, clamp((st.phaseT - 0.3) / 0.5, 0, 1), ['court', 'rampart', 'armoury', 'bind'].includes(st.phase) ? clamp((4.5 - st.phaseT) / 0.6, 0, 1) : st.phase === 'curse' ? clamp((ABDUCT.swoon - st.phaseT) / 0.4, 0, 1) : 1));
+  if (cap) card(k, cap[0], cap[1], Math.min(1, clamp((st.phaseT - (st.phase === 'armoury' ? 0 : 0.3)) / 0.5, 0, 1), ['court', 'rampart', 'armoury', 'bind', 'free'].includes(st.phase) ? clamp(((st.phase === 'free' ? ARMING_SHOW.captionEnd : 4.5) - st.phaseT) / 0.6, 0, 1) : st.phase === 'curse' ? clamp((ABDUCT.swoon - st.phaseT) / 0.4, 0, 1) : 1), st.phase === 'armoury' ? { y: 92 } : {});
   // armed, and Aurora gone: now to the ship
   if (st.phase === 'knighted' && st.phaseT >= T.risen) card(k, TEXT.prologue.captions.toShip[0], TEXT.prologue.captions.toShip[1], Math.min(1, clamp((st.phaseT - T.risen) / 0.5, 0, 1), clamp((T.risen + 4 - st.phaseT) / 0.6, 0, 1)));
   k.flat ? k.flat(() => skipHint(k, st)) : skipHint(k, st);
@@ -100,6 +100,7 @@ export function onEvent(k, e, st) {
     k.burst(e.x, ARM_FLOOR + 2 - size / 2, '#fff2b0', 20, 'sparkle');
     show(st, 'arm', e.arm, { x: e.x, by: ARM_FLOOR + 2, size }, e.t ?? st.t, (e.n ?? st.arms.length) - 1);
   }
+  if (e.type === 'armLanded') k.burst(e.x, ARM_FLOOR - 35, '#fff2b0', 12, 'sparkle');
   if (e.type === 'armed') {
     const x = st?.p.x ?? e.x;
     k.flash(0.9); k.shake(0.25);
@@ -288,8 +289,9 @@ function armouryScene(k, st, t) {
   const ph = st.phase;
   witchOnCloud(k, st, t);
   aurora(k, st, t);
-  // the arms on the flagstones, in his way as he follows her
-  for (const a of ARMS) {
+  // They appear only as Aurora sends them across the room, then stay where they land.
+  if (ph === 'summon') summonArms(k, st, t);
+  for (const a of ['armoury', 'knighted', 'iris'].includes(ph) ? ARMS : []) {
     if (st.arms.includes(a.id)) continue;
     c.save(); c.globalAlpha = 0.35 + 0.15 * Math.sin(t * 3 + a.x); c.fillStyle = k.col('#fff2b0'); k.circle(a.x, ARM_FLOOR - 40, 46); c.restore();
     arm(k, a.id, a.x, ARM_FLOOR + 2, t);
@@ -352,7 +354,8 @@ function aurora(k, st, t) {
       u = clamp((st.phaseT - T.leave) / T.off, 0, 1);
       x = AURORA.at + (AURORA.to - AURORA.at) * easeInOut(u); face = 1; gliding = true;
     }
-  } else if (ph !== 'armoury') return;
+  } else if (ph === 'summon') id = 'aurora-point';
+  else if (ph !== 'armoury') return;
   if (gliding && k.img('aurora-glide-a')) id = 'aurora-glide-' + (Math.floor(t * 5) % 2 ? 'b' : 'a');
   const lift = 14 + Math.sin(t * 2.4) * 5;
   if (gliding) {
@@ -382,6 +385,23 @@ function aurora(k, st, t) {
     c.restore();
   }
   figure(k, id, x, ARM_FLOOR + 4 - lift, t, 1, face);
+}
+
+// The three arms leave Aurora's casting hand in sequence and arc to the floor.
+function summonArms(k, st, t) {
+  const c = k.c, lift = 14 + Math.sin(t * 2.4) * 5;
+  ARMS.forEach((a, i) => {
+    const age = st.phaseT - i * ARMING_SHOW.stagger;
+    if (age < 0) return;
+    const u = clamp(age / ARMING_SHOW.flight, 0, 1), f = easeInOut(u);
+    const x = lerp(AURORA.at + 52, a.x, f);
+    const by = lerp(ARM_FLOOR - 150 - lift, ARM_FLOOR + 2, f) - Math.sin(Math.PI * u) * 110;
+    c.save();
+    c.globalAlpha = 0.5 * (1 - u); c.fillStyle = k.col('#fff2b0');
+    for (let j = 0; j < 6; j++) k.circle(x - 7 * j, by - 40 + Math.sin(t * 10 + j) * 9, 3 * (1 - j / 7));
+    c.globalAlpha = 1; arm(k, a.id, x, by, t);
+    c.restore();
+  });
 }
 
 // His arms as badges above his head, each where its show settled; drawn
