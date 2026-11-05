@@ -216,12 +216,23 @@ export const weddingScale = x => 1-WEDDING.shrink*clamp((WEDDING.y-weddingFloor(
 // this act's), Aurora's stars, the sword, Neptune's seal and Aurora's lamp,
 // and every gift the Water Fairy below it has given.
 export const TREASURE = { x: 980, y: 348 };
-// The heap's slots, bottom up: a broad base narrowing to a column of five
-// and six laid like bricks, so it climbs (slowly) off the top of the stage.
-export function pileSlot(i) {
+// The broad pearl backdrop retains its own layout, independent of presents.
+export function pearlPileSlot(i) {
   for (let r = 0, n = 0; ; r++) {
     const w = r < 3 ? 9 - r : r % 2 ? 5 : 6;
     if (i < n + w) { const c = i - n; return { x: TREASURE.x + (c - (w - 1) / 2) * 24 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 19 }; }
+    n += w;
+  }
+}
+// Five presents across, narrowing to four higher up. All twenty gifts reach
+// the top of roughly 35–40 pearls, with or without Aurora's three stars.
+export function pileSlot(i) {
+  for (let r = 0, n = 0; ; r++) {
+    const w = Math.max(3, 5 - Math.floor(r / 3));
+    if (i < n + w) {
+      const c = i - n;
+      return { x: TREASURE.x + (c - (w - 1) / 2) * 24 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 14 };
+    }
     n += w;
   }
 }

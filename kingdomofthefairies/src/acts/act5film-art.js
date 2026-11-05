@@ -8,7 +8,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nextWeddingGift, nearGiftFairy, canReceiveGift, giftPromptAlpha } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, pearlPileSlot, GIFTING, nextWeddingGift, nearGiftFairy, canReceiveGift, giftPromptAlpha } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -856,7 +856,7 @@ function treasurePile(k, st, t) {
   const c = k.c, T = treasures(st), { x, y } = TREASURE;
   c.save();
   for (let i = 0; i < T.pearls; i++) {
-    const p = pileSlot(i);
+    const p = pearlPileSlot(i);
     if (p.y < -30) break;
     k.asset('pearl', x + (p.x - x) * 0.7, y + (p.y - y) * 0.7 + 8, 17, 17);
   }
