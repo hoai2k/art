@@ -227,7 +227,7 @@ export function pileSlot(i) {
 }
 // An easter egg: beside the Water Fairy (the far-right figure) X takes one
 // gift after another from her; each flies up onto the heap.
-export const GIFTING = { x: 980, near: 60, flight: GIFT_SHOW.settle, hand: { x: 948, y: 470 },
+export const GIFTING = { x: 980, near: 60, flight: GIFT_SHOW.settle, promptDelay: 0.5, promptFade: 0.3, hand: { x: 948, y: 470 },
   kinds: [
     'wedding-gift-golden-goblet',
     'wedding-gift-storybook',
@@ -252,6 +252,11 @@ export const GIFTING = { x: 980, near: 60, flight: GIFT_SHOW.settle, hand: { x: 
   ] };
 export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
 export const canReceiveGift = st => nearGiftFairy(st) && !(st.giftsFlying || []).some(g => g.t < GIFT_SHOW.hold);
+// The action unlocks during the trip, but its invitation returns after landing.
+export const giftPromptAlpha = st => {
+  if (st.giftsFlying?.length || st.giftPromptT === null) return 0;
+  return st.giftPromptT == null ? 1 : clamp((st.giftPromptT - GIFTING.promptDelay) / GIFTING.promptFade, 0, 1);
+};
 export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
 // What cannot be missed on the way here (the betrothal gifts, the sword,
 // Neptune's seal) is always laid out, even with nothing recorded (a scene
@@ -887,10 +892,12 @@ export const creditsDone = st => st?.creditsT != null && st.creditsT >= FINALE_E
 const movingDirection=input=>Math.abs(input.moveX||0)>.15||Math.abs(input.moveY||0)>.15||input.up||input.down||input.left||input.right;
 function stepApotheosis(st,dt,input){
   const w=st.w;
+  if (st.giftPromptT != null) st.giftPromptT += dt;
   // the Water Fairy's gifts in flight to the heap
-  st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
+  st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftPromptT=0;st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
   if(input.x&&canReceiveGift(st)){
     const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[(n-1)%GIFTING.kinds.length];
+    st.giftPromptT=null;
     st.giftsFlying.push({kind,t:0,slot:pileCount(st)+st.giftsFlying.length});
     st.events.push({type:'giftGiven',n,kind});
   }

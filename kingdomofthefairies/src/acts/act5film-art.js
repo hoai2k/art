@@ -8,7 +8,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, canReceiveGift, pileCount } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, canReceiveGift, giftPromptAlpha, pileCount } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -437,13 +437,13 @@ function azurineOnFoot(k, a, y, h = 168) {
 // A short instruction on a plum label near the top of the stage.
 // A short instruction on a plum label, drawn over the stage frame (so the
 // valance never clips it) low on the stage unless placed.
-function hint(k, text, y = 630) {
+function hint(k, text, y = 630, alpha = 1) {
   const draw = () => {
     const c = k.c;
     c.save(); c.textAlign = 'center'; c.font = '700 18px "Josefin Sans", sans-serif';
     const w = measureRichText(c, text, { px: 18, mode: k.inputMode || 'key' }) + 60;
-    c.globalAlpha = 0.88; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(640 - w / 2, y - 24, w, 36, 18); c.fill();
-    c.globalAlpha = 1; c.fillStyle = k.col('#f3c6dc');
+    c.globalAlpha = 0.88 * alpha; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(640 - w / 2, y - 24, w, 36, 18); c.fill();
+    c.globalAlpha = alpha; c.fillStyle = k.col('#f3c6dc');
     richText(c, text, 640, y, { px: 18, mode: k.inputMode || 'key', col: k.col });
     c.restore();
   };
@@ -836,7 +836,8 @@ function apotheosis(k, st, t) {
   princeOnFoot(k, w, 166, true);
   c.restore();
   if (nearGiftFairy(st)) {
-    if (canReceiveGift(st)) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey);
+    const alpha = giftPromptAlpha(st);
+    if (canReceiveGift(st) && alpha > 0) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey, 630, alpha);
   }
   else if (!st.flight && st.creditsT == null) hint(k, TEXT.burning.jumpHint);
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);

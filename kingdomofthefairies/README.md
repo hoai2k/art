@@ -70,6 +70,7 @@ acts. The first four keep their stage machinery and rules, recast:
    twenty presents. Each grows into a glowing, named display like the opening
    court gifts, then shrinks into the treasure pile. The next gift is available
    once the large display finishes and the previous gift starts moving to the pile.
+   The receive prompt waits half a second after landing, then fades back in.
    Every scene is played: nothing is timed to the beat or shown as a still.
 
 The final ascent slowly lifts the couple in the pose they jumped in and holds

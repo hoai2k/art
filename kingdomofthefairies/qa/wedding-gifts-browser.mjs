@@ -30,9 +30,9 @@ try {
       canvas.style.cssText = 'position:fixed;inset:0;z-index:99999;width:1280px;height:720px'; document.body.append(canvas);
       const renderer = createRenderer(canvas, q.assets), draws = [], asset = renderer.kit.asset;
       renderer.kit.asset = (id, ...args) => { if (id.startsWith('wedding-gift-')) draws.push({ id, width: args[2] }); return asset(id, ...args); };
-      const received = [], titles = [];
+      const received = [], titles = [], promptDraws = [];
       const context = canvas.getContext('2d'), fillText = context.fillText.bind(context);
-      context.fillText = (text, ...args) => { titles.push(text); return fillText(text, ...args); };
+      context.fillText = (text, ...args) => { titles.push(text); if (/accept the gift/i.test(text)) promptDraws.push(context.globalAlpha); return fillText(text, ...args); };
       for (let i = 0; i < 20; i++) {
         actBurning.step(st, 1/60, { x: true });
         received.push(st.giftsFlying.at(-1).kind);
@@ -46,7 +46,22 @@ try {
       window.giftReview = { st, renderer, act: actBurning, draws };
       const render = tinted => { draws.length = 0; renderer.render({ act: actBurning, state: st, t: 10, curtain: 1, film: 'off', tinted }); return draws.slice(); };
       window.giftReview.render = render;
-      return { absent, received, titles, landed: st.giftsLanded, repeat: st.giftsFlying[0].kind, draws: render(true) };
+      const sample = { ...st, w: { ...st.w }, az: { ...st.az }, giftsFlying: st.giftsFlying.map(g => ({ ...g })), giftKinds: [...st.giftKinds], events: [] }, prompt = [];
+      const samplePrompt = () => {
+        promptDraws.length = 0;
+        renderer.render({ act: actBurning, state: sample, t: 10, curtain: 1, film: 'off', tinted: true });
+        prompt.push(promptDraws.slice());
+      };
+      samplePrompt();
+      while (sample.giftsFlying.length) actBurning.step(sample, 1/60, {});
+      samplePrompt();
+      for (let j = 0; j < 27; j++) actBurning.step(sample, 1/60, {});
+      samplePrompt();
+      for (let j = 0; j < 12; j++) actBurning.step(sample, 1/60, {});
+      samplePrompt();
+      for (let j = 0; j < 18; j++) actBurning.step(sample, 1/60, {});
+      samplePrompt();
+      return { absent, received, titles, prompt, landed: st.giftsLanded, repeat: st.giftsFlying[0].kind, draws: render(true) };
     }, build);
     assert.deepEqual(result.absent, []);
     assert.equal(new Set(result.received).size, 20);
@@ -54,6 +69,9 @@ try {
       const title = id.replace('wedding-gift-', '').replaceAll('-', ' ');
       assert.ok(result.titles.some(t => t.toLowerCase() === title), `visible title for ${id}`);
     }
+    assert.deepEqual(result.prompt.slice(0, 3), [[], [], []], 'prompt hidden during reveal, at landing and for the following half-second');
+    assert.ok(result.prompt[3].some(alpha => alpha > 0 && alpha < 1), 'prompt fades in after the delay');
+    assert.ok(result.prompt[4].some(alpha => alpha === 1), 'prompt reaches full opacity');
     assert.equal(result.landed, 20);
     assert.equal(result.repeat, result.received[0]);
     assert.ok(result.draws.some(d => d.width === 250), 'handover is large enough to identify');
