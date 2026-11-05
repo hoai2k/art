@@ -56,10 +56,11 @@ is produced for this preview; use the default SDK build for submission.
 
 - Locks the film edition and hand-tinted cast, including saved settings and
   query overrides. Hides the cast-look selector and disables the unlock editor.
-- Packages only recorded film/colorized act artwork plus shared shell art,
-  effects, and period music. Original slot metadata is retained for fitting,
+- Retains the complete film/shared asset manifest, effects and period music.
+  Simulated playthroughs schedule downloads; they never decide which assets
+  are removed from the package. Original slot metadata is retained for fitting,
   with tinted images aliased to base IDs for cast and walking resolution.
-  No Widow's Bay song, band, legacy title, untinted character alternatives,
+  No Widow's Bay song, band, legacy title, paired untinted character alternatives,
   workbench, design files, or macOS metadata are included in the ZIP.
 - Downloads the title and selected act's artwork only. Later acts load on
   demand, with the existing loading/error card protecting entry into play.

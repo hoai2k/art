@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
+import { themeManifest } from '../../src/theme.js';
 const root = fileURLToPath(new URL('../../dist/crazygames/', import.meta.url));
 const list = async dir => (await Promise.all((await fs.readdir(dir, { withFileTypes: true })).filter(e => !e.name.startsWith('._') && e.name !== '.DS_Store').map(e => e.isDirectory() ? list(path.join(dir, e.name)) : [path.join(dir, e.name)]))).flat();
 const files = await list(root), names = new Set(files.map(f => path.relative(root, f)));
@@ -12,6 +13,15 @@ const info = JSON.parse(await fs.readFile(root + 'release-info.json'));
 check('250 MB / 1500 files', () => { assert.ok(info.bytes < 250e6); assert.ok(names.size <= 1500); });
 check('50 MB conservative initial budget', () => assert.ok(info.conservativeInitialBytes < 50e6));
 const manifest = JSON.parse(await fs.readFile(root + 'assets/manifest.json'));
+const sourceManifest = themeManifest(JSON.parse(await fs.readFile(new URL('../../assets/manifest.json', import.meta.url))), 'film');
+check('Complete film/shared manifest retained, independently of sampled act lists', () => {
+  for (const [id, slot] of Object.entries(sourceManifest.slots)) {
+    if (id === 'playbill') continue; // The other edition's title; film uses playbill-film.
+    assert.ok(manifest.slots[id], `Asset was culled: ${id}`);
+    const tinted = sourceManifest.slots[id + '-tinted'];
+    assert.equal(manifest.slots[id].file, tinted?.status === 'delivered' ? tinted.file : slot.file, `Unexpected asset mapping: ${id}`);
+  }
+});
 check('Manifest asset paths exist with exact case', () => {
   for (const slot of [...Object.values(manifest.slots), ...Object.values(manifest.anims || {}), ...Object.values(manifest.sfx || {}), ...Object.values(manifest.audio.period)]) {
     if (slot.status !== 'delivered') continue;

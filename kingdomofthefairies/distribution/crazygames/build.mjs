@@ -58,10 +58,11 @@ try {
   // to its tinted file. No untinted alternative is shipped for those sprites.
   const manifest = themeManifest(JSON.parse(await read('assets/manifest.json')), 'film');
   const shell = ['logo', 'playbill-film', 'rotate-card', 'touch-stick-base', 'touch-stick-knob', 'touch-button', 'touch-pause', 'proscenium', 'curtain-panel', 'footlight', 'sky-backdrop', 'moon-face', 'cloud', 'waves-back', 'waves-mid', 'waves-front'];
-  const actIds = Object.values(ACT_ART.film).flatMap((act) => act.tinted);
-  const keep = new Set([...shell, ...actIds]);
-  for (const id of [...keep]) if (id.endsWith('-tinted')) keep.add(id.slice(0, -7));
-  manifest.slots = Object.fromEntries(Object.entries(manifest.slots).filter(([id]) => keep.has(id) && !RETIRED_IDLE.test(id)));
+  // ACT_ART schedules downloads; sampled playthroughs cannot prove that an
+  // unobserved sprite is unused. Retain the full film/shared manifest, with
+  // only the established retired frames and the other edition's playbill out.
+  // themeManifest already excludes the legacy band and song.
+  manifest.slots = Object.fromEntries(Object.entries(manifest.slots).filter(([id]) => id !== 'playbill' && !RETIRED_IDLE.test(id)));
   for (const [id, slot] of Object.entries(manifest.slots)) {
     const tinted = manifest.slots[id + '-tinted'];
     if (tinted?.status === 'delivered') slot.file = tinted.file;
