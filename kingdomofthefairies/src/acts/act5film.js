@@ -221,7 +221,7 @@ export const TREASURE = { x: 980, y: 348 };
 export function pileSlot(i) {
   for (let r = 0, n = 0; ; r++) {
     const w = r < 3 ? 9 - r : r % 2 ? 5 : 6;
-    if (i < n + w) { const c = i - n; return { x: TREASURE.x + (c - (w - 1) / 2) * 14 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 10.5 }; }
+    if (i < n + w) { const c = i - n; return { x: TREASURE.x + (c - (w - 1) / 2) * 24 + ((i * 7) % 5) - 2, y: TREASURE.y - r * 19 }; }
     n += w;
   }
 }
@@ -251,10 +251,11 @@ export const GIFTING = { x: 980, near: 60, flight: GIFT_SHOW.settle, promptDelay
     'wedding-gift-golden-key'
   ] };
 export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
-export const canReceiveGift = st => nearGiftFairy(st) && !(st.giftsFlying || []).some(g => g.t < GIFT_SHOW.hold);
+export const nextWeddingGift = st => GIFTING.kinds[st.giftN || 0];
+export const canReceiveGift = st => !!nextWeddingGift(st) && nearGiftFairy(st) && !(st.giftsFlying || []).some(g => g.t < GIFT_SHOW.hold);
 // The action unlocks during the trip, but its invitation returns after landing.
 export const giftPromptAlpha = st => {
-  if (st.giftsFlying?.length || st.giftPromptT === null) return 0;
+  if (!nextWeddingGift(st) || st.giftsFlying?.length || st.giftPromptT === null) return 0;
   return st.giftPromptT == null ? 1 : clamp((st.giftPromptT - GIFTING.promptDelay) / GIFTING.promptFade, 0, 1);
 };
 export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
@@ -896,9 +897,9 @@ function stepApotheosis(st,dt,input){
   // the Water Fairy's gifts in flight to the heap
   st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftPromptT=0;st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
   if(input.x&&canReceiveGift(st)){
-    const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[(n-1)%GIFTING.kinds.length];
+    const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[n-1];
     st.giftPromptT=null;
-    st.giftsFlying.push({kind,t:0,slot:pileCount(st)+st.giftsFlying.length});
+    st.giftsFlying.push({kind,t:0,slot:treasures(st).stars+(st.giftsLanded||0)+st.giftsFlying.length});
     st.events.push({type:'giftGiven',n,kind});
   }
   if(st.flight){

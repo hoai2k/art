@@ -1,3 +1,4 @@
+import { DEBUG } from './debug.js';
 import { STORAGE_PREFIX } from './theme.js';
 // Progress across acts, in its own save slot. Keepsakes are carried forward:
 // each act starts with the merged results of the acts before it.
@@ -8,6 +9,7 @@ export function loadSave() {
   return { v: 1, unlocked: 1, results: {}, best: {} };
 }
 export function writeSave(save) {
+  if (DEBUG) return;
   try { localStorage.setItem(KEY, JSON.stringify(save)); } catch { /* ignore */ }
 }
 

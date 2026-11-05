@@ -506,7 +506,7 @@ export const TEXT = {
   // ---------------------------------------------------------------------------
   burning: {
     giftTitles: {
-      'wedding-gift-golden-goblet': 'Golden goblet',
+      'wedding-gift-golden-goblet': 'Goblet',
       'wedding-gift-storybook': 'Storybook',
       'wedding-gift-hand-mirror': 'Hand mirror',
       'wedding-gift-jewel-casket': 'Jewel casket',
@@ -551,8 +551,8 @@ export const TEXT = {
     duelHint: '[A] leaps her fire · [X] strikes with the sword',
     barrelHint: 'She still threatens you! Push her barrel over the edge',
     weddingHint: 'Dance with the guests · walk up the stairs and through the door',
-    giftTouch: 'Tap Gift to accept the gift',
-    giftKey: '[X] Accept the gift',
+    giftReceive: (title) => `Receive the ${title.toLowerCase()}`,
+    giftExclaim: (title) => `The ${title.toLowerCase()}!`,
     jumpHint: '[A] Jump into the light beneath Aurora',
     returnTouch: 'Tap Title to return to the title screen',
     returnKey: 'Press [X] to return to the title screen',
@@ -589,7 +589,7 @@ export const TEXT = {
       demonArrives: 'A demon runs in behind you and sets the doorway alight.',
       leaveToTitle: 'Returning to the title screen.',
       giftFirst: 'The Water Fairy gives you a gift.',
-      gift: (n, title) => `The Water Fairy gives you a gift: ${title}. Gift ${n}.`,
+      gift: (n, title) => `The ${title.toLowerCase()}! Gift ${n}.`,
       finale: 'The end. Credits: principal game designer Hoai Nguyen; after Le Royaume des fées by Georges Méliès. Thank you for playing.',
     },
   },

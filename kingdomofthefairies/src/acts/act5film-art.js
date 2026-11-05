@@ -8,7 +8,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, canReceiveGift, giftPromptAlpha, pileCount } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nextWeddingGift, nearGiftFairy, canReceiveGift, giftPromptAlpha } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -437,14 +437,14 @@ function azurineOnFoot(k, a, y, h = 168) {
 // A short instruction on a plum label near the top of the stage.
 // A short instruction on a plum label, drawn over the stage frame (so the
 // valance never clips it) low on the stage unless placed.
-function hint(k, text, y = 630, alpha = 1) {
+function hint(k, text, y = 630, alpha = 1, x = 640) {
   const draw = () => {
     const c = k.c;
     c.save(); c.textAlign = 'center'; c.font = '700 18px "Josefin Sans", sans-serif';
     const w = measureRichText(c, text, { px: 18, mode: k.inputMode || 'key' }) + 60;
-    c.globalAlpha = 0.88 * alpha; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(640 - w / 2, y - 24, w, 36, 18); c.fill();
+    c.globalAlpha = 0.88 * alpha; c.fillStyle = k.col('#2a1424'); c.beginPath(); c.roundRect(x - w / 2, y - 24, w, 36, 18); c.fill();
     c.globalAlpha = alpha; c.fillStyle = k.col('#f3c6dc');
-    richText(c, text, 640, y, { px: 18, mode: k.inputMode || 'key', col: k.col });
+    richText(c, text, x, y, { px: 18, mode: k.inputMode || 'key', col: k.col });
     c.restore();
   };
   if (k.over) k.over(draw); else draw();
@@ -835,9 +835,12 @@ function apotheosis(k, st, t) {
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (nearGiftFairy(st)) {
+  if (nearGiftFairy(st) && nextWeddingGift(st)) {
     const alpha = giftPromptAlpha(st);
-    if (canReceiveGift(st) && alpha > 0) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey, 630, alpha);
+    if (canReceiveGift(st) && alpha > 0) {
+      const label = TEXT.burning.giftReceive(TEXT.burning.giftTitles[nextWeddingGift(st)]);
+      hint(k, (k.inputMode === 'touch' ? '' : '[X] ') + label, 360, alpha, GIFTING.x);
+    }
   }
   else if (!st.flight && st.creditsT == null) hint(k, TEXT.burning.jumpHint);
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
@@ -847,34 +850,25 @@ function apotheosis(k, st, t) {
   if (endCard > 0) card(k, TEXT.burning.endCard.title, TEXT.burning.endCard.sub, endCard);
 }
 
-// The voyage's treasures on the top step at the right: a heap of the pearls
-// and of the Water Fairy's gifts (pileSlot, growing up off the stage), the
-// sword standing in it, the lamp and the seal at its foot, Aurora's stars
-// over its top; and the gifts still flying up to it.
+// Pearls form the back of the heap; all presents and Aurora's stars sit
+// in front. Pearl totals never push the object positions up the stairs.
 function treasurePile(k, st, t) {
-  const c = k.c, T = treasures(st), { x, y } = TREASURE, kinds = st.giftKinds || [];
-  const n = pileCount(st), pearls = n - kinds.length;
+  const c = k.c, T = treasures(st), { x, y } = TREASURE;
   c.save();
-  for (let i = 0; i < n; i++) {
-    const p = pileSlot(i); if (p.y < -30) break;
-    const size = i < pearls ? 17 : 30;
-    k.asset(i < pearls ? 'pearl' : kinds[i - pearls], p.x, p.y + 8, size, size);
+  for (let i = 0; i < T.pearls; i++) {
+    const p = pileSlot(i);
+    if (p.y < -30) break;
+    k.asset('pearl', x + (p.x - x) * 0.7, y + (p.y - y) * 0.7 + 8, 17, 17);
   }
+  const objects = [...Array(T.stars).fill('aurora-star'), ...(st.giftKinds || [])];
+  objects.forEach((id, i) => {
+    const p = pileSlot(i);
+    k.asset(id, p.x, p.y + 8, 30, 30);
+  });
   if (T.sword) { c.save(); c.translate(x + 26, y - 12); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 32, 64, 64); c.restore(); }
   if (T.lamp) k.asset('keepsake-lamp', x - 68, y + 8, 44, 44);
-  // the betrothal gifts along the front of the heap
   T.gifts.forEach((g, i) => k.asset('gift-' + g, x + (i - (T.gifts.length - 1) / 2) * 26, y + 14, 30, 30));
   if (T.seal) k.asset('keepsake-seal', x + 60, y + 8, 40, 40);
-  if (T.stars) {
-    const top = n ? pileSlot(n - 1).y : y;
-    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 8;
-    for (let i = 0; i < T.stars; i++) {
-      const sx = x + (i - (T.stars - 1) / 2) * 34, sy = top - 26 + Math.sin(t * 1.6 + i) * 4;
-      if (sy > -20 && !k.asset('aurora-star', sx, sy, 28, 28)) { c.fillStyle = k.col('#fff2b0'); k.star(sx, sy - 14, 10); }
-    }
-    c.restore();
-  }
-
   c.restore();
 }
 
@@ -901,7 +895,7 @@ function weddingGiftReveal(k, st, t) {
     c.globalAlpha = 1;
     k.asset(g.kind, x, y, size, size);
     if (big > 0.6) {
-      const title = TEXT.burning.giftTitles[g.kind];
+      const title = TEXT.burning.giftExclaim(TEXT.burning.giftTitles[g.kind]);
       c.globalAlpha = clamp((big - 0.6) / 0.4, 0, 1);
       c.textAlign = 'center'; c.font = '700 34px "Josefin Sans", sans-serif';
       c.lineWidth = 6; c.strokeStyle = 'rgba(30,14,30,0.85)'; c.strokeText(title, x, y + 44);

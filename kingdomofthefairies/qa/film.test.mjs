@@ -76,7 +76,7 @@ test('Losing the last stand: engulfed in flames, with its own words', () => {
   assert.equal(actTower.scenes.at(-1).name, 'Top of the Tower');
 });
 
-test('The Water Fairy gives gift after gift, each flying up onto the heap; X beside her never leaves for the title', () => {
+test('The Water Fairy gives each of twenty gifts once, then stops; X beside her never leaves for the title', () => {
   const st = actBurning.create({ carry: { pearls: 10 }, from: { scene: 4 } });st.phaseT = 5; st.weddingIntro = false;
   run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
   st.w.x = GIFTING.x; st.w.vx = 0;
@@ -108,12 +108,16 @@ test('The Water Fairy gives gift after gift, each flying up onto the heap; X bes
   run(actBurning, st, 0.45);
   assert.equal(giftPromptAlpha(st), 0, 'the half-second pause follows landing');
   run(actBurning, st, 0.2);
-  assert.ok(giftPromptAlpha(st) > 0 && giftPromptAlpha(st) < 1, 'the invitation fades back in after the pause');
+  assert.equal(giftPromptAlpha(st), 0, 'the exhausted fairy offers no more gifts');
   run(actBurning, st, 0.3);
-  assert.equal(giftPromptAlpha(st), 1, 'the invitation reaches full opacity');
+  assert.equal(giftPromptAlpha(st), 0, 'the invitation never returns after gift twenty');
   assert.equal(st.giftsLanded, 20); assert.equal(pileCount(st), 30); assert.equal(st.giftKinds.length, 20);
   st.creditsT = 40; actBurning.step(st, DT, { x: true });
-  assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
+  assert.equal(st.leaveT, undefined, 'beside her X does not unexpectedly exit');
+  assert.equal(st.giftsFlying.length, 0);
+  for (let i=0;i<30;i++) actBurning.step(st,DT,{x:true});
+  assert.equal(st.giftN,20); assert.equal(st.giftsLanded,20);
+  assert.equal(canReceiveGift(st),false); assert.equal(actBurning.touchVerbB(st),'');
   st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
 });
 

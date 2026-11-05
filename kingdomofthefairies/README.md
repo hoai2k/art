@@ -23,7 +23,11 @@ manifest), drops them from the published `assets/manifest.json`, and marks
 the page (`<meta name="kotf-widowsbay" content="off">`), so `?widowsbay=on`
 plays the film edition. Locally nothing changes.
 
-Acts open in order as they are finished. **`?edit=local`** (with any of the
+Acts open in order as they are finished. **`?debug`** opens every Act and scene
+for the current page session, including in the CrazyGames preview. Remove the
+parameter to restore normal progression; debug-session progress is never saved.
+
+**`?edit=local`** (with any of the
 above) opens a panel for this browser that sets how far each edition is
 unlocked, independently, and can open every scene of the open acts
 (`src/editor.js`).
@@ -66,11 +70,13 @@ acts. The first four keep their stage machinery and rules, recast:
    last stand on the clifftop (leap her fire; after each sword blow she
    drives him back, sliding on his feet, and he approaches again), after which she hides in her barrel and he pushes it over, walking Azurine
    along the wedding street, jumping for joy with Azurine as the guests cheer in a ripple. Climb the painted stairs (the couple grow slightly smaller as they climb away) and walk through the doorway at their top into the apotheosis; walking left until Azurine, following, is behind its curtain leads back out to the guests. Jump into the light beneath Aurora (any jump that passes over its centre) to begin the credits. The witch’s disappearance holds for the opening of the victory flourish, then fades with its last chord into a gradual wedding entrance.
-   Beside the Water Fairy in the final tableau, X accepts an endless cycle of
-   twenty presents. Each grows into a glowing, named display like the opening
+   Beside the Water Fairy in the final tableau, X receives each of
+   twenty presents once. Each grows into a glowing, named display like the opening
    court gifts, then shrinks into the treasure pile. The next gift is available
    once the large display finishes and the previous gift starts moving to the pile.
-   The receive prompt waits half a second after landing, then fades back in.
+   The named receive prompt appears above her, waits half a second after landing,
+   then fades back in until all twenty have been received. Presents and Aurora’s
+   stars sit in front of a pearl backdrop; pearl totals do not shift the objects.
    Every scene is played: nothing is timed to the beat or shown as a still.
 
 The final ascent slowly lifts the couple in the pose they jumped in and holds

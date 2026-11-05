@@ -1,3 +1,4 @@
+import { DEBUG } from './debug.js';
 import { LEGACY, EDITION, LOOK_PARAM, FILM as FILM_ED, TITLE, STORAGE_PREFIX, applyDocumentTheme } from './theme.js';
 import { TEXT } from './text_config.js';
 applyDocumentTheme();
@@ -116,7 +117,7 @@ function wantAct(i) {
 const actArtProgress = (i) => (assets?.progress ? assets.progress(actArt(i)) : { done: 0, total: 1 });
 const actArtReady = (i) => { const p = actArtProgress(i); return p.done >= p.total; };
 // The act the title's Start (or the playbill's selection) would most likely open.
-const predictedAct = () => (S.mode === 'playbill' ? S.pb : save.unlocked > 1 ? Math.min(save.unlocked, ACTS.length) - 1 : 0);
+const predictedAct = () => (S.mode === 'playbill' ? S.pb : unlockedActs() > 1 ? Math.min(unlockedActs(), ACTS.length) - 1 : 0);
 // The title waits behind a spinner for its own art (the first wave and the
 // painted title), so it never shows the drawn stand-ins first.
 let firstArt = false, booted = false;
@@ -218,6 +219,7 @@ loadAssets('assets/', { first: FIRST_ART, onImage: (id, im) => {
 // Modes: title, playbill, intro (act card), play, over (retry card),
 // curtaincall. One act module (src/acts/) is on stage at a time.
 const save = loadSave();
+function unlockedActs() { return DEBUG ? ACTS.length : save.unlocked; }
 const params = new URLSearchParams(location.search);
 const QA = params.has('qa');
 const CRACKLE = params.get('crackle') === 'on';
@@ -237,7 +239,7 @@ function startGame() {
   leaveTitle();
   const jump = QA && +params.get('act');
   if (jump >= 1 && jump <= ACTS.length) return beginAct(jump - 1, params.has('scene') ? { scene: +params.get('scene') } : null);
-  if (save.unlocked > 1) showPlaybill(); else beginAct(0);
+  if (unlockedActs() > 1) showPlaybill(); else beginAct(0);
 }
 
 // Raise the title curtain: fullscreen and the selected edition’s score.
@@ -293,7 +295,7 @@ function trackCheckpoint() {
 function showPlaybill() {
   S.mode = 'playbill'; S.modeT = 0; S.act = null; S.state = null; S.card = null;
   S.curtainTarget = 1; // the playbill hangs on the stage, so open the curtains on it
-  S.pb = Math.min(save.unlocked, ACTS.length) - 1;
+  S.pb = Math.min(unlockedActs(), ACTS.length) - 1;
   announce(TEXT.shell.playbill.announce);
 }
 
@@ -346,14 +348,14 @@ document.querySelectorAll('.layer.dialog').forEach((el) => {
 // Every scene of a finished act, and the scenes reached so far in the next.
 function scenesReached(a) {
   const last = (a.scenes?.length || 1) - 1, slot = ACTS.indexOf(a) + 1;
-  return save.results[slot] ? last : Math.min(last, save.scenes?.[slot] ?? 0);
+  return DEBUG || save.results[slot] ? last : Math.min(last, save.scenes?.[slot] ?? 0);
 }
 function openScenes() {
   const list = $('#scene-list');
   list.textContent = '';
   let focus = null;
   ACTS.forEach((a, i) => {
-    if (i >= save.unlocked) return;
+    if (i >= unlockedActs()) return;
     const h = document.createElement('h3');
     h.textContent = `${a.kicker} · ${a.title}`;
     const grid = document.createElement('div'); grid.className = 'scene-grid';
@@ -366,13 +368,13 @@ function openScenes() {
       if (open) {
         b.dataset.focus = '';
         b.addEventListener('click', () => { audio.play('ui'); playScene(i, k); });
-        if (S.act ? i === S.actIndex && k <= (S.checkpoint?.scene | 0) : i === save.unlocked - 1) focus = b;
+        if (S.act ? i === S.actIndex && k <= (S.checkpoint?.scene | 0) : i === unlockedActs() - 1) focus = b;
       } else b.disabled = true;
       grid.append(b);
     });
     list.append(h, grid);
   });
-  $('#scene-note').textContent = save.unlocked < ACTS.length ? TEXT.shell.scenes.note : '';
+  $('#scene-note').textContent = unlockedActs() < ACTS.length ? TEXT.shell.scenes.note : '';
   openDialog($('#scenes'), focus);
 }
 function playScene(i, k) {
@@ -688,7 +690,7 @@ function update(dt, i) {
     // the pause menu works here as in play (Escape, P, the pad's menu button
     // or the touch pause button); B or Backspace go back to the title
     if (i.pause) { pause(); return; }
-    const n = Math.min(save.unlocked, ACTS.length);
+    const n = Math.min(unlockedActs(), ACTS.length);
     if (i.up) { S.pb = (S.pb + n - 1) % n; playbillButtons.children[S.pb]?.focus(); audio.play('ui'); }
     if (i.down) { S.pb = (S.pb + 1) % n; playbillButtons.children[S.pb]?.focus(); audio.play('ui'); }
     if (i.tap) {
@@ -989,7 +991,7 @@ ACTS.forEach((act, n) => {
   button.setAttribute('aria-label', `${act.kicker}: ${act.title}`);
   button.addEventListener('focus', () => { S.pb = n; });
   button.addEventListener('click', () => {
-    if (S.mode === 'playbill' && !dialogs.length && n < save.unlocked) beginAct(n);
+    if (S.mode === 'playbill' && !dialogs.length && n < unlockedActs()) beginAct(n);
   });
   playbillButtons.append(button);
 });
@@ -1000,7 +1002,7 @@ function syncPlaybillButtons() {
   const rect = canvas.getBoundingClientRect(), parent = $('#app').getBoundingClientRect(), rows = playbillRows();
   Object.assign(playbillButtons.style, { left: `${rect.left - parent.left}px`, top: `${rect.top - parent.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
   [...playbillButtons.children].forEach((button, n) => {
-    button.disabled = n >= save.unlocked;
+    button.disabled = n >= unlockedActs();
     Object.assign(button.style, { left: `${rows.x0 / 12.8}%`, top: `${(rows.ys[n] - rows.half) / 7.2}%`, width: `${(rows.x1 - rows.x0) / 12.8}%`, height: `${rows.half * 2 / 7.2}%` });
   });
   if (wasHidden) playbillButtons.children[S.pb]?.focus({ preventScroll: true });
@@ -1031,7 +1033,7 @@ function drawPlaybill(k, t) {
     c.font = '700 9px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? TEXT.shell.playbill.subtitleFilm : TEXT.shell.playbill.subtitle), 640, rows.top + PB.subY * s);
     const pw = (rows.x1 - rows.x0) - 28;
     ACTS.forEach((a, n) => {
-      const y = rows.ys[n], open = n < save.unlocked, sel = n === S.pb;
+      const y = rows.ys[n], open = n < unlockedActs(), sel = n === S.pb;
       if (sel) { c.fillStyle = k.col('#e0127a'); c.globalAlpha = 0.2; c.fillRect(rows.x0 + 4, y - PB.panelH * s / 2 + 3, rows.x1 - rows.x0 - 8, PB.panelH * s - 6); c.globalAlpha = 1; }
       c.fillStyle = k.col(open ? '#2a1424' : '#a99a86');
       c.textAlign = 'left'; c.font = `700 ${PB.kick[0]}px "Josefin Sans", sans-serif`; c.fillText(a.kicker.toUpperCase(), rows.x0 + 14, y + PB.kick[1]);
@@ -1057,7 +1059,7 @@ function drawPlaybill(k, t) {
   c.font = '54px Yesteryear, cursive'; c.fillText(TITLE, 640, 160);
   c.font = '700 15px "Josefin Sans", sans-serif'; c.fillText((FILM_ED ? TEXT.shell.playbill.subtitleFilm : TEXT.shell.playbill.subtitle), 640, 188);
   ACTS.forEach((a, n) => {
-    const y = rows.ys[n] + 6, open = n < save.unlocked, sel = n === S.pb, tight = ACTS.length > 5;
+    const y = rows.ys[n] + 6, open = n < unlockedActs(), sel = n === S.pb, tight = ACTS.length > 5;
     if (sel) { c.fillStyle = k.col('#e0127a'); c.globalAlpha = 0.18; c.fillRect(372, y - (tight ? 30 : 34), 536, tight ? 52 : 60); c.globalAlpha = 1; }
     c.fillStyle = k.col(open ? '#2a1424' : '#a99a86');
     c.font = '700 16px "Josefin Sans", sans-serif'; c.textAlign = 'left'; c.fillText(a.kicker.toUpperCase(), 392, y - 6);
