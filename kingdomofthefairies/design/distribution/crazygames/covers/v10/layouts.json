@@ -1,0 +1,25 @@
+{
+  "fill": "#fff0c7",
+  "landscape": {
+    "width": 1920, "height": 1080,
+    "lines": [
+      {"text": "Kingdom of", "x": 255, "y": 190, "size": 167},
+      {"text": "the Fairies", "x": 320, "y": 335, "size": 167}
+    ]
+  },
+  "portrait": {
+    "width": 800, "height": 1200,
+    "lines": [
+      {"text": "Kingdom", "x": 400, "y": 150, "size": 139, "anchor": "middle"},
+      {"text": "of the", "x": 400, "y": 231, "size": 88, "anchor": "middle"},
+      {"text": "Fairies", "x": 400, "y": 353, "size": 145, "anchor": "middle"}
+    ]
+  },
+  "square": {
+    "width": 800, "height": 800,
+    "lines": [
+      {"text": "Kingdom of", "x": 137, "y": 108, "size": 91},
+      {"text": "the Fairies", "x": 165, "y": 194, "size": 91}
+    ]
+  }
+}

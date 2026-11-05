@@ -1,0 +1,9 @@
+{
+  "title": {
+    "tool": "Built-in image generation",
+    "transparent_background": true,
+    "prompt": "Create a TRANSPARENT-BACKGROUND TITLE LETTERING ASSET, not a cover illustration. Use ONLY the cream title lettering in the reference as the visual design reference. Recreate the original elegant 1903 silent-film-poster swash calligraphy: large sweeping capital K with curled flourishes, large flowing capital F, sophisticated italic serif letterforms, connected flowing curves, generous thick/thin contrast, warm ivory/cream ink, light antique print texture. Exact words, case and spelling: 'Kingdom of' on line one and 'the Fairies' on line two. Match the original letterforms in the input cover closely, including the theatrical flowing swashes and harmonious proportions. ALL LETTERS of Fairies must keep consistent x-height and baseline: do not shrink the last letters. A balanced two-line lockup, about 2.6:1 overall lettering width to height, the second line slightly indented as in the reference. The ONLY content is these four words and their calligraphic flourishes. Genuine alpha transparency everywhere outside the glyphs and in letter counters, NOT a checkerboard painted background and NOT a colored background. NO scene, NO characters, NO curtains, NO tower, NO decorative frame, NO logo, NO subtitle, NO additional words. NO baked-in drop shadow; we will add shadow separately during compositing. Keep all flourishes inside the image with transparent padding on every side. High-resolution crisp edges appropriate for overlay on 1920x1080 cover."
+  },
+  "artwork": "Unchanged text-free masters from v11; landscape originally approved in v9, portrait and square recomposed in v10.",
+  "compositing": "Generated native-alpha lettering over preserved artwork; shadow applied separately in SVG; layouts.json controls placement."
+}

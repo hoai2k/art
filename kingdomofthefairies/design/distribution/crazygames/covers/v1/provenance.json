@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "method": "Built-in image_gen tool; three separate generations. Standard pixel-size exports with macOS sips. No game source or game credits modified.",
+  "files": {
+    "landscape": "cover-landscape-1920x1080.png",
+    "portrait": "cover-portrait-800x1200.png",
+    "square": "cover-square-800x800.png"
+  },
+  "references": [
+    "assets/prince-stand-tinted.webp",
+    "assets/azurine-stand-tinted.webp",
+    "assets/witch-hooded-tinted.webp",
+    "assets/tower-wall-tall.webp",
+    "assets/fairies-title.webp"
+  ],
+  "landscapePrompt": "Create ONE finished promotional cover for the browser game, use case ads-marketing. EXACT OUTPUT 1920 x 1080 pixels, landscape 16:9. The attached images are REFERENCE IMAGES for the actual game's characters, costume, painted tower and title lettering, not targets to modify. Compose a beautiful 1903 hand-tinted silent-cinema fairy-tale poster. Match the photographic paper-cut theatre character style, delicate engraved paint texture, muted turquoise, dusty rose, burgundy and warm ivory palette. The silver-armoured prince with pink/red plume, blue tunic and red cape and the dark-haired Azurine in her light blue/pink gown are prominent lower-middle, looking toward the enchanted ivy-covered tower over the sea. The green-hooded old witch appears smaller in the upper-right sky, ominous but fairy-tale, no gore. Painted waves and theatrical light, a warm magical glow. Visually clear at thumbnail size, two dominant human figures, coherent theatrical scenic depth, no modern digital-fantasy gloss. Large beautifully legible period-style title in warm ivory in the upper-left/upper-middle, exact text ONLY: 'Kingdom of the Fairies'. It may be arranged in 2 or 3 lines. Respect margins so every letter is comfortably inside. No other words: no subtitle, no Georges Méliès credit, no date, no byline, no tagline, no logos, no frame or border. Artwork bleeds to all four edges. A promotional key art composition, not a screenshot. Faithfully preserve the reference character appearances and costumes. Keep the image elegant, theatrical, adventurous, inviting for a general 13+ audience. Deliver a single landscape cover, not a sheet of multiple variants.",
+  "variantPromptBase": "Use case ads-marketing. Create ONE finished CrazyGames promotional cover for 'Kingdom of the Fairies'. The input image is the approved LANDSCAPE DESIGN REFERENCE: preserve its specific photographic-paper-cut prince (silver helmet with pink plume, blue tunic, red cape, star shield), Azurine (dark curly hair, light blue gown and pink drapes), small green-hooded witch, ivy-covered sea tower, muted burgundy/pink/teal/gold palette, exquisite 1903 hand-tinted theatrical poster style and elegant ivory title lettering. Recompose this same key art thoughtfully for the requested aspect ratio, do not crop text or people. Large readable title EXACTLY 'Kingdom of the Fairies' ONLY, no subtitle or other text, no logos, no borders or outer frame, full bleed. Match the reference costumes, faces, atmosphere and visual world faithfully. The couple should dominate the lower foreground, the tower clearly recognizable behind to the right, the witch smaller in the upper-right sky. Keep the title distinct above the couple. Single image, no collage, no contact sheet. ",
+  "portraitPromptSuffix": "PORTRAIT VERSION: exact output 800 x 1200 pixels, aspect ratio 2:3. Title in the upper quarter in multiple readable lines, tower rises behind the couple. Adapt sizes and spacing for a strong tall poster silhouette.",
+  "squarePromptSuffix": "SQUARE VERSION: exact output 800 x 800 pixels, aspect ratio 1:1. Title across upper third in two or three lines. Couple at lower left/centre and tower to the right, balanced simple recognisable thumbnail composition.",
+  "creditsReview": {
+    "existingCredits": ["Principal Game Designer: Hoai Nguyen", "After Le Royaume des fées (1903), Georges Méliès", "Inspired by the song Widow's Bay, Langan, Frost, and Wane"],
+    "crazygames": "Official FAQ says its logo is optional. No mandatory in-game CrazyGames credit identified.",
+    "audio": "The project documents ElevenLabs-generated audio and user-supplied music. Applicable generation plans and the source/author of each supplied recording have not been verified. ElevenLabs attribution requirements vary by plan; preserve any required notices and confirm distribution permissions.",
+    "fontsAndCode": "Preserve required copyright and license notices for any bundled third-party fonts/code; a readable third-party-notices file can supplement in-game credits.",
+    "unchanged": "This cover task does not alter credits, music, or game behavior. Credits are not included on the cover images because CrazyGames permits only the game title as cover text.",
+    "sources": ["https://docs.crazygames.com/faq/#do-i-need-to-add-a-crazygames-logo-to-my-game", "https://elevenlabs.io/music-terms", "https://docs.crazygames.com/requirements/game-covers/"]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "status": "Draft text to enter in the Developer Portal; not embedded metadata and not submitted automatically",
+  "title": "Kingdom of the Fairies",
+  "shortDescription": "A hand-tinted theatrical adventure inspired by Georges Méliès’s 1903 silent film. Voyage through enchanted seas and climb a burning tower to rescue Azurine.",
+  "description": "Step onto a painted toy-theatre stage and play through a fairy-tale voyage inspired by Georges Méliès’s Le Royaume des fées (1903). Guide the prince from a royal betrothal through a shipwreck, the Water Fairy’s grotto, Neptune’s court, a whale’s passage, and an enchanted tower. Walk, leap, swim, climb, and face the witch in scenes brought to life with hand-tinted imagery, theatrical scenery, and period-style instrumental music. Checkpoints and unlocked scenes let you return to the adventure as it unfolds.",
+  "suggestedPositioning": {
+    "primaryCategory": "Adventure, if available in the portal",
+    "descriptors": [
+      "Single player",
+      "Story",
+      "Fantasy",
+      "Exploration",
+      "Platforming",
+      "Historical cinema"
+    ],
+    "audienceNote": "For players interested in atmospheric, story-led adventures, theatrical fantasy, and early cinema. Do not label as preschool/young-children content simply because of its fairy-tale setting.",
+    "caveat": "Select the closest actual portal categories/tags. These suggestions are not a promise of audience targeting."
+  },
+  "controls": {
+    "keyboard": "Arrows or WASD to move. Follow the on-screen prompts: Space performs the scene’s primary action; Up/W jumps in walking scenes; X interacts or is held to bow where indicated. P pauses. Full instructions appear in play.",
+    "gamepad": "Left stick or D-pad to move. A jumps or acts, X interacts/bows where prompted, B goes back or skips where available, and Menu pauses.",
+    "touch": "Use the on-screen touch controls and gestures taught in each scene. Play in landscape."
+  },
+  "reviewerNotes": [
+    "This is a playable adaptation, not a film viewer. Its opening prologue is interactive and leads into six acts with varied traversal and action mechanics.",
+    "The hand-tinted, painted toy-theatre presentation and silent-film pacing are intentional. This distribution includes only the film edition and colorized cast.",
+    "New players enter the opening act introduction automatically. Introductory cards advance without mandatory confirmation; the SDK gameplay signal starts at a playable scene, not at a static card or loading screen.",
+    "The CrazyGames HTML5 v3 SDK is initialized before the game reads progress. Enable SDK Data module progress saving. Guests can play.",
+    "No external advertising or custom analytics are included. Monetization is not integrated in this submission package.",
+    "Artwork and period-style recordings include generated material. Complete any applicable portal disclosure accurately; this draft does not certify distribution rights."
+  ],
+  "portalSettings": {
+    "orientation": "Landscape",
+    "progressSave": "SDK Data module",
+    "players": "Single player",
+    "technology": "HTML5 / JavaScript / Canvas 2D",
+    "publishingArrangement": "Non-exclusive; do not opt into an exclusivity agreement without separate review",
+    "mobile": "Enable only after real-device/portal QA"
+  },
+  "separateUploadsNeeded": {
+    "landscapeCover": "1920 × 1080",
+    "portraitCover": "800 × 1200",
+    "squareCover": "800 × 800",
+    "previews": "Silent gameplay videos in landscape 16:9 and portrait 2:3; maximum 20 seconds and 50 MB per video"
+  },
+  "preparedCoverFiles": {
+    "landscape": "covers/v12/cover-landscape-1920x1080.png",
+    "portrait": "covers/v12/cover-portrait-800x1200.png",
+    "square": "covers/v12/cover-square-800x800.png"
+  }
+}

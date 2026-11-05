@@ -1,0 +1,26 @@
+{
+  "fill": "#fff0c7",
+  "font": "LobsterTwo-BoldItalic.ttf",
+  "landscape": {
+    "width": 1920, "height": 1080,
+    "lines": [
+      {"text": "Kingdom of", "x": 240, "y": 190, "size": 155},
+      {"text": "the Fairies", "x": 295, "y": 328, "size": 155}
+    ]
+  },
+  "portrait": {
+    "width": 800, "height": 1200,
+    "lines": [
+      {"text": "Kingdom", "x": 400, "y": 150, "size": 139, "anchor": "middle"},
+      {"text": "of the", "x": 400, "y": 249, "size": 88, "anchor": "middle"},
+      {"text": "Fairies", "x": 400, "y": 382, "size": 145, "anchor": "middle"}
+    ]
+  },
+  "square": {
+    "width": 800, "height": 800,
+    "lines": [
+      {"text": "Kingdom of", "x": 137, "y": 108, "size": 91},
+      {"text": "the Fairies", "x": 135, "y": 190, "size": 91}
+    ]
+  }
+}

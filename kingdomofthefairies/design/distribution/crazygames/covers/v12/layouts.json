@@ -1,0 +1,5 @@
+{
+  "landscape": {"width":1920,"height":1080,"title":{"x":230,"y":24,"width":790}},
+  "portrait": {"width":800,"height":1200,"title":{"x":75,"y":55,"width":650}},
+  "square": {"width":800,"height":800,"title":{"x":105,"y":25,"width":420}}
+}

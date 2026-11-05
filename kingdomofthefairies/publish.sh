@@ -43,4 +43,7 @@ open(html, 'w').write(s.replace('<meta name="kotf-widowsbay" content="on">', '<m
 print('Widow\'s Bay left out:', len(gone), 'asset files removed')
 PY
 fi
+# A separate SDK-free version of the portal game for testing on our website.
+# Shared website files above retain their normal editions, controls and saves.
+node "$here/distribution/crazygames/build.mjs" --preview --out "$out/crazygames-preview"
 echo "published Kingdom of the Fairies to $out/"
