@@ -17,6 +17,7 @@ import act5, {
 } from './act5.js';
 import { createWall, stepWall, jolt } from './climb.js';
 import { clamp, lerp } from './shared.js';
+import { GIFT_SHOW } from './prologue-timing.js';
 import { FINALE, FINALE_END } from '../finale.js';
 import * as art from './act5film-art.js';
 import { TEXT } from '../text_config.js';
@@ -226,7 +227,7 @@ export function pileSlot(i) {
 }
 // An easter egg: beside the Water Fairy (the far-right figure) X takes one
 // gift after another from her; each flies up onto the heap.
-export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 },
+export const GIFTING = { x: 980, near: 60, flight: GIFT_SHOW.settle, hand: { x: 948, y: 470 },
   kinds: [
     'wedding-gift-golden-goblet',
     'wedding-gift-storybook',
@@ -250,6 +251,7 @@ export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 }
     'wedding-gift-golden-key'
   ] };
 export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
+export const canReceiveGift = st => nearGiftFairy(st) && !(st.giftsFlying || []).some(g => g.t < GIFT_SHOW.hold);
 export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
 // What cannot be missed on the way here (the betrothal gifts, the sword,
 // Neptune's seal) is always laid out, even with nothing recorded (a scene
@@ -501,7 +503,7 @@ export const actBurning = {
   mood: (st) => (['wedding', 'apotheosis', 'finale', 'iris'].includes(st.phase) ? 'wedding' : 'storm'),
   touchLive: (st) => !st.battleIntro && (['house', 'quay', 'apotheosis', 'finale'].includes(st.phase) || (st.phase === 'wedding' && (st.weddingIntro === false || st.phaseT >= FILM_T.weddingLead)) || (st.phase === 'barrel' && st.barrel?.fallT == null)),
   // the second button swings the sword in the witch's last stand
-  touchVerbB: (st) => (nearGiftFairy(st) ? TEXT.touch.verb.gift : creditsDone(st) && st.leaveT == null ? TEXT.touch.verb.title : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? TEXT.touch.verb.strike : ''),
+  touchVerbB: (st) => (nearGiftFairy(st) ? (canReceiveGift(st) ? TEXT.touch.verb.gift : '') : creditsDone(st) && st.leaveT == null ? TEXT.touch.verb.title : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? TEXT.touch.verb.strike : ''),
   touchVerb: (st) => (st.phase === 'barrel' && st.duel ? TEXT.touch.verb.leap : st.phase === 'barrel' ? '' : TEXT.touch.verb.leap),
   fade: st => st?.leaveT != null ? clamp(st.leaveT / ENDING.fade, 0, 1) : st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
   touchHint: TEXT.burning.touchHint,
@@ -606,7 +608,7 @@ export const actBurning = {
     if (e.type === 'floatDown') return A.floatDown;
     if (e.type === 'demonArrives') return A.demonArrives;
     if (e.type === 'leaveToTitle') return A.leaveToTitle;
-    if (e.type === 'giftGiven') return e.n === 1 ? A.giftFirst : A.gift(e.n);
+    if (e.type === 'giftGiven') return A.gift(e.n, TEXT.burning.giftTitles[e.kind]);
     if (e.type === 'finale') return A.finale;
     return null;
   },
@@ -887,7 +889,7 @@ function stepApotheosis(st,dt,input){
   const w=st.w;
   // the Water Fairy's gifts in flight to the heap
   st.giftsFlying=(st.giftsFlying||[]).filter(g=>{g.t+=dt;if(g.t>=GIFTING.flight){st.giftsLanded=(st.giftsLanded||0)+1;st.giftKinds=[...(st.giftKinds||[]),g.kind];return false;}return true;});
-  if(input.x&&nearGiftFairy(st)){
+  if(input.x&&canReceiveGift(st)){
     const n=st.giftN=(st.giftN||0)+1, kind=GIFTING.kinds[(n-1)%GIFTING.kinds.length];
     st.giftsFlying.push({kind,t:0,slot:pileCount(st)+st.giftsFlying.length});
     st.events.push({type:'giftGiven',n,kind});

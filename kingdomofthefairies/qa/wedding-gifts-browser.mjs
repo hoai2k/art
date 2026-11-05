@@ -30,23 +30,33 @@ try {
       canvas.style.cssText = 'position:fixed;inset:0;z-index:99999;width:1280px;height:720px'; document.body.append(canvas);
       const renderer = createRenderer(canvas, q.assets), draws = [], asset = renderer.kit.asset;
       renderer.kit.asset = (id, ...args) => { if (id.startsWith('wedding-gift-')) draws.push({ id, width: args[2] }); return asset(id, ...args); };
-      const received = [];
+      const received = [], titles = [];
+      const context = canvas.getContext('2d'), fillText = context.fillText.bind(context);
+      context.fillText = (text, ...args) => { titles.push(text); return fillText(text, ...args); };
       for (let i = 0; i < 20; i++) {
         actBurning.step(st, 1/60, { x: true });
         received.push(st.giftsFlying.at(-1).kind);
-        for (let j = 0; j < 60; j++) actBurning.step(st, 1/60, {});
+        for (let j = 0; j < Math.ceil((GIFTING.flight + 0.1) * 60); j++) {
+          actBurning.step(st, 1/60, {});
+          if (j === 40) renderer.render({ act: actBurning, state: st, t: 10, curtain: 1, film: 'off', tinted: true });
+        }
       }
       actBurning.step(st, 1/60, { x: true });
+      for (let j = 0; j < 40; j++) actBurning.step(st, 1/60, {});
       window.giftReview = { st, renderer, act: actBurning, draws };
       const render = tinted => { draws.length = 0; renderer.render({ act: actBurning, state: st, t: 10, curtain: 1, film: 'off', tinted }); return draws.slice(); };
       window.giftReview.render = render;
-      return { absent, received, landed: st.giftsLanded, repeat: st.giftsFlying[0].kind, draws: render(true) };
+      return { absent, received, titles, landed: st.giftsLanded, repeat: st.giftsFlying[0].kind, draws: render(true) };
     }, build);
     assert.deepEqual(result.absent, []);
     assert.equal(new Set(result.received).size, 20);
+    for (const id of result.received) {
+      const title = id.replace('wedding-gift-', '').replaceAll('-', ' ');
+      assert.ok(result.titles.some(t => t.toLowerCase() === title), `visible title for ${id}`);
+    }
     assert.equal(result.landed, 20);
     assert.equal(result.repeat, result.received[0]);
-    assert.ok(result.draws.some(d => d.width >= 60), 'handover is large enough to identify');
+    assert.ok(result.draws.some(d => d.width === 250), 'handover is large enough to identify');
     assert.equal(new Set(result.draws.map(d => d.id)).size, 20, 'all gifts render on the heap');
     for (const look of build ? ['tinted'] : ['tinted', 'original']) {
       await page.evaluate(look => window.giftReview.render(look === 'tinted'), look);

@@ -1,3 +1,4 @@
+import { GIFT_SHOW } from './prologue-timing.js';
 import { walkFrame } from '../walking.js';
 import { weddingForeground } from '../wedding-foreground.js';
 import { CREDITS, FINALE, finaleFrame } from '../finale.js';
@@ -7,7 +8,7 @@ import { CREDITS, FINALE, finaleFrame } from '../finale.js';
 // stone interior, the clifftop and the tableaux are new. Every requested
 // piece of art is delivered; production waits for it before play. Draw only
 // from state and t. Compatibility fallbacks support older review harnesses.
-import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, pileCount } from './act5film.js';
+import { SWIM, TOWER_TOP, TOWER_WINDOW, FILM_T, BARREL, DUEL, DIVE, WEDDING, APOTH, weddingGuests, guestHop, AURORA, auroraFacing, weddingScale, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, towerLeftFire, TOWER_FIRE, BATTLE_INTRO, battleIntroFrame, creditsDone, TREASURE, treasures, pileSlot, GIFTING, nearGiftFairy, canReceiveGift, pileCount } from './act5film.js';
 import { HOUSE, QUAY, T, climberPos } from './act5.js';
 import {
   onEvent as act5Event, cliffScene, holds, climbGuide, climber, rocksWorld, rockWarnings,
@@ -252,6 +253,7 @@ export function drawBurning(k, st, t) {
   if (ph === 'barrel' || ph === 'victory') return barrelScene(k, st, t);
   if (ph === 'wedding') return wedding(k, st, t);
   apotheosis(k, st, t);
+  weddingGiftReveal(k, st, t);
 }
 
 export function drawOverBurning(k, st) {
@@ -833,7 +835,9 @@ function apotheosis(k, st, t) {
   azurineOnFoot(k, st.az, APOTH.y, 166);
   princeOnFoot(k, w, 166, true);
   c.restore();
-  if (nearGiftFairy(st)) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey);
+  if (nearGiftFairy(st)) {
+    if (canReceiveGift(st)) hint(k, k.inputMode === 'touch' ? TEXT.burning.giftTouch : TEXT.burning.giftKey);
+  }
   else if (!st.flight && st.creditsT == null) hint(k, TEXT.burning.jumpHint);
   if (rise > 0 || st.creditsT != null) celebrationSparkles(k, st.clock);
   // "The end" fades in as they rise and stays through the celebration,
@@ -869,12 +873,41 @@ function treasurePile(k, st, t) {
     }
     c.restore();
   }
-  for (const g of st.giftsFlying || []) {
-    const u = clamp(g.t / GIFTING.flight, 0, 1), e = easeInOut(u), to = pileSlot(g.slot);
-    const gx = lerp(GIFTING.hand.x, to.x, e), gy = lerp(GIFTING.hand.y, to.y + 8, e) - Math.sin(Math.PI * u) * 70;
-    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 10; k.asset(g.kind, gx, gy, 64 - 34 * u, 64 - 34 * u); c.restore();
-  }
+
   c.restore();
+}
+
+// Match the opening court: grow into the spotlight, hold the name, then
+// shrink into the heap. Only then can the next present be accepted.
+function weddingGiftReveal(k, st, t) {
+  const c = k.c;
+  for (const g of st.giftsFlying || []) {
+    if (g.t < 0 || g.t >= GIFT_SHOW.settle) continue;
+    const mid = { x: 640, y: 455, size: 250 }, slot = pileSlot(g.slot);
+    let from = { ...GIFTING.hand, size: 64 }, to = mid, u;
+    if (g.t < GIFT_SHOW.rise) u = easeOut(g.t / GIFT_SHOW.rise);
+    else if (g.t < GIFT_SHOW.hold) u = 1;
+    else { from = mid; to = { x: slot.x, y: slot.y + 8, size: 30 }; u = easeInOut((g.t - GIFT_SHOW.hold) / (GIFT_SHOW.settle - GIFT_SHOW.hold)); }
+    const x = lerp(from.x, to.x, u), y = lerp(from.y, to.y, u), size = lerp(from.size, to.size, u);
+    const big = g.t < GIFT_SHOW.hold ? u : 1 - u;
+    c.save();
+    if (big > 0) {
+      c.globalAlpha = 0.3 * big; c.fillStyle = '#000'; c.fillRect(0, 0, 1280, 720);
+      const glow = c.createRadialGradient(x, y - size / 2, size * 0.1, x, y - size / 2, size * 0.75);
+      glow.addColorStop(0, 'rgba(255,242,176,0.75)'); glow.addColorStop(1, 'rgba(255,242,176,0)');
+      c.globalAlpha = big * (0.85 + 0.15 * Math.sin(t * 6)); c.fillStyle = glow; c.fillRect(x - size, y - size * 1.5, size * 2, size * 2);
+    }
+    c.globalAlpha = 1;
+    k.asset(g.kind, x, y, size, size);
+    if (big > 0.6) {
+      const title = TEXT.burning.giftTitles[g.kind];
+      c.globalAlpha = clamp((big - 0.6) / 0.4, 0, 1);
+      c.textAlign = 'center'; c.font = '700 34px "Josefin Sans", sans-serif';
+      c.lineWidth = 6; c.strokeStyle = 'rgba(30,14,30,0.85)'; c.strokeText(title, x, y + 44);
+      c.fillStyle = k.col('#fff2b0'); c.fillText(title, x, y + 44);
+    }
+    c.restore();
+  }
 }
 
 function celebrationSparkles(k, time) {

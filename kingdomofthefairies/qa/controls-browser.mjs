@@ -61,7 +61,7 @@ try {
   q.S.state.p.x=211;
   document.querySelector('#title').hidden=true;
  });
- await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.near?.label==='Receive the flower');
+ await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.near?.label==='Receive the flower' && window.flowerPromptBox);
  // Measure the exact rendered uppercase text including its Space keycap.
  const measured=await page.evaluate(async()=>{
   const {measureRichText}=await import('/src/art.js');

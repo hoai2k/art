@@ -10,7 +10,7 @@ import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T, GIFT_SHOW } from '../src/acts/prologue.js';
 import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
-import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
+import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, canReceiveGift, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
 import { CLIMB_MAPS } from '../src/acts/climb-map.js';
 import act4 from '../src/acts/act4.js';
@@ -81,11 +81,27 @@ test('The Water Fairy gives gift after gift, each flying up onto the heap; X bes
   run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
   st.w.x = GIFTING.x; st.w.vx = 0;
   assert.ok(nearGiftFairy(st)); assert.equal(actBurning.touchVerbB(st), 'Gift');
-  for (let i = 0; i < 20; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
-  assert.equal(st.giftsFlying.length, 20); assert.equal(pileCount(st), 10);
-  assert.equal(new Set(st.giftsFlying.map(g => g.kind)).size, 20, 'the first twenty gifts are all different');
-  assert.ok(st.giftsFlying.every(g => g.kind.startsWith('wedding-gift-')), 'gifts use the new props, not more pearls');
-  run(actBurning, st, GIFTING.flight + 0.1);
+  actBurning.step(st, DT, { x: true });
+  assert.equal(canReceiveGift(st), false); assert.equal(actBurning.touchVerbB(st), '');
+  for (let i = 0; i < 20; i++) actBurning.step(st, DT, { x: true });
+  assert.equal(st.giftN, 1, 'pressing during the large display does not accept or queue gifts');
+  assert.equal(pileCount(st), 10, 'the gift has not landed during its large display');
+  st.giftsFlying[0].t = GIFT_SHOW.hold - 2 * DT;
+  actBurning.step(st, DT, { x: true });
+  assert.equal(st.giftN, 1, 'still blocked just before the trip to the pile');
+  st.giftsFlying[0].t = GIFT_SHOW.hold;
+  assert.equal(canReceiveGift(st), true, 'the next gift unlocks at the start of the trip to the pile');
+  assert.equal(actBurning.touchVerbB(st), 'Gift');
+  const received = [st.giftsFlying[0].kind];
+  for (let i = 1; i < 20; i++) {
+    actBurning.step(st, DT, { x: true });
+    received.push(st.giftsFlying.at(-1).kind);
+    assert.ok(!actBurning.announce({ type: 'giftGiven', kind: received.at(-1), n: i + 1 }).includes('undefined'), 'each gift has an accessible title');
+    run(actBurning, st, GIFT_SHOW.hold);
+  }
+  assert.equal(new Set(received).size, 20, 'the first twenty gifts are all different');
+  assert.ok(received.every(kind => kind.startsWith('wedding-gift-')), 'gifts use the new props, not more pearls');
+  run(actBurning, st, GIFTING.flight);
   assert.equal(st.giftsLanded, 20); assert.equal(pileCount(st), 30); assert.equal(st.giftKinds.length, 20);
   st.creditsT = 40; actBurning.step(st, DT, { x: true });
   assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);

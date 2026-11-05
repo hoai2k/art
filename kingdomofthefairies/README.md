@@ -66,6 +66,10 @@ acts. The first four keep their stage machinery and rules, recast:
    last stand on the clifftop (leap her fire; after each sword blow she
    drives him back, sliding on his feet, and he approaches again), after which she hides in her barrel and he pushes it over, walking Azurine
    along the wedding street, jumping for joy with Azurine as the guests cheer in a ripple. Climb the painted stairs (the couple grow slightly smaller as they climb away) and walk through the doorway at their top into the apotheosis; walking left until Azurine, following, is behind its curtain leads back out to the guests. Jump into the light beneath Aurora (any jump that passes over its centre) to begin the credits. The witch’s disappearance holds for the opening of the victory flourish, then fades with its last chord into a gradual wedding entrance.
+   Beside the Water Fairy in the final tableau, X accepts an endless cycle of
+   twenty presents. Each grows into a glowing, named display like the opening
+   court gifts, then shrinks into the treasure pile. The next gift is available
+   once the large display finishes and the previous gift starts moving to the pile.
    Every scene is played: nothing is timed to the beat or shown as a still.
 
 The final ascent slowly lifts the couple in the pose they jumped in and holds
