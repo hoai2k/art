@@ -81,10 +81,12 @@ test('The Water Fairy gives gift after gift, each flying up onto the heap; X bes
   run(actBurning, st, 20, () => ({ moveX: 1 }), (s) => s.phase !== 'wedding');
   st.w.x = GIFTING.x; st.w.vx = 0;
   assert.ok(nearGiftFairy(st)); assert.equal(actBurning.touchVerbB(st), 'Gift');
-  for (let i = 0; i < 5; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
-  assert.equal(st.giftsFlying.length, 5); assert.equal(pileCount(st), 10);
+  for (let i = 0; i < 20; i++) { actBurning.step(st, DT, { x: true }); actBurning.step(st, DT, {}); }
+  assert.equal(st.giftsFlying.length, 20); assert.equal(pileCount(st), 10);
+  assert.equal(new Set(st.giftsFlying.map(g => g.kind)).size, 20, 'the first twenty gifts are all different');
+  assert.ok(st.giftsFlying.every(g => g.kind.startsWith('wedding-gift-')), 'gifts use the new props, not more pearls');
   run(actBurning, st, GIFTING.flight + 0.1);
-  assert.equal(st.giftsLanded, 5); assert.equal(pileCount(st), 15); assert.equal(st.giftKinds.length, 5);
+  assert.equal(st.giftsLanded, 20); assert.equal(pileCount(st), 30); assert.equal(st.giftKinds.length, 20);
   st.creditsT = 40; actBurning.step(st, DT, { x: true });
   assert.equal(st.leaveT, undefined, 'beside her X is a gift, not the way out'); assert.equal(st.giftsFlying.length, 1);
   st.w.x = 400; actBurning.step(st, DT, { x: true }); assert.ok(st.leaveT != null);
@@ -552,6 +554,24 @@ test('Act V: reaching the window plays the window shot and wins', () => {
   assert.equal(st.status, 'won');
 });
 
+test('Inside the Tower: A always jumps past the stairs; there is no shutter interaction', () => {
+  for(const stone of [false,true])for(const x of [687,711,747]) {
+    const st=actBurning.create({carry:{stone},from:{scene:0}});
+    Object.assign(st.p,{x,f:1,y:HOUSE.floors[1],conn:null,carry:false});
+    st.haz=[];st.nextHaz=999;st.events.length=0;
+    actBurning.step(st,DT,{a:true});
+    assert.equal(st.p.f,-1,`jump at x=${x}, lamp=${stone}`);assert.ok(st.p.vy<0);
+    assert.ok(st.events.some(e=>e.type==='leap'));
+    assert.ok(!st.events.some(e=>['shutterLocked','stoneThrow','shutterSmash'].includes(e.type)));
+    assert.equal(st.stoneThrown,false);
+    assert.equal(actBurning.touchVerb(st),'Leap','the action button remains a jump');
+    run(actBurning,st,1);
+    assert.equal(st.p.f,1);
+    actBurning.step(st,DT,{x:true});
+    assert.ok(!st.events.some(e=>['shutterLocked','stoneThrow','shutterSmash'].includes(e.type)),'no interaction on X either');
+  }
+});
+
 test('Tower rescue: right-hand fires fade from pickup, clear by the ground, and the escape is on the right',()=>{
  const st=actBurning.create({from:{scene:0}});st.haz=[];st.nextHaz=999;
  st.p.x=HOUSE.beloved;st.p.f=2;st.p.y=HOUSE.floors[2];
@@ -565,7 +585,9 @@ test('Tower rescue: right-hand fires fade from pickup, clear by the ground, and 
  },s=>s.p.f===0);
  assert.equal(st.phase,'house');assert.equal(st.p.f,0);assert.equal(towerEscapeFire(st),0,'the ground-floor route is completely clear');
  st.p.x=HOUSE.door;actBurning.step(st,DT,{});assert.equal(st.phase,'house','the old left-hand doorway cannot finish the rescue');
- run(actBurning,st,6,()=>({moveX:1}),s=>s.phase!=='house');assert.equal(st.phase,'quay');
+ run(actBurning,st,4.5,()=>({moveX:1}),s=>s.phase!=='house');assert.equal(st.phase,'house','keep carrying beyond the former door');
+ assert.ok(st.p.x>HOUSE.wallR);
+ run(actBurning,st,5,()=>({moveX:1}),s=>s.phase!=='house');assert.equal(st.phase,'quay');
  assert.equal(st.checkpoint.scene,2);assert.equal(st.p.face,1);
 });
 

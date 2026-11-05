@@ -555,7 +555,8 @@ const connY = (c, end) => HOUSE.floors[c[end].f];
 export function playerFloorY(st) { return st.p.f >= 0 ? HOUSE.floors[st.p.f] : null; }
 const onSpan = (st, f, x) => st.spans[f].some(([a, b]) => x >= a - 2 && x <= b + 2);
 
-export function stepHouse(st, dt, input) {
+// The film tower uses walking/jumping only; the original house keeps its shutter shortcut.
+export function stepHouse(st, dt, input, { shutter = true } = {}) {
   const p = st.p, H = HOUSE;
   p.landT = Math.max(0, (p.landT || 0) - dt);
   const mx = input.moveX || (input.left ? -1 : 0) || (input.right ? 1 : 0);
@@ -567,7 +568,7 @@ export function stepHouse(st, dt, input) {
   if (p.liftT > 0) { p.liftT -= dt; stepHazards(st, dt); return; }
 
   // The stone flies to the shutter.
-  if (st.throwT != null) {
+  if (shutter && st.throwT != null) {
     st.throwT += dt;
     if (st.throwT >= 0.35 && st.shutter === 'shut') {
       st.shutter = 'broken'; st.shortcut = true; st.score += 50;
@@ -596,7 +597,8 @@ export function stepHouse(st, dt, input) {
   } else {
     const speed = p.carry ? H.carryWalk : H.walk;
     p.vx = mx * speed;
-    p.x = clamp(p.x + p.vx * dt, H.wallL, H.wallR);
+    const rightLimit = p.carry && p.f === 0 && st.houseExit?.side === 'right' ? st.houseExit.x : H.wallR;
+    p.x = clamp(p.x + p.vx * dt, H.wallL, rightLimit);
     if (Math.abs(mx) > 0.2) p.face = Math.sign(mx);
     if (p.f >= 0 && Math.abs(mx) > 0.2) {
       p.stepT -= dt;
@@ -612,7 +614,7 @@ export function stepHouse(st, dt, input) {
       }
       if (p.conn) { p.x = lerp(p.conn.c.a.x, p.conn.c.b.x, p.conn.u); }
       else {
-        const nearShutter = p.f === 1 && st.shutter === 'shut' && p.x >= H.shutterX + H.shutterNear[0] && p.x <= H.shutterX + H.shutterNear[1] && !p.carry;
+        const nearShutter = shutter && p.f === 1 && st.shutter === 'shut' && p.x >= H.shutterX + H.shutterNear[0] && p.x <= H.shutterX + H.shutterNear[1] && !p.carry;
         if (input.a && nearShutter) {
           if (st.carry.stone && !st.stoneThrown) { st.stoneThrown = true; st.throwT = 0; st.events.push({ type: 'stoneThrow' }); }
           else if (st.lockedT <= 0 && st.throwT == null) { st.lockedT = 0.8; st.events.push({ type: "shutterLocked" }); }

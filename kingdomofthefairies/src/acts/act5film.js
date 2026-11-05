@@ -152,7 +152,7 @@ export function swimPosition(sw) {
 // (over `light` s) once he has moved or `wait` s have passed.
 export const TOWER_FIRE = { wait: 1.5, run: 0.9, light: 0.9 };
 export const towerLeftFire = st => st.leftFireT == null ? 0 : clamp((st.leftFireT - TOWER_FIRE.run) / TOWER_FIRE.light, 0, 1);
-export const TOWER_ESCAPE = { x: HOUSE.wallR, fireSeconds: 8 };
+export const TOWER_ESCAPE = { x: 1240, markerX: 1100, fireSeconds: 8 };
 export function towerEscapeFire(st) {
   if (!st.p?.carry) return 1;
   const height = clamp((HOUSE.floors[0]-st.p.y)/(HOUSE.floors[0]-HOUSE.floors[2]),0,1);
@@ -227,7 +227,28 @@ export function pileSlot(i) {
 // An easter egg: beside the Water Fairy (the far-right figure) X takes one
 // gift after another from her; each flies up onto the heap.
 export const GIFTING = { x: 980, near: 60, flight: 0.9, hand: { x: 948, y: 470 },
-  kinds: ['pearl', 'keepsake-shell', 'aurora-star', 'keepsake-pearl', 'pearl', 'keepsake-star', 'keepsake-rose', 'pearl'] };
+  kinds: [
+    'wedding-gift-golden-goblet',
+    'wedding-gift-storybook',
+    'wedding-gift-hand-mirror',
+    'wedding-gift-jewel-casket',
+    'wedding-gift-perfume-flask',
+    'wedding-gift-harp',
+    'wedding-gift-rose-basket',
+    'wedding-gift-coin-purse',
+    'wedding-gift-silk-fan',
+    'wedding-gift-nightingale',
+    'wedding-gift-feather-brooch',
+    'wedding-gift-star-pendant',
+    'wedding-gift-silk-ribbons',
+    'wedding-gift-porcelain-teacup',
+    'wedding-gift-candlestick',
+    'wedding-gift-music-box',
+    'wedding-gift-silver-bells',
+    'wedding-gift-lute',
+    'wedding-gift-shell-comb',
+    'wedding-gift-golden-key'
+  ] };
 export const nearGiftFairy = st => !!st.w && !st.flight && Math.abs(st.w.x - GIFTING.x) < GIFTING.near && ['apotheosis', 'finale'].includes(st.phase);
 export const pileCount = st => (st.carry?.pearls || 0) + (st.pearls || 0) + (st.giftsLanded || 0);
 // What cannot be missed on the way here (the betrothal gifts, the sword,
@@ -481,7 +502,7 @@ export const actBurning = {
   touchLive: (st) => !st.battleIntro && (['house', 'quay', 'apotheosis', 'finale'].includes(st.phase) || (st.phase === 'wedding' && (st.weddingIntro === false || st.phaseT >= FILM_T.weddingLead)) || (st.phase === 'barrel' && st.barrel?.fallT == null)),
   // the second button swings the sword in the witch's last stand
   touchVerbB: (st) => (nearGiftFairy(st) ? TEXT.touch.verb.gift : creditsDone(st) && st.leaveT == null ? TEXT.touch.verb.title : st.phase === 'barrel' && st.duel && st.duel.state !== 'trap' ? TEXT.touch.verb.strike : ''),
-  touchVerb: (st) => (st.phase === 'barrel' && st.duel ? TEXT.touch.verb.leap : st.phase === 'barrel' ? '' : st.phase === 'house' && st.carry?.stone && !st.stoneThrown ? TEXT.touch.verb.action : TEXT.touch.verb.leap),
+  touchVerb: (st) => (st.phase === 'barrel' && st.duel ? TEXT.touch.verb.leap : st.phase === 'barrel' ? '' : TEXT.touch.verb.leap),
   fade: st => st?.leaveT != null ? clamp(st.leaveT / ENDING.fade, 0, 1) : st?.phase === 'victory' ? clamp((st.phaseT - FILM_T.victory) / FILM_T.victoryFade, 0, 1) : st?.phase === 'wedding' && st.weddingIntro !== false ? clamp(1 - (st.phaseT - FILM_T.weddingLead) / FILM_T.weddingFade, 0, 1) : 0,
   touchHint: TEXT.burning.touchHint,
   touchScheme: (st) => (st.phase === 'barrel' && st.duel ? { mode: 'stick', hint: TEXT.burning.touchWalk } : ['wedding', 'apotheosis', 'finale'].includes(st.phase) ? { mode: 'swipe', hint: TEXT.burning.touchCelebrate } : (st.phase === 'barrel' && !st.duel) ? { mode: 'swipe', hint: TEXT.burning.touchWalk } : { mode: 'stick', hint: TEXT.burning.touchStairs }),
@@ -492,6 +513,7 @@ export const actBurning = {
     const st = act5.create({ seed, carry, from: { ...(from || {}), scene: lk } });
     st.part = 'burning';
     st.houseExit = { side: 'right', x: TOWER_ESCAPE.x };
+    if (!st.spans[0].some(([a,b])=>a<=HOUSE.wallR && b>=TOWER_ESCAPE.x)) st.spans[0].push([HOUSE.wallR,TOWER_ESCAPE.x]);
     // A second ladder from the middle floor to the ground, unfolding just
     // after the first when the floor breaks, so the way down reads clearly.
     if (!st.conns.some((c) => c.id === 'ladderDown2')) {
@@ -534,7 +556,7 @@ export const actBurning = {
       // the demon comes as soon as he moves (or after a moment) and lights the fires behind him
       if (st.leftFireT == null && (Math.abs(input.moveX || 0) > 0.15 || input.up || input.a || st.phaseT >= TOWER_FIRE.wait)) { st.leftFireT = 0; st.events.push({ type: 'demonArrives' }); }
       else if (st.leftFireT != null) st.leftFireT += dt;
-      stepHouse(st, dt, input);
+      stepHouse(st, dt, input, { shutter: false });
       if (!carrying && st.p.carry) { st.escapeT = 0; st.escapeFire = 1; }
       if (st.phase === 'house' && st.p.carry) st.escapeFire = towerEscapeFire(st);
     }
@@ -566,8 +588,6 @@ export const actBurning = {
     const A = TEXT.burning.announce;
     if (e.type === 'hit') return A.hit(e.lanterns);
     if (e.type === 'beamWarn') return A.beamWarn;
-    if (e.type === 'shutterLocked') return A.shutterLocked;
-    if (e.type === 'shutterSmash') return A.shutterSmash;
     if (e.type === 'liftHer') return A.liftHer;
     if (e.type === 'floorBreak') return A.floorBreak;
     if (e.type === 'houseFall') return A.houseFall;

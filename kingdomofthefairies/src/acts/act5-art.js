@@ -1036,6 +1036,8 @@ function fallingPiece(k, h, x, y, rot) {
   c.restore();
 }
 
+const LADDER_FRAMES = ['prince-wall-up-a', 'prince-wall-up-b'];
+
 export function player(k, st, t) {
   const c = k.c, p = st.p;
   c.save();
@@ -1054,11 +1056,15 @@ export function player(k, st, t) {
   // or the ivy on his own climbing-with-her frames
   const H = 180 * s;
   const lifting = FILM && p.liftT > T.lift / 2 && drawPose(k, 'prince-lift', p.x, p.y, H, { face: p.face });
-  const onRungs = FILM && pose === 'carry' && p.conn && !['stairs', 'slope'].includes(p.conn.c.kind);
-  const rung = onRungs && Math.floor(p.conn.u * Math.hypot(p.conn.c.b.x - p.conn.c.a.x, HOUSE.floors[p.conn.c.b.f] - HOUSE.floors[p.conn.c.a.f]) / 26) % 2;
-  if (!lifting && !(onRungs && drawPose(k, rung ? 'prince-carry-climb-b' : 'prince-carry-climb-a', p.x, p.y, H, { face: p.face }))) {
-    sailor(k, p.x, p.y, s, pose, pose === 'throw' ? 1 : p.face, step, travel);
+  const onRungs = FILM && p.conn && !['stairs', 'slope'].includes(p.conn.c.kind);
+  let climbing = false;
+  if (!lifting && onRungs) {
+    const dist = p.conn.u * Math.hypot(p.conn.c.b.x-p.conn.c.a.x, HOUSE.floors[p.conn.c.b.f]-HOUSE.floors[p.conn.c.a.f]);
+    const frame = Math.floor(dist/26)%4;
+    const id = p.carry ? (frame%2 ? 'prince-carry-climb-b' : 'prince-carry-climb-a') : LADDER_FRAMES[frame%2];
+    climbing = drawPose(k, id, p.x, p.y, H, { face: p.carry ? p.face : frame<2 ? 1 : -1 });
   }
+  if (!lifting && !climbing) sailor(k, p.x, p.y, s, pose, pose === 'throw' ? 1 : p.face, step, travel);
   c.restore();
 }
 

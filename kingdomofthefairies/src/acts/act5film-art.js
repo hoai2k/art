@@ -279,8 +279,6 @@ export function onEventBurning(k, e, st) {
   if (e.type === 'petal') { k.burst(e.x, e.y, '#f3c6dc', 8, 'sparkle'); return; }
   if (e.type === 'ascend') { k.flash(0.6); k.burst(640, 480, '#fff2b0', 120, 'sparkle'); return; }
   if (e.type === 'witchReturns') { k.flash(0.4); return; }
-  if (e.type === 'shutterSmash') { k.burst(HOUSE.shutterX, HOUSE.shutterY, '#fff2b0', 22, 'sparkle'); k.text(TEXT.burning.burst.lamp, HOUSE.shutterX, HOUSE.shutterY - 90, true); return; }
-  if (e.type === 'stoneThrow') { k.text(TEXT.burning.burst.lamp, st.p.x, st.p.y - 130); return; }
   act5Event(k, e, st);
 }
 
@@ -319,7 +317,6 @@ function towerInterior(k, st, t) {
     c.fillStyle = k.col('#6f2a48'); c.fillRect(760, H.floors[2] - 70, 110, 10); c.fillRect(760, H.floors[2] - 70, 8, 70); c.fillRect(862, H.floors[2] - 70, 8, 70);
     c.fillStyle = k.col('#c79ab7'); c.fillRect(770, H.floors[2] - 22, 92, 18);
   }
-  if (!st.p.carry && st.carry.stone) { /* the barred shutter (opened by Aurora's lamp) */ }
   for (const cn of st.conns) connector(k, st, cn, t);
   if (st.broke) rubble(k, st, t);
   H.floors.forEach((fy, f) => {
@@ -355,15 +352,16 @@ function towerInterior(k, st, t) {
     k.asset(id, x+retreat, H.floors[0] - hop, 70, 115);
     c.restore();
   }
-  // A real painted opening replaces the former left-side exit marker.
-  k.asset('tower-escape-door', TOWER_ESCAPE.x+2, H.floors[0]+2, 98, 152);
+  // Continue the flagstones to the right wing: the rescue ends offstage.
+  c.fillStyle = k.col('#6d6872'); c.fillRect(H.wallR, H.floors[0], TOWER_ESCAPE.x-H.wallR, 14);
+  c.fillStyle = k.col('#8c8792'); c.fillRect(H.wallR, H.floors[0], TOWER_ESCAPE.x-H.wallR, 3);
   hazards(k, st, t);
   player(k, st, t);
   flames(k, st, t, 1, { right: rightFire, left: towerLeftFire(st) });
   // Azurine in front of the smoke, so she can always be seen
   if (!st.p.carry) beloved(k, H.beloved, H.floors[2], 0.6, -1, Math.sin(t * 5) > 0.3 ? 'reach' : 'down');
-  // where he is going: to her at the top, then out of the door with her
-  const [gx, gy, label] = st.p.carry ? [TOWER_ESCAPE.x, H.floors[0], TEXT.burning.waypointOut] : [H.beloved, H.floors[2], TEXT.burning.waypointHer];
+  // where he is going: to her at the top, then all the way offstage with her
+  const [gx, gy, label] = st.p.carry ? [TOWER_ESCAPE.markerX, H.floors[0], TEXT.burning.waypointOut] : [H.beloved, H.floors[2], TEXT.burning.waypointHer];
   const bob = Math.sin(t * 4) * 6, ty = gy - (st.p.carry ? 170 : 150) + bob;
   c.save(); c.globalAlpha = 0.85; c.fillStyle = k.col('#fff2b0');
   c.beginPath(); c.moveTo(gx - 14, ty); c.lineTo(gx + 14, ty); c.lineTo(gx, ty + 18); c.closePath(); c.fill();
@@ -854,7 +852,8 @@ function treasurePile(k, st, t) {
   c.save();
   for (let i = 0; i < n; i++) {
     const p = pileSlot(i); if (p.y < -30) break;
-    k.asset(i < pearls ? 'pearl' : kinds[i - pearls], p.x, p.y + 8, 17, 17);
+    const size = i < pearls ? 17 : 30;
+    k.asset(i < pearls ? 'pearl' : kinds[i - pearls], p.x, p.y + 8, size, size);
   }
   if (T.sword) { c.save(); c.translate(x + 26, y - 12); c.rotate(Math.PI / 4); k.asset('keepsake-sword', 0, 32, 64, 64); c.restore(); }
   if (T.lamp) k.asset('keepsake-lamp', x - 68, y + 8, 44, 44);
@@ -873,7 +872,7 @@ function treasurePile(k, st, t) {
   for (const g of st.giftsFlying || []) {
     const u = clamp(g.t / GIFTING.flight, 0, 1), e = easeInOut(u), to = pileSlot(g.slot);
     const gx = lerp(GIFTING.hand.x, to.x, e), gy = lerp(GIFTING.hand.y, to.y + 8, e) - Math.sin(Math.PI * u) * 70;
-    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 10; k.asset(g.kind, gx, gy, 22 - 5 * u, 22 - 5 * u); c.restore();
+    c.save(); c.shadowColor = '#fff2b0'; c.shadowBlur = 10; k.asset(g.kind, gx, gy, 64 - 34 * u, 64 - 34 * u); c.restore();
   }
   c.restore();
 }

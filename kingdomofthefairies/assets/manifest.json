@@ -5118,6 +5118,86 @@
       ],
       "anchor": "waterline 40% down from the top, centred on his head",
       "edition": "film"
+    },
+    "wedding-gift-golden-goblet": {
+      "status": "delivered",
+      "file": "wedding-gift-golden-goblet.webp"
+    },
+    "wedding-gift-storybook": {
+      "status": "delivered",
+      "file": "wedding-gift-storybook.webp"
+    },
+    "wedding-gift-hand-mirror": {
+      "status": "delivered",
+      "file": "wedding-gift-hand-mirror.webp"
+    },
+    "wedding-gift-jewel-casket": {
+      "status": "delivered",
+      "file": "wedding-gift-jewel-casket.webp"
+    },
+    "wedding-gift-perfume-flask": {
+      "status": "delivered",
+      "file": "wedding-gift-perfume-flask.webp"
+    },
+    "wedding-gift-harp": {
+      "status": "delivered",
+      "file": "wedding-gift-harp.webp"
+    },
+    "wedding-gift-rose-basket": {
+      "status": "delivered",
+      "file": "wedding-gift-rose-basket.webp"
+    },
+    "wedding-gift-coin-purse": {
+      "status": "delivered",
+      "file": "wedding-gift-coin-purse.webp"
+    },
+    "wedding-gift-silk-fan": {
+      "status": "delivered",
+      "file": "wedding-gift-silk-fan.webp"
+    },
+    "wedding-gift-nightingale": {
+      "status": "delivered",
+      "file": "wedding-gift-nightingale.webp"
+    },
+    "wedding-gift-feather-brooch": {
+      "status": "delivered",
+      "file": "wedding-gift-feather-brooch.webp"
+    },
+    "wedding-gift-star-pendant": {
+      "status": "delivered",
+      "file": "wedding-gift-star-pendant.webp"
+    },
+    "wedding-gift-silk-ribbons": {
+      "status": "delivered",
+      "file": "wedding-gift-silk-ribbons.webp"
+    },
+    "wedding-gift-porcelain-teacup": {
+      "status": "delivered",
+      "file": "wedding-gift-porcelain-teacup.webp"
+    },
+    "wedding-gift-candlestick": {
+      "status": "delivered",
+      "file": "wedding-gift-candlestick.webp"
+    },
+    "wedding-gift-music-box": {
+      "status": "delivered",
+      "file": "wedding-gift-music-box.webp"
+    },
+    "wedding-gift-silver-bells": {
+      "status": "delivered",
+      "file": "wedding-gift-silver-bells.webp"
+    },
+    "wedding-gift-lute": {
+      "status": "delivered",
+      "file": "wedding-gift-lute.webp"
+    },
+    "wedding-gift-shell-comb": {
+      "status": "delivered",
+      "file": "wedding-gift-shell-comb.webp"
+    },
+    "wedding-gift-golden-key": {
+      "status": "delivered",
+      "file": "wedding-gift-golden-key.webp"
     }
   },
   "audio": {

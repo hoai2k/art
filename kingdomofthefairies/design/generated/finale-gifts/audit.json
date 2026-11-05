@@ -1,0 +1,422 @@
+[
+  {
+    "id": "wedding-gift-golden-goblet",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      15,
+      1234,
+      1240
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-storybook",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      17,
+      1240,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-hand-mirror",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      41,
+      0,
+      1222,
+      1224
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-jewel-casket",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-perfume-flask",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1240,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-harp",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1250,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-rose-basket",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      14,
+      1240,
+      1228
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-coin-purse",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1236,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-silk-fan",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      25,
+      1254,
+      1226
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-nightingale",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      8,
+      1240,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-feather-brooch",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1244,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-star-pendant",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1236,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-silk-ribbons",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1253,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-porcelain-teacup",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      18,
+      1228,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-candlestick",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1232,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-music-box",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1238,
+      1250
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-silver-bells",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1240,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-lute",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1240,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-shell-comb",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      0,
+      0,
+      1242,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  },
+  {
+    "id": "wedding-gift-golden-key",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sourceBounds": [
+      25,
+      0,
+      1228,
+      1254
+    ],
+    "deliveredSize": [
+      320,
+      320
+    ]
+  }
+]

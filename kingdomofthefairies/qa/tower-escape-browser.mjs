@@ -29,7 +29,7 @@ try{
    renderer.render({act,state:st,t:3,curtain:1,film:'off',tinted});
    return{tinted,stage,level:r.mod.towerEscapeFire(st),left:fire.filter(f=>f.x<400),right:fire.filter(f=>f.x>900),door,teal};
   },{tinted,stage});
-  assert.ok(sample.door.every(x=>x>880)&&sample.door.length>0,'painted escape door is on the right');assert.ok(sample.left.length>0,'left fire stays active');
+  assert.deepEqual(sample.door,[],'no added escape door');assert.ok(sample.left.length>0,'left fire stays active');
   if(stage==='clear'){assert.equal(sample.level,0);assert.deepEqual(sample.right,[]);assert.equal(sample.teal,0);}
   else{assert.ok(sample.right.length>0);if(stage==='fading')assert.ok(sample.right.every(f=>f.alpha>0&&f.alpha<1));}
   samples.push(sample);await page.locator('#escape-review').screenshot({path:out+`/${tinted?'tinted':'original'}-${stage}.png`});
@@ -53,5 +53,5 @@ try{
  assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.phase),'house');
  await page.keyboard.down('ArrowRight');await page.waitForFunction(()=>window.__kingdomOfTheFairies.S.state.phase==='quay');await page.keyboard.up('ArrowRight');
  assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.p.face),1);assert.deepEqual(errors,[]);
- await writeFile(out+'/checks.json',JSON.stringify(samples,null,2)+'\n');console.log('Right-side painted exit, gradual fire clearance, and actual pickup/ladder/slope/right-door traversal pass');
+ await writeFile(out+'/checks.json',JSON.stringify(samples,null,2)+'\n');console.log('No added exit door, gradual fire clearance, and actual pickup/ladder/slope/offstage-right traversal pass');
 }finally{await browser.close();server.close();}

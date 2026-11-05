@@ -1,0 +1,106 @@
+{
+  "generator": "Built-in image_gen",
+  "style": "Painted fairy-tale toy-theatre props; native transparency",
+  "gifts": [
+    {
+      "id": "golden-goblet",
+      "name": "Golden goblet",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an ornate gold goblet with a wide bowl, slender stem and jewel-studded foot, decorated with an azure star and rose enamel. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "storybook",
+      "name": "Illuminated storybook",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a closed thick fairy-tale storybook in plum velvet and gilded corner mounts, a large gold floral medallion on the cover and a rose ribbon bookmark; no words or lettering. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "hand-mirror",
+      "name": "Silver hand mirror",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an elegant oval silver hand mirror with a rose-and-vine handle and pale blue reflective glass, tilted slightly to show its ornate frame. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "jewel-casket",
+      "name": "Jeweled casket",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a small CLOSED royal treasure casket with an arched lid, azure enamel panels, golden bands and three bright cabochon gems. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "perfume-flask",
+      "name": "Crystal perfume flask",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a rose-pink cut-crystal perfume flask with a tall star-shaped gold stopper, a little gold collar and a blue ribbon. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "harp",
+      "name": "Gilded harp",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a small gilded fairy harp with an elegant curved neck, a deep rose soundbox, visible strings and azure star decorations. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "rose-basket",
+      "name": "Basket of roses",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a woven gold wicker gift basket brimming with a compact bouquet of pink and ivory roses, tied with a large azure silk bow. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "coin-purse",
+      "name": "Velvet coin purse",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a rounded plum velvet drawstring purse with gold embroidery, a rose cord and a few gold coins showing at its mouth. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "silk-fan",
+      "name": "Painted folding fan",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an open semicircular folding fan with ivory-coloured carved wooden ribs, hand-painted pink flowers on pale azure silk and a short golden tassel. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "nightingale",
+      "name": "Clockwork nightingale",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a small golden clockwork nightingale perched on its own ornate rose pedestal, with an azure enamel wing and a tiny winding key. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "feather-brooch",
+      "name": "Peacock brooch",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an antique peacock-feather brooch made of gold filigree and teal, azure and rose enamels, with one large blue jewel at its centre. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "star-pendant",
+      "name": "Crystal star pendant",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a large pale azure five-pointed crystal star pendant in a golden setting, hanging within a short loop of fine gold chain. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "silk-ribbons",
+      "name": "Silk ribbons",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a decorative wedding gift bundle of three rolled silk ribbons in azure, rose and plum, tied together with an elaborate golden bow. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "porcelain-teacup",
+      "name": "Porcelain tea set",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: one elegant ivory porcelain teacup on its matching saucer, with a sweeping gold handle and painted pink roses, shown slightly from above but mostly front-on. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "candlestick",
+      "name": "Silver candlestick",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an ornate silver candlestick with a single unlit ivory-coloured taper candle, a gold collar and a rose enamel base. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "music-box",
+      "name": "Carved music box",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a small OPEN carved wooden hand-cranked music box with a gold musical cylinder visible inside and painted azure-and-rose floral panels; no figurine and no lettering. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "silver-bells",
+      "name": "Silver wedding bells",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a pair of small silver wedding bells tied together as one gift with a generous rose-pink ribbon bow and golden leaf details. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "lute",
+      "name": "Painted lute",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a small pear-shaped Renaissance lute with a carved rosewood body, azure-and-gold floral inlay, visible strings and a curved pegbox. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "shell-comb",
+      "name": "Seashell hair comb",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: an elegant gold hair comb topped by a scalloped shell in pale rose and azure enamel, with five clearly visible curved golden teeth. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    },
+    {
+      "id": "golden-key",
+      "name": "Enchanted golden key",
+      "prompt": "Use case: game-asset. Create ONE isolated wedding gift sprite: a large ornate antique gold key with a heart-shaped filigree bow, a small rose jewel, an azure ribbon and a simple decorative bit. Entire item fully visible upright and centred with generous transparent space. An early-1900s French fairy-tale toy-theatre prop, hand-painted gouache on cut-out card, sepia-grey ink linework with translucent stencil-tinted washes of moon gold, plum, rose pink, teal and azure, subtly worn cut edges and paper paint texture. Clean bold silhouette readable as a small game pickup. Front-on theatre view with slight depth, no photographic lighting or modern 3D rendering. Genuine transparent background and transparent openings; no ground, no cast shadow, no checkerboard painted into the image, no lettering, no labels, no border, no extra unrelated objects. Square asset canvas."
+    }
+  ]
+}

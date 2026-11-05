@@ -522,7 +522,7 @@ export const TEXT = {
     },
     burst: { onceMore: 'Once more!', hit: 'A hit!', beaten: 'Beaten!', whirlpool: 'Into the whirlpool!', lamp: "Aurora's lamp!" },
     // the gold arrow's label over the way on
-    waypointOut: 'Out to the right',
+    waypointOut: 'Way out',
     waypointHer: 'To her',
     // on-stage hints
     climbHint: 'Climb the stairs and ladders to Azurine · [A] leaps the burnt gaps',
@@ -546,9 +546,7 @@ export const TEXT = {
     announce: {
       hit: (n) => `Hit. ${n} lantern${n === 1 ? '' : 's'} left.`,
       beamWarn: 'The ceiling shudders.',
-      shutterLocked: 'The shutter is barred fast.',
-      shutterSmash: "Aurora's lamp opens the shutter. Climb the ivy.",
-      liftHer: 'You lift Azurine. Carry her down and escape through the right-hand door as the fires die away.',
+      liftHer: 'You lift Azurine. Carry her down and all the way to the right as the fires die away.',
       floorBreak: 'The way you came is gone. A ladder drops at the right.',
       houseFall: 'Out onto the clifftop. The tower is falling.',
       faceoff: 'Aurora holds the witch at bay.',
