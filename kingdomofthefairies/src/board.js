@@ -17,7 +17,7 @@ export const LEAVES = 3;
 export const TUNING = {
   duration: 100, // seconds of sailing at speed 1 to reach the bay
   scroll: 170, // px/s the scenery passes at speed 1
-  shipMin: 210, shipMax: 930, shipSpeed: 280,
+  shipMin: 210, shipMax: 1070, shipSpeed: 280, // matching reach at both curtains
   rowTween: 0.22,
   leapTime: 0.78, leapHeight: 96, leapClear: 26,
   hull: CONFIG.act1.lanterns, invuln: 1.6,
@@ -99,7 +99,7 @@ export function step(b, dt, input) {
   if (s.invuln > 0) s.invuln = Math.max(0, s.invuln - dt);
 
   // --- Voyage progress.
-  const lean = (s.x - 560) / 370; // pressing ahead gains a little
+  const lean = Math.max(-1, Math.min(1, (s.x - 560) / 370)); // keep the existing speed bonus at the wider bound
   b.speed = (b.wind.dir > 0 ? W.tail : W.head) * (1 + 0.14 * lean);
   if (b.phase === 'arrive') b.speed *= Math.max(0, 1 - b.phaseT / TUNING.arriveTime);
   const px = TUNING.scroll * b.speed * dt;

@@ -12,10 +12,11 @@ try {
  await page.evaluate(async()=>{
   const q=window.__kingdomOfTheFairies;await q.assets.all;await document.fonts.ready;
   const {createRenderer}=await import('/src/art.js'),{default:act}=await import('/src/acts/act1.js');
+  const {TUNING}=await import('/src/board.js');
   const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;
   canvas.id='crossing-review';canvas.style.cssText='position:fixed;inset:0;z-index:99999;width:1280px;height:720px';document.body.append(canvas);
   const renderer=createRenderer(canvas,q.assets),asset=renderer.kit.asset;
-  window.crossing={act,canvas,renderer,witches:[],halves:[]};
+  window.crossing={act,canvas,renderer,TUNING,witches:[],halves:[]};
   renderer.kit.asset=(id,x,y,w,h,...rest)=>{
    if(id==='witch-storm')window.crossing.witches.push({x,y,w,h});
    if(id==='ship-wreck-bow'||id==='ship-wreck-stern'){
@@ -66,6 +67,15 @@ try {
    assert.ok(stern.every(s=>bow.every(b=>s.x<b.x)),'stern left and bow right put the broken edges in the middle');
    assert.ok(halves.every(h=>!h.flipped),'swap the sprites without mirroring their artwork');
    await page.locator('#crossing-review').screenshot({path:`${out}/${tinted?'tinted':'original'}-wreck-${time}.png`});
+  }
+  for(const row of [0,1,2]) for(const side of ['back','forward']){
+   await page.evaluate(({row,side,tinted})=>{
+    const q=window.crossing,st=q.act.create({seed:5});
+    Object.assign(st.board.ship,{row,rowFrom:row,x:side==='back'?q.TUNING.shipMin:q.TUNING.shipMax});
+    st.board.progress=.4;st.board.hazards=[];st.board.pickups=[];
+    q.renderer.clearFx();q.renderer.render({act:q.act,state:st,curtain:1,film:'off',tinted,t:20});
+   },{row,side,tinted});
+   await page.locator('#crossing-review').screenshot({path:`${out}/${tinted?'tinted':'original'}-reach-${row}-${side}.png`});
   }
   for(const progress of [.97,.985,.995,1]){
    await page.evaluate(({progress,tinted})=>{

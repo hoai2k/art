@@ -14,6 +14,17 @@ test('determinism: same seed, same voyage', () => {
   assert.deepEqual(a.hazards.map((h) => [h.type, h.row, Math.round(h.x)]), b.hazards.map((h) => [h.type, h.row, Math.round(h.x)]));
 });
 
+test('the ship reaches both curtains in either wind without increasing the forward speed bonus', () => {
+  for(const dir of [-1,1]){
+    const b=createBoard(1);b.spawnIn=1e9;b.wind.next=1e9;b.wind.dir=dir;
+    run(b,4,{moveX:1});
+    assert.equal(b.ship.x,1280-TUNING.shipMin,'forward reach mirrors backward reach');
+    assert.ok(b.ship.x>930,'passes the old forward stop');
+    assert.ok(b.speed<=(dir>0?TUNING.wind.tail:TUNING.wind.head)*1.14+1e-9,'existing speed bonus is capped');
+    run(b,4,{moveX:-1});assert.equal(b.ship.x,TUNING.shipMin);
+  }
+});
+
 test('row changes are edges, clamped, and tweened', () => {
   const b = createBoard(1);
   step(b, 1 / 60, { rowUp: true }); assert.equal(b.ship.row, 0);
