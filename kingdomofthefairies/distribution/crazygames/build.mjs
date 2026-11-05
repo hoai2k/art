@@ -5,10 +5,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { ACT_ART } from '../../src/act-art.js';
+import { validateActArt } from '../../qa/lib/validate-act-art.mjs';
 import { themeManifest, RETIRED_IDLE } from '../../src/theme.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
+// Refuse to publish a stale preload list: recovery screens are for failures,
+// never for image dependencies omitted during development. This also runs
+// in normal website publication, which builds its preview alongside it.
+await validateActArt(ACT_ART, JSON.parse(await fs.readFile(path.join(root, 'assets/manifest.json'), 'utf8')));
 const args = process.argv.slice(2);
 const preview = args.includes('--preview');
 const outputArg = args.indexOf('--out');

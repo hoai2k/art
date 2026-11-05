@@ -13,6 +13,11 @@ node kingdomofthefairies/distribution/crazygames/preflight.mjs
 node kingdomofthefairies/distribution/crazygames/check.mjs
 ```
 
+The builder validates generated pose names and image aliases against every
+scene preload list before writing the release. A stale list fails with the
+missing IDs; regenerate it with `qa/build-act-art.mjs` and retry. Runtime
+artwork recovery is reserved for unexpected failures, not normal scene starts.
+
 The check uses the repository's shared Playwright installation and a local
 HTTP server. Output:
 

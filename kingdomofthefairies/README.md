@@ -57,7 +57,10 @@ acts. The first four keep their stage machinery and rules, recast:
    witch's tempest, a scene: the crew light the lanterns, she strikes the mast
    and the ship breaks on the rocks.
 2. The Water Fairy: the sleepers' grotto; he swims to the Water Fairy for her
-   blessing, and her dolphin carriage carries him on.
+   blessing, and her dolphin carriage carries him on. Conches immediately wake
+   sleepers within 360 pixels of the horn; their song also helps him wake others
+   as he swims past. The Wreck’s two swimming strokes keep one helmet-to-boot
+   length, independently of the reaching hands (review: `qa/wreck-swim-browser.mjs`).
 3. Neptune's Court: a walk through the lobster palace (bow, holding X, past
    its guards; leap with A for the pearls beyond), then the court's moving
    floors, watched by the scrying eye.
@@ -214,6 +217,10 @@ From the repository root:
 for t in board act2 act3 act4 act5; do KOTF_EDITION=widowsbay node kingdomofthefairies/qa/$t.test.mjs; done
 for t in animation sailor-motion walking theme assets-loader surface-swim cavern-art court-film; do node kingdomofthefairies/qa/$t.test.mjs; done
 node kingdomofthefairies/qa/keyboard.test.mjs
+node kingdomofthefairies/qa/art-dependencies.test.mjs
+KOTF_EDITION=widowsbay node kingdomofthefairies/qa/art-dependencies.test.mjs
+node kingdomofthefairies/qa/validate-act-art.mjs
+KOTF_EDITION=widowsbay node kingdomofthefairies/qa/validate-act-art.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/prompts-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/armoury-browser.mjs
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/crossing-browser.mjs
@@ -231,6 +238,9 @@ python3 kingdomofthefairies/design/source/person_sizes.py --check    # after any
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/build-act-art.mjs --check   # after adding art or changing what a scene draws; rerun without --check to rewrite src/act-art.js
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/loading-browser.mjs
 node kingdomofthefairies/qa/deferred-art-browser.mjs
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/cold-scene-art-browser.mjs
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/cold-scene-art-browser.mjs --preview
+CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/whale-preload-browser.mjs --preview
 node kingdomofthefairies/qa/asset-recovery-browser.mjs
 kingdomofthefairies/publish.sh local/pages/kingdomofthefairies
 ```
@@ -241,8 +251,15 @@ act's own images (`src/act-art.js`, recorded per edition and cast look by
 points to while they wait, the chosen act during its card, then the act after
 it, and the rest of the game behind. An act's card waits only for its own art,
 and only once A is pressed: pressed early, its prompt becomes a "Setting the
-stage" loading bar and the act begins when it fills. Art still requested is
-not loaded (its stand-in draws).
+stage" loading bar and the act begins when it fills. Unexpected missing or failed
+artwork blocks play with recovery controls; it never draws a stand-in.
+
+Preload generation expands computed pose suffixes, walking families, cast aliases
+and tint choices through the same image resolver used by the renderer. It also
+samples timed shore arrivals directly. Website publication and both CrazyGames
+builds reject a catalog that omits any current source dependency, with the
+missing IDs and the command to regenerate it. Cold-render checks limit each
+Act to its own preload images so other cached Acts cannot conceal a gap.
 
 `?qa` exposes the shell as `window.__kingdomOfTheFairies` (and the compatible
 `window.__widowsBay` alias). GitHub Pages publishes the renamed directory;

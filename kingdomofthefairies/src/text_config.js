@@ -313,7 +313,7 @@ export const TEXT = {
     // words that rise from the figure
     burst: {
       followGuitar: 'Follow the guitar down',
-      conch: 'The conch sings! Wake the sleepers',
+      conch: 'The conch sings!',
       awake: (n) => `Awake ${n}`,
       airOut: 'Out of air!',
       airLow: 'Air low: find a vent',
@@ -340,7 +340,7 @@ export const TEXT = {
     announce: {
       sailorWake: 'The Water Fairy breathes life into the prince. He wakes among his drowned crew.',
       swimStart: 'Follow the sword down. Grab pearls with [X] and get air from the bubbles.',
-      conchBlow: 'The conch sings. Swim close to your crew to wake them.',
+      conchBlow: 'The conch wakes the nearby crew. Swim close to others while its song lasts.',
       swordCatch: 'You catch the enchanted sword.',
       witchOffer: 'The Water Fairy waits by the wreck. Swim to her for her blessing.',
       roseTake: 'Her blessing revives the rest of your crew.',
@@ -350,7 +350,7 @@ export const TEXT = {
       // Widow's Bay edition
       sailorWakeClassic: 'The witch breathes life into the sailor. He wakes among the drowned.',
       swimStartClassic: 'Swim down after the guitar. Press [A] to kick. Sound the conch to wake the sleepers.',
-      conchBlowClassic: 'The conch sings. Swim close to the sleepers to wake them.',
+      conchBlowClassic: 'The conch wakes nearby sleepers. Swim close to others while its song lasts.',
       sleeperWake: (n) => `A sleeper wakes. ${n} woken.`,
       hit: (n) => `Hit. ${n} lantern${n === 1 ? '' : 's'} left.`,
       airLow: 'Air running low. Find a vent.',

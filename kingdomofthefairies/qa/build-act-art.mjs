@@ -14,25 +14,11 @@
 // (CHROMIUM_PATH as for the browser checks)
 import { readFile, writeFile } from 'node:fs/promises';
 import { serve, playwright } from '../../shared/test/lib.mjs';
+import { ACT_MODULES, collectActDependencies } from './lib/collect-art-dependencies.mjs';
 
 const OUT = new URL('../src/act-art.js', import.meta.url);
 const check = process.argv.includes('--check');
-const actsRoot = new URL('../src/acts/', import.meta.url);
-const modules = { prologue: 'prologue.js', crossing: 'act1.js', grotto: 'act2.js', court: 'act3.js', whale: 'act4.js', tower: 'act5film.js', burning: 'act5film.js', 5: 'act5.js' };
-const texts = new Map();
-async function namedAssets(file, seen = new Set(), ids = new Set()) {
-  if (seen.has(file.href)) return ids;
-  seen.add(file.href);
-  if (!texts.has(file.href)) texts.set(file.href, readFile(file, 'utf8'));
-  const text = await texts.get(file.href);
-  for (const [, , id] of text.matchAll(/(['"])([a-z][a-z0-9-]*)\1/g)) ids.add(id);
-  for (const [, ref] of text.matchAll(/\bfrom\s*['"](\.[^'"]+\.js)['"]/g)) {
-    const dependency = new URL(ref, file);
-    if (dependency.href.startsWith(actsRoot.href)) await namedAssets(dependency, seen, ids);
-  }
-  return ids;
-}
-const namedArt = Object.fromEntries(await Promise.all(Object.entries(modules).map(async ([key, file]) => [key, [...await namedAssets(new URL(file, actsRoot))]])));
+const namedArt = Object.fromEntries(await Promise.all(Object.keys(ACT_MODULES).map(async key => [key, await collectActDependencies(key)])));
 const server = await serve(new URL('../', import.meta.url).pathname), { chromium } = await playwright();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 const result = {};
@@ -46,6 +32,7 @@ try {
     result[edition] = await page.evaluate(async ({ looks, namedArt }) => {
       const { createRenderer } = await import('/src/art.js'), { ACTS } = await import('/src/acts/index.js');
       const { FILM, FILM_CAST } = await import('/src/theme.js');
+      const { expandAssetDependencies } = await import('/qa/lib/art-dependencies.mjs');
       const assets = window.__kingdomOfTheFairies.assets, images = assets.images, used = new Set();
       const canvas = document.createElement('canvas'); canvas.width = 1280; canvas.height = 720;
       const view = { ...assets, images: new Proxy(images, { get: (t, id) => { if (typeof id === 'string' && t[id]) used.add(id); return t[id]; } }) };
@@ -74,20 +61,24 @@ try {
               if (f % 12 === 0) draw({ act, state: st, t: tt, curtain: 1, film: 'off', tinted, hud: true });
             }
           }
+          // Shore arrivals are a timed ending, not guaranteed to be reached
+          // by a short traversal through the whale. Sample every survivor's
+          // crawl and standing pose before publishing its preload list.
+          if (act.key === 'whale') {
+            const { MAX_REVELLERS, shoreTimes } = await import('/src/acts/act4.js');
+            const st = act.create({ carry: { sleepers: MAX_REVELLERS } });
+            st.phase = 'shore';
+            const T = shoreTimes(MAX_REVELLERS);
+            const times = [T.crawl + .1, T.crawl + 1.6, T.crawl + 2.1, T.tail + 1];
+            for (let i = 0; i < MAX_REVELLERS; i++) times.push(T.out + i * T.gap + .1, T.out + i * T.gap + 1.5);
+            for (const t of times) { st.phaseT = t; draw({ act, state: st, t, curtain: 1, film: 'off', tinted, hud: true }); }
+          }
           const names = namedArt[act.key || String(act.id)];
           if (!names) throw new Error('Missing asset source module for ' + act.key);
-          // A literal family prefix (e.g. 'prince-') can construct an ID at
-          // runtime. Include its whole known family rather than guessing
-          // which suffix a sampled playthrough happened to exercise.
-          const candidates = new Set(names.flatMap(id => id.endsWith('-') ? Object.keys(assets.slots).filter(slot => slot.startsWith(id)) : [id]));
-          for (const raw of candidates) {
-            const base = raw.endsWith('-tinted') ? raw.slice(0, -7) : raw;
-            const mapped = FILM ? act.cast?.[base] || FILM_CAST[base] || base : base;
-            // The cast resolver first checks its base image before choosing
-            // the tinted alternative; keep that dependency in the web list.
-            if (mapped !== base && images[mapped]) used.add(mapped);
-            const id = tinted && images[mapped + '-tinted'] ? mapped + '-tinted' : mapped;
-            if (images[id]) used.add(id);
+          const dependencies = expandAssetDependencies(names, { slots: assets.slots, cast: FILM ? { ...FILM_CAST, ...act.cast } : {}, tinted });
+          for (const id of dependencies) {
+            if (!images[id]) throw new Error('Undelivered dependency for ' + act.key + ': ' + id);
+            used.add(id);
           }
           byLook[tinted ? 'tinted' : 'original'] = [...used].sort();
         }

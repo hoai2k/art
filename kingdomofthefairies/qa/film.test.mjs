@@ -8,7 +8,7 @@ import { readFile, access } from 'node:fs/promises';
 import { ACTS } from '../src/acts/index.js';
 import { FILM, LEGACY, FILM_CAST } from '../src/theme.js';
 import prologue, { GIFTS, FAIRIES, AZURINE_X, RAMPART, ARMS, HAND, NEAR_HAND, LANTERNS, T as PRO_T, GIFT_SHOW } from '../src/acts/prologue.js';
-import act2, { FAIRY_AT, FILM_DIVE, RIDE } from '../src/acts/act2.js';
+import act2, { FAIRY_AT, FILM_DIVE, RIDE, TUNE as GROTTO_TUNE } from '../src/acts/act2.js';
 import act3, { PASSAGE } from '../src/acts/act3.js';
 import { actTower, actBurning, SWIM, TOWER_HOLDS, TOWER_TOP, FILM_T, BARREL, DUEL, DIVE, APOTH, FILM_CLIFF, TOWER_WINDOW, duelReach, weddingGuests, guestHop, CELEBRATION, ENDING, AURORA, auroraFacing, WEDDING, weddingFloor, SWIM as SEA, diveFloor, swimPosition, TOWER_ESCAPE, towerEscapeFire, duelResetX, towerLeftFire, TOWER_FIRE, treasures, GIFTING, nearGiftFairy, canReceiveGift, giftPromptAlpha, pileCount, BATTLE_INTRO, BATTLE_INTRO_END, battleIntroFrame } from '../src/acts/act5film.js';
 import { CLIMB, terrainAt } from '../src/acts/climb.js';
@@ -386,6 +386,31 @@ test('Act I: the tempest is a scene; the crew light the lanterns and the witch t
   assert.equal(st.party.lit, 4);
   assert.deepEqual(st.party.on, [true, true, true, true]);
   assert.equal(st.phase, 'turn');
+});
+
+test('Conches wake the nearby area immediately, without following the prince', () => {
+  for (const [index, expected] of [[0, 3], [1, 1], [2, 1]]) {
+    const st = act2.create(); st.phase = 'swim'; st.phaseT = 12;
+    const cn = st.conches[index];
+    Object.assign(st.sailor, { x: cn.x, y: cn.y - 25, vx: 0, vy: 0, wake: 1, grace: 99 });
+    st.guitar.y = cn.y + 600;
+    act2.step(st, DT, {});
+    assert.equal(cn.used, true);
+    assert.equal(st.woken, expected, `conch ${index + 1} wakes its local sleepers on sounding`);
+    assert.equal(st.events.filter(e => e.type === 'sleeperWake').length, expected);
+    const score = st.score;
+    act2.step(st, DT, {});
+    assert.equal(st.woken, expected); assert.equal(st.score, score, 'never rewarded twice');
+  }
+  const st = act2.create(); st.phase = 'swim'; st.phaseT = 12;
+  const cn = st.conches[0];
+  const inside = { ...st.sleepers[0], x: cn.x + GROTTO_TUNE.conchWakeR - 1, y: cn.y };
+  const outside = { ...inside, x: cn.x + GROTTO_TUNE.conchWakeR + 1 };
+  st.sleepers = [inside, outside];
+  Object.assign(st.sailor, { x: cn.x, y: cn.y - 25, vx: 0, vy: 0, wake: 1, grace: 99 });
+  st.guitar.y = 900;
+  act2.step(st, DT, {});
+  assert.equal(inside.state, 'rising'); assert.equal(outside.state, 'asleep');
 });
 
 test('Act II dive: X wakes a sleeper within reach and takes an open clam\'s pearl; the sword runs on ahead', () => {

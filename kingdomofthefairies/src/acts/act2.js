@@ -26,6 +26,7 @@ export const TUNE = {
   airAfterOut: 0.4,  // what is left after running out costs a lantern
   ventH: 300, ventW: 52,
   horn: 14,          // seconds a conch's song lasts
+  conchWakeR: 360,   // the horn wakes an area around the horn itself
   wakeR: 150,        // how close you must swim to wake a sleeper
   grace: 1.6,
   clamPearls: 2,     // pearls per clam: its own, then one regrown; then it stays shut and grey
@@ -419,7 +420,10 @@ function stepSwim(st, dt, input) {
   // Conch horns: swim into one to sound it.
   for (const c of st.conches) {
     if (!c.used && Math.hypot(s.x - c.x, s.y - (c.y - 25)) < 60) {
-      c.used = true; st.hornT = TUNE.horn; st.events.push({ type: 'conchBlow', x: c.x, y: c.y });
+      c.used = true; c.soundedAt = st.t; st.hornT = TUNE.horn; st.events.push({ type: 'conchBlow', x: c.x, y: c.y });
+      for (const sl of st.sleepers) {
+        if (sl.state === 'asleep' && Math.hypot(sl.x - c.x, sl.y - c.y) <= TUNE.conchWakeR) wake(st, sl, 'sleeperWake');
+      }
     }
   }
   st.hornT = Math.max(0, st.hornT - dt);

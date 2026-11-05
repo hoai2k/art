@@ -12,6 +12,7 @@ import { FILM, words } from '../theme.js';
 import { REST_GAP } from '../sprite-fit.js';
 import { TEXT } from '../text_config.js';
 import { drawPose, CREW_OF } from '../pose.js';
+import { drawWreckSwimmer, wreckSwimGeometry } from './wreck-swim.js';
 import { richText, measureRichText } from '../art.js';   // headless-safe: art.js touches no DOM at load
 
 const TAU = Math.PI * 2;
@@ -416,6 +417,17 @@ function growingPearl(k, x, y, g) {
 function conch(k, st, cn, t) {
   const c = k.c, x = cn.x, y = sy(st, cn.y);
   if (cn.y > SHELF_Y + 50) ledge(k, st, x, cn.y, 130);
+  const age = cn.soundedAt == null ? Infinity : st.t - cn.soundedAt;
+  if (age >= 0 && age < 1.2) {
+    c.save(); c.strokeStyle = k.col('#fff2b0'); c.lineWidth = 2;
+    for (const lag of [0, 0.2]) {
+      const u = (age - lag) / 1.0;
+      if (u < 0 || u > 1) continue;
+      c.globalAlpha = (1 - u) * 0.45;
+      c.beginPath(); c.arc(x, y - 25, 25 + u * (TUNE.conchWakeR - 25), 0, TAU); c.stroke();
+    }
+    c.restore();
+  }
   if (!cn.used) {
     c.save(); c.globalAlpha = 0.25 + 0.15 * Math.sin(t * 4); c.fillStyle = k.col('#d9b34a');
     k.circle(x, y - 30, 46); c.restore();
@@ -647,7 +659,7 @@ function swimmer(k, st, t) {
   const drown = ph === 'drown';
   if (flick && !drown) c.globalAlpha = 0.45;
   const rot = drown ? Math.min(1.2, st.phaseT) * s.face * 0.8 : clamp(s.vy / 900, -0.25, 0.25) * s.face;
-  harness(k, x, y, drown ? -0.5 : s.vy, t, 0, s.face, rot, 1);
+  harness(k, x, y, drown ? -0.5 : s.vy, t, 0, s.face, rot, 1, s.stroke);
   c.save(); c.translate(x, y);
   if (drown) c.rotate(Math.min(1.2, st.phaseT) * s.face * 0.8);
   else c.rotate(clamp(s.vy / 900, -0.25, 0.25) * s.face);
@@ -663,8 +675,10 @@ function swimmer(k, st, t) {
   c.globalAlpha = 1;
   // bubbles from his beard, and the air warning
   c.fillStyle = k.col('#eef3ea');
-  // painted mouth of the swim art (+80, -14 from the figure origin in both strokes), turned with his tilt
-  const mArt = k.img('sailor-swim-a') ? [80, -14] : [60, -20], mc = Math.cos(rot), ms = Math.sin(rot);
+  // Keep bubbles at the painted mouth after body-size/anchor correction.
+  const geometry = FILM && wreckSwimGeometry(k, s.stroke);
+  const mouth = geometry && geometry.point(geometry.landmarks.mouth);
+  const mArt = mouth ? [mouth.x, mouth.y] : k.img('sailor-swim-a') ? [80, -14] : [60, -20], mc = Math.cos(rot), ms = Math.sin(rot);
   const mox = s.face * mArt[0], moy = mArt[1] * (drown ? -1 : 1);
   const mx = x + mox * mc - moy * ms, my = y + mox * ms + moy * mc;
   for (let i = 0; i < 3; i++) { const f = (t * 0.9 + i / 3) % 1; c.globalAlpha = 0.6 * (1 - f); k.circle(mx + Math.sin(t * 3 + i) * 5, my - f * 70, 2 + i); }
@@ -677,13 +691,14 @@ function swimmer(k, st, t) {
 }
 
 // The flying wires to the harness ring; they go slack as he swims up.
-function harness(k, x, y, vy, t, fade, face = 1, rot = 0, flipY = 1) {
+function harness(k, x, y, vy, t, fade, face = 1, rot = 0, flipY = 1, stroke = 0) {
   const c = k.c, slack = clamp(-vy / 160, 0, 1);
-  // the swim art paints its own gold ring on his back (at +43, -28 in both
-  // strokes, once A is matched to B); the wires attach to it, in the rotated
-  // frame. The stand-in keeps its own ring.
+  // The prince uses the measured back anchor in each corrected stroke.
+  // Legacy art and stand-ins retain their original suspension ring.
   const art = !!k.img('sailor-swim-a');
-  const ox = art ? face * 43 : 0, oy = (art ? -28 : -24) * flipY;
+  const geometry = FILM && wreckSwimGeometry(k, stroke);
+  const ring = geometry && geometry.point(geometry.landmarks.ring);
+  const ox = face * (ring ? ring.x : art ? 43 : 0), oy = (ring ? ring.y : art ? -28 : -24) * flipY;
   const cs = Math.cos(rot), sn = Math.sin(rot);
   const rx = x + ox * cs - oy * sn, ry = y + ox * sn + oy * cs;
   c.save(); c.globalAlpha = 1 - fade;
@@ -714,11 +729,12 @@ function lyingBack(k, x, y, face, rot, squash) {
 function sailorFigure(k, x, y, face, stroke, flipY, t) {
   const c = k.c;
   c.save(); c.translate(x, y); c.scale(face, flipY || 0.001);
+  if (FILM && drawWreckSwimmer(k, stroke)) { c.restore(); return; }
   if (k.img('sailor-swim-a') && k.img('sailor-swim-b')) {
     // The two strokes are painted at different sizes: reaching forward (A) his
     // body is shorter than swept back (B). A is scaled and turned so its head
     // and boots land where B's are, and its arms reach further ahead.
-    // (the sailor's strokes; the film prince's are evened by the sprite audit)
+    // (legacy sailor only; the prince uses anatomical registration above)
     if (!stroke && !FILM) { c.translate(-77.5, 11); c.rotate(0.13); c.scale(1.215, 1.215); c.translate(79, -16); }
     k.asset(stroke ? 'sailor-swim-b' : 'sailor-swim-a', 0, 60, 180, 120);
     c.restore(); return;

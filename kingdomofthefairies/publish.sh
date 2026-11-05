@@ -7,6 +7,10 @@
 set -eu
 out="${1:?output directory}"
 here="$(cd "$(dirname "$0")" && pwd)"
+# Validate generated names as well as literal/sampled images before copying
+# either edition. Last-second recovery must never hide a stale preload list.
+KOTF_EDITION=film node "$here/qa/validate-act-art.mjs"
+KOTF_EDITION=widowsbay node "$here/qa/validate-act-art.mjs"
 rm -rf "$out"
 mkdir -p "$out"
 cp "$here/index.html" "$here/styles.css" "$here/manifest.webmanifest" "$here/manifest-widowsbay.webmanifest" "$out/"

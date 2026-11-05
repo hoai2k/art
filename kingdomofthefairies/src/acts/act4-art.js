@@ -7,7 +7,7 @@ import {
 } from './act4.js';
 import { clamp, easeOut, easeInOut } from './shared.js';
 import { FILM } from '../theme.js';
-import { drawPose, CREW_OF } from '../pose.js';
+import { drawPose } from '../pose.js';
 import { drawMovement, whalePose } from './sailor-motion.js';
 import { walkPose } from '../walking.js';
 import { TEXT } from '../text_config.js';
@@ -15,10 +15,10 @@ import { cavernScene, cavernOver, cavernEvent } from './act4cavern-art.js';
 import { camX as cavernCamX } from './act4cavern.js';
 
 const REV = [
-  { id: 'reveller-yellow', col: '#e3c13b' },
-  { id: 'reveller-shaggy', col: '#6f9a4a' },
-  { id: 'reveller-jester', col: '#8a3f7a' },
-  { id: 'reveller-lady', col: '#e7a6bd' },
+  { id: 'reveller-yellow', crawl: 'crew-squire-crawl', col: '#e3c13b' },
+  { id: 'reveller-shaggy', crawl: 'crew-bosun-crawl', col: '#6f9a4a' },
+  { id: 'reveller-jester', crawl: 'crew-helmsman-crawl', col: '#8a3f7a' },
+  { id: 'reveller-lady', crawl: 'crew-manatarms-crawl', col: '#e7a6bd' },
 ];
 const BONE = '#d8c7a8', BONE_DARK = '#8f7a62', IVORY = '#f1e3c8', FLESH = '#7a2342', FLESH_LIT = '#a8466a';
 const TOP_EDGE = '#f6ead0'; // every walkable surface carries this pale edge
@@ -621,9 +621,8 @@ function shoreScene(k, st, t) {
     const p = clamp((pt - T.out - i * T.gap) / 1.6, 0, 1);
     if (p <= 0) continue;
     const r = REV[i % REV.length], tx = 900 - i * 44, to = { x: tx, y: rockTop(tx) + 6 + (i % 2) * 8 };
-    const crew = CREW_OF[r.id];
     crawler(k, mouth, to, p, () => { if (!k.asset(r.id, 0, 0, 60, 115)) figure(k, r.col, Math.sin(t * 6 + i) * 0.5 + 0.5); }, t + i,
-      crew && { crawl: [crew + '-crawl'], rise: null, stand: (x, y) => k.asset(r.id, x, y, 60, 115), std: 420, H: 115 });
+      { crawl: [r.crawl], rise: null, stand: (x, y) => k.asset(r.id, x, y, 60, 115), std: 420, H: 115 });
   }
   // The film edition: Aurora appears on the rocks at the right and points the
   // way on toward the cave (tableau 23), once the party is out.
