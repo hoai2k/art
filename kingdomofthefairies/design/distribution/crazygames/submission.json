@@ -44,8 +44,8 @@
     "previews": "Silent gameplay videos in landscape 16:9 and portrait 2:3; maximum 20 seconds and 50 MB per video"
   },
   "preparedCoverFiles": {
-    "landscape": "covers/v12/cover-landscape-1920x1080.png",
-    "portrait": "covers/v12/cover-portrait-800x1200.png",
-    "square": "covers/v12/cover-square-800x800.png"
+    "landscape": "covers/v13/cover-landscape-1920x1080.png",
+    "portrait": "covers/v13/cover-portrait-800x1200.png",
+    "square": "covers/v13/cover-square-800x800.png"
   }
 }

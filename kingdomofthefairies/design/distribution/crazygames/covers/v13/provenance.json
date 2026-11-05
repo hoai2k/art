@@ -1,0 +1,5 @@
+{
+  "reference": "Compared original v1/v2 covers and the final generated title in v8 against the text-free v9 master. Original shading is broad, soft and unshifted rather than a tight offset silhouette.",
+  "artwork": "Unchanged masters and generated alpha lettering from v12.",
+  "compositing": "Separate zero-offset shadow layer: dilate title alpha by 1.8% of placed title width, blur by 3.5%, dark plum at 65% opacity. Lettering remains unfiltered on top; all effects editable in SVG."
+}

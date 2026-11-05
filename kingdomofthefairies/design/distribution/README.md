@@ -7,10 +7,10 @@ separate from the actual playable game distribution.
 
 ## CrazyGames
 
-- `crazygames/covers/v12/`: current covers with generated calligraphic titles, text-free
+- `crazygames/covers/v13/`: current covers with generated calligraphic titles, text-free
   masters, transparent title-only layers, and exact-size PNG exports.
 - `crazygames/submission.json`: draft online submission text and settings.
-- `crazygames/covers/v1/` through `v11/`: preserved design iterations and prompts.
+- `crazygames/covers/v1/` through `v12/`: preserved design iterations and prompts.
 - `crazygames/archives/`: older promotional asset packages.
 - `crazygames/kingdom-of-the-fairies-covers.zip`: current cover pack.
 
