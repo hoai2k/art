@@ -481,7 +481,7 @@ export const TEXT = {
     scenes: { cliffFoot: 'The Cliff Foot', halfway: 'Halfway Up the Cliff', seaGap: 'The Sea Gap', wall: 'The Tower Wall', top: 'Top of the Tower' },
     window: { title: 'Her Window', sub: 'Azurine is held inside' },
     swimHint: 'Swim right for the tower · [A] dives under her swoop',
-    burst: { missed: 'Missed!', auroraLight: "Aurora's light!" },
+    burst: { missed: 'Dodged!', auroraLight: "Aurora's light!" },
     lost: {
       seaTitle: 'The Sea Takes\nHim Down',
       towerTitle: 'The Tower\nThrows Him Off',
