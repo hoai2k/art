@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { serve, launch } from '../../../shared/test/lib.mjs';
 import { ACT_ART } from '../../src/act-art.js';
+import { exerciseAssetRecovery } from '../../qa/lib/asset-recovery.mjs';
 
 const release = fileURLToPath(new URL('../../dist/crazygames/', import.meta.url));
 const server = await serve(release);
@@ -81,6 +82,11 @@ try {
   const starts = await page.evaluate('window.cgCalls.filter(x=>x==="gameplayStart").length');
   await page.locator('#pause [data-act="resume"]').click();
   await wait(page, `window.cgCalls.filter(x=>x==='gameplayStart').length > ${starts}`);
+  const recoveryStarts = await page.evaluate('window.cgCalls.filter(x=>x==="gameplayStart").length');
+  const recoveryStops = await page.evaluate('window.cgCalls.filter(x=>x==="gameplayStop").length');
+  await exerciseAssetRecovery(page);
+  await wait(page, `window.cgCalls.filter(x=>x==='gameplayStart').length >= ${recoveryStarts + 2}`);
+  assert.ok(await page.evaluate(`window.cgCalls.filter(x=>x==='gameplayStop').length >= ${recoveryStops + 2}`), 'asset waits stop SDK gameplay and resume only after recovery');
   // Exercise every act's loading and scene selection, including remote saves.
   await page.evaluate(`${qa}.open.scenes()`);
   const sceneCount = await page.locator('#scene-list button').count();

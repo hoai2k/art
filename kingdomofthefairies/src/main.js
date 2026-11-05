@@ -135,6 +135,35 @@ const S = {
   paused: false, titleNav: false,
 };
 const dialogs = []; // stack of open dialog elements
+// A blocking, accessible recovery screen for an unexpected missing image.
+// Keep this separate from user pause state and from the act's story card.
+const assetLoading = document.createElement('section');
+assetLoading.id = 'asset-loading'; assetLoading.hidden = true;
+assetLoading.setAttribute('role', 'status'); assetLoading.setAttribute('aria-live', 'polite');
+assetLoading.innerHTML = '<div class="asset-loading-card"><p class="asset-loading-label"></p><div class="loadbar-track" role="progressbar" aria-label="Loading artwork" aria-valuemin="0" aria-valuemax="100"><div class="loadbar-fill"></div></div><button type="button" hidden>Retry loading</button></div>';
+document.body.append(assetLoading);
+let assetFocus = null;
+assetLoading.querySelector('button').addEventListener('click', () => { assets.retryRequired?.(); showAssetLoading(); });
+function showAssetLoading() {
+  const status = assets.recovery?.() || { done: 0, total: 1, failed: [] };
+  const pct = status.total ? Math.round(status.done / status.total * 100) : 0;
+  assetLoading.querySelector('.asset-loading-label').textContent = status.failed.length ? 'The artwork could not load. Retry to continue.' : `Loading artwork… ${pct}%`;
+  assetLoading.querySelector('.loadbar-fill').style.width = pct + '%';
+  assetLoading.querySelector('[role="progressbar"]').setAttribute('aria-valuenow', pct);
+  assetLoading.querySelector('button').hidden = !status.failed.length;
+}
+function setAssetLoading(waiting) {
+  if (!!S.assetLoading === waiting) return;
+  S.assetLoading = waiting; assetLoading.hidden = !waiting;
+  if (waiting) assetFocus = document.activeElement;
+  $('#app').inert = waiting;
+  if (waiting) { assets.retryRequired?.(); audio.suspend(); announce('Loading artwork.'); showAssetLoading(); }
+  else {
+    if (!document.hidden && document.hasFocus()) audio.resume();
+    if (assetFocus?.isConnected) assetFocus.focus({ preventScroll: true });
+  }
+  dispatchEvent(new CustomEvent('kotf:asset-wait', { detail: { waiting } }));
+}
 
 // Delivered art for the touch controls and the rotate card (image requests D).
 function touchArt(a) {
@@ -484,7 +513,7 @@ function toggleFullscreen() {
 // (the one AudioContext carries the song, the sea loop and the effects);
 // sound returns once the page is both visible and focused again.
 function syncAway() {
-  if (document.hidden || !document.hasFocus()) { if (S.mode === 'play') pause(); audio.suspend(); } else audio.resume();
+  if (document.hidden || !document.hasFocus()) { if (S.mode === 'play') pause(); audio.suspend(); } else if (!S.assetLoading) audio.resume();
 }
 document.addEventListener('visibilitychange', syncAway);
 addEventListener('blur', syncAway);
@@ -509,6 +538,14 @@ function frame(now) {
     document.body.classList.remove('booting');
     $('#start').focus({ preventScroll: true });
   }
+  if (S.assetLoading) {
+    // Drain pressed edges while waiting; hold every simulation/scene clock.
+    input.poll(0, {});
+    const status = assets.recovery();
+    if (!status.blocked && renderer.render(currentView())) setAssetLoading(false);
+    else showAssetLoading();
+    requestAnimationFrame(frame); return;
+  }
   // Paused, the stage stands still: lanterns, hooks and water are drawn from
   // this clock, so it stops with the play beneath the pause menu.
   if (!(S.paused && S.mode === 'play')) S.t += dt;
@@ -526,7 +563,7 @@ function frame(now) {
   // grain and flicker included), drawn again only if a setting changes it.
   const still = S.paused && S.mode === 'play';
   const look = `${view.film}|${view.tinted}`;
-  if (!still || look !== heldLook) renderer.render(view);
+  if ((!still || look !== heldLook) && renderer.render(view) === false) setAssetLoading(true);
   heldLook = still ? look : null;
   requestAnimationFrame(frame);
 }
@@ -534,6 +571,7 @@ function frame(now) {
 function currentView() {
   return {
     act: S.act, state: S.state, curtain: S.curtain, card: S.card, film: settings.film, tinted: FILM_ED && settings.cast === 'tinted', t: S.t,
+    artReady: S.mode !== 'intro' || actArtReady(S.actIndex),
     hud: S.mode === 'play' || S.mode === 'over',
     curtainCall: S.mode === 'curtaincall' ? Math.min(1, S.modeT / 1.4) : 0,
     scene: S.mode === 'playbill' ? drawPlaybill : S.mode === 'curtaincall' ? drawCurtainCall : null,
@@ -676,10 +714,10 @@ function update(dt, i) {
     // Pressed (or timed out) before the art is in, the prompt becomes a
     // loading bar, and the act begins as soon as the bar fills.
     const artIn = actArtReady(S.actIndex);
-    // An act's own art that failed to load stops at its card: never the stand-ins.
+    // Failed preloads use the same blocking recovery/retry path as a late draw.
     if (artIn && assets?.failed?.length && actArt(S.actIndex).some((id) => assets.failed.includes(id))) {
-      S.card.error = TEXT.shell.loading.sceneryFailed; S.card.loading = null; S.readyT = 0;
-      if (i.pause) pause();
+      for (const id of actArt(S.actIndex)) if (assets.failed.includes(id)) assets.require(id);
+      S.readyT = 0; setAssetLoading(true);
       return;
     }
     if (S.card.loading != null && artIn) { S.card.loading = null; S.card.loadingText = null; announce(TEXT.shell.loading.announceReady); }

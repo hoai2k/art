@@ -431,3 +431,9 @@ html.touch #icons[data-show="play"] .corner-right {
 #playbill-controls button { position: absolute; pointer-events: auto; padding: 0; border: 0; background: transparent; cursor: pointer; }
 #playbill-controls button:disabled { pointer-events: none; }
 #playbill-controls button:focus-visible { outline: 2px solid var(--magenta); outline-offset: -2px; }
+/* A failed or unexpectedly deferred image blocks play until it is usable. */
+#asset-loading:not([hidden]) { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: #20131ff5; color: #fff0cf; }
+.asset-loading-card { width: min(360px, 80vw); text-align: center; padding: 24px; }
+.asset-loading-card .loadbar-track { height: 8px; width: 100%; background: #76556b; border-radius: 4px; overflow: hidden; }
+.asset-loading-card .loadbar-fill { height: 100%; background: #e2be70; transition: width .15s linear; }
+.asset-loading-card button { margin-top: 20px; padding: 10px 20px; font: inherit; }

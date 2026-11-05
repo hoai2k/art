@@ -47,6 +47,8 @@ it cannot verify the real platform's SDK, cloud saves or overlays.
 ```sh
 node kingdomofthefairies/distribution/crazygames/build.mjs --preview
 node kingdomofthefairies/distribution/crazygames/check-preview.mjs
+node kingdomofthefairies/qa/deferred-art-browser.mjs --preview
+node kingdomofthefairies/qa/asset-recovery-browser.mjs --preview
 ```
 
 `--preview --out <directory>` rebuilds another output location. No upload ZIP
@@ -67,10 +69,16 @@ is produced for this preview; use the default SDK build for submission.
   The optional jellyfish animation waits for Act II. Music loads for the
   current mood rather than fetching the entire score in the background.
   Shared sound effects still load on the first user gesture.
-  Per-act dependencies are generated from initial, idle, active and
-  stop/start states, including event-driven poses. Regenerate them with
+  Per-act dependencies include named assets from each act's local source
+  modules, plus initial, idle, active and stop/start states and event-driven
+  poses. Named late artwork is included even when a simulation never reaches it.
+  Regenerate them with
   `qa/build-act-art.mjs` when scene drawing changes: deferred loading cannot
   rely on the normal website's background downloads to fill missing entries.
+- Missing image draws never use procedural substitutes. A last-resort urgent
+  request pauses all game clocks and shows a blocking loading bar. Play resumes
+  only after a complete frame can render; failed downloads offer an explicit
+  retry. SDK gameplay/loading events cover these recovery waits as well.
 - Uses the HTML5 v3 SDK. Initialization precedes game startup and saved-game
   reads. Failure displays a reload action rather than silently starting with
   an unrelated local save. Gameplay events follow playable states, with

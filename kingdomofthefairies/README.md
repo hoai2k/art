@@ -219,6 +219,8 @@ python3 kingdomofthefairies/design/source/build_climb_map.py --check  # after a 
 python3 kingdomofthefairies/design/source/person_sizes.py --check    # after any cast delivery (Azurine, Aurora, the witch, demons, fairies...); rerun without --check to re-measure
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/build-act-art.mjs --check   # after adding art or changing what a scene draws; rerun without --check to rewrite src/act-art.js
 CHROMIUM_PATH=/usr/bin/chromium node kingdomofthefairies/qa/loading-browser.mjs
+node kingdomofthefairies/qa/deferred-art-browser.mjs
+node kingdomofthefairies/qa/asset-recovery-browser.mjs
 kingdomofthefairies/publish.sh local/pages/kingdomofthefairies
 ```
 

@@ -84,7 +84,10 @@ try {
 // Start visually without a title gate. Browsers may require the first real
 // gesture before permitting sound; unlock it without blocking the game.
 for (const event of ['pointerdown', 'keydown', 'touchend', 'click']) {
-  addEventListener(event, () => { audio.unlock(); audio.startMusic(); }, { capture: true });
+  addEventListener(event, () => {
+    if (document.querySelector('#asset-loading')?.hidden === false) return;
+    audio.unlock(); audio.startMusic();
+  }, { capture: true });
 }`, 'gesture audio unlock');
   main = replace(main, "if (settings.cast !== 'original') settings.cast = 'tinted';", "settings.cast = 'tinted';", 'saved look lock');
   main = replace(main, "if (k === 'castLook') settings.cast = settings.cast === 'tinted' ? 'original' : 'tinted';", "if (k === 'castLook') settings.cast = 'tinted';", 'look toggle lock');

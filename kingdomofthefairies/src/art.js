@@ -77,7 +77,7 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
   // Images load through a queue, a few at a time, so the art a scene needs
   // can be moved to the front (out.want) instead of waiting behind the whole
   // game's. Each id settles once: loaded, failed, or (still requested) skipped.
-  const settled = {}, waiters = {}, queue = [];
+  const settled = {}, waiters = {}, queue = [], required = new Set(), retries = {};
   let inflight = 0;
   const CONCURRENT = 6;
   const settle = (id) => { settled[id] = true; for (const f of waiters[id] || []) f(); delete waiters[id]; inflight--; pump(); };
@@ -85,7 +85,8 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
     const s = out.slots[id];
     inflight++;
     if (TEST_ART && s?.status === 'requested') { out.images[id] = testArt(id, s); onImage?.(id, out.images[id]); return settle(id); }
-    // Art still requested is not a failure: its stand-in draws until it arrives.
+    // Unreferenced requested artwork is not a download failure. A draw that
+    // actually needs it is handled by the blocking out.require path below.
     if (s && s.status !== 'delivered') return settle(id);
     if (!s || !s.file) { out.failed.push(id); return settle(id); }
     const img = new Image();
@@ -96,7 +97,7 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
     const fit = s.edition === 'film' && (!originalSlot || originalSlot.edition === 'film');
     img.onload = () => { if (fit) { img.fitBox = true; img.bodyScale = bodyScaleOf(id); } out.images[id] = img; onImage?.(id, img); settle(id); };
     img.onerror = () => { out.failed.push(id); settle(id); };
-    img.src = base + s.file;
+    img.src = base + s.file + (retries[id] ? `${s.file.includes('?') ? '&' : '?'}retry=${retries[id]}` : '');
   };
   const started = new Set();
   function pump() {
@@ -115,6 +116,39 @@ export async function loadAssets(base = 'assets/', { first = [], onImage } = {})
   // How many of ids have settled, of how many known slots.
   out.progress = (ids) => { const known = [...new Set(ids)].filter((id) => out.slots[id]); return { done: known.filter((id) => settled[id]).length, total: known.length }; };
   out.settled = (id) => !!settled[id];
+  // Last-resort recovery for an image a draw actually needs. Unlike a
+  // capability probe, this blocks play until the image is usable.
+  out.require = (id) => {
+    required.add(id);
+    const slot = out.slots[id];
+    if (!slot || (slot.status !== 'delivered' && !TEST_ART)) {
+      if (!out.failed.includes(id)) out.failed.push(id);
+      return;
+    }
+    if (settled[id] && !out.images[id] && !out.failed.includes(id)) {
+      delete settled[id]; started.delete(id);
+    }
+    if (!started.has(id)) {
+      const queued = queue.indexOf(id); if (queued >= 0) queue.splice(queued, 1);
+      started.add(id); start(id); // Urgent recovery bypasses the background queue.
+    }
+  };
+  out.recovery = () => {
+    const ids = [...required], missing = ids.filter(id => !out.images[id]);
+    const status = { blocked: missing.length > 0, done: ids.length - missing.length, total: ids.length,
+      failed: missing.filter(id => out.failed.includes(id)) };
+    if (!status.blocked) required.clear();
+    return status;
+  };
+  out.retryRequired = () => {
+    for (const id of required) {
+      if (out.images[id]) continue;
+      if (!out.failed.includes(id)) continue; // Do not duplicate an in-flight request.
+      out.failed = out.failed.filter(f => f !== id);
+      delete settled[id]; started.delete(id); retries[id] = (retries[id] || 0) + 1;
+      out.require(id);
+    }
+  };
   const load = (ids) => { for (const id of ids) if (!started.has(id) && !queue.includes(id)) queue.push(id); pump(); return Promise.all(ids.filter((id) => out.slots[id]).map(whenSettled)); };
   const early = first.filter((id) => out.slots[id]);
   const rest = Object.keys(out.slots).filter((id) => !early.includes(id));
@@ -253,19 +287,29 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     'sailor-walk-a': ['sailor-stride', 'sailor-stride-a', 'sailor-walk-a'], 'sailor-walk-b': ['sailor-stride', 'sailor-stride-b', 'sailor-walk-b'],
     'sailor-pass-a': ['sailor-stride', 'sailor-pass-a', 'sailor-walk-a'], 'sailor-pass-b': ['sailor-stride', 'sailor-pass-b', 'sailor-walk-b'],
   };
+  const available = id => !!(assets.slots?.[id] || assets.images[id]);
   const walkFrame = (r) => {
     const w = WALK[r];
     if (!w) return r;
-    return assets.images[w[0] + '-a'] && assets.images[w[0] + '-b'] ? w[1] : w[2];   // both frames, or neither
+    return available(w[0] + '-a') && available(w[0] + '-b') ? w[1] : w[2];   // both frames, or neither
+  };
+  let drawing = false;
+  const requiredImage = id => {
+    assets.require?.(id);
+    const error = new Error(`Artwork is not ready: ${id}`); error.assetWait = true;
+    throw error;
+  };
+  const imageId = id => {
+    const a = cast[id];
+    let r = a && available(a) ? a : id;
+    if (!r) return r;
+    r = walkFrame(r);
+    return tinted && available(r + '-tinted') ? r + '-tinted' : r;
   };
   const img = (id) => {
-    const a = cast[id];
-    let r = a && assets.images[a] ? a : id;
-    if (!r) return undefined;
-    r = walkFrame(r);
-    // the tinted cast look (the default in the film edition; Settings or
-    // ?look=original turn it off): a sprite's hand-tinted alternate
-    return (tinted && assets.images[r + '-tinted']) || assets.images[r];
+    const r = imageId(id), image = assets.images[r];
+    if (!image && drawing && available(r)) requiredImage(r);
+    return image;
   };
   let tinted = false;
 
@@ -368,6 +412,18 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
 
   // view = { board, curtain(0 closed..1 open), card, film: 'full'|'gentle'|'off', t }
   function render(view) {
+    drawing = true;
+    try { renderFrame(view); return true; }
+    catch (error) {
+      if (!error.assetWait) throw error;
+      // Unwind every nested canvas save/transform and discard the incomplete
+      // frame. No procedural substitute or half-painted scene reaches play.
+      canvas.width = canvas.width; tint.width = tint.width;
+      overQueue.length = 0; camOn = false; camBase = null;
+      return false;
+    } finally { drawing = false; }
+  }
+  function renderFrame(view) {
     cam = view.cam || null;
     tinted = view.tinted === true;
     const { t, film } = view;
@@ -429,7 +485,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     c.save();
     if (!view.scene && act && st) camApply(c);
     if (view.scene) view.scene(kit, t); // shell scenes: playbill, curtain call
-    else if (act && st) act.draw(kit, st, t);
+    else if (act && st) { if (view.artReady !== false) act.draw(kit, st, t); }
     else { backdrop(c, null, t); for (let r = 0; r < 3; r++) waves(c, r, t * 60, t); }
     particles(c);
     c.restore(); camOn = false;
@@ -439,7 +495,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     if (!st && !view.scene) bandTrio(c, 1, 1, t); // the band waits in front of the curtain
     if (view.curtainCall > 0) bandTrio(c, view.curtainCall, 0, t);
     if (spec) hud(c, spec, t);
-    if (act?.drawOver && st) { kit.c = c; act.drawOver(kit, st, t); }
+    if (act?.drawOver && st && view.artReady !== false) { kit.c = c; act.drawOver(kit, st, t); }
     // Anything an act asked to draw over the frame (tableau captions).
     for (const f of overQueue.splice(0)) { kit.c = c; f(); }
   }
@@ -1084,7 +1140,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
     }
     c.restore();
   }
-  const drawArt = (c, id, cx, by, w, h, extra = '') => { const im = img(id); if (!im) return false; drawAsset(c, P, im, cx, by, w, h, extra); return true; };
+  const drawArt = (c, id, cx, by, w, h, extra = '') => { const im = img(id); if (!im) return requiredImage(imageId(id)); drawAsset(c, P, im, cx, by, w, h, extra); return true; };
 
   function hudItems(c, spec, t) {
     const max = spec.maxLanterns ?? 3;
@@ -1165,7 +1221,7 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   // with `s` the stage pixels per art pixel. `onlyOver` draws just what is
   // held (so it can be drawn over a figure in front of hers).
   function drawIdle(c, id, time, cx, by, w, h, step, over, onlyOver = false) {
-    if (!img(id)) return false;
+    if (!img(id)) return requiredImage(imageId(id));
     const im = img(id);
     if (!onlyOver) drawAsset(c, P, im, cx, by, w, h);
     if (over) {
@@ -1192,16 +1248,17 @@ export function createRenderer(canvas, assets = { slots: {}, images: {} }) {
   const kit = {
     c: ctx, P, PAL, t: 0, ROWS, STAGE,
     img,
+    require(id) { return requiredImage(imageId(id)); },
     // Draw `f` after the frame and footlights (this pass), over everything.
     over(f) { overQueue.push(f); },
     anim(id, time, cx, by, w, h) { return drawAnimation(kit.c, id, time, cx, by, w, h); },
-    // A person's still (with anything held, see drawIdle); false if the
-    // still isn't delivered.
+    // A person's still (with anything held, see drawIdle). Missing artwork
+    // interrupts the frame for recovery instead of returning a stand-in.
     idle(id, time, cx, by, w, h, step, over, onlyOver) { return drawIdle(kit.c, id, time, cx, by, w, h, step, over, onlyOver); },
-    // Draw a delivered image (bottom-centre anchor); false if not delivered.
-    asset(id, cx, by, w, h, extra = '') { const im = img(id); if (!im) return false; drawAsset(kit.c, P, im, cx, by, w, h, extra); return true; },
+    // Draw a delivered image (bottom-centre anchor), or wait for recovery.
+    asset(id, cx, by, w, h, extra = '') { const im = img(id); if (!im) return requiredImage(imageId(id)); drawAsset(kit.c, P, im, cx, by, w, h, extra); return true; },
     // Part of a delivered image: source rect in art pixels -> stage box.
-    assetCrop(id, sx, sy, sw, sh, dx, dy, dw, dh) { const im = img(id); if (!im) return false; kit.c.drawImage(passImage(P, im), sx, sy, sw, sh, dx, dy, dw, dh); return true; },
+    assetCrop(id, sx, sy, sw, sh, dx, dy, dw, dh) { const im = img(id); if (!im) return requiredImage(imageId(id)); kit.c.drawImage(passImage(P, im), sx, sy, sw, sh, dx, dy, dw, dh); return true; },
     // a canvas derived from a delivered image (masked, say), through the same print pass
     imageCrop(src, sx, sy, sw, sh, dx, dy, dw, dh) { kit.c.drawImage(passImage(P, src), sx, sy, sw, sh, dx, dy, dw, dh); return true; },
     col: (hex) => P.c(hex),

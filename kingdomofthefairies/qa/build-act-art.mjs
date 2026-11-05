@@ -6,6 +6,8 @@
 // input (walking both ways, leaping, the second button, up and down), plus
 // a separate idle run. Render before the first step and every few frames:
 // standing/reference poses must be present even without background loading.
+// Also include every named asset in each act's local module graph. Timed
+// passers and late endings must not depend on a simulation reaching them.
 //
 //   node kingdomofthefairies/qa/build-act-art.mjs           write src/act-art.js
 //   node kingdomofthefairies/qa/build-act-art.mjs --check   fail if it is out of date
@@ -15,6 +17,22 @@ import { serve, playwright } from '../../shared/test/lib.mjs';
 
 const OUT = new URL('../src/act-art.js', import.meta.url);
 const check = process.argv.includes('--check');
+const actsRoot = new URL('../src/acts/', import.meta.url);
+const modules = { prologue: 'prologue.js', crossing: 'act1.js', grotto: 'act2.js', court: 'act3.js', whale: 'act4.js', tower: 'act5film.js', burning: 'act5film.js', 5: 'act5.js' };
+const texts = new Map();
+async function namedAssets(file, seen = new Set(), ids = new Set()) {
+  if (seen.has(file.href)) return ids;
+  seen.add(file.href);
+  if (!texts.has(file.href)) texts.set(file.href, readFile(file, 'utf8'));
+  const text = await texts.get(file.href);
+  for (const [, , id] of text.matchAll(/(['"])([a-z][a-z0-9-]*)\1/g)) ids.add(id);
+  for (const [, ref] of text.matchAll(/\bfrom\s*['"](\.[^'"]+\.js)['"]/g)) {
+    const dependency = new URL(ref, file);
+    if (dependency.href.startsWith(actsRoot.href)) await namedAssets(dependency, seen, ids);
+  }
+  return ids;
+}
+const namedArt = Object.fromEntries(await Promise.all(Object.entries(modules).map(async ([key, file]) => [key, [...await namedAssets(new URL(file, actsRoot))]])));
 const server = await serve(new URL('../', import.meta.url).pathname), { chromium } = await playwright();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
 const result = {};
@@ -25,8 +43,9 @@ try {
     await page.goto(server.url + '/?qa' + query);
     await page.waitForFunction(() => window.__kingdomOfTheFairies?.assets?.all && !document.body.classList.contains('booting'));
     await page.evaluate(() => window.__kingdomOfTheFairies.assets.all);
-    result[edition] = await page.evaluate(async (looks) => {
+    result[edition] = await page.evaluate(async ({ looks, namedArt }) => {
       const { createRenderer } = await import('/src/art.js'), { ACTS } = await import('/src/acts/index.js');
+      const { FILM, FILM_CAST } = await import('/src/theme.js');
       const assets = window.__kingdomOfTheFairies.assets, images = assets.images, used = new Set();
       const canvas = document.createElement('canvas'); canvas.width = 1280; canvas.height = 720;
       const view = { ...assets, images: new Proxy(images, { get: (t, id) => { if (typeof id === 'string' && t[id]) used.add(id); return t[id]; } }) };
@@ -36,9 +55,12 @@ try {
         for (const tinted of looks) {
           used.clear();
           const renderer = createRenderer(canvas, view);
+          const draw = frame => {
+            if (renderer.render(frame) === false) throw new Error('Unresolved artwork while recording ' + (act.key || act.id) + ': ' + JSON.stringify(assets.recovery?.()));
+          };
           for (let scene = 0; scene < (act.scenes?.length || 1); scene++) for (const mode of ['idle', 'active', 'stop-start']) {
             const st = act.create({ seed: 7, carry: { tea: 3, guitar: true, rose: false, pearl: true, stone: true, sleepers: 6, pearls: 20 }, from: scene ? { scene, introDone: true } : null });
-            renderer.render({ act, state: st, t: 0, curtain: 1, film: 'off', tinted, hud: true });
+            draw({ act, state: st, t: 0, curtain: 1, film: 'off', tinted, hud: true });
             // The prologue's staged Aurora delivery can take longer than
             // twenty seconds before the prince receives his armour.
             for (let f = 0; f < (act.key === 'prologue' ? 3600 : 1200) && st.status === 'play'; f++) {
@@ -49,15 +71,30 @@ try {
               act.step(st, 1 / 60, stopped ? { beat: input.beat } : input);
               for (const e of st.events || []) renderer.onEvent(e, { act, state: st });
               if (st.events) st.events.length = 0;
-              if (f % 12 === 0) renderer.render({ act, state: st, t: tt, curtain: 1, film: 'off', tinted, hud: true });
+              if (f % 12 === 0) draw({ act, state: st, t: tt, curtain: 1, film: 'off', tinted, hud: true });
             }
+          }
+          const names = namedArt[act.key || String(act.id)];
+          if (!names) throw new Error('Missing asset source module for ' + act.key);
+          // A literal family prefix (e.g. 'prince-') can construct an ID at
+          // runtime. Include its whole known family rather than guessing
+          // which suffix a sampled playthrough happened to exercise.
+          const candidates = new Set(names.flatMap(id => id.endsWith('-') ? Object.keys(assets.slots).filter(slot => slot.startsWith(id)) : [id]));
+          for (const raw of candidates) {
+            const base = raw.endsWith('-tinted') ? raw.slice(0, -7) : raw;
+            const mapped = FILM ? act.cast?.[base] || FILM_CAST[base] || base : base;
+            // The cast resolver first checks its base image before choosing
+            // the tinted alternative; keep that dependency in the web list.
+            if (mapped !== base && images[mapped]) used.add(mapped);
+            const id = tinted && images[mapped + '-tinted'] ? mapped + '-tinted' : mapped;
+            if (images[id]) used.add(id);
           }
           byLook[tinted ? 'tinted' : 'original'] = [...used].sort();
         }
         out[act.key || String(act.id)] = byLook;
       }
       return out;
-    }, looks);
+    }, { looks, namedArt });
     if (errors.length) throw new Error(edition + ': ' + errors.join('; '));
     await page.close();
   }

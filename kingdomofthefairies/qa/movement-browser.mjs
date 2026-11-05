@@ -42,8 +42,8 @@ try {
     // the film's cliff climbs on the prince's own wall frames (F19)
     ['cliff-reach', 'prince-wall-up-a'], ['cliff-pull', 'prince-wall-up-b'],
     ['cliff-fall', 'sailor-fall'], ['stairs-a', 'sailor-stairs-a'],
-    ['stairs-b', 'sailor-stairs-b'], ['ladder', 'sailor-climb-b'],
-    ['ivy', 'sailor-climb-b'], ['slope', 'sailor-stairs-b'],
+    ['stairs-b', 'sailor-stairs-b'], ['ladder', 'prince-wall-up-b'],
+    ['ivy', 'prince-wall-up-b'], ['slope', 'sailor-stairs-b'],
     ['house-fall', 'sailor-fall'], ['house-land', 'sailor-land'], ['house-throw', 'sailor-throw'],
     ['house-carry', 'sailor-carry'],
   ];
@@ -79,27 +79,29 @@ try {
         else if (name === 'house-carry') st.p.carry = true;
       }
       B.draws.length = 0;
-      B.renderer.render({ act, state: st, t: 1, film: 'off', curtain: 1, hud: true });
+      const rendered = B.renderer.render({ act, state: st, t: 1, film: 'off', curtain: 1, hud: true });
       const draws = B.draws.filter((d) => d.id === expected);
       const png = B.canvas.toDataURL('image/png').split(',')[1];
-      return { draws, png };
+      return { draws, png, rendered, recovery: B.a.recovery() };
     }, [name, expected]);
-    assert.equal(result.draws.length, 2, name + ' draws expected pose in both passes');
+    assert.equal(result.draws.length, 2, name + ' draws expected pose in both passes: '+JSON.stringify({rendered:result.rendered,recovery:result.recovery}));
     assert.deepEqual(result.draws[0].box, result.draws[1].box);
     await writeFile(new URL(name + '.png', out), Buffer.from(result.png, 'base64'));
     records.push({ name, expected, draws: result.draws });
   }
-  // Missing delivered pose: the act still draws its previous sailor art.
+  // Missing delivered pose: hold the frame for loading, never substitute art.
   const fallback = await page.evaluate(() => {
     // (in the film edition sailor-fall is drawn as prince-fall: take both away)
     const B = window.__movement; for (const id of ['sailor-fall', 'prince-fall', 'prince-fall-tinted']) delete B.a.images[id];
     const st = B.act4.create(); Object.assign(st.s, { on: null, vy: 1100 });
     B.draws.length = 0;
-    B.renderer.render({ act: B.act4, state: st, t: 1, film: 'off', curtain: 1 });
-    return B.draws.map((d) => d.id);
+    const rendered = B.renderer.render({ act: B.act4, state: st, t: 1, film: 'off', curtain: 1 });
+    return { rendered, recovery: B.a.recovery(), draws: B.draws.map((d) => d.id) };
   });
-  assert.ok(fallback.includes('sailor-leap'), JSON.stringify(fallback));
+  assert.equal(fallback.rendered, false);
+  assert.equal(fallback.recovery.blocked, true);
+  assert.ok(!fallback.draws.includes('sailor-leap'), JSON.stringify(fallback));
   assert.deepEqual(errors, []);
   await writeFile(new URL('validation.json', out), JSON.stringify({ assets, records, fallback, errors }, null, 2));
-  console.log('Browser passed: eight alpha assets loaded, sixteen movement scenes in both passes, missing-art fallback.');
+  console.log('Browser passed: eight alpha assets loaded, sixteen movement scenes in both passes, missing-art frame held.');
 } finally { await browser.close(); server.close(); }

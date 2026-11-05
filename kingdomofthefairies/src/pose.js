@@ -8,7 +8,7 @@ import { PERSON, PERSON_REF } from './person-size.js';
 // above the feet. False when the sprite has not been delivered.
 export function drawPose(k, id, x, by, standH, { std = 360, face = 1, rot = 0, pivot = 0, alpha = null } = {}) {
   const im = k.img(id);
-  if (!im) return false;
+  if (!im) { k.require?.(id); return false; }
   const s = standH / std, w = (im.naturalWidth || im.width) * s, h = (im.naturalHeight || im.height) * s;
   const c = k.c;
   c.save();
@@ -48,7 +48,7 @@ export function personScale(k, id, height) {
 export const personRef = (id) => PERSON_REF[PERSON[id]?.who] || null;
 export function drawPerson(k, id, x, by, height, { face = 1, rot = 0, alpha = null, t = null, over = null, onlyOver = false } = {}) {
   const im = k.img(id), s = personScale(k, id, height);
-  if (!im || !s) return false;
+  if (!im || !s) { k.require?.(id); return false; }
   const w = (im.naturalWidth || im.width) * s, h = (im.naturalHeight || im.height) * s;
   const c = k.c;
   c.save();

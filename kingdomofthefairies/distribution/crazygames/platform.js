@@ -12,6 +12,10 @@ export const platform = {
     const settings = (value) => { this.muted = value.muteAudio === true; soundChanged(); };
     settings(sdk.game.settings || {});
     sdk.game.addSettingsChangeListener(settings);
+    addEventListener('kotf:asset-wait', ({ detail }) => {
+      if (detail.waiting && playing) { sdk.game.gameplayStop(); playing = false; }
+      this.loading(detail.waiting);
+    });
     this.loading(true);
   },
   loading(value) {
