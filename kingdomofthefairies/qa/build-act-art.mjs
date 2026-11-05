@@ -3,9 +3,9 @@
 // being played, ahead of the rest (src/main.js, out.want in src/art.js).
 //
 // Every scene of every act is created and played for a while with varied
-// input (walking both ways, leaping, the second button, up and down), and
-// rendered every few frames; every slot the renderer looks up is recorded.
-// Art only some rare moment draws still arrives with the background load.
+// input (walking both ways, leaping, the second button, up and down), plus
+// a separate idle run. Render before the first step and every few frames:
+// standing/reference poses must be present even without background loading.
 //
 //   node kingdomofthefairies/qa/build-act-art.mjs           write src/act-art.js
 //   node kingdomofthefairies/qa/build-act-art.mjs --check   fail if it is out of date
@@ -36,14 +36,20 @@ try {
         for (const tinted of looks) {
           used.clear();
           const renderer = createRenderer(canvas, view);
-          for (let scene = 0; scene < (act.scenes?.length || 1); scene++) {
+          for (let scene = 0; scene < (act.scenes?.length || 1); scene++) for (const mode of ['idle', 'active', 'stop-start']) {
             const st = act.create({ seed: 7, carry: { tea: 3, guitar: true, rose: false, pearl: true, stone: true, sleepers: 6, pearls: 20 }, from: scene ? { scene, introDone: true } : null });
-            for (let f = 0; f < 1200 && st.status === 'play'; f++) {
+            renderer.render({ act, state: st, t: 0, curtain: 1, film: 'off', tinted, hud: true });
+            // The prologue's staged Aurora delivery can take longer than
+            // twenty seconds before the prince receives his armour.
+            for (let f = 0; f < (act.key === 'prologue' ? 3600 : 1200) && st.status === 'play'; f++) {
               const tt = f / 60, dir = Math.floor(tt / 3) % 3 === 2 ? -1 : 1;
               const input = { moveX: dir, moveY: Math.floor(tt / 2) % 2 ? -1 : 1, up: f % 50 === 0, down: f % 77 === 0,
                 a: f % 30 === 0, aHeld: f % 30 < 12, x: f % 41 === 0, xHeld: f % 90 < 20, beat: tt / 0.784 };
-              try { act.step(st, 1 / 60, input); } catch { break; }
-              if (f % 12 === 0) try { renderer.render({ act, state: st, t: tt, curtain: 1, film: 'off', tinted, hud: true }); } catch { /* a scene that cannot draw yet */ }
+              const stopped = mode === 'idle' || (mode === 'stop-start' && f % 300 >= 180);
+              act.step(st, 1 / 60, stopped ? { beat: input.beat } : input);
+              for (const e of st.events || []) renderer.onEvent(e, { act, state: st });
+              if (st.events) st.events.length = 0;
+              if (f % 12 === 0) renderer.render({ act, state: st, t: tt, curtain: 1, film: 'off', tinted, hud: true });
             }
           }
           byLook[tinted ? 'tinted' : 'original'] = [...used].sort();

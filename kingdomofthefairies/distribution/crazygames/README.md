@@ -66,6 +66,10 @@ is produced for this preview; use the default SDK build for submission.
   The optional jellyfish animation waits for Act II. Music loads for the
   current mood rather than fetching the entire score in the background.
   Shared sound effects still load on the first user gesture.
+  Per-act dependencies are generated from initial, idle, active and
+  stop/start states, including event-driven poses. Regenerate them with
+  `qa/build-act-art.mjs` when scene drawing changes: deferred loading cannot
+  rely on the normal website's background downloads to fill missing entries.
 - Uses the HTML5 v3 SDK. Initialization precedes game startup and saved-game
   reads. Failure displays a reload action rather than silently starting with
   an unrelated local save. Gameplay events follow playable states, with

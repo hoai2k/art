@@ -15,6 +15,9 @@ try {
   assert.equal(await page.evaluate(()=>window.CrazyGames),undefined);
   assert.deepEqual(sdkRequests,[]);
   assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.actIndex),0,'regular website save is isolated');
+  await page.waitForTimeout(1000); // Stay still: movement-only coverage missed this pose.
+  assert.equal(await page.evaluate(()=>!!window.__kingdomOfTheFairies.assets.images['prince-court-tinted']),true,'opening standing pose is decoded before play');
+  assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.S.state.p.vx),0,'standing pose is exercised without movement');
   assert.equal(await page.evaluate(()=>window.__kingdomOfTheFairies.settings.cast),'tinted');
   assert.equal(await page.locator('#btn-sound').isVisible(),false);
   await page.locator('#preview-controls button').first().click();
@@ -25,5 +28,5 @@ try {
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('kotf.crazygames-preview.kingdomofthefairies.save.v1')||'null')?.scenes?.[1]===1);
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('kingdomofthefairies.save.v1')).unlocked),7);
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
-  console.log('SDK-free preview: automatic play, film/tint locks, host mute, isolated saves, no SDK requests/errors passed.');
+  console.log('SDK-free preview: opening idle artwork, automatic play, film/tint locks, host mute, isolated saves, no SDK requests/errors passed.');
 } finally {await browser.close();server.close();}

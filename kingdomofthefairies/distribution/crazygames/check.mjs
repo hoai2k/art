@@ -54,6 +54,8 @@ try {
   assert.ok(!(await page.evaluate('window.cgCalls')).includes('gameplayStart'), 'title is not gameplay');
   await wait(page, `window.cgCalls.includes('gameplayStart')`);
   assert.equal(await page.evaluate(`${qa}.S.actIndex`), 0);
+  assert.equal(await page.evaluate(`${qa}.S.state.p.vx`), 0, 'opening idle pose is exercised');
+  assert.ok(await page.evaluate(`${qa}.assets.images['prince-court-tinted']?.naturalWidth > 0`), 'opening standing artwork is decoded before play');
   assert.equal(await page.evaluate('window.fullscreenRequests'), 0);
   assert.ok(![...requests].some(p => p.includes('widowsbay') || p.includes('band-trio')), 'no legacy downloads');
   const manifest = JSON.parse(await fs.readFile(release + 'assets/manifest.json'));
